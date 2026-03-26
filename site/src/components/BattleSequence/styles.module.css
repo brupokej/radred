@@ -1,0 +1,109 @@
+.matchup {
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+  display: flex;
+}
+
+.matchup:last-child {
+  border-bottom: none;
+}
+
+.opponents {
+  align-items: center;
+  border-right: 1px solid var(--ifm-color-emphasis-200);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  gap: var(--ifm-spacing-vertical);
+  justify-content: flex-start;
+  min-width: 72px;
+  padding: var(--ifm-spacing-vertical) var(--ifm-spacing-horizontal);
+}
+
+.opponentSprite {
+  height: 32px;
+  object-fit: contain;
+  width: 32px;
+}
+
+.turns {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.turn {
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.turn:last-child {
+  border-bottom: none;
+}
+
+.cell {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ifm-spacing-vertical);
+  padding: var(--ifm-spacing-vertical) var(--ifm-spacing-horizontal);
+}
+
+.playerCell {
+  border-right: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.turnAction {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.actionSprite {
+  height: 28px;
+  object-fit: contain;
+  width: 28px;
+}
+
+.order {
+  align-items: center;
+  background: var(--ifm-code-background);
+  border-radius: 50%;
+  color: var(--ifm-font-color-base);
+  display: flex;
+  font-size: 0.7rem;
+  font-weight: var(--ifm-font-weight-bold);
+  height: 1.3rem;
+  justify-content: center;
+  margin-right: 0.5rem;
+  width: 1.3rem;
+}
+
+.label {
+  font-size: 0.875rem;
+  white-space: nowrap;
+}
+
+.result {
+  background: var(--ifm-code-background);
+  border-radius: var(--ifm-global-radius);
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.8rem;
+  padding: 0.1rem 0.3rem;
+  white-space: nowrap;
+}
+
+@media (max-width: 576px) {
+  .opponents {
+    display: none;
+  }
+
+  .turn {
+    grid-template-columns: 1fr;
+  }
+
+  .playerCell {
+    border-right: none;
+  }
+}

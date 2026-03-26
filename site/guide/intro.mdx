@@ -3,6 +3,7 @@ sidebar_position: 1
 ---
 
 import PokemonTeam from "@site/src/components/PokemonTeam";
+import { BattleLine, Matchup, Turn, Move } from "@site/src/components/BattleSequence";
 
 # Introduction
 
@@ -87,3 +88,72 @@ export const _tentacruel1 = {
 };
 
 <PokemonTeam team={[_azumarill1, _torracat1, _clodsire1, _perrserker1, _drednaw1, _tentacruel1]} />
+
+<BattleLine line="Bullet Punch Wartortle">
+  <Matchup opponents={["wartortle"]}>
+    <Turn
+      turn={[
+        <Move move="{1} {s:clodsire} switch to {s:perrserker}" />,
+        <Move move="{2} {s:wartortle} Icy Wind {s:perrserker} to {p:72+}" />,
+      ]}
+    />
+    <Turn
+      turn={[
+        <Move move="{1} {s:perrserker} Fake Out {s:wartortle} to {p:12-}" />,
+        <Move move="{2} {s:wartortle} flinched" />,
+      ]}
+    />
+    <Turn
+      turn={[
+        <Move move="{1} {s:perrserker} Bullet Punch {s:wartortle} to {p:0}" />,
+        <Move move="{2} {s:wartortle} fainted" />,
+      ]}
+    />
+  </Matchup>
+  <Matchup opponents={["simisear"]}>
+    <Turn
+      turn={[
+        <Move move="{1} {s:perrserker} switch to {s:drednaw}" />,
+        <Move move="{2} {s:simisear} Incinerate {s:drednaw} to {p:84+}" />,
+      ]}
+    />
+    <Turn
+      turn={[
+        <Move move="{2} {s:drednaw} Razor Shell {s:simisear} to {p:0}" />,
+        <Move move="{1} {s:simisear} Incinerate {s:drednaw} to {p:71+}" />,
+      ]}
+    />
+  </Matchup>
+  <Matchup opponents={["arbok"]}>
+    <Turn
+      turn={[
+        <Move move="{1} {s:drednaw} switch to {s:clodsire}" />,
+        <Move move="{2} {s:arbok} Thunder Fang {s:clodsire}" />,
+      ]}
+    />
+    <Turn
+      turn={[
+        <Move move="{2} {s:clodsire} Mud Shot {s:arbok} to {p:62-}" />,
+        <Move move="{1} {s:arbok} Crunch {s:clodsire} to {p:50+}" />,
+      ]}
+    />
+    <Turn
+      turn={[
+        <Move move="{1} {s:clodsire} switch to {s:perrserker}" />,
+        <Move move="{2} {s:arbok} Crunch {s:perrserker} to {p:42+}" />,
+      ]}
+    />
+    <Turn
+      turn={[
+        <Move move="{1} {s:perrserker} Fake Out {s:arbok} to {p:45-}" />,
+        <Move move="{2} {s:arbok} flinched" />,
+      ]}
+    />
+    <Turn
+      turn={[
+        <Move move="{1} {s:perrserker} Bullet Punch {s:arbok} to {p:0}" />,
+        <Move move="{2} {s:arbok} fainted" />,
+      ]}
+    />
+  </Matchup>
+</BattleLine>
