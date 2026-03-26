@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styles from "./styles.module.css";
 
 const SPRITE_BASE = "https://raw.githubusercontent.com/Autumnchi/coloured-home-sprites/main";
@@ -29,6 +30,7 @@ function PokemonCard({ pokemon }: { pokemon: Pokemon }) {
       />
       <div className={styles.name}>{pokemon.name}</div>
       <div className={styles.level}>{pokemon.level}</div>
+      <div className={styles.divider} />
       <div className={styles.detail}>{pokemon.nature}</div>
       <div className={styles.detail}>{pokemon.ability}</div>
       <div className={styles.detail}>{pokemon.item}</div>
@@ -41,12 +43,36 @@ function PokemonCard({ pokemon }: { pokemon: Pokemon }) {
   );
 }
 
-export default function PokemonTeam({ team }: PokemonTeamProps) {
+function TeamGrid({ team }: { team: Pokemon[] }) {
   return (
     <div className={styles.grid}>
       {team.map((pokemon, i) => (
         <PokemonCard key={i} pokemon={pokemon} />
       ))}
     </div>
+  );
+}
+
+export default function PokemonTeam({ team }: PokemonTeamProps) {
+  const [isOpen, setIsOpen] = useState(true);
+
+  return (
+    <details className={styles.details} open={isOpen}>
+      <summary className={styles.summary} onClick={(e) => e.preventDefault()}>
+        <span>Team</span>
+        <a
+          className={styles.toggle}
+          onClick={(e) => {
+            e.preventDefault();
+            setIsOpen(!isOpen);
+          }}
+        >
+          {isOpen ? "[hide]" : "[show]"}
+        </a>
+      </summary>
+      <div className={styles.content}>
+        <TeamGrid team={team} />
+      </div>
+    </details>
   );
 }
