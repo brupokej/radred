@@ -1,96 +1,96 @@
-import {themes as prismThemes} from 'prism-react-renderer';
-import type {Config} from '@docusaurus/types';
-import type * as Preset from '@docusaurus/preset-classic';
+import type * as Preset from "@docusaurus/preset-classic";
+import type { Config } from "@docusaurus/types";
+import { themes as prismThemes } from "prism-react-renderer";
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
-  title: 'Radical Red Handbook',
-  tagline: 'A guide to a nuzlocke of Radical Red 4.1 on hardcore mode.',
-  favicon: 'img/favicon.ico',
+  title: "Radical Red Handbook",
+  tagline: "A guide to a nuzlocke of Radical Red 4.1 on hardcore mode.",
+  favicon: "img/favicon.ico",
   future: {
     v4: true,
   },
-  url: 'https://brupokej.github.io',
-  baseUrl: '/radred/',
-  organizationName: 'brupokej',
-  projectName: 'radred',
-  onBrokenLinks: 'throw',
+  url: "https://brupokej.github.io",
+  baseUrl: "/radred/",
+  organizationName: "brupokej",
+  projectName: "radred",
+  onBrokenLinks: "throw",
   i18n: {
-    defaultLocale: 'en',
-    locales: ['en'],
+    defaultLocale: "en",
+    locales: ["en"],
   },
   presets: [
     [
-      'classic',
+      "classic",
       {
         docs: {
-          path: 'guide',
-          routeBasePath: 'guide',
-          sidebarPath: './sidebars.ts',
+          path: "guide",
+          routeBasePath: "guide",
+          sidebarPath: "./sidebars.ts",
         },
         theme: {
-          customCss: './src/css/custom.css',
+          customCss: "./src/css/custom.css",
         },
       } satisfies Preset.Options,
     ],
   ],
   themeConfig: {
-    image: 'img/brupokej-social-card.jpg',
+    image: "img/brupokej-social-card.jpg",
     colorMode: {
       respectPrefersColorScheme: true,
     },
     navbar: {
-      title: 'Radical Red',
+      title: "Radical Red",
       logo: {
-        alt: 'brupokej logo',
-        src: 'img/logo.svg',
+        alt: "brupokej logo",
+        src: "img/logo.svg",
       },
       items: [
         {
-          type: 'docSidebar',
-          sidebarId: 'guideSidebar',
-          position: 'left',
-          label: 'Strategy Guide',
+          type: "docSidebar",
+          sidebarId: "guideSidebar",
+          position: "left",
+          label: "Strategy Guide",
         },
         {
-          href: 'https://github.com/brupokej/radred',
-          label: 'GitHub',
-          position: 'right',
+          href: "https://github.com/brupokej/radred",
+          label: "GitHub",
+          position: "right",
         },
       ],
     },
     footer: {
-      style: 'dark',
+      style: "dark",
       links: [
         {
-          title: 'Docs',
+          title: "Docs",
           items: [
             {
-              label: 'Strategy Guide',
-              to: '/guide/intro',
+              label: "Strategy Guide",
+              to: "/guide/intro",
             },
           ],
         },
         {
-          title: 'Community',
+          title: "Community",
           items: [
             {
-              label: 'Twitch',
-              href: 'https://twitch.tv/brupokej',
+              label: "Twitch",
+              href: "https://twitch.tv/brupokej",
             },
             {
-              label: 'YouTube',
-              href: 'https://youtube.com/@brupokej',
+              label: "YouTube",
+              href: "https://youtube.com/@brupokej",
             },
           ],
         },
         {
-          title: 'More',
+          title: "More",
           items: [
             {
-              label: 'GitHub',
-              href: 'https://github.com/brupokej/radred',
+              label: "GitHub",
+              href: "https://github.com/brupokej/radred",
             },
           ],
         },

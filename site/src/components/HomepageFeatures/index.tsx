@@ -1,50 +1,50 @@
-import type {ReactNode} from 'react';
-import clsx from 'clsx';
-import Heading from '@theme/Heading';
-import styles from './styles.module.css';
+import Heading from "@theme/Heading";
+import clsx from "clsx";
+import type { ReactNode } from "react";
+import styles from "./styles.module.css";
 
 type FeatureItem = {
   title: string;
-  Svg: React.ComponentType<React.ComponentProps<'svg'>>;
+  Svg: React.ComponentType<React.ComponentProps<"svg">>;
   description: ReactNode;
 };
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'Title 1',
-    Svg: require('@site/static/img/logo.svg').default,
+    title: "Title 1",
+    Svg: require("@site/static/img/logo.svg").default,
     description: (
       <>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec commodo
-        enim ut nisl lacinia, id viverra mauris facilisis.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec commodo enim ut nisl lacinia,
+        id viverra mauris facilisis.
       </>
     ),
   },
   {
-    title: 'Title 2',
-    Svg: require('@site/static/img/logo.svg').default,
+    title: "Title 2",
+    Svg: require("@site/static/img/logo.svg").default,
     description: (
       <>
-        Vestibulum ante felis, consequat ac sagittis eu, imperdiet a erat. Morbi
-        vitae erat eu nibh venenatis euismod non vel odio.
+        Vestibulum ante felis, consequat ac sagittis eu, imperdiet a erat. Morbi vitae erat eu nibh
+        venenatis euismod non vel odio.
       </>
     ),
   },
   {
-    title: 'Title 3',
-    Svg: require('@site/static/img/logo.svg').default,
+    title: "Title 3",
+    Svg: require("@site/static/img/logo.svg").default,
     description: (
       <>
-        Maecenas blandit fermentum maximus. Vestibulum volutpat consequat nulla
-        ac porttitor. Cras hendrerit ante nisi.
+        Maecenas blandit fermentum maximus. Vestibulum volutpat consequat nulla ac porttitor. Cras
+        hendrerit ante nisi.
       </>
     ),
   },
 ];
 
-function Feature({title, Svg, description}: FeatureItem) {
+function Feature({ title, Svg, description }: FeatureItem) {
   return (
-    <div className={clsx('col col--4')}>
+    <div className={clsx("col col--4")}>
       <div className="text--center">
         <Svg className={styles.featureSvg} role="img" />
       </div>
