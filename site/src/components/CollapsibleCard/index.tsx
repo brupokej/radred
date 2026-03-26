@@ -13,7 +13,10 @@ export default function CollapsibleCard({
   const [isOpen, setIsOpen] = useState(true);
   return (
     <details className={styles.card} id={id} open={isOpen}>
-      <summary className={styles.summary} onClick={(e) => e.preventDefault()}>
+      <summary
+        className={`${styles.summary} ${isOpen ? styles.summaryOpen : ""}`}
+        onClick={(e) => e.preventDefault()}
+      >
         <span>{title}</span>
         <a
           className={styles.toggle}
