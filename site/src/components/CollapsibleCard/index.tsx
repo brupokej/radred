@@ -3,16 +3,14 @@ import styles from "./styles.module.css";
 
 export default function CollapsibleCard({
   title,
-  id,
   children,
 }: {
   title: React.ReactNode;
-  id?: string;
   children: React.ReactNode;
 }) {
   const [isOpen, setIsOpen] = useState(true);
   return (
-    <details className={styles.card} id={id} open={isOpen}>
+    <details className={styles.card} open={isOpen}>
       <summary
         className={`${styles.summary} ${isOpen ? styles.summaryOpen : ""}`}
         onClick={(e) => e.preventDefault()}

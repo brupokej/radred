@@ -1,6 +1,14 @@
 import CollapsibleCard from "@site/src/components/CollapsibleCard";
 import { spriteUrl } from "@site/src/utils/sprites";
-import React, { useCallback, useContext, useEffect, useId, useMemo, useReducer, useRef } from "react";
+import React, {
+  useCallback,
+  useContext,
+  useEffect,
+  useId,
+  useMemo,
+  useReducer,
+  useRef,
+} from "react";
 import styles from "./styles.module.css";
 
 const slugify = (s: string) =>
@@ -10,7 +18,7 @@ const slugify = (s: string) =>
     .replace(/[^a-z0-9-]/g, "");
 
 type GraphState = {
-  visibleLines: Set<string>;
+  visibleOrder: string[];
   selectedBranches: Map<string, string>;
 };
 
@@ -18,22 +26,43 @@ type GraphAction =
   | { type: "SELECT_BRANCH"; goId: string; childSlug: string }
   | { type: "DESELECT_BRANCH"; goId: string };
 
-function computeVisible(
+function computeOrder(
   rootSlug: string,
   branches: Map<string, string>,
   registry: Map<string, string>
-): Set<string> {
-  const visible = new Set<string>();
+): string[] {
+  const order: string[] = [];
   const visited = new Set<string>();
   function visit(slug: string) {
     if (visited.has(slug)) return;
     visited.add(slug);
-    visible.add(slug);
+    order.push(slug);
     for (const [goId, parentSlug] of registry)
       if (parentSlug === slug && branches.has(goId)) visit(branches.get(goId)!);
   }
   visit(rootSlug);
-  return visible;
+  return order;
+}
+
+// Inject isContinued into Matchup elements based on opponent continuity across lines.
+function enrichMatchups(
+  children: React.ReactNode,
+  prevOpponent: string | null
+): { enriched: React.ReactNode; lastOpponent: string | null } {
+  let current = prevOpponent;
+  const enriched =
+    React.Children.map(children, (child) => {
+      if (React.isValidElement(child) && child.type === Matchup) {
+        const { opponents } = child.props as { opponents: string[] };
+        const isContinued = current !== null && current === opponents[0];
+        current = opponents[opponents.length - 1] ?? null;
+        return React.cloneElement(child as React.ReactElement<{ isContinued?: boolean }>, {
+          isContinued,
+        });
+      }
+      return child;
+    }) ?? [];
+  return { enriched, lastOpponent: current };
 }
 
 type GraphCtxValue = {
@@ -47,21 +76,27 @@ const BattleGraphCtx = React.createContext<GraphCtxValue | null>(null);
 const BattleLineCtx = React.createContext<string | null>(null);
 
 export function BattleGraph({
-  root,
   title = "Line",
   children,
 }: {
-  root: string;
   title?: string;
   children: React.ReactNode;
 }) {
-  const rootSlug = slugify(root);
+  const lineElements = React.Children.toArray(children).filter(
+    (c): c is React.ReactElement<{ line: string; children: React.ReactNode }> =>
+      React.isValidElement(c) && c.type === BattleLine
+  );
+
+  const lineMap = new Map(lineElements.map((el) => [slugify(el.props.line), el.props.children]));
+
+  const rootSlug = lineElements.length > 0 ? slugify(lineElements[0].props.line) : "";
+
   const goRegistry = useRef<Map<string, string>>(new Map());
 
   const withBranches = useCallback(
     (branches: Map<string, string>): GraphState => ({
       selectedBranches: branches,
-      visibleLines: computeVisible(rootSlug, branches, goRegistry.current),
+      visibleOrder: computeOrder(rootSlug, branches, goRegistry.current),
     }),
     [rootSlug]
   );
@@ -85,7 +120,7 @@ export function BattleGraph({
   );
 
   const [state, dispatch] = useReducer(reducer, {
-    visibleLines: new Set([rootSlug]),
+    visibleOrder: [rootSlug],
     selectedBranches: new Map(),
   });
 
@@ -102,71 +137,51 @@ export function BattleGraph({
     [state, dispatch, registerGo, unregisterGo]
   );
 
+  // Build lineRegistry with continuation info injected into Matchup elements.
+  const lineRegistry = new Map<string, React.ReactNode>();
+  let prevLastOpponent: string | null = null;
+  for (const slug of state.visibleOrder) {
+    const raw = lineMap.get(slug);
+    if (raw !== undefined) {
+      const { enriched, lastOpponent } = enrichMatchups(raw, prevLastOpponent);
+      lineRegistry.set(slug, enriched);
+      prevLastOpponent = lastOpponent;
+    }
+  }
+
   return (
     <BattleGraphCtx.Provider value={ctx}>
-      <CollapsibleCard title={title}>{children}</CollapsibleCard>
+      <CollapsibleCard title={title}>
+        {state.visibleOrder.map((slug) => (
+          <BattleLineCtx.Provider key={slug} value={slug}>
+            {lineRegistry.get(slug)}
+          </BattleLineCtx.Provider>
+        ))}
+      </CollapsibleCard>
     </BattleGraphCtx.Provider>
   );
 }
 
-export function BattleLine({
-  line,
-  id,
-  children,
-}: {
-  line?: string;
-  id?: boolean;
-  children: React.ReactNode;
-}) {
-  const lineSlug = line ? slugify(line) : undefined;
-  const graphCtx = useContext(BattleGraphCtx);
-
-  if (graphCtx && lineSlug && !graphCtx.state.visibleLines.has(lineSlug)) return null;
-
-  let content: React.ReactNode = children;
-  if (!graphCtx) {
-    const anchorSlug = id && lineSlug ? lineSlug : undefined;
-    const titleText = line ? `Line: ${line}` : "Line";
-    const title = anchorSlug ? (
-      <>
-        {titleText}
-        <a
-          href={`#${anchorSlug}`}
-          className="hash-link"
-          aria-label={`Direct link to ${line}`}
-          title={`Direct link to ${line}`}
-          translate="no"
-          onClick={(e) => e.stopPropagation()}
-        >
-          ​
-        </a>
-      </>
-    ) : (
-      titleText
-    );
-    content = <CollapsibleCard title={title} id={anchorSlug}>{children}</CollapsibleCard>;
-  }
-
-  return (
-    <BattleLineCtx.Provider value={lineSlug ?? null}>
-      {content}
-    </BattleLineCtx.Provider>
-  );
+export function BattleLine({ line, children }: { line: string; children: React.ReactNode }) {
+  return null;
 }
 
 export function Matchup({
   opponents,
+  isContinued = false,
   children,
 }: {
   opponents: string[];
+  isContinued?: boolean;
   children: React.ReactNode;
 }) {
   return (
-    <div className={styles.matchup}>
+    <div className={`${styles.matchup} ${isContinued ? styles.matchupContinued : ""}`}>
       <div className={styles.opponents}>
-        {opponents.map((sprite, i) => (
-          <img key={i} src={spriteUrl(sprite)} alt={sprite} className={styles.opponentSprite} />
-        ))}
+        {!isContinued &&
+          opponents.map((sprite, i) => (
+            <img key={i} src={spriteUrl(sprite)} alt={sprite} className={styles.opponentSprite} />
+          ))}
       </div>
       <div className={styles.turns}>{children}</div>
     </div>
@@ -178,10 +193,14 @@ export function Turn({ turn }: { turn: React.ReactNode[] }) {
   return (
     <div className={styles.turn}>
       <div className={`${styles.cell} ${styles.playerCell}`}>
-        {turn.slice(0, mid).map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}
+        {turn.slice(0, mid).map((item, i) => (
+          <React.Fragment key={i}>{item}</React.Fragment>
+        ))}
       </div>
       <div className={styles.cell}>
-        {turn.slice(mid).map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}
+        {turn.slice(mid).map((item, i) => (
+          <React.Fragment key={i}>{item}</React.Fragment>
+        ))}
       </div>
     </div>
   );
@@ -244,13 +263,22 @@ export function Go({ go, if: condition }: { go: string[]; if?: string }) {
 
   const registerGo = graphCtx?.registerGo;
   const unregisterGo = graphCtx?.unregisterGo;
+  const dispatch = graphCtx?.dispatch;
   useEffect(() => {
     if (!registerGo || !unregisterGo || !parentSlug) return;
     registerGo(goId, parentSlug);
+    if (dispatch && go.length === 1) {
+      const item = go[0];
+      const labelMatch = item.match(ORDER_RE);
+      const text = labelMatch ? item.slice(labelMatch[0].length) : item;
+      dispatch({ type: "SELECT_BRANCH", goId, childSlug: slugify(text) });
+    }
     return () => unregisterGo(goId);
-  }, [goId, parentSlug, registerGo, unregisterGo]);
+  }, [goId, parentSlug, registerGo, unregisterGo, dispatch]);
 
   const selectedChildSlug = graphCtx?.state.selectedBranches.get(goId);
+
+  if (graphCtx && go.length === 1) return null;
 
   return (
     <div className={styles.branchTurn}>

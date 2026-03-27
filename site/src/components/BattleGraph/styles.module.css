@@ -7,6 +7,20 @@
   border-bottom: none;
 }
 
+.matchupContinued .opponents {
+  position: relative;
+}
+
+.matchupContinued .opponents::before {
+  background: var(--ifm-card-background-color);
+  content: "";
+  height: 1px;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: -1px;
+}
+
 .opponents {
   align-items: center;
   border-right: 1px solid var(--ifm-color-emphasis-200);

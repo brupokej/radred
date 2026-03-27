@@ -89,303 +89,292 @@ export const _tentacruel1 = {
 
 <PokemonTeam team={[_azumarill1, _torracat1, _clodsire1, _perrserker1, _drednaw1, _tentacruel1]} />
 
-<BattleGraph root="Opening">
-
-<BattleLine line="Opening">
-  <Matchup opponents={["hitmonlee"]}>
-    <Turn
-      turn={[
-        <Move move="{2} {s:azumarill} flinched" />,
-        <Move move="{1} {s:hitmonlee} Fake Out {s:azumarill} to {p:83+}" />,
-      ]}
-    />
-    <Go go={["{A} Covet Wartortle", "{B} Covet Hitmonlee"]} />
-  </Matchup>
-</BattleLine>
-
-<BattleLine line="Covet Wartortle" id>
-  <Matchup opponents={["hitmonlee"]}>
-    <Turn
-      turn={[
-        <Move move="{2} {s:azumarill} Covet {s:wartortle} to {p:60-}" />,
-        <Move move="{1} {s:hitmonlee} switch to {s:wartortle}" />,
-      ]}
-    />
-  </Matchup>
-  <Matchup opponents={["wartortle"]}>
-    <Turn
-      turn={[
-        <Move move="{2} {s:azumarill} Aqua Tail {s:wartortle} to {p:39-}" />,
-        <Move move="{1} {s:wartortle} Shell Smash" />,
-      ]}
-    />
-    <Go go={["All Regular Damage", "Any Crit Damage"]} />
-  </Matchup>
-</BattleLine>
-
-<BattleLine line="Covet Hitmonlee" id>
-  <Matchup opponents={["hitmonlee"]}>
-    <Turn
-      turn={[
-        <Move move="{2} {s:azumarill} Covet {s:hitmonlee} to {p:0}" />,
-        <Move move="{1} {s:hitmonlee} Knock Off {s:azumarill} to {p:61-}" />,
-      ]}
-    />
-  </Matchup>
-  <Matchup opponents={["wartortle"]}>
-    <Turn
-      turn={[
-        <Move move="{2} {s:azumarill} Play Rough {s:wartortle} to {p:36-}" />,
-        <Move move="{1} {s:wartortle} Shell Smash" />,
-      ]}
-    />
-    <Go go={["All Regular Damage", "Any Crit Damage"]} />
-  </Matchup>
-</BattleLine>
-
-<BattleLine line="All Regular Damage" id>
-  <Matchup opponents={["wartortle"]}>
-    <Turn
-      turn={[
-        <Move move="{1} {s:azumarill} switch to {s:torracat}" />,
-        <Move move="{2} {s:wartortle} Hidden Power Electric {s:torracat} to {p:45+}" />,
-      ]}
-    />
-    <Turn
-      turn={[
-        <Move move="{1} {s:torracat} Fake Out {s:wartortle} to {p:25-}" />,
-        <Move move="{2} {s:wartortle} flinched" />,
-      ]}
-    />
-    <Turn
-      turn={[
-        <Move move="{1} {s:torracat} switch to {s:clodsire}" />,
-        <Move move="{2} {s:wartortle} Water Pulse {s:clodsire}" />,
-      ]}
-    />
-    <Go go={["Bullet Wartortle"]} />
-  </Matchup>
-</BattleLine>
-
-<BattleLine line="Any Crit Damage" id>
-  <Matchup opponents={["wartortle"]}>
-    <Turn
-      turn={[
-        <Move move="{1} {s:azumarill} switch to {s:clodsire}" />,
-        <Move move="{2} {s:wartortle} Hidden Power Electric {s:clodsire}" />,
-      ]}
-    />
-    <Go go={["Bullet Wartortle"]} />
-  </Matchup>
-</BattleLine>
-
-<BattleLine line="Bullet Wartortle" id>
-  <Matchup opponents={["wartortle"]}>
-    <Turn
-      turn={[
-        <Move move="{1} {s:clodsire} switch to {s:perrserker}" />,
-        <Move move="{2} {s:wartortle} Icy Wind {s:perrserker} to {p:72+}" />,
-      ]}
-    />
-    <Turn
-      turn={[
-        <Move move="{1} {s:perrserker} Fake Out {s:wartortle} to {p:12-}" />,
-        <Move move="{2} {s:wartortle} flinched" />,
-      ]}
-    />
-    <Turn
-      turn={[
-        <Move move="{1} {s:perrserker} Bullet Punch {s:wartortle} to {p:0}" />,
-        <Move move="{2} {s:wartortle} fainted" />,
-      ]}
-    />
-  </Matchup>
-  <Matchup opponents={["simisear"]}>
-    <Turn
-      turn={[
-        <Move move="{1} {s:perrserker} switch to {s:drednaw}" />,
-        <Move move="{2} {s:simisear} Incinerate {s:drednaw} to {p:84+}" />,
-      ]}
-    />
-    <Turn
-      turn={[
-        <Move move="{2} {s:drednaw} Razor Shell {s:simisear} to {p:0}" />,
-        <Move move="{1} {s:simisear} Incinerate {s:drednaw} to {p:71+}" />,
-      ]}
-    />
-  </Matchup>
-  <Matchup opponents={["arbok"]}>
-    <Turn
-      turn={[
-        <Move move="{1} {s:drednaw} switch to {s:clodsire}" />,
-        <Move move="{2} {s:arbok} Thunder Fang {s:clodsire}" />,
-      ]}
-    />
-    <Turn
-      turn={[
-        <Move move="{2} {s:clodsire} Mud Shot {s:arbok} to {p:62-}" />,
-        <Move move="{1} {s:arbok} Crunch {s:clodsire} to {p:50+}" />,
-      ]}
-    />
-    <Turn
-      turn={[
-        <Move move="{1} {s:clodsire} switch to {s:perrserker}" />,
-        <Move move="{2} {s:arbok} Crunch {s:perrserker} to {p:42+}" />,
-      ]}
-    />
-    <Turn
-      turn={[
-        <Move move="{1} {s:perrserker} Fake Out {s:arbok} to {p:45-}" />,
-        <Move move="{2} {s:arbok} flinched" />,
-      ]}
-    />
-    <Turn
-      turn={[
-        <Move move="{1} {s:perrserker} Bullet Punch {s:arbok} to {p:0}" />,
-        <Move move="{2} {s:arbok} fainted" />,
-      ]}
-    />
-    <Go go={["Hitmonlee Random", "Clefable Mystical"]} />
-  </Matchup>
-</BattleLine>
-
-<BattleLine line="Hitmonlee Random" id>
-  <Matchup opponents={["hitmonlee"]}>
-    <Turn
-      turn={[
-        <Move move="{1} {s:perrserker} switch to {s:azumarill}" />,
-        <Move move="{2} {s:hitmonlee} Low Sweep {s:azumarill} to {p:51+}" />,
-      ]}
-    />
-    <Turn
-      turn={[
-        <Move move="{2} {s:azumarill} Play Rough {s:hitmonlee} to {p:0}" />,
-        <Move move="{1} {s:hitmonlee} Knock Off {s:azumarill} to {p:29+}" />,
-      ]}
-    />
-  </Matchup>
-  <Matchup opponents={["clefable"]}>
-    <Turn
-      turn={[
-        <Move move="{1} {s:azumarill} switch to {s:clodsire}" />,
-        <Move move="{2} {s:clefable} Charge Beam {s:clodsire}" />,
-      ]}
-    />
-    <Go go={["Hard Eevee", "Clefable Icy"]} />
-  </Matchup>
-</BattleLine>
-
-<BattleLine line="Hard Eevee" id>
-  <Matchup opponents={["clefable"]}>
-    <Turn
-      turn={[
-        <Move move="{1} {s:clodsire} switch to {s:tentacruel}" />,
-        <Move move="{2} {s:clefable} switch to {s:eevee}" />,
-      ]}
-    />
-  </Matchup>
-  <Matchup opponents={["eevee"]}>
-    <Turn
-      turn={[
-        <Move move="{1} {s:tentacruel} Acid Spray {s:eevee} to {p:53-}" />,
-        <Move move="{2} {s:eevee} Round {s:tentacruel} to {p:67+}" />,
-      ]}
-    />
-    <Turn
-      turn={[
-        <Move move="{1} {s:tentacruel} Bubble Beam {s:eevee} to {p:0}" />,
-        <Move move="{2} {s:eevee} fainted" />,
-      ]}
-    />
-  </Matchup>
-  <Matchup opponents={["clefable"]}>
-    <Turn
-      turn={[
-        <Move move="{1} {s:tentacruel} Acid Spray {s:clefable} to {p:66-}" />,
-        <Move move="{2} {s:clefable} Charge Beam {s:tentacruel} to {p:28+}" />,
-      ]}
-    />
-    <Turn
-      turn={[
-        <Move move="{1} {s:tentacruel} Sludge {s:clefable} to {p:0}" />,
-        <Move move="{2} {s:clefable} fainted" />,
-      ]}
-    />
-  </Matchup>
-</BattleLine>
-
-<BattleLine line="Clefable Icy" id>
-  <Matchup opponents={["clefable"]}>
-    <Turn
-      turn={[
-        <Move move="{1} {s:clodsire} switch to {s:tentacruel}" />,
-        <Move move="{2} {s:clefable} Icy Wind {s:tentacruel} to {p:81+}" />,
-      ]}
-    />
-    <Turn
-      turn={[
-        <Move move="{1} {s:tentacruel} Acid Spray {s:clefable} to {p:66-}" />,
-        <Move move="{2} {s:clefable} Charge Beam {s:tentacruel} to {p:42+}" />,
-      ]}
-    />
-    <Turn
-      turn={[
-        <Move move="{1} {s:tentacruel} Sludge {s:clefable} to {p:0}" />,
-        <Move move="{2} {s:clefable} fainted" />,
-      ]}
-    />
-  </Matchup>
-  <Matchup opponents={["eevee"]}>
-    <Turn
-      turn={[
-        <Move move="{1} {s:tentacruel} Acid Spray {s:eevee} to {p:53-}" />,
-        <Move move="{2} {s:eevee} Round {s:tentacruel} to {p:28+}" />,
-      ]}
-    />
-    <Turn
-      turn={[
-        <Move move="{1} {s:tentacruel} Bubble Beam {s:eevee} to {p:0}" />,
-        <Move move="{2} {s:eevee} fainted" />,
-      ]}
-    />
-  </Matchup>
-</BattleLine>
-
-<BattleLine line="Clefable Mystical" id>
-  <Matchup opponents={["clefable"]}>
-    <Turn
-      turn={[
-        <Move move="{1} {s:perrserker} switch to {s:tentacruel}" />,
-        <Move move="{2} {s:clefable} Mystical Fire {s:tentacruel} to {p:77+}" />,
-      ]}
-    />
-    <Turn
-      turn={[
-        <Move move="{1} {s:tentacruel} Acid Spray {s:clefable} to {p:66-}" />,
-        <Move move="{2} {s:clefable} Charge Beam {s:tentacruel} to {p:38+}" />,
-      ]}
-    />
-    <Turn
-      turn={[
-        <Move move="{1} {s:tentacruel} Sludge {s:clefable} to {p:0}" />,
-        <Move move="{2} {s:clefable} fainted" />,
-      ]}
-    />
-  </Matchup>
-  <Matchup opponents={["eevee"]}>
-    <Turn
-      turn={[
-        <Move move="{1} {s:tentacruel} Acid Spray {s:eevee} to {p:53-}" />,
-        <Move move="{2} {s:eevee} Round {s:tentacruel} to {p:28+}" />,
-      ]}
-    />
-    <Turn
-      turn={[
-        <Move move="{1} {s:tentacruel} Bubble Beam {s:eevee} to {p:0}" />,
-        <Move move="{2} {s:eevee} fainted" />,
-      ]}
-    />
-  </Matchup>
-</BattleLine>
-
+<BattleGraph>
+  <BattleLine line="Opening">
+    <Matchup opponents={["hitmonlee"]}>
+      <Turn
+        turn={[
+          <Move move="{2} {s:azumarill} flinched" />,
+          <Move move="{1} {s:hitmonlee} Fake Out {s:azumarill} to {p:83+}" />,
+        ]}
+      />
+      <Go go={["{A} Covet Wartortle", "{B} Covet Hitmonlee"]} />
+    </Matchup>
+  </BattleLine>
+  <BattleLine line="Covet Wartortle">
+    <Matchup opponents={["hitmonlee"]}>
+      <Turn
+        turn={[
+          <Move move="{2} {s:azumarill} Covet {s:wartortle} to {p:60-}" />,
+          <Move move="{1} {s:hitmonlee} switch to {s:wartortle}" />,
+        ]}
+      />
+    </Matchup>
+    <Matchup opponents={["wartortle"]}>
+      <Turn
+        turn={[
+          <Move move="{2} {s:azumarill} Aqua Tail {s:wartortle} to {p:39-}" />,
+          <Move move="{1} {s:wartortle} Shell Smash" />,
+        ]}
+      />
+      <Go go={["All Regular Damage", "Any Crit Damage"]} />
+    </Matchup>
+  </BattleLine>
+  <BattleLine line="Covet Hitmonlee">
+    <Matchup opponents={["hitmonlee"]}>
+      <Turn
+        turn={[
+          <Move move="{2} {s:azumarill} Covet {s:hitmonlee} to {p:0}" />,
+          <Move move="{1} {s:hitmonlee} Knock Off {s:azumarill} to {p:61-}" />,
+        ]}
+      />
+    </Matchup>
+    <Matchup opponents={["wartortle"]}>
+      <Turn
+        turn={[
+          <Move move="{2} {s:azumarill} Play Rough {s:wartortle} to {p:36-}" />,
+          <Move move="{1} {s:wartortle} Shell Smash" />,
+        ]}
+      />
+      <Go go={["All Regular Damage", "Any Crit Damage"]} />
+    </Matchup>
+  </BattleLine>
+  <BattleLine line="All Regular Damage">
+    <Matchup opponents={["wartortle"]}>
+      <Turn
+        turn={[
+          <Move move="{1} {s:azumarill} switch to {s:torracat}" />,
+          <Move move="{2} {s:wartortle} Hidden Power Electric {s:torracat} to {p:45+}" />,
+        ]}
+      />
+      <Turn
+        turn={[
+          <Move move="{1} {s:torracat} Fake Out {s:wartortle} to {p:25-}" />,
+          <Move move="{2} {s:wartortle} flinched" />,
+        ]}
+      />
+      <Turn
+        turn={[
+          <Move move="{1} {s:torracat} switch to {s:clodsire}" />,
+          <Move move="{2} {s:wartortle} Water Pulse {s:clodsire}" />,
+        ]}
+      />
+      <Go go={["Bullet Wartortle"]} />
+    </Matchup>
+  </BattleLine>
+  <BattleLine line="Any Crit Damage">
+    <Matchup opponents={["wartortle"]}>
+      <Turn
+        turn={[
+          <Move move="{1} {s:azumarill} switch to {s:clodsire}" />,
+          <Move move="{2} {s:wartortle} Hidden Power Electric {s:clodsire}" />,
+        ]}
+      />
+      <Go go={["Bullet Wartortle"]} />
+    </Matchup>
+  </BattleLine>
+  <BattleLine line="Bullet Wartortle">
+    <Matchup opponents={["wartortle"]}>
+      <Turn
+        turn={[
+          <Move move="{1} {s:clodsire} switch to {s:perrserker}" />,
+          <Move move="{2} {s:wartortle} Icy Wind {s:perrserker} to {p:72+}" />,
+        ]}
+      />
+      <Turn
+        turn={[
+          <Move move="{1} {s:perrserker} Fake Out {s:wartortle} to {p:12-}" />,
+          <Move move="{2} {s:wartortle} flinched" />,
+        ]}
+      />
+      <Turn
+        turn={[
+          <Move move="{1} {s:perrserker} Bullet Punch {s:wartortle} to {p:0}" />,
+          <Move move="{2} {s:wartortle} fainted" />,
+        ]}
+      />
+    </Matchup>
+    <Matchup opponents={["simisear"]}>
+      <Turn
+        turn={[
+          <Move move="{1} {s:perrserker} switch to {s:drednaw}" />,
+          <Move move="{2} {s:simisear} Incinerate {s:drednaw} to {p:84+}" />,
+        ]}
+      />
+      <Turn
+        turn={[
+          <Move move="{2} {s:drednaw} Razor Shell {s:simisear} to {p:0}" />,
+          <Move move="{1} {s:simisear} Incinerate {s:drednaw} to {p:71+}" />,
+        ]}
+      />
+    </Matchup>
+    <Matchup opponents={["arbok"]}>
+      <Turn
+        turn={[
+          <Move move="{1} {s:drednaw} switch to {s:clodsire}" />,
+          <Move move="{2} {s:arbok} Thunder Fang {s:clodsire}" />,
+        ]}
+      />
+      <Turn
+        turn={[
+          <Move move="{2} {s:clodsire} Mud Shot {s:arbok} to {p:62-}" />,
+          <Move move="{1} {s:arbok} Crunch {s:clodsire} to {p:50+}" />,
+        ]}
+      />
+      <Turn
+        turn={[
+          <Move move="{1} {s:clodsire} switch to {s:perrserker}" />,
+          <Move move="{2} {s:arbok} Crunch {s:perrserker} to {p:42+}" />,
+        ]}
+      />
+      <Turn
+        turn={[
+          <Move move="{1} {s:perrserker} Fake Out {s:arbok} to {p:45-}" />,
+          <Move move="{2} {s:arbok} flinched" />,
+        ]}
+      />
+      <Turn
+        turn={[
+          <Move move="{1} {s:perrserker} Bullet Punch {s:arbok} to {p:0}" />,
+          <Move move="{2} {s:arbok} fainted" />,
+        ]}
+      />
+      <Go go={["Hitmonlee Random", "Clefable Mystical"]} />
+    </Matchup>
+  </BattleLine>
+  <BattleLine line="Hitmonlee Random">
+    <Matchup opponents={["hitmonlee"]}>
+      <Turn
+        turn={[
+          <Move move="{1} {s:perrserker} switch to {s:azumarill}" />,
+          <Move move="{2} {s:hitmonlee} Low Sweep {s:azumarill} to {p:51+}" />,
+        ]}
+      />
+      <Turn
+        turn={[
+          <Move move="{2} {s:azumarill} Play Rough {s:hitmonlee} to {p:0}" />,
+          <Move move="{1} {s:hitmonlee} Knock Off {s:azumarill} to {p:29+}" />,
+        ]}
+      />
+    </Matchup>
+    <Matchup opponents={["clefable"]}>
+      <Turn
+        turn={[
+          <Move move="{1} {s:azumarill} switch to {s:clodsire}" />,
+          <Move move="{2} {s:clefable} Charge Beam {s:clodsire}" />,
+        ]}
+      />
+      <Go go={["Hard Eevee", "Clefable Icy"]} />
+    </Matchup>
+  </BattleLine>
+  <BattleLine line="Hard Eevee">
+    <Matchup opponents={["clefable"]}>
+      <Turn
+        turn={[
+          <Move move="{1} {s:clodsire} switch to {s:tentacruel}" />,
+          <Move move="{2} {s:clefable} switch to {s:eevee}" />,
+        ]}
+      />
+    </Matchup>
+    <Matchup opponents={["eevee"]}>
+      <Turn
+        turn={[
+          <Move move="{1} {s:tentacruel} Acid Spray {s:eevee} to {p:53-}" />,
+          <Move move="{2} {s:eevee} Round {s:tentacruel} to {p:67+}" />,
+        ]}
+      />
+      <Turn
+        turn={[
+          <Move move="{1} {s:tentacruel} Bubble Beam {s:eevee} to {p:0}" />,
+          <Move move="{2} {s:eevee} fainted" />,
+        ]}
+      />
+    </Matchup>
+    <Matchup opponents={["clefable"]}>
+      <Turn
+        turn={[
+          <Move move="{1} {s:tentacruel} Acid Spray {s:clefable} to {p:66-}" />,
+          <Move move="{2} {s:clefable} Charge Beam {s:tentacruel} to {p:28+}" />,
+        ]}
+      />
+      <Turn
+        turn={[
+          <Move move="{1} {s:tentacruel} Sludge {s:clefable} to {p:0}" />,
+          <Move move="{2} {s:clefable} fainted" />,
+        ]}
+      />
+    </Matchup>
+  </BattleLine>
+  <BattleLine line="Clefable Icy">
+    <Matchup opponents={["clefable"]}>
+      <Turn
+        turn={[
+          <Move move="{1} {s:clodsire} switch to {s:tentacruel}" />,
+          <Move move="{2} {s:clefable} Icy Wind {s:tentacruel} to {p:81+}" />,
+        ]}
+      />
+      <Turn
+        turn={[
+          <Move move="{1} {s:tentacruel} Acid Spray {s:clefable} to {p:66-}" />,
+          <Move move="{2} {s:clefable} Charge Beam {s:tentacruel} to {p:42+}" />,
+        ]}
+      />
+      <Turn
+        turn={[
+          <Move move="{1} {s:tentacruel} Sludge {s:clefable} to {p:0}" />,
+          <Move move="{2} {s:clefable} fainted" />,
+        ]}
+      />
+    </Matchup>
+    <Matchup opponents={["eevee"]}>
+      <Turn
+        turn={[
+          <Move move="{1} {s:tentacruel} Acid Spray {s:eevee} to {p:53-}" />,
+          <Move move="{2} {s:eevee} Round {s:tentacruel} to {p:28+}" />,
+        ]}
+      />
+      <Turn
+        turn={[
+          <Move move="{1} {s:tentacruel} Bubble Beam {s:eevee} to {p:0}" />,
+          <Move move="{2} {s:eevee} fainted" />,
+        ]}
+      />
+    </Matchup>
+  </BattleLine>
+  <BattleLine line="Clefable Mystical">
+    <Matchup opponents={["clefable"]}>
+      <Turn
+        turn={[
+          <Move move="{1} {s:perrserker} switch to {s:tentacruel}" />,
+          <Move move="{2} {s:clefable} Mystical Fire {s:tentacruel} to {p:77+}" />,
+        ]}
+      />
+      <Turn
+        turn={[
+          <Move move="{1} {s:tentacruel} Acid Spray {s:clefable} to {p:66-}" />,
+          <Move move="{2} {s:clefable} Charge Beam {s:tentacruel} to {p:38+}" />,
+        ]}
+      />
+      <Turn
+        turn={[
+          <Move move="{1} {s:tentacruel} Sludge {s:clefable} to {p:0}" />,
+          <Move move="{2} {s:clefable} fainted" />,
+        ]}
+      />
+    </Matchup>
+    <Matchup opponents={["eevee"]}>
+      <Turn
+        turn={[
+          <Move move="{1} {s:tentacruel} Acid Spray {s:eevee} to {p:53-}" />,
+          <Move move="{2} {s:eevee} Round {s:tentacruel} to {p:28+}" />,
+        ]}
+      />
+      <Turn
+        turn={[
+          <Move move="{1} {s:tentacruel} Bubble Beam {s:eevee} to {p:0}" />,
+          <Move move="{2} {s:eevee} fainted" />,
+        ]}
+      />
+    </Matchup>
+  </BattleLine>
 </BattleGraph>
