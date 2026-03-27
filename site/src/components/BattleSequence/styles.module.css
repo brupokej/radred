@@ -68,7 +68,7 @@
 
 .order {
   align-items: center;
-  background: var(--ifm-code-background);
+  background: var(--ifm-color-emphasis-200);
   border-radius: 50%;
   color: var(--ifm-font-color-base);
   display: flex;
@@ -97,7 +97,7 @@
 .diamond,
 .branchLabel {
   align-items: center;
-  background: var(--ifm-code-background);
+  background: var(--ifm-color-emphasis-200);
   clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
   color: var(--ifm-font-color-base);
   display: flex;
@@ -131,6 +131,27 @@
   right: 0;
   top: 20%;
   width: 1px;
+}
+
+.goOption {
+  background: none;
+  border: none;
+  color: var(--ifm-link-color);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.875rem;
+  padding: 0;
+  white-space: nowrap;
+}
+
+.goOption:hover {
+  color: var(--ifm-link-hover-color);
+  text-decoration: var(--ifm-link-hover-decoration);
+}
+
+.goOptionSelected {
+  color: var(--ifm-color-primary-dark);
+  text-decoration: underline;
 }
 
 @media (max-width: 576px) {

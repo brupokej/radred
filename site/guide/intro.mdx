@@ -3,7 +3,7 @@ sidebar_position: 1
 ---
 
 import PokemonTeam from "@site/src/components/PokemonTeam";
-import { BattleLine, Go, Matchup, Move, Turn } from "@site/src/components/BattleSequence";
+import { BattleGraph, BattleLine, Go, Matchup, Move, Turn } from "@site/src/components/BattleSequence";
 
 # Introduction
 
@@ -88,6 +88,8 @@ export const _tentacruel1 = {
 };
 
 <PokemonTeam team={[_azumarill1, _torracat1, _clodsire1, _perrserker1, _drednaw1, _tentacruel1]} />
+
+<BattleGraph root="Opening">
 
 <BattleLine line="Opening">
   <Matchup opponents={["hitmonlee"]}>
@@ -385,3 +387,5 @@ export const _tentacruel1 = {
     />
   </Matchup>
 </BattleLine>
+
+</BattleGraph>
