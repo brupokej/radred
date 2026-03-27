@@ -5,6 +5,7 @@
   box-shadow: var(--ifm-global-shadow-lw);
   margin: var(--ifm-leading) 0;
   overflow: hidden;
+  scroll-margin-top: calc(var(--ifm-navbar-height) + var(--ifm-spacing-vertical));
 }
 
 .summary {

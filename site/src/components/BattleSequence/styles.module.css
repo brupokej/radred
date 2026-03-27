@@ -20,9 +20,9 @@
 }
 
 .opponentSprite {
-  height: 32px;
+  height: 28px;
   object-fit: contain;
-  width: 32px;
+  width: 28px;
 }
 
 .turns {
@@ -74,10 +74,10 @@
   display: flex;
   font-size: 0.7rem;
   font-weight: var(--ifm-font-weight-bold);
-  height: 1.3rem;
+  height: 1.5rem;
   justify-content: center;
   margin-right: 0.5rem;
-  width: 1.3rem;
+  width: 1.5rem;
 }
 
 .label {
@@ -94,6 +94,45 @@
   white-space: nowrap;
 }
 
+.diamond,
+.branchLabel {
+  align-items: center;
+  background: var(--ifm-code-background);
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  color: var(--ifm-font-color-base);
+  display: flex;
+  font-size: 0.7rem;
+  font-weight: var(--ifm-font-weight-bold);
+  height: 1.5rem;
+  justify-content: center;
+  width: 1.5rem;
+}
+
+.branchTurn {
+  align-items: center;
+  display: flex;
+}
+
+.branchPlayerCell {
+  border-right: none;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.branchCell {
+  flex: 1;
+}
+
+.branchPlayerCell::after {
+  background: var(--ifm-color-emphasis-200);
+  content: "";
+  height: 60%;
+  position: absolute;
+  right: 0;
+  top: 20%;
+  width: 1px;
+}
+
 @media (max-width: 576px) {
   .opponents {
     display: none;
@@ -105,5 +144,9 @@
 
   .playerCell {
     border-right: none;
+  }
+
+  .branchPlayerCell::after {
+    display: none;
   }
 }
