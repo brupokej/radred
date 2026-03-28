@@ -23,8 +23,8 @@ type GraphState = {
 };
 
 type GraphAction =
-  | { type: "SELECT_BRANCH"; goId: string; childSlug: string }
-  | { type: "DESELECT_BRANCH"; goId: string };
+  | { type: "SELECT_BRANCH"; branchId: string; childSlug: string }
+  | { type: "DESELECT_BRANCH"; branchId: string };
 
 function computeOrder(
   rootSlug: string,
@@ -37,18 +37,18 @@ function computeOrder(
     if (visited.has(slug)) return;
     visited.add(slug);
     order.push(slug);
-    for (const [goId, parentSlug] of registry)
-      if (parentSlug === slug && branches.has(goId)) visit(branches.get(goId)!);
+    for (const [branchId, parentSlug] of registry)
+      if (parentSlug === slug && branches.has(branchId)) visit(branches.get(branchId)!);
   }
   visit(rootSlug);
   return order;
 }
 
-function enrichGoConditions(children: React.ReactNode, visibleOrder: string[]): React.ReactNode {
+function enrichBranchConditions(children: React.ReactNode, visibleOrder: string[]): React.ReactNode {
   let activeFound = false;
   return (
     React.Children.map(children, (child) => {
-      if (!React.isValidElement(child) || child.type !== Go) return child;
+      if (!React.isValidElement(child) || child.type !== Branch) return child;
       const { if: condition, ifNot } = child.props as { if?: string[]; ifNot?: string[] };
       if (activeFound) {
         return React.cloneElement(child as React.ReactElement<{ isActive?: boolean }>, {
@@ -80,7 +80,7 @@ function enrichMatchups(
         current = props.opponents[props.opponents.length - 1] ?? null;
         return React.cloneElement(
           child as React.ReactElement<{ isContinued?: boolean; children?: React.ReactNode }>,
-          { isContinued, children: enrichGoConditions(props.children, visibleOrder) }
+          { isContinued, children: enrichBranchConditions(props.children, visibleOrder) }
         );
       }
       return child;
@@ -91,8 +91,8 @@ function enrichMatchups(
 type GraphCtxValue = {
   state: GraphState;
   dispatch: (action: GraphAction) => void;
-  registerGo: (goId: string, parentSlug: string) => void;
-  unregisterGo: (goId: string) => void;
+  registerBranch: (branchId: string, parentSlug: string) => void;
+  unregisterBranch: (branchId: string) => void;
 };
 
 const BattleGraphCtx = React.createContext<GraphCtxValue | null>(null);
@@ -114,12 +114,12 @@ export function BattleGraph({
 
   const rootSlug = lineElements.length > 0 ? slugify(lineElements[0].props.line) : "";
 
-  const goRegistry = useRef<Map<string, string>>(new Map());
+  const branchRegistry = useRef<Map<string, string>>(new Map());
 
   const withBranches = useCallback(
     (branches: Map<string, string>): GraphState => ({
       selectedBranches: branches,
-      visibleOrder: computeOrder(rootSlug, branches, goRegistry.current),
+      visibleOrder: computeOrder(rootSlug, branches, branchRegistry.current),
     }),
     [rootSlug]
   );
@@ -129,12 +129,13 @@ export function BattleGraph({
       (state: GraphState, action: GraphAction): GraphState => {
         if (action.type === "SELECT_BRANCH") {
           const b = new Map(state.selectedBranches);
-          b.set(action.goId, action.childSlug);
+          b.set(action.branchId, action.childSlug);
           return withBranches(b);
         }
         if (action.type === "DESELECT_BRANCH") {
+          if (!state.selectedBranches.has(action.branchId)) return state;
           const b = new Map(state.selectedBranches);
-          b.delete(action.goId);
+          b.delete(action.branchId);
           return withBranches(b);
         }
         return state;
@@ -147,20 +148,19 @@ export function BattleGraph({
     selectedBranches: new Map(),
   });
 
-  const registerGo = useCallback((goId: string, parentSlug: string) => {
-    goRegistry.current.set(goId, parentSlug);
+  const registerBranch = useCallback((branchId: string, parentSlug: string) => {
+    branchRegistry.current.set(branchId, parentSlug);
   }, []);
 
-  const unregisterGo = useCallback((goId: string) => {
-    goRegistry.current.delete(goId);
+  const unregisterBranch = useCallback((branchId: string) => {
+    branchRegistry.current.delete(branchId);
   }, []);
 
   const ctx = useMemo(
-    () => ({ state, dispatch, registerGo, unregisterGo }),
-    [state, dispatch, registerGo, unregisterGo]
+    () => ({ state, dispatch, registerBranch, unregisterBranch }),
+    [state, dispatch, registerBranch, unregisterBranch]
   );
 
-  // Build lineRegistry with continuation info injected into Matchup elements.
   const lineRegistry = new Map<string, React.ReactNode>();
   let prevLastOpponent: string | null = null;
   for (const slug of state.visibleOrder) {
@@ -203,7 +203,7 @@ export function Matchup({
       <div className={styles.opponents}>
         {!isContinued &&
           opponents.map((sprite, i) => (
-            <img key={i} src={spriteUrl(sprite)} alt={sprite} className={styles.opponentSprite} />
+            <img key={i} src={spriteUrl(sprite)} alt={sprite} className={styles.sprite} />
           ))}
       </div>
       <div className={styles.turns}>{children}</div>
@@ -256,7 +256,7 @@ export function Move({ move }: { move: string }) {
 
     if (match[1] === "s") {
       parts.push(
-        <img key={i++} src={spriteUrl(match[2])} alt={match[2]} className={styles.actionSprite} />
+        <img key={i++} src={spriteUrl(match[2])} alt={match[2]} className={styles.sprite} />
       );
     } else if (match[1] === "p") {
       parts.push(
@@ -279,44 +279,44 @@ export function Move({ move }: { move: string }) {
   return <div className={styles.turnAction}>{parts}</div>;
 }
 
-export function Go({
-  go,
+export function Branch({
+  branch,
   if: condition,
   ifNot,
   isActive,
 }: {
-  go: string[];
+  branch: string[];
   if?: string[];
   ifNot?: string[];
   isActive?: boolean;
 }) {
-  const goId = useId();
+  const branchId = useId();
   const parentSlug = useContext(BattleLineCtx);
   const graphCtx = useContext(BattleGraphCtx);
 
-  const registerGo = graphCtx?.registerGo;
-  const unregisterGo = graphCtx?.unregisterGo;
+  const registerBranch = graphCtx?.registerBranch;
+  const unregisterBranch = graphCtx?.unregisterBranch;
   const dispatch = graphCtx?.dispatch;
 
   useEffect(() => {
-    if (!registerGo || !unregisterGo || !parentSlug) return;
-    registerGo(goId, parentSlug);
-    return () => unregisterGo(goId);
-  }, [goId, parentSlug, registerGo, unregisterGo]);
+    if (!registerBranch || !unregisterBranch || !parentSlug) return;
+    registerBranch(branchId, parentSlug);
+    return () => unregisterBranch(branchId);
+  }, [branchId, parentSlug, registerBranch, unregisterBranch]);
 
   useEffect(() => {
     if (!dispatch) return;
     if (isActive === false) {
-      dispatch({ type: "DESELECT_BRANCH", goId });
-    } else if (isActive === true && go.length === 1) {
-      dispatch({ type: "SELECT_BRANCH", goId, childSlug: slugify(go[0]) });
+      dispatch({ type: "DESELECT_BRANCH", branchId });
+    } else if (isActive === true && branch.length === 1) {
+      dispatch({ type: "SELECT_BRANCH", branchId, childSlug: slugify(branch[0]) });
     }
-  }, [goId, dispatch, isActive]);
+  }, [branchId, dispatch, isActive]);
 
-  const selectedChildSlug = graphCtx?.state.selectedBranches.get(goId);
+  const selectedChildSlug = graphCtx?.state.selectedBranches.get(branchId);
 
   if (isActive === false) return null;
-  if (graphCtx && go.length === 1) return null;
+  if (graphCtx && branch.length === 1) return null;
 
   return (
     <div className={styles.branchTurn}>
@@ -327,7 +327,7 @@ export function Go({
       </div>
       <div className={`${styles.cell} ${styles.branchCell}`}>
         <div className={styles.turnAction}>
-          {go.map((item, j) => {
+          {branch.map((item, j) => {
             const targetSlug = slugify(item);
             const isSelected = selectedChildSlug === targetSlug;
             return (
@@ -336,11 +336,11 @@ export function Go({
                 {j > 0 && <span className={styles.label}>or</span>}
                 {graphCtx ? (
                   <button
-                    className={`${styles.goOption} ${isSelected ? styles.goOptionSelected : ""}`}
+                    className={`${styles.branchOption} ${isSelected ? styles.branchOptionSelected : ""}`}
                     onClick={() =>
                       isSelected
-                        ? graphCtx.dispatch({ type: "DESELECT_BRANCH", goId })
-                        : graphCtx.dispatch({ type: "SELECT_BRANCH", goId, childSlug: targetSlug })
+                        ? graphCtx.dispatch({ type: "DESELECT_BRANCH", branchId })
+                        : graphCtx.dispatch({ type: "SELECT_BRANCH", branchId, childSlug: targetSlug })
                     }
                   >
                     {item}

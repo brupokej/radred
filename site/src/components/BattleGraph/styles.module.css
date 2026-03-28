@@ -33,11 +33,12 @@
   padding: var(--ifm-spacing-vertical) var(--ifm-spacing-horizontal);
 }
 
-.opponentSprite {
+.sprite {
   height: 28px;
   object-fit: contain;
   width: 28px;
 }
+
 
 .turns {
   display: flex;
@@ -74,11 +75,6 @@
   gap: 0.4rem;
 }
 
-.actionSprite {
-  height: 28px;
-  object-fit: contain;
-  width: 28px;
-}
 
 .order {
   align-items: center;
@@ -146,7 +142,7 @@
   width: 1px;
 }
 
-.goOption {
+.branchOption {
   background: none;
   border: none;
   color: var(--ifm-link-color);
@@ -157,12 +153,12 @@
   white-space: nowrap;
 }
 
-.goOption:hover {
+.branchOption:hover {
   color: var(--ifm-link-hover-color);
   text-decoration: var(--ifm-link-hover-decoration);
 }
 
-.goOptionSelected {
+.branchOptionSelected {
   color: var(--ifm-color-primary-dark);
   text-decoration: underline;
 }

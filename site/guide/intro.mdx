@@ -3,7 +3,7 @@ sidebar_position: 1
 ---
 
 import PokemonTeam from "@site/src/components/PokemonTeam";
-import { BattleGraph, BattleLine, Go, Matchup, Move, Turn } from "@site/src/components/BattleGraph";
+import { BattleGraph, BattleLine, Branch, Matchup, Move, Turn } from "@site/src/components/BattleGraph";
 
 # Introduction
 
@@ -99,7 +99,7 @@ export const _tentacruel1 = {
           <Move move="{1} {s:hitmonlee} Fake Out {s:azumarill} to {p:83+}" />,
         ]}
       />
-      <Go go={["Azumarill Covet Wartortle", "Azumarill Covet Hitmonlee"]} />
+      <Branch branch={["Azumarill Covet Wartortle", "Azumarill Covet Hitmonlee"]} />
     </Matchup>
   </BattleLine>
 
@@ -119,7 +119,7 @@ export const _tentacruel1 = {
           <Move move="{1} {s:wartortle} Shell Smash" />,
         ]}
       />
-      <Go go={["Regular damage to Wartortle", "Crit damage to Wartortle"]} />
+      <Branch branch={["Regular damage to Wartortle", "Crit damage to Wartortle"]} />
     </Matchup>
   </BattleLine>
 
@@ -139,7 +139,7 @@ export const _tentacruel1 = {
           <Move move="{1} {s:wartortle} Shell Smash" />,
         ]}
       />
-      <Go go={["Regular damage to Wartortle", "Crit damage to Wartortle"]} />
+      <Branch branch={["Regular damage to Wartortle", "Crit damage to Wartortle"]} />
     </Matchup>
   </BattleLine>
 
@@ -163,7 +163,7 @@ export const _tentacruel1 = {
           <Move move="{2} {s:wartortle} Water Pulse {s:clodsire}" />,
         ]}
       />
-      <Go go={["Perrserker Bullet Punch Wartortle"]} />
+      <Branch branch={["Perrserker Bullet Punch Wartortle"]} />
     </Matchup>
   </BattleLine>
 
@@ -175,7 +175,7 @@ export const _tentacruel1 = {
           <Move move="{2} {s:wartortle} Hidden Power Electric {s:clodsire}" />,
         ]}
       />
-      <Go go={["Perrserker Bullet Punch Wartortle"]} />
+      <Branch branch={["Perrserker Bullet Punch Wartortle"]} />
     </Matchup>
   </BattleLine>
 
@@ -245,8 +245,8 @@ export const _tentacruel1 = {
           <Move move="{2} {s:arbok} fainted" />,
         ]}
       />
-      <Go if={["Azumarill Covet Hitmonlee"]} go={["Clefable Mystical Fire"]} />
-      <Go go={["Hitmonlee Low Sweep", "Clefable Mystical Fire"]} />
+      <Branch if={["Azumarill Covet Hitmonlee"]} branch={["Clefable Mystical Fire"]} />
+      <Branch branch={["Hitmonlee Low Sweep", "Clefable Mystical Fire"]} />
     </Matchup>
   </BattleLine>
 
@@ -264,8 +264,8 @@ export const _tentacruel1 = {
           <Move move="{1} {s:hitmonlee} Knock Off {s:azumarill} to {p:29+}" />,
         ]}
       />
-      <Go if={["Clefable Mystical Fire"]} go={["Iron Head Eevee"]} />
-      <Go go={["Clefable Charge Beam"]} />
+      <Branch if={["Clefable Mystical Fire"]} branch={["Iron Head Eevee"]} />
+      <Branch branch={["Clefable Charge Beam"]} />
     </Matchup>
   </BattleLine>
 
@@ -277,7 +277,7 @@ export const _tentacruel1 = {
           <Move move="{2} {s:clefable} Charge Beam {s:clodsire}" />,
         ]}
       />
-      <Go go={["Clefable Icy Wind", "Clefable switch to Eevee"]} />
+      <Branch branch={["Clefable Icy Wind", "Clefable switch to Eevee"]} />
     </Matchup>
   </BattleLine>
 
@@ -377,8 +377,8 @@ export const _tentacruel1 = {
           <Move move="{2} {s:clefable} fainted" />,
         ]}
       />
-      <Go if={["Azumarill Covet Hitmonlee"]} go={["Acid Spray Eevee"]} />
-      <Go go={["Acid Spray Eevee", "Hitmonlee Low Sweep"]} />
+      <Branch if={["Azumarill Covet Hitmonlee"]} branch={["Acid Spray Eevee"]} />
+      <Branch branch={["Acid Spray Eevee", "Hitmonlee Low Sweep"]} />
     </Matchup>
   </BattleLine>
 
@@ -396,7 +396,7 @@ export const _tentacruel1 = {
           <Move move="{2} {s:eevee} fainted" />,
         ]}
       />
-      <Go ifNot={["Azumarill Covet Hitmonlee", "Hitmonlee Low Sweep"]} go={["Hitmonlee Knock Off"]} />
+      <Branch ifNot={["Azumarill Covet Hitmonlee", "Hitmonlee Low Sweep"]} branch={["Hitmonlee Knock Off"]} />
     </Matchup>
   </BattleLine>
 
