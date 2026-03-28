@@ -91,11 +91,13 @@ type GraphCtxValue = {
   dispatch: (action: GraphAction) => void;
   registerBranch: (branchId: string, parentLine: string) => void;
   unregisterBranch: (branchId: string) => void;
-  hp: Record<string, number>;
+  playerHp: Record<string, number>;
+  opponentHp: Record<string, number>;
 };
 
 const BattleGraphCtx = React.createContext<GraphCtxValue | null>(null);
 const BattleLineCtx = React.createContext<string | null>(null);
+const TurnCtx = React.createContext<"player" | "opponent" | null>(null);
 
 export function BattleGraph({
   playerTeam,
@@ -157,16 +159,19 @@ export function BattleGraph({
     branchRegistry.current.delete(branchId);
   }, []);
 
-  const hp = useMemo(() => {
-    const map: Record<string, number> = {};
-    for (const p of opponentTeam ?? []) map[p.sprite] = p.hp;
-    for (const p of playerTeam ?? []) map[p.sprite] = p.hp;
-    return map;
-  }, [playerTeam, opponentTeam]);
+  const playerHp = useMemo(
+    () => Object.fromEntries((playerTeam ?? []).map((p) => [p.sprite, p.hp])),
+    [playerTeam]
+  );
+
+  const opponentHp = useMemo(
+    () => Object.fromEntries((opponentTeam ?? []).map((p) => [p.sprite, p.hp])),
+    [opponentTeam]
+  );
 
   const ctx = useMemo(
-    () => ({ state, dispatch, registerBranch, unregisterBranch, hp }),
-    [state, dispatch, registerBranch, unregisterBranch, hp]
+    () => ({ state, dispatch, registerBranch, unregisterBranch, playerHp, opponentHp }),
+    [state, dispatch, registerBranch, unregisterBranch, playerHp, opponentHp]
   );
 
   const enrichedLines = new Map<string, React.ReactNode>();
@@ -227,16 +232,20 @@ export function Turn({ turn }: { turn: React.ReactNode[] }) {
   const mid = Math.ceil(turn.length / 2);
   return (
     <div className={styles.turn}>
-      <div className={`${styles.cell} ${styles.playerCell}`}>
-        {turn.slice(0, mid).map((item, i) => (
-          <React.Fragment key={i}>{item}</React.Fragment>
-        ))}
-      </div>
-      <div className={styles.cell}>
-        {turn.slice(mid).map((item, i) => (
-          <React.Fragment key={i}>{item}</React.Fragment>
-        ))}
-      </div>
+      <TurnCtx.Provider value="player">
+        <div className={`${styles.cell} ${styles.playerCell}`}>
+          {turn.slice(0, mid).map((item, i) => (
+            <React.Fragment key={i}>{item}</React.Fragment>
+          ))}
+        </div>
+      </TurnCtx.Provider>
+      <TurnCtx.Provider value="opponent">
+        <div className={styles.cell}>
+          {turn.slice(mid).map((item, i) => (
+            <React.Fragment key={i}>{item}</React.Fragment>
+          ))}
+        </div>
+      </TurnCtx.Provider>
     </div>
   );
 }
@@ -246,6 +255,7 @@ const TOKEN_RE = /\{([a-z]):([^}]+)\}/g;
 
 export function Move({ move }: { move: string }) {
   const graphCtx = useContext(BattleGraphCtx);
+  const turn = useContext(TurnCtx);
   const parts = [];
   let i = 0;
   let lastSprite: string | null = null;
@@ -272,7 +282,13 @@ export function Move({ move }: { move: string }) {
       const raw = match[2];
       const suffix = raw.endsWith("+") ? "+" : raw.endsWith("-") ? "-" : "";
       const num = parseInt(suffix ? raw.slice(0, -1) : raw, 10);
-      const maxHp = lastSprite != null ? graphCtx?.hp[lastSprite] : undefined;
+      let maxHp: number | undefined;
+      if (lastSprite != null && graphCtx != null) {
+        const { playerHp, opponentHp } = graphCtx;
+        if (turn === "player") maxHp = opponentHp[lastSprite];
+        else if (turn === "opponent") maxHp = playerHp[lastSprite];
+        maxHp ??= playerHp[lastSprite] ?? opponentHp[lastSprite];
+      }
       const display =
         maxHp != null && maxHp > 0 && !isNaN(num)
           ? `${Math.round((num / maxHp) * 100)}%${suffix}`
