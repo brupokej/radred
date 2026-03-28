@@ -44,21 +44,44 @@ function computeOrder(
   return order;
 }
 
-// Inject isContinued into Matchup elements based on opponent continuity across lines.
+function enrichGoConditions(children: React.ReactNode, visibleOrder: string[]): React.ReactNode {
+  let activeFound = false;
+  return (
+    React.Children.map(children, (child) => {
+      if (!React.isValidElement(child) || child.type !== Go) return child;
+      const { if: condition, ifNot } = child.props as { if?: string[]; ifNot?: string[] };
+      if (activeFound) {
+        return React.cloneElement(child as React.ReactElement<{ isActive?: boolean }>, {
+          isActive: false,
+        });
+      }
+      const met =
+        (!condition || condition.every((t) => visibleOrder.includes(slugify(t)))) &&
+        (!ifNot || ifNot.every((t) => !visibleOrder.includes(slugify(t))));
+      if (met) activeFound = true;
+      return React.cloneElement(child as React.ReactElement<{ isActive?: boolean }>, {
+        isActive: met,
+      });
+    }) ?? children
+  );
+}
+
 function enrichMatchups(
   children: React.ReactNode,
-  prevOpponent: string | null
+  prevOpponent: string | null,
+  visibleOrder: string[]
 ): { enriched: React.ReactNode; lastOpponent: string | null } {
   let current = prevOpponent;
   const enriched =
     React.Children.map(children, (child) => {
       if (React.isValidElement(child) && child.type === Matchup) {
-        const { opponents } = child.props as { opponents: string[] };
-        const isContinued = current !== null && current === opponents[0];
-        current = opponents[opponents.length - 1] ?? null;
-        return React.cloneElement(child as React.ReactElement<{ isContinued?: boolean }>, {
-          isContinued,
-        });
+        const props = child.props as { opponents: string[]; children: React.ReactNode };
+        const isContinued = current !== null && current === props.opponents[0];
+        current = props.opponents[props.opponents.length - 1] ?? null;
+        return React.cloneElement(
+          child as React.ReactElement<{ isContinued?: boolean; children?: React.ReactNode }>,
+          { isContinued, children: enrichGoConditions(props.children, visibleOrder) }
+        );
       }
       return child;
     }) ?? [];
@@ -143,7 +166,7 @@ export function BattleGraph({
   for (const slug of state.visibleOrder) {
     const raw = lineMap.get(slug);
     if (raw !== undefined) {
-      const { enriched, lastOpponent } = enrichMatchups(raw, prevLastOpponent);
+      const { enriched, lastOpponent } = enrichMatchups(raw, prevLastOpponent, state.visibleOrder);
       lineRegistry.set(slug, enriched);
       prevLastOpponent = lastOpponent;
     }
@@ -256,7 +279,17 @@ export function Move({ move }: { move: string }) {
   return <div className={styles.turnAction}>{parts}</div>;
 }
 
-export function Go({ go, if: condition }: { go: string[]; if?: string }) {
+export function Go({
+  go,
+  if: condition,
+  ifNot,
+  isActive,
+}: {
+  go: string[];
+  if?: string[];
+  ifNot?: string[];
+  isActive?: boolean;
+}) {
   const goId = useId();
   const parentSlug = useContext(BattleLineCtx);
   const graphCtx = useContext(BattleGraphCtx);
@@ -264,42 +297,43 @@ export function Go({ go, if: condition }: { go: string[]; if?: string }) {
   const registerGo = graphCtx?.registerGo;
   const unregisterGo = graphCtx?.unregisterGo;
   const dispatch = graphCtx?.dispatch;
+
   useEffect(() => {
     if (!registerGo || !unregisterGo || !parentSlug) return;
     registerGo(goId, parentSlug);
-    if (dispatch && go.length === 1) {
-      const item = go[0];
-      const labelMatch = item.match(ORDER_RE);
-      const text = labelMatch ? item.slice(labelMatch[0].length) : item;
-      dispatch({ type: "SELECT_BRANCH", goId, childSlug: slugify(text) });
-    }
     return () => unregisterGo(goId);
-  }, [goId, parentSlug, registerGo, unregisterGo, dispatch]);
+  }, [goId, parentSlug, registerGo, unregisterGo]);
+
+  useEffect(() => {
+    if (!dispatch) return;
+    if (isActive === false) {
+      dispatch({ type: "DESELECT_BRANCH", goId });
+    } else if (isActive === true && go.length === 1) {
+      dispatch({ type: "SELECT_BRANCH", goId, childSlug: slugify(go[0]) });
+    }
+  }, [goId, dispatch, isActive]);
 
   const selectedChildSlug = graphCtx?.state.selectedBranches.get(goId);
 
+  if (isActive === false) return null;
   if (graphCtx && go.length === 1) return null;
 
   return (
     <div className={styles.branchTurn}>
       <div className={`${styles.cell} ${styles.playerCell} ${styles.branchPlayerCell}`}>
         <div className={styles.turnAction}>
-          <span className={styles.diamond}>{condition}</span>
+          <span className={styles.diamond}>?</span>
         </div>
       </div>
       <div className={`${styles.cell} ${styles.branchCell}`}>
         <div className={styles.turnAction}>
           {go.map((item, j) => {
-            const labelMatch = item.match(ORDER_RE);
-            const label = labelMatch ? labelMatch[1] : "";
-            const text = labelMatch ? item.slice(labelMatch[0].length) : item;
-            const targetSlug = slugify(text);
+            const targetSlug = slugify(item);
             const isSelected = selectedChildSlug === targetSlug;
             return (
               <React.Fragment key={j}>
                 {j === 0 && <span className={styles.label}>go</span>}
                 {j > 0 && <span className={styles.label}>or</span>}
-                {labelMatch && <span className={styles.branchLabel}>{label}</span>}
                 {graphCtx ? (
                   <button
                     className={`${styles.goOption} ${isSelected ? styles.goOptionSelected : ""}`}
@@ -309,11 +343,11 @@ export function Go({ go, if: condition }: { go: string[]; if?: string }) {
                         : graphCtx.dispatch({ type: "SELECT_BRANCH", goId, childSlug: targetSlug })
                     }
                   >
-                    {text}
+                    {item}
                   </button>
                 ) : (
                   <a href={`#${targetSlug}`} className={styles.label}>
-                    {text}
+                    {item}
                   </a>
                 )}
               </React.Fragment>
