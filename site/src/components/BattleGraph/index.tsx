@@ -11,23 +11,17 @@ import React, {
 } from "react";
 import styles from "./styles.module.css";
 
-const slugify = (s: string) =>
-  s
-    .toLowerCase()
-    .replace(/\s+/g, "-")
-    .replace(/[^a-z0-9-]/g, "");
-
 type GraphState = {
   visibleOrder: string[];
   selectedBranches: Map<string, string>;
 };
 
 type GraphAction =
-  | { type: "SELECT_BRANCH"; branchId: string; childSlug: string }
+  | { type: "SELECT_BRANCH"; branchId: string; childLine: string }
   | { type: "DESELECT_BRANCH"; branchId: string };
 
 function computeOrder(
-  rootSlug: string,
+  rootLine: string,
   branches: Map<string, string>,
   registry: Map<string, string>
 ): string[] {
@@ -37,14 +31,17 @@ function computeOrder(
     if (visited.has(slug)) return;
     visited.add(slug);
     order.push(slug);
-    for (const [branchId, parentSlug] of registry)
-      if (parentSlug === slug && branches.has(branchId)) visit(branches.get(branchId)!);
+    for (const [branchId, parentLine] of registry)
+      if (parentLine === slug && branches.has(branchId)) visit(branches.get(branchId)!);
   }
-  visit(rootSlug);
+  visit(rootLine);
   return order;
 }
 
-function enrichBranchConditions(children: React.ReactNode, visibleOrder: string[]): React.ReactNode {
+function enrichBranchConditions(
+  children: React.ReactNode,
+  visibleOrder: string[]
+): React.ReactNode {
   let activeFound = false;
   return (
     React.Children.map(children, (child) => {
@@ -56,8 +53,8 @@ function enrichBranchConditions(children: React.ReactNode, visibleOrder: string[
         });
       }
       const met =
-        (!condition || condition.every((t) => visibleOrder.includes(slugify(t)))) &&
-        (!ifNot || ifNot.every((t) => !visibleOrder.includes(slugify(t))));
+        (!condition || condition.every((t) => visibleOrder.includes(t))) &&
+        (!ifNot || ifNot.every((t) => !visibleOrder.includes(t)));
       if (met) activeFound = true;
       return React.cloneElement(child as React.ReactElement<{ isActive?: boolean }>, {
         isActive: met,
@@ -71,13 +68,13 @@ function enrichMatchups(
   prevOpponent: string | null,
   visibleOrder: string[]
 ): { enriched: React.ReactNode; lastOpponent: string | null } {
-  let current = prevOpponent;
+  let lastOpponent = prevOpponent;
   const enriched =
     React.Children.map(children, (child) => {
       if (React.isValidElement(child) && child.type === Matchup) {
         const props = child.props as { opponents: string[]; children: React.ReactNode };
-        const isContinued = current !== null && current === props.opponents[0];
-        current = props.opponents[props.opponents.length - 1] ?? null;
+        const isContinued = lastOpponent !== null && lastOpponent === props.opponents[0];
+        lastOpponent = props.opponents[props.opponents.length - 1] ?? null;
         return React.cloneElement(
           child as React.ReactElement<{ isContinued?: boolean; children?: React.ReactNode }>,
           { isContinued, children: enrichBranchConditions(props.children, visibleOrder) }
@@ -85,43 +82,37 @@ function enrichMatchups(
       }
       return child;
     }) ?? [];
-  return { enriched, lastOpponent: current };
+  return { enriched, lastOpponent };
 }
 
 type GraphCtxValue = {
   state: GraphState;
   dispatch: (action: GraphAction) => void;
-  registerBranch: (branchId: string, parentSlug: string) => void;
+  registerBranch: (branchId: string, parentLine: string) => void;
   unregisterBranch: (branchId: string) => void;
 };
 
 const BattleGraphCtx = React.createContext<GraphCtxValue | null>(null);
 const BattleLineCtx = React.createContext<string | null>(null);
 
-export function BattleGraph({
-  title = "Line",
-  children,
-}: {
-  title?: string;
-  children: React.ReactNode;
-}) {
+export function BattleGraph({ children }: { children: React.ReactNode }) {
   const lineElements = React.Children.toArray(children).filter(
     (c): c is React.ReactElement<{ line: string; children: React.ReactNode }> =>
       React.isValidElement(c) && c.type === BattleLine
   );
 
-  const lineMap = new Map(lineElements.map((el) => [slugify(el.props.line), el.props.children]));
+  const lineMap = new Map(lineElements.map((el) => [el.props.line, el.props.children]));
 
-  const rootSlug = lineElements.length > 0 ? slugify(lineElements[0].props.line) : "";
+  const rootLine = lineElements.length > 0 ? lineElements[0].props.line : "";
 
   const branchRegistry = useRef<Map<string, string>>(new Map());
 
   const withBranches = useCallback(
     (branches: Map<string, string>): GraphState => ({
       selectedBranches: branches,
-      visibleOrder: computeOrder(rootSlug, branches, branchRegistry.current),
+      visibleOrder: computeOrder(rootLine, branches, branchRegistry.current),
     }),
-    [rootSlug]
+    [rootLine]
   );
 
   const reducer = useMemo(
@@ -129,7 +120,7 @@ export function BattleGraph({
       (state: GraphState, action: GraphAction): GraphState => {
         if (action.type === "SELECT_BRANCH") {
           const b = new Map(state.selectedBranches);
-          b.set(action.branchId, action.childSlug);
+          b.set(action.branchId, action.childLine);
           return withBranches(b);
         }
         if (action.type === "DESELECT_BRANCH") {
@@ -144,12 +135,12 @@ export function BattleGraph({
   );
 
   const [state, dispatch] = useReducer(reducer, {
-    visibleOrder: [rootSlug],
+    visibleOrder: [rootLine],
     selectedBranches: new Map(),
   });
 
-  const registerBranch = useCallback((branchId: string, parentSlug: string) => {
-    branchRegistry.current.set(branchId, parentSlug);
+  const registerBranch = useCallback((branchId: string, parentLine: string) => {
+    branchRegistry.current.set(branchId, parentLine);
   }, []);
 
   const unregisterBranch = useCallback((branchId: string) => {
@@ -161,23 +152,23 @@ export function BattleGraph({
     [state, dispatch, registerBranch, unregisterBranch]
   );
 
-  const lineRegistry = new Map<string, React.ReactNode>();
-  let prevLastOpponent: string | null = null;
+  const enrichedLines = new Map<string, React.ReactNode>();
+  let prevOpponent: string | null = null;
   for (const slug of state.visibleOrder) {
     const raw = lineMap.get(slug);
     if (raw !== undefined) {
-      const { enriched, lastOpponent } = enrichMatchups(raw, prevLastOpponent, state.visibleOrder);
-      lineRegistry.set(slug, enriched);
-      prevLastOpponent = lastOpponent;
+      const { enriched, lastOpponent } = enrichMatchups(raw, prevOpponent, state.visibleOrder);
+      enrichedLines.set(slug, enriched);
+      prevOpponent = lastOpponent;
     }
   }
 
   return (
     <BattleGraphCtx.Provider value={ctx}>
-      <CollapsibleCard title={title}>
+      <CollapsibleCard title="Line">
         {state.visibleOrder.map((slug) => (
           <BattleLineCtx.Provider key={slug} value={slug}>
-            {lineRegistry.get(slug)}
+            {enrichedLines.get(slug)}
           </BattleLineCtx.Provider>
         ))}
       </CollapsibleCard>
@@ -202,8 +193,8 @@ export function Matchup({
     <div className={`${styles.matchup} ${isContinued ? styles.matchupContinued : ""}`}>
       <div className={styles.opponents}>
         {!isContinued &&
-          opponents.map((sprite, i) => (
-            <img key={i} src={spriteUrl(sprite)} alt={sprite} className={styles.sprite} />
+          opponents.map((opponent, i) => (
+            <img key={i} src={spriteUrl(opponent)} alt={opponent} className={styles.sprite} />
           ))}
       </div>
       <div className={styles.turns}>{children}</div>
@@ -238,7 +229,7 @@ export function Move({ move }: { move: string }) {
 
   const orderMatch = move.match(ORDER_RE);
   parts.push(
-    <span key={i++} className={styles.order}>
+    <span key={i++} className={styles.circle}>
       {orderMatch![1]}
     </span>
   );
@@ -247,12 +238,7 @@ export function Move({ move }: { move: string }) {
   let last = 0;
   for (const match of rest.matchAll(TOKEN_RE)) {
     const text = rest.slice(last, match.index!).trim();
-    if (text)
-      parts.push(
-        <span key={i++} className={styles.label}>
-          {text}
-        </span>
-      );
+    if (text) parts.push(<React.Fragment key={i++}>{text}</React.Fragment>);
 
     if (match[1] === "s") {
       parts.push(
@@ -269,12 +255,7 @@ export function Move({ move }: { move: string }) {
   }
 
   const trailing = rest.slice(last).trim();
-  if (trailing)
-    parts.push(
-      <span key={i++} className={styles.label}>
-        {trailing}
-      </span>
-    );
+  if (trailing) parts.push(<React.Fragment key={i++}>{trailing}</React.Fragment>);
 
   return <div className={styles.turnAction}>{parts}</div>;
 }
@@ -291,7 +272,7 @@ export function Branch({
   isActive?: boolean;
 }) {
   const branchId = useId();
-  const parentSlug = useContext(BattleLineCtx);
+  const parentLine = useContext(BattleLineCtx);
   const graphCtx = useContext(BattleGraphCtx);
 
   const registerBranch = graphCtx?.registerBranch;
@@ -299,28 +280,28 @@ export function Branch({
   const dispatch = graphCtx?.dispatch;
 
   useEffect(() => {
-    if (!registerBranch || !unregisterBranch || !parentSlug) return;
-    registerBranch(branchId, parentSlug);
+    if (!registerBranch || !unregisterBranch || !parentLine) return;
+    registerBranch(branchId, parentLine);
     return () => unregisterBranch(branchId);
-  }, [branchId, parentSlug, registerBranch, unregisterBranch]);
+  }, [branchId, parentLine, registerBranch, unregisterBranch]);
 
   useEffect(() => {
     if (!dispatch) return;
     if (isActive === false) {
       dispatch({ type: "DESELECT_BRANCH", branchId });
     } else if (isActive === true && branch.length === 1) {
-      dispatch({ type: "SELECT_BRANCH", branchId, childSlug: slugify(branch[0]) });
+      dispatch({ type: "SELECT_BRANCH", branchId, childLine: branch[0] });
     }
   }, [branchId, dispatch, isActive]);
 
-  const selectedChildSlug = graphCtx?.state.selectedBranches.get(branchId);
+  const selectedChildLine = graphCtx?.state.selectedBranches.get(branchId);
 
   if (isActive === false) return null;
   if (graphCtx && branch.length === 1) return null;
 
   return (
     <div className={styles.branchTurn}>
-      <div className={`${styles.cell} ${styles.playerCell} ${styles.branchPlayerCell}`}>
+      <div className={`${styles.cell}`}>
         <div className={styles.turnAction}>
           <span className={styles.diamond}>?</span>
         </div>
@@ -328,27 +309,29 @@ export function Branch({
       <div className={`${styles.cell} ${styles.branchCell}`}>
         <div className={styles.turnAction}>
           {branch.map((item, j) => {
-            const targetSlug = slugify(item);
-            const isSelected = selectedChildSlug === targetSlug;
+            const targetLine = item;
+            const isSelected = selectedChildLine === targetLine;
             return (
               <React.Fragment key={j}>
-                {j === 0 && <span className={styles.label}>go</span>}
-                {j > 0 && <span className={styles.label}>or</span>}
+                {j === 0 && "Choose"}
+                {j > 0 && "or"}
                 {graphCtx ? (
                   <button
                     className={`${styles.branchOption} ${isSelected ? styles.branchOptionSelected : ""}`}
                     onClick={() =>
                       isSelected
                         ? graphCtx.dispatch({ type: "DESELECT_BRANCH", branchId })
-                        : graphCtx.dispatch({ type: "SELECT_BRANCH", branchId, childSlug: targetSlug })
+                        : graphCtx.dispatch({
+                            type: "SELECT_BRANCH",
+                            branchId,
+                            childLine: targetLine,
+                          })
                     }
                   >
                     {item}
                   </button>
                 ) : (
-                  <a href={`#${targetSlug}`} className={styles.label}>
-                    {item}
-                  </a>
+                  <a href={`#${targetLine}`}>{item}</a>
                 )}
               </React.Fragment>
             );
