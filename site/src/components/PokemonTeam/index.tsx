@@ -13,11 +13,12 @@ export interface Pokemon {
   move2: string;
   move3: string;
   move4: string;
+  hp: number;
 }
 
-export default function PokemonTeam({ team }: { team: Pokemon[] }) {
+export default function PokemonTeam({ team, title = "Team" }: { team: Pokemon[]; title?: string }) {
   return (
-    <CollapsibleCard title="Team">
+    <CollapsibleCard title={title}>
       <div className={styles.content}>
         <TeamGrid team={team} />
       </div>

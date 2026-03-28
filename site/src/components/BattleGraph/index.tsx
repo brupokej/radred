@@ -1,4 +1,5 @@
 import CollapsibleCard from "@site/src/components/CollapsibleCard";
+import PokemonTeam, { Pokemon } from "@site/src/components/PokemonTeam";
 import { spriteUrl } from "@site/src/utils/sprites";
 import React, {
   useCallback,
@@ -90,12 +91,21 @@ type GraphCtxValue = {
   dispatch: (action: GraphAction) => void;
   registerBranch: (branchId: string, parentLine: string) => void;
   unregisterBranch: (branchId: string) => void;
+  hp: Record<string, number>;
 };
 
 const BattleGraphCtx = React.createContext<GraphCtxValue | null>(null);
 const BattleLineCtx = React.createContext<string | null>(null);
 
-export function BattleGraph({ children }: { children: React.ReactNode }) {
+export function BattleGraph({
+  playerTeam,
+  opponentTeam,
+  children,
+}: {
+  playerTeam?: Pokemon[];
+  opponentTeam?: Pokemon[];
+  children: React.ReactNode;
+}) {
   const lineElements = React.Children.toArray(children).filter(
     (c): c is React.ReactElement<{ line: string; children: React.ReactNode }> =>
       React.isValidElement(c) && c.type === BattleLine
@@ -147,9 +157,16 @@ export function BattleGraph({ children }: { children: React.ReactNode }) {
     branchRegistry.current.delete(branchId);
   }, []);
 
+  const hp = useMemo(() => {
+    const map: Record<string, number> = {};
+    for (const p of opponentTeam ?? []) map[p.sprite] = p.hp;
+    for (const p of playerTeam ?? []) map[p.sprite] = p.hp;
+    return map;
+  }, [playerTeam, opponentTeam]);
+
   const ctx = useMemo(
-    () => ({ state, dispatch, registerBranch, unregisterBranch }),
-    [state, dispatch, registerBranch, unregisterBranch]
+    () => ({ state, dispatch, registerBranch, unregisterBranch, hp }),
+    [state, dispatch, registerBranch, unregisterBranch, hp]
   );
 
   const enrichedLines = new Map<string, React.ReactNode>();
@@ -164,15 +181,19 @@ export function BattleGraph({ children }: { children: React.ReactNode }) {
   }
 
   return (
-    <BattleGraphCtx.Provider value={ctx}>
-      <CollapsibleCard title="Line">
-        {state.visibleOrder.map((slug) => (
-          <BattleLineCtx.Provider key={slug} value={slug}>
-            {enrichedLines.get(slug)}
-          </BattleLineCtx.Provider>
-        ))}
-      </CollapsibleCard>
-    </BattleGraphCtx.Provider>
+    <>
+      {opponentTeam && <PokemonTeam title="Opponent Team" team={opponentTeam} />}
+      {playerTeam && <PokemonTeam title="Player Team" team={playerTeam} />}
+      <BattleGraphCtx.Provider value={ctx}>
+        <CollapsibleCard title="Battle Line">
+          {state.visibleOrder.map((slug) => (
+            <BattleLineCtx.Provider key={slug} value={slug}>
+              {enrichedLines.get(slug)}
+            </BattleLineCtx.Provider>
+          ))}
+        </CollapsibleCard>
+      </BattleGraphCtx.Provider>
+    </>
   );
 }
 
@@ -224,8 +245,10 @@ const ORDER_RE = /^\{([^}]+)\}\s*/;
 const TOKEN_RE = /\{([a-z]):([^}]+)\}/g;
 
 export function Move({ move }: { move: string }) {
+  const graphCtx = useContext(BattleGraphCtx);
   const parts = [];
   let i = 0;
+  let lastSprite: string | null = null;
 
   const orderMatch = move.match(ORDER_RE);
   parts.push(
@@ -241,13 +264,22 @@ export function Move({ move }: { move: string }) {
     if (text) parts.push(<React.Fragment key={i++}>{text}</React.Fragment>);
 
     if (match[1] === "s") {
+      lastSprite = match[2];
       parts.push(
         <img key={i++} src={spriteUrl(match[2])} alt={match[2]} className={styles.sprite} />
       );
     } else if (match[1] === "p") {
+      const raw = match[2];
+      const suffix = raw.endsWith("+") ? "+" : raw.endsWith("-") ? "-" : "";
+      const num = parseInt(suffix ? raw.slice(0, -1) : raw, 10);
+      const maxHp = lastSprite != null ? graphCtx?.hp[lastSprite] : undefined;
+      const display =
+        maxHp != null && maxHp > 0 && !isNaN(num)
+          ? `${Math.round((num / maxHp) * 100)}%${suffix}`
+          : raw;
       parts.push(
         <span key={i++} className={styles.result}>
-          {match[2]}
+          {display}
         </span>
       );
     }
