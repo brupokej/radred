@@ -1,4 +1,4 @@
-import PokemonTeam, { Pokemon } from "@site/src/components/PokemonTeam";
+import Team, { Pokemon } from "@site/src/components/Team";
 import { spriteUrl } from "@site/src/utils/sprites";
 import styles from "./styles.module.css";
 
@@ -23,16 +23,16 @@ export default function Encounter({
 
   return (
     <>
-      {playerTeam && <PokemonTeam title="Player Team" team={playerTeam} />}
+      {playerTeam && <Team title="Player Team" team={playerTeam} />}
       <div className={styles.card}>
-      <div className={styles.spritePanel}>
-        <img src={spriteUrl(pokemon)} alt={displayName} className={styles.sprite} />
+        <div className={styles.spritePanel}>
+          <img src={spriteUrl(pokemon)} alt={displayName} className={styles.sprite} />
+        </div>
+        <div className={styles.info}>
+          <div className={styles.name}>{displayName}</div>
+          {detail && <div className={styles.detail}>{detail}</div>}
+        </div>
       </div>
-      <div className={styles.info}>
-        <div className={styles.name}>{displayName}</div>
-        {detail && <div className={styles.detail}>{detail}</div>}
-      </div>
-    </div>
     </>
   );
 }

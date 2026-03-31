@@ -1,4 +1,4 @@
-import CollapsibleCard from "@site/src/components/CollapsibleCard";
+import Card from "@site/src/components/Card";
 import { spriteUrl } from "@site/src/utils/sprites";
 import styles from "./styles.module.css";
 
@@ -16,13 +16,13 @@ export interface Pokemon {
   hp: number;
 }
 
-export default function PokemonTeam({ team, title = "Team" }: { team: Pokemon[]; title?: string }) {
+export default function Team({ team, title = "Team" }: { team: Pokemon[]; title?: string }) {
   return (
-    <CollapsibleCard title={title}>
+    <Card title={title}>
       <div className={styles.content}>
         <TeamGrid team={team} />
       </div>
-    </CollapsibleCard>
+    </Card>
   );
 }
 

@@ -3,14 +3,14 @@ sidebar_position: 1
 ---
 
 import {
-  BattleGraph,
+  Battle,
   BattleLine,
   Branch,
   Matchup,
   PlayerMove,
   OpponentMove,
   Turn,
-} from "@site/src/components/BattleGraph";
+} from "@site/src/components/Battle";
 import Encounter from "@site/src/components/Encounter";
 
 # Introduction
@@ -115,7 +115,7 @@ export const _houndoom1 = {
   hp: 88,
 };
 
-<BattleGraph
+<Battle
   playerTeam={[_azumarill1, _torracat1, _clodsire1, _perrserker1, _drednaw1, _tentacruel1]}
   opponentTeam={[
     {
@@ -551,8 +551,12 @@ export const _houndoom1 = {
     />
   </Matchup>
 </BattleLine>
-</BattleGraph>
+</Battle>
 
 ## Route 24 Encounter
 
-<Encounter playerTeam={[_houndoom1]} pokemon="charcadet" details={["Day", "Grass", "50%", "Level 14-16"]} />
+<Encounter
+  playerTeam={[_houndoom1]}
+  pokemon="charcadet"
+  details={["Day", "Grass", "50%", "Level 14-16"]}
+/>

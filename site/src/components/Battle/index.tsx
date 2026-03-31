@@ -1,5 +1,5 @@
-import CollapsibleCard from "@site/src/components/CollapsibleCard";
-import PokemonTeam, { Pokemon } from "@site/src/components/PokemonTeam";
+import Card from "@site/src/components/Card";
+import Team, { Pokemon } from "@site/src/components/Team";
 import { spriteUrl } from "@site/src/utils/sprites";
 import React, {
   useCallback,
@@ -98,7 +98,7 @@ type GraphCtxValue = {
 const BattleGraphCtx = React.createContext<GraphCtxValue | null>(null);
 const BattleLineCtx = React.createContext<string | null>(null);
 
-export function BattleGraph({
+export function Battle({
   playerTeam,
   opponentTeam,
   children,
@@ -186,16 +186,16 @@ export function BattleGraph({
 
   return (
     <>
-      {opponentTeam && <PokemonTeam title="Opponent Team" team={opponentTeam} />}
-      {playerTeam && <PokemonTeam title="Player Team" team={playerTeam} />}
+      {opponentTeam && <Team title="Opponent Team" team={opponentTeam} />}
+      {playerTeam && <Team title="Player Team" team={playerTeam} />}
       <BattleGraphCtx.Provider value={ctx}>
-        <CollapsibleCard title="Battle Line">
+        <Card title="Battle Line">
           {state.visibleOrder.map((slug) => (
             <BattleLineCtx.Provider key={slug} value={slug}>
               {enrichedLines.get(slug)}
             </BattleLineCtx.Provider>
           ))}
-        </CollapsibleCard>
+        </Card>
       </BattleGraphCtx.Provider>
     </>
   );
