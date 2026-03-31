@@ -40,7 +40,7 @@ function TeamGrid({ team }: { team: Pokemon[] }) {
 
 function PokemonCard({ pokemon }: { pokemon: Pokemon | null }) {
   const warn = new Set(pokemon?.warnings ?? []);
-  const wc = (field: string) => warn.has(field) ? styles.fieldWarning : "";
+  const wc = (field: string) => (warn.has(field) ? styles.fieldWarning : "");
 
   return (
     <div className={`${styles.card} ${!pokemon ? styles.cardEmpty : ""}`}>

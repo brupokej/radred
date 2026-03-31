@@ -1,6 +1,6 @@
-import { Fragment } from "react";
 import Team, { Pokemon } from "@site/src/components/Team";
 import { spriteUrl } from "@site/src/utils/sprites";
+import { Fragment } from "react";
 import styles from "./styles.module.css";
 
 type Detail = string | { value: string; warning?: boolean };
@@ -40,11 +40,7 @@ export default function Encounter({
                 return (
                   <Fragment key={i}>
                     {i > 0 && " · "}
-                    {isWarning ? (
-                      <span className={styles.detailWarning}>{value}</span>
-                    ) : (
-                      value
-                    )}
+                    {isWarning ? <span className={styles.detailWarning}>{value}</span> : value}
                   </Fragment>
                 );
               })}

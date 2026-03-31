@@ -16,7 +16,7 @@ import { Note } from "@site/src/components/Note";
 
 # Introduction
 
-<Note color="warning" note={["Level up all Pokémon to level cap"]} />
+<Note variant="warning" note={["Level up all Pokémon to level cap"]} />
 
 ## Cerulean City Rival Battle
 
@@ -562,5 +562,5 @@ export const _houndoom1 = {
 <Encounter
   playerTeam={[_houndoom1]}
   pokemon="charcadet"
-  details={[{value: "Day", warning: true}, "Grass", "50%", "Level 14-16"]}
+  details={["Grass", { value: "Day", warning: true }, "50%", "Level 14-16"]}
 />

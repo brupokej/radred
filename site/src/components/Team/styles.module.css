@@ -4,10 +4,10 @@
 }
 
 .grid {
+  column-gap: var(--ifm-spacing-horizontal);
   display: grid;
   grid-template-columns: repeat(auto-fit, 110px);
   justify-content: space-between;
-  column-gap: var(--ifm-spacing-horizontal);
   row-gap: var(--ifm-spacing-vertical);
 }
 
@@ -18,9 +18,9 @@
 }
 
 .card {
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
   padding-bottom: var(--ifm-spacing-vertical);
   position: relative;
   text-align: center;
@@ -36,17 +36,20 @@
   width: 60%;
 }
 
-.sprite {
+.sprite,
+.emptySprite {
   height: 108px;
   width: 108px;
+}
+
+.sprite {
   object-fit: contain;
 }
 
 .sprite.fieldWarning {
-  border: none;
+  border-radius: 4px;
   outline: 1px solid var(--ifm-color-warning);
   outline-offset: -2px;
-  border-radius: 4px;
 }
 
 .cardEmpty .emptySprite,
@@ -59,47 +62,45 @@
 
 .emptySprite {
   align-items: center;
-  color: var(--ifm-font-color-base);
   display: flex;
   font-size: 1.25rem;
-  height: 108px;
   justify-content: center;
-  width: 108px;
+}
+
+.name,
+.level,
+.detail,
+.move {
+  border-radius: 3px;
+  padding: 0.15rem 0.3rem;
+}
+
+.name,
+.level {
+  font-weight: var(--ifm-font-weight-bold);
+  line-height: 1.3;
 }
 
 .name {
-  border-radius: 3px;
-  color: var(--ifm-font-color-base);
   font-size: var(--ifm-h4-font-size);
-  font-weight: var(--ifm-font-weight-bold);
-  line-height: 1.3;
   margin-top: var(--ifm-spacing-vertical);
-  padding: 0.15rem 0.3rem;
 }
 
 .level {
-  border-radius: 3px;
-  color: var(--ifm-font-color-base);
-  font-weight: var(--ifm-font-weight-bold);
-  line-height: 1.3;
   margin-top: 0.2rem;
-  padding: 0.15rem 0.3rem;
 }
 
 .divider {
-  width: 60%;
   border-top: 1px solid var(--ifm-color-emphasis-300);
   margin: var(--ifm-spacing-vertical) 0;
+  width: 60%;
 }
 
 .detail,
 .move {
-  border-radius: 3px;
-  color: var(--ifm-font-color-base);
   font-size: 0.875rem;
   line-height: 1.6;
   margin-top: 0.2rem;
-  padding: 0.15rem 0.3rem;
 }
 
 .fieldWarning {

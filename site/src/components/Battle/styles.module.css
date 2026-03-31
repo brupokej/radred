@@ -28,7 +28,6 @@
   flex-direction: column;
   flex-shrink: 0;
   gap: var(--ifm-spacing-vertical);
-  justify-content: flex-start;
   min-width: 72px;
   padding: var(--ifm-spacing-vertical) var(--ifm-spacing-horizontal);
 }
@@ -41,8 +40,8 @@
 
 .turns {
   display: flex;
-  flex-direction: column;
   flex: 1;
+  flex-direction: column;
   font-size: 0.875rem;
   min-width: 0;
 }
@@ -85,16 +84,12 @@
   gap: 0.4rem;
 }
 
-:root {
-  --opponent-move-color: #aaa;
-}
-
-[data-theme="dark"] {
-  --opponent-move-color: #707070;
-}
-
 .opponentMove {
-  color: var(--opponent-move-color);
+  color: #aaa;
+}
+
+[data-theme="dark"] .opponentMove {
+  color: #707070;
 }
 
 .result {
