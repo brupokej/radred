@@ -8,7 +8,7 @@ export default function Card({
   title: React.ReactNode;
   children: React.ReactNode;
 }) {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
   return (
     <details className={styles.card} open={isOpen}>
       <summary

@@ -14,7 +14,7 @@
   display: flex;
   flex: 1;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: 0.4rem;
   justify-content: center;
   padding: var(--ifm-spacing-vertical) var(--ifm-spacing-horizontal);
 }
@@ -30,6 +30,14 @@
   color: var(--ifm-font-color-base);
   font-size: 0.875rem;
   line-height: 1.6;
+}
+
+.detailWarning {
+  background: var(--ifm-color-warning-contrast-background);
+  border-radius: 3px;
+  display: inline-block;
+  outline: 1px solid var(--ifm-color-warning);
+  padding: 0.15rem 0.3rem;
 }
 
 .spritePanel {

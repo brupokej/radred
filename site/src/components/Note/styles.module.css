@@ -1,0 +1,31 @@
+.note {
+  border: 1px solid;
+  border-left-width: 5px;
+  border-radius: var(--ifm-global-radius);
+  margin: var(--ifm-leading) 0;
+  padding: var(--ifm-spacing-vertical) var(--ifm-spacing-horizontal);
+}
+
+.secondary {
+  background: var(--ifm-color-secondary-contrast-background);
+  border-color: var(--ifm-color-secondary);
+}
+
+.info {
+  background: var(--ifm-color-info-contrast-background);
+  border-color: var(--ifm-color-info);
+}
+
+.warning {
+  background: var(--ifm-color-warning-contrast-background);
+  border-color: var(--ifm-color-warning);
+}
+
+.danger {
+  background: var(--ifm-color-danger-contrast-background);
+  border-color: var(--ifm-color-danger);
+}
+
+.line {
+  line-height: 1.6;
+}

@@ -12,8 +12,11 @@ import {
   Turn,
 } from "@site/src/components/Battle";
 import Encounter from "@site/src/components/Encounter";
+import { Note } from "@site/src/components/Note";
 
 # Introduction
+
+<Note color="warning" note={["Level up all Pokémon to level cap"]} />
 
 ## Cerulean City Rival Battle
 
@@ -99,6 +102,7 @@ export const _tentacruel1 = {
   move3: "Rapid Spin",
   move4: "Sludge",
   hp: 91,
+  warnings: ["sprite", "name", "level", "nature", "item", "move1", "move2", "move4"],
 };
 
 export const _houndoom1 = {
@@ -122,7 +126,7 @@ export const _houndoom1 = {
       sprite: "hitmonlee",
       name: "Hitmonlee",
       level: 27,
-      nature: "Jollly",
+      nature: "Jolly",
       ability: "Striker",
       item: "Black Belt",
       move1: "Bullet Punch",
@@ -558,5 +562,5 @@ export const _houndoom1 = {
 <Encounter
   playerTeam={[_houndoom1]}
   pokemon="charcadet"
-  details={["Day", "Grass", "50%", "Level 14-16"]}
+  details={[{value: "Day", warning: true}, "Grass", "50%", "Level 14-16"]}
 />
