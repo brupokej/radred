@@ -97,7 +97,6 @@ type GraphCtxValue = {
 
 const BattleGraphCtx = React.createContext<GraphCtxValue | null>(null);
 const BattleLineCtx = React.createContext<string | null>(null);
-const TurnCtx = React.createContext<"player" | "opponent" | null>(null);
 
 export function BattleGraph({
   playerTeam,
@@ -229,69 +228,57 @@ export function Matchup({
 }
 
 export function Turn({ turn }: { turn: React.ReactNode[] }) {
-  const mid = Math.ceil(turn.length / 2);
   return (
     <div className={styles.turn}>
-      <TurnCtx.Provider value="player">
-        <div className={`${styles.cell} ${styles.playerCell}`}>
-          {turn.slice(0, mid).map((item, i) => (
-            <React.Fragment key={i}>{item}</React.Fragment>
-          ))}
+      {turn.map((item, i) => (
+        <div key={i} className={`${styles.cell} ${i < turn.length - 1 ? styles.playerCell : ""}`}>
+          {item}
         </div>
-      </TurnCtx.Provider>
-      <TurnCtx.Provider value="opponent">
-        <div className={styles.cell}>
-          {turn.slice(mid).map((item, i) => (
-            <React.Fragment key={i}>{item}</React.Fragment>
-          ))}
-        </div>
-      </TurnCtx.Provider>
+      ))}
     </div>
   );
 }
 
-const ORDER_RE = /^\{([^}]+)\}\s*/;
 const TOKEN_RE = /\{([a-z]):([^}]+)\}/g;
 
-export function Move({ move }: { move: string }) {
+function Move({
+  move,
+  side,
+  className,
+}: {
+  move: string;
+  side: "player" | "opponent";
+  className?: string;
+}) {
   const graphCtx = useContext(BattleGraphCtx);
-  const turn = useContext(TurnCtx);
   const parts = [];
   let i = 0;
   let lastSprite: string | null = null;
 
-  const orderMatch = move.match(ORDER_RE);
-  parts.push(
-    <span key={i++} className={styles.circle}>
-      {orderMatch![1]}
-    </span>
-  );
-  const rest = move.slice(orderMatch![0].length);
-
   let last = 0;
-  for (const match of rest.matchAll(TOKEN_RE)) {
-    const text = rest.slice(last, match.index!).trim();
+  for (const match of move.matchAll(TOKEN_RE)) {
+    const text = move.slice(last, match.index!).trim();
     if (text) parts.push(<React.Fragment key={i++}>{text}</React.Fragment>);
 
     if (match[1] === "s") {
       lastSprite = match[2];
       parts.push(
-        <img key={i++} src={spriteUrl(match[2])} alt={match[2]} className={styles.sprite} />
+        <img key={i++} src={spriteUrl(match[2], side)} alt={match[2]} className={styles.sprite} />
       );
     } else if (match[1] === "p") {
       const raw = match[2];
-      const suffix = raw.endsWith("+") ? "+" : raw.endsWith("-") ? "-" : "";
-      const num = parseInt(suffix ? raw.slice(0, -1) : raw, 10);
+      const suffix = side === "opponent" ? "↑" : "↓";
+      const num = parseInt(raw, 10);
       let maxHp: number | undefined;
       if (lastSprite != null && graphCtx != null) {
         const { playerHp, opponentHp } = graphCtx;
-        if (turn === "player") maxHp = opponentHp[lastSprite];
-        else if (turn === "opponent") maxHp = playerHp[lastSprite];
+        if (side === "player") maxHp = opponentHp[lastSprite];
+        else maxHp = playerHp[lastSprite];
         maxHp ??= playerHp[lastSprite] ?? opponentHp[lastSprite];
       }
       const display =
         maxHp != null && maxHp > 0 && !isNaN(num)
-          ? `${Math.round((num / maxHp) * 100)}%${suffix}`
+          ? `${Math.round((num / maxHp) * 100)}%${num > 0 ? suffix : ""}`
           : raw;
       parts.push(
         <span key={i++} className={styles.result}>
@@ -302,10 +289,18 @@ export function Move({ move }: { move: string }) {
     last = match.index! + match[0].length;
   }
 
-  const trailing = rest.slice(last).trim();
+  const trailing = move.slice(last).trim();
   if (trailing) parts.push(<React.Fragment key={i++}>{trailing}</React.Fragment>);
 
-  return <div className={styles.turnAction}>{parts}</div>;
+  return <div className={`${styles.turnAction} ${className ?? ""}`}>{parts}</div>;
+}
+
+export function PlayerMove({ move }: { move: string }) {
+  return <Move move={move} side="player" />;
+}
+
+export function OpponentMove({ move }: { move: string }) {
+  return <Move move={move} side="opponent" className={styles.opponentMove} />;
 }
 
 export function Branch({
@@ -349,11 +344,6 @@ export function Branch({
 
   return (
     <div className={styles.branchTurn}>
-      <div className={`${styles.cell}`}>
-        <div className={styles.turnAction}>
-          <span className={styles.diamond}>?</span>
-        </div>
-      </div>
       <div className={`${styles.cell} ${styles.branchCell}`}>
         <div className={styles.turnAction}>
           {branch.map((item, j) => {
