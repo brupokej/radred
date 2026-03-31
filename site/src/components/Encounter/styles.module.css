@@ -1,16 +1,33 @@
-.card {
-  background: var(--ifm-card-background-color);
-  border: 1px solid var(--ifm-color-emphasis-200);
-  border-radius: var(--ifm-global-radius);
-  box-shadow: var(--ifm-global-shadow-lw);
+.content {
   display: flex;
-  margin: var(--ifm-leading) 0;
-  overflow: hidden;
+}
+
+.spritePanel {
+  align-items: center;
+  display: flex;
+  flex-shrink: 0;
+  justify-content: center;
+  padding: var(--ifm-spacing-horizontal);
+  position: relative;
+}
+
+.spritePanel::after {
+  background: var(--ifm-color-emphasis-200);
+  content: "";
+  height: 60%;
+  position: absolute;
+  right: 0;
+  top: 20%;
+  width: 1px;
+}
+
+.sprite {
+  height: 108px;
+  object-fit: contain;
+  width: 108px;
 }
 
 .info {
-  background: var(--ifm-color-emphasis-100);
-  border-left: 1px solid var(--ifm-color-emphasis-200);
   display: flex;
   flex: 1;
   flex-direction: column;
@@ -30,24 +47,14 @@
   line-height: 1.6;
 }
 
+.separator {
+  margin: 0 0.2rem;
+}
+
 .detailWarning {
   background: var(--ifm-color-warning-contrast-background);
   border-radius: 3px;
   display: inline-block;
   outline: 1px solid var(--ifm-color-warning);
   padding: 0.15rem 0.3rem;
-}
-
-.spritePanel {
-  align-items: center;
-  display: flex;
-  flex-shrink: 0;
-  justify-content: center;
-  padding: var(--ifm-spacing-horizontal);
-}
-
-.sprite {
-  height: 108px;
-  object-fit: contain;
-  width: 108px;
 }

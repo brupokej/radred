@@ -1,3 +1,4 @@
+import Card from "@site/src/components/Card";
 import Team, { Pokemon } from "@site/src/components/Team";
 import { spriteUrl } from "@site/src/utils/sprites";
 import { Fragment } from "react";
@@ -26,28 +27,30 @@ export default function Encounter({
   return (
     <>
       {playerTeam && <Team title="Player Team" team={playerTeam} />}
-      <div className={styles.card}>
-        <div className={styles.spritePanel}>
-          <img src={spriteUrl(pokemon)} alt={displayName} className={styles.sprite} />
+      <Card title="Encounter Plan">
+        <div className={styles.content}>
+          <div className={styles.spritePanel}>
+            <img src={spriteUrl(pokemon)} alt={displayName} className={styles.sprite} />
+          </div>
+          <div className={styles.info}>
+            <div className={styles.name}>{displayName}</div>
+            {details && details.length > 0 && (
+              <div className={styles.detail}>
+                {details.map((d, i) => {
+                  const value = typeof d === "string" ? d : d.value;
+                  const isWarning = typeof d !== "string" && d.warning;
+                  return (
+                    <Fragment key={i}>
+                      {i > 0 && <span className={styles.separator}> · </span>}
+                      {isWarning ? <span className={styles.detailWarning}>{value}</span> : value}
+                    </Fragment>
+                  );
+                })}
+              </div>
+            )}
+          </div>
         </div>
-        <div className={styles.info}>
-          <div className={styles.name}>{displayName}</div>
-          {details && details.length > 0 && (
-            <div className={styles.detail}>
-              {details.map((d, i) => {
-                const value = typeof d === "string" ? d : d.value;
-                const isWarning = typeof d !== "string" && d.warning;
-                return (
-                  <Fragment key={i}>
-                    {i > 0 && " · "}
-                    {isWarning ? <span className={styles.detailWarning}>{value}</span> : value}
-                  </Fragment>
-                );
-              })}
-            </div>
-          )}
-        </div>
-      </div>
+      </Card>
     </>
   );
 }

@@ -189,7 +189,7 @@ export function Battle({
       {opponentTeam && <Team title="Opponent Team" team={opponentTeam} />}
       {playerTeam && <Team title="Player Team" team={playerTeam} />}
       <BattleGraphCtx.Provider value={ctx}>
-        <Card title="Battle Line">
+        <Card title="Battle Plan">
           {state.visibleOrder.map((slug) => (
             <BattleLineCtx.Provider key={slug} value={slug}>
               {enrichedLines.get(slug)}
