@@ -11,10 +11,11 @@ import {
   OpponentMove,
   Turn,
 } from "@site/src/components/BattleGraph";
+import Encounter from "@site/src/components/Encounter";
 
 # Introduction
 
-## Cerulean City Rival
+## Cerulean City Rival Battle
 
 export const _azumarill1 = {
   sprite: "azumarill",
@@ -98,6 +99,20 @@ export const _tentacruel1 = {
   move3: "Rapid Spin",
   move4: "Sludge",
   hp: 91,
+};
+
+export const _houndoom1 = {
+  sprite: "houndoom",
+  name: "Houndoom",
+  level: 28,
+  nature: "Modest",
+  ability: "Flash Fire",
+  item: "Wise Glasses",
+  move1: "Dark Pulse",
+  move2: "Flame Burst",
+  move3: "Leer",
+  move4: "Sucker Punch",
+  hp: 88,
 };
 
 <BattleGraph
@@ -537,3 +552,7 @@ export const _tentacruel1 = {
   </Matchup>
 </BattleLine>
 </BattleGraph>
+
+## Route 24 Encounter
+
+<Encounter playerTeam={[_houndoom1]} pokemon="charcadet" details={["Day", "Grass", "50%", "Level 14-16"]} />

@@ -42,11 +42,19 @@
   object-fit: contain;
 }
 
+.cardEmpty .emptySprite,
+.cardEmpty .name,
+.cardEmpty .level,
+.cardEmpty .detail,
+.cardEmpty .move {
+  color: var(--ifm-color-emphasis-400);
+}
+
 .emptySprite {
   align-items: center;
   color: var(--ifm-font-color-base);
   display: flex;
-  font-size: 2rem;
+  font-size: 1.25rem;
   height: 108px;
   justify-content: center;
   width: 108px;

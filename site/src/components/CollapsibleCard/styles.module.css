@@ -12,7 +12,7 @@
   background: var(--ifm-color-emphasis-100);
   cursor: pointer;
   display: flex;
-  font-weight: var(--ifm-font-weight-semibold);
+  font-weight: var(--ifm-font-weight-bold);
   justify-content: space-between;
   list-style: none;
   padding: var(--ifm-spacing-vertical) var(--ifm-spacing-horizontal);

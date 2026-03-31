@@ -39,7 +39,7 @@ function TeamGrid({ team }: { team: Pokemon[] }) {
 
 function PokemonCard({ pokemon }: { pokemon: Pokemon | null }) {
   return (
-    <div className={styles.card}>
+    <div className={`${styles.card} ${!pokemon ? styles.cardEmpty : ""}`}>
       {pokemon ? (
         <img src={spriteUrl(pokemon.sprite)} alt={pokemon.name} className={styles.sprite} />
       ) : (
