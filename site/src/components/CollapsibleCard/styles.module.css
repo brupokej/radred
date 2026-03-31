@@ -10,7 +10,7 @@
 .summary {
   align-items: center;
   background: var(--ifm-color-emphasis-100);
-  cursor: default;
+  cursor: pointer;
   display: flex;
   font-weight: var(--ifm-font-weight-semibold);
   justify-content: space-between;
@@ -27,14 +27,7 @@
   display: none;
 }
 
-.toggle {
-  color: var(--ifm-link-color);
-  cursor: pointer;
+.chevron {
+  color: var(--ifm-color-primary);
   font-size: 0.875rem;
-  font-weight: var(--ifm-font-weight-normal);
-}
-
-.toggle:hover {
-  color: var(--ifm-link-hover-color);
-  text-decoration: var(--ifm-link-hover-decoration);
 }

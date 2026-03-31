@@ -8,23 +8,18 @@ export default function CollapsibleCard({
   title: React.ReactNode;
   children: React.ReactNode;
 }) {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <details className={styles.card} open={isOpen}>
       <summary
         className={`${styles.summary} ${isOpen ? styles.summaryOpen : ""}`}
-        onClick={(e) => e.preventDefault()}
+        onClick={(e) => {
+          e.preventDefault();
+          setIsOpen(!isOpen);
+        }}
       >
         <span>{title}</span>
-        <a
-          className={styles.toggle}
-          onClick={(e) => {
-            e.preventDefault();
-            setIsOpen(!isOpen);
-          }}
-        >
-          {isOpen ? "[hide]" : "[show]"}
-        </a>
+        <span className={styles.chevron}>{isOpen ? "−" : "+"}</span>
       </summary>
       {children}
     </details>
