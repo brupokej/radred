@@ -4,45 +4,48 @@ import { spriteUrl } from "@site/src/utils/sprites";
 import { Fragment } from "react";
 import styles from "./styles.module.css";
 
-type Detail = string | { value: string; warning?: boolean };
-
-function toDisplayName(sprite: string) {
-  return sprite
-    .split("-")
-    .map((s) => s.charAt(0).toUpperCase() + s.slice(1))
-    .join("-");
-}
+type Detail = string | { value: string; variant: "warning" | "info" };
 
 export default function Encounter({
-  pokemon,
+  encounter,
+  sprite,
   details,
   playerTeam,
 }: {
-  pokemon: string;
+  encounter: string;
+  sprite: string;
   details?: Detail[];
   playerTeam?: Pokemon[];
 }) {
-  const displayName = toDisplayName(pokemon);
-
   return (
     <>
       {playerTeam && <Team title="Player Team" team={playerTeam} />}
       <Card title="Encounter Plan">
         <div className={styles.content}>
           <div className={styles.spritePanel}>
-            <img src={spriteUrl(pokemon)} alt={displayName} className={styles.sprite} />
+            <img src={spriteUrl(sprite)} alt={encounter} className={styles.sprite} />
           </div>
           <div className={styles.info}>
-            <div className={styles.name}>{displayName}</div>
+            <div className={styles.name}>{encounter}</div>
             {details && details.length > 0 && (
               <div className={styles.detail}>
                 {details.map((d, i) => {
                   const value = typeof d === "string" ? d : d.value;
-                  const isWarning = typeof d !== "string" && d.warning;
+                  const variant = typeof d !== "string" ? d.variant : undefined;
+                  const variantClass =
+                    variant === "warning"
+                      ? styles.detailWarning
+                      : variant === "info"
+                        ? styles.detailInfo
+                        : undefined;
                   return (
                     <Fragment key={i}>
                       {i > 0 && <span className={styles.separator}> · </span>}
-                      {isWarning ? <span className={styles.detailWarning}>{value}</span> : value}
+                      <span
+                        className={`${styles.detailItem}${variantClass ? ` ${variantClass}` : ""}`}
+                      >
+                        {value}
+                      </span>
                     </Fragment>
                   );
                 })}

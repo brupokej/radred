@@ -51,10 +51,24 @@
   margin: 0 0.2rem;
 }
 
+.detailItem,
+.detailInfo,
 .detailWarning {
-  background: var(--ifm-color-warning-contrast-background);
   border-radius: 3px;
   display: inline-block;
+  margin-block: 2px;
+  padding: 0.15rem 0;
+  white-space: nowrap;
+}
+
+.detailInfo {
+  background: var(--ifm-color-info-contrast-background);
+  outline: 1px solid var(--ifm-color-info);
+  padding: 0.15rem 0.3rem;
+}
+
+.detailWarning {
+  background: var(--ifm-color-warning-contrast-background);
   outline: 1px solid var(--ifm-color-warning);
   padding: 0.15rem 0.3rem;
 }

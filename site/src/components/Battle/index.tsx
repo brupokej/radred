@@ -231,7 +231,7 @@ export function Turn({ turn }: { turn: React.ReactNode[] }) {
   return (
     <div className={styles.turn}>
       {turn.map((item, i) => (
-        <div key={i} className={`${styles.cell} ${i < turn.length - 1 ? styles.playerCell : ""}`}>
+        <div key={i} className={styles.cell}>
           {item}
         </div>
       ))}
@@ -239,7 +239,7 @@ export function Turn({ turn }: { turn: React.ReactNode[] }) {
   );
 }
 
-const TOKEN_RE = /\{([a-z]):([^}]+)\}/g;
+const TOKEN_RE = /\{([a-z+\-]):([^}]+)\}/g;
 
 function Move({
   move,
@@ -265,15 +265,15 @@ function Move({
       parts.push(
         <img key={i++} src={spriteUrl(match[2], side)} alt={match[2]} className={styles.sprite} />
       );
-    } else if (match[1] === "p") {
+    } else if (match[1] === "+" || match[1] === "-") {
       const raw = match[2];
-      const suffix = side === "opponent" ? "↑" : "↓";
+      const isPlayerHp = match[1] === "+";
+      const suffix = isPlayerHp ? "↑" : "↓";
       const num = parseInt(raw, 10);
       let maxHp: number | undefined;
       if (lastSprite != null && graphCtx != null) {
         const { playerHp, opponentHp } = graphCtx;
-        if (side === "player") maxHp = opponentHp[lastSprite];
-        else maxHp = playerHp[lastSprite];
+        maxHp = isPlayerHp ? playerHp[lastSprite] : opponentHp[lastSprite];
         maxHp ??= playerHp[lastSprite] ?? opponentHp[lastSprite];
       }
       const display =

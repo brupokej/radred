@@ -50,6 +50,9 @@
   align-items: center;
   border-bottom: 1px solid var(--ifm-color-emphasis-200);
   display: flex;
+  flex-wrap: wrap;
+  padding-block: var(--ifm-spacing-vertical);
+  row-gap: var(--ifm-spacing-vertical);
 }
 
 .turn:last-child {
@@ -59,28 +62,25 @@
 .cell {
   display: flex;
   flex-direction: column;
+  flex-shrink: 0;
   gap: var(--ifm-spacing-vertical);
-  padding: var(--ifm-spacing-vertical) var(--ifm-spacing-horizontal);
-}
-
-.playerCell {
+  padding-inline: var(--ifm-spacing-horizontal);
   position: relative;
 }
 
-.playerCell::after {
+.turn > .cell::before {
   background: var(--ifm-color-emphasis-200);
+  bottom: calc(20% - var(--ifm-spacing-vertical) * 0.6);
   content: "";
-  height: 60%;
+  left: -1px;
   position: absolute;
-  right: 0;
-  top: 20%;
+  top: calc(20% - var(--ifm-spacing-vertical) * 0.6);
   width: 1px;
 }
 
 .turnAction {
   align-items: center;
   display: flex;
-  flex-wrap: wrap;
   gap: 0.4rem;
 }
 
@@ -128,19 +128,4 @@
 .branchOptionSelected {
   color: var(--ifm-color-primary-dark);
   text-decoration: underline;
-}
-
-@media (max-width: 576px) {
-  .turn {
-    align-items: stretch;
-    flex-direction: column;
-  }
-
-  .playerCell {
-    padding-bottom: 0;
-  }
-
-  .playerCell::after {
-    display: none;
-  }
 }

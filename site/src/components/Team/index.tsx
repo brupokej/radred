@@ -45,11 +45,7 @@ function PokemonCard({ pokemon }: { pokemon: Pokemon | null }) {
   return (
     <div className={`${styles.card} ${!pokemon ? styles.cardEmpty : ""}`}>
       {pokemon ? (
-        <img
-          src={spriteUrl(pokemon.sprite)}
-          alt={pokemon.name}
-          className={styles.sprite}
-        />
+        <img src={spriteUrl(pokemon.sprite)} alt={pokemon.name} className={styles.sprite} />
       ) : (
         <div className={styles.emptySprite}>✕</div>
       )}

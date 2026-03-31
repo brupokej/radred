@@ -1,4 +1,5 @@
 .content {
+  container-type: inline-size;
   overflow: hidden;
   padding: var(--ifm-spacing-vertical) var(--ifm-spacing-horizontal) 0;
 }
@@ -105,4 +106,28 @@
 .fieldWarning {
   background: var(--ifm-color-warning-contrast-background);
   outline: 1px solid var(--ifm-color-warning);
+}
+
+@container (max-width: 771px) {
+  .cardEmpty:nth-child(6) {
+    display: none;
+  }
+}
+
+@container (max-width: 645px) {
+  .cardEmpty:nth-child(n + 5) {
+    display: none;
+  }
+}
+
+@container (max-width: 519px) {
+  .cardEmpty:nth-child(n + 4) {
+    display: none;
+  }
+}
+
+@container (max-width: 393px) {
+  .cardEmpty:nth-child(n + 3) {
+    display: none;
+  }
 }

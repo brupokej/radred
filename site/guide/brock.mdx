@@ -1,0 +1,329 @@
+---
+sidebar_position: 2
+---
+
+import {
+  Battle,
+  BattleLine,
+  Matchup,
+  PlayerMove,
+  OpponentMove,
+  Turn,
+} from "@site/src/components/Battle";
+import Encounter from "@site/src/components/Encounter";
+
+# Brock
+
+## Oak's Lab Encounter
+
+<Encounter encounter="Litten" sprite="litten" details={["Level 5"]} />
+
+export const _litten1 = {
+  sprite: "litten",
+  name: "Litten",
+  level: 5,
+  nature: null,
+  ability: "Blaze",
+  item: null,
+  move1: "Ember",
+  move2: "Growl",
+  move3: "Scratch",
+  move4: null,
+  hp: 21,
+  warnings: [],
+};
+
+## Pallet Town Encounter
+
+<Encounter
+  encounter="Tentacool"
+  sprite="tentacool"
+  details={["Old Rod", "70%", "Level 2-4", { value: "Clear Body", variant: "info" }]}
+/>
+
+export const _tentacool1 = {
+  sprite: "tentacool",
+  name: "Tentacool",
+  level: 2,
+  nature: null,
+  ability: "Clear Body",
+  item: null,
+  move1: "Rapid Spin",
+  move2: "Water Gun",
+  move3: null,
+  move4: null,
+  hp: 14,
+  warnings: [],
+};
+
+## Route 21 Encounter
+
+<Encounter
+  encounter="Wooper-P"
+  sprite="wooper-paldea"
+  details={[
+    "Grass",
+    { value: "Night", variant: "warning" },
+    "20%",
+    "Level 4-6",
+    { value: "Water Absorb", variant: "info" },
+  ]}
+/>
+
+export const _wooper1 = {
+  sprite: "wooper-paldea",
+  name: "Wooper-P",
+  level: 4,
+  nature: null,
+  ability: "Water Absorb",
+  item: null,
+  move1: "Mud Shot",
+  move2: "Tackle",
+  move3: "Tail Whip",
+  move4: null,
+  hp: 19,
+  warnings: [],
+};
+
+## Route 1 Encounter
+
+<Encounter
+  encounter="Meowth-G"
+  sprite="meowth-galar"
+  details={["Grass", "Night", "10%", "Level 2-4", { value: "Tough Claws", variant: "info" }]}
+/>
+
+export const _meowth1 = {
+  sprite: "meowth-galar",
+  name: "Meowth-G",
+  level: 2,
+  nature: null,
+  ability: "Tough Claws",
+  item: null,
+  move1: "Fake Out",
+  move2: "Growl",
+  move3: null,
+  move4: null,
+  hp: 14,
+  warnings: [],
+};
+
+## Viridian City Encounter
+
+<Encounter
+  encounter="Marill"
+  sprite="marill"
+  details={["Old Rod", "70%", "Level 3-4", { value: "Huge Power", variant: "info" }]}
+/>
+
+export const _marill1 = {
+  sprite: "marill",
+  name: "Marill",
+  level: 3,
+  nature: null,
+  ability: "Huge Power",
+  item: null,
+  move1: "Aqua Jet",
+  move2: "Tackle",
+  move3: "Tail Whip",
+  move4: null,
+  hp: 18,
+  warnings: [],
+};
+
+## Route 2 Encounter
+
+<Encounter
+  encounter="Houndour"
+  sprite="houndour"
+  details={["Grass", "Night", "5%", "Level 4-6", { value: "Flash Fire", variant: "info" }]}
+/>
+
+export const _houndour1 = {
+  sprite: "houndour",
+  name: "Houndour",
+  level: 4,
+  nature: null,
+  ability: "Flash Fire",
+  item: null,
+  move1: "Incinerate",
+  move2: "Leer",
+  move3: null,
+  move4: null,
+  hp: 18,
+  warnings: [],
+};
+
+## Viridian Forest Encounter
+
+<Encounter
+  encounter="Kricketot"
+  sprite="kricketot"
+  details={["Grass", "Night", "10%", "Level 4-6"]}
+/>
+
+export const _kricketot1 = {
+  sprite: "kricketot",
+  name: "Kricketot",
+  level: 4,
+  nature: null,
+  ability: "Technician",
+  item: null,
+  move1: "Bide",
+  move2: "Growl",
+  move3: "Tackle",
+  move4: null,
+  hp: 18,
+  warnings: [],
+};
+
+## Battle Route 22 Rival
+
+export const _wooper2 = {
+  ..._wooper1,
+  level: 16,
+  nature: "Bold",
+  move2: "Slam",
+  move3: "Tackle",
+  move4: "Tail Whip",
+  hp: 48,
+  warnings: ["level", "nature", "move2"],
+};
+
+export const _kricketune1 = {
+  ..._kricketot1,
+  sprite: "kricketune",
+  name: "Kricketune",
+  level: 16,
+  nature: "Naive",
+  ability: "Technician",
+  item: "Hard Stone",
+  move1: "Bug Bite",
+  move2: "Mega Drain",
+  move3: "Rock Tomb",
+  move4: "Struggle Bug",
+  hp: 55,
+  warnings: ["name", "level", "nature", "item", "move1", "move2", "move3", "move4"],
+};
+
+export const _tentacool2 = {
+  ..._tentacool1,
+  level: 16,
+  nature: "Timid",
+  move1: "Acid",
+  move2: "Rapid Spin",
+  move3: "Supersonic",
+  move4: "Water Pulse",
+  hp: 43,
+  warnings: ["level", "nature", "move1", "move3", "move4"],
+};
+
+<Battle
+  playerTeam={[_wooper2, _kricketune1, _tentacool2]}
+  opponentTeam={[
+    {
+      sprite: "snubbull",
+      name: "Snubbull",
+      level: 15,
+      nature: "Adamant",
+      ability: "Intimidate",
+      item: "Muscle Band",
+      move1: "Pow-Up Punch",
+      move2: "Covet",
+      move3: "Thunder Wave",
+      move4: "Fire Fang",
+      hp: 47,
+    },
+    {
+      sprite: "litleo",
+      name: "Litleo",
+      level: 15,
+      nature: "Timid",
+      ability: "Rivalry",
+      item: "Wise Glasses",
+      move1: "Incinerate",
+      move2: "Round",
+      move3: "HP Grass",
+      move4: "Sleep Talk",
+      hp: 48,
+    },
+    {
+      sprite: "squirtle",
+      name: "Squirtle",
+      level: 16,
+      nature: "Adamant",
+      ability: "Torrent",
+      item: "Oran Berry",
+      move1: "Pow-Up Punch",
+      move2: "Aqua Jet",
+      move3: "Rock Tomb",
+      move4: "Curse",
+      hp: 45,
+    },
+  ]}
+>
+  <BattleLine line="Opening">
+    <Matchup opponents={["snubbull"]}>
+      <Turn
+        turn={[
+          <OpponentMove move="{s:snubbull} Pow-Up Punch {s:wooper-paldea} to {+:40}" />,
+          <PlayerMove move="{s:wooper-paldea} Tail Whip {s:snubbull}" />,
+        ]}
+      />
+      <Turn
+        turn={[
+          <OpponentMove move="{s:snubbull} Pow-Up Punch (no crit) {s:wooper-paldea} to {+:32}" />,
+          <PlayerMove move="{s:wooper-paldea} Tail Whip {s:snubbull}" />,
+        ]}
+      />
+      <Turn
+        turn={[
+          <PlayerMove move="{s:wooper-paldea} switch to {s:kricketune}" />,
+          <OpponentMove move="{s:snubbull} Pow-Up Punch {s:kricketune} to {+:43}" />,
+        ]}
+      />
+      <Turn
+        turn={[
+          <PlayerMove move="{s:kricketune} Rock Tomb {s:snubbull} to {-:0}" />,
+          <OpponentMove move="{s:snubbull} fainted" />,
+        ]}
+      />
+    </Matchup>
+    <Matchup opponents={["squirtle"]}>
+      <Turn
+        turn={[
+          <PlayerMove move="{s:kricketune} Bug Bite {s:squirtle} to {-:20}" />,
+          <PlayerMove move="{s:kricketune} heal to {+:53}" />,
+          <OpponentMove move="{s:squirtle} Rock Tomb {s:kricketune} to {+:23}" />,
+        ]}
+      />
+      <Turn
+        turn={[
+          <PlayerMove move="{s:kricketune} Mega Drain {s:squirtle} to {-:0}" />,
+          <PlayerMove move="{s:kricketune} heal to {+:24}" />,
+          <OpponentMove move="{s:squirtle} fainted" />,
+        ]}
+      />
+    </Matchup>
+    <Matchup opponents={["litleo"]}>
+      <Turn
+        turn={[
+          <PlayerMove move="{s:kricketune} switch to {s:tentacool}" />,
+          <OpponentMove move="{s:litleo} Incinerate {s:tentacool} to {+:31}" />,
+        ]}
+      />
+      <Turn
+        turn={[
+          <PlayerMove move="{s:tentacool} Water Pulse {s:litleo} to {-:22}" />,
+          <OpponentMove move="{s:litleo} Round {s:tentacool} to {+:7}" />,
+        ]}
+      />
+      <Turn
+        turn={[
+          <PlayerMove move="{s:tentacool} Water Pulse {s:litleo} to {-:0}" />,
+          <OpponentMove move="{s:litleo} fainted" />,
+        ]}
+      />
+    </Matchup>
+  </BattleLine>
+</Battle>
