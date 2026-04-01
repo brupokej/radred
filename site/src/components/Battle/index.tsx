@@ -241,6 +241,47 @@ export function Turn({ turn }: { turn: React.ReactNode[] }) {
 
 const TOKEN_RE = /\{([a-z+\-]):([^}]+)\}/g;
 
+function parseTokens(
+  text: string,
+  side?: "player" | "opponent",
+  graphCtx?: GraphCtxValue | null
+): React.ReactNode[] {
+  const parts: React.ReactNode[] = [];
+  let i = 0;
+  let last = 0;
+  let lastSprite: string | null = null;
+  for (const match of text.matchAll(TOKEN_RE)) {
+    const segment = text.slice(last, match.index!).trim();
+    if (segment) parts.push(<React.Fragment key={i++}>{segment}</React.Fragment>);
+    const [, type, value] = match;
+    if (type === "s" && side !== undefined) {
+      lastSprite = value;
+      parts.push(<img key={i++} src={spriteUrl(value, side)} alt={value} className={styles.sprite} />);
+    } else if ((type === "+" || type === "-") && side !== undefined) {
+      const isPlayerHp = type === "+";
+      const num = parseInt(value, 10);
+      let maxHp: number | undefined;
+      if (lastSprite != null && graphCtx != null) {
+        const { playerHp, opponentHp } = graphCtx;
+        maxHp = isPlayerHp ? playerHp[lastSprite] : opponentHp[lastSprite];
+        maxHp ??= playerHp[lastSprite] ?? opponentHp[lastSprite];
+      }
+      const suffix = isPlayerHp ? "↑" : "↓";
+      const display =
+        maxHp != null && maxHp > 0 && !isNaN(num)
+          ? `${Math.round((num / maxHp) * 100)}%${num > 0 ? suffix : ""}`
+          : value;
+      parts.push(<span key={i++} className={styles.result}>{display}</span>);
+    } else if (type === "c") {
+      parts.push(<span key={i++} className={styles.result}>{value}</span>);
+    }
+    last = match.index! + match[0].length;
+  }
+  const trailing = text.slice(last).trim();
+  if (trailing) parts.push(<React.Fragment key={i++}>{trailing}</React.Fragment>);
+  return parts;
+}
+
 function Move({
   move,
   side,
@@ -251,48 +292,17 @@ function Move({
   className?: string;
 }) {
   const graphCtx = useContext(BattleGraphCtx);
-  const parts = [];
-  let i = 0;
-  let lastSprite: string | null = null;
-
-  let last = 0;
-  for (const match of move.matchAll(TOKEN_RE)) {
-    const text = move.slice(last, match.index!).trim();
-    if (text) parts.push(<React.Fragment key={i++}>{text}</React.Fragment>);
-
-    if (match[1] === "s") {
-      lastSprite = match[2];
-      parts.push(
-        <img key={i++} src={spriteUrl(match[2], side)} alt={match[2]} className={styles.sprite} />
-      );
-    } else if (match[1] === "+" || match[1] === "-") {
-      const raw = match[2];
-      const isPlayerHp = match[1] === "+";
-      const suffix = isPlayerHp ? "↑" : "↓";
-      const num = parseInt(raw, 10);
-      let maxHp: number | undefined;
-      if (lastSprite != null && graphCtx != null) {
-        const { playerHp, opponentHp } = graphCtx;
-        maxHp = isPlayerHp ? playerHp[lastSprite] : opponentHp[lastSprite];
-        maxHp ??= playerHp[lastSprite] ?? opponentHp[lastSprite];
-      }
-      const display =
-        maxHp != null && maxHp > 0 && !isNaN(num)
-          ? `${Math.round((num / maxHp) * 100)}%${num > 0 ? suffix : ""}`
-          : raw;
-      parts.push(
-        <span key={i++} className={styles.result}>
-          {display}
-        </span>
-      );
-    }
-    last = match.index! + match[0].length;
-  }
-
-  const trailing = move.slice(last).trim();
-  if (trailing) parts.push(<React.Fragment key={i++}>{trailing}</React.Fragment>);
-
+  const parts = parseTokens(move, side, graphCtx);
   return <div className={`${styles.turnAction} ${className ?? ""}`}>{parts}</div>;
+}
+
+export function Risk({ risk }: { risk: string }) {
+  const parts = parseTokens(risk);
+  return (
+    <div className={styles.riskRow}>
+      <div className={styles.riskContent}>{parts}</div>
+    </div>
+  );
 }
 
 export function PlayerMove({ move }: { move: string }) {

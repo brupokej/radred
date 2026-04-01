@@ -8,6 +8,7 @@ import {
   Matchup,
   PlayerMove,
   OpponentMove,
+  Risk,
   Turn,
 } from "@site/src/components/Battle";
 import Encounter from "@site/src/components/Encounter";
@@ -272,10 +273,11 @@ export const _tentacool2 = {
       />
       <Turn
         turn={[
-          <OpponentMove move="{s:snubbull} Pow-Up Punch (no crit) {s:wooper-paldea} to {+:32}" />,
+          <OpponentMove move="{s:snubbull} non-crit Pow-Up Punch {s:wooper-paldea} to {+:32}" />,
           <PlayerMove move="{s:wooper-paldea} Tail Whip {s:snubbull}" />,
         ]}
       />
+      <Risk risk="Snubbull double crit Pow-Up Punch Wooper-P into Snubbull Fire Fang Kricketune is {c:0.3%}" />
       <Turn
         turn={[
           <PlayerMove move="{s:wooper-paldea} switch to {s:kricketune}" />,
