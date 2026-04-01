@@ -256,7 +256,9 @@ function parseTokens(
     const [, type, value] = match;
     if (type === "s" && side !== undefined) {
       lastSprite = value;
-      parts.push(<img key={i++} src={spriteUrl(value, side)} alt={value} className={styles.sprite} />);
+      parts.push(
+        <img key={i++} src={spriteUrl(value, side)} alt={value} className={styles.sprite} />
+      );
     } else if ((type === "+" || type === "-") && side !== undefined) {
       const isPlayerHp = type === "+";
       const num = parseInt(value, 10);
@@ -271,9 +273,17 @@ function parseTokens(
         maxHp != null && maxHp > 0 && !isNaN(num)
           ? `${Math.round((num / maxHp) * 100)}%${num > 0 ? suffix : ""}`
           : value;
-      parts.push(<span key={i++} className={styles.result}>{display}</span>);
+      parts.push(
+        <span key={i++} className={styles.result}>
+          {display}
+        </span>
+      );
     } else if (type === "c") {
-      parts.push(<span key={i++} className={styles.result}>{value}</span>);
+      parts.push(
+        <span key={i++} className={styles.result}>
+          {value}
+        </span>
+      );
     }
     last = match.index! + match[0].length;
   }

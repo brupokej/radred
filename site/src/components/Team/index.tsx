@@ -1,4 +1,5 @@
 import Card from "@site/src/components/Card";
+import { fetchPokedex } from "@site/src/utils/pokedex";
 import { spriteUrl } from "@site/src/utils/sprites";
 import { useEffect, useRef, useState } from "react";
 import styles from "./styles.module.css";
@@ -6,6 +7,7 @@ import styles from "./styles.module.css";
 export interface Pokemon {
   sprite: string;
   name: string;
+  pokedex: string;
   level: number;
   nature: string;
   ability: string;
@@ -31,6 +33,7 @@ export default function Team({ team, title = "Team" }: { team: Pokemon[]; title?
 function TeamGrid({ team }: { team: Pokemon[] }) {
   const gridRef = useRef<HTMLDivElement>(null);
   const [cols, setCols] = useState(6);
+  const [pokedex, setPokedex] = useState<Map<string, number[]> | null>(null);
 
   useEffect(() => {
     const el = gridRef.current;
@@ -45,6 +48,10 @@ function TeamGrid({ team }: { team: Pokemon[] }) {
     return () => obs.disconnect();
   }, []);
 
+  useEffect(() => {
+    fetchPokedex().then(setPokedex);
+  }, []);
+
   const filled = team.length;
   const remainder = filled % cols;
   const emptiesToShow = remainder === 0 ? 0 : Math.max(0, Math.min(cols - remainder, 6 - filled));
@@ -53,15 +60,38 @@ function TeamGrid({ team }: { team: Pokemon[] }) {
   return (
     <div className={styles.grid} ref={gridRef}>
       {slots.map((pokemon, i) => (
-        <PokemonCard key={i} pokemon={pokemon} />
+        <PokemonCard key={i} pokemon={pokemon} pokedex={pokedex} />
       ))}
     </div>
   );
 }
 
-function PokemonCard({ pokemon }: { pokemon: Pokemon | null }) {
+const STAT_LABELS = ["HP", "ATK", "DEF", "SPA", "SPD", "SPE"];
+const STAT_INDICES = [0, 1, 2, 4, 5, 3];
+
+function statColor(v: number): string {
+  if (v >= 150) return "var(--ifm-color-success-darker)";
+  if (v >= 125) return "var(--ifm-color-success)";
+  if (v >= 100) return "var(--ifm-color-success-lighter)";
+  if (v >= 75) return "var(--ifm-color-warning)";
+  if (v >= 50) return "var(--ifm-color-danger-lighter)";
+  if (v >= 25) return "var(--ifm-color-danger)";
+  return "var(--ifm-color-danger-darker)";
+}
+
+function PokemonCard({
+  pokemon,
+  pokedex,
+}: {
+  pokemon: Pokemon | null;
+  pokedex: Map<string, number[]> | null;
+}) {
   const warn = new Set(pokemon?.warnings ?? []);
   const wc = (field: string) => (warn.has(field) ? styles.fieldWarning : "");
+  const stats =
+    pokemon && pokedex && pokemon.pokedex
+      ? (pokedex.get(pokemon.pokedex.toLowerCase()) ?? null)
+      : null;
 
   return (
     <div className={`${styles.card} ${!pokemon ? styles.cardEmpty : ""}`}>
@@ -81,6 +111,34 @@ function PokemonCard({ pokemon }: { pokemon: Pokemon | null }) {
       <div className={`${styles.move} ${wc("move2")}`}>{pokemon?.move2 ?? "-"}</div>
       <div className={`${styles.move} ${wc("move3")}`}>{pokemon?.move3 ?? "-"}</div>
       <div className={`${styles.move} ${wc("move4")}`}>{pokemon?.move4 ?? "-"}</div>
+      <div className={styles.divider} />
+      <div className={styles.stats}>
+        {STAT_LABELS.map((label, i) => {
+          const v = stats ? stats[STAT_INDICES[i]] : null;
+          if (v == null) {
+            return (
+              <div key={label} className={styles.move}>
+                -
+              </div>
+            );
+          }
+          return (
+            <div key={label} className={styles.statRow}>
+              <span className={styles.statLabel}>{label}</span>
+              <span className={styles.statValue}>{v}</span>
+              <div className={styles.statBarTrack}>
+                <div
+                  className={styles.statBar}
+                  style={{
+                    width: `${(Math.min(v, 150) / 150) * 100}%`,
+                    backgroundColor: statColor(v),
+                  }}
+                />
+              </div>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }
