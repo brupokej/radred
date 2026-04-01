@@ -1,7 +1,6 @@
 import Card from "@site/src/components/Card";
 import Team, { Pokemon } from "@site/src/components/Team";
 import { spriteUrl } from "@site/src/utils/sprites";
-import { Fragment } from "react";
 import styles from "./styles.module.css";
 
 type Detail = string | { value: string; variant: "warning" | "info" };
@@ -39,14 +38,12 @@ export default function Encounter({
                         ? styles.detailInfo
                         : undefined;
                   return (
-                    <Fragment key={i}>
-                      {i > 0 && <span className={styles.separator}> · </span>}
-                      <span
-                        className={`${styles.detailItem}${variantClass ? ` ${variantClass}` : ""}`}
-                      >
-                        {value}
-                      </span>
-                    </Fragment>
+                    <span
+                      key={i}
+                      className={`${styles.detailItem}${variantClass ? ` ${variantClass}` : ""}`}
+                    >
+                      {value}
+                    </span>
                   );
                 })}
               </div>
