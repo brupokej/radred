@@ -26,7 +26,7 @@ export const _litten1 = {
   level: 5,
   nature: null,
   ability: "Blaze",
-  item: null,
+  item: "None",
   move1: "Ember",
   move2: "Growl",
   move3: "Scratch",
@@ -50,7 +50,7 @@ export const _tentacool1 = {
   level: 2,
   nature: null,
   ability: "Clear Body",
-  item: null,
+  item: "None",
   move1: "Rapid Spin",
   move2: "Water Gun",
   move3: null,
@@ -73,14 +73,14 @@ export const _tentacool1 = {
   ]}
 />
 
-export const _wooper1 = {
+export const _wooperp1 = {
   sprite: "wooper-paldea",
   name: "Wooper-P",
   pokedex: "Wooper-Paldea",
   level: 4,
   nature: null,
   ability: "Water Absorb",
-  item: null,
+  item: "None",
   move1: "Mud Shot",
   move2: "Tackle",
   move3: "Tail Whip",
@@ -97,14 +97,14 @@ export const _wooper1 = {
   details={["Grass", "Night", "10%", "Level 2-4", { value: "Tough Claws", variant: "info" }]}
 />
 
-export const _meowth1 = {
+export const _meowthg1 = {
   sprite: "meowth-galar",
   name: "Meowth-G",
   pokedex: "Meowth-Galar",
   level: 2,
   nature: null,
   ability: "Tough Claws",
-  item: null,
+  item: "None",
   move1: "Fake Out",
   move2: "Growl",
   move3: null,
@@ -128,7 +128,7 @@ export const _marill1 = {
   level: 3,
   nature: null,
   ability: "Huge Power",
-  item: null,
+  item: "None",
   move1: "Aqua Jet",
   move2: "Tackle",
   move3: "Tail Whip",
@@ -152,7 +152,7 @@ export const _houndour1 = {
   level: 4,
   nature: null,
   ability: "Flash Fire",
-  item: null,
+  item: "None",
   move1: "Incinerate",
   move2: "Leer",
   move3: null,
@@ -176,7 +176,7 @@ export const _kricketot1 = {
   level: 4,
   nature: null,
   ability: "Technician",
-  item: null,
+  item: "None",
   move1: "Bide",
   move2: "Growl",
   move3: "Tackle",
@@ -187,8 +187,8 @@ export const _kricketot1 = {
 
 ## Route 22 Rival Battle
 
-export const _wooper2 = {
-  ..._wooper1,
+export const _wooperp2 = {
+  ..._wooperp1,
   level: 16,
   nature: "Bold",
   move2: "Slam",
@@ -205,7 +205,6 @@ export const _kricketune1 = {
   pokedex: "Kricketune",
   level: 16,
   nature: "Naive",
-  ability: "Technician",
   item: "Hard Stone",
   move1: "Bug Bite",
   move2: "Mega Drain",
@@ -228,7 +227,7 @@ export const _tentacool2 = {
 };
 
 <Battle
-  playerTeam={[_wooper2, _kricketune1, _tentacool2]}
+  playerTeam={[_wooperp2, _kricketune1, _tentacool2]}
   opponentTeam={[
     {
       sprite: "snubbull",
@@ -338,5 +337,193 @@ export const _tentacool2 = {
         ]}
       />
     </Matchup>
+  </BattleLine>
+</Battle>
+
+## Route 22 Encounter
+
+<Encounter encounter="Psyduck" sprite="psyduck" details={["Old Rod", "70%", "Level 2-4"]} />
+
+export const _psyduck1 = {
+  sprite: "psyduck",
+  name: "Psyduck",
+  pokedex: "Psyduck",
+  level: 2,
+  nature: null,
+  ability: null,
+  item: "None",
+  move1: "Scratch",
+  move2: "Water Sport",
+  move3: null,
+  move4: null,
+  hp: 14,
+  warnings: [],
+};
+
+## Viridian Forest Brendan Battle
+
+export const _marill2 = {
+  ..._marill1,
+  level: 16,
+  nature: "Impish",
+  item: "Oran Berry",
+  move2: "Body Slam",
+  move3: "Covet",
+  move4: "Tail Whip",
+  hp: 53,
+  warnings: ["level", "nature", "item", "move2", "move3"],
+};
+
+export const _meowthg2 = {
+  ..._meowthg1,
+  level: 16,
+  nature: "Sassy",
+  move3: "Metal Claw",
+  move4: "Scratch",
+  hp: 46,
+  warnings: ["level", "nature", "move3", "move4"],
+};
+
+export const _kricketune2 = {
+  ..._kricketune1,
+  nature: "Naughty",
+  item: "Oran Berry",
+  warnings: ["nature", "item"],
+};
+
+<Battle
+  playerTeam={[_marill2, _meowthg2, _kricketune2]}
+  opponentTeam={[
+    {
+      sprite: "meditite",
+      name: "Meditite",
+      pokedex: "Meditite",
+      level: 14,
+      nature: "Adamant",
+      ability: "Pure Power",
+      item: "Muscle Band",
+      move1: "Fake Out",
+      move2: "Rock Smash",
+      move3: "Bullet Punch",
+      move4: "Rock Tomb",
+      hp: 36,
+    },
+    {
+      sprite: "corphish",
+      name: "Corphish",
+      pokedex: "Corphish",
+      level: 15,
+      nature: "Adamant",
+      ability: "Adaptability",
+      item: "Mystic Water",
+      move1: "Aqua Jet",
+      move2: "Aerial Ace",
+      move3: "Rock Tomb",
+      move4: "Knock Off",
+      hp: 42,
+    },
+    {
+      sprite: "numel",
+      name: "Numel",
+      pokedex: "Numel",
+      level: 15,
+      nature: "Lonely",
+      ability: "Simple",
+      item: "Passho Berry",
+      move1: "Ancient Power",
+      move2: "Flame Charge",
+      move3: "Rock Tomb",
+      move4: "Bulldoze",
+      hp: 47,
+    },
+    {
+      sprite: "treecko",
+      name: "Treecko",
+      pokedex: "Treecko",
+      level: 16,
+      nature: "Adamant",
+      ability: "Unburden",
+      item: "Oran Berry",
+      move1: "Pow-Up Punch",
+      move2: "Bullet Seed",
+      move3: "Drain Punch",
+      move4: "Rock Tomb",
+      hp: 43,
+    },
+  ]}
+>
+  <BattleLine line="Opening">
+    <Matchup opponents={["meditite"]}>
+      <Turn
+        turn={[
+          <OpponentMove move="{s:meditite} Fake Out {s:marill} to {+:35}" />,
+          <PlayerMove move="{s:marill} flinched" />,
+        ]}
+      />
+      <Turn
+        turn={[
+          <OpponentMove move="{s:meditite} Rock Tomb {s:marill} to {+:20}" />,
+          <PlayerMove move="{s:marill} Covet {s:meditite} to {-:4}" />,
+        ]}
+      />
+      <Turn
+        turn={[
+          <PlayerMove move="{s:marill} Aqua Jet {s:meditite} to {-:0}" />,
+          <OpponentMove move="{s:meditite} fainted" />,
+        ]}
+      />
+    </Matchup>
+    <Matchup opponents={["corphish"]}>
+      <Turn
+        turn={[
+          <PlayerMove move="{s:marill} switch to {s:meowth-galar}" />,
+          <OpponentMove move="{s:corphish} Knock Off {s:meowth-galar} to {+:24}" />,
+        ]}
+      />
+      <Turn
+        turn={[
+          <PlayerMove move="{s:meowth-galar} Fake Out {s:corphish} to {-:34}" />,
+          <OpponentMove move="{s:corphish} flinched" />,
+        ]}
+      />
+      <Turn
+        turn={[
+          <PlayerMove move="{s:meowth-galar} switch to {s:kricketune}" />,
+          <OpponentMove move="{s:corphish} Aqua Jet {s:kricketune} to {+:28}" />,
+        ]}
+      />
+      <Turn
+        turn={[
+          <PlayerMove move="{s:kricketune} Mega Drain {s:corphish} to {-:0}" />,
+          <PlayerMove move="{s:kricketune} heal to {+:41}" />,
+          <OpponentMove move="{s:corphish} fainted" />,
+        ]}
+      />
+    </Matchup>
+
+    <Matchup opponents={["numel"]}>
+      <Turn
+        turn={[
+          <PlayerMove move="{s:kricketune} Rock Tomb {s:numel} to {-:16}" />,
+          <OpponentMove move="{s:numel} Flame Charge {s:kricketune} to {+:13}" />,
+        ]}
+      />
+      <Turn
+        turn={[
+          <PlayerMove move="{s:kricketune} Rock Tomb {s:numel} to {-:0}" />,
+          <OpponentMove move="{s:numel} fainted" />,
+        ]}
+      />
+    </Matchup>
+    <Matchup opponents={["treecko"]}>
+      <Turn
+        turn={[
+          <PlayerMove move="{s:kricketune} Bug Bite {s:treecko} to {-:0}" />,
+          <PlayerMove move="{s:kricketune} heal to {+:23}" />,
+          <OpponentMove move="{s:treecko} fainted" />,
+        ]}
+      />
+    </Matchup>
+
   </BattleLine>
 </Battle>
