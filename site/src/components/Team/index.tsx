@@ -1,5 +1,6 @@
 import Card from "@site/src/components/Card";
 import { spriteUrl } from "@site/src/utils/sprites";
+import { useEffect, useRef, useState } from "react";
 import styles from "./styles.module.css";
 
 export interface Pokemon {
@@ -28,9 +29,29 @@ export default function Team({ team, title = "Team" }: { team: Pokemon[]; title?
 }
 
 function TeamGrid({ team }: { team: Pokemon[] }) {
-  const slots = Array.from({ length: 6 }, (_, i) => team[i] ?? null);
+  const gridRef = useRef<HTMLDivElement>(null);
+  const [cols, setCols] = useState(6);
+
+  useEffect(() => {
+    const el = gridRef.current;
+    if (!el) return;
+    const update = () => {
+      const gap = parseFloat(getComputedStyle(el).columnGap) || 16;
+      setCols(Math.max(1, Math.floor((el.clientWidth + gap) / (110 + gap))));
+    };
+    const obs = new ResizeObserver(update);
+    obs.observe(el);
+    update();
+    return () => obs.disconnect();
+  }, []);
+
+  const filled = team.length;
+  const remainder = filled % cols;
+  const emptiesToShow = remainder === 0 ? 0 : Math.max(0, Math.min(cols - remainder, 6 - filled));
+  const slots = Array.from({ length: filled + emptiesToShow }, (_, i) => team[i] ?? null);
+
   return (
-    <div className={styles.grid}>
+    <div className={styles.grid} ref={gridRef}>
       {slots.map((pokemon, i) => (
         <PokemonCard key={i} pokemon={pokemon} />
       ))}
