@@ -21,20 +21,23 @@
   border-radius: 3px;
   display: inline-flex;
   gap: 0.4rem;
-  padding: 0.15rem 0.4rem;
+  padding-inline: 0.4rem;
 }
 
 .contentInfo {
-  background: var(--ifm-color-info-contrast-background);
-  outline: 1px solid var(--ifm-color-info);
+  background: var(--hl-info-bg);
+  outline: var(--hl-info-outline);
+  padding-block: var(--hl-info-vpad);
 }
 
 .contentWarning {
-  background: var(--ifm-color-warning-contrast-background);
-  outline: 1px solid var(--ifm-color-warning);
+  background: var(--hl-warning-bg);
+  outline: var(--hl-warning-outline);
+  padding-block: var(--hl-warning-vpad);
 }
 
 .contentDanger {
-  background: var(--ifm-color-danger-contrast-background);
-  outline: 1px solid var(--ifm-color-danger);
+  background: var(--hl-danger-bg);
+  outline: var(--hl-danger-outline);
+  padding-block: var(--hl-danger-vpad);
 }

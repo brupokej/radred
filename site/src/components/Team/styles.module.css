@@ -114,8 +114,8 @@
 }
 
 .fieldWarning {
-  background: var(--ifm-color-warning-contrast-background);
-  outline: 1px solid var(--ifm-color-warning);
+  background: var(--hl-warning-bg);
+  outline: var(--hl-warning-outline);
 }
 
 .stats {

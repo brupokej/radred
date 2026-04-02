@@ -1,0 +1,53 @@
+.toggle {
+  -webkit-tap-highlight-color: transparent;
+  align-items: center;
+  border-radius: 50%;
+  display: flex;
+  height: 2rem;
+  justify-content: center;
+  transition: background var(--ifm-transition-fast);
+  width: 2rem;
+}
+
+.toggle:hover {
+  background: var(--ifm-color-emphasis-200);
+}
+
+.dotContainer {
+  height: 18px;
+  position: relative;
+  transform: translateX(2px) rotate(90deg);
+  margin-right: 2px;
+  width: 18px;
+}
+
+.dot {
+  border-radius: 50%;
+  height: 8px;
+  position: absolute;
+  transition: opacity 0.2s;
+  width: 8px;
+}
+
+.dotDim {
+  opacity: 0.2;
+}
+
+.dotInfo {
+  background: var(--ifm-color-info);
+  bottom: 0;
+  left: 0;
+}
+
+.dotWarning {
+  background: var(--ifm-color-warning);
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+}
+
+.dotDanger {
+  background: var(--ifm-color-danger);
+  bottom: 0;
+  right: 0;
+}

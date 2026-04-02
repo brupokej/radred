@@ -5,6 +5,23 @@ import { themes as prismThemes } from "prism-react-renderer";
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
+  plugins: [
+    function highlightLevelPlugin() {
+      return {
+        name: "highlight-level-plugin",
+        injectHtmlTags() {
+          return {
+            headTags: [
+              {
+                tagName: "script",
+                innerHTML: `(function(){try{var l=localStorage.getItem('highlight-level');if(l&&l!=='danger')document.documentElement.setAttribute('data-highlight-level',l);}catch(e){}})();`,
+              },
+            ],
+          };
+        },
+      };
+    },
+  ],
   title: "Radical Red Handbook",
   tagline: "A guide to a nuzlocke of Radical Red 4.1 on hardcore mode.",
   favicon: "img/favicon.ico",
