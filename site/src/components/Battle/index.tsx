@@ -110,13 +110,13 @@ export function Battle({
   children: React.ReactNode;
 }) {
   const lineElements = React.Children.toArray(children).filter(
-    (c): c is React.ReactElement<{ line: string; children: React.ReactNode }> =>
+    (c): c is React.ReactElement<{ line?: string; children: React.ReactNode }> =>
       React.isValidElement(c) && c.type === BattleLine
   );
 
-  const lineMap = new Map(lineElements.map((el) => [el.props.line, el.props.children]));
+  const lineMap = new Map(lineElements.map((el) => [el.props.line ?? "", el.props.children]));
 
-  const rootLine = lineElements.length > 0 ? lineElements[0].props.line : "";
+  const rootLine = lineElements.length > 0 ? (lineElements[0].props.line ?? "") : "";
 
   const branchRegistry = useRef<Map<string, string>>(new Map());
 
@@ -203,7 +203,7 @@ export function Battle({
   );
 }
 
-export function BattleLine({ line, children }: { line: string; children: React.ReactNode }) {
+export function BattleLine({ line, children }: { line?: string; children: React.ReactNode }) {
   return null;
 }
 
@@ -229,10 +229,10 @@ export function Matchup({
   );
 }
 
-export function Turn({ turn }: { turn: React.ReactNode[] }) {
+export function Turn({ children }: { children: React.ReactNode }) {
   return (
     <div className={styles.turn}>
-      {turn.map((item, i) => (
+      {React.Children.map(children, (item, i) => (
         <div key={i} className={styles.cell}>
           {item}
         </div>
@@ -285,7 +285,7 @@ export function Branch({
   const dispatch = graphCtx?.dispatch;
 
   useEffect(() => {
-    if (!registerBranch || !unregisterBranch || !parentLine) return;
+    if (!registerBranch || !unregisterBranch || parentLine === null) return;
     registerBranch(branchId, parentLine);
     return () => unregisterBranch(branchId);
   }, [branchId, parentLine, registerBranch, unregisterBranch]);

@@ -27,19 +27,13 @@ import Setup from "@site/src/components/Setup";
 <Encounter encounter="Litten" sprite="litten" row={["Level 5"]} />
 
 export const _litten1 = {
-  sprite: "litten",
   name: "Litten",
-  pokedex: "Litten",
   level: 5,
-  nature: null,
   ability: "Blaze",
-  item: "None",
   move1: "Ember",
   move2: "Growl",
   move3: "Scratch",
-  move4: null,
   hp: 21,
-  warnings: [],
 };
 
 ## Pallet Town Encounter
@@ -51,19 +45,12 @@ export const _litten1 = {
 />
 
 export const _tentacool1 = {
-  sprite: "tentacool",
   name: "Tentacool",
-  pokedex: "Tentacool",
   level: 2,
-  nature: null,
   ability: "Clear Body",
-  item: "None",
   move1: "Rapid Spin",
   move2: "Water Gun",
-  move3: null,
-  move4: null,
   hp: 14,
-  warnings: [],
 };
 
 ## Route 21 Encounter
@@ -79,15 +66,11 @@ export const _wooperp1 = {
   name: "Wooper-P",
   pokedex: "Wooper-Paldea",
   level: 4,
-  nature: null,
   ability: "Water Absorb",
-  item: "None",
   move1: "Mud Shot",
   move2: "Tackle",
   move3: "Tail Whip",
-  move4: null,
   hp: 19,
-  warnings: [],
 };
 
 ## Route 1 Encounter
@@ -103,15 +86,10 @@ export const _meowthg1 = {
   name: "Meowth-G",
   pokedex: "Meowth-Galar",
   level: 2,
-  nature: null,
   ability: "Tough Claws",
-  item: "None",
   move1: "Fake Out",
   move2: "Growl",
-  move3: null,
-  move4: null,
   hp: 14,
-  warnings: [],
 };
 
 ## Viridian City Encounter
@@ -119,19 +97,13 @@ export const _meowthg1 = {
 <Encounter encounter="Marill" sprite="marill" row={["Old Rod · 70% · Level 3-4 · Huge Power"]} />
 
 export const _marill1 = {
-  sprite: "marill",
   name: "Marill",
-  pokedex: "Marill",
   level: 3,
-  nature: null,
   ability: "Huge Power",
-  item: "None",
   move1: "Aqua Jet",
   move2: "Tackle",
   move3: "Tail Whip",
-  move4: null,
   hp: 18,
-  warnings: [],
 };
 
 ## Route 2 Encounter
@@ -143,19 +115,12 @@ export const _marill1 = {
 />
 
 export const _houndour1 = {
-  sprite: "houndour",
   name: "Houndour",
-  pokedex: "Houndour",
   level: 4,
-  nature: null,
   ability: "Flash Fire",
-  item: "None",
   move1: "Incinerate",
   move2: "Leer",
-  move3: null,
-  move4: null,
   hp: 18,
-  warnings: [],
 };
 
 ## Viridian Forest Encounter
@@ -163,19 +128,13 @@ export const _houndour1 = {
 <Encounter encounter="Kricketot" sprite="kricketot" row={["Grass · Night · 10% · Level 4-6"]} />
 
 export const _kricketot1 = {
-  sprite: "kricketot",
   name: "Kricketot",
-  pokedex: "Kricketot",
   level: 4,
-  nature: null,
   ability: "Technician",
-  item: "None",
   move1: "Bide",
   move2: "Growl",
   move3: "Tackle",
-  move4: null,
   hp: 18,
-  warnings: [],
 };
 
 ## Route 22 Rival Battle
@@ -188,14 +147,12 @@ export const _wooperp2 = {
   move3: "Tackle",
   move4: "Tail Whip",
   hp: 48,
-  warnings: ["level", "nature", "move2"],
+  warning: ["level", "nature", "move2"],
 };
 
 export const _kricketune1 = {
   ..._kricketot1,
-  sprite: "kricketune",
   name: "Kricketune",
-  pokedex: "Kricketune",
   level: 16,
   nature: "Naive",
   item: "Hard Stone",
@@ -204,7 +161,7 @@ export const _kricketune1 = {
   move3: "Rock Tomb",
   move4: "Struggle Bug",
   hp: 55,
-  warnings: ["name", "level", "nature", "item", "move1", "move2", "move3", "move4"],
+  warning: ["name", "level", "nature", "item", "move1", "move2", "move3", "move4"],
 };
 
 export const _tentacool2 = {
@@ -216,16 +173,14 @@ export const _tentacool2 = {
   move3: "Supersonic",
   move4: "Water Pulse",
   hp: 43,
-  warnings: ["level", "nature", "move1", "move3", "move4"],
+  warning: ["level", "nature", "move1", "move3", "move4"],
 };
 
 <Battle
   playerTeam={[_wooperp2, _kricketune1, _tentacool2]}
   opponentTeam={[
     {
-      sprite: "snubbull",
       name: "Snubbull",
-      pokedex: "Snubbull",
       level: 15,
       nature: "Adamant",
       ability: "Intimidate",
@@ -237,9 +192,7 @@ export const _tentacool2 = {
       hp: 47,
     },
     {
-      sprite: "litleo",
       name: "Litleo",
-      pokedex: "Litleo",
       level: 15,
       nature: "Timid",
       ability: "Rivalry",
@@ -251,9 +204,7 @@ export const _tentacool2 = {
       hp: 48,
     },
     {
-      sprite: "squirtle",
       name: "Squirtle",
-      pokedex: "Squirtle",
       level: 16,
       nature: "Adamant",
       ability: "Torrent",
@@ -266,20 +217,16 @@ export const _tentacool2 = {
     },
   ]}
 >
-  <BattleLine line="Opening">
+  <BattleLine>
     <Matchup opponents={["snubbull"]}>
-      <Turn
-        turn={[
-          <OpponentMove move="{s:snubbull} Pow-Up Punch {s:wooper-paldea} to {+:40}" />,
-          <PlayerMove move="{s:wooper-paldea} Tail Whip {s:snubbull}" />,
-        ]}
-      />
-      <Turn
-        turn={[
-          <OpponentMove move="{s:snubbull} non-crit Pow-Up Punch {s:wooper-paldea} to {+:32}" />,
-          <PlayerMove move="{s:wooper-paldea} Tail Whip {s:snubbull}" />,
-        ]}
-      />
+      <Turn>
+        <OpponentMove move="{s:snubbull} Pow-Up Punch {s:wooper-paldea} to {+:40}" />
+        <PlayerMove move="{s:wooper-paldea} Tail Whip {s:snubbull}" />
+      </Turn>
+      <Turn>
+        <OpponentMove move="{s:snubbull} non-crit Pow-Up Punch {s:wooper-paldea} to {+:32}" />
+        <PlayerMove move="{s:wooper-paldea} Tail Whip {s:snubbull}" />
+      </Turn>
       <Row
         row={[
           "Risk →",
@@ -290,54 +237,40 @@ export const _tentacool2 = {
           },
         ]}
       />
-      <Turn
-        turn={[
-          <PlayerMove move="{s:wooper-paldea} switch to {s:kricketune}" />,
-          <OpponentMove move="{s:snubbull} Pow-Up Punch {s:kricketune} to {+:43}" />,
-        ]}
-      />
-      <Turn
-        turn={[
-          <PlayerMove move="{s:kricketune} Rock Tomb {s:snubbull} to {-:0}" />,
-          <OpponentMove move="{s:snubbull} fainted" />,
-        ]}
-      />
+      <Turn>
+        <PlayerMove move="{s:wooper-paldea} switch to {s:kricketune}" />
+        <OpponentMove move="{s:snubbull} Pow-Up Punch {s:kricketune} to {+:43}" />
+      </Turn>
+      <Turn>
+        <PlayerMove move="{s:kricketune} Rock Tomb {s:snubbull} to {-:0}" />
+        <OpponentMove move="{s:snubbull} fainted" />
+      </Turn>
     </Matchup>
     <Matchup opponents={["squirtle"]}>
-      <Turn
-        turn={[
-          <PlayerMove move="{s:kricketune} Bug Bite {s:squirtle} to {-:20}" />,
-          <PlayerMove move="{s:kricketune} heal to {+:53}" />,
-          <OpponentMove move="{s:squirtle} Rock Tomb {s:kricketune} to {+:23}" />,
-        ]}
-      />
-      <Turn
-        turn={[
-          <PlayerMove move="{s:kricketune} Mega Drain {s:squirtle} to {-:0}" />,
-          <PlayerMove move="{s:kricketune} heal to {+:24}" />,
-          <OpponentMove move="{s:squirtle} fainted" />,
-        ]}
-      />
+      <Turn>
+        <PlayerMove move="{s:kricketune} Bug Bite {s:squirtle} to {-:20}" />
+        <PlayerMove move="{s:kricketune} heal to {+:53}" />
+        <OpponentMove move="{s:squirtle} Rock Tomb {s:kricketune} to {+:23}" />
+      </Turn>
+      <Turn>
+        <PlayerMove move="{s:kricketune} Mega Drain {s:squirtle} to {-:0}" />
+        <PlayerMove move="{s:kricketune} heal to {+:24}" />
+        <OpponentMove move="{s:squirtle} fainted" />
+      </Turn>
     </Matchup>
     <Matchup opponents={["litleo"]}>
-      <Turn
-        turn={[
-          <PlayerMove move="{s:kricketune} switch to {s:tentacool}" />,
-          <OpponentMove move="{s:litleo} Incinerate {s:tentacool} to {+:31}" />,
-        ]}
-      />
-      <Turn
-        turn={[
-          <PlayerMove move="{s:tentacool} Water Pulse {s:litleo} to {-:22}" />,
-          <OpponentMove move="{s:litleo} Round {s:tentacool} to {+:7}" />,
-        ]}
-      />
-      <Turn
-        turn={[
-          <PlayerMove move="{s:tentacool} Water Pulse {s:litleo} to {-:0}" />,
-          <OpponentMove move="{s:litleo} fainted" />,
-        ]}
-      />
+      <Turn>
+        <PlayerMove move="{s:kricketune} switch to {s:tentacool}" />
+        <OpponentMove move="{s:litleo} Incinerate {s:tentacool} to {+:31}" />
+      </Turn>
+      <Turn>
+        <PlayerMove move="{s:tentacool} Water Pulse {s:litleo} to {-:22}" />
+        <OpponentMove move="{s:litleo} Round {s:tentacool} to {+:7}" />
+      </Turn>
+      <Turn>
+        <PlayerMove move="{s:tentacool} Water Pulse {s:litleo} to {-:0}" />
+        <OpponentMove move="{s:litleo} fainted" />
+      </Turn>
     </Matchup>
   </BattleLine>
 </Battle>
@@ -347,19 +280,11 @@ export const _tentacool2 = {
 <Encounter encounter="Psyduck" sprite="psyduck" row={["Old Rod · 70% · Level 2-4"]} />
 
 export const _psyduck1 = {
-  sprite: "psyduck",
   name: "Psyduck",
-  pokedex: "Psyduck",
   level: 2,
-  nature: null,
-  ability: null,
-  item: "None",
   move1: "Scratch",
   move2: "Water Sport",
-  move3: null,
-  move4: null,
   hp: 14,
-  warnings: [],
 };
 
 ## Viridian Forest Brendan Battle
@@ -373,7 +298,7 @@ export const _marill2 = {
   move3: "Covet",
   move4: "Tail Whip",
   hp: 53,
-  warnings: ["level", "nature", "item", "move2", "move3"],
+  warning: ["level", "nature", "item", "move2", "move3"],
 };
 
 export const _meowthg2 = {
@@ -383,23 +308,21 @@ export const _meowthg2 = {
   move3: "Metal Claw",
   move4: "Scratch",
   hp: 46,
-  warnings: ["level", "nature", "move3", "move4"],
+  warning: ["level", "nature", "move3", "move4"],
 };
 
 export const _kricketune2 = {
   ..._kricketune1,
   nature: "Naughty",
   item: "Oran Berry",
-  warnings: ["nature", "item"],
+  warning: ["nature", "item"],
 };
 
 <Battle
   playerTeam={[_marill2, _meowthg2, _kricketune2]}
   opponentTeam={[
     {
-      sprite: "meditite",
       name: "Meditite",
-      pokedex: "Meditite",
       level: 14,
       nature: "Adamant",
       ability: "Pure Power",
@@ -411,9 +334,7 @@ export const _kricketune2 = {
       hp: 36,
     },
     {
-      sprite: "corphish",
       name: "Corphish",
-      pokedex: "Corphish",
       level: 15,
       nature: "Adamant",
       ability: "Adaptability",
@@ -425,9 +346,7 @@ export const _kricketune2 = {
       hp: 42,
     },
     {
-      sprite: "numel",
       name: "Numel",
-      pokedex: "Numel",
       level: 15,
       nature: "Lonely",
       ability: "Simple",
@@ -439,9 +358,7 @@ export const _kricketune2 = {
       hp: 47,
     },
     {
-      sprite: "treecko",
       name: "Treecko",
-      pokedex: "Treecko",
       level: 16,
       nature: "Adamant",
       ability: "Unburden",
@@ -454,79 +371,57 @@ export const _kricketune2 = {
     },
   ]}
 >
-  <BattleLine line="Opening">
+  <BattleLine>
     <Matchup opponents={["meditite"]}>
-      <Turn
-        turn={[
-          <OpponentMove move="{s:meditite} Fake Out {s:marill} to {+:35}" />,
-          <PlayerMove move="{s:marill} flinched" />,
-        ]}
-      />
-      <Turn
-        turn={[
-          <OpponentMove move="{s:meditite} Rock Tomb {s:marill} to {+:20}" />,
-          <PlayerMove move="{s:marill} Covet {s:meditite} to {-:4}" />,
-        ]}
-      />
-      <Turn
-        turn={[
-          <PlayerMove move="{s:marill} Aqua Jet {s:meditite} to {-:0}" />,
-          <OpponentMove move="{s:meditite} fainted" />,
-        ]}
-      />
+      <Turn>
+        <OpponentMove move="{s:meditite} Fake Out {s:marill} to {+:35}" />
+        <PlayerMove move="{s:marill} flinched" />
+      </Turn>
+      <Turn>
+        <OpponentMove move="{s:meditite} Rock Tomb {s:marill} to {+:20}" />
+        <PlayerMove move="{s:marill} Covet {s:meditite} to {-:4}" />
+      </Turn>
+      <Turn>
+        <PlayerMove move="{s:marill} Aqua Jet {s:meditite} to {-:0}" />
+        <OpponentMove move="{s:meditite} fainted" />
+      </Turn>
     </Matchup>
     <Matchup opponents={["corphish"]}>
-      <Turn
-        turn={[
-          <PlayerMove move="{s:marill} switch to {s:meowth-galar}" />,
-          <OpponentMove move="{s:corphish} Knock Off {s:meowth-galar} to {+:24}" />,
-        ]}
-      />
-      <Turn
-        turn={[
-          <PlayerMove move="{s:meowth-galar} Fake Out {s:corphish} to {-:34}" />,
-          <OpponentMove move="{s:corphish} flinched" />,
-        ]}
-      />
-      <Turn
-        turn={[
-          <PlayerMove move="{s:meowth-galar} switch to {s:kricketune}" />,
-          <OpponentMove move="{s:corphish} Aqua Jet {s:kricketune} to {+:28}" />,
-        ]}
-      />
-      <Turn
-        turn={[
-          <PlayerMove move="{s:kricketune} Mega Drain {s:corphish} to {-:0}" />,
-          <PlayerMove move="{s:kricketune} heal to {+:41}" />,
-          <OpponentMove move="{s:corphish} fainted" />,
-        ]}
-      />
+      <Turn>
+        <PlayerMove move="{s:marill} switch to {s:meowth-galar}" />
+        <OpponentMove move="{s:corphish} Knock Off {s:meowth-galar} to {+:24}" />
+      </Turn>
+      <Turn>
+        <PlayerMove move="{s:meowth-galar} Fake Out {s:corphish} to {-:34}" />
+        <OpponentMove move="{s:corphish} flinched" />
+      </Turn>
+      <Turn>
+        <PlayerMove move="{s:meowth-galar} switch to {s:kricketune}" />
+        <OpponentMove move="{s:corphish} Aqua Jet {s:kricketune} to {+:28}" />
+      </Turn>
+      <Turn>
+        <PlayerMove move="{s:kricketune} Mega Drain {s:corphish} to {-:0}" />
+        <PlayerMove move="{s:kricketune} heal to {+:41}" />
+        <OpponentMove move="{s:corphish} fainted" />
+      </Turn>
     </Matchup>
-
     <Matchup opponents={["numel"]}>
-      <Turn
-        turn={[
-          <PlayerMove move="{s:kricketune} Rock Tomb {s:numel} to {-:16}" />,
-          <OpponentMove move="{s:numel} Flame Charge {s:kricketune} to {+:13}" />,
-        ]}
-      />
-      <Turn
-        turn={[
-          <PlayerMove move="{s:kricketune} Rock Tomb {s:numel} to {-:0}" />,
-          <OpponentMove move="{s:numel} fainted" />,
-        ]}
-      />
+      <Turn>
+        <PlayerMove move="{s:kricketune} Rock Tomb {s:numel} to {-:16}" />
+        <OpponentMove move="{s:numel} Flame Charge {s:kricketune} to {+:13}" />
+      </Turn>
+      <Turn>
+        <PlayerMove move="{s:kricketune} Rock Tomb {s:numel} to {-:0}" />
+        <OpponentMove move="{s:numel} fainted" />
+      </Turn>
     </Matchup>
     <Matchup opponents={["treecko"]}>
-      <Turn
-        turn={[
-          <PlayerMove move="{s:kricketune} Bug Bite {s:treecko} to {-:0}" />,
-          <PlayerMove move="{s:kricketune} heal to {+:23}" />,
-          <OpponentMove move="{s:treecko} fainted" />,
-        ]}
-      />
+      <Turn>
+        <PlayerMove move="{s:kricketune} Bug Bite {s:treecko} to {-:0}" />
+        <PlayerMove move="{s:kricketune} heal to {+:23}" />
+        <OpponentMove move="{s:treecko} fainted" />
+      </Turn>
     </Matchup>
-
   </BattleLine>
 </Battle>
 

@@ -1,23 +1,38 @@
-import Card, { CardDetail, useCardDetail } from "@site/src/components/Card";
+import Card from "@site/src/components/Card";
 import { fetchPokedex } from "@site/src/utils/pokedex";
 import { spriteUrl } from "@site/src/utils/sprites";
-import { useEffect, useRef, useState } from "react";
+import { createContext, useContext, useEffect, useRef, useState } from "react";
 import styles from "./styles.module.css";
 
+const CardDetailCtx = createContext(false);
+const useCardDetail = () => useContext(CardDetailCtx);
+
+function CardDetail({ children }: { children: React.ReactNode }) {
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <CardDetailCtx.Provider value={isOpen}>
+      {children}
+      <button className={styles.detailToggle} onClick={() => setIsOpen(!isOpen)}>
+        {isOpen ? "−" : "+"}
+      </button>
+    </CardDetailCtx.Provider>
+  );
+}
+
 export interface Pokemon {
-  sprite: string;
   name: string;
-  pokedex: string;
+  sprite?: string;
+  pokedex?: string;
   level: number;
-  nature: string;
-  ability: string;
-  item: string;
-  move1: string;
-  move2: string;
-  move3: string;
-  move4: string;
+  nature?: string | null;
+  ability?: string | null;
+  item?: string | null;
+  move1?: string | null;
+  move2?: string | null;
+  move3?: string | null;
+  move4?: string | null;
   hp: number;
-  warnings?: string[];
+  warning?: string[];
 }
 
 export default function Team({ team, title = "Team" }: { team: Pokemon[]; title?: string }) {
@@ -89,17 +104,21 @@ function PokemonCard({
   pokedex: Map<string, number[]> | null;
 }) {
   const isExpanded = useCardDetail();
-  const warn = new Set(pokemon?.warnings ?? []);
+  const warn = new Set(pokemon?.warning ?? []);
   const wc = (field: string) => (warn.has(field) ? styles.fieldWarning : "");
   const stats =
-    pokemon && pokedex && pokemon.pokedex
-      ? (pokedex.get(pokemon.pokedex.toLowerCase()) ?? null)
+    pokemon && pokedex
+      ? (pokedex.get((pokemon.pokedex ?? pokemon.name).toLowerCase()) ?? null)
       : null;
 
   return (
     <div className={`${styles.card} ${!pokemon ? styles.cardEmpty : ""}`}>
       {pokemon ? (
-        <img src={spriteUrl(pokemon.sprite)} alt={pokemon.name} className={styles.sprite} />
+        <img
+          src={spriteUrl(pokemon.sprite ?? pokemon.name.toLowerCase())}
+          alt={pokemon.name}
+          className={styles.sprite}
+        />
       ) : (
         <div className={styles.emptySprite}>✕</div>
       )}
@@ -110,7 +129,9 @@ function PokemonCard({
           <div className={styles.divider} />
           <div className={`${styles.detail} ${wc("nature")}`}>{pokemon?.nature ?? "-"}</div>
           <div className={`${styles.detail} ${wc("ability")}`}>{pokemon?.ability ?? "-"}</div>
-          <div className={`${styles.detail} ${wc("item")}`}>{pokemon?.item ?? "-"}</div>
+          <div className={`${styles.detail} ${wc("item")}`}>
+            {pokemon == null ? "-" : (pokemon.item ?? "None")}
+          </div>
           <div className={styles.divider} />
           <div className={`${styles.move} ${wc("move1")}`}>{pokemon?.move1 ?? "-"}</div>
           <div className={`${styles.move} ${wc("move2")}`}>{pokemon?.move2 ?? "-"}</div>
