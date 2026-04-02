@@ -1,4 +1,5 @@
 import Card from "@site/src/components/Card";
+import { ScrollFade } from "@site/src/components/ScrollFade";
 import Team, { Pokemon } from "@site/src/components/Team";
 import { spriteUrl } from "@site/src/utils/sprites";
 import { parseTokens } from "@site/src/utils/tokens";
@@ -251,7 +252,9 @@ function Move({
 }) {
   const graphCtx = useContext(BattleGraphCtx);
   const parts = parseTokens(move, side, graphCtx);
-  return <div className={`${styles.turnAction} ${className ?? ""}`}>{parts}</div>;
+  return (
+    <ScrollFade innerClassName={`${styles.turnAction} ${className ?? ""}`}>{parts}</ScrollFade>
+  );
 }
 
 export function PlayerMove({ move }: { move: string }) {

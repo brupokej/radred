@@ -1,3 +1,4 @@
+import { ScrollFade } from "@site/src/components/ScrollFade";
 import { parseTokens } from "@site/src/utils/tokens";
 import styles from "./styles.module.css";
 
@@ -12,7 +13,10 @@ const VARIANT_CLASS: Record<string, string> = {
 export function Row({ row }: { row: RowCell[] }) {
   const highlighted = row.some((c) => typeof c !== "string" && !!c.variant);
   return (
-    <div className={`${styles.row} ${highlighted ? styles.rowHighlighted : ""}`}>
+    <ScrollFade
+      innerClassName={`${styles.row} ${highlighted ? styles.rowHighlighted : ""}`}
+      insetBlock="var(--ifm-spacing-vertical)"
+    >
       {row.map((cell, i) => {
         const variant = typeof cell === "string" ? undefined : cell.variant;
         const value = typeof cell === "string" ? cell : cell.value;
@@ -21,9 +25,11 @@ export function Row({ row }: { row: RowCell[] }) {
             {parseTokens(value)}
           </span>
         ) : (
-          <span key={i}>{parseTokens(value)}</span>
+          <span key={i} className={styles.plainCell}>
+            {parseTokens(value)}
+          </span>
         );
       })}
-    </div>
+    </ScrollFade>
   );
 }

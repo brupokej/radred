@@ -1,19 +1,18 @@
 import Card from "@site/src/components/Card";
+import { Row, RowCell } from "@site/src/components/Row";
 import Team, { Pokemon } from "@site/src/components/Team";
 import { spriteUrl } from "@site/src/utils/sprites";
 import styles from "./styles.module.css";
 
-type Detail = string | { value: string; variant: "warning" | "info" };
-
 export default function Encounter({
   encounter,
   sprite,
-  details,
+  row,
   playerTeam,
 }: {
   encounter: string;
   sprite: string;
-  details?: Detail[];
+  row: RowCell[];
   playerTeam?: Pokemon[];
 }) {
   return (
@@ -26,28 +25,7 @@ export default function Encounter({
           </div>
           <div className={styles.info}>
             <div className={styles.name}>{encounter}</div>
-            {details && details.length > 0 && (
-              <div className={styles.detail}>
-                {details.map((d, i) => {
-                  const value = typeof d === "string" ? d : d.value;
-                  const variant = typeof d !== "string" ? d.variant : undefined;
-                  const variantClass =
-                    variant === "warning"
-                      ? styles.detailWarning
-                      : variant === "info"
-                        ? styles.detailInfo
-                        : undefined;
-                  return (
-                    <span
-                      key={i}
-                      className={`${styles.detailItem}${variantClass ? ` ${variantClass}` : ""}`}
-                    >
-                      {value}
-                    </span>
-                  );
-                })}
-              </div>
-            )}
+            <Row row={row} />
           </div>
         </div>
       </Card>
