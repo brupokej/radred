@@ -1,0 +1,12 @@
+.result {
+  background: var(--ifm-code-background);
+  border-radius: var(--ifm-global-radius);
+  display: inline-block;
+  font-family: var(--ifm-font-family-monospace);
+  font-size: inherit;
+  line-height: 1.8;
+  margin-inline: 0.25rem;
+  padding: 0.1rem 0.3rem;
+  vertical-align: middle;
+  white-space: nowrap;
+}

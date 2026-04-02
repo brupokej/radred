@@ -1,3 +1,4 @@
+import { parseTokens } from "@site/src/utils/tokens";
 import styles from "./styles.module.css";
 
 export function Note({
@@ -11,7 +12,7 @@ export function Note({
     <div className={`${styles.note} ${styles[variant]}`}>
       {note.map((line, i) => (
         <div key={i} className={styles.line}>
-          {line}
+          {parseTokens(line)}
         </div>
       ))}
     </div>

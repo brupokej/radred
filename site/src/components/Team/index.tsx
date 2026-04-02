@@ -70,13 +70,13 @@ const STAT_LABELS = ["HP", "ATK", "DEF", "SPA", "SPD", "SPE"];
 const STAT_INDICES = [0, 1, 2, 4, 5, 3];
 
 function statColor(v: number): string {
-  if (v >= 150) return "var(--ifm-color-success-darker)";
-  if (v >= 125) return "var(--ifm-color-success)";
-  if (v >= 100) return "var(--ifm-color-success-lighter)";
-  if (v >= 75) return "var(--ifm-color-warning)";
-  if (v >= 50) return "var(--ifm-color-danger-lighter)";
-  if (v >= 25) return "var(--ifm-color-danger)";
-  return "var(--ifm-color-danger-darker)";
+  if (v >= 150) return "var(--ifm-color-info)";
+  if (v >= 125) return "var(--ifm-color-success-darker)";
+  if (v >= 100) return "var(--ifm-color-success)";
+  if (v >= 75) return "var(--ifm-color-success-lighter)";
+  if (v >= 50) return "var(--ifm-color-warning)";
+  if (v >= 25) return "var(--ifm-color-danger-lighter)";
+  return "var(--ifm-color-danger)";
 }
 
 function PokemonCard({

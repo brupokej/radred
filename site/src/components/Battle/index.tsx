@@ -1,6 +1,7 @@
 import Card from "@site/src/components/Card";
 import Team, { Pokemon } from "@site/src/components/Team";
 import { spriteUrl } from "@site/src/utils/sprites";
+import { parseTokens } from "@site/src/utils/tokens";
 import React, {
   useCallback,
   useContext,
@@ -237,59 +238,6 @@ export function Turn({ turn }: { turn: React.ReactNode[] }) {
       ))}
     </div>
   );
-}
-
-const TOKEN_RE = /\{([a-z+\-]):([^}]+)\}/g;
-
-function parseTokens(
-  text: string,
-  side?: "player" | "opponent",
-  graphCtx?: GraphCtxValue | null
-): React.ReactNode[] {
-  const parts: React.ReactNode[] = [];
-  let i = 0;
-  let last = 0;
-  let lastSprite: string | null = null;
-  for (const match of text.matchAll(TOKEN_RE)) {
-    const segment = text.slice(last, match.index!).trim();
-    if (segment) parts.push(<React.Fragment key={i++}>{segment}</React.Fragment>);
-    const [, type, value] = match;
-    if (type === "s" && side !== undefined) {
-      lastSprite = value;
-      parts.push(
-        <img key={i++} src={spriteUrl(value, side)} alt={value} className={styles.sprite} />
-      );
-    } else if ((type === "+" || type === "-") && side !== undefined) {
-      const isPlayerHp = type === "+";
-      const num = parseInt(value, 10);
-      let maxHp: number | undefined;
-      if (lastSprite != null && graphCtx != null) {
-        const { playerHp, opponentHp } = graphCtx;
-        maxHp = isPlayerHp ? playerHp[lastSprite] : opponentHp[lastSprite];
-        maxHp ??= playerHp[lastSprite] ?? opponentHp[lastSprite];
-      }
-      const suffix = isPlayerHp ? "↑" : "↓";
-      const display =
-        maxHp != null && maxHp > 0 && !isNaN(num)
-          ? `${Math.round((num / maxHp) * 100)}%${num > 0 ? suffix : ""}`
-          : value;
-      parts.push(
-        <span key={i++} className={styles.result}>
-          {display}
-        </span>
-      );
-    } else if (type === "c") {
-      parts.push(
-        <span key={i++} className={styles.result}>
-          {value}
-        </span>
-      );
-    }
-    last = match.index! + match[0].length;
-  }
-  const trailing = text.slice(last).trim();
-  if (trailing) parts.push(<React.Fragment key={i++}>{trailing}</React.Fragment>);
-  return parts;
 }
 
 function Move({

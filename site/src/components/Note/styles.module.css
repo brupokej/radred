@@ -1,7 +1,11 @@
 .note {
+  align-items: center;
   border: 1px solid;
   border-left-width: 5px;
   border-radius: var(--ifm-global-radius);
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 0.875rem;
   margin: var(--ifm-leading) 0;
   padding: var(--ifm-spacing-vertical) var(--ifm-spacing-horizontal);
 }
@@ -27,5 +31,21 @@
 }
 
 .line {
-  line-height: 1.6;
+  line-height: 1.8;
+  padding-inline: calc(var(--ifm-spacing-horizontal) * 0.6);
+  position: relative;
+}
+
+.line:first-child {
+  padding-inline-start: 0;
+}
+
+.line + .line::before {
+  background: var(--ifm-color-emphasis-300);
+  bottom: calc(20% - 1px);
+  content: "";
+  left: 0;
+  position: absolute;
+  top: calc(20% - 1px);
+  width: 1px;
 }
