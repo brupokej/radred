@@ -10,11 +10,20 @@ const VARIANT_CLASS: Record<string, string> = {
   danger: styles.contentDanger,
 };
 
+const ROW_HIGHLIGHT_CLASS: Record<string, string> = {
+  info: styles.rowHighlightedInfo,
+  warning: styles.rowHighlightedWarning,
+  danger: styles.rowHighlightedDanger,
+};
+
 export function Row({ row }: { row: RowCell[] }) {
-  const highlighted = row.some((c) => typeof c !== "string" && !!c.variant);
+  const variants = new Set(
+    row.flatMap((c) => (typeof c !== "string" && c.variant ? [c.variant] : []))
+  );
+  const rowHighlightClasses = [...variants].map((v) => ROW_HIGHLIGHT_CLASS[v]).join(" ");
   return (
     <ScrollFade
-      innerClassName={`${styles.row} ${highlighted ? styles.rowHighlighted : ""}`}
+      innerClassName={`${styles.row} ${rowHighlightClasses}`}
       insetBlock="var(--ifm-spacing-vertical)"
     >
       {row.map((cell, i) => {

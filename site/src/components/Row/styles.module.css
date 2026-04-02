@@ -4,16 +4,24 @@
   line-height: 1.8;
   overflow-x: auto;
   padding-block: var(--ifm-spacing-vertical);
-  padding-inline: calc(var(--ifm-spacing-horizontal) - 0.4rem);
+  padding-inline: calc(var(--ifm-spacing-horizontal) - 0.3rem);
   white-space: nowrap;
 }
 
 .plainCell {
-  padding-inline: 0.4rem;
+  padding-inline: 0.3rem;
 }
 
-.rowHighlighted {
-  padding-block: calc(var(--ifm-spacing-vertical) - 0.15rem);
+.rowHighlightedInfo {
+  padding-block: calc(var(--ifm-spacing-vertical) - var(--hl-info-vpad));
+}
+
+.rowHighlightedWarning {
+  padding-block: calc(var(--ifm-spacing-vertical) - var(--hl-warning-vpad));
+}
+
+.rowHighlightedDanger {
+  padding-block: calc(var(--ifm-spacing-vertical) - var(--hl-danger-vpad));
 }
 
 .content {
@@ -21,23 +29,25 @@
   border-radius: 3px;
   display: inline-flex;
   gap: 0.4rem;
-  padding-inline: 0.4rem;
 }
 
 .contentInfo {
   background: var(--hl-info-bg);
   outline: var(--hl-info-outline);
   padding-block: var(--hl-info-vpad);
+  padding-inline: var(--hl-info-ipad);
 }
 
 .contentWarning {
   background: var(--hl-warning-bg);
   outline: var(--hl-warning-outline);
   padding-block: var(--hl-warning-vpad);
+  padding-inline: var(--hl-warning-ipad);
 }
 
 .contentDanger {
   background: var(--hl-danger-bg);
   outline: var(--hl-danger-outline);
   padding-block: var(--hl-danger-vpad);
+  padding-inline: var(--hl-danger-ipad);
 }
