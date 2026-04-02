@@ -31,3 +31,19 @@
   color: var(--ifm-color-primary);
   font-size: 0.875rem;
 }
+
+.detailToggle {
+  background: none;
+  border: none;
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+  cursor: pointer;
+  display: block;
+  padding: calc(var(--ifm-spacing-vertical) * 0.6) var(--ifm-spacing-horizontal);
+  text-align: center;
+  user-select: none;
+  width: 100%;
+}
+
+.detailToggle:hover {
+  background: var(--ifm-color-emphasis-100);
+}

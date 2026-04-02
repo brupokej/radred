@@ -1,5 +1,20 @@
-import { useState } from "react";
+import { createContext, useContext, useState } from "react";
 import styles from "./styles.module.css";
+
+const CardDetailCtx = createContext(false);
+export const useCardDetail = () => useContext(CardDetailCtx);
+
+export function CardDetail({ children }: { children: React.ReactNode }) {
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <CardDetailCtx.Provider value={isOpen}>
+      {children}
+      <button className={styles.detailToggle} onClick={() => setIsOpen(!isOpen)}>
+        <span className={styles.chevron}>{isOpen ? "−" : "+"}</span>
+      </button>
+    </CardDetailCtx.Provider>
+  );
+}
 
 export default function Card({
   title,

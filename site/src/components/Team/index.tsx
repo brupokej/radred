@@ -1,4 +1,4 @@
-import Card from "@site/src/components/Card";
+import Card, { CardDetail, useCardDetail } from "@site/src/components/Card";
 import { fetchPokedex } from "@site/src/utils/pokedex";
 import { spriteUrl } from "@site/src/utils/sprites";
 import { useEffect, useRef, useState } from "react";
@@ -23,9 +23,11 @@ export interface Pokemon {
 export default function Team({ team, title = "Team" }: { team: Pokemon[]; title?: string }) {
   return (
     <Card title={title}>
-      <div className={styles.content}>
-        <TeamGrid team={team} />
-      </div>
+      <CardDetail>
+        <div className={styles.content}>
+          <TeamGrid team={team} />
+        </div>
+      </CardDetail>
     </Card>
   );
 }
@@ -86,6 +88,7 @@ function PokemonCard({
   pokemon: Pokemon | null;
   pokedex: Map<string, number[]> | null;
 }) {
+  const isExpanded = useCardDetail();
   const warn = new Set(pokemon?.warnings ?? []);
   const wc = (field: string) => (warn.has(field) ? styles.fieldWarning : "");
   const stats =
@@ -102,43 +105,43 @@ function PokemonCard({
       )}
       <div className={`${styles.name} ${wc("name")}`}>{pokemon?.name ?? "-"}</div>
       <div className={`${styles.level} ${wc("level")}`}>{pokemon?.level ?? "-"}</div>
-      <div className={styles.divider} />
-      <div className={`${styles.detail} ${wc("nature")}`}>{pokemon?.nature ?? "-"}</div>
-      <div className={`${styles.detail} ${wc("ability")}`}>{pokemon?.ability ?? "-"}</div>
-      <div className={`${styles.detail} ${wc("item")}`}>{pokemon?.item ?? "-"}</div>
-      <div className={styles.divider} />
-      <div className={`${styles.move} ${wc("move1")}`}>{pokemon?.move1 ?? "-"}</div>
-      <div className={`${styles.move} ${wc("move2")}`}>{pokemon?.move2 ?? "-"}</div>
-      <div className={`${styles.move} ${wc("move3")}`}>{pokemon?.move3 ?? "-"}</div>
-      <div className={`${styles.move} ${wc("move4")}`}>{pokemon?.move4 ?? "-"}</div>
-      <div className={styles.divider} />
-      <div className={styles.stats}>
-        {STAT_LABELS.map((label, i) => {
-          const v = stats ? stats[STAT_INDICES[i]] : null;
-          if (v == null) {
-            return (
-              <div key={label} className={styles.move}>
-                -
-              </div>
-            );
-          }
-          return (
-            <div key={label} className={styles.statRow}>
-              <span className={styles.statLabel}>{label}</span>
-              <span className={styles.statValue}>{v}</span>
-              <div className={styles.statBarTrack}>
-                <div
-                  className={styles.statBar}
-                  style={{
-                    width: `${(Math.min(v, 150) / 150) * 100}%`,
-                    backgroundColor: statColor(v),
-                  }}
-                />
-              </div>
-            </div>
-          );
-        })}
-      </div>
+      {isExpanded && (
+        <>
+          <div className={styles.divider} />
+          <div className={`${styles.detail} ${wc("nature")}`}>{pokemon?.nature ?? "-"}</div>
+          <div className={`${styles.detail} ${wc("ability")}`}>{pokemon?.ability ?? "-"}</div>
+          <div className={`${styles.detail} ${wc("item")}`}>{pokemon?.item ?? "-"}</div>
+          <div className={styles.divider} />
+          <div className={`${styles.move} ${wc("move1")}`}>{pokemon?.move1 ?? "-"}</div>
+          <div className={`${styles.move} ${wc("move2")}`}>{pokemon?.move2 ?? "-"}</div>
+          <div className={`${styles.move} ${wc("move3")}`}>{pokemon?.move3 ?? "-"}</div>
+          <div className={`${styles.move} ${wc("move4")}`}>{pokemon?.move4 ?? "-"}</div>
+          <div className={styles.divider} />
+          <div className={styles.stats}>
+            {STAT_LABELS.map((label, i) => {
+              const v = stats ? stats[STAT_INDICES[i]] : null;
+              if (v == null) {
+                return <div key={label} className={styles.move}>-</div>;
+              }
+              return (
+                <div key={label} className={styles.statRow}>
+                  <span className={styles.statLabel}>{label}</span>
+                  <span className={styles.statValue}>{v}</span>
+                  <div className={styles.statBarTrack}>
+                    <div
+                      className={styles.statBar}
+                      style={{
+                        width: `${(Math.min(v, 150) / 150) * 100}%`,
+                        backgroundColor: statColor(v),
+                      }}
+                    />
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </>
+      )}
     </div>
   );
 }
