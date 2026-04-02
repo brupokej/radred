@@ -4,12 +4,16 @@
   line-height: 1.8;
   overflow-x: auto;
   padding-block: var(--ifm-spacing-vertical);
-  padding-inline: calc(var(--ifm-spacing-horizontal) - 0.3rem);
+  padding-inline: calc(var(--ifm-spacing-horizontal) - 0.4rem);
   white-space: nowrap;
 }
 
 .plainCell {
-  padding-inline: 0.3rem;
+  padding-inline: 0.4rem;
+}
+
+.sepCell {
+  padding-inline: 0.25rem;
 }
 
 .rowHighlightedInfo {
@@ -29,25 +33,23 @@
   border-radius: 3px;
   display: inline-flex;
   gap: 0.4rem;
+  padding-inline: 0.4rem;
 }
 
 .contentInfo {
   background: var(--hl-info-bg);
   outline: var(--hl-info-outline);
   padding-block: var(--hl-info-vpad);
-  padding-inline: var(--hl-info-ipad);
 }
 
 .contentWarning {
   background: var(--hl-warning-bg);
   outline: var(--hl-warning-outline);
   padding-block: var(--hl-warning-vpad);
-  padding-inline: var(--hl-warning-ipad);
 }
 
 .contentDanger {
   background: var(--hl-danger-bg);
   outline: var(--hl-danger-outline);
   padding-block: var(--hl-danger-vpad);
-  padding-inline: var(--hl-danger-ipad);
 }

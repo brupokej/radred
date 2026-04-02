@@ -2,7 +2,25 @@ import { ScrollFade } from "@site/src/components/ScrollFade";
 import { parseTokens } from "@site/src/utils/tokens";
 import styles from "./styles.module.css";
 
-export type RowCell = string | { value: string; variant?: "info" | "warning" | "danger" };
+export type RowCell =
+  | string
+  | { sep: string }
+  | { value: string; variant?: "info" | "warning" | "danger" };
+
+type NormalizedCell = { sep: string } | { value: string; variant?: "info" | "warning" | "danger" };
+
+const SEPARATORS = ["·", "→"] as const;
+
+const SEP_SPLIT = new RegExp(`(\\s*[${SEPARATORS.join("")}]\\s*)`);
+const SEP_ONLY = new RegExp(`^[${SEPARATORS.join("")}]$`);
+
+function expandString(text: string): NormalizedCell[] {
+  return text
+    .split(SEP_SPLIT)
+    .map((s) => s.trim())
+    .filter(Boolean)
+    .map((s) => (SEP_ONLY.test(s) ? { sep: s } : { value: s }));
+}
 
 const VARIANT_CLASS: Record<string, string> = {
   info: styles.contentInfo,
@@ -17,25 +35,33 @@ const ROW_HIGHLIGHT_CLASS: Record<string, string> = {
 };
 
 export function Row({ row }: { row: RowCell[] }) {
-  const variants = new Set(
-    row.flatMap((c) => (typeof c !== "string" && c.variant ? [c.variant] : []))
+  const cells: NormalizedCell[] = row.flatMap((c) =>
+    typeof c === "string" ? expandString(c) : [c]
   );
+
+  const variants = new Set(cells.flatMap((c) => ("variant" in c && c.variant ? [c.variant] : [])));
   const rowHighlightClasses = [...variants].map((v) => ROW_HIGHLIGHT_CLASS[v]).join(" ");
+
   return (
     <ScrollFade
       innerClassName={`${styles.row} ${rowHighlightClasses}`}
       insetBlock="var(--ifm-spacing-vertical)"
     >
-      {row.map((cell, i) => {
-        const variant = typeof cell === "string" ? undefined : cell.variant;
-        const value = typeof cell === "string" ? cell : cell.value;
-        return variant ? (
-          <span key={i} className={`${styles.content} ${VARIANT_CLASS[variant]}`}>
-            {parseTokens(value)}
+      {cells.map((cell, i) => {
+        if ("sep" in cell) {
+          return (
+            <span key={i} className={styles.sepCell}>
+              {cell.sep}
+            </span>
+          );
+        }
+        return cell.variant ? (
+          <span key={i} className={`${styles.content} ${VARIANT_CLASS[cell.variant]}`}>
+            {parseTokens(cell.value)}
           </span>
         ) : (
           <span key={i} className={styles.plainCell}>
-            {parseTokens(value)}
+            {parseTokens(cell.value)}
           </span>
         );
       })}

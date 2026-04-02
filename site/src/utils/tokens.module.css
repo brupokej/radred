@@ -5,8 +5,7 @@
   font-family: var(--ifm-font-family-monospace);
   font-size: inherit;
   line-height: 1.8;
-  margin-inline: 0.25rem;
-  padding: 0.1rem 0.3rem;
+  padding: 0.1rem 0.4rem;
   vertical-align: middle;
   white-space: nowrap;
 }
