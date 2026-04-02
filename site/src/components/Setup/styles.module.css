@@ -1,0 +1,7 @@
+.rows {
+  font-size: 0.875rem;
+}
+
+.rows > *:not(:last-child) {
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+}

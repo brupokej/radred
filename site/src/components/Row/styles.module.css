@@ -1,0 +1,37 @@
+.row {
+  align-items: center;
+  display: flex;
+  gap: 0.4rem;
+  line-height: 1.8;
+  overflow-x: auto;
+  padding-block: var(--ifm-spacing-vertical);
+  padding-inline: var(--ifm-spacing-horizontal);
+  white-space: nowrap;
+}
+
+.rowHighlighted {
+  padding-block: calc(var(--ifm-spacing-vertical) - 0.15rem);
+}
+
+.content {
+  align-items: center;
+  border-radius: 3px;
+  display: inline-flex;
+  gap: 0.4rem;
+  padding: 0.15rem 0.4rem;
+}
+
+.contentInfo {
+  background: var(--ifm-color-info-contrast-background);
+  outline: 1px solid var(--ifm-color-info);
+}
+
+.contentWarning {
+  background: var(--ifm-color-warning-contrast-background);
+  outline: 1px solid var(--ifm-color-warning);
+}
+
+.contentDanger {
+  background: var(--ifm-color-danger-contrast-background);
+  outline: 1px solid var(--ifm-color-danger);
+}

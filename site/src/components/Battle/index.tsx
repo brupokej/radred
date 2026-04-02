@@ -254,15 +254,6 @@ function Move({
   return <div className={`${styles.turnAction} ${className ?? ""}`}>{parts}</div>;
 }
 
-export function Risk({ risk }: { risk: string }) {
-  const parts = parseTokens(risk);
-  return (
-    <div className={styles.riskRow}>
-      <div className={styles.riskContent}>{parts}</div>
-    </div>
-  );
-}
-
 export function PlayerMove({ move }: { move: string }) {
   return <Move move={move} side="player" />;
 }

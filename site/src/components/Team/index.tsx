@@ -121,7 +121,11 @@ function PokemonCard({
             {STAT_LABELS.map((label, i) => {
               const v = stats ? stats[STAT_INDICES[i]] : null;
               if (v == null) {
-                return <div key={label} className={styles.move}>-</div>;
+                return (
+                  <div key={label} className={styles.move}>
+                    -
+                  </div>
+                );
               }
               return (
                 <div key={label} className={styles.statRow}>

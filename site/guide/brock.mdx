@@ -8,17 +8,19 @@ import {
   Matchup,
   PlayerMove,
   OpponentMove,
-  Risk,
   Turn,
 } from "@site/src/components/Battle";
 import Encounter from "@site/src/components/Encounter";
-import { Note } from "@site/src/components/Note";
+import { Row } from "@site/src/components/Row";
+import Setup from "@site/src/components/Setup";
 
 # Brock
 
-<Note note={["New Game → Difficulty Options to {c:Hardcore}"]} variant="info" />
-<Note note={["Cheats → {c:SO2Toxic}", "{c:Woyaopp}", "{c:EZCatch}", "{c:TeamPreview}"]} variant="info" />
-<Note note={["Options → Battle Scene to {c:Off}", "Wild Double Battle to {c:On}"]} variant="info" />
+<Setup>
+  <Row row={["New Game → Difficulty Options to {c:Hardcore}"]} />
+  <Row row={["Cheats → {c:SO2Toxic}, {c:Woyaopp}, {c:EZCatch}, {c:TeamPreview}"]} />
+  <Row row={["Options → Battle Scene to {c:Off}, Wild Double Battle to {c:On}"]} />
+</Setup>
 
 ## Oak's Lab Encounter
 
@@ -45,7 +47,7 @@ export const _litten1 = {
 <Encounter
   encounter="Tentacool"
   sprite="tentacool"
-  details={["Old Rod", "70%", "Level 2-4", { value: "Clear Body", variant: "info" }]}
+  details={["Old Rod", "70%", "Level 2-4", "Clear Body"]}
 />
 
 export const _tentacool1 = {
@@ -69,13 +71,7 @@ export const _tentacool1 = {
 <Encounter
   encounter="Wooper-P"
   sprite="wooper-paldea"
-  details={[
-    "Grass",
-    { value: "Night", variant: "warning" },
-    "20%",
-    "Level 4-6",
-    { value: "Water Absorb", variant: "info" },
-  ]}
+  details={["Grass", { value: "Night", variant: "warning" }, "20%", "Level 4-6", "Water Absorb"]}
 />
 
 export const _wooperp1 = {
@@ -99,7 +95,7 @@ export const _wooperp1 = {
 <Encounter
   encounter="Meowth-G"
   sprite="meowth-galar"
-  details={["Grass", "Night", "10%", "Level 2-4", { value: "Tough Claws", variant: "info" }]}
+  details={["Grass", "Night", "10%", "Level 2-4", "Tough Claws"]}
 />
 
 export const _meowthg1 = {
@@ -123,7 +119,7 @@ export const _meowthg1 = {
 <Encounter
   encounter="Marill"
   sprite="marill"
-  details={["Old Rod", "70%", "Level 3-4", { value: "Huge Power", variant: "info" }]}
+  details={["Old Rod", "70%", "Level 3-4", "Huge Power"]}
 />
 
 export const _marill1 = {
@@ -147,7 +143,7 @@ export const _marill1 = {
 <Encounter
   encounter="Houndour"
   sprite="houndour"
-  details={["Grass", "Night", "5%", "Level 4-6", { value: "Flash Fire", variant: "info" }]}
+  details={["Grass", "Night", "5%", "Level 4-6", "Flash Fire"]}
 />
 
 export const _houndour1 = {
@@ -292,7 +288,16 @@ export const _tentacool2 = {
           <PlayerMove move="{s:wooper-paldea} Tail Whip {s:snubbull}" />,
         ]}
       />
-      <Risk risk="Snubbull double crit Pow-Up Punch Wooper-P into Snubbull Fire Fang Kricketune is {c:0.3%}" />
+      <Row
+        row={[
+          "Risk →",
+          {
+            value:
+              "Snubbull double crit Pow-Up Punch Wooper-P into Snubbull Fire Fang Kricketune is {c:0.3%}",
+            variant: "danger",
+          },
+        ]}
+      />
       <Turn
         turn={[
           <PlayerMove move="{s:wooper-paldea} switch to {s:kricketune}" />,
@@ -533,4 +538,6 @@ export const _kricketune2 = {
   </BattleLine>
 </Battle>
 
-<Note note={["Bag → Exp. Share to {c:Off}"]} variant="warning" />
+<Setup>
+  <Row row={["Bag →", { value: "Exp. Share to {c:Off}", variant: "warning" }]} />
+</Setup>

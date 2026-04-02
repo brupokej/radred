@@ -46,17 +46,16 @@
   min-width: 0;
 }
 
+.turns > *:not(:last-child) {
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+}
+
 .turn {
   align-items: center;
-  border-bottom: 1px solid var(--ifm-color-emphasis-200);
   display: flex;
   flex-wrap: wrap;
   padding-block: var(--ifm-spacing-vertical);
   row-gap: var(--ifm-spacing-vertical);
-}
-
-.turn:last-child {
-  border-bottom: none;
 }
 
 .cell {
@@ -97,32 +96,6 @@
 
 [data-theme="dark"] .opponentMove {
   color: #707070;
-}
-
-
-.riskRow {
-  border-bottom: 1px solid var(--ifm-color-emphasis-200);
-  overflow-x: auto;
-  padding-block: var(--ifm-spacing-vertical);
-}
-
-.riskRow:last-child {
-  border-bottom: none;
-}
-
-.riskContent {
-  align-items: center;
-  background: var(--ifm-color-danger-contrast-background);
-  border-radius: 3px;
-  display: inline-flex;
-  font-size: 0.875rem;
-  gap: 0.4rem;
-  line-height: 1.8;
-  margin-inline: calc(var(--ifm-spacing-horizontal) - 0.4rem);
-  outline: 1px solid var(--ifm-color-danger);
-  padding: 0.15rem 0.4rem;
-  vertical-align: top;
-  white-space: nowrap;
 }
 
 .branchTurn {
