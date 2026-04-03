@@ -21,6 +21,10 @@ function buildMap(raw: string): Map<string, number[]> {
   return map;
 }
 
+export function calcMaxHp(baseHp: number, level: number): number {
+  return Math.floor(((2 * baseHp + 31) * level) / 100) + level + 10;
+}
+
 export function fetchPokedex(): Promise<Map<string, number[]>> {
   if (_cached) return Promise.resolve(_cached);
   if (!_promise) {

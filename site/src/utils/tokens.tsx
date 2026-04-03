@@ -25,12 +25,7 @@ export function parseTokens(
     if (type === "s" && side !== undefined) {
       lastSprite = value;
       parts.push(
-        <img
-          key={i++}
-          src={spriteUrl(value, side)}
-          alt={value}
-          style={{ height: 28, width: 28, objectFit: "contain" }}
-        />
+        <img key={i++} src={spriteUrl(value, side)} alt={value} className={styles.sprite} />
       );
     } else if ((type === "+" || type === "-") && side !== undefined) {
       const isPlayerHp = type === "+";

@@ -1,0 +1,86 @@
+import { Pokemon } from "@site/src/components/Team";
+
+// Brock
+
+export const route22RivalTeam: Pokemon[] = [
+  {
+    name: "Snubbull",
+    level: 15,
+    nature: "Adamant",
+    ability: "Intimidate",
+    item: "Muscle Band",
+    move1: "Pow-Up Punch",
+    move2: "Covet",
+    move3: "Thunder Wave",
+    move4: "Fire Fang",
+  },
+  {
+    name: "Litleo",
+    level: 15,
+    nature: "Timid",
+    ability: "Rivalry",
+    item: "Wise Glasses",
+    move1: "Incinerate",
+    move2: "Round",
+    move3: "HP Grass",
+    move4: "Sleep Talk",
+  },
+  {
+    name: "Squirtle",
+    level: 16,
+    nature: "Adamant",
+    ability: "Torrent",
+    item: "Oran Berry",
+    move1: "Pow-Up Punch",
+    move2: "Aqua Jet",
+    move3: "Rock Tomb",
+    move4: "Curse",
+  },
+];
+
+export const viridianForestBrendanTeam: Pokemon[] = [
+  {
+    name: "Meditite",
+    level: 14,
+    nature: "Adamant",
+    ability: "Pure Power",
+    item: "Muscle Band",
+    move1: "Fake Out",
+    move2: "Rock Smash",
+    move3: "Bullet Punch",
+    move4: "Rock Tomb",
+  },
+  {
+    name: "Corphish",
+    level: 15,
+    nature: "Adamant",
+    ability: "Adaptability",
+    item: "Mystic Water",
+    move1: "Aqua Jet",
+    move2: "Aerial Ace",
+    move3: "Rock Tomb",
+    move4: "Knock Off",
+  },
+  {
+    name: "Numel",
+    level: 15,
+    nature: "Lonely",
+    ability: "Simple",
+    item: "Passho Berry",
+    move1: "Ancient Power",
+    move2: "Flame Charge",
+    move3: "Rock Tomb",
+    move4: "Bulldoze",
+  },
+  {
+    name: "Treecko",
+    level: 16,
+    nature: "Adamant",
+    ability: "Unburden",
+    item: "Oran Berry",
+    move1: "Pow-Up Punch",
+    move2: "Bullet Seed",
+    move3: "Drain Punch",
+    move4: "Rock Tomb",
+  },
+];

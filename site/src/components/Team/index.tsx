@@ -31,7 +31,6 @@ export interface Pokemon {
   move2?: string | null;
   move3?: string | null;
   move4?: string | null;
-  hp: number;
   warning?: string[];
 }
 

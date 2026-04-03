@@ -13,6 +13,7 @@ import {
 import Encounter from "@site/src/components/Encounter";
 import { Row } from "@site/src/components/Row";
 import Setup from "@site/src/components/Setup";
+import { route22RivalTeam, viridianForestBrendanTeam } from "@site/src/utils/opponentTeams";
 
 # Brock
 
@@ -33,7 +34,6 @@ export const _litten1 = {
   move1: "Ember",
   move2: "Growl",
   move3: "Scratch",
-  hp: 21,
 };
 
 ## Pallet Town Encounter
@@ -50,7 +50,6 @@ export const _tentacool1 = {
   ability: "Clear Body",
   move1: "Rapid Spin",
   move2: "Water Gun",
-  hp: 14,
 };
 
 ## Route 21 Encounter
@@ -70,7 +69,6 @@ export const _wooperp1 = {
   move1: "Mud Shot",
   move2: "Tackle",
   move3: "Tail Whip",
-  hp: 19,
 };
 
 ## Route 1 Encounter
@@ -89,7 +87,6 @@ export const _meowthg1 = {
   ability: "Tough Claws",
   move1: "Fake Out",
   move2: "Growl",
-  hp: 14,
 };
 
 ## Viridian City Encounter
@@ -103,7 +100,6 @@ export const _marill1 = {
   move1: "Aqua Jet",
   move2: "Tackle",
   move3: "Tail Whip",
-  hp: 18,
 };
 
 ## Route 2 Encounter
@@ -120,7 +116,6 @@ export const _houndour1 = {
   ability: "Flash Fire",
   move1: "Incinerate",
   move2: "Leer",
-  hp: 18,
 };
 
 ## Viridian Forest Encounter
@@ -134,7 +129,6 @@ export const _kricketot1 = {
   move1: "Bide",
   move2: "Growl",
   move3: "Tackle",
-  hp: 18,
 };
 
 ## Route 22 Rival Battle
@@ -146,7 +140,6 @@ export const _wooperp2 = {
   move2: "Slam",
   move3: "Tackle",
   move4: "Tail Whip",
-  hp: 48,
   warning: ["level", "nature", "move2"],
 };
 
@@ -160,7 +153,6 @@ export const _kricketune1 = {
   move2: "Mega Drain",
   move3: "Rock Tomb",
   move4: "Struggle Bug",
-  hp: 55,
   warning: ["name", "level", "nature", "item", "move1", "move2", "move3", "move4"],
 };
 
@@ -172,51 +164,10 @@ export const _tentacool2 = {
   move2: "Rapid Spin",
   move3: "Supersonic",
   move4: "Water Pulse",
-  hp: 43,
   warning: ["level", "nature", "move1", "move3", "move4"],
 };
 
-<Battle
-  playerTeam={[_wooperp2, _kricketune1, _tentacool2]}
-  opponentTeam={[
-    {
-      name: "Snubbull",
-      level: 15,
-      nature: "Adamant",
-      ability: "Intimidate",
-      item: "Muscle Band",
-      move1: "Pow-Up Punch",
-      move2: "Covet",
-      move3: "Thunder Wave",
-      move4: "Fire Fang",
-      hp: 47,
-    },
-    {
-      name: "Litleo",
-      level: 15,
-      nature: "Timid",
-      ability: "Rivalry",
-      item: "Wise Glasses",
-      move1: "Incinerate",
-      move2: "Round",
-      move3: "HP Grass",
-      move4: "Sleep Talk",
-      hp: 48,
-    },
-    {
-      name: "Squirtle",
-      level: 16,
-      nature: "Adamant",
-      ability: "Torrent",
-      item: "Oran Berry",
-      move1: "Pow-Up Punch",
-      move2: "Aqua Jet",
-      move3: "Rock Tomb",
-      move4: "Curse",
-      hp: 45,
-    },
-  ]}
->
+<Battle playerTeam={[_wooperp2, _kricketune1, _tentacool2]} opponentTeam={route22RivalTeam}>
   <BattleLine>
     <Matchup opponents={["snubbull"]}>
       <Turn>
@@ -284,7 +235,6 @@ export const _psyduck1 = {
   level: 2,
   move1: "Scratch",
   move2: "Water Sport",
-  hp: 14,
 };
 
 ## Viridian Forest Brendan Battle
@@ -297,7 +247,6 @@ export const _marill2 = {
   move2: "Body Slam",
   move3: "Covet",
   move4: "Tail Whip",
-  hp: 53,
   warning: ["level", "nature", "item", "move2", "move3"],
 };
 
@@ -307,7 +256,6 @@ export const _meowthg2 = {
   nature: "Sassy",
   move3: "Metal Claw",
   move4: "Scratch",
-  hp: 46,
   warning: ["level", "nature", "move3", "move4"],
 };
 
@@ -318,59 +266,7 @@ export const _kricketune2 = {
   warning: ["nature", "item"],
 };
 
-<Battle
-  playerTeam={[_marill2, _meowthg2, _kricketune2]}
-  opponentTeam={[
-    {
-      name: "Meditite",
-      level: 14,
-      nature: "Adamant",
-      ability: "Pure Power",
-      item: "Muscle Band",
-      move1: "Fake Out",
-      move2: "Rock Smash",
-      move3: "Bullet Punch",
-      move4: "Rock Tomb",
-      hp: 36,
-    },
-    {
-      name: "Corphish",
-      level: 15,
-      nature: "Adamant",
-      ability: "Adaptability",
-      item: "Mystic Water",
-      move1: "Aqua Jet",
-      move2: "Aerial Ace",
-      move3: "Rock Tomb",
-      move4: "Knock Off",
-      hp: 42,
-    },
-    {
-      name: "Numel",
-      level: 15,
-      nature: "Lonely",
-      ability: "Simple",
-      item: "Passho Berry",
-      move1: "Ancient Power",
-      move2: "Flame Charge",
-      move3: "Rock Tomb",
-      move4: "Bulldoze",
-      hp: 47,
-    },
-    {
-      name: "Treecko",
-      level: 16,
-      nature: "Adamant",
-      ability: "Unburden",
-      item: "Oran Berry",
-      move1: "Pow-Up Punch",
-      move2: "Bullet Seed",
-      move3: "Drain Punch",
-      move4: "Rock Tomb",
-      hp: 43,
-    },
-  ]}
->
+<Battle playerTeam={[_marill2, _meowthg2, _kricketune2]} opponentTeam={viridianForestBrendanTeam}>
   <BattleLine>
     <Matchup opponents={["meditite"]}>
       <Turn>
