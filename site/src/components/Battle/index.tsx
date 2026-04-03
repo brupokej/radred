@@ -326,39 +326,29 @@ export function Branch({
   if (graphCtx && branch.length === 1) return null;
 
   return (
-    <div className={styles.branchTurn}>
-      <div className={`${styles.cell} ${styles.branchCell}`}>
-        <div className={styles.turnAction}>
-          {branch.map((item, j) => {
-            const targetLine = item;
-            const isSelected = selectedChildLine === targetLine;
-            return (
-              <React.Fragment key={j}>
-                {j === 0 && "Choose"}
-                {j > 0 && "or"}
-                {graphCtx ? (
-                  <button
-                    className={`${styles.branchOption} ${isSelected ? styles.branchOptionSelected : ""}`}
-                    onClick={() =>
-                      isSelected
-                        ? graphCtx.dispatch({ type: "DESELECT_BRANCH", branchId })
-                        : graphCtx.dispatch({
-                            type: "SELECT_BRANCH",
-                            branchId,
-                            childLine: targetLine,
-                          })
-                    }
-                  >
-                    {item}
-                  </button>
-                ) : (
-                  <a href={`#${targetLine}`}>{item}</a>
-                )}
-              </React.Fragment>
-            );
-          })}
-        </div>
-      </div>
-    </div>
+    <ScrollFade innerClassName={styles.branchRow} insetBlock="var(--ifm-spacing-vertical)">
+      {branch.map((item, j) => {
+        const isSelected = selectedChildLine === item;
+        return (
+          <React.Fragment key={j}>
+            {j === 0 ? "Choose" : "or"}
+            {graphCtx ? (
+              <button
+                className={`${styles.branchOption} ${isSelected ? styles.branchOptionSelected : ""}`}
+                onClick={() =>
+                  isSelected
+                    ? graphCtx.dispatch({ type: "DESELECT_BRANCH", branchId })
+                    : graphCtx.dispatch({ type: "SELECT_BRANCH", branchId, childLine: item })
+                }
+              >
+                {item}
+              </button>
+            ) : (
+              <a href={`#${item}`}>{item}</a>
+            )}
+          </React.Fragment>
+        );
+      })}
+    </ScrollFade>
   );
 }

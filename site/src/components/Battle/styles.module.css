@@ -98,13 +98,14 @@
   color: #707070;
 }
 
-.branchTurn {
+.branchRow {
   align-items: center;
   display: flex;
-}
-
-.branchCell {
-  flex: 1;
+  gap: 0.4rem;
+  overflow-x: auto;
+  padding-block: var(--ifm-spacing-vertical);
+  padding-inline: var(--ifm-spacing-horizontal);
+  white-space: nowrap;
 }
 
 .branchOption {
