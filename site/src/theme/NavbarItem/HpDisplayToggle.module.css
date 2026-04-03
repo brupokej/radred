@@ -1,0 +1,21 @@
+.toggle {
+  -webkit-tap-highlight-color: transparent;
+  align-items: center;
+  border-radius: 50%;
+  display: flex;
+  gap: 0.1rem;
+  height: 2rem;
+  justify-content: center;
+  transition: background var(--ifm-transition-fast);
+  width: 2rem;
+}
+
+.toggle:hover {
+  background: var(--ifm-color-emphasis-200);
+}
+
+.label {
+  font-size: 1.25rem;
+  font-weight: var(--ifm-font-weight-bold);
+  line-height: 1;
+}

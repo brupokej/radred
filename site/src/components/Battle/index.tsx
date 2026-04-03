@@ -1,6 +1,7 @@
 import Card from "@site/src/components/Card";
 import { ScrollFade } from "@site/src/components/ScrollFade";
 import Team, { Pokemon } from "@site/src/components/Team";
+import { useHpDisplay } from "@site/src/utils/hpDisplay";
 import { calcMaxHp, fetchPokedex } from "@site/src/utils/pokedex";
 import { spriteUrl } from "@site/src/utils/sprites";
 import { parseTokens } from "@site/src/utils/tokens";
@@ -270,7 +271,8 @@ function Move({
   className?: string;
 }) {
   const graphCtx = useContext(BattleGraphCtx);
-  const parts = parseTokens(move, side, graphCtx);
+  const hpDisplay = useHpDisplay();
+  const parts = parseTokens(move, side, graphCtx, hpDisplay);
   return (
     <ScrollFade innerClassName={`${styles.turnAction} ${className ?? ""}`}>{parts}</ScrollFade>
   );

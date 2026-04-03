@@ -12,7 +12,8 @@ type HpContext = {
 export function parseTokens(
   text: string,
   side?: "player" | "opponent",
-  hpCtx?: HpContext | null
+  hpCtx?: HpContext | null,
+  hpDisplay: "percent" | "raw" = "percent"
 ): React.ReactNode[] {
   const parts: React.ReactNode[] = [];
   let i = 0;
@@ -38,9 +39,9 @@ export function parseTokens(
       }
       const suffix = isPlayerHp ? "↑" : "↓";
       const display =
-        maxHp != null && maxHp > 0 && !isNaN(num)
-          ? `${Math.round((num / maxHp) * 100)}%${num > 0 ? suffix : ""}`
-          : value;
+        hpDisplay === "raw" || maxHp == null || maxHp <= 0 || isNaN(num)
+          ? `${num}${num > 0 ? suffix : ""}`
+          : `${Math.round((num / maxHp) * 100)}%${num > 0 ? suffix : ""}`;
       parts.push(
         <span key={i++} className={styles.result}>
           {display}
