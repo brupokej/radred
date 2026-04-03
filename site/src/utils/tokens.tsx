@@ -2,43 +2,44 @@ import React from "react";
 import { spriteUrl } from "./sprites";
 import styles from "./tokens.module.css";
 
-export const TOKEN_RE = /\{([a-z+\-]):([^}]+)\}/g;
+export const TOKEN_RE = /\{([a-z+\-=]):([^}]+)\}/g;
 
-type HpContext = {
-  playerHp: Record<string, number>;
-  opponentHp: Record<string, number>;
+export type HpContext = {
+  maxHp: Record<string, number>;
 };
 
 export function parseTokens(
   text: string,
-  side?: "player" | "opponent",
   hpCtx?: HpContext | null,
   hpDisplay: "percent" | "raw" = "percent"
 ): React.ReactNode[] {
   const parts: React.ReactNode[] = [];
   let i = 0;
   let last = 0;
-  let lastSprite: string | null = null;
+  let lastSpriteKey: string | null = null;
   for (const match of text.matchAll(TOKEN_RE)) {
     const segment = text.slice(last, match.index!).trim();
     if (segment) parts.push(<React.Fragment key={i++}>{segment}</React.Fragment>);
     const [, type, value] = match;
-    if (type === "s" && side !== undefined) {
-      lastSprite = value;
+    if (type === "p" || type === "o") {
+      lastSpriteKey = `${type}:${value}`;
       parts.push(
-        <img key={i++} src={spriteUrl(value, side)} alt={value} className={styles.sprite} />
+        <img
+          key={i++}
+          src={spriteUrl(value, type === "p" ? "player" : "opponent")}
+          alt={value}
+          className={styles.sprite}
+        />
       );
-    } else if ((type === "+" || type === "-") && side !== undefined) {
-      const isPlayerHp = type === "+";
+    } else if (type === "+" || type === "-" || type === "=") {
       const num = parseInt(value, 10);
       let maxHp: number | undefined;
-      if (lastSprite != null && hpCtx != null) {
-        const { playerHp, opponentHp } = hpCtx;
-        maxHp = isPlayerHp ? playerHp[lastSprite] : opponentHp[lastSprite];
-        maxHp ??= playerHp[lastSprite] ?? opponentHp[lastSprite];
+      if (lastSpriteKey != null && hpCtx != null) {
+        const hp = hpCtx.maxHp[lastSpriteKey];
+        if (hp > 0) maxHp = hp;
       }
-      const suffix = isPlayerHp ? "↑" : "↓";
-      const hasHp = maxHp != null && maxHp > 0 && !isNaN(num);
+      const suffix = type === "+" ? "↑" : type === "-" ? "↓" : "";
+      const hasHp = maxHp != null && !isNaN(num);
       const showSuffix = num > 0;
       let resultContent: React.ReactNode;
       if (hpDisplay === "raw" && hasHp) {
@@ -54,7 +55,7 @@ export function parseTokens(
       } else if (hasHp) {
         resultContent = (
           <>
-            {Math.round((num / maxHp) * 100)}
+            {Math.round((num / maxHp!) * 100)}
             {showSuffix && "%"}
             {showSuffix ? suffix : ""}
           </>

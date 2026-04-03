@@ -96,8 +96,7 @@ type GraphCtxValue = {
   dispatch: (action: GraphAction) => void;
   registerBranch: (branchId: string, parentLine: string) => void;
   unregisterBranch: (branchId: string) => void;
-  playerHp: Record<string, number>;
-  opponentHp: Record<string, number>;
+  maxHp: Record<string, number>;
 };
 
 const BattleGraphCtx = React.createContext<GraphCtxValue | null>(null);
@@ -174,25 +173,18 @@ export function Battle({
     return stats ? calcMaxHp(stats[0], p.level) : 0;
   }
 
-  const playerHp = useMemo(
+  const maxHp = useMemo(
     () =>
-      Object.fromEntries(
-        (playerTeam ?? []).map((p) => [p.sprite ?? p.name.toLowerCase(), hpFromDex(p)])
-      ),
-    [playerTeam, pokedex]
-  );
-
-  const opponentHp = useMemo(
-    () =>
-      Object.fromEntries(
-        (opponentTeam ?? []).map((p) => [p.sprite ?? p.name.toLowerCase(), hpFromDex(p)])
-      ),
-    [opponentTeam, pokedex]
+      Object.fromEntries([
+        ...(playerTeam ?? []).map((p) => [`p:${p.sprite ?? p.name.toLowerCase()}`, hpFromDex(p)]),
+        ...(opponentTeam ?? []).map((p) => [`o:${p.sprite ?? p.name.toLowerCase()}`, hpFromDex(p)]),
+      ]),
+    [playerTeam, opponentTeam, pokedex]
   );
 
   const ctx = useMemo(
-    () => ({ state, dispatch, registerBranch, unregisterBranch, playerHp, opponentHp }),
-    [state, dispatch, registerBranch, unregisterBranch, playerHp, opponentHp]
+    () => ({ state, dispatch, registerBranch, unregisterBranch, maxHp }),
+    [state, dispatch, registerBranch, unregisterBranch, maxHp]
   );
 
   const enrichedLines = new Map<string, React.ReactNode>();
@@ -261,29 +253,21 @@ export function Turn({ children }: { children: React.ReactNode }) {
   );
 }
 
-function Move({
-  move,
-  side,
-  className,
-}: {
-  move: string;
-  side: "player" | "opponent";
-  className?: string;
-}) {
+function Move({ move, className }: { move: string; className?: string }) {
   const graphCtx = useContext(BattleGraphCtx);
   const hpDisplay = useHpDisplay();
-  const parts = parseTokens(move, side, graphCtx, hpDisplay);
+  const parts = parseTokens(move, graphCtx, hpDisplay);
   return (
     <ScrollFade innerClassName={`${styles.turnAction} ${className ?? ""}`}>{parts}</ScrollFade>
   );
 }
 
 export function PlayerMove({ move }: { move: string }) {
-  return <Move move={move} side="player" />;
+  return <Move move={move} />;
 }
 
 export function OpponentMove({ move }: { move: string }) {
-  return <Move move={move} side="opponent" className={styles.opponentMove} />;
+  return <Move move={move} className={styles.opponentMove} />;
 }
 
 export function Branch({

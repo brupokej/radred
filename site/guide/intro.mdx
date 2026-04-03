@@ -181,8 +181,8 @@ export const _houndoom1 = {
 <BattleLine>
   <Matchup opponents={["hitmonlee"]}>
     <Turn>
-      <OpponentMove move="{s:hitmonlee} Fake Out {s:azumarill} to {p:83}" />
-      <PlayerMove move="{s:azumarill} flinched" />
+      <OpponentMove move="{o:hitmonlee} Fake Out {p:azumarill} to {+:83}" />
+      <PlayerMove move="{p:azumarill} flinched" />
     </Turn>
     <Branch branch={["Azumarill Covet Wartortle", "Azumarill Covet Hitmonlee"]} />
   </Matchup>
@@ -191,14 +191,14 @@ export const _houndoom1 = {
 <BattleLine line="Azumarill Covet Wartortle">
   <Matchup opponents={["hitmonlee"]}>
     <Turn>
-      <OpponentMove move="{s:hitmonlee} switch to {s:wartortle}" />
-      <PlayerMove move="{s:azumarill} Covet {s:wartortle} to {p:60}" />
+      <OpponentMove move="{o:hitmonlee} switch to {o:wartortle}" />
+      <PlayerMove move="{p:azumarill} Covet {o:wartortle} to {-:60}" />
     </Turn>
   </Matchup>
   <Matchup opponents={["wartortle"]}>
     <Turn>
-      <OpponentMove move="{s:wartortle} Shell Smash" />
-      <PlayerMove move="{s:azumarill} Aqua Tail {s:wartortle} to {p:39}" />
+      <OpponentMove move="{o:wartortle} Shell Smash" />
+      <PlayerMove move="{p:azumarill} Aqua Tail {o:wartortle} to {-:39}" />
     </Turn>
     <Branch branch={["Regular damage to Wartortle", "Crit damage to Wartortle"]} />
   </Matchup>
@@ -207,15 +207,15 @@ export const _houndoom1 = {
 <BattleLine line="Azumarill Covet Hitmonlee">
   <Matchup opponents={["hitmonlee"]}>
     <Turn>
-      <OpponentMove move="{s:hitmonlee} Knock Off {s:azumarill} to {p:61}" />
-      <PlayerMove move="{s:azumarill} Covet {s:hitmonlee} to {p:0}" />
-      <OpponentMove move="{s:hitmonlee} fainted" />
+      <OpponentMove move="{o:hitmonlee} Knock Off {p:azumarill} to {+:61}" />
+      <PlayerMove move="{p:azumarill} Covet {o:hitmonlee} to {-:0}" />
+      <OpponentMove move="{o:hitmonlee} fainted" />
     </Turn>
   </Matchup>
   <Matchup opponents={["wartortle"]}>
     <Turn>
-      <OpponentMove move="{s:wartortle} Shell Smash" />
-      <PlayerMove move="{s:azumarill} Play Rough {s:wartortle} to {p:36}" />
+      <OpponentMove move="{o:wartortle} Shell Smash" />
+      <PlayerMove move="{p:azumarill} Play Rough {o:wartortle} to {-:36}" />
     </Turn>
     <Branch branch={["Regular damage to Wartortle", "Crit damage to Wartortle"]} />
   </Matchup>
@@ -224,16 +224,16 @@ export const _houndoom1 = {
 <BattleLine line="Regular damage to Wartortle">
   <Matchup opponents={["wartortle"]}>
     <Turn>
-      <PlayerMove move="{s:azumarill} switch to {s:torracat}" />
-      <OpponentMove move="{s:wartortle} Hidden Power Electric {s:torracat} to {p:45}" />
+      <PlayerMove move="{p:azumarill} switch to {p:torracat}" />
+      <OpponentMove move="{o:wartortle} Hidden Power Electric {p:torracat} to {+:45}" />
     </Turn>
     <Turn>
-      <PlayerMove move="{s:torracat} Fake Out {s:wartortle} to {p:25}" />
-      <OpponentMove move="{s:wartortle} flinched" />
+      <PlayerMove move="{p:torracat} Fake Out {o:wartortle} to {-:25}" />
+      <OpponentMove move="{o:wartortle} flinched" />
     </Turn>
     <Turn>
-      <PlayerMove move="{s:torracat} switch to {s:clodsire}" />
-      <OpponentMove move="{s:wartortle} Water Pulse {s:clodsire}" />
+      <PlayerMove move="{p:torracat} switch to {p:clodsire}" />
+      <OpponentMove move="{o:wartortle} Water Pulse {p:clodsire}" />
     </Turn>
     <Branch branch={["Perrserker Bullet Punch Wartortle"]} />
   </Matchup>
@@ -242,8 +242,8 @@ export const _houndoom1 = {
 <BattleLine line="Crit damage to Wartortle">
   <Matchup opponents={["wartortle"]}>
     <Turn>
-      <PlayerMove move="{s:azumarill} switch to {s:clodsire}" />
-      <OpponentMove move="{s:wartortle} Hidden Power Electric {s:clodsire}" />
+      <PlayerMove move="{p:azumarill} switch to {p:clodsire}" />
+      <OpponentMove move="{o:wartortle} Hidden Power Electric {p:clodsire}" />
     </Turn>
     <Branch branch={["Perrserker Bullet Punch Wartortle"]} />
   </Matchup>
@@ -252,49 +252,49 @@ export const _houndoom1 = {
 <BattleLine line="Perrserker Bullet Punch Wartortle">
   <Matchup opponents={["wartortle"]}>
     <Turn>
-      <PlayerMove move="{s:clodsire} switch to {s:perrserker}" />
-      <OpponentMove move="{s:wartortle} Icy Wind {s:perrserker} to {p:72}" />
+      <PlayerMove move="{p:clodsire} switch to {p:perrserker}" />
+      <OpponentMove move="{o:wartortle} Icy Wind {p:perrserker} to {+:72}" />
     </Turn>
     <Turn>
-      <PlayerMove move="{s:perrserker} Fake Out {s:wartortle} to {p:12}" />
-      <OpponentMove move="{s:wartortle} flinched" />
+      <PlayerMove move="{p:perrserker} Fake Out {o:wartortle} to {-:12}" />
+      <OpponentMove move="{o:wartortle} flinched" />
     </Turn>
     <Turn>
-      <PlayerMove move="{s:perrserker} Bullet Punch {s:wartortle} to {p:0}" />
-      <OpponentMove move="{s:wartortle} fainted" />
+      <PlayerMove move="{p:perrserker} Bullet Punch {o:wartortle} to {-:0}" />
+      <OpponentMove move="{o:wartortle} fainted" />
     </Turn>
   </Matchup>
   <Matchup opponents={["simisear"]}>
     <Turn>
-      <PlayerMove move="{s:perrserker} switch to {s:drednaw}" />
-      <OpponentMove move="{s:simisear} Incinerate {s:drednaw} to {p:84}" />
+      <PlayerMove move="{p:perrserker} switch to {p:drednaw}" />
+      <OpponentMove move="{o:simisear} Incinerate {p:drednaw} to {+:84}" />
     </Turn>
     <Turn>
-      <OpponentMove move="{s:simisear} Incinerate {s:drednaw} to {p:71}" />
-      <PlayerMove move="{s:drednaw} Razor Shell {s:simisear} to {p:0}" />
-      <OpponentMove move="{s:simisear} fainted" />
+      <OpponentMove move="{o:simisear} Incinerate {p:drednaw} to {+:71}" />
+      <PlayerMove move="{p:drednaw} Razor Shell {o:simisear} to {-:0}" />
+      <OpponentMove move="{o:simisear} fainted" />
     </Turn>
   </Matchup>
   <Matchup opponents={["arbok"]}>
     <Turn>
-      <PlayerMove move="{s:drednaw} switch to {s:clodsire}" />
-      <OpponentMove move="{s:arbok} Thunder Fang {s:clodsire}" />
+      <PlayerMove move="{p:drednaw} switch to {p:clodsire}" />
+      <OpponentMove move="{o:arbok} Thunder Fang {p:clodsire}" />
     </Turn>
     <Turn>
-      <OpponentMove move="{s:arbok} Crunch {s:clodsire} to {p:50}" />
-      <PlayerMove move="{s:clodsire} Mud Shot {s:arbok} to {p:62}" />
+      <OpponentMove move="{o:arbok} Crunch {p:clodsire} to {+:50}" />
+      <PlayerMove move="{p:clodsire} Mud Shot {o:arbok} to {-:62}" />
     </Turn>
     <Turn>
-      <PlayerMove move="{s:clodsire} switch to {s:perrserker}" />
-      <OpponentMove move="{s:arbok} Crunch {s:perrserker} to {p:42}" />
+      <PlayerMove move="{p:clodsire} switch to {p:perrserker}" />
+      <OpponentMove move="{o:arbok} Crunch {p:perrserker} to {+:42}" />
     </Turn>
     <Turn>
-      <PlayerMove move="{s:perrserker} Fake Out {s:arbok} to {p:45}" />
-      <OpponentMove move="{s:arbok} flinched" />
+      <PlayerMove move="{p:perrserker} Fake Out {o:arbok} to {-:45}" />
+      <OpponentMove move="{o:arbok} flinched" />
     </Turn>
     <Turn>
-      <PlayerMove move="{s:perrserker} Bullet Punch {s:arbok} to {p:0}" />
-      <OpponentMove move="{s:arbok} fainted" />
+      <PlayerMove move="{p:perrserker} Bullet Punch {o:arbok} to {-:0}" />
+      <OpponentMove move="{o:arbok} fainted" />
     </Turn>
     <Branch if={["Azumarill Covet Hitmonlee"]} branch={["Clefable Mystical Fire Tentacruel"]} />
     <Branch branch={["Hitmonlee Low Sweep Azumarill", "Clefable Mystical Fire Tentacruel"]} />
@@ -304,12 +304,12 @@ export const _houndoom1 = {
 <BattleLine line="Hitmonlee Low Sweep Azumarill">
   <Matchup opponents={["hitmonlee"]}>
     <Turn>
-      <PlayerMove move="{s:perrserker} switch to {s:azumarill}" />
-      <OpponentMove move="{s:hitmonlee} Low Sweep {s:azumarill} to {p:51}" />
+      <PlayerMove move="{p:perrserker} switch to {p:azumarill}" />
+      <OpponentMove move="{o:hitmonlee} Low Sweep {p:azumarill} to {+:51}" />
     </Turn>
     <Turn>
-      <OpponentMove move="{s:hitmonlee} Knock Off {s:azumarill} to {p:29}" />
-      <PlayerMove move="{s:azumarill} Play Rough {s:hitmonlee} to {p:0}" />
+      <OpponentMove move="{o:hitmonlee} Knock Off {p:azumarill} to {+:29}" />
+      <PlayerMove move="{p:azumarill} Play Rough {o:hitmonlee} to {-:0}" />
     </Turn>
     <Branch if={["Clefable Mystical Fire Tentacruel"]} branch={["Perrserker Iron Head Eevee"]} />
     <Branch branch={["Clefable Charge Beam"]} />
@@ -319,8 +319,8 @@ export const _houndoom1 = {
 <BattleLine line="Clefable Charge Beam">
   <Matchup opponents={["clefable"]}>
     <Turn>
-      <PlayerMove move="{s:azumarill} switch to {s:clodsire}" />
-      <OpponentMove move="{s:clefable} Charge Beam {s:clodsire}" />
+      <PlayerMove move="{p:azumarill} switch to {p:clodsire}" />
+      <OpponentMove move="{o:clefable} Charge Beam {p:clodsire}" />
     </Turn>
     <Branch branch={["Clefable Icy Wind Tentacruel", "Clefable switch to Eevee"]} />
   </Matchup>
@@ -329,26 +329,26 @@ export const _houndoom1 = {
 <BattleLine line="Clefable Icy Wind Tentacruel">
   <Matchup opponents={["clefable"]}>
     <Turn>
-      <PlayerMove move="{s:clodsire} switch to {s:tentacruel}" />
-      <OpponentMove move="{s:clefable} Icy Wind {s:tentacruel} to {p:81}" />
+      <PlayerMove move="{p:clodsire} switch to {p:tentacruel}" />
+      <OpponentMove move="{o:clefable} Icy Wind {p:tentacruel} to {+:81}" />
     </Turn>
     <Turn>
-      <PlayerMove move="{s:tentacruel} Acid Spray {s:clefable} to {p:66}" />
-      <OpponentMove move="{s:clefable} Charge Beam {s:tentacruel} to {p:42}" />
+      <PlayerMove move="{p:tentacruel} Acid Spray {o:clefable} to {-:66}" />
+      <OpponentMove move="{o:clefable} Charge Beam {p:tentacruel} to {+:42}" />
     </Turn>
     <Turn>
-      <PlayerMove move="{s:tentacruel} Sludge {s:clefable} to {p:0}" />
-      <OpponentMove move="{s:clefable} fainted" />
+      <PlayerMove move="{p:tentacruel} Sludge {o:clefable} to {-:0}" />
+      <OpponentMove move="{o:clefable} fainted" />
     </Turn>
   </Matchup>
   <Matchup opponents={["eevee"]}>
     <Turn>
-      <PlayerMove move="{s:tentacruel} Acid Spray {s:eevee} to {p:53}" />
-      <OpponentMove move="{s:eevee} Round {s:tentacruel} to {p:28}" />
+      <PlayerMove move="{p:tentacruel} Acid Spray {o:eevee} to {-:53}" />
+      <OpponentMove move="{o:eevee} Round {p:tentacruel} to {+:28}" />
     </Turn>
     <Turn>
-      <PlayerMove move="{s:tentacruel} Bubble Beam {s:eevee} to {p:0}" />
-      <OpponentMove move="{s:eevee} fainted" />
+      <PlayerMove move="{p:tentacruel} Bubble Beam {o:eevee} to {-:0}" />
+      <OpponentMove move="{o:eevee} fainted" />
     </Turn>
   </Matchup>
 </BattleLine>
@@ -356,28 +356,28 @@ export const _houndoom1 = {
 <BattleLine line="Clefable switch to Eevee">
   <Matchup opponents={["clefable"]}>
     <Turn>
-      <PlayerMove move="{s:clodsire} switch to {s:tentacruel}" />
-      <OpponentMove move="{s:clefable} switch to {s:eevee}" />
+      <PlayerMove move="{p:clodsire} switch to {p:tentacruel}" />
+      <OpponentMove move="{o:clefable} switch to {o:eevee}" />
     </Turn>
   </Matchup>
   <Matchup opponents={["eevee"]}>
     <Turn>
-      <PlayerMove move="{s:tentacruel} Acid Spray {s:eevee} to {p:53}" />
-      <OpponentMove move="{s:eevee} Round {s:tentacruel} to {p:67}" />
+      <PlayerMove move="{p:tentacruel} Acid Spray {o:eevee} to {-:53}" />
+      <OpponentMove move="{o:eevee} Round {p:tentacruel} to {+:67}" />
     </Turn>
     <Turn>
-      <PlayerMove move="{s:tentacruel} Bubble Beam {s:eevee} to {p:0}" />
-      <OpponentMove move="{s:eevee} fainted" />
+      <PlayerMove move="{p:tentacruel} Bubble Beam {o:eevee} to {-:0}" />
+      <OpponentMove move="{o:eevee} fainted" />
     </Turn>
   </Matchup>
   <Matchup opponents={["clefable"]}>
     <Turn>
-      <PlayerMove move="{s:tentacruel} Acid Spray {s:clefable} to {p:66}" />
-      <OpponentMove move="{s:clefable} Charge Beam {s:tentacruel} to {p:28}" />
+      <PlayerMove move="{p:tentacruel} Acid Spray {o:clefable} to {-:66}" />
+      <OpponentMove move="{o:clefable} Charge Beam {p:tentacruel} to {+:28}" />
     </Turn>
     <Turn>
-      <PlayerMove move="{s:tentacruel} Sludge {s:clefable} to {p:0}" />
-      <OpponentMove move="{s:clefable} fainted" />
+      <PlayerMove move="{p:tentacruel} Sludge {o:clefable} to {-:0}" />
+      <OpponentMove move="{o:clefable} fainted" />
     </Turn>
   </Matchup>
 </BattleLine>
@@ -385,16 +385,16 @@ export const _houndoom1 = {
 <BattleLine line="Clefable Mystical Fire Tentacruel">
   <Matchup opponents={["clefable"]}>
     <Turn>
-      <PlayerMove move="{s:perrserker} switch to {s:tentacruel}" />
-      <OpponentMove move="{s:clefable} Mystical Fire {s:tentacruel} to {p:77}" />
+      <PlayerMove move="{p:perrserker} switch to {p:tentacruel}" />
+      <OpponentMove move="{o:clefable} Mystical Fire {p:tentacruel} to {+:77}" />
     </Turn>
     <Turn>
-      <PlayerMove move="{s:tentacruel} Acid Spray {s:clefable} to {p:66}" />
-      <OpponentMove move="{s:clefable} Charge Beam {s:tentacruel} to {p:38}" />
+      <PlayerMove move="{p:tentacruel} Acid Spray {o:clefable} to {-:66}" />
+      <OpponentMove move="{o:clefable} Charge Beam {p:tentacruel} to {+:38}" />
     </Turn>
     <Turn>
-      <PlayerMove move="{s:tentacruel} Sludge {s:clefable} to {p:0}" />
-      <OpponentMove move="{s:clefable} fainted" />
+      <PlayerMove move="{p:tentacruel} Sludge {o:clefable} to {-:0}" />
+      <OpponentMove move="{o:clefable} fainted" />
     </Turn>
     <Branch if={["Azumarill Covet Hitmonlee"]} branch={["Tentacruel Acid Spray Eevee"]} />
     <Branch branch={["Tentacruel Acid Spray Eevee", "Hitmonlee Low Sweep Azumarill"]} />
@@ -404,12 +404,12 @@ export const _houndoom1 = {
 <BattleLine line="Tentacruel Acid Spray Eevee">
   <Matchup opponents={["eevee"]}>
     <Turn>
-      <PlayerMove move="{s:tentacruel} Acid Spray {s:eevee} to {p:53}" />
-      <OpponentMove move="{s:eevee} Round {s:tentacruel} to {p:24}" />
+      <PlayerMove move="{p:tentacruel} Acid Spray {o:eevee} to {-:53}" />
+      <OpponentMove move="{o:eevee} Round {p:tentacruel} to {+:24}" />
     </Turn>
     <Turn>
-      <PlayerMove move="{s:tentacruel} Bubble Beam {s:eevee} to {p:0}" />
-      <OpponentMove move="{s:eevee} fainted" />
+      <PlayerMove move="{p:tentacruel} Bubble Beam {o:eevee} to {-:0}" />
+      <OpponentMove move="{o:eevee} fainted" />
     </Turn>
     <Branch
       ifNot={["Azumarill Covet Hitmonlee", "Hitmonlee Low Sweep Azumarill"]}
@@ -421,12 +421,12 @@ export const _houndoom1 = {
 <BattleLine line="Hitmonlee Knock Off">
   <Matchup opponents={["hitmonlee"]}>
     <Turn>
-      <PlayerMove move="{s:tentacruel} switch to {s:azumarill}" />
-      <OpponentMove move="{s:hitmonlee} Knock Off {s:azumarill} to {p:61}" />
+      <PlayerMove move="{p:tentacruel} switch to {p:azumarill}" />
+      <OpponentMove move="{o:hitmonlee} Knock Off {p:azumarill} to {+:61}" />
     </Turn>
     <Turn>
-      <OpponentMove move="{s:hitmonlee} Low Sweep {s:azumarill} to {p:29}" />
-      <PlayerMove move="{s:azumarill} Play Rough {s:hitmonlee} to {p:0}" />
+      <OpponentMove move="{o:hitmonlee} Low Sweep {p:azumarill} to {+:29}" />
+      <PlayerMove move="{p:azumarill} Play Rough {o:hitmonlee} to {-:0}" />
     </Turn>
   </Matchup>
 </BattleLine>
@@ -434,16 +434,16 @@ export const _houndoom1 = {
 <BattleLine line="Perrserker Iron Head Eevee">
   <Matchup opponents={["eevee"]}>
     <Turn>
-      <PlayerMove move="{s:azumarill} switch to {s:perrserker}" />
-      <OpponentMove move="{s:eevee} Double Kick {s:perrserker} to {p:6}" />
+      <PlayerMove move="{p:azumarill} switch to {p:perrserker}" />
+      <OpponentMove move="{o:eevee} Double Kick {p:perrserker} to {+:6}" />
     </Turn>
     <Turn>
-      <PlayerMove move="{s:perrserker} Fake Out {s:eevee} to {p:49}" />
-      <OpponentMove move="{s:eevee} flinched" />
+      <PlayerMove move="{p:perrserker} Fake Out {o:eevee} to {-:49}" />
+      <OpponentMove move="{o:eevee} flinched" />
     </Turn>
     <Turn>
-      <PlayerMove move="{s:perrserker} Iron Head {s:eevee} to {p:0}" />
-      <OpponentMove move="{s:eevee} fainted" />
+      <PlayerMove move="{p:perrserker} Iron Head {o:eevee} to {-:0}" />
+      <OpponentMove move="{o:eevee} fainted" />
     </Turn>
   </Matchup>
 </BattleLine>
