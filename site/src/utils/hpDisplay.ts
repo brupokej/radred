@@ -21,8 +21,9 @@ export function setHpDisplay(display: HpDisplay): void {
 }
 
 export function useHpDisplay(): HpDisplay {
-  const [display, setDisplay] = useState<HpDisplay>(getHpDisplay);
+  const [display, setDisplay] = useState<HpDisplay>(DEFAULT);
   useEffect(() => {
+    setDisplay(getHpDisplay());
     const handler = () => setDisplay(getHpDisplay());
     window.addEventListener(EVENT, handler);
     return () => window.removeEventListener(EVENT, handler);
