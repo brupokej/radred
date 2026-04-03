@@ -9,9 +9,10 @@
 }
 
 .plainCell {
-  padding-inline: 0.4rem;
+  align-items: center;
   display: inline-flex;
   gap: 0.4rem;
+  padding-inline: 0.4rem;
 }
 
 .sepCell {

@@ -310,29 +310,31 @@ export function Branch({
   if (graphCtx && branch.length === 1) return null;
 
   return (
-    <ScrollFade innerClassName={styles.branchRow} insetBlock="var(--ifm-spacing-vertical)">
-      {branch.map((item, j) => {
-        const isSelected = selectedChildLine === item;
-        return (
-          <React.Fragment key={j}>
-            {j === 0 ? "Choose" : "or"}
-            {graphCtx ? (
-              <button
-                className={`${styles.branchOption} ${isSelected ? styles.branchOptionSelected : ""}`}
-                onClick={() =>
-                  isSelected
-                    ? graphCtx.dispatch({ type: "DESELECT_BRANCH", branchId })
-                    : graphCtx.dispatch({ type: "SELECT_BRANCH", branchId, childLine: item })
-                }
-              >
-                {item}
-              </button>
-            ) : (
-              <a href={`#${item}`}>{item}</a>
-            )}
-          </React.Fragment>
-        );
-      })}
-    </ScrollFade>
+    <div className={styles.branchWrapper}>
+      <ScrollFade innerClassName={styles.branchRow} insetBlock="var(--ifm-spacing-vertical)">
+        {branch.map((item, j) => {
+          const isSelected = selectedChildLine === item;
+          return (
+            <React.Fragment key={j}>
+              {j === 0 ? "Choose" : "or"}
+              {graphCtx ? (
+                <button
+                  className={`${styles.branchOption} ${isSelected ? styles.branchOptionSelected : ""}`}
+                  onClick={() =>
+                    isSelected
+                      ? graphCtx.dispatch({ type: "DESELECT_BRANCH", branchId })
+                      : graphCtx.dispatch({ type: "SELECT_BRANCH", branchId, childLine: item })
+                  }
+                >
+                  {item}
+                </button>
+              ) : (
+                <a href={`#${item}`}>{item}</a>
+              )}
+            </React.Fragment>
+          );
+        })}
+      </ScrollFade>
+    </div>
   );
 }

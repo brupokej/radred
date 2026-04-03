@@ -50,6 +50,13 @@ html[data-highlight-level="off"] {
   --hl-danger-vpad: 0rem;
 }
 
+.table-of-contents__link {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme="dark"] {
   --ifm-color-primary: #25c2a0;
