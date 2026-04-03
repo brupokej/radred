@@ -1,7 +1,5 @@
 import { Pokemon } from "@site/src/components/Team";
 
-// Brock
-
 export const route22RivalTeam: Pokemon[] = [
   {
     name: "Snubbull",
@@ -82,5 +80,36 @@ export const viridianForestBrendanTeam: Pokemon[] = [
     move2: "Bullet Seed",
     move3: "Drain Punch",
     move4: "Rock Tomb",
+  },
+];
+
+export const viridianForestLassAnneTeam: Pokemon[] = [
+  {
+    name: "Stufful",
+    level: 15,
+    nature: "Bashful",
+    ability: "Fluffy",
+    item: "Oran Berry",
+    move1: "Low Sweep",
+    move2: "Tackle",
+    move3: "Aerial Ace",
+  },
+  {
+    name: "Clefairy",
+    level: 13,
+    nature: "Bashful",
+    ability: "Magic Guard",
+    item: "Life Orb",
+    move1: "Metronome",
+  },
+  {
+    name: "Audino",
+    level: 15,
+    nature: "Bashful",
+    ability: "Regenerator",
+    move1: "Swagger",
+    move2: "Protect",
+    move3: "Wish",
+    move3: "Yawn",
   },
 ];

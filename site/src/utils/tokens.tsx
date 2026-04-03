@@ -38,13 +38,33 @@ export function parseTokens(
         maxHp ??= playerHp[lastSprite] ?? opponentHp[lastSprite];
       }
       const suffix = isPlayerHp ? "↑" : "↓";
-      const display =
-        hpDisplay === "raw" || maxHp == null || maxHp <= 0 || isNaN(num)
-          ? `${num}${num > 0 ? suffix : ""}`
-          : `${Math.round((num / maxHp) * 100)}%${num > 0 ? suffix : ""}`;
+      const hasHp = maxHp != null && maxHp > 0 && !isNaN(num);
+      const showSuffix = num > 0;
+      let resultContent: React.ReactNode;
+      if (hpDisplay === "raw" && hasHp) {
+        resultContent = (
+          <>
+            {num}
+            {showSuffix && <span className={styles.resultMuted}>/{maxHp}</span>}
+            {showSuffix && suffix}
+          </>
+        );
+      } else if (hpDisplay === "raw") {
+        resultContent = `${num}${showSuffix ? suffix : ""}`;
+      } else if (hasHp) {
+        resultContent = (
+          <>
+            {Math.round((num / maxHp) * 100)}
+            {showSuffix && "%"}
+            {showSuffix ? suffix : ""}
+          </>
+        );
+      } else {
+        resultContent = value;
+      }
       parts.push(
         <span key={i++} className={styles.result}>
-          {display}
+          {resultContent}
         </span>
       );
     } else if (type === "c") {

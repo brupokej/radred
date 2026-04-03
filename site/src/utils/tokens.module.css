@@ -4,6 +4,10 @@
   width: 28px;
 }
 
+.resultMuted {
+  font-size: 0.8em;
+}
+
 .result {
   background: var(--ifm-code-background);
   border-radius: var(--ifm-global-radius);

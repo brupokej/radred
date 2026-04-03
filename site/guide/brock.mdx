@@ -13,14 +13,19 @@ import {
 import Encounter from "@site/src/components/Encounter";
 import { Row } from "@site/src/components/Row";
 import Setup from "@site/src/components/Setup";
-import { route22RivalTeam, viridianForestBrendanTeam } from "@site/src/utils/opponentTeams";
+import {
+  route22RivalTeam,
+  viridianForestBrendanTeam,
+  viridianForestLassAnneTeam,
+} from "@site/src/utils/opponentTeams";
+import { copyPokemon } from "@site/src/utils/pokemon";
 
 # Brock
 
 <Setup>
   <Row row={["New Game → Difficulty Options to {c:Hardcore}"]} />
   <Row row={["Cheats → {c:SO2Toxic} · {c:Woyaopp} · {c:EZCatch} · {c:TeamPreview}"]} />
-  <Row row={["Options → Battle Scene to {c:Off} · Wild Double Battle to {c:On}"]} />
+  <Row row={["Options → Wild Double Battle to {c:On}"]} />
 </Setup>
 
 ## Oak's Lab Encounter
@@ -133,39 +138,23 @@ export const _kricketot1 = {
 
 ## Route 22 Rival Battle
 
-export const _wooperp2 = {
-  ..._wooperp1,
+export const _wooperp2 = copyPokemon(_wooperp1, {
   level: 16,
   nature: "Bold",
-  move2: "Slam",
-  move3: "Tackle",
-  move4: "Tail Whip",
-  warning: ["level", "nature", "move2"],
-};
-
-export const _kricketune1 = {
-  ..._kricketot1,
+  moves: ["Mud Shot", "Slam", "Tackle", "Tail Whip"],
+});
+export const _kricketune1 = copyPokemon(_kricketot1, {
   name: "Kricketune",
   level: 16,
   nature: "Naive",
   item: "Hard Stone",
-  move1: "Bug Bite",
-  move2: "Mega Drain",
-  move3: "Rock Tomb",
-  move4: "Struggle Bug",
-  warning: ["name", "level", "nature", "item", "move1", "move2", "move3", "move4"],
-};
-
-export const _tentacool2 = {
-  ..._tentacool1,
+  moves: ["Bug Bite", "Mega Drain", "Rock Tomb", "Struggle Bug"],
+});
+export const _tentacool2 = copyPokemon(_tentacool1, {
   level: 16,
   nature: "Timid",
-  move1: "Acid",
-  move2: "Rapid Spin",
-  move3: "Supersonic",
-  move4: "Water Pulse",
-  warning: ["level", "nature", "move1", "move3", "move4"],
-};
+  moves: ["Acid", "Rapid Spin", "Supersonic", "Water Pulse"],
+});
 
 <Battle playerTeam={[_wooperp2, _kricketune1, _tentacool2]} opponentTeam={route22RivalTeam}>
   <BattleLine>
@@ -239,32 +228,21 @@ export const _psyduck1 = {
 
 ## Viridian Forest Brendan Battle
 
-export const _marill2 = {
-  ..._marill1,
+export const _marill2 = copyPokemon(_marill1, {
   level: 16,
   nature: "Impish",
   item: "Oran Berry",
-  move2: "Body Slam",
-  move3: "Covet",
-  move4: "Tail Whip",
-  warning: ["level", "nature", "item", "move2", "move3"],
-};
-
-export const _meowthg2 = {
-  ..._meowthg1,
+  moves: ["Aqua Jet", "Body Slam", "Covet", "Tail Whip"],
+});
+export const _meowthg2 = copyPokemon(_meowthg1, {
   level: 16,
   nature: "Sassy",
-  move3: "Metal Claw",
-  move4: "Scratch",
-  warning: ["level", "nature", "move3", "move4"],
-};
-
-export const _kricketune2 = {
-  ..._kricketune1,
+  moves: ["Fake Out", "Growl", "Metal Claw", "Scratch"],
+});
+export const _kricketune2 = copyPokemon(_kricketune1, {
   nature: "Naughty",
   item: "Oran Berry",
-  warning: ["nature", "item"],
-};
+});
 
 <Battle playerTeam={[_marill2, _meowthg2, _kricketune2]} opponentTeam={viridianForestBrendanTeam}>
   <BattleLine>
@@ -324,3 +302,105 @@ export const _kricketune2 = {
 <Setup>
   <Row row={["Bag →", { value: "Exp. Share to {c:Off}", variant: "warning" }]} />
 </Setup>
+
+## Viridian Forest Lass Anne Battle
+
+export const _meowthg3 = copyPokemon(_meowthg2, {
+  item: "Occa",
+});
+export const _kricketune3 = copyPokemon(_kricketune2);
+export const _houndour2 = copyPokemon(_houndour1, {
+  level: 16,
+  nature: "Modest",
+  item: "Oran Berry",
+  moves: ["Incinerate", "Leer", "Snarl", "Sucker Punch"],
+});
+export const _marill3 = copyPokemon(_marill2, {
+  item: "Pixie Plate",
+});
+export const _wooperp3 = copyPokemon(_wooperp2);
+
+<Battle
+  playerTeam={[_meowthg3, _kricketune3, _houndour2, _marill3, _wooperp3]}
+  opponentTeam={viridianForestLassAnneTeam}
+>
+  <BattleLine>
+    <Matchup opponents={["stufful"]}>
+      <Turn>
+        <PlayerMove move="{s:meowth-galar} Fake Out {s:stufful} to {-:45}" />
+        <OpponentMove move="{s:stufful} flinched" />
+      </Turn>
+      <Turn>
+        <PlayerMove move="{s:meowth-galar} switch to {s:kricketune}" />
+        <OpponentMove move="{s:stufful} Low Sweep {s:kricketune} to {+:43}" />
+      </Turn>
+      <Turn>
+        <OpponentMove move="{s:stufful} Aerial Ace {s:kricketune} to {+:21}" />
+        <PlayerMove move="{s:kricketune} Bug Bite {s:stufful} to {-:37}" />
+        <PlayerMove move="{s:kricketune} heal to {+:31}" />
+      </Turn>
+      <Turn>
+        <PlayerMove move="{s:kricketune} switch to {s:houndour}" />
+        <OpponentMove move="{s:stufful} Aerial Ace {s:houndour} to {+:38}" />
+      </Turn>
+      <Turn>
+        <PlayerMove move="{s:houndour} switch to {s:marill}" />
+        <OpponentMove move="{s:stufful} Low Sweep {s:marill} to {+:39}" />
+      </Turn>
+      <Turn>
+        <OpponentMove move="{s:stufful} Aerial Ace {s:marill} to {+:20}" />
+        <PlayerMove move="{s:marill} Covet {s:stufful} to {-:16}" />
+      </Turn>
+      <Turn>
+        <OpponentMove move="{s:stufful} Aerial Ace {s:marill} to {+:1}" />
+        <PlayerMove move="{s:marill} Covet {s:stufful} to {-:0}" />
+        <OpponentMove move="{s:stufful} fainted" />
+      </Turn>
+    </Matchup>
+    <Matchup opponents={["audino"]}>
+      <Turn>
+        <OpponentMove move="{s:audino} Yawn {s:marill}" />
+        <PlayerMove move="{s:marill} Tail Whip {s:audino}" />
+      </Turn>
+      <Turn>
+        <PlayerMove move="{s:marill} switch to {s:wooper-paldea}" />
+        <OpponentMove move="{s:audino} Protect or Wish" />
+      </Turn>
+      <Turn>
+        <OpponentMove move="{s:audino} Yawn {s:wooper-paldea}" />
+        <PlayerMove move="{s:wooper-paldea} Tail Whip {s:audino}" />
+      </Turn>
+      <Turn>
+        <PlayerMove move="{s:wooper-paldea} switch to {s:kricketune}" />
+        <OpponentMove move="{s:audino} Protect or Wish" />
+      </Turn>
+      <Turn>
+        <PlayerMove move="{s:kricketune} Bug Bite {s:audino} to {-:0}" />
+        <OpponentMove move="{s:audino} fainted" />
+      </Turn>
+    </Matchup>
+    <Matchup opponents={["clefairy"]}>
+      <Turn>
+        <PlayerMove move="{s:kricketune} switch to {s:meowth-galar}" />
+        <OpponentMove move="{s:clefairy} Metronome {s:meowth-galar}" />
+      </Turn>
+      <Row
+        row={[
+          "Risk →",
+          {
+            value: "Clefairy Metronome Meowth-G to {c:0} is {c:0.2%}",
+            variant: "danger",
+          },
+        ]}
+      />
+      <Turn>
+        <PlayerMove move="{s:meowth-galar} Fake Out {s:clefairy} to {-:34}" />
+        <OpponentMove move="{s:clefairy} flinched" />
+      </Turn>
+      <Turn>
+        <PlayerMove move="{s:meowth-galar} Metal Claw {s:clefairy} to {-:0}" />
+        <OpponentMove move="{s:clefairy} fainted" />
+      </Turn>
+    </Matchup>
+  </BattleLine>
+</Battle>
