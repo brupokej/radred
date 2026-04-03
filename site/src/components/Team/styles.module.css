@@ -29,11 +29,11 @@
   right: 0;
 }
 
-.gridFadeLeft::before {
+.gridWrapper.gridFadeLeft::before {
   opacity: 1;
 }
 
-.gridFadeRight::after {
+.gridWrapper.gridFadeRight::after {
   opacity: 1;
 }
 
