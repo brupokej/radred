@@ -28,7 +28,7 @@
   flex-direction: column;
   flex-shrink: 0;
   gap: var(--ifm-spacing-vertical);
-  min-width: 72px;
+  width: 86px;
   padding: var(--ifm-spacing-vertical) var(--ifm-spacing-horizontal);
 }
 

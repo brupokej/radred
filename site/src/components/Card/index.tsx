@@ -10,18 +10,20 @@ export default function Card({
 }) {
   const [isOpen, setIsOpen] = useState(true);
   return (
-    <details className={styles.card} open={isOpen}>
-      <summary
-        className={`${styles.summary} ${isOpen ? styles.summaryOpen : ""}`}
-        onClick={(e) => {
-          e.preventDefault();
-          setIsOpen(!isOpen);
-        }}
-      >
-        <span>{title}</span>
-        <span className={styles.chevron}>{isOpen ? "−" : "+"}</span>
-      </summary>
-      {children}
-    </details>
+    <div className={styles.cardContainer}>
+      <details className={styles.card} open={isOpen}>
+        <summary
+          className={`${styles.summary} ${isOpen ? styles.summaryOpen : ""}`}
+          onClick={(e) => {
+            e.preventDefault();
+            setIsOpen(!isOpen);
+          }}
+        >
+          <span>{title}</span>
+          <span className={styles.chevron}>{isOpen ? "−" : "+"}</span>
+        </summary>
+        {children}
+      </details>
+    </div>
   );
 }

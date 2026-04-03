@@ -1,3 +1,9 @@
+.cardContainer {
+  container-type: inline-size;
+}
+
+/* max-width snaps to exact N-column widths: N*140px + (N-1)*0.75rem + 2*1rem padding + 2px border */
+/* @container conditions use hardcoded px because var() is not allowed in query conditions */
 .card {
   background: var(--ifm-card-background-color);
   border: 1px solid var(--ifm-color-emphasis-200);
@@ -5,6 +11,24 @@
   box-shadow: var(--ifm-global-shadow-lw);
   margin: var(--ifm-leading) 0;
   overflow: hidden;
+}
+
+@container (min-width: 630px) {
+  .card {
+    max-width: calc(4 * 140px + 3 * 0.75rem + 2 * var(--ifm-spacing-horizontal) + 2px);
+  }
+}
+
+@container (min-width: 782px) {
+  .card {
+    max-width: calc(5 * 140px + 4 * 0.75rem + 2 * var(--ifm-spacing-horizontal) + 2px);
+  }
+}
+
+@container (min-width: 934px) {
+  .card {
+    max-width: calc(6 * 140px + 5 * 0.75rem + 2 * var(--ifm-spacing-horizontal) + 2px);
+  }
 }
 
 .summary {

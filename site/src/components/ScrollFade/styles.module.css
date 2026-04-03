@@ -6,7 +6,7 @@
 .wrapper::after {
   bottom: var(--scroll-fade-inset, 0px);
   content: "";
-  opacity: 0;
+  opacity: var(--scroll-fade-rest-opacity, 0);
   pointer-events: none;
   position: absolute;
   top: var(--scroll-fade-inset, 0px);
@@ -16,12 +16,20 @@
 }
 
 .wrapper::before {
-  background: linear-gradient(to right, var(--ifm-card-background-color), transparent);
+  background: linear-gradient(
+    to right,
+    var(--scroll-fade-color, var(--ifm-card-background-color)),
+    transparent
+  );
   left: 0;
 }
 
 .wrapper::after {
-  background: linear-gradient(to left, var(--ifm-card-background-color), transparent);
+  background: linear-gradient(
+    to left,
+    var(--scroll-fade-color, var(--ifm-card-background-color)),
+    transparent
+  );
   right: 0;
 }
 

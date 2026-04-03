@@ -7,17 +7,21 @@
   display: flex;
   flex-shrink: 0;
   justify-content: center;
-  padding: var(--ifm-spacing-horizontal);
+  box-sizing: content-box;
+  padding-block: var(--ifm-spacing-horizontal);
+  padding-inline-end: 0.375rem;
+  padding-inline-start: var(--ifm-spacing-horizontal);
   position: relative;
+  width: 140px;
 }
 
 .spritePanel::after {
   background: var(--ifm-color-emphasis-200);
-  bottom: calc(20% - var(--ifm-spacing-horizontal) * 0.6);
+  bottom: var(--ifm-spacing-vertical);
   content: "";
   position: absolute;
   right: 0;
-  top: calc(20% - var(--ifm-spacing-horizontal) * 0.6);
+  top: var(--ifm-spacing-vertical);
   width: 1px;
 }
 

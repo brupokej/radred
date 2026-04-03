@@ -1,8 +1,14 @@
 import Card from "@site/src/components/Card";
 import { fetchPokedex } from "@site/src/utils/pokedex";
 import { spriteUrl } from "@site/src/utils/sprites";
-import { createContext, useContext, useEffect, useRef, useState } from "react";
+import clsx from "clsx";
+import { createContext, useCallback, useContext, useEffect, useRef, useState } from "react";
 import styles from "./styles.module.css";
+
+const COL_WIDTH = 140;
+const COL_GAP = 12; // 0.75rem at 16px base
+const COL_STEP = COL_WIDTH + COL_GAP;
+const SIDE_PAD = 16; // var(--ifm-spacing-horizontal) at 16px base
 
 const CardDetailCtx = createContext(false);
 const useCardDetail = () => useContext(CardDetailCtx);
@@ -38,25 +44,26 @@ export default function Team({ team, title = "Team" }: { team: Pokemon[]; title?
   return (
     <Card title={title}>
       <CardDetail>
-        <div className={styles.content}>
-          <TeamGrid team={team} />
-        </div>
+        <TeamGrid team={team} />
       </CardDetail>
     </Card>
   );
 }
 
 function TeamGrid({ team }: { team: Pokemon[] }) {
-  const gridRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
   const [cols, setCols] = useState(6);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(false);
   const [pokedex, setPokedex] = useState<Map<string, number[]> | null>(null);
 
   useEffect(() => {
-    const el = gridRef.current;
+    const el = contentRef.current;
     if (!el) return;
     const update = () => {
-      const gap = parseFloat(getComputedStyle(el).columnGap) || 16;
-      setCols(Math.max(1, Math.floor((el.clientWidth + gap) / (110 + gap))));
+      const availableWidth = el.clientWidth - 2 * SIDE_PAD;
+      setCols(Math.max(1, Math.ceil((availableWidth + COL_GAP) / (COL_WIDTH + COL_GAP))));
     };
     const obs = new ResizeObserver(update);
     obs.observe(el);
@@ -64,20 +71,78 @@ function TeamGrid({ team }: { team: Pokemon[] }) {
     return () => obs.disconnect();
   }, []);
 
+  const updateScrollState = useCallback(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    setCanScrollLeft(el.scrollLeft > 0);
+    setCanScrollRight(el.scrollLeft + el.clientWidth < el.scrollWidth - 1);
+  }, []);
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    updateScrollState();
+    el.addEventListener("scroll", updateScrollState, { passive: true });
+    const obs = new ResizeObserver(updateScrollState);
+    obs.observe(el);
+    return () => {
+      el.removeEventListener("scroll", updateScrollState);
+      obs.disconnect();
+    };
+  }, [updateScrollState]);
+
+  useEffect(() => {
+    updateScrollState();
+  }, [cols, updateScrollState]);
+
   useEffect(() => {
     fetchPokedex().then(setPokedex);
   }, []);
 
+  const scroll = useCallback((dir: "left" | "right") => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const current = el.scrollLeft;
+    const target =
+      dir === "right"
+        ? Math.ceil((current + 1) / COL_STEP) * COL_STEP
+        : Math.floor((current - 1) / COL_STEP) * COL_STEP;
+    el.scrollTo({ left: Math.max(0, target), behavior: "smooth" });
+  }, []);
+
   const filled = team.length;
-  const remainder = filled % cols;
-  const emptiesToShow = remainder === 0 ? 0 : Math.max(0, Math.min(cols - remainder, 6 - filled));
+  const emptiesToShow = Math.max(0, Math.min(cols, 6) - filled);
   const slots = Array.from({ length: filled + emptiesToShow }, (_, i) => team[i] ?? null);
 
   return (
-    <div className={styles.grid} ref={gridRef}>
-      {slots.map((pokemon, i) => (
-        <PokemonCard key={i} pokemon={pokemon} pokedex={pokedex} />
-      ))}
+    <div ref={contentRef} className={styles.content}>
+      <div
+        className={clsx(
+          styles.gridWrapper,
+          canScrollLeft && styles.gridFadeLeft,
+          canScrollRight && styles.gridFadeRight
+        )}
+      >
+        {canScrollLeft && (
+          <button
+            className={`${styles.scrollArrow} ${styles.scrollArrowLeft}`}
+            onClick={() => scroll("left")}
+            aria-label="Scroll left"
+          />
+        )}
+        <div ref={scrollRef} className={styles.grid}>
+          {slots.map((pokemon, i) => (
+            <PokemonCard key={i} pokemon={pokemon} pokedex={pokedex} />
+          ))}
+        </div>
+        {canScrollRight && (
+          <button
+            className={`${styles.scrollArrow} ${styles.scrollArrowRight}`}
+            onClick={() => scroll("right")}
+            aria-label="Scroll right"
+          />
+        )}
+      </div>
     </div>
   );
 }
@@ -111,7 +176,9 @@ function PokemonCard({
       : null;
 
   return (
-    <div className={`${styles.card} ${!pokemon ? styles.cardEmpty : ""}`}>
+    <div
+      className={`${styles.card} ${!pokemon ? styles.cardEmpty : ""}`}
+    >
       {pokemon ? (
         <img
           src={spriteUrl(pokemon.sprite ?? pokemon.name.toLowerCase())}
