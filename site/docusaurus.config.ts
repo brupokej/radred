@@ -85,7 +85,7 @@ const config: Config = {
           items: [
             {
               label: "Strategy Guide",
-              to: "/guide/intro",
+              to: "/guide/brock",
             },
           ],
         },
