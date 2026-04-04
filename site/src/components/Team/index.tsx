@@ -38,6 +38,7 @@ export interface Pokemon {
   move3?: string | null;
   move4?: string | null;
   previous?: Record<string, unknown>;
+  index?: number;
 }
 
 export default function Team({ team, title = "Team" }: { team: Pokemon[]; title?: string }) {

@@ -1,6 +1,7 @@
 import Card from "@site/src/components/Card";
 import { Row, RowCell } from "@site/src/components/Row";
 import Team, { Pokemon } from "@site/src/components/Team";
+import { Box, getFromBox } from "@site/src/utils/box";
 import { spriteUrl } from "@site/src/utils/sprites";
 import styles from "./styles.module.css";
 
@@ -8,13 +9,24 @@ export default function Encounter({
   encounter,
   sprite,
   row,
-  playerTeam,
+  box,
+  version,
+  playerTeam: playerTeamProp,
 }: {
   encounter: string;
   sprite: string;
   row: RowCell[];
-  playerTeam?: Pokemon[];
+  box?: Box;
+  version?: number;
+  playerTeam?: Pokemon[] | string[];
 }) {
+  const playerTeam =
+    box !== undefined && version !== undefined
+      ? (playerTeamProp as string[] | undefined)
+          ?.map((name) => getFromBox(box, version, name))
+          .filter((p): p is Pokemon => p !== null)
+      : (playerTeamProp as Pokemon[] | undefined);
+
   return (
     <>
       {playerTeam && <Team title="Player Team" team={playerTeam} />}

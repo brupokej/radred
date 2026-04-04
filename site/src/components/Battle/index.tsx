@@ -1,6 +1,7 @@
 import Card from "@site/src/components/Card";
 import { ScrollFade } from "@site/src/components/ScrollFade";
 import Team, { Pokemon } from "@site/src/components/Team";
+import { Box, getFromBox } from "@site/src/utils/box";
 import { useHpDisplay } from "@site/src/utils/hpDisplay";
 import { calcMaxHp, fetchPokedex } from "@site/src/utils/pokedex";
 import { spriteUrl } from "@site/src/utils/sprites";
@@ -106,14 +107,24 @@ const BattleGraphCtx = React.createContext<GraphCtxValue | null>(null);
 const BattleLineCtx = React.createContext<string | null>(null);
 
 export function Battle({
-  playerTeam,
+  box,
+  version,
+  playerTeam: playerTeamProp,
   opponentTeam,
   children,
 }: {
-  playerTeam?: Pokemon[];
+  box?: Box;
+  version?: number;
+  playerTeam?: Pokemon[] | string[];
   opponentTeam?: Pokemon[];
   children: React.ReactNode;
 }) {
+  const playerTeam =
+    box !== undefined && version !== undefined
+      ? (playerTeamProp as string[] | undefined)
+          ?.map((name) => getFromBox(box, version, name))
+          .filter((p): p is Pokemon => p !== null)
+      : (playerTeamProp as Pokemon[] | undefined);
   const lineElements = React.Children.toArray(children).filter(
     (c): c is React.ReactElement<{ line?: string; children: React.ReactNode }> =>
       React.isValidElement(c) && c.type === BattleLine
