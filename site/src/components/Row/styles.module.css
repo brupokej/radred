@@ -1,6 +1,11 @@
+.rowWrapper + .rowWrapper {
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+}
+
 .row {
   align-items: center;
   display: flex;
+  font-size: 0.875rem;
   line-height: 1.8;
   overflow-x: auto;
   padding-block: var(--ifm-spacing-vertical);

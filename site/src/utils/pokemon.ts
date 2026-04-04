@@ -1,7 +1,7 @@
 import { Pokemon } from "@site/src/components/Team";
 
 type MoveKey = "move1" | "move2" | "move3" | "move4";
-const MOVE_KEYS: MoveKey[] = ["move1", "move2", "move3", "move4"];
+export const MOVE_KEYS: MoveKey[] = ["move1", "move2", "move3", "move4"];
 const WARNING_FIELDS = ["name", "level", "nature", "ability", "item"] as const;
 
 export type PokemonOverrides = Partial<Omit<Pokemon, MoveKey | "warning">> & {
