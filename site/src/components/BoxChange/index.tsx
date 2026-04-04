@@ -1,7 +1,7 @@
 import Card from "@site/src/components/Card";
 import { Row } from "@site/src/components/Row";
 import { Pokemon } from "@site/src/components/Team";
-import { Box } from "@site/src/utils/box";
+import { Box, getFromBox } from "@site/src/utils/box";
 
 export default function BoxChange({
   box,
@@ -15,8 +15,10 @@ export default function BoxChange({
   const rows: { pokemon: Pokemon; version: number }[] = [];
 
   for (const version of versions) {
-    for (const history of Object.values(box.slots)) {
-      const pokemon = history[version-1];
+    for (const [name, history] of Object.entries(box.slots)) {
+      const diff = history[version - 1];
+      if (!diff || Object.keys(diff).length === 0) continue;
+      const pokemon = getFromBox(box, version, name);
       if (pokemon?.previous && Object.keys(pokemon.previous).length > 0) {
         rows.push({ pokemon, version });
       }

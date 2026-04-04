@@ -40,7 +40,7 @@ export const _box = createBox();
 <Encounter encounter="Litten" sprite="litten" row={["Level 5"]} />
 
 export const _v1 = addToBox(_box, {
-  "Litten": {
+  Litten: {
     name: "Litten",
     level: 5,
     ability: "Blaze",
@@ -50,7 +50,7 @@ export const _v1 = addToBox(_box, {
   },
 });
 export const _v2 = updateBox(_box, {
-  "Litten": { name: "Torracat", level: 16, moves: ["Fake Out", "Double Kick", "Fire Fang", "Leer"] },
+  Litten: { name: "Torracat", level: 16, moves: ["Fake Out", "Double Kick", "Fire Fang", "Leer"] },
 });
 
 <BoxChange box={_box} versions={[_v2]} />
@@ -64,7 +64,7 @@ export const _v2 = updateBox(_box, {
 />
 
 export const _v3 = addToBox(_box, {
-  "Tentacool": {
+  Tentacool: {
     name: "Tentacool",
     level: 2,
     ability: "Clear Body",
@@ -73,7 +73,7 @@ export const _v3 = addToBox(_box, {
   },
 });
 export const _v4 = updateBox(_box, {
-  "Tentacool": { level: 16, moves: ["Acid", "Rapid Spin", "Supersonic", "Water Pulse"] },
+  Tentacool: { level: 16, moves: ["Acid", "Rapid Spin", "Supersonic", "Water Pulse"] },
 });
 
 <BoxChange box={_box} versions={[_v4]} />
@@ -132,7 +132,7 @@ export const _v6 = addToBox(_box, {
 />
 
 export const _v7 = addToBox(_box, {
-  "Marill": {
+  Marill: {
     name: "Marill",
     level: 3,
     ability: "Huge Power",
@@ -151,7 +151,7 @@ export const _v7 = addToBox(_box, {
 />
 
 export const _v8 = addToBox(_box, {
-  "Houndour": {
+  Houndour: {
     name: "Houndour",
     level: 4,
     ability: "Flash Fire",
@@ -165,7 +165,7 @@ export const _v8 = addToBox(_box, {
 <Encounter encounter="Kricketot" sprite="kricketot" row={["Grass · Night · 10% · Level 4-6"]} />
 
 export const _v9 = addToBox(_box, {
-  "Kricketot": {
+  Kricketot: {
     name: "Kricketot",
     level: 4,
     ability: "Technician",
@@ -176,10 +176,10 @@ export const _v9 = addToBox(_box, {
 });
 export const _v10 = updateBox(_box, {
   "Wooper-P": { level: 16, moves: ["Mud Shot", "Slam", "Tackle", "Tail Whip"] },
-  "Kricketot": { name: "Kricketune", level: 10, moves: ["Bide", "Growl", "Struggle Bug", "Tackle"] },
+  Kricketot: { name: "Kricketune", level: 10, moves: ["Bide", "Growl", "Struggle Bug", "Tackle"] },
 });
 export const _v11 = updateBox(_box, {
-  "Kricketune": { level: 16, moves: ["Bide", "Mega Drain", "Rock Tomb", "Struggle Bug"] },
+  Kricketune: { level: 16, moves: ["Bide", "Mega Drain", "Rock Tomb", "Struggle Bug"] },
 });
 
 <BoxChange box={_box} versions={[_v10, _v11]} />
@@ -188,12 +188,12 @@ export const _v11 = updateBox(_box, {
 
 export const _v12 = updateBox(_box, {
   "Wooper-P": { nature: "Bold" },
-  "Kricketune": {
+  Kricketune: {
     nature: "Naive",
     item: "Hard Stone",
     moves: ["Bug Bite", "Mega Drain", "Rock Tomb", "Struggle Bug"],
   },
-  "Tentacool": { nature: "Timid" },
+  Tentacool: { nature: "Timid" },
 });
 
 <Battle
@@ -264,12 +264,12 @@ export const _v12 = updateBox(_box, {
 <Encounter encounter="Psyduck" sprite="psyduck" row={["Old Rod · 70% · Level 2-4"]} />
 
 export const _v13 = addToBox(_box, {
-  "Psyduck": { name: "Psyduck", level: 2, move1: "Scratch", move2: "Water Sport" },
+  Psyduck: { name: "Psyduck", level: 2, move1: "Scratch", move2: "Water Sport" },
 });
 
 export const _v14 = updateBox(_box, {
   "Meowth-G": { level: 16, moves: ["Fake Out", "Growl", "Metal Claw", "Scratch"] },
-  "Marill": { level: 16, moves: ["Aqua Jet", "Body Slam", "Covet", "Tail Whip"] },
+  Marill: { level: 16, moves: ["Aqua Jet", "Body Slam", "Covet", "Tail Whip"] },
 });
 
 <BoxChange box={_box} versions={[_v14]} />
@@ -277,9 +277,9 @@ export const _v14 = updateBox(_box, {
 ## Viridian Forest Brendan Battle
 
 export const _v15 = updateBox(_box, {
-  "Marill": { nature: "Impish", item: "Oran Berry" },
+  Marill: { nature: "Impish", item: "Oran Berry" },
   "Meowth-G": { nature: "Sassy" },
-  "Kricketune": { nature: "Naughty", item: "Oran Berry" },
+  Kricketune: { nature: "Naughty", item: "Oran Berry" },
 });
 
 <Battle
@@ -347,7 +347,7 @@ export const _v15 = updateBox(_box, {
 </Card>
 
 export const _v16 = updateBox(_box, {
-  "Houndour": { level: 16, moves: ["Incinerate", "Leer", "Snarl", "Sucker Punch"] },
+  Houndour: { level: 16, moves: ["Incinerate", "Leer", "Snarl", "Sucker Punch"] },
 });
 
 <BoxChange box={_box} versions={[_v16]} />
@@ -356,8 +356,8 @@ export const _v16 = updateBox(_box, {
 
 export const _v17 = updateBox(_box, {
   "Meowth-G": { item: "Occa Berry" },
-  "Houndour": { nature: "Modest", item: "Oran Berry" },
-  "Marill": { item: "Pixie Plate" },
+  Houndour: { nature: "Modest", item: "Oran Berry" },
+  Marill: { item: "Pixie Plate" },
 });
 
 <Battle
@@ -442,7 +442,7 @@ export const _v17 = updateBox(_box, {
 ## Viridian Forest Bug Catcher Sammy Battle
 
 export const _v18 = updateBox(_box, {
-  "Kricketune": { item: "Hard Stone" },
+  Kricketune: { item: "Hard Stone" },
 });
 
 <Battle
@@ -504,8 +504,8 @@ export const _v19 = addToBox(_box, {
 ## Pewter Museum Leader Falkner Battle
 
 export const _v20 = updateBox(_box, {
-  "Kricketune": { nature: "Naive" },
-  "Marill": { nature: "Adamant", item: "Oran Berry" },
+  Kricketune: { nature: "Naive" },
+  Marill: { nature: "Adamant", item: "Oran Berry" },
 });
 
 <Battle
@@ -577,10 +577,10 @@ export const _v21 = updateBox(_box, {
 ## Pewter City Leader Brock Battle
 
 export const _v22 = updateBox(_box, {
-  "Kricketune": { nature: "Rash", item: "Miracle Seed" },
+  Kricketune: { nature: "Rash", item: "Miracle Seed" },
   "Meowth-G": { nature: "Lonely" },
-  "Torracat": { nature: "Adamant", item: "Black Belt" },
-  "Tentacool": { nature: "Bold" },
+  Torracat: { nature: "Adamant", item: "Black Belt" },
+  Tentacool: { nature: "Bold" },
   "Yamask-G": { nature: "Careful", item: "Rindo" },
 });
 

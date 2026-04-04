@@ -36,13 +36,17 @@ import { addToBox, updateBox, exportBox } from "@site/src/utils/box";
 # Misty
 
 export const _v2 = updateBox(_box, {
-  "Kricketune": { level: 23, moves: ["Bug Bite", "Bulldoze", "Mega Drain", "Rock Tomb"] },
-  "Houndour": { level: 23 },
-  "Marill": { level: 20, moves: ["Aqua Jet", "Aqua Tail", "Covet", "Tail Whip"] },
+  Kricketune: { level: 23, moves: ["Bug Bite", "Bulldoze", "Mega Drain", "Rock Tomb"] },
+  Houndour: { level: 23 },
+  Marill: { level: 20, moves: ["Aqua Jet", "Aqua Tail", "Covet", "Tail Whip"] },
 });
 
 export const _v3 = updateBox(_box, {
-  "Marill": { name: "Azumarill", level: 23, moves: ["Aqua Jet", "Aqua Tail", "Ice Punch", "Play Rough"] },
+  Marill: {
+    name: "Azumarill",
+    level: 23,
+    moves: ["Aqua Jet", "Aqua Tail", "Ice Punch", "Play Rough"],
+  },
 });
 
 <BoxChange box={_box} versions={[_v2, _v3]} />
@@ -50,8 +54,8 @@ export const _v3 = updateBox(_box, {
 ## Route 3 Lass Sally Battle
 
 export const _v4 = updateBox(_box, {
-  "Kricketune": { item: "Coba Berry" },
-  "Houndour": { item: "Wise Glasses" },
+  Kricketune: { item: "Coba Berry" },
+  Houndour: { item: "Wise Glasses" },
 });
 
 <Battle
@@ -124,7 +128,7 @@ export const _v4 = updateBox(_box, {
 />
 
 export const _v5 = addToBox(_box, {
-  "Drilbur": {
+  Drilbur: {
     name: "Drilbur",
     level: 12,
     move1: "Fury Swipes",
@@ -139,7 +143,7 @@ export const _v5 = addToBox(_box, {
 <Encounter encounter="Magikarp" sprite="magikarp" row={["Level 5"]} />
 
 export const _v6 = addToBox(_box, {
-  "Magikarp": {
+  Magikarp: {
     name: "Magikarp",
     level: 5,
     ability: "Swift Swim",
@@ -148,22 +152,22 @@ export const _v6 = addToBox(_box, {
 });
 
 export const _v7 = updateBox(_box, {
-  "Torracat": { level: 23 },
+  Torracat: { level: 23 },
   "Yamask-G": { level: 23 },
   "Meowth-G": { level: 23, moves: ["Fake Out", "Bullet Punch", "Metal Claw", "Scratch"] },
-})
+});
 
 <BoxChange box={_box} versions={[_v7]} />
 
 ## Mt. Moon Super Nerd Miguel Battle
 
 export const _v8 = updateBox(_box, {
-  "Houndour": { item: "Black Glasses" },
-  "Kricketune": { nature: "Impish", item: "Silver Powder" },
+  Houndour: { item: "Black Glasses" },
+  Kricketune: { nature: "Impish", item: "Silver Powder" },
   "Yamask-G": { item: "Rawst Berry" },
-  "Azumarill": { nature: "Impish", item: "Rawst Berry" },
+  Azumarill: { nature: "Impish", item: "Rawst Berry" },
   "Meowth-G": { nature: "Impish" },
-})
+});
 
 <Battle
   box={_box}
@@ -263,7 +267,7 @@ export const _v9 = updateBox(_box, {
 });
 
 export const _v10 = updateBox(_box, {
-  "Clodsire": { level: 23 },
+  Clodsire: { level: 23 },
 });
 
 <BoxChange box={_box} versions={[_v9, _v10]} />
@@ -271,11 +275,14 @@ export const _v10 = updateBox(_box, {
 ## Mt. Moon Archer Battle
 
 export const _v11 = updateBox(_box, {
-  "Azumarill": { item: "Pecha Berry" },
+  Azumarill: { item: "Pecha Berry" },
   "Meowth-G": { item: "Chesto Berry" },
-  "Kricketune": { item: "Sitrus Berry", moves: ["Bug Bite", "Bulldoze", "Bullet Seed", "Mega Drain"] },
+  Kricketune: {
+    item: "Sitrus Berry",
+    moves: ["Bug Bite", "Bulldoze", "Bullet Seed", "Mega Drain"],
+  },
   "Yamask-G": { item: "Pecha Berry" },
-  "Clodsire": { item: "Yache Berry" },
+  Clodsire: { item: "Yache Berry" },
 });
 
 <Battle
@@ -373,7 +380,7 @@ export const _v11 = updateBox(_box, {
 <Encounter encounter="Chewtle" sprite="chewtle" row={["Old Rod · 70% · Level 2-4"]} />
 
 export const _v12 = addToBox(_box, {
-  "Chewtle": {
+  Chewtle: {
     name: "Chewtle",
     level: 2,
     move1: "Aqua Jet",
@@ -386,18 +393,18 @@ export const _v12 = addToBox(_box, {
 </Card>
 
 export const _v13 = updateBox(_box, {
-  "Torracat": { level: 28 },
-  "Tentacool": { level: 28 },
-  "Clodsire": { level: 28 },
+  Torracat: { level: 28 },
+  Tentacool: { level: 28 },
+  Clodsire: { level: 28 },
   "Meowth-G": { level: 28 },
-  "Azumarill": { level: 28 },
-  "Houndour": { level: 28 },
-  "Kricketune": { level: 28 },
-  "Psyduck": { level: 28 },
+  Azumarill: { level: 28 },
+  Houndour: { level: 28 },
+  Kricketune: { level: 28 },
+  Psyduck: { level: 28 },
   "Yamask-G": { level: 28 },
-  "Drilbur": { level: 28 },
-  "Magikarp": { level: 28 },
-  "Chewtle": { level: 28 },
+  Drilbur: { level: 28 },
+  Magikarp: { level: 28 },
+  Chewtle: { level: 28 },
 });
 
 <Card title="Box Change">
@@ -405,9 +412,14 @@ export const _v13 = updateBox(_box, {
 </Card>
 
 export const _v14 = updateBox(_box, {
-  "Meowth-G": { name: "Perrserker", sprite: null, pokedex: null, moves: ["Fake Out", "Bullet Punch", "Iron Head", "Scratch"] },
-  "Chewtle": { name: "Drednaw", moves: ["Aqua Jet", "Bite", "Rock Tomb"] },
-  "Tentacool": { name: "Tentacruel" },
+  "Meowth-G": {
+    name: "Perrserker",
+    sprite: null,
+    pokedex: null,
+    moves: ["Fake Out", "Bullet Punch", "Iron Head", "Scratch"],
+  },
+  Chewtle: { name: "Drednaw", moves: ["Aqua Jet", "Bite", "Rock Tomb"] },
+  Tentacool: { name: "Tentacruel" },
 });
 
 <BoxChange box={_box} versions={[_v14]} />
@@ -415,24 +427,28 @@ export const _v14 = updateBox(_box, {
 ## Cerulean City Rival Battle
 
 export const _v15 = updateBox(_box, {
-  "Azumarill": { item: "Sitrus Berry", moves: ["Aqua Jet", "Aqua Tail", "Covet", "Play Rough"] },
-  "Torracat": { nature: "Careful", item: "Sitrus Berry" },
-  "Clodsire": { nature: "Sassy", item: "Poison Barb", moves: ["Mud Shot", "Poison Jab", "Rock Tomb", "Yawn"] },
-  "Perrserker": {
+  Azumarill: { item: "Sitrus Berry", moves: ["Aqua Jet", "Aqua Tail", "Covet", "Play Rough"] },
+  Torracat: { nature: "Careful", item: "Sitrus Berry" },
+  Clodsire: {
+    nature: "Sassy",
+    item: "Poison Barb",
+    moves: ["Mud Shot", "Poison Jab", "Rock Tomb", "Yawn"],
+  },
+  Perrserker: {
     nature: "Hasty",
     item: "Sitrus Berry",
   },
-  "Drednaw": {
+  Drednaw: {
     nature: "Adamant",
     ability: "Shell Armor",
     item: "Mystic Water",
     moves: ["Aqua Jet", "Bite", "Razor Shell", "Rock Tomb"],
   },
-  "Tentacruel": {
+  Tentacruel: {
     nature: "Calm",
     item: "Mystic Water",
     moves: ["Acid Spray", "Bubble Beam", "Rapid Spin", "Sludge"],
-  }
+  },
 });
 
 <Battle
@@ -713,13 +729,13 @@ export const _v15 = updateBox(_box, {
 </Battle>
 
 export const _v16 = updateBox(_box, {
-  "Houndour": { moves: ["Dark Pulse", "Incinerate", "Leer", "Sucker Punch"] }
+  Houndour: { moves: ["Dark Pulse", "Incinerate", "Leer", "Sucker Punch"] },
 });
 export const _v17 = updateBox(_box, {
-  "Houndour": {
+  Houndour: {
     name: "Houndoom",
-    moves: ["Dark Pulse", "Flame Burst", "Leer", "Sucker Punch"]
-  }
+    moves: ["Dark Pulse", "Flame Burst", "Leer", "Sucker Punch"],
+  },
 });
 
 <BoxChange box={_box} versions={[_v16, _v17]} />
@@ -727,10 +743,10 @@ export const _v17 = updateBox(_box, {
 ## Nugget Bridge Bug Catcher Cale Battle
 
 export const _v18 = updateBox(_box, {
-  "Drednaw": { moves: ["Aqua Jet", "Ice Fang", "Razor Shell", "Rock Tomb"] },
-  "Azumarill": { nature: "Adamant" },
-  "Perrserker": { nature: "Adamant" },
-  "Magikarp": { nature: "Adamant" },
+  Drednaw: { moves: ["Aqua Jet", "Ice Fang", "Razor Shell", "Rock Tomb"] },
+  Azumarill: { nature: "Adamant" },
+  Perrserker: { nature: "Adamant" },
+  Magikarp: { nature: "Adamant" },
 });
 
 <Battle
@@ -761,14 +777,15 @@ export const _v18 = updateBox(_box, {
 ## Nugget Bridge Lass Ali Battle
 
 export const _v19 = updateBox(_box, {
-  "Azumarill": { item: "Pixie Plate" },
+  Azumarill: { item: "Pixie Plate" },
 });
 
 <Battle
   box={_box}
   version={_v19}
   playerTeam={["Azumarill", "Perrserker"]}
-  opponentTeam={nuggetBridgeLassAliTeam}>
+  opponentTeam={nuggetBridgeLassAliTeam}
+>
   <BattleLine>
     <Matchup opponents={["amaura", "jigglypuff"]}>
       <Turn>
@@ -796,7 +813,8 @@ export const _v20 = updateBox(_box);
   box={_box}
   version={_v20}
   playerTeam={["Houndoom", "Perrserker"]}
-  opponentTeam={nuggetBridgeYoungsterTimmyTeam}>
+  opponentTeam={nuggetBridgeYoungsterTimmyTeam}
+>
   <BattleLine>
     <Matchup opponents={["electrike", "plusle"]}>
       <Turn>
@@ -818,7 +836,7 @@ export const _v20 = updateBox(_box);
 </Battle>
 
 export const _v21 = updateBox(_box, {
-  "Magikarp": { name: "Gyarados", moves: ["Bite", "Splash"] },
+  Magikarp: { name: "Gyarados", moves: ["Bite", "Splash"] },
 });
 
 <BoxChange box={_box} versions={[_v21]} />
@@ -826,18 +844,20 @@ export const _v21 = updateBox(_box, {
 ## Nugget Bridge Lass Reli Battle
 
 export const _v22 = updateBox(_box, {
-  "Perrserker": {
-  item: "Cheri Berry",
-},
-  "Gyarados": {
-  item: "Sitrus Berry",
-  moves: ["Bite", "Ice Fang", "Leer", "Thrash"],
-},
-  "Azumarill": {
-  moves: ["Aqua Jet", "Aqua Tail", "Ice Punch", "Play Rough"],
-}, "Tentacruel": {
-  item: "Persim Berry",
-}});
+  Perrserker: {
+    item: "Cheri Berry",
+  },
+  Gyarados: {
+    item: "Sitrus Berry",
+    moves: ["Bite", "Ice Fang", "Leer", "Thrash"],
+  },
+  Azumarill: {
+    moves: ["Aqua Jet", "Aqua Tail", "Ice Punch", "Play Rough"],
+  },
+  Tentacruel: {
+    item: "Persim Berry",
+  },
+});
 
 <Battle
   box={_box}
@@ -906,7 +926,7 @@ export const _v22 = updateBox(_box, {
 ## Nugget Bridge Camper Ethan Battle
 
 export const _v23 = updateBox(_box, {
-  "Houndoom": { item: "Wise Glasses" },
+  Houndoom: { item: "Wise Glasses" },
 });
 
 <Battle
@@ -963,13 +983,15 @@ export const _v23 = updateBox(_box, {
 
 export const _v24 = updateBox(_box, {
   "Yamask-G": { moves: ["Disable", "Haze", "Rock Tomb", "Shadow Sneak"] },
-  "Perrserker": {
-  ability: "Battle Armor",
-  item: "Sitrus Berry",
-  moves: ["Fake Out", "Bullet Punch", "Iron Head", "Metal Burst"],
-}, "Azumarill": {
-  item: "Pecha Berry",
-}});
+  Perrserker: {
+    ability: "Battle Armor",
+    item: "Sitrus Berry",
+    moves: ["Fake Out", "Bullet Punch", "Iron Head", "Metal Burst"],
+  },
+  Azumarill: {
+    item: "Pecha Berry",
+  },
+});
 
 <Battle
   box={_box}
@@ -1083,7 +1105,7 @@ export const _v25 = updateBox(_box);
 />
 
 export const _v26 = addToBox(_box, {
-  "Charcadet": {
+  Charcadet: {
     name: "Charcadet",
     level: 14,
     move1: "Clear Smog",
@@ -1098,7 +1120,7 @@ export const _v26 = addToBox(_box, {
 <Encounter encounter="Chinchou" sprite="chinchou" row={["Old Rod · 30% · Level 2-4"]} />
 
 export const _v27 = addToBox(_box, {
-  "Chinchou": {
+  Chinchou: {
     name: "Chinchou",
     level: 2,
     move1: "Bubble",
@@ -1109,20 +1131,25 @@ export const _v27 = addToBox(_box, {
 ## Nugget Bridge Grunt Battle
 
 export const _v28 = updateBox(_box, {
-  "Azumarill": {
-  item: "Pixie Plate",
-  moves: ["Aqua Jet", "Body Slam", "Helping Hand", "Play Rough"],
-}, "Perrserker": {
-  nature: "Calm",
-  moves: ["Fake Out", "Bullet Punch", "Iron Head", "Thief"],
-}, "Clodsire": {
-  nature: "Impish",
-}, "Houndoom": {
-  item: "Black Glasses",
-}, "Kricketune": {
-  item: "Chilan",
-  moves: ["Bug Bite", "Bulldoze", "Bullet Seed", "Pounce"],
-}});
+  Azumarill: {
+    item: "Pixie Plate",
+    moves: ["Aqua Jet", "Body Slam", "Helping Hand", "Play Rough"],
+  },
+  Perrserker: {
+    nature: "Calm",
+    moves: ["Fake Out", "Bullet Punch", "Iron Head", "Thief"],
+  },
+  Clodsire: {
+    nature: "Impish",
+  },
+  Houndoom: {
+    item: "Black Glasses",
+  },
+  Kricketune: {
+    item: "Chilan",
+    moves: ["Bug Bite", "Bulldoze", "Bullet Seed", "Pounce"],
+  },
+});
 
 <Battle
   box={_box}
@@ -1228,7 +1255,7 @@ export const _v30 = addToBox(_box, {
 <Encounter encounter="Shellder" sprite="shellder" row={["Old Rod · 30% · Level 2-4"]} />
 
 export const _v31 = addToBox(_box, {
-  "Shellder": {
+  Shellder: {
     name: "Shellder",
     level: 2,
     move1: "Tackle",
@@ -1237,10 +1264,10 @@ export const _v31 = addToBox(_box, {
 });
 
 export const _v32 = updateBox(_box, {
-  "Charcadet": { level: 28 },
-  "Chinchou": { level: 28 },
+  Charcadet: { level: 28 },
+  Chinchou: { level: 28 },
   "Growlithe-H": { level: 28 },
-  "Shellder": { level: 28 },
+  Shellder: { level: 28 },
 });
 
 <Card title="Box Change">
@@ -1248,8 +1275,8 @@ export const _v32 = updateBox(_box, {
 </Card>
 
 export const _v33 = updateBox(_box, {
-  "Chinchou": { name: "Lanturn" },
-  "Psyduck": { name: "Golduck", moves: ["Scald", "Scratch", "Water Sport"] },
+  Chinchou: { name: "Lanturn" },
+  Psyduck: { name: "Golduck", moves: ["Scald", "Scratch", "Water Sport"] },
 });
 
 <BoxChange box={_box} versions={[_v33]} />
@@ -1257,31 +1284,37 @@ export const _v33 = updateBox(_box, {
 ## Cerulean City Leader Misty Battle
 
 export const _v34 = updateBox(_box, {
-  "Kricketune": {
-  nature: "Adamant",
-  item: "Muscle Band",
-  moves: ["Aerial Ace", "Bug Bite", "Bulldoze", "Bullet Seed"],
-}, "Lanturn": {
-  nature: "Calm",
-  ability: "Volt Absorb",
-  item: "Sitrus Berry",
-  moves: ["Bubble Beam", "Icy Wind", "Shock Wave", "Thunder Wave"],
-}, "Perrserker": {
-  nature: "Adamant",
-  item: "Rawst Berry",
-  moves: ["Bullet Punch", "Iron Head", "Metal Burst", "Thief"],
-}, "Gyarados": {
-  moves: ["Bite", "Bulldoze", "Ice Fang", "Leer"],
-}, "Golduck": {
-  nature: "Rash",
-  ability: "Swift Swim",
-  item: "Colbur Berry",
-  moves: ["Disable", "Me First", "Tail Whip", "Zen Headbutt"],
-}, "Clodsire": {
-  nature: "Careful",
-  item: "Payapa Berry",
-  moves: ["Bulldoze", "Poison Jab", "Rock Tomb", "Yawn"],
-}});
+  Kricketune: {
+    nature: "Adamant",
+    item: "Muscle Band",
+    moves: ["Aerial Ace", "Bug Bite", "Bulldoze", "Bullet Seed"],
+  },
+  Lanturn: {
+    nature: "Calm",
+    ability: "Volt Absorb",
+    item: "Sitrus Berry",
+    moves: ["Bubble Beam", "Icy Wind", "Shock Wave", "Thunder Wave"],
+  },
+  Perrserker: {
+    nature: "Adamant",
+    item: "Rawst Berry",
+    moves: ["Bullet Punch", "Iron Head", "Metal Burst", "Thief"],
+  },
+  Gyarados: {
+    moves: ["Bite", "Bulldoze", "Ice Fang", "Leer"],
+  },
+  Golduck: {
+    nature: "Rash",
+    ability: "Swift Swim",
+    item: "Colbur Berry",
+    moves: ["Disable", "Me First", "Tail Whip", "Zen Headbutt"],
+  },
+  Clodsire: {
+    nature: "Careful",
+    item: "Payapa Berry",
+    moves: ["Bulldoze", "Poison Jab", "Rock Tomb", "Yawn"],
+  },
+});
 
 <Battle
   box={_box}
