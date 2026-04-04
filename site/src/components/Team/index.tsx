@@ -37,7 +37,7 @@ export interface Pokemon {
   move2?: string | null;
   move3?: string | null;
   move4?: string | null;
-  warning?: string[];
+  previous?: Record<string, unknown>;
 }
 
 export default function Team({ team, title = "Team" }: { team: Pokemon[]; title?: string }) {
@@ -168,8 +168,8 @@ function PokemonCard({
   pokedex: Map<string, number[]> | null;
 }) {
   const isExpanded = useCardDetail();
-  const warn = new Set(pokemon?.warning ?? []);
-  const wc = (field: string) => (warn.has(field) ? styles.fieldWarning : "");
+  const prev = pokemon?.previous;
+  const wc = (field: string) => (prev && field in prev ? styles.fieldWarning : "");
   const stats =
     pokemon && pokedex
       ? (pokedex.get((pokemon.pokedex ?? pokemon.name).toLowerCase()) ?? null)

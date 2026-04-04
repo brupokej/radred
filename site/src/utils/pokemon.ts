@@ -4,18 +4,18 @@ type MoveKey = "move1" | "move2" | "move3" | "move4";
 export const MOVE_KEYS: MoveKey[] = ["move1", "move2", "move3", "move4"];
 const WARNING_FIELDS = ["name", "level", "nature", "ability", "item"] as const;
 
-export type PokemonOverrides = Partial<Omit<Pokemon, MoveKey | "warning">> & {
+export type PokemonOverrides = Partial<Omit<Pokemon, MoveKey | "previous">> & {
   moves?: (string | null | undefined)[];
 };
 
-export function copyPokemon(base: Pokemon, overrides: PokemonOverrides = {}): Pokemon {
-  const warnings: string[] = [];
+export function changePokemon(base: Pokemon, overrides: PokemonOverrides = {}): Pokemon {
+  const previous: Record<string, unknown> = {};
 
   const o = overrides as Record<string, unknown>;
   const b = base as Record<string, unknown>;
   for (const field of WARNING_FIELDS) {
     if (o[field] !== undefined && o[field] !== b[field]) {
-      warnings.push(field);
+      previous[field] = b[field];
     }
   }
 
@@ -29,7 +29,7 @@ export function copyPokemon(base: Pokemon, overrides: PokemonOverrides = {}): Po
       const move = overrides.moves![i] ?? null;
       moveOverrides![key] = move;
       if (move && !baseMoves.has(move)) {
-        warnings.push(key);
+        previous[key] = base[key] ?? null;
       }
     });
   }
@@ -40,6 +40,6 @@ export function copyPokemon(base: Pokemon, overrides: PokemonOverrides = {}): Po
     ...base,
     ...rest,
     ...(moveOverrides ?? {}),
-    warning: warnings.length > 0 ? warnings : undefined,
+    previous: Object.keys(previous).length > 0 ? previous : undefined,
   };
 }

@@ -26,20 +26,32 @@ function expandString(text: string): NormalizedCell[] {
     .map((s) => (SEP_ONLY.test(s) ? { sep: s } : { value: s }));
 }
 
+const LEVEL_CAP_LEVELS = new Set([28, 36, 44, 47, 56, 57, 59, 68, 73, 76, 79, 80, 81, 82, 85]);
+
 export function expandPokemon(pokemon: Pokemon): Array<string | { warning: string }> {
-  const warned = new Set(pokemon.warning ?? []);
-  if (!warned.has("level")) return [];
+  const prev = pokemon.previous ?? {};
+  const nameChanged = "name" in prev;
+  const levelChanged = "level" in prev;
+  const fromName = nameChanged ? String(prev.name) : pokemon.name;
+  const toName = nameChanged ? pokemon.name : null;
 
-  const method = MOVE_KEYS.some((key) => warned.has(key)) ? "Rare Candy" : "Set";
+  let header: string;
+  if (levelChanged) {
+    const levelPart = LEVEL_CAP_LEVELS.has(pokemon.level)
+      ? `Set to Level ${pokemon.level} Cap`
+      : `Rare Candy to Level ${pokemon.level}`;
+    header = toName ? `${levelPart} → ${toName}` : levelPart;
+  } else {
+    header = `Keep at Level ${pokemon.level}`;
+  }
 
-  const header = `Rare Candy to Level ${pokemon.level}${warned.has("name") ? ` → ${pokemon.name}` : ""}`;
-  const cells: Array<string | { warning: string }> = [{ warning: header }];
+  const cells: Array<string | { warning: string }> = [`${fromName} →`, { warning: header }];
 
   for (const key of MOVE_KEYS) {
     const move = pokemon[key];
     if (!move) break;
-    cells.push(cells.length === 1 ? "→" : "·");
-    cells.push(warned.has(key) ? { warning: move } : move);
+    cells.push(cells.length === 2 ? "→" : "·");
+    cells.push(key in prev ? { warning: move } : move);
   }
 
   return cells;

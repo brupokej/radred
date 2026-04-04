@@ -20,7 +20,7 @@ import {
   mtMoonArcherTeam,
   ceruleanCityRivalTeam,
 } from "@site/src/utils/opponentTeams";
-import { copyPokemon } from "@site/src/utils/pokemon";
+import { changePokemon } from "@site/src/utils/pokemon";
 import {
   torracat as _torracat1,
   tentacool as _tentacool1,
@@ -35,40 +35,40 @@ import {
 
 # Misty
 
-export const _kricketune2 = copyPokemon(_kricketune1, {
+export const _kricketune2 = changePokemon(_kricketune1, {
   level: 23,
   moves: ["Bug Bite", "Bulldoze", "Mega Drain", "Rock Tomb"],
 });
-export const _houndour2 = copyPokemon(_houndour1, {
+export const _houndour2 = changePokemon(_houndour1, {
   level: 23,
 });
-export const _marill2 = copyPokemon(_marill1, {
+export const _marill2 = changePokemon(_marill1, {
   level: 20,
   moves: ["Aqua Jet", "Aqua Tail", "Covet", "Tail Whip"],
 });
-export const _azumarill1 = copyPokemon(_marill2, {
+export const _azumarill1 = changePokemon(_marill2, {
   name: "Azumarill",
   level: 23,
   moves: ["Aqua Jet", "Aqua Tail", "Ice Punch", "Play Rough"],
 });
 
-<Card title="Level Up Plan">
-  <Row row={["Kricketune →", _kricketune2]} />
-  <Row row={["Houndour →", _houndour2]} />
-  <Row row={["Marill →", _marill2]} />
-  <Row row={["Azumarill →", _azumarill1]} />
+<Card title="Box Change">
+  <Row row={[_kricketune2]} />
+  <Row row={[_houndour2]} />
+  <Row row={[_marill2]} />
+  <Row row={[_azumarill1]} />
 </Card>
 
 ## Route 3 Lass Sally Battle
 
-export const _kricketune3 = copyPokemon(_kricketune2, {
+export const _kricketune3 = changePokemon(_kricketune2, {
   item: "Coba Berry",
 });
-export const _houndour3 = copyPokemon(_houndour2, {
+export const _houndour3 = changePokemon(_houndour2, {
   item: "Wise Glasses",
 });
-export const _azumarill2 = copyPokemon(_azumarill1);
-export const _meowthg2 = copyPokemon(_meowthg1);
+export const _azumarill2 = changePokemon(_azumarill1);
+export const _meowthg2 = changePokemon(_meowthg1);
 
 <Battle
   playerTeam={[_kricketune3, _houndour3, _azumarill2, _meowthg2]}
@@ -157,41 +157,41 @@ export const _magikarp1 = {
   move1: "Splash",
 };
 
-export const _torracat2 = copyPokemon(_torracat1, {
+export const _torracat2 = changePokemon(_torracat1, {
   level: 23,
 });
-export const _yamaskg2 = copyPokemon(_yamaskg1, {
+export const _yamaskg2 = changePokemon(_yamaskg1, {
   level: 23,
 });
-export const _meowthg3 = copyPokemon(_meowthg2, {
+export const _meowthg3 = changePokemon(_meowthg2, {
   level: 23,
   moves: ["Fake Out", "Bullet Punch", "Metal Claw", "Scratch"],
 });
 
-<Card title="Level Up Plan">
-  <Row row={["Torracat →", _torracat2]} />
-  <Row row={["Yamask-G →", _yamaskg2]} />
-  <Row row={["Meowth-G →", _meowthg3]} />
+<Card title="Box Change">
+  <Row row={[_torracat2]} />
+  <Row row={[_yamaskg2]} />
+  <Row row={[_meowthg3]} />
 </Card>
 
 ## Mt. Moon Super Nerd Miguel Battle
 
-export const _torracat3 = copyPokemon(_torracat2);
-export const _houndour4 = copyPokemon(_houndour3, {
+export const _torracat3 = changePokemon(_torracat2);
+export const _houndour4 = changePokemon(_houndour3, {
   item: "Black Glasses",
 });
-export const _kricketune4 = copyPokemon(_kricketune3, {
+export const _kricketune4 = changePokemon(_kricketune3, {
   nature: "Impish",
   item: "Silver Powder",
 });
-export const _yamaskg3 = copyPokemon(_yamaskg2, {
+export const _yamaskg3 = changePokemon(_yamaskg2, {
   item: "Rawst",
 });
-export const _azumarill3 = copyPokemon(_azumarill2, {
+export const _azumarill3 = changePokemon(_azumarill2, {
   nature: "Impish",
   item: "Rawst",
 });
-export const _meowthg4 = copyPokemon(_meowthg3, {
+export const _meowthg4 = changePokemon(_meowthg3, {
   nature: "Impish",
 });
 
@@ -286,36 +286,36 @@ export const _meowthg4 = copyPokemon(_meowthg3, {
 </BattleLine>
 </Battle>
 
-export const _clodsire1 = copyPokemon(_wooperp1, {
+export const _clodsire1 = changePokemon(_wooperp1, {
   name: "Clodsire",
   sprite: null,
   pokedex: null,
   level: 23,
 });
 
-<Card title="Level Up Plan">
-  <Row row={["Wooper-P →", _clodsire1]} />
+<Card title="Box Change">
+  <Row row={[_clodsire1]} />
 </Card>
 
 ## Mt. Moon Archer Battle
 
-export const _azumarill4 = copyPokemon(_azumarill3, {
+export const _azumarill4 = changePokemon(_azumarill3, {
   item: "Pecha Berry",
 });
-export const _meowthg5 = copyPokemon(_meowthg4, {
+export const _meowthg5 = changePokemon(_meowthg4, {
   item: "Chesto Berry",
 });
-export const _kricketune5 = copyPokemon(_kricketune4, {
+export const _kricketune5 = changePokemon(_kricketune4, {
   item: "Sitrus Berry",
   moves: ["Bug Bite", "Bulldoze", "Bullet Seed", "Mega Drain"],
 });
-export const _yamaskg4 = copyPokemon(_yamaskg3, {
+export const _yamaskg4 = changePokemon(_yamaskg3, {
   item: "Pecha Berry",
 });
-export const _clodsire2 = copyPokemon(_clodsire1, {
+export const _clodsire2 = changePokemon(_clodsire1, {
   item: "Yache Berry",
 });
-export const _torracat4 = copyPokemon(_torracat3);
+export const _torracat4 = changePokemon(_torracat3);
 
 <Battle
   playerTeam={[_azumarill4, _meowthg5, _kricketune5, _yamaskg4, _clodsire2, _torracat4]}
@@ -416,50 +416,73 @@ export const _chewtle1 = {
   move2: "Bite",
 };
 
-## Cerulean City Rival Battle
-
-export const _azumarill5 = copyPokemon(_azumarill4, {
+export const _azumarill5 = changePokemon(_azumarill4, {
   level: 28,
-  item: "Sitrus Berry",
 });
-export const _torracat5 = copyPokemon(_torracat4, {
+export const _torracat5 = changePokemon(_torracat4, {
   level: 28,
-  nature: "Careful",
-  item: "Sitrus Berry",
 });
-export const _clodsire3 = copyPokemon(_clodsire2, {
+export const _clodsire3 = changePokemon(_clodsire2, {
   level: 28,
-  nature: "Sassy",
-  item: "Poison Barb",
-  moves: ["Mud Shot", "Poison Jab", "Rock Tomb", "Yawn"],
 });
-export const _perrserker1 = copyPokemon(_meowthg5, {
+export const _perrserker1 = changePokemon(_meowthg5, {
   name: "Perrserker",
   sprite: null,
   pokedex: null,
   level: 28,
-  nature: "Hasty",
-  item: "Sitrus Berry",
   moves: ["Fake Out", "Bullet Punch", "Iron Head", "Scratch"],
 });
-export const _drednaw1 = copyPokemon(_chewtle1, {
+export const _drednaw1 = changePokemon(_chewtle1, {
   name: "Drednaw",
   level: 28,
+  moves: ["Aqua Jet", "Bite", "Rock Tomb"],
+});
+export const _tentacruel1 = changePokemon(_tentacool1, {
+  name: "Tentacruel",
+  level: 28,
+});
+
+<Card title="Box Change">
+  <Row row={[_torracat5]} />
+  <Row row={[_tentacruel1]} />
+  <Row row={[_clodsire3]} />
+  <Row row={[_perrserker1]} />
+  <Row row={[_azumarill5]} />
+  <Row row={[_drednaw1]} />
+</Card>
+
+## Cerulean City Rival Battle
+
+export const _azumarill6 = changePokemon(_azumarill5, {
+  item: "Sitrus Berry",
+});
+export const _torracat6 = changePokemon(_torracat5, {
+  nature: "Careful",
+  item: "Sitrus Berry",
+});
+export const _clodsire4 = changePokemon(_clodsire3, {
+  nature: "Sassy",
+  item: "Poison Barb",
+  moves: ["Mud Shot", "Poison Jab", "Rock Tomb", "Yawn"],
+});
+export const _perrserker2 = changePokemon(_perrserker1, {
+  nature: "Hasty",
+  item: "Sitrus Berry",
+});
+export const _drednaw2 = changePokemon(_drednaw1, {
   nature: "Adamant",
   ability: "Shell Armor",
   item: "Mystic Water",
   moves: ["Aqua Jet", "Bite", "Razor Shell", "Rock Tomb"],
 });
-export const _tentacruel1 = copyPokemon(_tentacool1, {
-  name: "Tentacruel",
-  level: 28,
+export const _tentacruel2 = changePokemon(_tentacruel1, {
   nature: "Calm",
   item: "Mystic Water",
   moves: ["Acid Spray", "Bubble Beam", "Rapid Spin", "Sludge"],
 });
 
 <Battle
-  playerTeam={[_azumarill5, _torracat5, _clodsire3, _perrserker1, _drednaw1, _tentacruel1]}
+  playerTeam={[_azumarill6, _torracat6, _clodsire4, _perrserker2, _drednaw2, _tentacruel2]}
   opponentTeam={ceruleanCityRivalTeam}
 >
 <BattleLine>
