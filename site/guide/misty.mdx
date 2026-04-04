@@ -1,0 +1,252 @@
+---
+sidebar_position: 3
+---
+
+import {
+  Battle,
+  BattleLine,
+  Branch,
+  Matchup,
+  PlayerMove,
+  OpponentMove,
+  Turn,
+} from "@site/src/components/Battle";
+import Encounter from "@site/src/components/Encounter";
+import { Row } from "@site/src/components/Row";
+import Setup from "@site/src/components/Setup";
+import { route3LassSallyTeam, mtMoonSuperNerdMiguelTeam } from "@site/src/utils/opponentTeams";
+import { copyPokemon } from "@site/src/utils/pokemon";
+import {
+  torracat as _torracat1,
+  tentacool as _tentacool1,
+  wooperp as _wooperp1,
+  meowthg as _meowthg1,
+  marill as _marill1,
+  houndour as _houndour1,
+  kricketune as _kricketune1,
+  psyduck as _psyduck1,
+  yamaskg as _yamaskg1,
+} from "@site/guide/brock.mdx";
+
+# Misty
+
+## Route 3 Lass Sally Battle
+
+export const _kricketune2 = copyPokemon(_kricketune1, {
+  level: 23,
+  item: "Coba Berry",
+  moves: ["Bug Bite", "Bulldoze", "Mega Drain", "Rock Tomb"],
+});
+export const _houndour2 = copyPokemon(_houndour1, {
+  level: 23,
+  item: "Wise Glasses",
+});
+export const _azumarill1 = copyPokemon(_marill1, {
+  name: "Azumarill",
+  level: 23,
+  moves: ["Aqua Jet", "Aqua Tail", "Ice Punch", "Play Rough"],
+});
+export const _meowthg2 = copyPokemon(_meowthg1);
+
+<Battle
+  playerTeam={[_kricketune2, _houndour2, _azumarill1, _meowthg2]}
+  opponentTeam={route3LassSallyTeam}
+>
+  <BattleLine>
+    <Matchup opponents={["pikachu"]}>
+      <Turn>
+        <OpponentMove move="{o:pikachu} Zippy Zap {p:kricketune} to {+:38}" />
+        <PlayerMove move="{p:kricketune} Rock Tomb {o:pikachu} to {-:0}" />
+        <OpponentMove move="{o:pikachu} fainted" />
+      </Turn>
+    </Matchup>
+    <Matchup opponents={["whimsicott"]}>
+      <Turn>
+        <PlayerMove move="{p:kricketune} switch to {p:houndour}" />
+        <OpponentMove move="{o:whimsicott} Leech Seed {p:houndour}" />
+      </Turn>
+      <Turn>
+        <OpponentMove move="{o:whimsicott} Mega Drain {p:houndour} to {+:40}" />
+        <PlayerMove move="{p:houndour} Incinerate {o:whimsicott} to {-:17}" />
+      </Turn>
+      <Turn>
+        <OpponentMove move="{o:whimsicott} Mega Drain {p:houndour} to {+:20}" />
+        <OpponentMove move="{o:whimsicott} heal to {-:27}" />
+        <PlayerMove move="{p:houndour} Incinerate {o:whimsicott} to {-:0}" />
+        <OpponentMove move="{o:whimsicott} fainted" />
+      </Turn>
+    </Matchup>
+    <Matchup opponents={["oricorio-sensu"]}>
+      <Turn>
+        <PlayerMove move="{p:houndour} switch to {p:azumarill}" />
+        <OpponentMove move="{o:oricorio-sensu} Air Cutter {p:azumarill} to {+:53}" />
+      </Turn>
+      <Turn>
+        <OpponentMove move="{o:oricorio-sensu} HP Ghost {p:azumarill} to {+:23}" />
+        <PlayerMove move="{p:azumarill} Ice Punch {o:oricorio-sensu} to {-:19}" />
+      </Turn>
+      <Turn>
+        <PlayerMove move="{p:azumarill} Aqua Jet {o:oricorio-sensu} to {-:0}" />
+        <OpponentMove move="{o:oricorio-sensu} fainted" />
+      </Turn>
+    </Matchup>
+    <Matchup opponents={["mawile"]}>
+      <Turn>
+        <PlayerMove move="{p:azumarill} switch to {p:meowth-galar}" />
+        <OpponentMove move="{o:mawile} Covet {p:meowth-galar} to {+:19}" />
+      </Turn>
+      <Turn>
+        <PlayerMove move="{p:meowth-galar} switch to {p:houndour}" />
+        <OpponentMove move="{o:mawile} Fire Fang {p:houndour}" />
+      </Turn>
+      <Turn>
+        <PlayerMove move="{p:houndour} Incinerate {o:mawile} to {-:0}" />
+        <OpponentMove move="{o:mawile} fainted" />
+      </Turn>
+    </Matchup>
+  </BattleLine>
+</Battle>
+
+## Mt. Moon Encounter
+
+<Encounter
+  encounter="Drilbur"
+  sprite="drilbur"
+  row={[{ value: "Floor B2F", variant: "warning" }, "· Night · 10% · Level 12-14"]}
+/>
+
+export const _drilbur1 = {
+  name: "Drilbur",
+  level: 12,
+  move1: "Fury Swipes",
+  move2: "Mud-Slap",
+  move3: "Rapid Spin",
+  move4: "Scratch",
+};
+
+## Route 4 Encounter
+
+<Encounter encounter="Magikarp" sprite="magikarp" row={["Level 5"]} />
+
+export const _magikarp1 = {
+  name: "Magikarp",
+  level: 5,
+  ability: "Swift Swim",
+  move1: "Splash",
+};
+
+## Mt. Moon Super Nerd Miguel Battle
+
+export const _torracat2 = copyPokemon(_torracat1, {
+  level: 23,
+});
+export const _houndour3 = copyPokemon(_houndour2, {
+  item: "Black Glasses",
+});
+export const _kricketune3 = copyPokemon(_kricketune2, {
+  nature: "Impish",
+  item: "Silver Powder",
+});
+export const _yamaskg2 = copyPokemon(_yamaskg1, {
+  item: "Rawst",
+});
+export const _azumarill2 = copyPokemon(_azumarill1, {
+  nature: "Impish",
+  item: "Rawst",
+});
+export const _meowthg3 = copyPokemon(_meowthg2, {
+  nature: "Impish",
+  moves: ["Fake Out", "Bullet Punch", "Metal Claw", "Scratch"],
+});
+
+<Battle
+  playerTeam={[_torracat2, _houndour3, _kricketune3, _yamaskg2, _azumarill2, _meowthg3]}
+  opponentTeam={mtMoonSuperNerdMiguelTeam}
+>
+<BattleLine>
+  <Matchup opponents={["voltorb", "thwackey"]}>
+    <Turn>
+      <PlayerMove move="{p:torracat} switch to {p:kricketune}" />
+      <PlayerMove move="{p:houndour} switch to {p:yamask-galar}" />
+      <OpponentMove move="{o:thwackey} Fake Out {p:yamask-galar}" />
+      <OpponentMove move="{o:voltorb-hisui} Self-Destruct to {-:0}" />
+      <OpponentMove move="{p:kricketune} to {+:43}" />
+      <OpponentMove move="{o:thwackey} to {-:46}" />
+      <PlayerMove move="{p:kricketune} terrain to {+:47}" />
+      <OpponentMove move="{o:thwackey} terrain to {-:50}" />
+    </Turn>
+  </Matchup>
+  <Matchup opponents={["swoobat", "thwackey"]}>
+    <Turn>
+      <OpponentMove move="{o:swoobat} Calm Mind" />
+      <PlayerMove move="{p:kricketune} Bug Bite {o:thwackey} to {-:0}" />
+      <PlayerMove move="{p:yamask-galar} Haze" />
+      <OpponentMove move="{o:thwackey} fainted" />
+    </Turn>
+  </Matchup>
+  <Matchup opponents={["swoobat", "sableye"]}>
+    <Turn>
+      <PlayerMove move="{p:kricketune} switch to {p:houndour}" />
+      <OpponentMove move="{o:swoobat} Calm Mind" />
+      <OpponentMove move="{o:sableye} Will-O-Wisp {p:houndour}" />
+      <PlayerMove move="{p:yamask-galar} Haze" />
+    </Turn>
+    <Turn>
+      <PlayerMove move="{p:yamask-galar} switch to {p:azumarill}" />
+      <OpponentMove move="{o:swoobat} Calm Mind" />
+      <PlayerMove move="{p:houndour} Leer" />
+      <OpponentMove move="{o:sableye} Foul Play {p:azumarill} to {+:71} or Foul Play {p:houndour} to {+:29}" />
+      <PlayerMove move="{p:azumarill} terrain to {+:76} or {p:houndour} terrain to {+:32}" />
+    </Turn>
+    <Branch branch={["Azumarill Play Rough Sableye", "Sableye Protect"]} />
+  </Matchup>
+</BattleLine>
+
+<BattleLine line="Azumarill Play Rough Sableye">
+  <Matchup opponents={["swoobat", "sableye"]}>
+    <Turn>
+      <PlayerMove move="{p:houndour} Sucker Punch {o:swoobat} to {-:0}" />
+      <PlayerMove move="{p:azumarill} Play Rough {o:sableye} to {-:0}" />
+      <OpponentMove move="{o:swoobat} fainted" />
+      <OpponentMove move="{o:sableye} fainted" />
+      <PlayerMove move="{p:azumarill} terrain to {+:81} or {p:houndour} terrain to {+:35}" />
+    </Turn>
+  </Matchup>
+  <Matchup opponents={["skiddo"]}>
+    <Turn>
+      <PlayerMove move="{p:houndour} Incinerate {o:skiddo} to {-:17}" />
+      <PlayerMove move="{p:azumarill} Play Rough {o:skiddo} to {-:0}" />
+      <OpponentMove move="{o:skiddo} fainted" />
+    </Turn>
+  </Matchup>
+</BattleLine>
+
+<BattleLine line="Sableye Protect">
+  <Matchup opponents={["swoobat", "sableye"]}>
+    <Turn>
+      <OpponentMove move="{o:sableye} Protect" />
+      <PlayerMove move="{p:houndour} Sucker Punch {o:swoobat} to {-:0}" />
+      <PlayerMove move="{p:azumarill} Play Rough {o:sableye}" />
+      <OpponentMove move="{o:swoobat} fainted" />
+      <PlayerMove move="{p:azumarill} terrain to {+:81} or {p:houndour} terrain to {+:35}" />
+    </Turn>
+  </Matchup>
+  <Matchup opponents={["skiddo", "sableye"]}>
+    <Turn>
+      <PlayerMove move="{p:houndour} Incinerate {o:sableye} to {-:41} and {o:skiddo} to {-:19}" />
+      <PlayerMove move="{p:azumarill} Play Rough {o:skiddo} to {-:0}" />
+      <OpponentMove move="{o:sableye} Foul Play {p:azumarill} to {+:66} or Foul Play {p:houndour} to {+:4}" />
+      <PlayerMove move="{p:azumarill} terrain to {+:71} or {p:houndour} terrain to {+:7}" />
+      <PlayerMove move="{o:sableye} terrain to {+:47}" />
+      <OpponentMove move="{o:skiddo} fainted" />
+    </Turn>
+  </Matchup>
+  <Matchup opponents={["sableye"]}>
+    <Turn>
+      <PlayerMove move="{p:houndour} Incinerate {o:sableye} to {-:31}" />
+      <PlayerMove move="{p:azumarill} Play Rough {o:sableye} to {-:0}" />
+      <OpponentMove move="{o:sableye} fainted" />
+    </Turn>
+  </Matchup>
+</BattleLine>
+</Battle>

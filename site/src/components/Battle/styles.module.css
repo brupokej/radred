@@ -22,20 +22,20 @@
 }
 
 .opponents {
-  align-items: center;
+  align-items: flex-start;
   border-right: 1px solid var(--ifm-color-emphasis-200);
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   flex-shrink: 0;
-  gap: var(--ifm-spacing-vertical);
+  justify-content: center;
   width: 86px;
   padding: var(--ifm-spacing-vertical) var(--ifm-spacing-horizontal);
 }
 
 .sprite {
-  height: 28px;
+  height: 26px;
   object-fit: contain;
-  width: 28px;
+  width: 26px;
 }
 
 .turns {

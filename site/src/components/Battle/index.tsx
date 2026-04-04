@@ -71,16 +71,19 @@ function enrichBranchConditions(
 
 function enrichMatchups(
   children: React.ReactNode,
-  prevOpponent: string | null,
+  prevOpponents: string[] | null,
   visibleOrder: string[]
-): { enriched: React.ReactNode; lastOpponent: string | null } {
-  let lastOpponent = prevOpponent;
+): { enriched: React.ReactNode; lastOpponents: string[] | null } {
+  let lastOpponents = prevOpponents;
   const enriched =
     React.Children.map(children, (child) => {
       if (React.isValidElement(child) && child.type === Matchup) {
         const props = child.props as { opponents: string[]; children: React.ReactNode };
-        const isContinued = lastOpponent !== null && lastOpponent === props.opponents[0];
-        lastOpponent = props.opponents[props.opponents.length - 1] ?? null;
+        const isContinued =
+          lastOpponents !== null &&
+          lastOpponents.length === props.opponents.length &&
+          lastOpponents.every((o, i) => o === props.opponents[i]);
+        lastOpponents = props.opponents;
         return React.cloneElement(
           child as React.ReactElement<{ isContinued?: boolean; children?: React.ReactNode }>,
           { isContinued, children: enrichBranchConditions(props.children, visibleOrder) }
@@ -88,7 +91,7 @@ function enrichMatchups(
       }
       return child;
     }) ?? [];
-  return { enriched, lastOpponent };
+  return { enriched, lastOpponents };
 }
 
 type GraphCtxValue = {
@@ -188,13 +191,13 @@ export function Battle({
   );
 
   const enrichedLines = new Map<string, React.ReactNode>();
-  let prevOpponent: string | null = null;
+  let prevOpponents: string[] | null = null;
   for (const slug of state.visibleOrder) {
     const raw = lineMap.get(slug);
     if (raw !== undefined) {
-      const { enriched, lastOpponent } = enrichMatchups(raw, prevOpponent, state.visibleOrder);
+      const { enriched, lastOpponents } = enrichMatchups(raw, prevOpponents, state.visibleOrder);
       enrichedLines.set(slug, enriched);
-      prevOpponent = lastOpponent;
+      prevOpponents = lastOpponents;
     }
   }
 
@@ -253,21 +256,21 @@ export function Turn({ children }: { children: React.ReactNode }) {
   );
 }
 
-function Move({ move, className }: { move: string; className?: string }) {
+function Move({ move, side, className }: { move: string; className?: string }) {
   const graphCtx = useContext(BattleGraphCtx);
   const hpDisplay = useHpDisplay();
-  const parts = parseTokens(move, graphCtx, hpDisplay);
+  const parts = parseTokens(move, side, graphCtx, hpDisplay);
   return (
     <ScrollFade innerClassName={`${styles.turnAction} ${className ?? ""}`}>{parts}</ScrollFade>
   );
 }
 
 export function PlayerMove({ move }: { move: string }) {
-  return <Move move={move} />;
+  return <Move move={move} side="player" />;
 }
 
 export function OpponentMove({ move }: { move: string }) {
-  return <Move move={move} className={styles.opponentMove} />;
+  return <Move move={move} side="opponent" className={styles.opponentMove} />;
 }
 
 export function Branch({

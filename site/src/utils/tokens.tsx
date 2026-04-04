@@ -10,7 +10,8 @@ export type HpContext = {
 
 export function parseTokens(
   text: string,
-  hpCtx?: HpContext | null,
+  side?: "player" | "opponent" | null = null,
+  hpCtx?: HpContext | null = null,
   hpDisplay: "percent" | "raw" = "percent"
 ): React.ReactNode[] {
   const parts: React.ReactNode[] = [];
@@ -24,12 +25,7 @@ export function parseTokens(
     if (type === "p" || type === "o") {
       lastSpriteKey = `${type}:${value}`;
       parts.push(
-        <img
-          key={i++}
-          src={spriteUrl(value, type === "p" ? "player" : "opponent")}
-          alt={value}
-          className={styles.sprite}
-        />
+        <img key={i++} src={spriteUrl(value, side)} alt={value} className={styles.sprite} />
       );
     } else if (type === "+" || type === "-" || type === "=") {
       const num = parseInt(value, 10);

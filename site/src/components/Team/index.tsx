@@ -176,9 +176,7 @@ function PokemonCard({
       : null;
 
   return (
-    <div
-      className={`${styles.card} ${!pokemon ? styles.cardEmpty : ""}`}
-    >
+    <div className={`${styles.card} ${!pokemon ? styles.cardEmpty : ""}`}>
       {pokemon ? (
         <img
           src={spriteUrl(pokemon.sprite ?? pokemon.name.toLowerCase())}
