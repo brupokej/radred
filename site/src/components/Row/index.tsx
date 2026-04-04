@@ -41,6 +41,8 @@ export function expandPokemon(pokemon: Pokemon): Array<string | { warning: strin
       ? `Set to Level ${pokemon.level} Cap`
       : `Rare Candy to Level ${pokemon.level}`;
     header = toName ? `${levelPart} → ${toName}` : levelPart;
+  } else if (nameChanged) {
+    header = `Rare Candy → ${toName}`;
   } else {
     header = `Keep at Level ${pokemon.level}`;
   }

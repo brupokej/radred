@@ -19,6 +19,14 @@ import {
   mtMoonSuperNerdMiguelTeam,
   mtMoonArcherTeam,
   ceruleanCityRivalTeam,
+  nuggetBridgeBugCatcherCaleTeam,
+  nuggetBridgeLassAliTeam,
+  nuggetBridgeYoungsterTimmyTeam,
+  nuggetBridgeLassReliTeam,
+  nuggetBridgeCamperEthanTeam,
+  nuggetBridgeGruntTeam,
+  digHouseGruntTeam,
+  ceruleanCityLeaderMistyTeam,
 } from "@site/src/utils/opponentTeams";
 import { changePokemon } from "@site/src/utils/pokemon";
 import {
@@ -290,11 +298,15 @@ export const _clodsire1 = changePokemon(_wooperp1, {
   name: "Clodsire",
   sprite: null,
   pokedex: null,
+  level: 20,
+});
+export const _clodsire2 = changePokemon(_clodsire1, {
   level: 23,
 });
 
 <Card title="Box Change">
   <Row row={[_clodsire1]} />
+  <Row row={[_clodsire2]} />
 </Card>
 
 ## Mt. Moon Archer Battle
@@ -312,13 +324,13 @@ export const _kricketune5 = changePokemon(_kricketune4, {
 export const _yamaskg4 = changePokemon(_yamaskg3, {
   item: "Pecha Berry",
 });
-export const _clodsire2 = changePokemon(_clodsire1, {
+export const _clodsire3 = changePokemon(_clodsire2, {
   item: "Yache Berry",
 });
 export const _torracat4 = changePokemon(_torracat3);
 
 <Battle
-  playerTeam={[_azumarill4, _meowthg5, _kricketune5, _yamaskg4, _clodsire2, _torracat4]}
+  playerTeam={[_azumarill4, _meowthg5, _kricketune5, _yamaskg4, _clodsire3, _torracat4]}
   opponentTeam={mtMoonArcherTeam}
 >
   <BattleLine>
@@ -416,51 +428,60 @@ export const _chewtle1 = {
   move2: "Bite",
 };
 
-export const _azumarill5 = changePokemon(_azumarill4, {
-  level: 28,
-});
-export const _torracat5 = changePokemon(_torracat4, {
-  level: 28,
-});
-export const _clodsire3 = changePokemon(_clodsire2, {
-  level: 28,
-});
-export const _perrserker1 = changePokemon(_meowthg5, {
+<Card title="Game Setup">
+  <Row row={["Cerulean City →", { info: "Solve the Move Relearner puzzle" }]} />
+</Card>
+
+export const _torracat5 = changePokemon(_torracat4, { level: 28 });
+export const _tentacool2 = changePokemon(_tentacool1, { level: 28 });
+export const _clodsire4 = changePokemon(_clodsire3, { level: 28 });
+export const _meowthg6 = changePokemon(_meowthg5, { level: 28 });
+export const _azumarill5 = changePokemon(_azumarill4, { level: 28 });
+export const _houndour5 = changePokemon(_houndour4, { level: 28 });
+export const _kricketune6 = changePokemon(_kricketune5, { level: 28 });
+export const _psyduck2 = changePokemon(_psyduck1, { level: 28 });
+export const _yamaskg5 = changePokemon(_yamaskg4, { level: 28 });
+export const _drilbur2 = changePokemon(_drilbur1, { level: 28 });
+export const _magikarp2 = changePokemon(_magikarp1, { level: 28 });
+export const _chewtle2 = changePokemon(_chewtle1, { level: 28 });
+
+<Card title="Box Change">
+  <Row row={["All of Box 1 →", { warning: "Set to Level 28 Cap" }]} />
+</Card>
+
+export const _perrserker1 = changePokemon(_meowthg6, {
   name: "Perrserker",
   sprite: null,
   pokedex: null,
-  level: 28,
   moves: ["Fake Out", "Bullet Punch", "Iron Head", "Scratch"],
 });
-export const _drednaw1 = changePokemon(_chewtle1, {
+export const _drednaw1 = changePokemon(_chewtle2, {
   name: "Drednaw",
   level: 28,
   moves: ["Aqua Jet", "Bite", "Rock Tomb"],
 });
-export const _tentacruel1 = changePokemon(_tentacool1, {
+export const _tentacruel1 = changePokemon(_tentacool2, {
   name: "Tentacruel",
   level: 28,
 });
 
 <Card title="Box Change">
-  <Row row={[_torracat5]} />
-  <Row row={[_tentacruel1]} />
-  <Row row={[_clodsire3]} />
   <Row row={[_perrserker1]} />
-  <Row row={[_azumarill5]} />
   <Row row={[_drednaw1]} />
+  <Row row={[_tentacruel1]} />
 </Card>
 
 ## Cerulean City Rival Battle
 
 export const _azumarill6 = changePokemon(_azumarill5, {
   item: "Sitrus Berry",
+  moves: ["Aqua Jet", "Aqua Tail", "Covet", "Play Rough"],
 });
 export const _torracat6 = changePokemon(_torracat5, {
   nature: "Careful",
   item: "Sitrus Berry",
 });
-export const _clodsire4 = changePokemon(_clodsire3, {
+export const _clodsire5 = changePokemon(_clodsire4, {
   nature: "Sassy",
   item: "Poison Barb",
   moves: ["Mud Shot", "Poison Jab", "Rock Tomb", "Yawn"],
@@ -482,7 +503,7 @@ export const _tentacruel2 = changePokemon(_tentacruel1, {
 });
 
 <Battle
-  playerTeam={[_azumarill6, _torracat6, _clodsire4, _perrserker2, _drednaw2, _tentacruel2]}
+  playerTeam={[_azumarill6, _torracat6, _clodsire5, _perrserker2, _drednaw2, _tentacruel2]}
   opponentTeam={ceruleanCityRivalTeam}
 >
 <BattleLine>
@@ -751,6 +772,721 @@ export const _tentacruel2 = changePokemon(_tentacruel1, {
     <Turn>
       <PlayerMove move="{p:perrserker} Iron Head {o:eevee} to {-:0}" />
       <OpponentMove move="{o:eevee} fainted" />
+    </Turn>
+  </Matchup>
+</BattleLine>
+</Battle>
+
+export const _houndour6 = changePokemon(_houndour5, {
+  moves: ["Dark Pulse", "Incinerate", "Leer", "Sucker Punch"],
+});
+export const _houndoom1 = changePokemon(_houndour6, {
+  name: "Houndoom",
+  moves: ["Dark Pulse", "Flame Burst", "Leer", "Sucker Punch"],
+});
+
+<Card title="Box Change">
+  <Row row={[_houndour6]} />
+  <Row row={[_houndoom1]} />
+</Card>
+
+## Nugget Bridge Bug Catcher Cale Battle
+
+export const _houndoom2 = changePokemon(_houndoom1);
+export const _drednaw3 = changePokemon(_drednaw2, {
+  moves: ["Aqua Jet", "Ice Fang", "Razor Shell", "Rock Tomb"],
+});
+export const _azumarill7 = changePokemon(_azumarill6, {
+  nature: "Adamant",
+});
+export const _perrserker3 = changePokemon(_perrserker2, {
+  nature: "Adamant",
+});
+export const _magikarp3 = changePokemon(_magikarp2, {
+  nature: "Adamant",
+});
+
+<Battle
+  playerTeam={[_houndoom2, _drednaw3, _azumarill7, _perrserker3, _magikarp3]}
+  opponentTeam={nuggetBridgeBugCatcherCaleTeam}
+>
+  <BattleLine>
+    <Matchup opponents={["butterfree", "vivillon"]}>
+      <Turn>
+        <PlayerMove move="{p:houndoom} Flame Burst {o:vivillon} to {-:0}" />
+        <PlayerMove move="{p:drednaw} Rock Tomb {o:butterfree} to {-:0}" />
+        <OpponentMove move="{o:vivillon} fainted" />
+        <OpponentMove move="{o:butterfree} fainted" />
+      </Turn>
+    </Matchup>
+    <Matchup opponents={["wormadam-sandy"]}>
+      <Turn>
+        <PlayerMove move="{p:houndoom} Flame Burst {o:wormadam-sandy} to {-:9}" />
+        <PlayerMove move="{p:drednaw} Rock Tomb {o:wormadam-sandy} to {-:0}" />
+        <OpponentMove move="{o:wormadam-sandy} fainted" />
+      </Turn>
+    </Matchup>
+  </BattleLine>
+</Battle>
+
+## Nugget Bridge Lass Ali Battle
+
+export const _azumarill8 = changePokemon(_azumarill7, {
+  item: "Pixie Plate",
+});
+export const _perrserker4 = changePokemon(_perrserker3);
+
+<Battle playerTeam={[_azumarill8, _perrserker4]} opponentTeam={nuggetBridgeLassAliTeam}>
+  <BattleLine>
+    <Matchup opponents={["amaura", "jigglypuff"]}>
+      <Turn>
+        <PlayerMove move="{p:azumarill} Aqua Tail {o:amaura} to {-:0}" />
+        <PlayerMove move="{p:perrserker} Iron Head {o:jigglypuff} to {-:0}" />
+        <OpponentMove move="{o:amaura} fainted" />
+        <OpponentMove move="{o:jigglypuff} fainted" />
+      </Turn>
+    </Matchup>
+    <Matchup opponents={["brionne"]}>
+      <Turn>
+        <PlayerMove move="{p:perrserker} Bullet Punch {o:brionne} to {-:63}" />
+        <PlayerMove move="{p:azumarill} Play Rough {o:brionne} to {-:0}" />
+        <OpponentMove move="{o:brionne} fainted" />
+      </Turn>
+    </Matchup>
+  </BattleLine>
+</Battle>
+
+## Nugget Bridge Youngster Timmy Battle
+
+export const _houndoom3 = changePokemon(_houndoom2);
+export const _perrserker5 = changePokemon(_perrserker4);
+
+<Battle playerTeam={[_houndoom3, _perrserker5]} opponentTeam={nuggetBridgeYoungsterTimmyTeam}>
+  <BattleLine>
+    <Matchup opponents={["electrike", "plusle"]}>
+      <Turn>
+        <PlayerMove move="{p:perrserker} Fake Out {o:plusle} to {-:48}" />
+        <OpponentMove move="{o:plusle} flinched" />
+        <PlayerMove move="{p:houndoom} Dark Pulse {o:electrike} to {-:0}" />
+        <OpponentMove move="{o:electrike} fainted" />
+      </Turn>
+    </Matchup>
+    <Matchup opponents={["snover", "plusle"]}>
+      <Turn>
+        <PlayerMove move="{p:houndoom} Sucker Punch {o:plusle} to {-:0}" />
+        <PlayerMove move="{p:perrserker} Iron Head {o:snover} to {-:0}" />
+        <OpponentMove move="{o:plusle} fainted" />
+        <OpponentMove move="{o:snover} fainted" />
+      </Turn>
+    </Matchup>
+  </BattleLine>
+</Battle>
+
+export const _gyarados1 = changePokemon(_magikarp3, {
+  name: "Gyarados",
+  moves: ["Bite", "Splash"],
+});
+
+<Card title="Box Change">
+  <Row row={[_gyarados1]} />
+</Card>
+
+## Nugget Bridge Lass Reli Battle
+
+export const _perrserker6 = changePokemon(_perrserker5, {
+  item: "Cheri Berry",
+});
+export const _gyarados2 = changePokemon(_gyarados1, {
+  item: "Sitrus Berry",
+  moves: ["Bite", "Ice Fang", "Leer", "Thrash"],
+});
+export const _azumarill9 = changePokemon(_azumarill8, {
+  moves: ["Aqua Jet", "Aqua Tail", "Ice Punch", "Play Rough"],
+});
+export const _clodsire6 = changePokemon(_clodsire5);
+export const _tentacruel3 = changePokemon(_tentacruel2, {
+  item: "Persim Berry",
+});
+
+<Battle
+  playerTeam={[_perrserker6, _gyarados2, _azumarill9, _clodsire6, _tentacruel3]}
+  opponentTeam={nuggetBridgeLassReliTeam}
+>
+  <BattleLine>
+    <Matchup opponents={["greedent"]}>
+      <Turn>
+        <PlayerMove move="{p:perrserker} Fake Out {o:greedent} to {-:90}" />
+        <OpponentMove move="{o:greedent} flinched" />
+      </Turn>
+      <Turn>
+        <PlayerMove move="{p:perrserker} switch to {p:gyarados}" />
+        <OpponentMove move="{o:greedent} Stom. Tantrum {p:gyarados}" />
+      </Turn>
+      <Turn>
+        <PlayerMove move="{p:gyarados} Leer {o:greedent}" />
+        <OpponentMove move="{o:greedent} Facade {p:gyarados} to {+:54}" />
+      </Turn>
+      <Turn>
+        <PlayerMove move="{p:gyarados} Leer {o:greedent}" />
+        <OpponentMove move="{o:greedent} Facade {p:gyarados} to {+:33}" />
+      </Turn>
+      <Turn>
+        <PlayerMove move="{p:gyarados} switch to {p:azumarill}" />
+        <OpponentMove move="{o:greedent} Facade {p:azumarill} to {+:39}" />
+      </Turn>
+      <Turn>
+        <PlayerMove move="{p:azumarill} Play Rough {o:greedent} to {-:0}" />
+        <OpponentMove move="{o:greedent} fainted" />
+      </Turn>
+    </Matchup>
+    <Matchup opponents={["togetic"]}>
+      <Turn>
+        <PlayerMove move="{p:azumarill} switch to {p:perrserker}" />
+        <OpponentMove move="{o:togetic} Thunder Wave {p:perrserker}" />
+      </Turn>
+      <Turn>
+        <PlayerMove move="{p:perrserker} Iron Head {o:togetic} to {-:0}" />
+        <OpponentMove move="{o:togetic} fainted" />
+      </Turn>
+    </Matchup>
+    <Matchup opponents={["clamperl"]}>
+      <Turn>
+        <PlayerMove move="{p:perrserker} switch to {p:clodsire}" />
+        <OpponentMove move="{o:clamperl} Icy Wind {p:clodsire} to {+:57}" />
+      </Turn>
+      <Turn>
+        <PlayerMove move="{p:clodsire} switch to {p:tentacruel}" />
+        <OpponentMove move="{o:clamperl} Icy Wind {p:tentacruel} to {+:78}" />
+      </Turn>
+      <Turn>
+        <PlayerMove move="{p:tentacruel} Acid Spray {o:clamperl} to {-:40}" />
+        <OpponentMove move="{o:clamperl} Water Pulse {p:tentacruel} to {+:56}" />
+      </Turn>
+      <Turn>
+        <PlayerMove move="{p:tentacruel} Sludge {o:clamperl} to {-:0}" />
+        <OpponentMove move="{o:clamperl} fainted" />
+      </Turn>
+    </Matchup>
+  </BattleLine>
+</Battle>
+
+## Nugget Bridge Camper Ethan Battle
+
+export const _houndoom4 = changePokemon(_houndoom3, {
+  item: "Wise Glasses",
+});
+export const _azumarill10 = changePokemon(_azumarill9);
+export const _tentacruel4 = changePokemon(_tentacruel3);
+
+<Battle
+  playerTeam={[_houndoom4, _azumarill10, _tentacruel4]}
+  opponentTeam={nuggetBridgeCamperEthanTeam}
+>
+  <BattleLine>
+    <Matchup opponents={["mabosstiff"]}>
+      <Turn>
+        <PlayerMove move="{p:houndoom} Flame Burst {o:mabosstiff} to {-:45}" />
+        <OpponentMove move="{o:mabosstiff} Bite {p:houndoom} to {+:52}" />
+      </Turn>
+      <Turn>
+        <PlayerMove move="{p:houndoom} switch to {p:azumarill}" />
+        <OpponentMove move="{o:mabosstiff} Bite {p:azumarill} to {+:75}" />
+      </Turn>
+      <Turn>
+        <OpponentMove move="{o:mabosstiff} Trailblaze {p:azumarill} to {+:25}" />
+        <PlayerMove move="{p:azumarill} Play Rough {o:mabosstiff} to {-:0}" />
+      </Turn>
+    </Matchup>
+    <Matchup opponents={["misdreavus"]}>
+      <Turn>
+        <PlayerMove move="{p:azumarill} switch to {p:tentacruel}" />
+        <OpponentMove move="{o:misdreavus} Will-O-Wisp {p:tentacruel}" />
+        <OpponentMove move="{p:tentacruel} burn to {+:86}" />
+      </Turn>
+      <Turn>
+        <PlayerMove move="{p:tentacruel} Acid Spray {o:misdreavus} to {-:70}" />
+        <OpponentMove move="{o:misdreavus} Hex {p:tentacruel} to {+:37}" />
+        <OpponentMove move="{p:tentacruel} burn to {+:32}" />
+      </Turn>
+      <Turn>
+        <PlayerMove move="{p:tentacruel} switch to {p:houndoom}" />
+        <OpponentMove move="{o:misdreavus} Hex {p:houndoom} to {+:34}" />
+      </Turn>
+      <Turn>
+        <PlayerMove move="{p:houndoom} Dark Pulse {o:misdreavus} to {-:0}" />
+        <OpponentMove move="{o:misdreavus} fainted" />
+      </Turn>
+    </Matchup>
+    <Matchup opponents={["salandit"]}>
+      <Turn>
+        <PlayerMove move="{p:houndoom} Dark Pulse {o:salandit} to {-:0}" />
+        <OpponentMove move="{o:salandit} fainted" />
+      </Turn>
+    </Matchup>
+  </BattleLine>
+</Battle>
+
+## Nugget Bridge Grunt Battle
+
+export const _yamaskg6 = changePokemon(_yamaskg5, {
+  moves: ["Disable", "Haze", "Rock Tomb", "Shadow Sneak"],
+});
+export const _drednaw4 = changePokemon(_drednaw3);
+export const _perrserker7 = changePokemon(_perrserker6, {
+  ability: "Battle Armor",
+  item: "Sitrus Berry",
+  moves: ["Fake Out", "Bullet Punch", "Iron Head", "Metal Burst"],
+});
+export const _azumarill11 = changePokemon(_azumarill10, {
+  item: "Pecha Berry",
+});
+
+<Battle
+  playerTeam={[_yamaskg6, _drednaw4, _perrserker7, _azumarill11]}
+  opponentTeam={nuggetBridgeGruntTeam}
+>
+  <BattleLine>
+    <Matchup opponents={["arcanine"]}>
+      <Turn>
+        <OpponentMove move="{o:arcanine} Dragon Rage {p:yamask-galar} to {=:27}" />
+        <PlayerMove move="{p:yamask-galar} Rock Tomb {o:arcanine} to {-:74}" />
+      </Turn>
+      <Turn>
+        <PlayerMove move="{p:yamask-galar} switch to {p:drednaw}" />
+        <OpponentMove move="{o:arcanine} Dragon Rage {p:drednaw} to {=:57}" />
+      </Turn>
+      <Turn>
+        <PlayerMove move="{p:drednaw} Razor Shell {o:arcanine} to {-:0}" />
+        <OpponentMove move="{o:arcanine} fainted" />
+      </Turn>
+    </Matchup>
+    <Matchup opponents={["togedemaru"]}>
+      <Turn>
+        <PlayerMove move="{p:drednaw} switch to {p:perrserker}" />
+        <OpponentMove move="{o:togedemaru} Zippy Zap {p:perrserker} to {+:76}" />
+      </Turn>
+      <Turn>
+        <OpponentMove move="{o:togedemaru} Zippy Zap {p:perrserker} to {+:55}" />
+        <PlayerMove move="{p:perrserker} Metal Burst {o:togedemaru} to {-:53}" />
+      </Turn>
+      <Turn>
+        <OpponentMove move="{o:togedemaru} Zippy Zap {p:perrserker} to {+:58}" />
+        <PlayerMove move="{p:perrserker} Metal Burst {o:togedemaru} to {-:26}" />
+      </Turn>
+      <Turn>
+        <OpponentMove move="{o:togedemaru} Zippy Zap {p:perrserker} to {+:37}" />
+        <PlayerMove move="{p:perrserker} Metal Burst {o:togedemaru} to {-:0}" />
+        <OpponentMove move="{o:togedemaru} fainted" />
+      </Turn>
+    </Matchup>
+    <Matchup opponents={["komala"]}>
+      <Turn>
+        <PlayerMove move="{p:perrserker} switch to {p:yamask-galar}" />
+        <OpponentMove move="{o:komala} Last Resort {p:yamask-galar}" />
+      </Turn>
+      <Turn>
+        <OpponentMove move="{o:komala} Last Resort {p:yamask-galar}" />
+        <PlayerMove move="{p:yamask-galar} Rock Tomb {o:komala} to {-:76}" />
+      </Turn>
+      <Turn>
+        <OpponentMove move="{o:komala} Last Resort {p:yamask-galar}" />
+        <PlayerMove move="{p:yamask-galar} Rock Tomb {o:komala} to {-:64}" />
+      </Turn>
+      <Turn>
+        <OpponentMove move="{o:komala} Last Resort {p:yamask-galar}" />
+        <PlayerMove move="{p:yamask-galar} Rock Tomb {o:komala} to {-:52}" />
+      </Turn>
+      <Turn>
+        <OpponentMove move="{o:komala} Last Resort {p:yamask-galar}" />
+        <PlayerMove move="{p:yamask-galar} Rock Tomb {o:komala} to {-:40}" />
+      </Turn>
+      <Turn>
+        <OpponentMove move="{o:komala} Last Resort {p:yamask-galar}" />
+        <PlayerMove move="{p:yamask-galar} Rock Tomb {o:komala} to {-:28}" />
+      </Turn>
+      <Turn>
+        <OpponentMove move="{o:komala} Last Resort {p:yamask-galar}" />
+        <PlayerMove move="{p:yamask-galar} Rock Tomb {o:komala} to {-:16}" />
+      </Turn>
+      <Turn>
+        <OpponentMove move="{o:komala} Last Resort {p:yamask-galar}" />
+        <PlayerMove move="{p:yamask-galar} Rock Tomb {o:komala} to {-:4}" />
+      </Turn>
+      <Turn>
+        <OpponentMove move="{o:komala} Last Resort {p:yamask-galar}" />
+        <PlayerMove move="{p:yamask-galar} Rock Tomb {o:komala} to {-:0}" />
+        <OpponentMove move="{o:komala} fainted" />
+      </Turn>
+    </Matchup>
+    <Matchup opponents={["druddigon"]}>
+      <Turn>
+        <PlayerMove move="{p:yamask-galar} switch to {p:azumarill}" />
+        <OpponentMove move="{o:druddigon} Dragon Tail {p:azumarill}" />
+      </Turn>
+      <Turn>
+        <PlayerMove move="{p:azumarill} Play Rough {o:druddigon} to {-:17}" />
+        <OpponentMove move="{o:druddigon} Rough Skin {p:azumarill} to {=:90}" />
+        <OpponentMove move="{o:druddigon} Poison Tail {p:azumarill} to {+:34}" />
+      </Turn>
+      <Turn>
+        <PlayerMove move="{p:azumarill} Play Rough {o:druddigon} to {-:0}" />
+        <OpponentMove move="{o:druddigon} Rough Skin {p:azumarill} to {=:22}" />
+        <OpponentMove move="{o:druddigon} fainted" />
+      </Turn>
+    </Matchup>
+  </BattleLine>
+</Battle>
+
+## Route 24 Encounter
+
+export const _houndoom5 = changePokemon(_houndoom4);
+
+<Encounter
+  encounter="Charcadet"
+  sprite="charcadet"
+  row={["Grass · ", { warning: "Day" }, " · 50% · Level 14-16"]}
+  playerTeam={[_houndoom5]}
+/>
+
+export const _charcadet1 = {
+  name: "Charcadet",
+  level: 14,
+  move1: "Clear Smog",
+  move2: "Ember",
+  move3: "Fire Spin",
+  move4: "Leer",
+};
+
+## Route 25 Encounter
+
+<Encounter encounter="Chinchou" sprite="chinchou" row={["Old Rod · 30% · Level 2-4"]} />
+
+export const _chinchou1 = {
+  name: "Chinchou",
+  level: 2,
+  move1: "Bubble",
+  move2: "Supersonic",
+};
+
+## Nugget Bridge Grunt Battle
+
+export const _azumarill12 = changePokemon(_azumarill11, {
+  item: "Pixie Plate",
+  moves: ["Aqua Jet", "Body Slam", "Helping Hand", "Play Rough"],
+});
+export const _perrserker8 = changePokemon(_perrserker7, {
+  nature: "Calm",
+  moves: ["Fake Out", "Bullet Punch", "Iron Head", "Thief"],
+});
+export const _clodsire7 = changePokemon(_clodsire6, {
+  nature: "Impish",
+});
+export const _houndoom6 = changePokemon(_houndoom5, {
+  item: "Black Glasses",
+});
+export const _yamaskg7 = changePokemon(_yamaskg6);
+export const _kricketune7 = changePokemon(_kricketune6, {
+  item: "Chilan",
+  moves: ["Bug Bite", "Bulldoze", "Bullet Seed", "Pounce"],
+});
+
+<Battle
+  playerTeam={[_azumarill12, _perrserker8, _clodsire7, _houndoom6, _yamaskg7, _kricketune7]}
+  opponentTeam={digHouseGruntTeam}
+>
+  <BattleLine>
+    <Matchup opponents={["persian-alola"]}>
+      <Turn>
+        <OpponentMove move="{o:persian-alola} Shock Wave {p:azumarill} to {+:36}" />
+        <PlayerMove move="{p:azumarill} Play Rough {o:persian-alola} to {-:0}" />
+        <OpponentMove move="{o:persian-alola} fainted" />
+      </Turn>
+    </Matchup>
+    <Matchup opponents={["crobat"]}>
+      <Turn>
+        <PlayerMove move="{p:azumarill} switch to {p:perrserker}" />
+        <OpponentMove move="{o:crobat} Air Cutter {p:perrserker} to {+:84}" />
+      </Turn>
+      <Turn>
+        <PlayerMove move="{p:perrserker} Fake Out {o:crobat} to {-:77}" />
+        <OpponentMove move="{o:crobat} flinched" />
+      </Turn>
+      <Turn>
+        <OpponentMove move="{o:crobat} HP Fire {p:perrserker} to {+:48}" />
+        <PlayerMove move="{p:perrserker} Iron Head {o:crobat} to {-:44}" />
+      </Turn>
+      <Turn>
+        <OpponentMove move="{o:crobat} HP Fire {p:perrserker} to {+:36}" />
+        <PlayerMove move="{p:perrserker} Iron Head {o:crobat} to {-:11}" />
+      </Turn>
+      <Turn>
+        <PlayerMove move="{p:perrserker} Bullet Punch {o:crobat} to {-:0}" />
+        <OpponentMove move="{o:crobat} fainted" />
+      </Turn>
+    </Matchup>
+    <Matchup opponents={["veluza"]}>
+      <Turn>
+        <PlayerMove move="{p:perrserker} switch to {p:clodsire}" />
+        <OpponentMove move="{o:veluza} Aqua Cutter {p:clodsire}" />
+      </Turn>
+      <Turn>
+        <PlayerMove move="{p:clodsire} switch to {p:houndoom}" />
+        <OpponentMove move="{o:veluza} Psycho Cut {p:houndoom}" />
+      </Turn>
+      <Turn>
+        <PlayerMove move="{p:houndoom} Dark Pulse {o:veluza} to {-:0}" />
+        <OpponentMove move="{o:veluza} fainted" />
+      </Turn>
+    </Matchup>
+    <Matchup opponents={["raticate"]}>
+      <Turn>
+        <PlayerMove move="{p:houndoom} switch to {p:yamask-galar}" />
+        <OpponentMove move="{o:raticate} Stom. Tantrum {p:yamask-galar} to {+:37}" />
+      </Turn>
+      <Turn>
+        <PlayerMove move="{p:yamask-galar} switch to {p:kricketune}" />
+        <OpponentMove move="{o:raticate} Stom. Tantrum {p:kricketune} to {+:82}" />
+        <PlayerMove move="{o:raticate} burn to {=:73}" />
+      </Turn>
+      <Turn>
+        <OpponentMove move="{o:raticate} Facade {p:kricketune} to {+:41}" />
+        <PlayerMove move="{p:kricketune} Pounce {o:raticate} to {-:28}" />
+        <PlayerMove move="{o:raticate} burn to {-:24}" />
+      </Turn>
+      <Turn>
+        <PlayerMove move="{p:kricketune} Pounce {o:raticate} to {-:0}" />
+        <PlayerMove move="{o:raticate} fainted" />
+      </Turn>
+    </Matchup>
+  </BattleLine>
+</Battle>
+
+## Route 5 Encounter
+
+export const _houndoom7 = changePokemon(_houndoom6);
+
+<Encounter
+  encounter="Growlithe-H"
+  sprite="growlithe-hisui"
+  row={["Grass · ", { warning: "Night" }, "· 50% · Level 18-20"]}
+  playerTeam={[_houndoom7]}
+/>
+
+export const _growlitheh1 = {
+  name: "Growlithe-H",
+  sprite: "growlithe-hisui",
+  pokedex: "Growlithe-Hisui",
+  level: 18,
+  move1: "Flame Wheel",
+  move2: "Helping Hand",
+  move3: "Leer",
+  move4: "Odor Sleuth",
+};
+
+## Route 6 Encounter
+
+<Encounter encounter="Shellder" sprite="shellder" row={["Old Rod · 30% · Level 2-4"]} />
+
+export const _shellder1 = {
+  name: "Shellder",
+  level: 2,
+  move1: "Tackle",
+  move2: "Water Gun",
+};
+
+export const _charcadet2 = changePokemon(_charcadet1, { level: 28 });
+export const _chinchou2 = changePokemon(_chinchou1, { level: 28 });
+export const _growlitheh2 = changePokemon(_growlitheh1, { level: 28 });
+export const _shellder2 = changePokemon(_shellder1, { level: 28 });
+
+<Card title="Box Change">
+  <Row row={["All of Box 1 →", { warning: "Set to Level 28 Cap" }]} />
+</Card>
+
+export const _lanturn1 = changePokemon(_chinchou2, {
+  name: "Lanturn",
+});
+export const _golduck1 = changePokemon(_psyduck2, {
+  name: "Golduck",
+  moves: ["Scald", "Scratch", "Water Sport"],
+});
+
+<Card title="Box Change">
+  <Row row={[_lanturn1]} />
+  <Row row={[_golduck1]} />
+</Card>
+
+## Cerulean City Leader Misty Battle
+
+export const _kricketune8 = changePokemon(_kricketune7, {
+  nature: "Adamant",
+  item: "Muscle Band",
+  moves: ["Aerial Ace", "Bug Bite", "Bulldoze", "Bullet Seed"],
+});
+export const _lanturn2 = changePokemon(_lanturn1, {
+  nature: "Calm",
+  ability: "Volt Absorb",
+  item: "Sitrus Berry",
+  moves: ["Bubble Beam", "Icy Wind", "Shock Wave", "Thunder Wave"],
+});
+export const _perrserker9 = changePokemon(_perrserker8, {
+  nature: "Adamant",
+  item: "Rawst Berry",
+  moves: ["Bullet Punch", "Iron Head", "Metal Burst", "Thief"],
+});
+export const _gyarados3 = changePokemon(_gyarados2, {
+  moves: ["Bite", "Bulldoze", "Ice Fang", "Leer"],
+});
+export const _golduck2 = changePokemon(_golduck1, {
+  nature: "Rash",
+  ability: "Swift Swim",
+  item: "Colbur Berry",
+  moves: ["Disable", "Me First", "Tail Whip", "Zen Headbutt"],
+});
+export const _clodsire8 = changePokemon(_clodsire7, {
+  nature: "Careful",
+  item: "Payapa Berry",
+  moves: ["Bulldoze", "Poison Jab", "Rock Tomb", "Yawn"],
+});
+
+<Battle
+  playerTeam={[_kricketune8, _lanturn2, _perrserker9, _gyarados3, _golduck2, _clodsire8]}
+  opponentTeam={ceruleanCityLeaderMistyTeam}
+>
+<BattleLine>
+  <Matchup opponents={["politoed"]}>
+    <Turn>
+      <PlayerMove move="{p:kricketune} Bug Bite {o:politoed} to {-:48}" />
+      <OpponentMove move="{o:politoed} Toxic {p:kricketune}" />
+      <OpponentMove move="{p:kricketune} poison to {+:84}" />
+    </Turn>
+    <Turn>
+      <PlayerMove move="{p:kricketune} Bullet Seed {o:politoed} to {-:0}" />
+      <OpponentMove move="{o:politoed} fainted" />
+      <OpponentMove move="{p:kricketune} poison to {+:74}" />
+    </Turn>
+  </Matchup>
+  <Matchup opponents={["mantine"]}>
+    <Turn>
+      <PlayerMove move="{p:kricketune} switch to {p:lanturn}" />
+      <OpponentMove move="{o:mantine} Hurricane {p:lanturn} to {+:83}" />
+    </Turn>
+    <Turn>
+      <PlayerMove move="{p:lanturn} switch to {p:perrserker}" />
+      <OpponentMove move="{o:mantine} HP Grass {p:perrserker} to {+:86}" />
+    </Turn>
+    <Turn>
+      <OpponentMove move="{o:mantine} Scald {p:perrserker} to {+:22}" />
+      <PlayerMove move="{p:perrserker} Metal Burst {o:mantine} to {-:10}" />
+    </Turn>
+    <Turn>
+      <PlayerMove move="{p:perrserker} Bullet Punch {o:mantine} to {-:0}" />
+      <OpponentMove move="{o:mantine} fainted" />
+    </Turn>
+  </Matchup>
+  <Matchup opponents={["ludicolo"]}>
+    <Turn>
+      <PlayerMove move="{p:perrserker} switch to {p:gyarados}" />
+      <OpponentMove move="{o:ludicolo} Scald {p:gyarados} to {+:53}" />
+    </Turn>
+    <Turn>
+      <PlayerMove move="{p:gyarados} switch to {p:lanturn}" />
+      <OpponentMove move="{o:ludicolo} Thunder Punch {p:lanturn} to {+:112}" />
+    </Turn>
+    <Turn>
+      <OpponentMove move="{o:ludicolo} Giga Drain {p:lanturn} to {+:31}" />
+      <PlayerMove move="{p:lanturn} Thunder Wave {o:ludicolo}" />
+    </Turn>
+    <Turn>
+      <PlayerMove move="{p:lanturn} switch to {p:kricketune}" />
+      <OpponentMove move="{o:ludicolo} Giga Drain {p:kricketune} to {+:42}" />
+      <OpponentMove move="{p:kricketune} poison to {+:37}" />
+    </Turn>
+    <Turn>
+      <PlayerMove move="{p:kricketune} Bug Bite {o:ludicolo} to {-:0}" />
+      <PlayerMove move="{p:kricketune} heal to {+:59}" />
+      <OpponentMove move="{o:ludicolo} fainted" />
+      <OpponentMove move="{p:kricketune} poison to {+:49}" />
+    </Turn>
+  </Matchup>
+  <Matchup opponents={["toxicroak"]}>
+    <Turn>
+      <PlayerMove move="{p:kricketune} switch to {p:golduck}" />
+      <OpponentMove move="{o:toxicroak} Swords Dance" />
+    </Turn>
+    <Branch branch={["Golduck Zen Headbutt Starmie", "Golduck Zen Headbutt Toxicroak"]} />
+  </Matchup>
+</BattleLine>
+
+<BattleLine line="Golduck Zen Headbutt Starmie">
+  <Matchup opponents={["toxicroak"]}>
+    <Turn>
+      <OpponentMove move="{o:toxicroak} switch to {o:starmie}" />
+      <PlayerMove move="{p:golduck} Zen Headbutt {o:starmie} to {-:67}" />
+    </Turn>
+  </Matchup>
+  <Matchup opponents={["starmie"]}>
+    <Turn>
+      <PlayerMove move="{p:golduck} Me First {p:starmie} to {-:0}" />
+      <OpponentMove move="{o:starmie} fainted" />
+    </Turn>
+  </Matchup>
+  <Matchup opponents={["clodsire"]}>
+    <Turn>
+      <PlayerMove move="{p:golduck} Zen Headbutt {o:clodsire} to {-:51}" />
+      <OpponentMove move="{o:clodsire} Toxic {p:golduck}" />
+      <OpponentMove move="{o:clodsire} heal to {-:58}" />
+      <OpponentMove move="{p:golduck} posion to {=:86}" />
+    </Turn>
+    <Turn>
+      <PlayerMove move="{p:golduck} Zen Headbutt {o:clodsire} to {-:0}" />
+      <OpponentMove move="{o:clodsire} fainted" />
+      <OpponentMove move="{p:golduck} posion to {=:76}" />
+    </Turn>
+  </Matchup>
+  <Matchup opponents={["toxicroak"]}>
+    <Turn>
+      <PlayerMove move="{p:golduck} Zen Headbutt {o:toxicroak} to {-:0}" />
+      <OpponentMove move="{o:toxicroak} fainted" />
+    </Turn>
+  </Matchup>
+</BattleLine>
+
+<BattleLine line="Golduck Zen Headbutt Toxicroak">
+  <Matchup opponents={["toxicroak"]}>
+    <Turn>
+      <PlayerMove move="{p:golduck} Zen Headbutt {o:toxicroak} to {-:0}" />
+      <OpponentMove move="{o:toxicroak} fainted" />
+    </Turn>
+  </Matchup>
+  <Matchup opponents={["starmie"]}>
+    <Turn>
+      <PlayerMove move="{p:golduck} switch to {p:clodsire}" />
+      <OpponentMove move="{o:starmie} Thunderbolt {p:clodsire}" />
+    </Turn>
+    <Turn>
+      <OpponentMove move="{o:starmie} Psyshock {p:clodsire} to {+:41}" />
+      <PlayerMove move="{p:clodsire} Poison Jab {o:starmie} to {-:55}" />
+    </Turn>
+    <Turn>
+      <PlayerMove move="{p:clodsire} switch to {p:golduck}" />
+      <OpponentMove move="{o:starmie} Psyshock {p:golduck} to {+:50}" />
+    </Turn>
+    <Turn>
+      <PlayerMove move="{p:golduck} Me First {p:starmie} to {-:0}" />
+      <OpponentMove move="{o:starmie} fainted" />
+    </Turn>
+  </Matchup>
+  <Matchup opponents={["clodsire"]}>
+    <Turn>
+      <PlayerMove move="{p:golduck} Zen Headbutt {o:clodsire} to {-:51}" />
+      <OpponentMove move="{o:clodsire} Toxic {p:golduck}" />
+      <OpponentMove move="{o:clodsire} heal to {-:58}" />
+      <OpponentMove move="{p:golduck} posion to {+:45}" />
+    </Turn>
+    <Turn>
+      <PlayerMove move="{p:golduck} Zen Headbutt {o:clodsire} to {-:0}" />
+      <OpponentMove move="{o:clodsire} fainted" />
     </Turn>
   </Matchup>
 </BattleLine>
