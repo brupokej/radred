@@ -325,7 +325,7 @@ export function Branch({
 
   return (
     <div className={styles.branchWrapper}>
-      <ScrollFade innerClassName={styles.branchRow} insetBlock="var(--ifm-spacing-vertical)">
+      <ScrollFade className={styles.branchScrollFade} innerClassName={styles.branchRow} insetBlock="var(--ifm-spacing-vertical)">
         {branch.map((item, j) => {
           const isSelected = selectedChildLine === item;
           return (

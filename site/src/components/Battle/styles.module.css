@@ -102,6 +102,12 @@
   align-items: center;
   display: flex;
   flex: 1;
+  min-width: 0;
+}
+
+.branchScrollFade {
+  flex: 1;
+  min-width: 0;
 }
 
 .branchRow {
