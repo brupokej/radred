@@ -31,7 +31,7 @@ import {
 } from "@site/src/utils/opponentTeams";
 import { changePokemon } from "@site/src/utils/pokemon";
 import { box as _box } from "@site/guide/brock.mdx";
-import { addToBox, updateBox, exportBox } from "@site/src/utils/box";
+import { addToBox, updateBox, exportBox, setLevelCap, removeFromBox } from "@site/src/utils/box";
 
 # Misty
 
@@ -392,24 +392,7 @@ export const _v12 = addToBox(_box, {
   <Row row={["Cerulean City →", { info: "Solve the Move Relearner puzzle" }]} />
 </Card>
 
-export const _v13 = updateBox(_box, {
-  Torracat: { level: 28 },
-  Tentacool: { level: 28 },
-  Clodsire: { level: 28 },
-  "Meowth-G": { level: 28 },
-  Azumarill: { level: 28 },
-  Houndour: { level: 28 },
-  Kricketune: { level: 28 },
-  Psyduck: { level: 28 },
-  "Yamask-G": { level: 28 },
-  Drilbur: { level: 28 },
-  Magikarp: { level: 28 },
-  Chewtle: { level: 28 },
-});
-
-<Card title="Box Change">
-  <Row row={["All of Box 1 →", { warning: "Set to Level 28 Cap" }]} />
-</Card>
+export const _v13 = setLevelCap(_box, 28);
 
 export const _v14 = updateBox(_box, {
   "Meowth-G": {
@@ -422,7 +405,7 @@ export const _v14 = updateBox(_box, {
   Tentacool: { name: "Tentacruel" },
 });
 
-<BoxChange box={_box} versions={[_v14]} />
+<BoxChange box={_box} versions={[_v13, _v14]} />
 
 ## Cerulean City Rival Battle
 
@@ -731,6 +714,7 @@ export const _v15 = updateBox(_box, {
 export const _v16 = updateBox(_box, {
   Houndour: { moves: ["Dark Pulse", "Incinerate", "Leer", "Sucker Punch"] },
 });
+
 export const _v17 = updateBox(_box, {
   Houndour: {
     name: "Houndoom",
@@ -1263,23 +1247,14 @@ export const _v31 = addToBox(_box, {
   },
 });
 
-export const _v32 = updateBox(_box, {
-  Charcadet: { level: 28 },
-  Chinchou: { level: 28 },
-  "Growlithe-H": { level: 28 },
-  Shellder: { level: 28 },
-});
-
-<Card title="Box Change">
-  <Row row={["All of Box 1 →", { warning: "Set to Level 28 Cap" }]} />
-</Card>
+export const _v32 = setLevelCap(_box, 28);
 
 export const _v33 = updateBox(_box, {
   Chinchou: { name: "Lanturn" },
   Psyduck: { name: "Golduck", moves: ["Scald", "Scratch", "Water Sport"] },
 });
 
-<BoxChange box={_box} versions={[_v33]} />
+<BoxChange box={_box} versions={[_v32, _v33]} />
 
 ## Cerulean City Leader Misty Battle
 
@@ -1460,3 +1435,7 @@ export const _v34 = updateBox(_box, {
   </Matchup>
 </BattleLine>
 </Battle>
+
+export const _v35 = removeFromBox(_box, ["Kricketune"]);
+
+<BoxChange box={_box} versions={[_v35]} />
