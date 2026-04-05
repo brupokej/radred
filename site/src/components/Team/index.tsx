@@ -131,7 +131,7 @@ function TeamGrid({ team }: { team: Pokemon[] }) {
             aria-label="Scroll left"
           />
         )}
-        <div ref={scrollRef} className={styles.grid}>
+        <div ref={scrollRef} className={styles.grid} data-scroll>
           {slots.map((pokemon, i) => (
             <PokemonCard key={i} pokemon={pokemon} pokedex={pokedex} />
           ))}

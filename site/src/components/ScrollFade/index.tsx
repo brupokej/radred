@@ -50,7 +50,7 @@ export function ScrollFade({
           : undefined
       }
     >
-      <div ref={scrollRef} className={innerClassName}>
+      <div ref={scrollRef} className={innerClassName} data-scroll>
         {children}
       </div>
     </div>
