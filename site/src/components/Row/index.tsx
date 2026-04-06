@@ -1,5 +1,5 @@
 import { ScrollFade } from "@site/src/components/ScrollFade";
-import { Pokemon, resolve } from "@site/src/utils/pokemon";
+import { Pokemon, resolvePokemon } from "@site/src/utils/pokemon";
 import { parseTokens } from "@site/src/utils/tokens";
 import styles from "./styles.module.css";
 
@@ -29,7 +29,7 @@ const LEVEL_CAP_LEVELS = new Set([28, 36, 44, 47, 56, 57, 59, 68, 73, 76, 79, 80
 
 export function expandPokemon(pokemon: Pokemon): Array<string | { warning: string }> {
   const { base, update } = pokemon;
-  const current = resolve(pokemon);
+  const current = resolvePokemon(pokemon);
   const nameChanged = "name" in (update ?? {});
   const levelChanged = "level" in (update ?? {});
   const from = base.name;

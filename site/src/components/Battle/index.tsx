@@ -4,7 +4,7 @@ import Team from "@site/src/components/Team";
 import { Box, getFromBox } from "@site/src/utils/box";
 import { useHpDisplay } from "@site/src/utils/hpDisplay";
 import { calcMaxHp, fetchPokedex } from "@site/src/utils/pokedex";
-import { Pokemon, PokemonData, resolve } from "@site/src/utils/pokemon";
+import { Pokemon, PokemonData, resolvePokemon } from "@site/src/utils/pokemon";
 import { spriteUrl } from "@site/src/utils/sprites";
 import { parseTokens } from "@site/src/utils/tokens";
 import React, {
@@ -192,7 +192,7 @@ export function Battle({
     () =>
       Object.fromEntries([
         ...(playerTeam ?? []).map((p) => {
-          const r = resolve(p);
+          const r = resolvePokemon(p);
           return [`p:${r.sprite ?? r.name.toLowerCase()}`, hpFromDex(r)];
         }),
         ...(opponentTeam ?? []).map((p) => [`o:${p.sprite ?? p.name.toLowerCase()}`, hpFromDex(p)]),

@@ -1,6 +1,6 @@
 import Card from "@site/src/components/Card";
 import { fetchPokedex } from "@site/src/utils/pokedex";
-import { resolve, type Pokemon } from "@site/src/utils/pokemon";
+import { resolvePokemon, type Pokemon } from "@site/src/utils/pokemon";
 import { spriteUrl } from "@site/src/utils/sprites";
 import clsx from "clsx";
 import { createContext, useCallback, useContext, useEffect, useRef, useState } from "react";
@@ -156,7 +156,7 @@ function PokemonCard({
 }) {
   const isExpanded = useCardDetail();
   const { update, base } = pokemon ?? {};
-  const current = pokemon ? resolve(pokemon) : null;
+  const current = pokemon ? resolvePokemon(pokemon) : null;
   const wc = (field: string) => (update && field in update ? styles.fieldWarning : "");
   const baseMoveSet = base?.moves ? new Set(base.moves.filter(Boolean)) : null;
   const mwc = (move: string | null | undefined) =>

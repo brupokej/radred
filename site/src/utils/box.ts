@@ -1,14 +1,8 @@
-import {
-  changePokemon,
-  Pokemon,
-  PokemonData,
-  PokemonOverrides,
-  resolve,
-} from "@site/src/utils/pokemon";
+import { Pokemon, PokemonData, resolvePokemon } from "@site/src/utils/pokemon";
 
 type BoxOp =
   | { type: "add"; pokemon: Record<string, Pokemon> }
-  | { type: "update"; changes: Record<string, PokemonOverrides> }
+  | { type: "update"; changes: Record<string, Partial<PokemonData>> }
   | { type: "remove"; names: string[] }
   | { type: "levelcap"; level: number; exclude?: string[] };
 
@@ -34,8 +28,12 @@ function replayBox(box: Box, version: number): Map<string, Pokemon> {
       for (const [name, changes] of Object.entries(op.changes)) {
         const current = state.get(name);
         if (current) {
-          const updated = changePokemon(current, changes);
-          const updatedName = resolve(updated).name;
+          const updated: Pokemon = {
+            base: resolvePokemon(current),
+            update: changes,
+            index: current.index,
+          };
+          const updatedName = resolvePokemon(updated).name;
           state.delete(name);
           state.set(updatedName, updated);
           touched.add(updatedName);
@@ -59,8 +57,12 @@ function replayBox(box: Box, version: number): Map<string, Pokemon> {
       const excludeSet = new Set(op.exclude ?? []);
       const touched = new Set<string>();
       for (const [name, current] of state) {
-        if (!excludeSet.has(name) && resolve(current).level !== op.level) {
-          state.set(name, changePokemon(current, { level: op.level }));
+        if (!excludeSet.has(name) && resolvePokemon(current).level !== op.level) {
+          state.set(name, {
+            base: resolvePokemon(current),
+            update: { level: op.level },
+            index: current.index,
+          });
           touched.add(name);
         }
       }
@@ -106,7 +108,7 @@ export function addToBox(box: Box, initial: Record<string, PokemonData>): number
 
 // Updates existing pokemon in the box. Only the changed fields need to be specified.
 // Returns the new op count (1-based version number of the snapshot just created).
-export function updateBox(box: Box, changes: Record<string, PokemonOverrides> = {}): number {
+export function updateBox(box: Box, changes: Record<string, Partial<PokemonData>> = {}): number {
   const currentState = replayBox(box, box.ops.length);
 
   const validChanges = Object.fromEntries(
@@ -140,14 +142,14 @@ export function removeFromBox(box: Box, names: string[]): number {
   return box.ops.length;
 }
 
-// Creates a new Box containing only the resolved final state, with `update` cleared.
+// Creates a new Box containing only the resolvePokemond final state, with `update` cleared.
 // Pokemon that were removed are omitted.
 // Intended for use at the end of a file to pass a clean starting state to the next file.
 export function exportBox(box: Box): Box {
   const state = replayBox(box, box.ops.length);
   const pokemon: Record<string, Pokemon> = {};
   for (const [name, p] of state) {
-    pokemon[name] = { base: resolve(p), index: p.index };
+    pokemon[name] = { base: resolvePokemon(p), index: p.index };
   }
   return { ops: Object.keys(pokemon).length > 0 ? [{ type: "add", pokemon }] : [] };
 }
@@ -195,7 +197,7 @@ export function getLevelCapAtVersion(
     .map((name) => stateBefore.get(name))
     .filter((p): p is Pokemon => p !== undefined)
     .map((p) => {
-      const r = resolve(p);
+      const r = resolvePokemon(p);
       return { name: r.name, level: r.level };
     });
 
@@ -212,7 +214,7 @@ export function getRemovalsAtVersion(box: Box, version: number): string[] {
   return op.names
     .map((name) => stateBefore.get(name))
     .filter((p): p is Pokemon => p !== undefined)
-    .map((p) => resolve(p).name);
+    .map((p) => resolvePokemon(p).name);
 }
 
 // Returns the pokemon that visibly changed (with `update` populated) at the given version.
