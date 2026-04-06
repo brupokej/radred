@@ -32,10 +32,24 @@ npm run deploy
 
 If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
 
-## Test Snapshots
+## Playwright Testing
 
 ```bash
 npm run playwright
 ```
 
-With a local development server running, this command updates the test snapshots in `tests/snapshots/`.
+With a local development server running, this command runs Playwright visual regression tests.
+
+```bash
+npm run playwright:update
+```
+
+This command updates the latest test snapshots in `tests/snapshots/`.
+
+## Vitest Testing
+
+```bash
+npm run vitest
+```
+
+This command runs the Vitest unit tests.

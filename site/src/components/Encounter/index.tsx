@@ -1,7 +1,8 @@
 import Card from "@site/src/components/Card";
 import { Row, RowCell } from "@site/src/components/Row";
-import Team, { Pokemon } from "@site/src/components/Team";
+import Team from "@site/src/components/Team";
 import { Box, getFromBox } from "@site/src/utils/box";
+import { Pokemon } from "@site/src/utils/pokemon";
 import { spriteUrl } from "@site/src/utils/sprites";
 import styles from "./styles.module.css";
 

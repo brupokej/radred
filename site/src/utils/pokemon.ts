@@ -1,45 +1,50 @@
-import { Pokemon } from "@site/src/components/Team";
+export interface PokemonData {
+  name: string;
+  sprite?: string;
+  pokedex?: string;
+  level: number;
+  nature?: string | null;
+  ability?: string | null;
+  item?: string | null;
+  moves?: (string | null)[];
+}
 
-type MoveKey = "move1" | "move2" | "move3" | "move4";
-export const MOVE_KEYS: MoveKey[] = ["move1", "move2", "move3", "move4"];
-const WARNING_FIELDS = ["name", "level", "nature", "ability", "item"] as const;
+export interface Pokemon {
+  base: PokemonData;
+  update?: Partial<PokemonData>;
+  index?: number;
+}
 
-export type PokemonOverrides = Partial<Omit<Pokemon, MoveKey | "previous">> & {
-  moves?: (string | null | undefined)[];
-};
+export type PokemonOverrides = Partial<PokemonData>;
 
-export function changePokemon(base: Pokemon, overrides: PokemonOverrides = {}): Pokemon {
-  const previous: Record<string, unknown> = {};
+export function resolve(pokemon: Pokemon): PokemonData {
+  return { ...pokemon.base, ...pokemon.update };
+}
 
-  const o = overrides as Record<string, unknown>;
-  const b = base as Record<string, unknown>;
-  for (const field of WARNING_FIELDS) {
-    if (o[field] !== undefined && o[field] !== b[field]) {
-      previous[field] = b[field];
+const TRACKED_FIELDS = ["name", "level", "nature", "ability", "item"] as const;
+
+export function changePokemon(pokemon: Pokemon, overrides: PokemonOverrides = {}): Pokemon {
+  const current = resolve(pokemon);
+  const update: Partial<PokemonData> = {};
+
+  for (const field of TRACKED_FIELDS) {
+    if (overrides[field] !== undefined && overrides[field] !== current[field]) {
+      (update as Record<string, unknown>)[field] = overrides[field];
     }
   }
 
-  const baseMoves = new Set(MOVE_KEYS.map((k) => base[k]).filter((m): m is string => !!m));
-
-  let moveOverrides: Partial<Pick<Pokemon, MoveKey>> | undefined;
-
   if (overrides.moves !== undefined) {
-    moveOverrides = {};
-    MOVE_KEYS.forEach((key, i) => {
-      const move = overrides.moves![i] ?? null;
-      moveOverrides![key] = move;
-      if (move && !baseMoves.has(move)) {
-        previous[key] = base[key] ?? null;
-      }
-    });
+    const currentMoveSet = new Set((current.moves ?? []).filter(Boolean));
+    if (overrides.moves.some((m) => m && !currentMoveSet.has(m))) {
+      update.moves = overrides.moves;
+    }
   }
 
-  const { moves: _moves, ...rest } = overrides;
+  const hasChanges = Object.keys(update).length > 0;
 
   return {
-    ...base,
-    ...rest,
-    ...(moveOverrides ?? {}),
-    previous: Object.keys(previous).length > 0 ? previous : undefined,
+    base: current,
+    update: hasChanges ? update : undefined,
+    index: pokemon.index,
   };
 }

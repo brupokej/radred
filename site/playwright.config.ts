@@ -2,7 +2,11 @@ import { defineConfig, devices } from "@playwright/test";
 
 export default defineConfig({
   testDir: "./tests",
+  testMatch: "**/*.spec.ts",
   snapshotDir: "./tests/snapshots",
+  expect: {
+    toHaveScreenshot: { maxDiffPixels: 100 },
+  },
   use: {
     baseURL: "http://localhost:3000",
     colorScheme: "light",

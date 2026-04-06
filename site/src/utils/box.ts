@@ -1,5 +1,10 @@
-import { Pokemon } from "@site/src/components/Team";
-import { changePokemon, PokemonOverrides } from "@site/src/utils/pokemon";
+import {
+  changePokemon,
+  Pokemon,
+  PokemonData,
+  PokemonOverrides,
+  resolve,
+} from "@site/src/utils/pokemon";
 
 type BoxOp =
   | { type: "add"; pokemon: Record<string, Pokemon> }
@@ -13,7 +18,7 @@ export interface Box {
 
 // Replays all ops up to (but not including) `version`, returning the live state as a Map.
 // Handles renames naturally: state.delete(oldName), state.set(newName, updated).
-// Clears `previous` for pokemon that were not touched in an update op, so that stale
+// Clears `update` for pokemon that were not touched in an update op, so that stale
 // warning highlights don't carry forward into subsequent versions.
 function replayBox(box: Box, version: number): Map<string, Pokemon> {
   const state = new Map<string, Pokemon>();
@@ -30,15 +35,20 @@ function replayBox(box: Box, version: number): Map<string, Pokemon> {
         const current = state.get(name);
         if (current) {
           const updated = changePokemon(current, changes);
+          const updatedName = resolve(updated).name;
           state.delete(name);
-          state.set(updated.name, updated);
-          touched.add(updated.name);
+          state.set(updatedName, updated);
+          touched.add(updatedName);
         }
       }
-      // Clear stale `previous` for pokemon not touched in this op
+      // Clear stale update for pokemon not touched in this op
       for (const [name, current] of state) {
-        if (!touched.has(name) && current.previous !== undefined) {
-          state.set(name, { ...current, previous: undefined });
+        if (!touched.has(name) && current.update !== undefined) {
+          state.set(name, {
+            base: { ...current.base, ...current.update },
+            update: undefined,
+            index: current.index,
+          });
         }
       }
     } else if (op.type === "remove") {
@@ -49,14 +59,18 @@ function replayBox(box: Box, version: number): Map<string, Pokemon> {
       const excludeSet = new Set(op.exclude ?? []);
       const touched = new Set<string>();
       for (const [name, current] of state) {
-        if (!excludeSet.has(name) && current.level !== op.level) {
+        if (!excludeSet.has(name) && resolve(current).level !== op.level) {
           state.set(name, changePokemon(current, { level: op.level }));
           touched.add(name);
         }
       }
       for (const [name, current] of state) {
-        if (!touched.has(name) && current.previous !== undefined) {
-          state.set(name, { ...current, previous: undefined });
+        if (!touched.has(name) && current.update !== undefined) {
+          state.set(name, {
+            base: { ...current.base, ...current.update },
+            update: undefined,
+            index: current.index,
+          });
         }
       }
     }
@@ -71,7 +85,7 @@ export function createBox(): Box {
 
 // Adds new pokemon to the box.
 // Returns the new op count (1-based version number of the snapshot just created).
-export function addToBox(box: Box, initial: Record<string, Pokemon>): number {
+export function addToBox(box: Box, initial: Record<string, PokemonData>): number {
   const currentState = replayBox(box, box.ops.length);
 
   const toAdd = Object.fromEntries(
@@ -83,7 +97,7 @@ export function addToBox(box: Box, initial: Record<string, Pokemon>): number {
         }
         return true;
       })
-      .map(([name, pokemon], i) => [name, { ...pokemon, index: currentState.size + i }])
+      .map(([name, data], i) => [name, { base: data, index: currentState.size + i }])
   );
 
   box.ops.push({ type: "add", pokemon: toAdd });
@@ -126,15 +140,14 @@ export function removeFromBox(box: Box, names: string[]): number {
   return box.ops.length;
 }
 
-// Creates a new Box containing only the resolved final state, with `previous` cleared.
+// Creates a new Box containing only the resolved final state, with `update` cleared.
 // Pokemon that were removed are omitted.
 // Intended for use at the end of a file to pass a clean starting state to the next file.
 export function exportBox(box: Box): Box {
   const state = replayBox(box, box.ops.length);
   const pokemon: Record<string, Pokemon> = {};
   for (const [name, p] of state) {
-    const { previous: _, ...fresh } = p;
-    pokemon[name] = fresh as Pokemon;
+    pokemon[name] = { base: resolve(p), index: p.index };
   }
   return { ops: Object.keys(pokemon).length > 0 ? [{ type: "add", pokemon }] : [] };
 }
@@ -181,7 +194,10 @@ export function getLevelCapAtVersion(
   const excluded = (op.exclude ?? [])
     .map((name) => stateBefore.get(name))
     .filter((p): p is Pokemon => p !== undefined)
-    .map((p) => ({ name: p.name, level: p.level }));
+    .map((p) => {
+      const r = resolve(p);
+      return { name: r.name, level: r.level };
+    });
 
   return { level: op.level, excluded };
 }
@@ -194,29 +210,17 @@ export function getRemovalsAtVersion(box: Box, version: number): string[] {
 
   const stateBefore = replayBox(box, version - 1);
   return op.names
-    .map((name) => stateBefore.get(name)?.name)
-    .filter((name): name is string => name !== undefined);
+    .map((name) => stateBefore.get(name))
+    .filter((p): p is Pokemon => p !== undefined)
+    .map((p) => resolve(p).name);
 }
 
-// Returns the pokemon that visibly changed (with `previous` populated) at the given version.
+// Returns the pokemon that visibly changed (with `update` populated) at the given version.
 // Only meaningful for versions created by updateBox. Used by BoxChange.
 export function getChangesAtVersion(box: Box, version: number): Pokemon[] {
   const op = box.ops[version - 1];
   if (!op || op.type !== "update") return [];
 
-  const stateBefore = replayBox(box, version - 1);
-  const results: Pokemon[] = [];
-
-  for (const [name, changes] of Object.entries(op.changes)) {
-    const base = stateBefore.get(name);
-    if (!base) {
-      continue;
-    }
-    const updated = changePokemon(base, changes);
-    if (updated.previous && Object.keys(updated.previous).length > 0) {
-      results.push(updated);
-    }
-  }
-
-  return results;
+  const state = replayBox(box, version);
+  return [...state.values()].filter((p) => p.update !== undefined);
 }

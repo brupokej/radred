@@ -1,16 +1,13 @@
-import { Pokemon } from "@site/src/components/Team";
+import { PokemonData } from "@site/src/utils/pokemon";
 
-export const route22RivalTeam: Pokemon[] = [
+export const route22RivalTeam: PokemonData[] = [
   {
     name: "Snubbull",
     level: 15,
     nature: "Adamant",
     ability: "Intimidate",
     item: "Muscle Band",
-    move1: "Pow-Up Punch",
-    move2: "Covet",
-    move3: "Thunder Wave",
-    move4: "Fire Fang",
+    moves: ["Pow-Up Punch", "Covet", "Thunder Wave", "Fire Fang"],
   },
   {
     name: "Litleo",
@@ -18,10 +15,7 @@ export const route22RivalTeam: Pokemon[] = [
     nature: "Timid",
     ability: "Rivalry",
     item: "Wise Glasses",
-    move1: "Incinerate",
-    move2: "Round",
-    move3: "HP Grass",
-    move4: "Sleep Talk",
+    moves: ["Incinerate", "Round", "HP Grass", "Sleep Talk"],
   },
   {
     name: "Squirtle",
@@ -29,24 +23,18 @@ export const route22RivalTeam: Pokemon[] = [
     nature: "Adamant",
     ability: "Torrent",
     item: "Oran Berry",
-    move1: "Pow-Up Punch",
-    move2: "Aqua Jet",
-    move3: "Rock Tomb",
-    move4: "Curse",
+    moves: ["Pow-Up Punch", "Aqua Jet", "Rock Tomb", "Curse"],
   },
 ];
 
-export const viridianForestBrendanTeam: Pokemon[] = [
+export const viridianForestBrendanTeam: PokemonData[] = [
   {
     name: "Meditite",
     level: 14,
     nature: "Adamant",
     ability: "Pure Power",
     item: "Muscle Band",
-    move1: "Fake Out",
-    move2: "Rock Smash",
-    move3: "Bullet Punch",
-    move4: "Rock Tomb",
+    moves: ["Fake Out", "Rock Smash", "Bullet Punch", "Rock Tomb"],
   },
   {
     name: "Corphish",
@@ -54,10 +42,7 @@ export const viridianForestBrendanTeam: Pokemon[] = [
     nature: "Adamant",
     ability: "Adaptability",
     item: "Mystic Water",
-    move1: "Aqua Jet",
-    move2: "Aerial Ace",
-    move3: "Rock Tomb",
-    move4: "Knock Off",
+    moves: ["Aqua Jet", "Aerial Ace", "Rock Tomb", "Knock Off"],
   },
   {
     name: "Numel",
@@ -65,10 +50,7 @@ export const viridianForestBrendanTeam: Pokemon[] = [
     nature: "Lonely",
     ability: "Simple",
     item: "Passho Berry",
-    move1: "Ancient Power",
-    move2: "Flame Charge",
-    move3: "Rock Tomb",
-    move4: "Bulldoze",
+    moves: ["Ancient Power", "Flame Charge", "Rock Tomb", "Bulldoze"],
   },
   {
     name: "Treecko",
@@ -76,23 +58,18 @@ export const viridianForestBrendanTeam: Pokemon[] = [
     nature: "Adamant",
     ability: "Unburden",
     item: "Oran Berry",
-    move1: "Pow-Up Punch",
-    move2: "Bullet Seed",
-    move3: "Drain Punch",
-    move4: "Rock Tomb",
+    moves: ["Pow-Up Punch", "Bullet Seed", "Drain Punch", "Rock Tomb"],
   },
 ];
 
-export const viridianForestLassAnneTeam: Pokemon[] = [
+export const viridianForestLassAnneTeam: PokemonData[] = [
   {
     name: "Stufful",
     level: 15,
     nature: "Bashful",
     ability: "Fluffy",
     item: "Oran Berry",
-    move1: "Low Sweep",
-    move2: "Tackle",
-    move3: "Aerial Ace",
+    moves: ["Low Sweep", "Tackle", "Aerial Ace"],
   },
   {
     name: "Clefairy",
@@ -100,31 +77,25 @@ export const viridianForestLassAnneTeam: Pokemon[] = [
     nature: "Bashful",
     ability: "Magic Guard",
     item: "Life Orb",
-    move1: "Metronome",
+    moves: ["Metronome"],
   },
   {
     name: "Audino",
     level: 15,
     nature: "Bashful",
     ability: "Regenerator",
-    move1: "Swagger",
-    move2: "Protect",
-    move3: "Wish",
-    move3: "Yawn",
+    moves: ["Swagger", "Protect", "Wish", "Yawn"],
   },
 ];
 
-export const viridianForestBugCatcherSammyTeam: Pokemon[] = [
+export const viridianForestBugCatcherSammyTeam: PokemonData[] = [
   {
     name: "Kricketune",
     level: 13,
     nature: "Bashful",
     ability: "Technician",
     item: "Lum Berry",
-    move1: "Bug Bite",
-    move2: "Bullet Seed",
-    move3: "Bulldoze",
-    move4: "Rock Tomb",
+    moves: ["Bug Bite", "Bullet Seed", "Bulldoze", "Rock Tomb"],
   },
   {
     name: "Dustox",
@@ -132,10 +103,7 @@ export const viridianForestBugCatcherSammyTeam: Pokemon[] = [
     nature: "Bold",
     ability: "Shield Dust",
     item: "Black Sludge",
-    move1: "Toxic",
-    move2: "Protect",
-    move3: "Roost",
-    move4: "Psybeam",
+    moves: ["Toxic", "Protect", "Roost", "Psybeam"],
   },
   {
     name: "Volbeat",
@@ -143,24 +111,18 @@ export const viridianForestBugCatcherSammyTeam: Pokemon[] = [
     nature: "Bashful",
     ability: "Prankster",
     item: "Lum Berry",
-    move1: "HP Bug",
-    move2: "Mega Drain",
-    move3: "Flash",
-    move4: "Water Pulse",
+    moves: ["HP Bug", "Mega Drain", "Flash", "Water Pulse"],
   },
 ];
 
-export const pewterMuseumLeaderFalknerTeam: Pokemon[] = [
+export const pewterMuseumLeaderFalknerTeam: PokemonData[] = [
   {
     name: "Trumbeak",
     level: 14,
     nature: "Bashful",
     ability: "Skill Link",
     item: "Lum Berry",
-    move1: "Flame Charge",
-    move2: "Pluck",
-    move3: "Bullet Seed",
-    move4: "Sleep Talk",
+    moves: ["Flame Charge", "Pluck", "Bullet Seed", "Sleep Talk"],
   },
   {
     name: "Wattrel",
@@ -168,10 +130,7 @@ export const pewterMuseumLeaderFalknerTeam: Pokemon[] = [
     nature: "Modest",
     ability: "Volt Absorb",
     item: "Berry Juice",
-    move1: "Volt Switch",
-    move2: "Air Slash",
-    move3: "HP Ground",
-    move4: "Sleep Talk",
+    moves: ["Volt Switch", "Air Slash", "HP Ground", "Sleep Talk"],
   },
   {
     name: "Yanma",
@@ -179,10 +138,7 @@ export const pewterMuseumLeaderFalknerTeam: Pokemon[] = [
     nature: "Bashful",
     ability: "Speed Boost",
     item: "Lum Berry",
-    move1: "Mega Drain",
-    move2: "Ancient Power",
-    move3: "HP Bug",
-    move4: "Air Cutter",
+    moves: ["Mega Drain", "Ancient Power", "HP Bug", "Air Cutter"],
   },
   {
     name: "Squawkabilly-G",
@@ -192,10 +148,7 @@ export const pewterMuseumLeaderFalknerTeam: Pokemon[] = [
     nature: "Bashful",
     ability: "Hustle",
     item: "Muscle Band",
-    move1: "Aerial Ace",
-    move2: "Quick Attack",
-    move3: "Reversal",
-    move4: "Parting Shot",
+    moves: ["Aerial Ace", "Quick Attack", "Reversal", "Parting Shot"],
   },
   {
     name: "Farfetch'd-G",
@@ -205,24 +158,18 @@ export const pewterMuseumLeaderFalknerTeam: Pokemon[] = [
     nature: "Bashful",
     ability: "Scrappy",
     item: "Leek",
-    move1: "Rock Smash",
-    move2: "Slam",
-    move3: "Brutal Swing",
-    move4: "Roost",
+    moves: ["Rock Smash", "Slam", "Brutal Swing", "Roost"],
   },
 ];
 
-export const pewterCityLeaderBrockTeam: Pokemon[] = [
+export const pewterCityLeaderBrockTeam: PokemonData[] = [
   {
     name: "Hippopotas",
     level: 13,
     nature: "Careful",
     ability: "Sand Stream",
     item: "Berry Juice",
-    move1: "Bulldoze",
-    move2: "Rock Tomb",
-    move3: "Toxic",
-    move4: "Slack Off",
+    moves: ["Bulldoze", "Rock Tomb", "Toxic", "Slack Off"],
   },
   {
     name: "Cacnea",
@@ -230,10 +177,7 @@ export const pewterCityLeaderBrockTeam: Pokemon[] = [
     nature: "Bashful",
     ability: "Sand Rush",
     item: "Eviolite",
-    move1: "Pow-Up Punch",
-    move2: "Bullet Seed",
-    move3: "Thunder Punch",
-    move4: "Pin Missile",
+    moves: ["Pow-Up Punch", "Bullet Seed", "Thunder Punch", "Pin Missile"],
   },
   {
     name: "Lunatone",
@@ -241,10 +185,7 @@ export const pewterCityLeaderBrockTeam: Pokemon[] = [
     nature: "Bashful",
     ability: "Levitate",
     item: "Lum Berry",
-    move1: "Ancient Power",
-    move2: "Psybeam",
-    move3: "HP Ground",
-    move4: "Icy Wind",
+    moves: ["Ancient Power", "Psybeam", "HP Ground", "Icy Wind"],
   },
   {
     name: "Lileep",
@@ -252,10 +193,7 @@ export const pewterCityLeaderBrockTeam: Pokemon[] = [
     nature: "Bold",
     ability: "Storm Drain",
     item: "Oran Berry",
-    move1: "Stockpile",
-    move2: "Recover",
-    move3: "HP Rock",
-    move4: "Mega Drain",
+    moves: ["Stockpile", "Recover", "HP Rock", "Mega Drain"],
   },
   {
     name: "Archen",
@@ -263,10 +201,7 @@ export const pewterCityLeaderBrockTeam: Pokemon[] = [
     nature: "Bashful",
     ability: "Defeatist",
     item: "Iapapa Berry",
-    move1: "Wing Attack",
-    move2: "Rock Tomb",
-    move3: "Bulldoze",
-    move4: "Facade",
+    moves: ["Wing Attack", "Rock Tomb", "Bulldoze", "Facade"],
   },
   {
     name: "Varoom",
@@ -274,14 +209,11 @@ export const pewterCityLeaderBrockTeam: Pokemon[] = [
     nature: "Careful",
     ability: "Filter",
     item: "Air Balloon",
-    move1: "Bulldoze",
-    move2: "Gyro Ball",
-    move3: "Toxic",
-    move4: "Protect",
+    moves: ["Bulldoze", "Gyro Ball", "Toxic", "Protect"],
   },
 ];
 
-export const route3LassSallyTeam: Pokemon[] = [
+export const route3LassSallyTeam: PokemonData[] = [
   {
     name: "Pikachu-Flying",
     sprite: "pikachu",
@@ -289,10 +221,7 @@ export const route3LassSallyTeam: Pokemon[] = [
     nature: "Naive",
     ability: "Lightning Rod",
     item: "Light Ball",
-    move1: "Zippy Zap",
-    move2: "HP Flying",
-    move3: "Extreme Speed",
-    move4: "Grass Knot",
+    moves: ["Zippy Zap", "HP Flying", "Extreme Speed", "Grass Knot"],
   },
   {
     name: "Oricorio-Sensu",
@@ -300,10 +229,7 @@ export const route3LassSallyTeam: Pokemon[] = [
     nature: "Timid",
     ability: "Dancer",
     item: "Spell Tag",
-    move1: "Calm Mind",
-    move2: "Air Cutter",
-    move3: "HP Ghost",
-    move4: "Roost",
+    moves: ["Calm Mind", "Air Cutter", "HP Ghost", "Roost"],
   },
   {
     name: "Whimsicott",
@@ -311,10 +237,7 @@ export const route3LassSallyTeam: Pokemon[] = [
     nature: "Modest",
     ability: "Prankster",
     item: "Leftovers",
-    move1: "Leech Seed",
-    move2: "Protect",
-    move3: "Mega Drain",
-    move4: "HP Psychic",
+    moves: ["Leech Seed", "Protect", "Mega Drain", "HP Psychic"],
   },
   {
     name: "Mawile",
@@ -322,24 +245,18 @@ export const route3LassSallyTeam: Pokemon[] = [
     nature: "Impish",
     ability: "Intimidate",
     item: "Leftovers",
-    move1: "Toxic",
-    move2: "Covet",
-    move3: "Metal Claw",
-    move4: "Fire Fang",
+    moves: ["Toxic", "Covet", "Metal Claw", "Fire Fang"],
   },
 ];
 
-export const mtMoonSuperNerdMiguelTeam: Pokemon[] = [
+export const mtMoonSuperNerdMiguelTeam: PokemonData[] = [
   {
     name: "Thwackey",
     level: 21,
     nature: "Adamant",
     ability: "Grassy Surge",
     item: "Eviolite",
-    move1: "Fake Out",
-    move2: "Grassy Glide",
-    move3: "Knock Off",
-    move4: "U-Turn",
+    moves: ["Fake Out", "Grassy Glide", "Knock Off", "U-Turn"],
   },
   {
     name: "Voltorb-H",
@@ -349,10 +266,7 @@ export const mtMoonSuperNerdMiguelTeam: Pokemon[] = [
     nature: "Naive",
     ability: "Reckless",
     item: "Focus Sash",
-    move1: "Mega Drain",
-    move2: "Self-Destruct",
-    move3: "Volt Switch",
-    move4: "HP Ice",
+    moves: ["Mega Drain", "Self-Destruct", "Volt Switch", "HP Ice"],
   },
   {
     name: "Swoobat",
@@ -360,10 +274,7 @@ export const mtMoonSuperNerdMiguelTeam: Pokemon[] = [
     nature: "Timid",
     ability: "Simple",
     item: "Grassy Seed",
-    move1: "Calm Mind",
-    move2: "Air Cutter",
-    move3: "Psybeam",
-    move4: "Roost",
+    moves: ["Calm Mind", "Air Cutter", "Psybeam", "Roost"],
   },
   {
     name: "Skiddo",
@@ -371,10 +282,7 @@ export const mtMoonSuperNerdMiguelTeam: Pokemon[] = [
     nature: "Impish",
     ability: "Grass Pelt",
     item: "Miracle Seed",
-    move1: "Horn Leech",
-    move2: "Brick Break",
-    move3: "Rock Slide",
-    move4: "Milk Drink",
+    moves: ["Horn Leech", "Brick Break", "Rock Slide", "Milk Drink"],
   },
   {
     name: "Sableye",
@@ -382,24 +290,18 @@ export const mtMoonSuperNerdMiguelTeam: Pokemon[] = [
     nature: "Careful",
     ability: "Prankster",
     item: "Leftovers",
-    move1: "Will-O-Wisp",
-    move2: "Recover",
-    move3: "Protect",
-    move4: "Foul Play",
+    moves: ["Will-O-Wisp", "Recover", "Protect", "Foul Play"],
   },
 ];
 
-export const mtMoonArcherTeam: Pokemon[] = [
+export const mtMoonArcherTeam: PokemonData[] = [
   {
     name: "Glimmet",
     level: 20,
     nature: "Bashful",
     ability: "Toxic Debris",
     item: "Shuca Berry",
-    move1: "Ancient Power",
-    move2: "Venoshock",
-    move3: "Mud Shot",
-    move4: "Protect",
+    moves: ["Ancient Power", "Venoshock", "Mud Shot", "Protect"],
   },
   {
     name: "Seviper",
@@ -407,10 +309,7 @@ export const mtMoonArcherTeam: Pokemon[] = [
     nature: "Bashful",
     ability: "Fatal Precision",
     item: "Shuca Berry",
-    move1: "Mega Drain",
-    move2: "Poison Fang",
-    move3: "Bulldoze",
-    move4: "Hypnosis",
+    moves: ["Mega Drain", "Poison Fang", "Bulldoze", "Hypnosis"],
   },
   {
     name: "Houndour",
@@ -418,10 +317,7 @@ export const mtMoonArcherTeam: Pokemon[] = [
     nature: "Timid",
     ability: "Flash Fire",
     item: "Focus Sash",
-    move1: "Nasty Plot",
-    move2: "Incinerate",
-    move3: "Snarl",
-    move4: "HP Electric",
+    moves: ["Nasty Plot", "Incinerate", "Snarl", "HP Electric"],
   },
   {
     name: "Mightyena",
@@ -429,10 +325,7 @@ export const mtMoonArcherTeam: Pokemon[] = [
     nature: "Bashful",
     ability: "Strong Jaw",
     item: "Berry Juice",
-    move1: "Bite",
-    move2: "Ice Fang",
-    move3: "Poison Fang",
-    move4: "Howl",
+    moves: ["Bite", "Ice Fang", "Poison Fang", "Howl"],
   },
   {
     name: "Fearow",
@@ -440,10 +333,7 @@ export const mtMoonArcherTeam: Pokemon[] = [
     nature: "Bashful",
     ability: "Technician",
     item: "Muscle Band",
-    move1: "Pursuit",
-    move2: "Pluck",
-    move3: "Drill Run",
-    move4: "Double Hit",
+    moves: ["Pursuit", "Pluck", "Drill Run", "Double Hit"],
   },
 ];
 
@@ -454,10 +344,7 @@ export const ceruleanCityRivalTeam = [
     nature: "Jolly",
     ability: "Striker",
     item: "Black Belt",
-    move1: "Bullet Punch",
-    move2: "Knock Off",
-    move3: "Fake Out",
-    move4: "Low Sweep",
+    moves: ["Bullet Punch", "Knock Off", "Fake Out", "Low Sweep"],
   },
   {
     name: "Eevee",
@@ -465,10 +352,7 @@ export const ceruleanCityRivalTeam = [
     nature: "Rash",
     ability: "Adaptability",
     item: "Eevium Z",
-    move1: "Last Resort",
-    move2: "Round",
-    move3: "Double Kick",
-    move4: "Bite",
+    moves: ["Last Resort", "Round", "Double Kick", "Bite"],
   },
   {
     name: "Clefable",
@@ -476,10 +360,7 @@ export const ceruleanCityRivalTeam = [
     nature: "Timid",
     ability: "Magic Guard",
     item: "Life Orb",
-    move1: "Charge Beam",
-    move2: "Draining Kiss",
-    move3: "Icy Wind",
-    move4: "Mystical Fire",
+    moves: ["Charge Beam", "Draining Kiss", "Icy Wind", "Mystical Fire"],
   },
   {
     name: "Simisear",
@@ -487,10 +368,7 @@ export const ceruleanCityRivalTeam = [
     nature: "Timid",
     ability: "Sage Power",
     item: "Charcoal",
-    move1: "Incinerate",
-    move2: "Grass Knot",
-    move3: "HP Rock",
-    move4: "Sleep Talk",
+    moves: ["Incinerate", "Grass Knot", "HP Rock", "Sleep Talk"],
   },
   {
     name: "Arbok",
@@ -498,10 +376,7 @@ export const ceruleanCityRivalTeam = [
     nature: "Jolly",
     ability: "Intimidate",
     item: "Poison Barb",
-    move1: "Poison Jab",
-    move2: "Sucker Punch",
-    move3: "Crunch",
-    move4: "Thunder Fang",
+    moves: ["Poison Jab", "Sucker Punch", "Crunch", "Thunder Fang"],
   },
   {
     name: "Wartortle",
@@ -509,24 +384,18 @@ export const ceruleanCityRivalTeam = [
     nature: "Modest",
     ability: "Torrent",
     item: "Eviolite",
-    move1: "Shell Smash",
-    move2: "Water Pulse",
-    move3: "Icy Wind",
-    move4: "HP Electric",
+    moves: ["Shell Smash", "Water Pulse", "Icy Wind", "HP Electric"],
   },
 ];
 
-export const nuggetBridgeBugCatcherCaleTeam: Pokemon[] = [
+export const nuggetBridgeBugCatcherCaleTeam: PokemonData[] = [
   {
     name: "Vivillon",
     level: 25,
     nature: "Bashful",
     ability: "Friend Guard",
     item: "Charti Berry",
-    move1: "Struggle Bug",
-    move2: "Electroweb",
-    move3: "Air Cutter",
-    move4: "Draining Kiss",
+    moves: ["Struggle Bug", "Electroweb", "Air Cutter", "Draining Kiss"],
   },
   {
     name: "Butterfree",
@@ -534,10 +403,7 @@ export const nuggetBridgeBugCatcherCaleTeam: Pokemon[] = [
     nature: "Timid",
     ability: "Compound Eyes",
     item: "Sitrus Berry",
-    move1: "Sleep Powder",
-    move2: "Mega Drain",
-    move3: "Air Cutter",
-    move4: "Bug Buzz",
+    moves: ["Sleep Powder", "Mega Drain", "Air Cutter", "Bug Buzz"],
   },
   {
     name: "Wormadam-Sa",
@@ -547,24 +413,18 @@ export const nuggetBridgeBugCatcherCaleTeam: Pokemon[] = [
     nature: "Careful",
     ability: "Overcoat",
     item: "Rocky Helmet",
-    move1: "Bulldoze",
-    move2: "Bug Bite",
-    move3: "Rock Tomb",
-    move4: "Sucker Punch",
+    moves: ["Bulldoze", "Bug Bite", "Rock Tomb", "Sucker Punch"],
   },
 ];
 
-export const nuggetBridgeLassAliTeam: Pokemon[] = [
+export const nuggetBridgeLassAliTeam: PokemonData[] = [
   {
     name: "Jigglypuff",
     level: 27,
     nature: "Bold",
     ability: "Friend Guard",
     item: "Eviolite",
-    move1: "Round",
-    move2: "Draining Kiss",
-    move3: "Incinerate",
-    move4: "Icy Wind",
+    moves: ["Round", "Draining Kiss", "Incinerate", "Icy Wind"],
   },
   {
     name: "Amaura",
@@ -572,10 +432,7 @@ export const nuggetBridgeLassAliTeam: Pokemon[] = [
     nature: "Modest",
     ability: "Refrigerate",
     item: "Chople Berry",
-    move1: "Round",
-    move2: "Ancient Power",
-    move3: "Water Pulse",
-    move4: "Mud Shot",
+    moves: ["Round", "Ancient Power", "Water Pulse", "Mud Shot"],
   },
   {
     name: "Brionne",
@@ -583,24 +440,18 @@ export const nuggetBridgeLassAliTeam: Pokemon[] = [
     nature: "Bashful",
     ability: "Liquid Voice",
     item: "Sitrus Berry",
-    move1: "Round",
-    move2: "Draining Kiss",
-    move3: "Icy Wind",
-    move4: "Aqua Jet",
+    moves: ["Round", "Draining Kiss", "Icy Wind", "Aqua Jet"],
   },
 ];
 
-export const nuggetBridgeYoungsterTimmyTeam: Pokemon[] = [
+export const nuggetBridgeYoungsterTimmyTeam: PokemonData[] = [
   {
     name: "Plusle",
     level: 26,
     nature: "Timid",
     ability: "Plus",
     item: "Shuca Berry",
-    move1: "Grass Knot",
-    move2: "Electroweb",
-    move3: "Signal Beam",
-    move4: "Charge Beam",
+    moves: ["Grass Knot", "Electroweb", "Signal Beam", "Charge Beam"],
   },
   {
     name: "Electrike",
@@ -608,10 +459,7 @@ export const nuggetBridgeYoungsterTimmyTeam: Pokemon[] = [
     nature: "Timid",
     ability: "Minus",
     item: "Magnet",
-    move1: "Shock Wave",
-    move2: "Round",
-    move3: "Flame Burst",
-    move4: "Signal Beam",
+    moves: ["Shock Wave", "Round", "Flame Burst", "Signal Beam"],
   },
   {
     name: "Snover",
@@ -619,24 +467,18 @@ export const nuggetBridgeYoungsterTimmyTeam: Pokemon[] = [
     nature: "Bashful",
     ability: "Ice Body",
     item: "Occa Berry",
-    move1: "Ice Shard",
-    move2: "Mega Drain",
-    move3: "Icicle Crash",
-    move4: "Water Pulse",
+    moves: ["Ice Shard", "Mega Drain", "Icicle Crash", "Water Pulse"],
   },
 ];
 
-export const nuggetBridgeLassReliTeam: Pokemon[] = [
+export const nuggetBridgeLassReliTeam: PokemonData[] = [
   {
     name: "Greedent",
     level: 26,
     nature: "Bashful",
     ability: "Cheek Pouch",
     item: "Sitrus Berry",
-    move1: "Stom. Tantrum",
-    move2: "Facade",
-    move3: "Seed Bomb",
-    move4: "Swords Dance",
+    moves: ["Stom. Tantrum", "Facade", "Seed Bomb", "Swords Dance"],
   },
   {
     name: "Togetic",
@@ -644,10 +486,7 @@ export const nuggetBridgeLassReliTeam: Pokemon[] = [
     nature: "Bashful",
     ability: "Serene Grace",
     item: "Eviolite",
-    move1: "Air Slash",
-    move2: "Thunder Wave",
-    move3: "Draining Kiss",
-    move4: "Magical Leaf",
+    moves: ["Air Slash", "Thunder Wave", "Draining Kiss", "Magical Leaf"],
   },
   {
     name: "Clamperl",
@@ -655,24 +494,18 @@ export const nuggetBridgeLassReliTeam: Pokemon[] = [
     nature: "Modest",
     ability: "Battle Armor",
     item: "Deep Sea Tooth",
-    move1: "Water Pulse",
-    move2: "Icy Wind",
-    move3: "Rest",
-    move4: "Sleep Talk",
+    moves: ["Water Pulse", "Icy Wind", "Rest", "Sleep Talk"],
   },
 ];
 
-export const nuggetBridgeCamperEthanTeam: Pokemon[] = [
+export const nuggetBridgeCamperEthanTeam: PokemonData[] = [
   {
     name: "Mabosstiff",
     level: 26,
     nature: "Adamant",
     ability: "Intimidate",
     item: "Black Glasses",
-    move1: "Trailblaze",
-    move2: "Bite",
-    move3: "Fire Fang",
-    move4: "Ice Fang",
+    moves: ["Trailblaze", "Bite", "Fire Fang", "Ice Fang"],
   },
   {
     name: "Salandit",
@@ -680,10 +513,7 @@ export const nuggetBridgeCamperEthanTeam: Pokemon[] = [
     nature: "Timid",
     ability: "Corrosion",
     item: "Black Sludge",
-    move1: "Toxic",
-    move2: "Substitute",
-    move3: "Protect",
-    move4: "Incinerate",
+    moves: ["Toxic", "Substitute", "Protect", "Incinerate"],
   },
   {
     name: "Misdreavus",
@@ -691,24 +521,18 @@ export const nuggetBridgeCamperEthanTeam: Pokemon[] = [
     nature: "Bashful",
     ability: "Levitate",
     item: "Eviolite",
-    move1: "Hex",
-    move2: "Will-O-Wisp",
-    move3: "Icy Wind",
-    move4: "Shock Wave",
+    moves: ["Hex", "Will-O-Wisp", "Icy Wind", "Shock Wave"],
   },
 ];
 
-export const nuggetBridgeGruntTeam: Pokemon[] = [
+export const nuggetBridgeGruntTeam: PokemonData[] = [
   {
     name: "Arcanine",
     level: 26,
     nature: "Jolly",
     ability: "Intimidate",
     item: "Sitrus Berry",
-    move1: "Dragon Rage",
-    move2: "Flame Wheel",
-    move3: "Thunder Fang",
-    move4: "Bulldoze",
+    moves: ["Dragon Rage", "Flame Wheel", "Thunder Fang", "Bulldoze"],
   },
   {
     name: "Druddigon",
@@ -716,10 +540,7 @@ export const nuggetBridgeGruntTeam: Pokemon[] = [
     nature: "Impish",
     ability: "Rough Skin",
     item: "Leftovers",
-    move1: "Toxic",
-    move2: "Protect",
-    move3: "Dragon Tail",
-    move4: "Poison Tail",
+    moves: ["Toxic", "Protect", "Dragon Tail", "Poison Tail"],
   },
   {
     name: "Togedemaru",
@@ -727,10 +548,7 @@ export const nuggetBridgeGruntTeam: Pokemon[] = [
     nature: "Careful",
     ability: "Iron Barbs",
     item: "Rocky Helmet",
-    move1: "U-Turn",
-    move2: "Zippy Zap",
-    move3: "Iron Head",
-    move4: "Nuzzle",
+    moves: ["U-Turn", "Zippy Zap", "Iron Head", "Nuzzle"],
   },
   {
     name: "Komala",
@@ -738,12 +556,11 @@ export const nuggetBridgeGruntTeam: Pokemon[] = [
     nature: "Adamant",
     ability: "Comatose",
     item: "Silk Scarf",
-    move1: "Sleep Talk",
-    move2: "Last Resort",
+    moves: ["Sleep Talk", "Last Resort"],
   },
 ];
 
-export const digHouseGruntTeam: Pokemon[] = [
+export const digHouseGruntTeam: PokemonData[] = [
   {
     name: "Persian-A",
     sprite: "persian-alola",
@@ -752,10 +569,7 @@ export const digHouseGruntTeam: Pokemon[] = [
     nature: "Timid",
     ability: "Feline Prowess",
     item: "Black Glasses",
-    move1: "Dark Pulse",
-    move2: "Water Pulse",
-    move3: "Parting Shot",
-    move4: "Shock Wave",
+    moves: ["Dark Pulse", "Water Pulse", "Parting Shot", "Shock Wave"],
   },
   {
     name: "Crobat",
@@ -763,10 +577,7 @@ export const digHouseGruntTeam: Pokemon[] = [
     nature: "Naive",
     ability: "Sniper",
     item: "Scope Lens",
-    move1: "Mega Drain",
-    move2: "Cross Poison",
-    move3: "Air Cutter",
-    move4: "HP Fire",
+    moves: ["Mega Drain", "Cross Poison", "Air Cutter", "HP Fire"],
   },
   {
     name: "Raticate",
@@ -774,10 +585,7 @@ export const digHouseGruntTeam: Pokemon[] = [
     nature: "Jolly",
     ability: "Guts",
     item: "Flame Orb",
-    move1: "Facade",
-    move2: "Stom. Tantrum",
-    move3: "Sucker Punch",
-    move4: "U-Turn",
+    moves: ["Facade", "Stom. Tantrum", "Sucker Punch", "U-Turn"],
   },
   {
     name: "Veluza",
@@ -785,24 +593,18 @@ export const digHouseGruntTeam: Pokemon[] = [
     nature: "Jolly",
     ability: "Sharpness",
     item: "Expert Belt",
-    move1: "Aqua Cutter",
-    move2: "Psycho Cut",
-    move3: "Aqua Jet",
-    move4: "Crunch",
+    moves: ["Aqua Cutter", "Psycho Cut", "Aqua Jet", "Crunch"],
   },
 ];
 
-export const ceruleanCityLeaderMistyTeam: Pokemon[] = [
+export const ceruleanCityLeaderMistyTeam: PokemonData[] = [
   {
     name: "Politoed",
     level: 27,
     nature: "Sassy",
     ability: "Drizzle",
     item: "Iapapa Berry",
-    move1: "Flip Turn",
-    move2: "Scald",
-    move3: "Earthquake",
-    move4: "Toxic",
+    moves: ["Flip Turn", "Scald", "Earthquake", "Toxic"],
   },
   {
     name: "Ludicolo",
@@ -810,10 +612,7 @@ export const ceruleanCityLeaderMistyTeam: Pokemon[] = [
     nature: "Mild",
     ability: "Swift Swim",
     item: "Sitrus Berry",
-    move1: "Giga Drain",
-    move2: "Scald",
-    move3: "Aurora Beam",
-    move4: "Thunder Punch",
+    moves: ["Giga Drain", "Scald", "Aurora Beam", "Thunder Punch"],
   },
   {
     name: "Mantine",
@@ -821,10 +620,7 @@ export const ceruleanCityLeaderMistyTeam: Pokemon[] = [
     nature: "Modest",
     ability: "Swift Swim",
     item: "Wacan Berry",
-    move1: "Scald",
-    move2: "Hurricane",
-    move3: "Roost",
-    move4: "HP Grass",
+    moves: ["Scald", "Hurricane", "Roost", "HP Grass"],
   },
   {
     name: "Clodsire",
@@ -832,10 +628,7 @@ export const ceruleanCityLeaderMistyTeam: Pokemon[] = [
     nature: "Careful",
     ability: "Water Absorb",
     item: "Black Sludge",
-    move1: "Poison Jab",
-    move2: "Bulldoze",
-    move3: "Recover",
-    move4: "Toxic",
+    moves: ["Poison Jab", "Bulldoze", "Recover", "Toxic"],
   },
   {
     name: "Starmie",
@@ -843,10 +636,7 @@ export const ceruleanCityLeaderMistyTeam: Pokemon[] = [
     nature: "Modest",
     ability: "Analytic",
     item: "Mystic Water",
-    move1: "Scald",
-    move2: "Thunderbolt",
-    move3: "Psyshock",
-    move4: "Aurora Beam",
+    moves: ["Scald", "Thunderbolt", "Psyshock", "Aurora Beam"],
   },
   {
     name: "Toxicroak",
@@ -854,9 +644,6 @@ export const ceruleanCityLeaderMistyTeam: Pokemon[] = [
     nature: "Jolly",
     ability: "Dry Skin",
     item: "Life Orb",
-    move1: "Swords Dance",
-    move2: "Drain Punch",
-    move3: "Poison Jab",
-    move4: "Sucker Punch",
+    moves: ["Swords Dance", "Drain Punch", "Poison Jab", "Sucker Punch"],
   },
 ];

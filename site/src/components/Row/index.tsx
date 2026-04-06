@@ -1,6 +1,5 @@
 import { ScrollFade } from "@site/src/components/ScrollFade";
-import { Pokemon } from "@site/src/components/Team";
-import { MOVE_KEYS } from "@site/src/utils/pokemon";
+import { Pokemon, resolve } from "@site/src/utils/pokemon";
 import { parseTokens } from "@site/src/utils/tokens";
 import styles from "./styles.module.css";
 
@@ -29,32 +28,33 @@ function expandString(text: string): NormalizedCell[] {
 const LEVEL_CAP_LEVELS = new Set([28, 36, 44, 47, 56, 57, 59, 68, 73, 76, 79, 80, 81, 82, 85]);
 
 export function expandPokemon(pokemon: Pokemon): Array<string | { warning: string }> {
-  const prev = pokemon.previous ?? {};
-  const nameChanged = "name" in prev;
-  const levelChanged = "level" in prev;
-  const fromName = nameChanged ? String(prev.name) : pokemon.name;
-  const toName = nameChanged ? pokemon.name : null;
+  const { base, update } = pokemon;
+  const current = resolve(pokemon);
+  const nameChanged = "name" in (update ?? {});
+  const levelChanged = "level" in (update ?? {});
+  const from = base.name;
+  const toName = nameChanged ? current.name : null;
 
   let header: string;
   if (levelChanged) {
-    const levelPart = LEVEL_CAP_LEVELS.has(pokemon.level)
-      ? `Set to Level ${pokemon.level} Cap`
-      : `Rare Candy to Level ${pokemon.level}`;
+    const levelPart = LEVEL_CAP_LEVELS.has(current.level)
+      ? `Set to Level ${current.level} Cap`
+      : `Rare Candy to Level ${current.level}`;
     header = toName ? `${levelPart} → ${toName}` : levelPart;
   } else if (nameChanged) {
     header = `Rare Candy → ${toName}`;
   } else {
-    header = `Keep at Level ${pokemon.level}`;
+    header = `Keep at Level ${current.level}`;
   }
 
-  const cells: Array<string | { warning: string }> = [`${fromName} →`, { warning: header }];
+  const cells: Array<string | { warning: string }> = [`${from} →`, { warning: header }];
 
-  for (const key of MOVE_KEYS) {
-    const move = pokemon[key];
-    if (!move) break;
+  const baseMoveSet = new Set((base.moves ?? []).filter(Boolean));
+  current.moves?.forEach((move) => {
+    if (!move) return;
     cells.push(cells.length === 2 ? "→" : "·");
-    cells.push(key in prev ? { warning: move } : move);
-  }
+    cells.push(update && !baseMoveSet.has(move) ? { warning: move } : move);
+  });
 
   return cells;
 }
@@ -73,7 +73,7 @@ const ROW_HIGHLIGHT_CLASS: Record<string, string> = {
 
 function normalizeCell(c: RowCell): NormalizedCell[] {
   if (typeof c === "string") return expandString(c);
-  if ("name" in c) return expandPokemon(c).flatMap(normalizeCell);
+  if ("base" in c) return expandPokemon(c as Pokemon).flatMap(normalizeCell);
   if ("info" in c) return [{ value: c.info, variant: "info" as const }];
   if ("warning" in c) return [{ value: c.warning, variant: "warning" as const }];
   return [{ value: c.danger, variant: "danger" as const }];

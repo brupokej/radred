@@ -1,9 +1,11 @@
 import Card from "@site/src/components/Card";
 import { fetchPokedex } from "@site/src/utils/pokedex";
+import { resolve, type Pokemon } from "@site/src/utils/pokemon";
 import { spriteUrl } from "@site/src/utils/sprites";
 import clsx from "clsx";
 import { createContext, useCallback, useContext, useEffect, useRef, useState } from "react";
 import styles from "./styles.module.css";
+export type { Pokemon };
 
 const COL_WIDTH = 140;
 const COL_GAP = 12; // 0.75rem at 16px base
@@ -23,22 +25,6 @@ function CardDetail({ children }: { children: React.ReactNode }) {
       </button>
     </CardDetailCtx.Provider>
   );
-}
-
-export interface Pokemon {
-  name: string;
-  sprite?: string;
-  pokedex?: string;
-  level: number;
-  nature?: string | null;
-  ability?: string | null;
-  item?: string | null;
-  move1?: string | null;
-  move2?: string | null;
-  move3?: string | null;
-  move4?: string | null;
-  previous?: Record<string, unknown>;
-  index?: number;
 }
 
 export default function Team({ team, title = "Team" }: { team: Pokemon[]; title?: string }) {
@@ -169,39 +155,44 @@ function PokemonCard({
   pokedex: Map<string, number[]> | null;
 }) {
   const isExpanded = useCardDetail();
-  const prev = pokemon?.previous;
-  const wc = (field: string) => (prev && field in prev ? styles.fieldWarning : "");
+  const { update, base } = pokemon ?? {};
+  const current = pokemon ? resolve(pokemon) : null;
+  const wc = (field: string) => (update && field in update ? styles.fieldWarning : "");
+  const baseMoveSet = base?.moves ? new Set(base.moves.filter(Boolean)) : null;
+  const mwc = (move: string | null | undefined) =>
+    baseMoveSet && move && !baseMoveSet.has(move) ? styles.fieldWarning : "";
   const stats =
-    pokemon && pokedex
-      ? (pokedex.get((pokemon.pokedex ?? pokemon.name).toLowerCase()) ?? null)
+    current && pokedex
+      ? (pokedex.get((current.pokedex ?? current.name).toLowerCase()) ?? null)
       : null;
 
   return (
     <div className={`${styles.card} ${!pokemon ? styles.cardEmpty : ""}`}>
-      {pokemon ? (
+      {current ? (
         <img
-          src={spriteUrl(pokemon.sprite ?? pokemon.name.toLowerCase())}
-          alt={pokemon.name}
+          src={spriteUrl(current.sprite ?? current.name.toLowerCase())}
+          alt={current.name}
           className={styles.sprite}
         />
       ) : (
         <div className={styles.emptySprite}>✕</div>
       )}
-      <div className={`${styles.name} ${wc("name")}`}>{pokemon?.name ?? "-"}</div>
-      <div className={`${styles.level} ${wc("level")}`}>{pokemon?.level ?? "-"}</div>
+      <div className={`${styles.name} ${wc("name")}`}>{current?.name ?? "-"}</div>
+      <div className={`${styles.level} ${wc("level")}`}>{current?.level ?? "-"}</div>
       {isExpanded && (
         <>
           <div className={styles.divider} />
-          <div className={`${styles.detail} ${wc("nature")}`}>{pokemon?.nature ?? "-"}</div>
-          <div className={`${styles.detail} ${wc("ability")}`}>{pokemon?.ability ?? "-"}</div>
+          <div className={`${styles.detail} ${wc("nature")}`}>{current?.nature ?? "-"}</div>
+          <div className={`${styles.detail} ${wc("ability")}`}>{current?.ability ?? "-"}</div>
           <div className={`${styles.detail} ${wc("item")}`}>
-            {pokemon == null ? "-" : (pokemon.item ?? "None")}
+            {current == null ? "-" : (current.item ?? "None")}
           </div>
           <div className={styles.divider} />
-          <div className={`${styles.move} ${wc("move1")}`}>{pokemon?.move1 ?? "-"}</div>
-          <div className={`${styles.move} ${wc("move2")}`}>{pokemon?.move2 ?? "-"}</div>
-          <div className={`${styles.move} ${wc("move3")}`}>{pokemon?.move3 ?? "-"}</div>
-          <div className={`${styles.move} ${wc("move4")}`}>{pokemon?.move4 ?? "-"}</div>
+          {[0, 1, 2, 3].map((i) => (
+            <div key={i} className={`${styles.move} ${mwc(current?.moves?.[i])}`}>
+              {current?.moves?.[i] ?? "-"}
+            </div>
+          ))}
           <div className={styles.divider} />
           <div className={styles.stats}>
             {STAT_LABELS.map((label, i) => {

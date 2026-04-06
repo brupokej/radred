@@ -1,6 +1,5 @@
 import Card from "@site/src/components/Card";
 import { Row } from "@site/src/components/Row";
-import { Pokemon } from "@site/src/components/Team";
 import {
   Box,
   getChangesAtVersion,
@@ -45,7 +44,7 @@ export default function BoxChange({
         (a, b) => (a.index ?? 0) - (b.index ?? 0)
       );
       for (const pokemon of changes) {
-        otherRows.push(<Row key={key++} row={[pokemon as Pokemon]} />);
+        otherRows.push(<Row key={key++} row={[pokemon]} />);
       }
     }
   }

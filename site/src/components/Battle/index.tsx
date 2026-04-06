@@ -1,9 +1,10 @@
 import Card from "@site/src/components/Card";
 import { ScrollFade } from "@site/src/components/ScrollFade";
-import Team, { Pokemon } from "@site/src/components/Team";
+import Team from "@site/src/components/Team";
 import { Box, getFromBox } from "@site/src/utils/box";
 import { useHpDisplay } from "@site/src/utils/hpDisplay";
 import { calcMaxHp, fetchPokedex } from "@site/src/utils/pokedex";
+import { Pokemon, PokemonData, resolve } from "@site/src/utils/pokemon";
 import { spriteUrl } from "@site/src/utils/sprites";
 import { parseTokens } from "@site/src/utils/tokens";
 import React, {
@@ -116,7 +117,7 @@ export function Battle({
   box?: Box;
   version?: number;
   playerTeam?: Pokemon[] | string[];
-  opponentTeam?: Pokemon[];
+  opponentTeam?: PokemonData[];
   children: React.ReactNode;
 }) {
   const playerTeam =
@@ -182,7 +183,7 @@ export function Battle({
     fetchPokedex().then(setPokedex);
   }, []);
 
-  function hpFromDex(p: Pokemon): number {
+  function hpFromDex(p: PokemonData): number {
     const stats = pokedex?.get((p.pokedex ?? p.name).toLowerCase());
     return stats ? calcMaxHp(stats[0], p.level) : 0;
   }
@@ -190,7 +191,10 @@ export function Battle({
   const maxHp = useMemo(
     () =>
       Object.fromEntries([
-        ...(playerTeam ?? []).map((p) => [`p:${p.sprite ?? p.name.toLowerCase()}`, hpFromDex(p)]),
+        ...(playerTeam ?? []).map((p) => {
+          const r = resolve(p);
+          return [`p:${r.sprite ?? r.name.toLowerCase()}`, hpFromDex(r)];
+        }),
         ...(opponentTeam ?? []).map((p) => [`o:${p.sprite ?? p.name.toLowerCase()}`, hpFromDex(p)]),
       ]),
     [playerTeam, opponentTeam, pokedex]
@@ -214,7 +218,7 @@ export function Battle({
 
   return (
     <>
-      {opponentTeam && <Team title="Opponent Team" team={opponentTeam} />}
+      {opponentTeam && <Team title="Opponent Team" team={opponentTeam.map((p) => ({ base: p }))} />}
       {playerTeam && <Team title="Player Team" team={playerTeam} />}
       <BattleGraphCtx.Provider value={ctx}>
         <Card title="Battle Plan">
