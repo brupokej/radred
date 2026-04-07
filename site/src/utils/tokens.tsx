@@ -1,4 +1,5 @@
 import React from "react";
+import { PokemonData } from "./pokemon";
 import { getColouredSpriteUrl, getMonotoneSpriteUrl } from "./sprites";
 import styles from "./tokens.module.css";
 
@@ -6,6 +7,7 @@ export const TOKEN_RE = /\{([a-z+\-=]):([^}]+)\}/g;
 
 export type HpContext = {
   maxHp: Record<string, number>;
+  teamMap?: Record<string, PokemonData>;
 };
 
 export function parseTokens(
@@ -23,11 +25,12 @@ export function parseTokens(
     if (segment) parts.push(<React.Fragment key={i++}>{segment}</React.Fragment>);
     const [, type, value] = match;
     if (type === "p" || type === "o") {
-      const sprite = value;
+      const name = value;
+      const pokemon: PokemonData = hpCtx?.teamMap?.[`${type}:${name}`] ?? { name, level: 0 };
       const spriteUrl =
-        side === "opponent" ? getMonotoneSpriteUrl(sprite) : getColouredSpriteUrl(sprite);
-      lastSpriteKey = `${type}:${sprite}`;
-      parts.push(<img key={i++} src={spriteUrl} alt={sprite} className={styles.sprite} />);
+        side === "opponent" ? getMonotoneSpriteUrl(pokemon) : getColouredSpriteUrl(pokemon);
+      lastSpriteKey = `${type}:${name}`;
+      parts.push(<img key={i++} src={spriteUrl} alt={name} className={styles.sprite} />);
     } else if (type === "+" || type === "-" || type === "=") {
       const num = parseInt(value, 10);
       let maxHp: number | undefined;

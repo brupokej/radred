@@ -34,7 +34,11 @@ export default function Encounter({
       <Card title="Encounter Plan">
         <div className={styles.content}>
           <div className={styles.spritePanel}>
-            <img src={getColouredSpriteUrl(sprite)} alt={encounter} className={styles.sprite} />
+            <img
+              src={getColouredSpriteUrl({ name: encounter, spriteKey: sprite, level: 0 })}
+              alt={encounter}
+              className={styles.sprite}
+            />
           </div>
           <div className={styles.info}>
             <div className={styles.name}>{encounter}</div>

@@ -101,6 +101,7 @@ type GraphCtxValue = {
   registerBranch: (branchId: string, parentLine: string) => void;
   unregisterBranch: (branchId: string) => void;
   maxHp: Record<string, number>;
+  teamMap: Record<string, PokemonData>;
 };
 
 const BattleGraphCtx = React.createContext<GraphCtxValue | null>(null);
@@ -109,22 +110,19 @@ const BattleLineCtx = React.createContext<string | null>(null);
 export function Battle({
   box,
   version,
-  playerTeam: playerTeamProp,
+  playerTeam: playerTeamNames,
   opponentTeam,
   children,
 }: {
-  box?: Box;
-  version?: number;
-  playerTeam?: Pokemon[] | string[];
-  opponentTeam?: PokemonData[];
+  box: Box;
+  version: number;
+  playerTeam: string[];
+  opponentTeam: PokemonData[];
   children: React.ReactNode;
 }) {
-  const playerTeam =
-    box !== undefined && version !== undefined
-      ? (playerTeamProp as string[] | undefined)
-          ?.map((name) => getFromBox(box, version, name))
-          .filter((p): p is Pokemon => p !== null)
-      : (playerTeamProp as Pokemon[] | undefined);
+  const playerTeam = playerTeamNames
+    .map((name) => getFromBox(box, version, name))
+    .filter((p): p is Pokemon => p !== null);
   const lineElements = React.Children.toArray(children).filter(
     (c): c is React.ReactElement<{ line?: string; children: React.ReactNode }> =>
       React.isValidElement(c) && c.type === BattleLine
@@ -179,18 +177,28 @@ export function Battle({
   const maxHp = useMemo(
     () =>
       Object.fromEntries([
-        ...(playerTeam ?? []).map((p) => {
+        ...playerTeam.map((p) => {
           const r = resolvePokemon(p);
-          return [`p:${r.sprite ?? r.name.toLowerCase()}`, getHp(r)];
+          return [`p:${r.name}`, getHp(r)];
         }),
-        ...(opponentTeam ?? []).map((p) => [`o:${p.sprite ?? p.name.toLowerCase()}`, getHp(p)]),
+        ...opponentTeam.map((p) => [`o:${p.name}`, getHp(p)]),
       ]),
     [playerTeam, opponentTeam]
   );
 
+  const teamMap = useMemo(() => {
+    const map: Record<string, PokemonData> = {};
+    for (const p of playerTeam) {
+      const r = resolvePokemon(p);
+      map[`p:${r.name}`] = r;
+    }
+    for (const p of opponentTeam) map[`o:${p.name}`] = p;
+    return map;
+  }, [playerTeam, opponentTeam]);
+
   const ctx = useMemo(
-    () => ({ state, dispatch, registerBranch, unregisterBranch, maxHp }),
-    [state, dispatch, registerBranch, unregisterBranch, maxHp]
+    () => ({ state, dispatch, registerBranch, unregisterBranch, maxHp, teamMap }),
+    [state, dispatch, registerBranch, unregisterBranch, maxHp, teamMap]
   );
 
   const enrichedLines = new Map<string, React.ReactNode>();
@@ -206,8 +214,8 @@ export function Battle({
 
   return (
     <>
-      {opponentTeam && <Team title="Opponent Team" team={opponentTeam.map((p) => ({ base: p }))} />}
-      {playerTeam && <Team title="Player Team" team={playerTeam} />}
+      <Team title="Opponent Team" team={opponentTeam.map((p) => ({ base: p }))} />
+      <Team title="Player Team" team={playerTeam} />
       <BattleGraphCtx.Provider value={ctx}>
         <Card title="Battle Plan">
           {state.visibleOrder.map((slug) => (
@@ -234,18 +242,22 @@ export function Matchup({
   isContinued?: boolean;
   children: React.ReactNode;
 }) {
+  const graphCtx = useContext(BattleGraphCtx);
   return (
     <div className={`${styles.matchup} ${isContinued ? styles.matchupContinued : ""}`}>
       <div className={styles.spriteWrapper}>
         {!isContinued &&
-          matchup.map((sprite, i) => (
-            <img
-              key={i}
-              src={getColouredSpriteUrl(sprite)}
-              alt={sprite}
-              className={styles.sprite}
-            />
-          ))}
+          matchup.map((name, i) => {
+            const pokemon: PokemonData = graphCtx?.teamMap[`o:${name}`] ?? { name, level: 0 };
+            return (
+              <img
+                key={i}
+                src={getColouredSpriteUrl(pokemon)}
+                alt={name}
+                className={styles.sprite}
+              />
+            );
+          })}
       </div>
       <div className={styles.turns}>{children}</div>
     </div>

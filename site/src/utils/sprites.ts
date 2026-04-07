@@ -1,11 +1,10 @@
-const SPRITE_BASE = "https://raw.githubusercontent.com/Autumnchi";
-const COLOURED_SPRITE_BASE = `${SPRITE_BASE}/coloured-home-sprites/main`;
-const MONOTONE_SPRITE_BASE = `${SPRITE_BASE}/monotone-home-sprites/main`;
+import { PokemonData } from "@site/src/utils/pokemon";
 
-export const getColouredSpriteUrl = (sprite: string) => {
-  return `${COLOURED_SPRITE_BASE}/${sprite}.png`;
-};
+function getSpriteUrl(pokemon: PokemonData, palette: "coloured" | "monotone"): string {
+  const spriteKey = pokemon.spriteKey ?? pokemon.name.toLowerCase();
+  return `https://raw.githubusercontent.com/Autumnchi/${palette}-home-sprites/main/${spriteKey}.png`;
+}
 
-export const getMonotoneSpriteUrl = (sprite: string) => {
-  return `${MONOTONE_SPRITE_BASE}/${sprite}.png`;
-};
+export const getColouredSpriteUrl = (pokemon: PokemonData) => getSpriteUrl(pokemon, "coloured");
+
+export const getMonotoneSpriteUrl = (pokemon: PokemonData) => getSpriteUrl(pokemon, "monotone");

@@ -142,8 +142,8 @@ export const pewterMuseumLeaderFalknerTeam: PokemonData[] = [
   },
   {
     name: "Squawkabilly-G",
-    sprite: "squawkabilly",
-    pokedex: "Squawkabilly",
+    spriteKey: "squawkabilly",
+    pokedexKey: "Squawkabilly",
     level: 14,
     nature: "Bashful",
     ability: "Hustle",
@@ -152,8 +152,8 @@ export const pewterMuseumLeaderFalknerTeam: PokemonData[] = [
   },
   {
     name: "Farfetch'd-G",
-    sprite: "farfetchd-galar",
-    pokedex: "Farfetch\u2019d-Galar",
+    spriteKey: "farfetchd-galar",
+    pokedexKey: "Farfetch\u2019d-Galar",
     level: 14,
     nature: "Bashful",
     ability: "Scrappy",
@@ -216,7 +216,7 @@ export const pewterCityLeaderBrockTeam: PokemonData[] = [
 export const route3LassSallyTeam: PokemonData[] = [
   {
     name: "Pikachu-Flying",
-    sprite: "pikachu",
+    spriteKey: "pikachu",
     level: 21,
     nature: "Naive",
     ability: "Lightning Rod",
@@ -260,8 +260,8 @@ export const mtMoonSuperNerdMiguelTeam: PokemonData[] = [
   },
   {
     name: "Voltorb-H",
-    sprite: "voltorb-hisui",
-    pokedex: "Voltorb-Hisui",
+    spriteKey: "voltorb-hisui",
+    pokedexKey: "Voltorb-Hisui",
     level: 22,
     nature: "Naive",
     ability: "Reckless",
@@ -407,8 +407,8 @@ export const nuggetBridgeBugCatcherCaleTeam: PokemonData[] = [
   },
   {
     name: "Wormadam-Sa",
-    sprite: "wormadam-sandy",
-    pokedex: "Wormadam-Sandy",
+    spriteKey: "wormadam-sandy",
+    pokedexKey: "Wormadam-Sandy",
     level: 26,
     nature: "Careful",
     ability: "Overcoat",
@@ -563,8 +563,8 @@ export const nuggetBridgeGruntTeam: PokemonData[] = [
 export const digHouseGruntTeam: PokemonData[] = [
   {
     name: "Persian-A",
-    sprite: "persian-alola",
-    pokedex: "Persian-Alola",
+    spriteKey: "persian-alola",
+    pokedexKey: "Persian-Alola",
     level: 26,
     nature: "Timid",
     ability: "Feline Prowess",

@@ -13,6 +13,6 @@ export interface PokedexData {
 export const pokedex = rawData as Record<string, PokedexData>;
 
 export function getHp(pokemon: PokemonData): number {
-  const base = pokedex[pokemon.pokedex ?? pokemon.name];
+  const base = pokedex[pokemon.pokedexKey ?? pokemon.name];
   return Math.floor(((2 * base.hp + 31) * pokemon.level) / 100) + pokemon.level + 10;
 }

@@ -156,16 +156,12 @@ function PokemonCard({ pokemon }: { pokemon: Pokemon | null }) {
   const baseMoveSet = base?.moves ? new Set(base.moves.filter(Boolean)) : null;
   const mwc = (move: string | null | undefined) =>
     baseMoveSet && move && !baseMoveSet.has(move) ? styles.fieldWarning : "";
-  const stats = current ? (pokedex[current.pokedex ?? current.name] ?? null) : null;
+  const stats = current ? (pokedex[current.pokedexKey ?? current.name] ?? null) : null;
 
   return (
     <div className={`${styles.card} ${!pokemon ? styles.cardEmpty : ""}`}>
       {current ? (
-        <img
-          src={getColouredSpriteUrl(current.sprite ?? current.name.toLowerCase())}
-          alt={current.name}
-          className={styles.sprite}
-        />
+        <img src={getColouredSpriteUrl(current)} alt={current.name} className={styles.sprite} />
       ) : (
         <div className={styles.emptySprite}>✕</div>
       )}
