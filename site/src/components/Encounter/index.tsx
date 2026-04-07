@@ -3,7 +3,7 @@ import { Row, RowCell } from "@site/src/components/Row";
 import Team from "@site/src/components/Team";
 import { Box, getFromBox } from "@site/src/utils/box";
 import { Pokemon } from "@site/src/utils/pokemon";
-import { spriteUrl } from "@site/src/utils/sprites";
+import { getColouredSpriteUrl } from "@site/src/utils/sprites";
 import styles from "./styles.module.css";
 
 export default function Encounter({
@@ -34,7 +34,7 @@ export default function Encounter({
       <Card title="Encounter Plan">
         <div className={styles.content}>
           <div className={styles.spritePanel}>
-            <img src={spriteUrl(sprite)} alt={encounter} className={styles.sprite} />
+            <img src={getColouredSpriteUrl(sprite)} alt={encounter} className={styles.sprite} />
           </div>
           <div className={styles.info}>
             <div className={styles.name}>{encounter}</div>

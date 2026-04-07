@@ -1,5 +1,5 @@
 import React from "react";
-import { spriteUrl } from "./sprites";
+import { getColouredSpriteUrl, getMonotoneSpriteUrl } from "./sprites";
 import styles from "./tokens.module.css";
 
 export const TOKEN_RE = /\{([a-z+\-=]):([^}]+)\}/g;
@@ -23,10 +23,11 @@ export function parseTokens(
     if (segment) parts.push(<React.Fragment key={i++}>{segment}</React.Fragment>);
     const [, type, value] = match;
     if (type === "p" || type === "o") {
-      lastSpriteKey = `${type}:${value}`;
-      parts.push(
-        <img key={i++} src={spriteUrl(value, side)} alt={value} className={styles.sprite} />
-      );
+      const sprite = value;
+      const spriteUrl =
+        side === "opponent" ? getMonotoneSpriteUrl(sprite) : getColouredSpriteUrl(sprite);
+      lastSpriteKey = `${type}:${sprite}`;
+      parts.push(<img key={i++} src={spriteUrl} alt={sprite} className={styles.sprite} />);
     } else if (type === "+" || type === "-" || type === "=") {
       const num = parseInt(value, 10);
       let maxHp: number | undefined;

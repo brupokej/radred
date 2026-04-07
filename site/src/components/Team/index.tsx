@@ -1,7 +1,7 @@
 import Card from "@site/src/components/Card";
 import { fetchPokedex } from "@site/src/utils/pokedex";
 import { resolvePokemon, type Pokemon } from "@site/src/utils/pokemon";
-import { spriteUrl } from "@site/src/utils/sprites";
+import { getColouredSpriteUrl } from "@site/src/utils/sprites";
 import clsx from "clsx";
 import { createContext, useCallback, useContext, useEffect, useRef, useState } from "react";
 import styles from "./styles.module.css";
@@ -170,7 +170,7 @@ function PokemonCard({
     <div className={`${styles.card} ${!pokemon ? styles.cardEmpty : ""}`}>
       {current ? (
         <img
-          src={spriteUrl(current.sprite ?? current.name.toLowerCase())}
+          src={getColouredSpriteUrl(current.sprite ?? current.name.toLowerCase())}
           alt={current.name}
           className={styles.sprite}
         />

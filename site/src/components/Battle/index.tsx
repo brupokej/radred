@@ -5,7 +5,7 @@ import { Box, getFromBox } from "@site/src/utils/box";
 import { useHpDisplay } from "@site/src/utils/hpDisplay";
 import { calcMaxHp, fetchPokedex } from "@site/src/utils/pokedex";
 import { Pokemon, PokemonData, resolvePokemon } from "@site/src/utils/pokemon";
-import { spriteUrl } from "@site/src/utils/sprites";
+import { getColouredSpriteUrl } from "@site/src/utils/sprites";
 import { parseTokens } from "@site/src/utils/tokens";
 import React, {
   useCallback,
@@ -73,19 +73,19 @@ function enrichBranchConditions(
 
 function enrichMatchups(
   children: React.ReactNode,
-  prevOpponents: string[] | null,
+  prevMatchup: string[] | null,
   visibleOrder: string[]
-): { enriched: React.ReactNode; lastOpponents: string[] | null } {
-  let lastOpponents = prevOpponents;
+): { enriched: React.ReactNode; lastMatchup: string[] | null } {
+  let lastMatchup = prevMatchup;
   const enriched =
     React.Children.map(children, (child) => {
       if (React.isValidElement(child) && child.type === Matchup) {
-        const props = child.props as { opponents: string[]; children: React.ReactNode };
+        const props = child.props as { matchup: string[]; children: React.ReactNode };
         const isContinued =
-          lastOpponents !== null &&
-          lastOpponents.length === props.opponents.length &&
-          lastOpponents.every((o, i) => o === props.opponents[i]);
-        lastOpponents = props.opponents;
+          lastMatchup !== null &&
+          lastMatchup.length === props.matchup.length &&
+          lastMatchup.every((o, i) => o === props.matchup[i]);
+        lastMatchup = props.matchup;
         return React.cloneElement(
           child as React.ReactElement<{ isContinued?: boolean; children?: React.ReactNode }>,
           { isContinued, children: enrichBranchConditions(props.children, visibleOrder) }
@@ -93,7 +93,7 @@ function enrichMatchups(
       }
       return child;
     }) ?? [];
-  return { enriched, lastOpponents };
+  return { enriched, lastMatchup };
 }
 
 type GraphCtxValue = {
@@ -206,13 +206,13 @@ export function Battle({
   );
 
   const enrichedLines = new Map<string, React.ReactNode>();
-  let prevOpponents: string[] | null = null;
+  let prevMatchup: string[] | null = null;
   for (const slug of state.visibleOrder) {
     const raw = lineMap.get(slug);
     if (raw !== undefined) {
-      const { enriched, lastOpponents } = enrichMatchups(raw, prevOpponents, state.visibleOrder);
+      const { enriched, lastMatchup } = enrichMatchups(raw, prevMatchup, state.visibleOrder);
       enrichedLines.set(slug, enriched);
-      prevOpponents = lastOpponents;
+      prevMatchup = lastMatchup;
     }
   }
 
@@ -238,20 +238,25 @@ export function BattleLine({ line, children }: { line?: string; children: React.
 }
 
 export function Matchup({
-  opponents,
+  matchup,
   isContinued = false,
   children,
 }: {
-  opponents: string[];
+  matchup: string[];
   isContinued?: boolean;
   children: React.ReactNode;
 }) {
   return (
     <div className={`${styles.matchup} ${isContinued ? styles.matchupContinued : ""}`}>
-      <div className={styles.opponents}>
+      <div className={styles.spriteWrapper}>
         {!isContinued &&
-          opponents.map((opponent, i) => (
-            <img key={i} src={spriteUrl(opponent)} alt={opponent} className={styles.sprite} />
+          matchup.map((sprite, i) => (
+            <img
+              key={i}
+              src={getColouredSpriteUrl(sprite)}
+              alt={sprite}
+              className={styles.sprite}
+            />
           ))}
       </div>
       <div className={styles.turns}>{children}</div>

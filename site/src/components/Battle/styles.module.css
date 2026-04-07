@@ -7,11 +7,11 @@
   border-bottom: none;
 }
 
-.matchupContinued .opponents {
+.matchupContinued .spriteWrapper {
   position: relative;
 }
 
-.matchupContinued .opponents::before {
+.matchupContinued .spriteWrapper::before {
   background: var(--ifm-card-background-color);
   content: "";
   height: 1px;
@@ -21,7 +21,7 @@
   top: -1px;
 }
 
-.opponents {
+.spriteWrapper {
   align-items: flex-start;
   border-right: 1px solid var(--ifm-color-emphasis-200);
   display: flex;
