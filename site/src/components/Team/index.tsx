@@ -1,5 +1,5 @@
 import Card from "@site/src/components/Card";
-import { fetchPokedex } from "@site/src/utils/pokedex";
+import { pokedex, type PokedexData } from "@site/src/utils/pokedex";
 import { resolvePokemon, type Pokemon } from "@site/src/utils/pokemon";
 import { getColouredSpriteUrl } from "@site/src/utils/sprites";
 import clsx from "clsx";
@@ -43,7 +43,6 @@ function TeamGrid({ team }: { team: Pokemon[] }) {
   const [cols, setCols] = useState(6);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(false);
-  const [pokedex, setPokedex] = useState<Map<string, number[]> | null>(null);
 
   useEffect(() => {
     const el = contentRef.current;
@@ -82,10 +81,6 @@ function TeamGrid({ team }: { team: Pokemon[] }) {
     updateScrollState();
   }, [cols, updateScrollState]);
 
-  useEffect(() => {
-    fetchPokedex().then(setPokedex);
-  }, []);
-
   const scroll = useCallback((dir: "left" | "right") => {
     const el = scrollRef.current;
     if (!el) return;
@@ -119,7 +114,7 @@ function TeamGrid({ team }: { team: Pokemon[] }) {
         )}
         <div ref={scrollRef} className={styles.grid} data-scroll>
           {slots.map((pokemon, i) => (
-            <PokemonCard key={i} pokemon={pokemon} pokedex={pokedex} />
+            <PokemonCard key={i} pokemon={pokemon} />
           ))}
         </div>
         {canScrollRight && (
@@ -134,8 +129,14 @@ function TeamGrid({ team }: { team: Pokemon[] }) {
   );
 }
 
-const STAT_LABELS = ["HP", "ATK", "DEF", "SPA", "SPD", "SPE"];
-const STAT_INDICES = [0, 1, 2, 4, 5, 3];
+const STAT_KEYS: { label: string; key: keyof PokedexData }[] = [
+  { label: "HP", key: "hp" },
+  { label: "ATK", key: "atk" },
+  { label: "DEF", key: "def" },
+  { label: "SPA", key: "spa" },
+  { label: "SPD", key: "spd" },
+  { label: "SPE", key: "spe" },
+];
 
 function statColor(v: number): string {
   if (v >= 150) return "var(--ifm-color-info)";
@@ -147,13 +148,7 @@ function statColor(v: number): string {
   return "var(--ifm-color-danger)";
 }
 
-function PokemonCard({
-  pokemon,
-  pokedex,
-}: {
-  pokemon: Pokemon | null;
-  pokedex: Map<string, number[]> | null;
-}) {
+function PokemonCard({ pokemon }: { pokemon: Pokemon | null }) {
   const isExpanded = useCardDetail();
   const { update, base } = pokemon ?? {};
   const current = pokemon ? resolvePokemon(pokemon) : null;
@@ -161,10 +156,7 @@ function PokemonCard({
   const baseMoveSet = base?.moves ? new Set(base.moves.filter(Boolean)) : null;
   const mwc = (move: string | null | undefined) =>
     baseMoveSet && move && !baseMoveSet.has(move) ? styles.fieldWarning : "";
-  const stats =
-    current && pokedex
-      ? (pokedex.get((current.pokedex ?? current.name).toLowerCase()) ?? null)
-      : null;
+  const stats = current ? (pokedex[current.pokedex ?? current.name] ?? null) : null;
 
   return (
     <div className={`${styles.card} ${!pokemon ? styles.cardEmpty : ""}`}>
@@ -195,8 +187,8 @@ function PokemonCard({
           ))}
           <div className={styles.divider} />
           <div className={styles.stats}>
-            {STAT_LABELS.map((label, i) => {
-              const v = stats ? stats[STAT_INDICES[i]] : null;
+            {STAT_KEYS.map(({ label, key }) => {
+              const v = stats ? stats[key] : null;
               if (v == null) {
                 return (
                   <div key={label} className={styles.move}>

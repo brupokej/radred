@@ -3,7 +3,7 @@ import { ScrollFade } from "@site/src/components/ScrollFade";
 import Team from "@site/src/components/Team";
 import { Box, getFromBox } from "@site/src/utils/box";
 import { useHpDisplay } from "@site/src/utils/hpDisplay";
-import { calcMaxHp, fetchPokedex } from "@site/src/utils/pokedex";
+import { getHp } from "@site/src/utils/pokedex";
 import { Pokemon, PokemonData, resolvePokemon } from "@site/src/utils/pokemon";
 import { getColouredSpriteUrl } from "@site/src/utils/sprites";
 import { parseTokens } from "@site/src/utils/tokens";
@@ -15,7 +15,6 @@ import React, {
   useMemo,
   useReducer,
   useRef,
-  useState,
 } from "react";
 import styles from "./styles.module.css";
 
@@ -177,27 +176,16 @@ export function Battle({
     branchRegistry.current.delete(branchId);
   }, []);
 
-  const [pokedex, setPokedex] = useState<Map<string, number[]> | null>(null);
-
-  useEffect(() => {
-    fetchPokedex().then(setPokedex);
-  }, []);
-
-  function hpFromDex(p: PokemonData): number {
-    const stats = pokedex?.get((p.pokedex ?? p.name).toLowerCase());
-    return stats ? calcMaxHp(stats[0], p.level) : 0;
-  }
-
   const maxHp = useMemo(
     () =>
       Object.fromEntries([
         ...(playerTeam ?? []).map((p) => {
           const r = resolvePokemon(p);
-          return [`p:${r.sprite ?? r.name.toLowerCase()}`, hpFromDex(r)];
+          return [`p:${r.sprite ?? r.name.toLowerCase()}`, getHp(r)];
         }),
-        ...(opponentTeam ?? []).map((p) => [`o:${p.sprite ?? p.name.toLowerCase()}`, hpFromDex(p)]),
+        ...(opponentTeam ?? []).map((p) => [`o:${p.sprite ?? p.name.toLowerCase()}`, getHp(p)]),
       ]),
-    [playerTeam, opponentTeam, pokedex]
+    [playerTeam, opponentTeam]
   );
 
   const ctx = useMemo(

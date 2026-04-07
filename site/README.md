@@ -8,6 +8,14 @@ This website is built using [Docusaurus](https://docusaurus.io/), a modern stati
 npm install
 ```
 
+## Pokedex Data
+
+```bash
+npm run pokedex
+```
+
+This command fetches Pokedex data and writes it to `src/data/pokedex.json`.
+
 ## Local Development
 
 ```bash

@@ -14,6 +14,7 @@
     "write-heading-ids": "docusaurus write-heading-ids",
     "typecheck": "tsc",
     "format": "prettier --write \"**/*.{mdx,jsx,tsx,ts,js,css}\"",
+    "pokedex": "tsx scripts/pokedex.mts",
     "postinstall": "npx playwright install chromium",
     "playwright": "playwright test",
     "playwright:update": "rm -rf tests/snapshots && playwright test --update-snapshots",
@@ -32,13 +33,14 @@
     "@docusaurus/module-type-aliases": "3.9.2",
     "@docusaurus/tsconfig": "3.9.2",
     "@docusaurus/types": "3.9.2",
-    "@prettier/plugin-xml": "^3.4.2",
     "@playwright/test": "^1.50.0",
-    "vitest": "^3.0.0",
+    "@prettier/plugin-xml": "^3.4.2",
     "gh-pages": "^6.3.0",
     "prettier": "^3.8.1",
     "prettier-plugin-organize-imports": "^4.3.0",
-    "typescript": "~5.6.2"
+    "tsx": "^4.0.0",
+    "typescript": "~5.6.2",
+    "vitest": "^3.0.0"
   },
   "browserslist": {
     "production": [
