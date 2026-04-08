@@ -37,15 +37,15 @@ export const _box = createBox();
 
 ## Oak's Lab Encounter
 
-<Encounter encounter="Litten" sprite="litten" row={["Level 5"]} />
+export const _litten = {
+  name: "Litten",
+  ability: "Blaze",
+  moves: ["Ember", "Growl", "Scratch"],
+};
 
-export const _v1 = addToBox(_box, {
-  Litten: {
-    name: "Litten",
-    ability: "Blaze",
-    moves: ["Ember", "Growl", "Scratch"],
-  },
-});
+<Encounter encounter={_litten} row={["Level 5"]} />
+
+export const _v1 = addToBox(_box, _litten);
 export const _v2 = updateBox(_box, {
   Litten: {
     name: "Torracat",
@@ -58,19 +58,15 @@ export const _v2 = updateBox(_box, {
 
 ## Pallet Town Encounter
 
-<Encounter
-  encounter="Tentacool"
-  sprite="tentacool"
-  row={["Old Rod · 70% · Level 2-4 ·", { info: "Clear Body" }]}
-/>
+export const _tentacool = {
+  name: "Tentacool",
+  ability: "Clear Body",
+  moves: ["Rapid Spin", "Water Gun"],
+};
 
-export const _v3 = addToBox(_box, {
-  Tentacool: {
-    name: "Tentacool",
-    ability: "Clear Body",
-    moves: ["Rapid Spin", "Water Gun"],
-  },
-});
+<Encounter encounter={_tentacool} row={["Old Rod · 70% · Level 2-4 ·", { info: "Clear Body" }]} />
+
+export const _v3 = addToBox(_box, _tentacool);
 export const _v4 = updateBox(_box, {
   Tentacool: {
     level: 16,
@@ -86,83 +82,76 @@ export const _v4 = updateBox(_box, {
 
 ## Route 21 Encounter
 
+export const _wooperP = {
+  name: "Wooper-P",
+  spriteKey: "wooper-paldea",
+  pokedexKey: "Wooper-Paldea",
+  ability: "Water Absorb",
+  moves: ["Mud Shot", "Tackle", "Tail Whip"],
+};
+
 <Encounter
-  encounter="Wooper-P"
-  sprite="wooper-paldea"
+  encounter={_wooperP}
   row={["Grass ·", { warning: "Night" }, "· 20% · Level 4-6 ·", { info: "Water Absorb" }]}
 />
 
-export const _v5 = addToBox(_box, {
-  "Wooper-P": {
-    name: "Wooper-P",
-    spriteKey: "wooper-paldea",
-    pokedexKey: "Wooper-Paldea",
-    ability: "Water Absorb",
-    moves: ["Mud Shot", "Tackle", "Tail Whip"],
-  },
-});
+export const _v5 = addToBox(_box, _wooperP);
 
 ## Route 1 Encounter
 
+export const _meowthG = {
+  name: "Meowth-G",
+  spriteKey: "meowth-galar",
+  pokedexKey: "Meowth-Galar",
+  ability: "Tough Claws",
+  moves: ["Fake Out", "Growl"],
+};
+
 <Encounter
-  encounter="Meowth-G"
-  sprite="meowth-galar"
+  encounter={_meowthG}
   row={["Grass · Night · 10% · Level 2-4 ·", { info: "Tough Claws" }]}
 />
 
-export const _v6 = addToBox(_box, {
-  "Meowth-G": {
-    name: "Meowth-G",
-    spriteKey: "meowth-galar",
-    pokedexKey: "Meowth-Galar",
-    ability: "Tough Claws",
-    moves: ["Fake Out", "Growl"],
-  },
-});
+export const _v6 = addToBox(_box, _meowthG);
 
 ## Viridian City Encounter
 
-<Encounter
-  encounter="Marill"
-  sprite="marill"
-  row={["Old Rod · 70% · Level 3-4 ·", { info: "Huge Power" }]}
-/>
+export const _marill = {
+  name: "Marill",
+  ability: "Huge Power",
+  moves: ["Aqua Jet", "Tackle", "Tail Whip"],
+};
 
-export const _v7 = addToBox(_box, {
-  Marill: {
-    name: "Marill",
-    ability: "Huge Power",
-    moves: ["Aqua Jet", "Tackle", "Tail Whip"],
-  },
-});
+<Encounter encounter={_marill} row={["Old Rod · 70% · Level 3-4 ·", { info: "Huge Power" }]} />
+
+export const _v7 = addToBox(_box, _marill);
 
 ## Route 2 Encounter
 
+export const _houndour = {
+  name: "Houndour",
+  ability: "Flash Fire",
+  moves: ["Incinerate", "Leer"],
+};
+
 <Encounter
-  encounter="Houndour"
-  sprite="houndour"
+  encounter={_houndour}
   row={["Grass · Night · 5% · Level 4-6 ·", { info: "Flash Fire" }]}
 />
 
-export const _v8 = addToBox(_box, {
-  Houndour: {
-    name: "Houndour",
-    ability: "Flash Fire",
-    moves: ["Incinerate", "Leer"],
-  },
-});
+export const _v8 = addToBox(_box, _houndour);
 
 ## Viridian Forest Encounter
 
-<Encounter encounter="Kricketot" sprite="kricketot" row={["Grass · Night · 10% · Level 4-6"]} />
+export const _kricketot = {
+  name: "Kricketot",
+  ability: "Technician",
+  moves: ["Bide", "Growl", "Tackle"],
+};
 
-export const _v9 = addToBox(_box, {
-  Kricketot: {
-    name: "Kricketot",
-    ability: "Technician",
-    moves: ["Bide", "Growl", "Tackle"],
-  },
-});
+<Encounter encounter={_kricketot} row={["Grass · Night · 10% · Level 4-6"]} />
+
+export const _v9 = addToBox(_box, _kricketot);
 export const _v10 = updateBox(_box, {
   "Wooper-P": {
     level: 16,
@@ -264,11 +253,11 @@ export const _v12 = updateBox(_box, {
 
 ## Route 22 Encounter
 
-<Encounter encounter="Psyduck" sprite="psyduck" row={["Old Rod · 70% · Level 2-4"]} />
+export const _psyduck = { name: "Psyduck", moves: ["Scratch", "Water Sport"] };
 
-export const _v13 = addToBox(_box, {
-  Psyduck: { name: "Psyduck", moves: ["Scratch", "Water Sport"] },
-});
+<Encounter encounter={_psyduck} row={["Old Rod · 70% · Level 2-4"]} />
+
+export const _v13 = addToBox(_box, _psyduck);
 
 export const _v14 = updateBox(_box, {
   "Meowth-G": {
@@ -515,17 +504,17 @@ export const _v18 = updateBox(_box, {
 
 ## Diglett Cave Encounter
 
-<Encounter encounter="Yamask-G" sprite="yamask-galar" row={["Night · 10% · Level 7-9"]} />
+export const _yamaskG = {
+  name: "Yamask-G",
+  spriteKey: "yamask-galar",
+  pokedexKey: "Yamask-Galar",
+  ability: "Wandering Soul",
+  moves: ["Haze", "Magnitude", "Shadow Sneak"],
+};
 
-export const _v19 = addToBox(_box, {
-  "Yamask-G": {
-    name: "Yamask-G",
-    spriteKey: "yamask-galar",
-    pokedexKey: "Yamask-Galar",
-    ability: "Wandering Soul",
-    moves: ["Haze", "Magnitude", "Shadow Sneak"],
-  },
-});
+<Encounter encounter={_yamaskG} row={["Night · 10% · Level 7-9"]} />
+
+export const _v19 = addToBox(_box, _yamaskG);
 
 ## Pewter Museum Leader Falkner Battle
 

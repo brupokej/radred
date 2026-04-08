@@ -2,20 +2,18 @@ import Card from "@site/src/components/Card";
 import { Row, RowCell } from "@site/src/components/Row";
 import Team from "@site/src/components/Team";
 import { Box, getFromBox } from "@site/src/utils/box";
-import { Pokemon } from "@site/src/utils/pokemon";
+import { Pokemon, PokemonData } from "@site/src/utils/pokemon";
 import { getColouredSpriteUrl } from "@site/src/utils/sprites";
 import styles from "./styles.module.css";
 
 export default function Encounter({
   encounter,
-  sprite,
   row,
   box,
   version,
   playerTeam: playerTeamProp,
 }: {
-  encounter: string;
-  sprite: string;
+  encounter: PokemonData;
   row: RowCell[];
   box?: Box;
   version?: number;
@@ -35,13 +33,13 @@ export default function Encounter({
         <div className={styles.content}>
           <div className={styles.spritePanel}>
             <img
-              src={getColouredSpriteUrl({ name: encounter, spriteKey: sprite })}
-              alt={encounter}
+              src={getColouredSpriteUrl(encounter)}
+              alt={encounter.name}
               className={styles.sprite}
             />
           </div>
           <div className={styles.info}>
-            <div className={styles.name}>{encounter}</div>
+            <div className={styles.name}>{encounter.name}</div>
             <Row row={row} />
           </div>
         </div>

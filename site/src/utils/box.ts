@@ -85,24 +85,18 @@ export function createBox(): Box {
   return { ops: [] };
 }
 
-// Adds new pokemon to the box.
+// Adds a new pokemon to the box.
 // Returns the new op count (1-based version number of the snapshot just created).
-export function addToBox(box: Box, initial: Record<string, PokemonData>): number {
+export function addToBox(box: Box, data: PokemonData): number {
+  const { name } = data;
   const currentState = replayBox(box, box.ops.length);
 
-  const toAdd = Object.fromEntries(
-    Object.entries(initial)
-      .filter(([name]) => {
-        if (currentState.has(name)) {
-          console.error(`addToBox: "${name}" already exists — skipping.`);
-          return false;
-        }
-        return true;
-      })
-      .map(([name, data], i) => [name, { base: data, index: currentState.size + i }])
-  );
+  if (currentState.has(name)) {
+    console.error(`addToBox: "${name}" already exists — skipping.`);
+    return box.ops.length;
+  }
 
-  box.ops.push({ type: "add", pokemon: toAdd });
+  box.ops.push({ type: "add", pokemon: { [name]: { base: data, index: currentState.size } } });
   return box.ops.length;
 }
 
@@ -159,6 +153,16 @@ export function exportBox(box: Box): Box {
 // Returns null if the pokemon did not exist at that version.
 export function getFromBox(box: Box, version: number, name: string): Pokemon | null {
   return replayBox(box, version).get(name) ?? null;
+}
+
+// Retrieves multiple pokemon by name at a given version, resolved to PokemonData.
+// Names not found in the box at that version are silently omitted.
+export function getTeamFromBox(box: Box, version: number, names: string[]): PokemonData[] {
+  const state = replayBox(box, version);
+  return names.flatMap((name) => {
+    const p = state.get(name);
+    return p !== undefined ? [resolvePokemon(p)] : [];
+  });
 }
 
 // Sets all active pokemon to the given level, optionally excluding some by name.

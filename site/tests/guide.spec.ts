@@ -10,7 +10,9 @@ async function hideNavbar(page: Page) {
 async function waitForRender(within: Locator) {
   await within
     .page()
-    .evaluate(() => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))));
+    .evaluate(
+      () => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)))
+    );
 }
 
 async function expandAll(within: Locator) {

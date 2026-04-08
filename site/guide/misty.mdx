@@ -133,30 +133,26 @@ export const _v4 = updateBox(_box, {
 
 ## Mt. Moon Encounter
 
-<Encounter
-  encounter="Drilbur"
-  sprite="drilbur"
-  row={[{ warning: "Floor B2F" }, "· Night · 10% · Level 12-14"]}
-/>
+export const _drilbur = {
+  name: "Drilbur",
+  moves: ["Fury Swipes", "Mud-Slap", "Rapid Spin", "Scratch"],
+};
 
-export const _v5 = addToBox(_box, {
-  Drilbur: {
-    name: "Drilbur",
-    moves: ["Fury Swipes", "Mud-Slap", "Rapid Spin", "Scratch"],
-  },
-});
+<Encounter encounter={_drilbur} row={[{ warning: "Floor B2F" }, "· Night · 10% · Level 12-14"]} />
+
+export const _v5 = addToBox(_box, _drilbur);
 
 ## Route 4 Encounter
 
-<Encounter encounter="Magikarp" sprite="magikarp" row={["Level 5"]} />
+export const _magikarp = {
+  name: "Magikarp",
+  ability: "Swift Swim",
+  moves: ["Splash"],
+};
 
-export const _v6 = addToBox(_box, {
-  Magikarp: {
-    name: "Magikarp",
-    ability: "Swift Swim",
-    moves: ["Splash"],
-  },
-});
+<Encounter encounter={_magikarp} row={["Level 5"]} />
+
+export const _v6 = addToBox(_box, _magikarp);
 
 export const _v7 = updateBox(_box, {
   Torracat: {
@@ -418,14 +414,14 @@ export const _v11 = updateBox(_box, {
 
 ## Cerulean City Encounter
 
-<Encounter encounter="Chewtle" sprite="chewtle" row={["Old Rod · 70% · Level 2-4"]} />
+export const _chewtle = {
+  name: "Chewtle",
+  moves: ["Aqua Jet", "Bite"],
+};
 
-export const _v12 = addToBox(_box, {
-  Chewtle: {
-    name: "Chewtle",
-    moves: ["Aqua Jet", "Bite"],
-  },
-});
+<Encounter encounter={_chewtle} row={["Old Rod · 70% · Level 2-4"]} />
+
+export const _v12 = addToBox(_box, _chewtle);
 
 <Card title="Game Setup">
   <Row row={["Cerulean City →", { info: "Solve the Move Relearner puzzle" }]} />
@@ -1148,32 +1144,31 @@ export const _v24 = updateBox(_box, {
 
 export const _v25 = updateBox(_box);
 
+export const _charcadet = {
+  name: "Charcadet",
+  moves: ["Clear Smog", "Ember", "Fire Spin", "Leer"],
+};
+
 <Encounter
-  encounter="Charcadet"
-  sprite="charcadet"
+  encounter={_charcadet}
   row={["Grass · ", { warning: "Day" }, " · 50% · Level 14-16"]}
   box={_box}
   version={_v25}
   playerTeam={["Houndoom"]}
 />
 
-export const _v26 = addToBox(_box, {
-  Charcadet: {
-    name: "Charcadet",
-    moves: ["Clear Smog", "Ember", "Fire Spin", "Leer"],
-  },
-});
+export const _v26 = addToBox(_box, _charcadet);
 
 ## Route 25 Encounter
 
-<Encounter encounter="Chinchou" sprite="chinchou" row={["Old Rod · 30% · Level 2-4"]} />
+export const _chinchou = {
+  name: "Chinchou",
+  moves: ["Bubble", "Supersonic"],
+};
 
-export const _v27 = addToBox(_box, {
-  Chinchou: {
-    name: "Chinchou",
-    moves: ["Bubble", "Supersonic"],
-  },
-});
+<Encounter encounter={_chinchou} row={["Old Rod · 30% · Level 2-4"]} />
+
+export const _v27 = addToBox(_box, _chinchou);
 
 ## Nugget Bridge Grunt Battle
 
@@ -1275,34 +1270,33 @@ export const _v28 = updateBox(_box, {
 
 export const _v29 = updateBox(_box);
 
+export const _growlitheH = {
+  name: "Growlithe-H",
+  spriteKey: "growlithe-hisui",
+  pokedexKey: "Growlithe-Hisui",
+  moves: ["Flame Wheel", "Helping Hand", "Leer", "Odor Sleuth"],
+};
+
 <Encounter
-  encounter="Growlithe-H"
-  sprite="growlithe-hisui"
+  encounter={_growlitheH}
   row={["Grass · ", { warning: "Night" }, "· 50% · Level 18-20"]}
   box={_box}
   version={_v29}
   playerTeam={["Houndoom"]}
 />
 
-export const _v30 = addToBox(_box, {
-  "Growlithe-H": {
-    name: "Growlithe-H",
-    spriteKey: "growlithe-hisui",
-    pokedexKey: "Growlithe-Hisui",
-    moves: ["Flame Wheel", "Helping Hand", "Leer", "Odor Sleuth"],
-  },
-});
+export const _v30 = addToBox(_box, _growlitheH);
 
 ## Route 6 Encounter
 
-<Encounter encounter="Shellder" sprite="shellder" row={["Old Rod · 30% · Level 2-4"]} />
+export const _shellder = {
+  name: "Shellder",
+  moves: ["Tackle", "Water Gun"],
+};
 
-export const _v31 = addToBox(_box, {
-  Shellder: {
-    name: "Shellder",
-    moves: ["Tackle", "Water Gun"],
-  },
-});
+<Encounter encounter={_shellder} row={["Old Rod · 30% · Level 2-4"]} />
+
+export const _v31 = addToBox(_box, _shellder);
 
 export const _v32 = setLevelCap(_box, 28);
 
