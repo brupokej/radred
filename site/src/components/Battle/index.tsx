@@ -248,7 +248,7 @@ export function Matchup({
       <div className={styles.spriteWrapper}>
         {!isContinued &&
           matchup.map((name, i) => {
-            const pokemon: PokemonData = graphCtx?.teamMap[`o:${name}`] ?? { name, level: 0 };
+            const pokemon: PokemonData = graphCtx?.teamMap[`o:${name}`] ?? { name };
             return (
               <img
                 key={i}

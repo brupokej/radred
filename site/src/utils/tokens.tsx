@@ -26,7 +26,7 @@ export function parseTokens(
     const [, type, value] = match;
     if (type === "p" || type === "o") {
       const name = value;
-      const pokemon: PokemonData = hpCtx?.teamMap?.[`${type}:${name}`] ?? { name, level: 0 };
+      const pokemon: PokemonData = hpCtx?.teamMap?.[`${type}:${name}`] ?? { name };
       const spriteUrl =
         side === "opponent" ? getMonotoneSpriteUrl(pokemon) : getColouredSpriteUrl(pokemon);
       lastSpriteKey = `${type}:${name}`;

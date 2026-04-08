@@ -35,7 +35,7 @@ export default function Encounter({
         <div className={styles.content}>
           <div className={styles.spritePanel}>
             <img
-              src={getColouredSpriteUrl({ name: encounter, spriteKey: sprite, level: 0 })}
+              src={getColouredSpriteUrl({ name: encounter, spriteKey: sprite })}
               alt={encounter}
               className={styles.sprite}
             />
