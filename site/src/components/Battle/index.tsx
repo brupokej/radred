@@ -4,7 +4,7 @@ import Team from "@site/src/components/Team";
 import { Box, resolveBox } from "@site/src/utils/box";
 import { useHpDisplay } from "@site/src/utils/hpDisplay";
 import { getHp } from "@site/src/utils/pokedex";
-import { Pokemon, PokemonData, resolvePokemon } from "@site/src/utils/pokemon";
+import { PokemonData, resolvePokemon } from "@site/src/utils/pokemon";
 import { getColouredSpriteUrl } from "@site/src/utils/sprites";
 import { parseTokens } from "@site/src/utils/tokens";
 import React, {
@@ -117,14 +117,7 @@ export function Battle({
   children: React.ReactNode;
 }) {
   const playerResolved = resolveBox(playerBox);
-  const playerTeam = (playerBox.team ?? [])
-    .map((name) => playerResolved.get(name))
-    .filter((p): p is Pokemon => p !== undefined);
-
   const opponentResolved = resolveBox(opponentBox);
-  const opponentTeam = (opponentBox.team ?? [])
-    .map((name) => opponentResolved.get(name))
-    .filter((p): p is Pokemon => p !== undefined);
   const lineElements = React.Children.toArray(children).filter(
     (c): c is React.ReactElement<{ line?: string; children: React.ReactNode }> =>
       React.isValidElement(c) && c.type === BattleLine
@@ -179,30 +172,30 @@ export function Battle({
   const maxHp = useMemo(
     () =>
       Object.fromEntries([
-        ...playerTeam.map((p) => {
-          const r = resolvePokemon(p);
-          return [`p:${r.name}`, getHp(r)];
+        ...(playerBox.team ?? []).flatMap((name) => {
+          const p = playerResolved.get(name);
+          return p ? [[`p:${name}`, getHp(resolvePokemon(p))]] : [];
         }),
-        ...opponentTeam.map((p) => {
-          const r = resolvePokemon(p);
-          return [`o:${r.name}`, getHp(r)];
+        ...(opponentBox.team ?? []).flatMap((name) => {
+          const p = opponentResolved.get(name);
+          return p ? [[`o:${name}`, getHp(resolvePokemon(p))]] : [];
         }),
       ]),
-    [playerTeam, opponentTeam]
+    [playerBox, opponentBox, playerResolved, opponentResolved]
   );
 
   const teamMap = useMemo(() => {
     const map: Record<string, PokemonData> = {};
-    for (const p of playerTeam) {
-      const r = resolvePokemon(p);
-      map[`p:${r.name}`] = r;
+    for (const name of playerBox.team ?? []) {
+      const p = playerResolved.get(name);
+      if (p) map[`p:${name}`] = resolvePokemon(p);
     }
-    for (const p of opponentTeam) {
-      const r = resolvePokemon(p);
-      map[`o:${r.name}`] = r;
+    for (const name of opponentBox.team ?? []) {
+      const p = opponentResolved.get(name);
+      if (p) map[`o:${name}`] = resolvePokemon(p);
     }
     return map;
-  }, [playerTeam, opponentTeam]);
+  }, [playerBox, opponentBox, playerResolved, opponentResolved]);
 
   const ctx = useMemo(
     () => ({ state, dispatch, registerBranch, unregisterBranch, maxHp, teamMap }),
@@ -222,8 +215,8 @@ export function Battle({
 
   return (
     <>
-      <Team title="Opponent Team" team={opponentTeam} />
-      <Team title="Player Team" team={playerTeam} />
+      <Team title="Opponent Team" box={opponentBox} />
+      <Team title="Player Team" box={playerBox} />
       <BattleGraphCtx.Provider value={ctx}>
         <Card title="Battle Plan">
           {state.visibleOrder.map((slug) => (

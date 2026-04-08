@@ -23,7 +23,7 @@ import {
   pewterMuseumLeaderFalknerBox,
   pewterCityLeaderBrockBox,
 } from "@site/src/utils/opponentTeams";
-import { createBox, addToBox, changeBox, exportBox } from "@site/src/utils/box";
+import { changeBox } from "@site/src/utils/box";
 
 # Brock
 
@@ -32,8 +32,6 @@ import { createBox, addToBox, changeBox, exportBox } from "@site/src/utils/box";
   <Row row={["Cheats → {c:SO2Toxic} · {c:Woyaopp} · {c:EZCatch} · {c:TeamPreview}"]} />
   <Row row={["Talk to Mom →", { info: "Starter Region to {c:Alola}" }]} />
 </Card>
-
-export const _box = createBox([]);
 
 ## Oak's Lab Encounter
 
@@ -45,9 +43,8 @@ export const _litten = {
 
 <Encounter encounter={_litten} row={["Level 5"]} />
 
-export const _v1 = addToBox(_box, _litten);
-export const _v2 = changeBox({
-  box: _box,
+export const _box1 = changeBox({
+  add: [_litten],
   update: {
     Litten: {
       name: "Torracat",
@@ -57,7 +54,7 @@ export const _v2 = changeBox({
   },
 });
 
-<BoxChange snapshots={[_v2]} />
+<BoxChange box={_box1} />
 
 ## Pallet Town Encounter
 
@@ -69,9 +66,9 @@ export const _tentacool = {
 
 <Encounter encounter={_tentacool} row={["Old Rod · 70% · Level 2-4 ·", { info: "Clear Body" }]} />
 
-export const _v3 = addToBox(_box, _tentacool);
-export const _v4 = changeBox({
-  box: _box,
+export const _box2 = changeBox({
+  box: _box1,
+  add: [_tentacool],
   update: {
     Tentacool: {
       level: 16,
@@ -80,7 +77,7 @@ export const _v4 = changeBox({
   },
 });
 
-<BoxChange snapshots={[_v4]} />
+<BoxChange box={_box2} />
 
 <Card title="Game Setup">
   <Row row={["Option →", { info: "Wild Double Battle to {c:On}" }]} />
@@ -101,8 +98,6 @@ export const _wooperP = {
   row={["Grass ·", { warning: "Night" }, "· 20% · Level 4-6 ·", { info: "Water Absorb" }]}
 />
 
-export const _v5 = addToBox(_box, _wooperP);
-
 ## Route 1 Encounter
 
 export const _meowthG = {
@@ -118,8 +113,6 @@ export const _meowthG = {
   row={["Grass · Night · 10% · Level 2-4 ·", { info: "Tough Claws" }]}
 />
 
-export const _v6 = addToBox(_box, _meowthG);
-
 ## Viridian City Encounter
 
 export const _marill = {
@@ -129,8 +122,6 @@ export const _marill = {
 };
 
 <Encounter encounter={_marill} row={["Old Rod · 70% · Level 3-4 ·", { info: "Huge Power" }]} />
-
-export const _v7 = addToBox(_box, _marill);
 
 ## Route 2 Encounter
 
@@ -145,8 +136,6 @@ export const _houndour = {
   row={["Grass · Night · 5% · Level 4-6 ·", { info: "Flash Fire" }]}
 />
 
-export const _v8 = addToBox(_box, _houndour);
-
 ## Viridian Forest Encounter
 
 export const _kricketot = {
@@ -157,37 +146,36 @@ export const _kricketot = {
 
 <Encounter encounter={_kricketot} row={["Grass · Night · 10% · Level 4-6"]} />
 
-export const _v9 = addToBox(_box, _kricketot);
-export const _v10 = changeBox({
-  box: _box,
-  update: {
-    "Wooper-P": {
-      level: 16,
-      moves: ["Mud Shot", "Slam", "Tackle", "Tail Whip"],
+export const _box3 = changeBox({
+  box: _box2,
+  add: [_wooperP, _meowthG, _marill, _houndour, _kricketot],
+  update: [
+    {
+      "Wooper-P": {
+        level: 16,
+        moves: ["Mud Shot", "Slam", "Tackle", "Tail Whip"],
+      },
+      Kricketot: {
+        name: "Kricketune",
+        level: 10,
+        moves: ["Bide", "Growl", "Struggle Bug", "Tackle"],
+      },
     },
-    Kricketot: {
-      name: "Kricketune",
-      level: 10,
-      moves: ["Bide", "Growl", "Struggle Bug", "Tackle"],
+    {
+      Kricketune: {
+        level: 16,
+        moves: ["Bide", "Mega Drain", "Rock Tomb", "Struggle Bug"],
+      },
     },
-  },
-});
-export const _v11 = changeBox({
-  box: _box,
-  update: {
-    Kricketune: {
-      level: 16,
-      moves: ["Bide", "Mega Drain", "Rock Tomb", "Struggle Bug"],
-    },
-  },
+  ],
 });
 
-<BoxChange snapshots={[_v10, _v11]} />
+<BoxChange box={_box3} />
 
 ## Route 22 Rival Battle
 
-export const _v12 = changeBox({
-  box: _box,
+export const _box4 = changeBox({
+  box: _box3,
   update: {
     "Wooper-P": {
       nature: "Bold",
@@ -204,7 +192,7 @@ export const _v12 = changeBox({
   team: ["Wooper-P", "Kricketune", "Tentacool"],
 });
 
-<Battle playerBox={_v12} opponentBox={route22RivalBox}>
+<Battle playerBox={_box4} opponentBox={route22RivalBox}>
   <BattleLine>
     <Matchup matchup={["Snubbull"]}>
       <Turn>
@@ -268,10 +256,9 @@ export const _psyduck = { name: "Psyduck", moves: ["Scratch", "Water Sport"] };
 
 <Encounter encounter={_psyduck} row={["Old Rod · 70% · Level 2-4"]} />
 
-export const _v13 = addToBox(_box, _psyduck);
-
-export const _v14 = changeBox({
-  box: _box,
+export const _box5 = changeBox({
+  box: _box4,
+  add: [_psyduck],
   update: {
     "Meowth-G": {
       level: 16,
@@ -284,12 +271,12 @@ export const _v14 = changeBox({
   },
 });
 
-<BoxChange snapshots={[_v14]} />
+<BoxChange box={_box5} />
 
 ## Viridian Forest Brendan Battle
 
-export const _v15 = changeBox({
-  box: _box,
+export const _box6 = changeBox({
+  box: _box5,
   update: {
     Marill: {
       nature: "Impish",
@@ -306,7 +293,7 @@ export const _v15 = changeBox({
   team: ["Marill", "Meowth-G", "Kricketune"],
 });
 
-<Battle playerBox={_v15} opponentBox={viridianForestBrendanBox}>
+<Battle playerBox={_box6} opponentBox={viridianForestBrendanBox}>
   <BattleLine>
     <Matchup matchup={["Meditite"]}>
       <Turn>
@@ -365,8 +352,8 @@ export const _v15 = changeBox({
   <Row row={["Bag →", { warning: "Exp. Share to {c:Off}" }]} />
 </Card>
 
-export const _v16 = changeBox({
-  box: _box,
+export const _box7 = changeBox({
+  box: _box6,
   update: {
     Houndour: {
       level: 16,
@@ -375,12 +362,12 @@ export const _v16 = changeBox({
   },
 });
 
-<BoxChange snapshots={[_v16]} />
+<BoxChange box={_box7} />
 
 ## Viridian Forest Lass Anne Battle
 
-export const _v17 = changeBox({
-  box: _box,
+export const _box8 = changeBox({
+  box: _box7,
   update: {
     "Meowth-G": {
       item: "Occa Berry",
@@ -396,7 +383,7 @@ export const _v17 = changeBox({
   team: ["Meowth-G", "Kricketune", "Houndour", "Marill", "Wooper-P"],
 });
 
-<Battle playerBox={_v17} opponentBox={viridianForestLassAnneBox}>
+<Battle playerBox={_box8} opponentBox={viridianForestLassAnneBox}>
   <BattleLine>
     <Matchup matchup={["Stufful"]}>
       <Turn>
@@ -472,8 +459,8 @@ export const _v17 = changeBox({
 
 ## Viridian Forest Bug Catcher Sammy Battle
 
-export const _v18 = changeBox({
-  box: _box,
+export const _box9 = changeBox({
+  box: _box8,
   update: {
     Kricketune: {
       item: "Hard Stone",
@@ -482,7 +469,7 @@ export const _v18 = changeBox({
   team: ["Kricketune"],
 });
 
-<Battle playerBox={_v18} opponentBox={viridianForestBugCatcherSammyBox}>
+<Battle playerBox={_box9} opponentBox={viridianForestBugCatcherSammyBox}>
   <BattleLine>
     <Matchup matchup={["Kricketune"]}>
       <Turn>
@@ -528,12 +515,11 @@ export const _yamaskG = {
 
 <Encounter encounter={_yamaskG} row={["Night · 10% · Level 7-9"]} />
 
-export const _v19 = addToBox(_box, _yamaskG);
-
 ## Pewter Museum Leader Falkner Battle
 
-export const _v20 = changeBox({
-  box: _box,
+export const _box10 = changeBox({
+  box: _box9,
+  add: [_yamaskG],
   update: {
     Kricketune: {
       nature: "Naive",
@@ -546,7 +532,7 @@ export const _v20 = changeBox({
   team: ["Kricketune", "Marill", "Meowth-G"],
 });
 
-<Battle playerBox={_v20} opponentBox={pewterMuseumLeaderFalknerBox}>
+<Battle playerBox={_box10} opponentBox={pewterMuseumLeaderFalknerBox}>
   <BattleLine>
     <Matchup matchup={["Trumbeak"]}>
       <Turn>
@@ -601,8 +587,8 @@ export const _v20 = changeBox({
   </BattleLine>
 </Battle>
 
-export const _v21 = changeBox({
-  box: _box,
+export const _box11 = changeBox({
+  box: _box10,
   update: {
     "Yamask-G": {
       level: 16,
@@ -611,12 +597,12 @@ export const _v21 = changeBox({
   },
 });
 
-<BoxChange snapshots={[_v21]} />
+<BoxChange box={_box11} />
 
 ## Pewter City Leader Brock Battle
 
-export const _v22 = changeBox({
-  box: _box,
+export const _box12 = changeBox({
+  box: _box11,
   update: {
     Kricketune: {
       nature: "Rash",
@@ -640,7 +626,7 @@ export const _v22 = changeBox({
   team: ["Kricketune", "Meowth-G", "Torracat", "Tentacool", "Wooper-P", "Yamask-G"],
 });
 
-<Battle playerBox={_v22} opponentBox={pewterCityLeaderBrockBox}>
+<Battle playerBox={_box12} opponentBox={pewterCityLeaderBrockBox}>
 <BattleLine>
   <Matchup matchup={["Hippopotas"]}>
     <Branch branch={["Kricketune Mega Drain Varoom", "Kricketune Mega Drain Hippopotas"]} />
@@ -808,4 +794,4 @@ export const _v22 = changeBox({
 </BattleLine>
 </Battle>
 
-export const box = exportBox(_box);
+export const box = _box12;

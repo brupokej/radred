@@ -91,103 +91,77 @@ export function createBox(base: PokemonData[]): Box {
   return { base, changes: [], team: base.map((p) => p.name) };
 }
 
-// Adds a new pokemon to the box.
-// Returns a snapshot Box: prior state as base, the add op as the single change.
-export function addToBox(box: Box, data: PokemonData): Box {
-  const { name } = data;
-  const currentState = replayBox(box, box.changes.length);
-
-  if (currentState.has(name)) {
-    console.error(`addToBox: "${name}" already exists — skipping.`);
-    return { base: stateToBase(currentState), changes: [], team: [] };
-  }
-
-  const priorBase = stateToBase(currentState);
-  const newOp: BoxOp = { type: "add", pokemon: { [name]: { base: data } } };
-  box.changes.push(newOp);
-  return { base: priorBase, changes: [newOp], team: [] };
-}
-
-// Updates existing pokemon in the box. Only the changed fields need to be specified.
-// Returns a snapshot Box: prior state as base, the update op as the single change.
+// Adds, levels, and/or updates pokemon in the box.
+// Operations are applied in order: `remove` first, then `add`, then `cap`, then `update`(s).
+// Returns a snapshot Box: prior state as base, all ops as changes.
 // Pass `team` to embed the active team in the snapshot for use with Battle/Encounter.
 export function changeBox({
   box,
-  update = {},
+  remove = [],
+  add = [],
+  cap,
+  update = [],
   team,
 }: {
-  box: Box;
-  update?: Record<string, Partial<PokemonData>>;
+  box?: Box;
+  remove?: string[];
+  add?: PokemonData[];
+  cap?: number;
+  update?: Record<string, Partial<PokemonData>> | Record<string, Partial<PokemonData>>[];
   team?: string[];
 }): Box {
-  const currentState = replayBox(box, box.changes.length);
+  const updates = Array.isArray(update) ? update : [update];
 
-  const validChanges = Object.fromEntries(
-    Object.entries(update).filter(([name]) => {
-      if (!currentState.has(name)) {
-        console.error(`changeBox: "${name}" not found — skipping.`);
+  // Resolve the full current state from the input box without mutating it.
+  const inputResolved = box ?? { base: [], changes: [], team: [] };
+  const inputBase = stateToBase(replayBox(inputResolved, inputResolved.changes.length));
+
+  // Build ops on a local working state — never touches the input box.
+  const newOps: BoxOp[] = [];
+  const working: Box = { base: inputBase, changes: newOps };
+
+  if (remove.length > 0) {
+    const state = replayBox(working, working.changes.length);
+    const validNames = remove.filter((name) => {
+      if (!state.has(name)) {
+        console.error(`changeBox: "${name}" not found — skipping remove.`);
         return false;
       }
       return true;
-    })
-  );
-
-  const priorBase = stateToBase(currentState);
-  const newOp: BoxOp = { type: "update", changes: validChanges };
-  box.changes.push(newOp);
-  return { base: priorBase, changes: [newOp], team: team ?? [] };
-}
-
-// Removes pokemon from the box.
-// Returns a snapshot Box: prior state as base, the remove op as the single change.
-export function removeFromBox(box: Box, names: string[]): Box {
-  const currentState = replayBox(box, box.changes.length);
-
-  const validNames = names.filter((name) => {
-    if (!currentState.has(name)) {
-      console.error(`removeFromBox: "${name}" not found — skipping.`);
-      return false;
+    });
+    if (validNames.length > 0) {
+      newOps.push({ type: "remove", names: validNames });
     }
-    return true;
-  });
+  }
 
-  const priorBase = stateToBase(currentState);
-  const newOp: BoxOp = { type: "remove", names: validNames };
-  box.changes.push(newOp);
-  return { base: priorBase, changes: [newOp], team: [] };
-}
-
-// Sets all active pokemon to the given level, optionally excluding some by name.
-// Returns a snapshot Box: prior state as base, the levelcap op as the single change.
-// Pass `team` to embed the active team in the snapshot for use with Battle/Encounter.
-export function setLevelCap(
-  box: Box,
-  level: number,
-  options?: { exclude?: string[]; team?: string[] }
-): Box {
-  const currentState = replayBox(box, box.changes.length);
-
-  const validExclude = (options?.exclude ?? []).filter((name) => {
-    if (!currentState.has(name)) {
-      console.error(`setLevelCap: "${name}" not found — skipping exclusion.`);
-      return false;
+  for (const data of add) {
+    const { name } = data;
+    if (replayBox(working, working.changes.length).has(name)) {
+      console.error(`changeBox: "${name}" already exists — skipping add.`);
+      continue;
     }
-    return true;
-  });
+    newOps.push({ type: "add", pokemon: { [name]: { base: data } } });
+  }
 
-  const priorBase = stateToBase(currentState);
-  const newOp: BoxOp = {
-    type: "levelcap",
-    level,
-    ...(validExclude.length > 0 ? { exclude: validExclude } : {}),
-  };
-  box.changes.push(newOp);
-  return { base: priorBase, changes: [newOp], team: options?.team ?? [] };
-}
+  if (cap !== undefined) {
+    newOps.push({ type: "levelcap", level: cap });
+  }
 
-// Creates a clean Box from the fully resolved current state (for cross-file transitions).
-export function exportBox(box: Box): Box {
-  return createBox(stateToBase(replayBox(box, box.changes.length)));
+  for (const u of updates) {
+    const state = replayBox(working, working.changes.length);
+    const validChanges = Object.fromEntries(
+      Object.entries(u).filter(([name]) => {
+        if (!state.has(name)) {
+          console.error(`changeBox: "${name}" not found — skipping.`);
+          return false;
+        }
+        return true;
+      })
+    );
+    newOps.push({ type: "update", changes: validChanges });
+  }
+
+  return { base: inputBase, changes: newOps, team: team ?? box?.team ?? [] };
 }
 
 // Returns the fully resolved state of the box including all changes applied.
@@ -229,4 +203,15 @@ export function getChanges(snapshot: Box): Pokemon[] {
 
   const state = replayBox(snapshot, snapshot.changes.length);
   return [...state.values()].filter((p) => p.update !== undefined);
+}
+
+// Splits a multi-op snapshot into single-op sub-snapshots for the display helpers.
+// Used by BoxChange to iterate changes when update was passed as an array.
+export function splitSnapshot(snapshot: Box): Box[] {
+  const result: Box[] = [];
+  for (let i = 0; i < snapshot.changes.length; i++) {
+    const base = i === 0 ? snapshot.base : stateToBase(replayBox(snapshot, i));
+    result.push({ base, changes: [snapshot.changes[i]], team: [] });
+  }
+  return result;
 }

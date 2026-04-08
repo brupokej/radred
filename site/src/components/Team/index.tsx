@@ -1,4 +1,5 @@
 import Card from "@site/src/components/Card";
+import { Box, resolveBox } from "@site/src/utils/box";
 import { pokedex, type PokedexData } from "@site/src/utils/pokedex";
 import { resolvePokemon, type Pokemon } from "@site/src/utils/pokemon";
 import { getColouredSpriteUrl } from "@site/src/utils/sprites";
@@ -27,7 +28,11 @@ function CardDetail({ children }: { children: React.ReactNode }) {
   );
 }
 
-export default function Team({ team, title = "Team" }: { team: Pokemon[]; title?: string }) {
+export default function Team({ box, title = "Team" }: { box: Box; title?: string }) {
+  const resolved = resolveBox(box);
+  const team = (box.team ?? [])
+    .map((name) => resolved.get(name))
+    .filter((p): p is Pokemon => p !== undefined);
   return (
     <Card title={title}>
       <CardDetail>

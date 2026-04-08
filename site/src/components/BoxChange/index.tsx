@@ -1,21 +1,22 @@
 import Card from "@site/src/components/Card";
 import { Row } from "@site/src/components/Row";
-import { Box, getChanges, getLevelCap, getRemovals } from "@site/src/utils/box";
+import { Box, getChanges, getLevelCap, getRemovals, splitSnapshot } from "@site/src/utils/box";
 
 export default function BoxChange({
-  snapshots,
+  box,
   title = "Box Change",
 }: {
-  snapshots: Box[];
+  box: Box;
   title?: string;
 }) {
+  const snapshots = splitSnapshot(box);
   const removalRows: React.ReactNode[] = [];
-  const otherRows: React.ReactNode[] = [];
+  const capRows: React.ReactNode[] = [];
+  const updateRows: React.ReactNode[] = [];
   let key = 0;
 
   for (const snapshot of snapshots) {
-    const removals = getRemovals(snapshot);
-    for (const name of removals) {
+    for (const name of getRemovals(snapshot)) {
       removalRows.push(<Row key={key++} row={[`${name} →`, { info: "Move to Box 2" }]} />);
     }
   }
@@ -24,22 +25,24 @@ export default function BoxChange({
     const levelCap = getLevelCap(snapshot);
     if (levelCap) {
       for (const { name, level } of levelCap.excluded) {
-        otherRows.push(
+        capRows.push(
           <Row key={key++} row={[`${name} →`, { warning: `Keep at Level ${level}` }]} />
         );
       }
       const prefix = levelCap.excluded.length > 0 ? "Rest of Box 1" : "All of Box 1";
-      otherRows.push(
+      capRows.push(
         <Row key={key++} row={[`${prefix} →`, { warning: `Set to Level ${levelCap.level} Cap` }]} />
       );
-    } else {
-      for (const pokemon of getChanges(snapshot)) {
-        otherRows.push(<Row key={key++} row={[pokemon]} />);
-      }
     }
   }
 
-  const rows = [...removalRows, ...otherRows];
+  for (const snapshot of snapshots) {
+    for (const pokemon of getChanges(snapshot)) {
+      updateRows.push(<Row key={key++} row={[pokemon]} />);
+    }
+  }
+
+  const rows = [...removalRows, ...capRows, ...updateRows];
   if (rows.length === 0) return null;
 
   return <Card title={title}>{rows}</Card>;
