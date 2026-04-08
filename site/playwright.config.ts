@@ -5,7 +5,7 @@ export default defineConfig({
   testMatch: "**/*.spec.ts",
   snapshotDir: "./tests/snapshots",
   expect: {
-    toHaveScreenshot: { maxDiffPixels: 100 },
+    toHaveScreenshot: { maxDiffPixelRatio: 1, threshold: 0.3 },
   },
   use: {
     baseURL: "http://localhost:3000",

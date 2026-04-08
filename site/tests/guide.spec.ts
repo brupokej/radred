@@ -7,13 +7,21 @@ async function hideNavbar(page: Page) {
   await page.addStyleTag({ content: "nav.navbar { visibility: hidden !important; }" });
 }
 
+async function waitForRender(within: Locator) {
+  await within
+    .page()
+    .evaluate(() => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))));
+}
+
 async function expandAll(within: Locator) {
+  await waitForRender(within);
   for (const button of await within.getByRole("button", { name: "+" }).all()) {
     await button.click();
   }
 }
 
 async function scrollAll(within: Locator) {
+  await waitForRender(within);
   await within
     .locator("[data-scroll]")
     .evaluateAll((els) => els.forEach((el) => ((el as HTMLElement).scrollLeft = el.scrollWidth)));
