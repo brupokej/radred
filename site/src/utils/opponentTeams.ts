@@ -1,6 +1,6 @@
-import { PokemonData } from "@site/src/utils/pokemon";
+import { createBox } from "@site/src/utils/box";
 
-export const route22RivalTeam: PokemonData[] = [
+export const route22RivalBox = createBox([
   {
     name: "Snubbull",
     level: 15,
@@ -25,9 +25,9 @@ export const route22RivalTeam: PokemonData[] = [
     item: "Oran Berry",
     moves: ["Pow-Up Punch", "Aqua Jet", "Rock Tomb", "Curse"],
   },
-];
+]);
 
-export const viridianForestBrendanTeam: PokemonData[] = [
+export const viridianForestBrendanBox = createBox([
   {
     name: "Meditite",
     level: 14,
@@ -60,9 +60,9 @@ export const viridianForestBrendanTeam: PokemonData[] = [
     item: "Oran Berry",
     moves: ["Pow-Up Punch", "Bullet Seed", "Drain Punch", "Rock Tomb"],
   },
-];
+]);
 
-export const viridianForestLassAnneTeam: PokemonData[] = [
+export const viridianForestLassAnneBox = createBox([
   {
     name: "Stufful",
     level: 15,
@@ -86,9 +86,9 @@ export const viridianForestLassAnneTeam: PokemonData[] = [
     ability: "Regenerator",
     moves: ["Swagger", "Protect", "Wish", "Yawn"],
   },
-];
+]);
 
-export const viridianForestBugCatcherSammyTeam: PokemonData[] = [
+export const viridianForestBugCatcherSammyBox = createBox([
   {
     name: "Kricketune",
     level: 13,
@@ -113,9 +113,9 @@ export const viridianForestBugCatcherSammyTeam: PokemonData[] = [
     item: "Lum Berry",
     moves: ["HP Bug", "Mega Drain", "Flash", "Water Pulse"],
   },
-];
+]);
 
-export const pewterMuseumLeaderFalknerTeam: PokemonData[] = [
+export const pewterMuseumLeaderFalknerBox = createBox([
   {
     name: "Trumbeak",
     level: 14,
@@ -160,9 +160,9 @@ export const pewterMuseumLeaderFalknerTeam: PokemonData[] = [
     item: "Leek",
     moves: ["Rock Smash", "Slam", "Brutal Swing", "Roost"],
   },
-];
+]);
 
-export const pewterCityLeaderBrockTeam: PokemonData[] = [
+export const pewterCityLeaderBrockBox = createBox([
   {
     name: "Hippopotas",
     level: 13,
@@ -211,9 +211,9 @@ export const pewterCityLeaderBrockTeam: PokemonData[] = [
     item: "Air Balloon",
     moves: ["Bulldoze", "Gyro Ball", "Toxic", "Protect"],
   },
-];
+]);
 
-export const route3LassSallyTeam: PokemonData[] = [
+export const route3LassSallyBox = createBox([
   {
     name: "Pikachu-Flying",
     spriteKey: "pikachu",
@@ -247,9 +247,9 @@ export const route3LassSallyTeam: PokemonData[] = [
     item: "Leftovers",
     moves: ["Toxic", "Covet", "Metal Claw", "Fire Fang"],
   },
-];
+]);
 
-export const mtMoonSuperNerdMiguelTeam: PokemonData[] = [
+export const mtMoonSuperNerdMiguelBox = createBox([
   {
     name: "Thwackey",
     level: 21,
@@ -292,9 +292,9 @@ export const mtMoonSuperNerdMiguelTeam: PokemonData[] = [
     item: "Leftovers",
     moves: ["Will-O-Wisp", "Recover", "Protect", "Foul Play"],
   },
-];
+]);
 
-export const mtMoonArcherTeam: PokemonData[] = [
+export const mtMoonArcherBox = createBox([
   {
     name: "Glimmet",
     level: 20,
@@ -335,9 +335,9 @@ export const mtMoonArcherTeam: PokemonData[] = [
     item: "Muscle Band",
     moves: ["Pursuit", "Pluck", "Drill Run", "Double Hit"],
   },
-];
+]);
 
-export const ceruleanCityRivalTeam = [
+export const ceruleanCityRivalBox = createBox([
   {
     name: "Hitmonlee",
     level: 27,
@@ -386,9 +386,9 @@ export const ceruleanCityRivalTeam = [
     item: "Eviolite",
     moves: ["Shell Smash", "Water Pulse", "Icy Wind", "HP Electric"],
   },
-];
+]);
 
-export const nuggetBridgeBugCatcherCaleTeam: PokemonData[] = [
+export const nuggetBridgeBugCatcherCaleBox = createBox([
   {
     name: "Vivillon",
     level: 25,
@@ -415,9 +415,9 @@ export const nuggetBridgeBugCatcherCaleTeam: PokemonData[] = [
     item: "Rocky Helmet",
     moves: ["Bulldoze", "Bug Bite", "Rock Tomb", "Sucker Punch"],
   },
-];
+]);
 
-export const nuggetBridgeLassAliTeam: PokemonData[] = [
+export const nuggetBridgeLassAliBox = createBox([
   {
     name: "Jigglypuff",
     level: 27,
@@ -442,9 +442,9 @@ export const nuggetBridgeLassAliTeam: PokemonData[] = [
     item: "Sitrus Berry",
     moves: ["Round", "Draining Kiss", "Icy Wind", "Aqua Jet"],
   },
-];
+]);
 
-export const nuggetBridgeYoungsterTimmyTeam: PokemonData[] = [
+export const nuggetBridgeYoungsterTimmyBox = createBox([
   {
     name: "Plusle",
     level: 26,
@@ -469,9 +469,9 @@ export const nuggetBridgeYoungsterTimmyTeam: PokemonData[] = [
     item: "Occa Berry",
     moves: ["Ice Shard", "Mega Drain", "Icicle Crash", "Water Pulse"],
   },
-];
+]);
 
-export const nuggetBridgeLassReliTeam: PokemonData[] = [
+export const nuggetBridgeLassReliBox = createBox([
   {
     name: "Greedent",
     level: 26,
@@ -496,9 +496,9 @@ export const nuggetBridgeLassReliTeam: PokemonData[] = [
     item: "Deep Sea Tooth",
     moves: ["Water Pulse", "Icy Wind", "Rest", "Sleep Talk"],
   },
-];
+]);
 
-export const nuggetBridgeCamperEthanTeam: PokemonData[] = [
+export const nuggetBridgeCamperEthanBox = createBox([
   {
     name: "Mabosstiff",
     level: 26,
@@ -523,9 +523,9 @@ export const nuggetBridgeCamperEthanTeam: PokemonData[] = [
     item: "Eviolite",
     moves: ["Hex", "Will-O-Wisp", "Icy Wind", "Shock Wave"],
   },
-];
+]);
 
-export const nuggetBridgeGruntTeam: PokemonData[] = [
+export const nuggetBridgeGruntBox = createBox([
   {
     name: "Arcanine",
     level: 26,
@@ -558,9 +558,9 @@ export const nuggetBridgeGruntTeam: PokemonData[] = [
     item: "Silk Scarf",
     moves: ["Sleep Talk", "Last Resort"],
   },
-];
+]);
 
-export const digHouseGruntTeam: PokemonData[] = [
+export const digHouseGruntBox = createBox([
   {
     name: "Persian-A",
     spriteKey: "persian-alola",
@@ -595,9 +595,9 @@ export const digHouseGruntTeam: PokemonData[] = [
     item: "Expert Belt",
     moves: ["Aqua Cutter", "Psycho Cut", "Aqua Jet", "Crunch"],
   },
-];
+]);
 
-export const ceruleanCityLeaderMistyTeam: PokemonData[] = [
+export const ceruleanCityLeaderMistyBox = createBox([
   {
     name: "Politoed",
     level: 27,
@@ -646,4 +646,4 @@ export const ceruleanCityLeaderMistyTeam: PokemonData[] = [
     item: "Life Orb",
     moves: ["Swords Dance", "Drain Punch", "Poison Jab", "Sucker Punch"],
   },
-];
+]);

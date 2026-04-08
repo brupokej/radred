@@ -12,7 +12,6 @@ export interface PokemonData {
 export interface Pokemon {
   base: PokemonData;
   update?: Partial<PokemonData>;
-  index?: number;
 }
 
 export function resolvePokemon(pokemon: Pokemon): PokemonData {

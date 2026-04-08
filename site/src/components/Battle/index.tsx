@@ -1,7 +1,7 @@
 import Card from "@site/src/components/Card";
 import { ScrollFade } from "@site/src/components/ScrollFade";
 import Team from "@site/src/components/Team";
-import { Box, getFromBox } from "@site/src/utils/box";
+import { Box, resolveBox } from "@site/src/utils/box";
 import { useHpDisplay } from "@site/src/utils/hpDisplay";
 import { getHp } from "@site/src/utils/pokedex";
 import { Pokemon, PokemonData, resolvePokemon } from "@site/src/utils/pokemon";
@@ -108,21 +108,23 @@ const BattleGraphCtx = React.createContext<GraphCtxValue | null>(null);
 const BattleLineCtx = React.createContext<string | null>(null);
 
 export function Battle({
-  box,
-  version,
-  playerTeam: playerTeamNames,
-  opponentTeam,
+  playerBox,
+  opponentBox,
   children,
 }: {
-  box: Box;
-  version: number;
-  playerTeam: string[];
-  opponentTeam: PokemonData[];
+  playerBox: Box;
+  opponentBox: Box;
   children: React.ReactNode;
 }) {
-  const playerTeam = playerTeamNames
-    .map((name) => getFromBox(box, version, name))
-    .filter((p): p is Pokemon => p !== null);
+  const playerResolved = resolveBox(playerBox);
+  const playerTeam = (playerBox.team ?? [])
+    .map((name) => playerResolved.get(name))
+    .filter((p): p is Pokemon => p !== undefined);
+
+  const opponentResolved = resolveBox(opponentBox);
+  const opponentTeam = (opponentBox.team ?? [])
+    .map((name) => opponentResolved.get(name))
+    .filter((p): p is Pokemon => p !== undefined);
   const lineElements = React.Children.toArray(children).filter(
     (c): c is React.ReactElement<{ line?: string; children: React.ReactNode }> =>
       React.isValidElement(c) && c.type === BattleLine
@@ -181,7 +183,10 @@ export function Battle({
           const r = resolvePokemon(p);
           return [`p:${r.name}`, getHp(r)];
         }),
-        ...opponentTeam.map((p) => [`o:${p.name}`, getHp(p)]),
+        ...opponentTeam.map((p) => {
+          const r = resolvePokemon(p);
+          return [`o:${r.name}`, getHp(r)];
+        }),
       ]),
     [playerTeam, opponentTeam]
   );
@@ -192,7 +197,10 @@ export function Battle({
       const r = resolvePokemon(p);
       map[`p:${r.name}`] = r;
     }
-    for (const p of opponentTeam) map[`o:${p.name}`] = p;
+    for (const p of opponentTeam) {
+      const r = resolvePokemon(p);
+      map[`o:${r.name}`] = r;
+    }
     return map;
   }, [playerTeam, opponentTeam]);
 
@@ -214,7 +222,7 @@ export function Battle({
 
   return (
     <>
-      <Team title="Opponent Team" team={opponentTeam.map((p) => ({ base: p }))} />
+      <Team title="Opponent Team" team={opponentTeam} />
       <Team title="Player Team" team={playerTeam} />
       <BattleGraphCtx.Provider value={ctx}>
         <Card title="Battle Plan">

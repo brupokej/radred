@@ -1,34 +1,27 @@
 import Card from "@site/src/components/Card";
 import { Row } from "@site/src/components/Row";
-import {
-  Box,
-  getChangesAtVersion,
-  getLevelCapAtVersion,
-  getRemovalsAtVersion,
-} from "@site/src/utils/box";
+import { Box, getChanges, getLevelCap, getRemovals } from "@site/src/utils/box";
 
 export default function BoxChange({
-  box,
-  versions,
+  snapshots,
   title = "Box Change",
 }: {
-  box: Box;
-  versions: number[];
+  snapshots: Box[];
   title?: string;
 }) {
   const removalRows: React.ReactNode[] = [];
   const otherRows: React.ReactNode[] = [];
   let key = 0;
 
-  for (const version of versions) {
-    const removals = getRemovalsAtVersion(box, version);
+  for (const snapshot of snapshots) {
+    const removals = getRemovals(snapshot);
     for (const name of removals) {
       removalRows.push(<Row key={key++} row={[`${name} →`, { info: "Move to Box 2" }]} />);
     }
   }
 
-  for (const version of versions) {
-    const levelCap = getLevelCapAtVersion(box, version);
+  for (const snapshot of snapshots) {
+    const levelCap = getLevelCap(snapshot);
     if (levelCap) {
       for (const { name, level } of levelCap.excluded) {
         otherRows.push(
@@ -40,10 +33,7 @@ export default function BoxChange({
         <Row key={key++} row={[`${prefix} →`, { warning: `Set to Level ${levelCap.level} Cap` }]} />
       );
     } else {
-      const changes = getChangesAtVersion(box, version).sort(
-        (a, b) => (a.index ?? 0) - (b.index ?? 0)
-      );
-      for (const pokemon of changes) {
+      for (const pokemon of getChanges(snapshot)) {
         otherRows.push(<Row key={key++} row={[pokemon]} />);
       }
     }
