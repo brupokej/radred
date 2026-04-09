@@ -334,7 +334,7 @@ export function Branch({
   if (graphCtx && branch.length === 1) return null;
 
   return (
-    <div className={styles.branchWrapper}>
+    <div className={styles.branchWrapper} data-branch>
       <ScrollFade
         className={styles.branchScrollFade}
         innerClassName={styles.branchRow}
@@ -348,6 +348,7 @@ export function Branch({
               {graphCtx ? (
                 <button
                   className={`${styles.branchOption} ${isSelected ? styles.branchOptionSelected : ""}`}
+                  aria-pressed={isSelected}
                   onClick={() =>
                     isSelected
                       ? graphCtx.dispatch({ type: "DESELECT_BRANCH", branchId })

@@ -5,7 +5,9 @@ export default defineConfig({
   testMatch: "**/*.spec.ts",
   snapshotDir: "./tests/snapshots",
   expect: {
-    toHaveScreenshot: { maxDiffPixelRatio: 1, threshold: 0.3 },
+    toHaveScreenshot: {
+      animations: "disabled",
+    },
   },
   use: {
     baseURL: "http://localhost:3000",
@@ -20,11 +22,7 @@ export default defineConfig({
   projects: [
     {
       name: "desktop",
-      use: { ...devices["Desktop Chrome"] },
-    },
-    {
-      name: "mobile",
-      use: { ...devices["Pixel 5"] },
+      use: { ...devices["Desktop Chrome"], viewport: { width: 1600, height: 900 } },
     },
   ],
 });

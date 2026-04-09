@@ -1,33 +1,86 @@
 import { expect, Locator, Page, test } from "@playwright/test";
 
-const pageScreenshot = { fullPage: true, animations: "disabled" } as const;
-const cardScreenshot = { animations: "disabled" } as const;
+const getFilename = (parts: (string | number)[]) =>
+  parts
+    .map((p) =>
+      typeof p === "number"
+        ? String(p).padStart(2, "0")
+        : p.toLowerCase().replace(/[^a-z0-9 ]+/g, "").replace(/\s+/g, "-")
+    )
+    .join("-");
 
-async function hideNavbar(page: Page) {
-  await page.addStyleTag({ content: "nav.navbar { visibility: hidden !important; }" });
+async function waitForRender(loc: Locator) {
+  // Wait until the subtree has been DOM-stable for two animation frames.
+  // Handles chains of React useEffect re-renders (e.g. auto-selected branches
+  // triggering further renders) by resetting the timer on each mutation.
+  await loc.evaluate((el) =>
+    new Promise<void>((resolve) => {
+      let rafId: number;
+      const done = () => {
+        observer.disconnect();
+        resolve();
+      };
+      const schedule = () => {
+        cancelAnimationFrame(rafId);
+        rafId = requestAnimationFrame(() => requestAnimationFrame(done));
+      };
+      const observer = new MutationObserver(schedule);
+      observer.observe(el, { childList: true, subtree: true });
+      schedule();
+    })
+  );
 }
 
-async function waitForRender(within: Locator) {
-  await within
-    .page()
-    .evaluate(
-      () => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)))
-    );
-}
-
-async function expandAll(within: Locator) {
-  await waitForRender(within);
-  for (const button of await within.getByRole("button", { name: "+" }).all()) {
-    await button.click();
+async function expandAll(loc: Locator) {
+  const buttons = loc.getByRole("button", { name: "+" });
+  while ((await buttons.count()) > 0) {
+    await buttons.first().click();
+    await waitForRender(loc);
   }
 }
 
-async function scrollAll(within: Locator) {
-  await waitForRender(within);
-  await within
-    .locator("[data-scroll]")
-    .evaluateAll((els) => els.forEach((el) => ((el as HTMLElement).scrollLeft = el.scrollWidth)));
+async function getSnapshot(
+  card: Locator,
+  parts: (string | number)[],
+  cardIndex: { value: number }
+): Promise<void> {
+  for (const branch of await card.locator("[data-branch]").all()) {
+    if ((await branch.locator('[aria-pressed="true"]').count()) === 0) {
+      const options = await branch.locator("[aria-pressed]").all();
+      for (const option of options) {
+        await option.click();
+        await waitForRender(card);
+        await getSnapshot(card, parts, cardIndex);
+      }
+      await options[options.length - 1].click();
+      return;
+    }
+  }
+
+  const filename = getFilename([...parts, cardIndex.value++]);
+  await expect(card).toHaveScreenshot([`${filename}.png`]);
 }
+
+async function getSnapshots(page: Page, guideIndex: number, guide: string) {
+  let headingIndex = 0;
+  let heading = "";
+  let cardIndex = { value: 1 };
+
+  for (const loc of await page.locator("article").locator("h1, h2, details").all()) {
+    const [tag, text] = await loc.evaluate((e) => [e.tagName, e.textContent]);
+    if (tag === "H1" || tag === "H2") {
+      headingIndex++;
+      heading = text?.trim() ?? "";
+      cardIndex = { value: 1 };
+      continue;
+    }
+
+    await expandAll(loc);
+    await getSnapshot(loc, [guideIndex, guide, headingIndex, heading], cardIndex);
+  }
+}
+
+const GUIDES = ["brock", "misty"];
 
 test.beforeEach(async ({ page }) => {
   await page.addInitScript(() => {
@@ -35,85 +88,16 @@ test.beforeEach(async ({ page }) => {
   });
 });
 
-test.describe("guide/brock", () => {
-  test.beforeEach(async ({ page }) => {
-    await page.goto("/radred/guide/brock");
-    await page.waitForLoadState("networkidle");
-  });
+for (const [guideIndex, guide] of GUIDES.entries()) {
+  test.describe(`guide/${guide}`, () => {
+    test.beforeEach(async ({ page }) => {
+      await page.goto(`/radred/guide/${guide}`);
+      await page.waitForLoadState("networkidle");
+      await page.addStyleTag({ content: "nav.navbar { visibility: hidden !important; }" });
+    });
 
-  test("full", async ({ page }) => {
-    await expect(page).toHaveScreenshot(pageScreenshot);
+    test("snapshots", async ({ page }) => {
+      await getSnapshots(page, guideIndex + 1, guide);
+    });
   });
-
-  test("encounter plan", async ({ page }) => {
-    const heading = page.getByRole("heading", { name: "Route 21 Encounter" });
-    const cardContainer = heading.locator("xpath=following-sibling::*[1]");
-    await scrollAll(cardContainer);
-    await hideNavbar(page);
-    await expect(cardContainer).toHaveScreenshot(cardScreenshot);
-  });
-
-  test("box change", async ({ page }) => {
-    const heading = page.getByRole("heading", { name: "Viridian Forest Encounter" });
-    const cardContainer = heading.locator("xpath=following-sibling::*[2]");
-    await scrollAll(cardContainer);
-    await hideNavbar(page);
-    await expect(cardContainer).toHaveScreenshot(cardScreenshot);
-  });
-
-  test("opponent team", async ({ page }) => {
-    const heading = page.getByRole("heading", { name: "Route 22 Rival Battle" });
-    const cardContainer = heading.locator("xpath=following-sibling::*[1]");
-    await expandAll(cardContainer);
-    await scrollAll(cardContainer);
-    await hideNavbar(page);
-    await expect(cardContainer).toHaveScreenshot(cardScreenshot);
-  });
-
-  test("player team", async ({ page }) => {
-    const heading = page.getByRole("heading", { name: "Route 22 Rival Battle" });
-    const cardContainer = heading.locator("xpath=following-sibling::*[2]");
-    await expandAll(cardContainer);
-    await scrollAll(cardContainer);
-    await hideNavbar(page);
-    await expect(cardContainer).toHaveScreenshot(cardScreenshot);
-  });
-
-  test("battle plan", async ({ page }) => {
-    const heading = page.getByRole("heading", { name: "Route 22 Rival Battle" });
-    const cardContainer = heading.locator("xpath=following-sibling::*[3]");
-    await expandAll(cardContainer);
-    await scrollAll(cardContainer);
-    await hideNavbar(page);
-    await expect(cardContainer).toHaveScreenshot(cardScreenshot);
-  });
-
-  test("branched line", async ({ page }) => {
-    const heading = page.getByRole("heading", { name: "Pewter City Leader Brock Battle" });
-    const cardContainer = heading.locator("xpath=following-sibling::*[3]");
-    const branch = cardContainer.getByRole("button", { name: "Kricketune Mega Drain Varoom" });
-    await branch.click();
-    await scrollAll(cardContainer);
-    await hideNavbar(page);
-    await expect(cardContainer).toHaveScreenshot(cardScreenshot);
-  });
-});
-
-test.describe("guide/misty", () => {
-  test.beforeEach(async ({ page }) => {
-    await page.goto("/radred/guide/misty");
-    await page.waitForLoadState("networkidle");
-  });
-
-  test("full", async ({ page }) => {
-    await expect(page).toHaveScreenshot(pageScreenshot);
-  });
-
-  test("box change", async ({ page }) => {
-    const heading = page.getByRole("heading", { name: "Cerulean City Encounter" });
-    const cardContainer = heading.locator("xpath=following-sibling::*[3]");
-    await scrollAll(cardContainer);
-    await hideNavbar(page);
-    await expect(cardContainer).toHaveScreenshot(cardScreenshot);
-  });
-});
+}
