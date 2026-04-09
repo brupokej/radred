@@ -1,28 +1,22 @@
 import Card from "@site/src/components/Card";
 import { Row } from "@site/src/components/Row";
-import { Box, getChanges, getLevelCap, getRemovals, splitSnapshot } from "@site/src/utils/box";
+import { Box, getChanges, getLevelCap, getRemovals, splitChanges } from "@site/src/utils/box";
 
-export default function BoxChange({
-  box,
-  title = "Box Change",
-}: {
-  box: Box;
-  title?: string;
-}) {
-  const snapshots = splitSnapshot(box);
+export default function BoxChange({ box }: { box: Box }) {
+  const boxes = splitChanges(box);
   const removalRows: React.ReactNode[] = [];
   const capRows: React.ReactNode[] = [];
   const updateRows: React.ReactNode[] = [];
   let key = 0;
 
-  for (const snapshot of snapshots) {
-    for (const name of getRemovals(snapshot)) {
+  for (const box of boxes) {
+    for (const name of getRemovals(box)) {
       removalRows.push(<Row key={key++} row={[`${name} →`, { info: "Move to Box 2" }]} />);
     }
   }
 
-  for (const snapshot of snapshots) {
-    const levelCap = getLevelCap(snapshot);
+  for (const box of boxes) {
+    const levelCap = getLevelCap(box);
     if (levelCap) {
       for (const { name, level } of levelCap.excluded) {
         capRows.push(
@@ -36,8 +30,8 @@ export default function BoxChange({
     }
   }
 
-  for (const snapshot of snapshots) {
-    for (const pokemon of getChanges(snapshot)) {
+  for (const box of boxes) {
+    for (const pokemon of getChanges(box)) {
       updateRows.push(<Row key={key++} row={[pokemon]} />);
     }
   }
@@ -45,5 +39,5 @@ export default function BoxChange({
   const rows = [...removalRows, ...capRows, ...updateRows];
   if (rows.length === 0) return null;
 
-  return <Card title={title}>{rows}</Card>;
+  return <Card title="Box Change">{rows}</Card>;
 }

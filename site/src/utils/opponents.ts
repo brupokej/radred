@@ -1,6 +1,9 @@
-import { createBox } from "@site/src/utils/box";
+import { getBox } from "@site/src/utils/box";
+import { PokemonData } from "@site/src/utils/pokemon";
 
-export const route22RivalBox = createBox([
+const getOpponentBox = (add: PokemonData[]) => getBox({ add });
+
+export const route22RivalBox = getOpponentBox([
   {
     name: "Snubbull",
     level: 15,
@@ -27,7 +30,7 @@ export const route22RivalBox = createBox([
   },
 ]);
 
-export const viridianForestBrendanBox = createBox([
+export const viridianForestBrendanBox = getOpponentBox([
   {
     name: "Meditite",
     level: 14,
@@ -62,7 +65,7 @@ export const viridianForestBrendanBox = createBox([
   },
 ]);
 
-export const viridianForestLassAnneBox = createBox([
+export const viridianForestLassAnneBox = getOpponentBox([
   {
     name: "Stufful",
     level: 15,
@@ -88,7 +91,7 @@ export const viridianForestLassAnneBox = createBox([
   },
 ]);
 
-export const viridianForestBugCatcherSammyBox = createBox([
+export const viridianForestBugCatcherSammyBox = getOpponentBox([
   {
     name: "Kricketune",
     level: 13,
@@ -115,7 +118,7 @@ export const viridianForestBugCatcherSammyBox = createBox([
   },
 ]);
 
-export const pewterMuseumLeaderFalknerBox = createBox([
+export const pewterMuseumLeaderFalknerBox = getOpponentBox([
   {
     name: "Trumbeak",
     level: 14,
@@ -162,7 +165,7 @@ export const pewterMuseumLeaderFalknerBox = createBox([
   },
 ]);
 
-export const pewterCityLeaderBrockBox = createBox([
+export const pewterCityLeaderBrockBox = getOpponentBox([
   {
     name: "Hippopotas",
     level: 13,
@@ -213,7 +216,7 @@ export const pewterCityLeaderBrockBox = createBox([
   },
 ]);
 
-export const route3LassSallyBox = createBox([
+export const route3LassSallyBox = getOpponentBox([
   {
     name: "Pikachu-Flying",
     spriteKey: "pikachu",
@@ -249,7 +252,7 @@ export const route3LassSallyBox = createBox([
   },
 ]);
 
-export const mtMoonSuperNerdMiguelBox = createBox([
+export const mtMoonSuperNerdMiguelBox = getOpponentBox([
   {
     name: "Thwackey",
     level: 21,
@@ -294,7 +297,7 @@ export const mtMoonSuperNerdMiguelBox = createBox([
   },
 ]);
 
-export const mtMoonArcherBox = createBox([
+export const mtMoonArcherBox = getOpponentBox([
   {
     name: "Glimmet",
     level: 20,
@@ -337,7 +340,7 @@ export const mtMoonArcherBox = createBox([
   },
 ]);
 
-export const ceruleanCityRivalBox = createBox([
+export const ceruleanCityRivalBox = getOpponentBox([
   {
     name: "Hitmonlee",
     level: 27,
@@ -388,7 +391,7 @@ export const ceruleanCityRivalBox = createBox([
   },
 ]);
 
-export const nuggetBridgeBugCatcherCaleBox = createBox([
+export const nuggetBridgeBugCatcherCaleBox = getOpponentBox([
   {
     name: "Vivillon",
     level: 25,
@@ -417,7 +420,7 @@ export const nuggetBridgeBugCatcherCaleBox = createBox([
   },
 ]);
 
-export const nuggetBridgeLassAliBox = createBox([
+export const nuggetBridgeLassAliBox = getOpponentBox([
   {
     name: "Jigglypuff",
     level: 27,
@@ -444,7 +447,7 @@ export const nuggetBridgeLassAliBox = createBox([
   },
 ]);
 
-export const nuggetBridgeYoungsterTimmyBox = createBox([
+export const nuggetBridgeYoungsterTimmyBox = getOpponentBox([
   {
     name: "Plusle",
     level: 26,
@@ -471,7 +474,7 @@ export const nuggetBridgeYoungsterTimmyBox = createBox([
   },
 ]);
 
-export const nuggetBridgeLassReliBox = createBox([
+export const nuggetBridgeLassReliBox = getOpponentBox([
   {
     name: "Greedent",
     level: 26,
@@ -498,7 +501,7 @@ export const nuggetBridgeLassReliBox = createBox([
   },
 ]);
 
-export const nuggetBridgeCamperEthanBox = createBox([
+export const nuggetBridgeCamperEthanBox = getOpponentBox([
   {
     name: "Mabosstiff",
     level: 26,
@@ -525,7 +528,7 @@ export const nuggetBridgeCamperEthanBox = createBox([
   },
 ]);
 
-export const nuggetBridgeGruntBox = createBox([
+export const nuggetBridgeGruntBox = getOpponentBox([
   {
     name: "Arcanine",
     level: 26,
@@ -560,7 +563,7 @@ export const nuggetBridgeGruntBox = createBox([
   },
 ]);
 
-export const digHouseGruntBox = createBox([
+export const digHouseGruntBox = getOpponentBox([
   {
     name: "Persian-A",
     spriteKey: "persian-alola",
@@ -597,7 +600,7 @@ export const digHouseGruntBox = createBox([
   },
 ]);
 
-export const ceruleanCityLeaderMistyBox = createBox([
+export const ceruleanCityLeaderMistyBox = getOpponentBox([
   {
     name: "Politoed",
     level: 27,

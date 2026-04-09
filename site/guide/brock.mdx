@@ -15,6 +15,8 @@ import BoxChange from "@site/src/components/BoxChange";
 import Encounter from "@site/src/components/Encounter";
 import { Row } from "@site/src/components/Row";
 import Card from "@site/src/components/Card";
+
+import { getBox } from "@site/src/utils/box";
 import {
   route22RivalBox,
   viridianForestBrendanBox,
@@ -22,8 +24,7 @@ import {
   viridianForestBugCatcherSammyBox,
   pewterMuseumLeaderFalknerBox,
   pewterCityLeaderBrockBox,
-} from "@site/src/utils/opponentTeams";
-import { changeBox } from "@site/src/utils/box";
+} from "@site/src/utils/opponents";
 
 # Brock
 
@@ -43,7 +44,7 @@ export const _litten = {
 
 <Encounter encounter={_litten} row={["Level 5"]} />
 
-export const _box1 = changeBox({
+export const _box1 = getBox({
   add: [_litten],
   update: {
     Litten: {
@@ -66,7 +67,7 @@ export const _tentacool = {
 
 <Encounter encounter={_tentacool} row={["Old Rod · 70% · Level 2-4 ·", { info: "Clear Body" }]} />
 
-export const _box2 = changeBox({
+export const _box2 = getBox({
   box: _box1,
   add: [_tentacool],
   update: {
@@ -146,7 +147,7 @@ export const _kricketot = {
 
 <Encounter encounter={_kricketot} row={["Grass · Night · 10% · Level 4-6"]} />
 
-export const _box3 = changeBox({
+export const _box3 = getBox({
   box: _box2,
   add: [_wooperP, _meowthG, _marill, _houndour, _kricketot],
   update: [
@@ -174,7 +175,7 @@ export const _box3 = changeBox({
 
 ## Route 22 Rival Battle
 
-export const _box4 = changeBox({
+export const _box4 = getBox({
   box: _box3,
   update: {
     "Wooper-P": {
@@ -256,7 +257,7 @@ export const _psyduck = { name: "Psyduck", moves: ["Scratch", "Water Sport"] };
 
 <Encounter encounter={_psyduck} row={["Old Rod · 70% · Level 2-4"]} />
 
-export const _box5 = changeBox({
+export const _box5 = getBox({
   box: _box4,
   add: [_psyduck],
   update: {
@@ -275,7 +276,7 @@ export const _box5 = changeBox({
 
 ## Viridian Forest Brendan Battle
 
-export const _box6 = changeBox({
+export const _box6 = getBox({
   box: _box5,
   update: {
     Marill: {
@@ -352,7 +353,7 @@ export const _box6 = changeBox({
   <Row row={["Bag →", { warning: "Exp. Share to {c:Off}" }]} />
 </Card>
 
-export const _box7 = changeBox({
+export const _box7 = getBox({
   box: _box6,
   update: {
     Houndour: {
@@ -366,7 +367,7 @@ export const _box7 = changeBox({
 
 ## Viridian Forest Lass Anne Battle
 
-export const _box8 = changeBox({
+export const _box8 = getBox({
   box: _box7,
   update: {
     "Meowth-G": {
@@ -459,7 +460,7 @@ export const _box8 = changeBox({
 
 ## Viridian Forest Bug Catcher Sammy Battle
 
-export const _box9 = changeBox({
+export const _box9 = getBox({
   box: _box8,
   update: {
     Kricketune: {
@@ -517,7 +518,7 @@ export const _yamaskG = {
 
 ## Pewter Museum Leader Falkner Battle
 
-export const _box10 = changeBox({
+export const _box10 = getBox({
   box: _box9,
   add: [_yamaskG],
   update: {
@@ -587,7 +588,7 @@ export const _box10 = changeBox({
   </BattleLine>
 </Battle>
 
-export const _box11 = changeBox({
+export const _box11 = getBox({
   box: _box10,
   update: {
     "Yamask-G": {
@@ -601,7 +602,7 @@ export const _box11 = changeBox({
 
 ## Pewter City Leader Brock Battle
 
-export const _box12 = changeBox({
+export const _box12 = getBox({
   box: _box11,
   update: {
     Kricketune: {
