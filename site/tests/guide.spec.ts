@@ -80,7 +80,7 @@ async function getSnapshots(page: Page, guideIndex: number, guide: string) {
   }
 }
 
-const GUIDES = ["brock", "misty"];
+const GUIDES = ["brock", "misty", "surge"];
 
 test.beforeEach(async ({ page }) => {
   await page.addInitScript(() => {

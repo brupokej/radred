@@ -1,0 +1,133 @@
+---
+sidebar_position: 3
+---
+
+import {
+  Battle,
+  BattleLine,
+  Branch,
+  Matchup,
+  PlayerMove,
+  OpponentMove,
+  Turn,
+} from "@site/src/components/Battle";
+import BoxChange from "@site/src/components/BoxChange";
+
+import { getBox } from "@site/src/utils/box";
+import {
+  route6CamperJeffBox,
+} from "@site/src/utils/opponents";
+
+import { box as _box1 } from "@site/guide/misty.mdx";
+
+# Surge
+
+export const _box2 = getBox({
+  box: _box1,
+  cap: 36,
+  update: {
+    Shellder: {
+      name: "Cloyster",
+    },
+    Drilbur: {
+      name: "Excadrill",
+    },
+  },
+});
+
+<BoxChange box={_box2} />
+
+## Route 6 Camper Jeff Battle
+
+export const _box3 = getBox({
+  box: _box2,
+  update: {
+    Houndoom: {
+      nature: "Quiet",
+      item: "Aspear Berry",
+      moves: ["Dark Pulse", "Incinerate", "Leer", "Sucker Punch"],
+    },
+    Cloyster: {
+      nature: "Adamant",
+      ability: "Skill Link",
+      item: "Never-Melt Ice",
+      moves: ["Ice Shard", "Icicle Spear", "Leer", "Razor Shell"],
+    },
+    Perrserker: {
+      item: "Sitrus Berry",
+      moves: ["Fake Out", "Bullet Punch", "Metal Burst", "Thief"],
+    },
+    Excadrill: {
+      nature: "Adamant",
+      ability: "Sand Rush",
+      item: "Soft Sand",
+      moves: ["Dig", "Earthquake", "Rapid Spin", "Rock Tomb"],
+    },
+    Golduck: {
+      item: "Sitrus Berry",
+      moves: ["Disable", "Me First", "Psychic", "Zen Headbutt"],
+    },
+  },
+  team: ["Houndoom", "Cloyster", "Perrserker", "Excadrill", "Golduck", "Clodsire"],
+});
+
+<Battle playerBox={_box3} opponentBox={route6CamperJeffBox}>
+  <BattleLine>
+    <Matchup matchup={["Mr. Mime-G", "Ambipom"]}>
+      <Turn>
+        <PlayerMove move="{p:Cloyster} switch to {p:Perrserker}" />
+        <OpponentMove move="{o:Ambipom} Fake Out {p:Perrserker} to {+:106}" />
+        <OpponentMove move={"{o:Mr. Mime-G} Freeze-Dry {p:Perrserker} to {+:83} or Freeze-Dry {p:Houndoom} to {+:84}"} />
+        <PlayerMove move={"{p:Houndoom} Incinerate {o:Mr. Mime-G} to {-:48} and {o:Ambipom} to {-:71}"} />
+        <OpponentMove move="{o:Perrserker} frostbite to {+:76}" />
+      </Turn>
+      <Turn>
+        <PlayerMove move="{p:Perrserker} Fake Out {o:Ambipom} to {-:52}" />
+        <OpponentMove move={"{o:Mr. Mime-G} Hidden Power Fire {p:Perrserker} to {+:52} or Freeze-Dry {p:Houndoom} to {+:57}"} />
+        <PlayerMove move={"{p:Houndoom} Leer {o:Ambipom} and {o:Mr. Mime-G}"} />
+        <OpponentMove move="{p:Houndoom} frostbite to {+:51}" />
+      </Turn>
+      <Turn>
+        <PlayerMove move="{p:Houndoom} Sucker Punch {o:Ambipom} to {=:0}" />
+        <PlayerMove move={"{p:Perrserker} Bullet Punch {o:Mr. Mime-G} to {=:0}"} />
+        <OpponentMove move="{o:Ambipom} fainted" />
+        <OpponentMove move={"{o:Mr. Mime-G} fainted"} />
+        <OpponentMove move="{p:Houndoom} frostbite to {+:45}" />
+        <OpponentMove move="{p:Perrserker} frostbite to {+:45}" />
+      </Turn>
+    </Matchup>
+    <Matchup matchup={["Perrserker", "Boltund"]}>
+      <Turn>
+        <PlayerMove move="{p:Houndoom} switch to {p:Excadrill}" />
+        <PlayerMove move="{p:Perrserker} switch to {p:Golduck}" />
+        <OpponentMove move="{o:Perrserker} Fake Out {p:Excadrill} to {+:113} or Fake Out {p:Golduck} to {+:75}" />
+        <OpponentMove move="{o:Boltund} Thunder Fang {p:Excadrill} or Fire Fang {p:Golduck} to {+:75}" />
+        <OpponentMove move="{p:Golduck} burn to {+:68}" />
+      </Turn>
+      <Turn>
+        <PlayerMove move="{p:Golduck} switch to {p:Clodsire}" />
+        <OpponentMove move="{o:Boltund} Thunder Fang {p:Clodsire}" />
+        <PlayerMove move="{p:Excadrill} Rock Tomb {o:Boltund} to {-:68}" />
+        <OpponentMove move="{o:Perrserker} Iron Head {p:Excadrill} to {+:32}" />
+      </Turn>
+      <Turn>
+        <PlayerMove move="{p:Clodsire} switch to {p:Cloyster}" />
+        <PlayerMove move="{p:Excadrill} Earthquake {o:Boltund} to {=:0} and {o:Perrserker} to {=:0} and {p:Cloyster} to {+:38}" />
+        <OpponentMove move="{p:Boltund} fainted" />
+        <OpponentMove move="{p:Perrserker} fainted" />
+      </Turn>
+    </Matchup>
+    <Matchup matchup={["Granbull"]}>
+      <Turn>
+        <PlayerMove move="{p:Cloyster} switch to {p:Golduck}" />
+        <PlayerMove move="{p:Excadrill} Dig {o:Granbull}" />
+        <OpponentMove move="{o:Granbull} Brick Break {p:Golduck} to {+:15}" />
+        <OpponentMove move="{p:Golduck} burn to {+:8}" />
+      </Turn>
+      <Turn>
+        <PlayerMove move="{p:Golduck} Psychic {o:Granbull} to {=:0}" />
+        <OpponentMove move="{o:Granbull} fainted" />
+      </Turn>
+    </Matchup>
+  </BattleLine>
+</Battle>

@@ -12,9 +12,9 @@ import {
   Turn,
 } from "@site/src/components/Battle";
 import BoxChange from "@site/src/components/BoxChange";
+import Card from "@site/src/components/Card";
 import Encounter from "@site/src/components/Encounter";
 import { Row } from "@site/src/components/Row";
-import Card from "@site/src/components/Card";
 
 import { getBox } from "@site/src/utils/box";
 import {
@@ -31,7 +31,6 @@ import {
   digHouseGruntBox,
   ceruleanCityLeaderMistyBox,
 } from "@site/src/utils/opponents";
-import { changePokemon } from "@site/src/utils/pokemon";
 
 import { box as _box1 } from "@site/guide/brock.mdx";
 
@@ -85,7 +84,7 @@ export const _box3 = getBox({
     <Matchup matchup={["Pikachu-Flying"]}>
       <Turn>
         <OpponentMove move="{o:Pikachu-Flying} Zippy Zap {p:Kricketune} to {+:38}" />
-        <PlayerMove move="{p:Kricketune} Rock Tomb {o:Pikachu-Flying} to {-:0}" />
+        <PlayerMove move="{p:Kricketune} Rock Tomb {o:Pikachu-Flying} to {=:0}" />
         <OpponentMove move="{o:Pikachu-Flying} fainted" />
       </Turn>
     </Matchup>
@@ -101,7 +100,7 @@ export const _box3 = getBox({
       <Turn>
         <OpponentMove move="{o:Whimsicott} Mega Drain {p:Houndour} to {+:20}" />
         <OpponentMove move="{o:Whimsicott} heal to {-:27}" />
-        <PlayerMove move="{p:Houndour} Incinerate {o:Whimsicott} to {-:0}" />
+        <PlayerMove move="{p:Houndour} Incinerate {o:Whimsicott} to {=:0}" />
         <OpponentMove move="{o:Whimsicott} fainted" />
       </Turn>
     </Matchup>
@@ -115,7 +114,7 @@ export const _box3 = getBox({
         <PlayerMove move="{p:Azumarill} Ice Punch {o:Oricorio-Sensu} to {-:19}" />
       </Turn>
       <Turn>
-        <PlayerMove move="{p:Azumarill} Aqua Jet {o:Oricorio-Sensu} to {-:0}" />
+        <PlayerMove move="{p:Azumarill} Aqua Jet {o:Oricorio-Sensu} to {=:0}" />
         <OpponentMove move="{o:Oricorio-Sensu} fainted" />
       </Turn>
     </Matchup>
@@ -129,7 +128,7 @@ export const _box3 = getBox({
         <OpponentMove move="{o:Mawile} Fire Fang {p:Houndour}" />
       </Turn>
       <Turn>
-        <PlayerMove move="{p:Houndour} Incinerate {o:Mawile} to {-:0}" />
+        <PlayerMove move="{p:Houndour} Incinerate {o:Mawile} to {=:0}" />
         <OpponentMove move="{o:Mawile} fainted" />
       </Turn>
     </Matchup>
@@ -219,7 +218,7 @@ export const _box5 = getBox({
   <Matchup matchup={["Swoobat", "Thwackey"]}>
     <Turn>
       <OpponentMove move="{o:Swoobat} Calm Mind" />
-      <PlayerMove move="{p:Kricketune} Bug Bite {o:Thwackey} to {-:0}" />
+      <PlayerMove move="{p:Kricketune} Bug Bite {o:Thwackey} to {=:0}" />
       <PlayerMove move="{p:Yamask-G} Haze" />
       <OpponentMove move="{o:Thwackey} fainted" />
     </Turn>
@@ -245,8 +244,8 @@ export const _box5 = getBox({
 <BattleLine line="Azumarill Play Rough Sableye">
   <Matchup matchup={["Swoobat", "Sableye"]}>
     <Turn>
-      <PlayerMove move="{p:Houndour} Sucker Punch {o:Swoobat} to {-:0}" />
-      <PlayerMove move="{p:Azumarill} Play Rough {o:Sableye} to {-:0}" />
+      <PlayerMove move="{p:Houndour} Sucker Punch {o:Swoobat} to {=:0}" />
+      <PlayerMove move="{p:Azumarill} Play Rough {o:Sableye} to {=:0}" />
       <OpponentMove move="{o:Swoobat} fainted" />
       <OpponentMove move="{o:Sableye} fainted" />
       <PlayerMove move="{p:Azumarill} terrain to {+:81} or {p:Houndour} terrain to {+:35}" />
@@ -255,7 +254,7 @@ export const _box5 = getBox({
   <Matchup matchup={["Skiddo"]}>
     <Turn>
       <PlayerMove move="{p:Houndour} Incinerate {o:Skiddo} to {-:17}" />
-      <PlayerMove move="{p:Azumarill} Play Rough {o:Skiddo} to {-:0}" />
+      <PlayerMove move="{p:Azumarill} Play Rough {o:Skiddo} to {=:0}" />
       <OpponentMove move="{o:Skiddo} fainted" />
     </Turn>
   </Matchup>
@@ -265,7 +264,7 @@ export const _box5 = getBox({
   <Matchup matchup={["Swoobat", "Sableye"]}>
     <Turn>
       <OpponentMove move="{o:Sableye} Protect" />
-      <PlayerMove move="{p:Houndour} Sucker Punch {o:Swoobat} to {-:0}" />
+      <PlayerMove move="{p:Houndour} Sucker Punch {o:Swoobat} to {=:0}" />
       <PlayerMove move="{p:Azumarill} Play Rough {o:Sableye}" />
       <OpponentMove move="{o:Swoobat} fainted" />
       <PlayerMove move="{p:Azumarill} terrain to {+:81} or {p:Houndour} terrain to {+:35}" />
@@ -274,7 +273,7 @@ export const _box5 = getBox({
   <Matchup matchup={["Skiddo", "Sableye"]}>
     <Turn>
       <PlayerMove move="{p:Houndour} Incinerate {o:Sableye} to {-:41} and {o:Skiddo} to {-:19}" />
-      <PlayerMove move="{p:Azumarill} Play Rough {o:Skiddo} to {-:0}" />
+      <PlayerMove move="{p:Azumarill} Play Rough {o:Skiddo} to {=:0}" />
       <OpponentMove move="{o:Sableye} Foul Play {p:Azumarill} to {+:66} or Foul Play {p:Houndour} to {+:4}" />
       <PlayerMove move="{p:Azumarill} terrain to {+:71} or {p:Houndour} terrain to {+:7}" />
       <PlayerMove move="{o:Sableye} terrain to {+:47}" />
@@ -284,7 +283,7 @@ export const _box5 = getBox({
   <Matchup matchup={["Sableye"]}>
     <Turn>
       <PlayerMove move="{p:Houndour} Incinerate {o:Sableye} to {-:31}" />
-      <PlayerMove move="{p:Azumarill} Play Rough {o:Sableye} to {-:0}" />
+      <PlayerMove move="{p:Azumarill} Play Rough {o:Sableye} to {=:0}" />
       <OpponentMove move="{o:Sableye} fainted" />
     </Turn>
   </Matchup>
@@ -341,7 +340,7 @@ export const _box7 = getBox({
   <BattleLine>
     <Matchup matchup={["Glimmet"]}>
       <Turn>
-        <PlayerMove move="{p:Azumarill} Aqua Jet {o:Glimmet} to {-:0}" />
+        <PlayerMove move="{p:Azumarill} Aqua Jet {o:Glimmet} to {=:0}" />
         <OpponentMove move="{o:Glimmet} Toxic Debris" />
         <OpponentMove move="{o:Glimmet} fainted" />
       </Turn>
@@ -366,7 +365,7 @@ export const _box7 = getBox({
         <OpponentMove move="{p:Kricketune} poison to {+:35}" />
       </Turn>
       <Turn>
-        <PlayerMove move="{p:Kricketune} Bulldoze {o:Seviper} to {-:0}" />
+        <PlayerMove move="{p:Kricketune} Bulldoze {o:Seviper} to {=:0}" />
         <OpponentMove move="{o:Seviper} fainted" />
         <OpponentMove move="{p:Kricketune} poison to {+:26}" />
       </Turn>
@@ -390,7 +389,7 @@ export const _box7 = getBox({
       </Turn>
       <Turn>
         <OpponentMove move="{o:Fearow} Double Hit {p:Azumarill} to {+:17}" />
-        <PlayerMove move="{p:Azumarill} Ice Punch {o:Fearow} to {-:0}" />
+        <PlayerMove move="{p:Azumarill} Ice Punch {o:Fearow} to {=:0}" />
       </Turn>
     </Matchup>
     <Matchup matchup={["Mightyena"]}>
@@ -404,7 +403,7 @@ export const _box7 = getBox({
         <OpponentMove move="{p:Kricketune} poison to {+:17}" />
       </Turn>
       <Turn>
-        <PlayerMove move="{p:Kricketune} Bug Bite {o:Mightyena} to {-:0}" />
+        <PlayerMove move="{p:Kricketune} Bug Bite {o:Mightyena} to {=:0}" />
         <OpponentMove move="{o:Mightyena} fainted" />
         <OpponentMove move="{p:Kricketune} poison to {+:8}" />
       </Turn>
@@ -415,7 +414,7 @@ export const _box7 = getBox({
         <OpponentMove move="{o:Houndour} Incinerate {p:Torracat} to {+:48}" />
       </Turn>
       <Turn>
-        <PlayerMove move="{p:Torracat} Double Kick {o:Houndour} to {-:0}" />
+        <PlayerMove move="{p:Torracat} Double Kick {o:Houndour} to {=:0}" />
         <OpponentMove move="{o:Houndour} fainted" />
       </Turn>
     </Matchup>
@@ -529,7 +528,7 @@ export const _box9 = getBox({
   <Matchup matchup={["Hitmonlee"]}>
     <Turn>
       <OpponentMove move="{o:Hitmonlee} Knock Off {p:Azumarill} to {+:61}" />
-      <PlayerMove move="{p:Azumarill} Covet {o:Hitmonlee} to {-:0}" />
+      <PlayerMove move="{p:Azumarill} Covet {o:Hitmonlee} to {=:0}" />
       <OpponentMove move="{o:Hitmonlee} fainted" />
     </Turn>
   </Matchup>
@@ -581,7 +580,7 @@ export const _box9 = getBox({
       <OpponentMove move="{o:Wartortle} flinched" />
     </Turn>
     <Turn>
-      <PlayerMove move="{p:Perrserker} Bullet Punch {o:Wartortle} to {-:0}" />
+      <PlayerMove move="{p:Perrserker} Bullet Punch {o:Wartortle} to {=:0}" />
       <OpponentMove move="{o:Wartortle} fainted" />
     </Turn>
   </Matchup>
@@ -592,7 +591,7 @@ export const _box9 = getBox({
     </Turn>
     <Turn>
       <OpponentMove move="{o:Simisear} Incinerate {p:Drednaw} to {+:71}" />
-      <PlayerMove move="{p:Drednaw} Razor Shell {o:Simisear} to {-:0}" />
+      <PlayerMove move="{p:Drednaw} Razor Shell {o:Simisear} to {=:0}" />
       <OpponentMove move="{o:Simisear} fainted" />
     </Turn>
   </Matchup>
@@ -614,7 +613,7 @@ export const _box9 = getBox({
       <OpponentMove move="{o:Arbok} flinched" />
     </Turn>
     <Turn>
-      <PlayerMove move="{p:Perrserker} Bullet Punch {o:Arbok} to {-:0}" />
+      <PlayerMove move="{p:Perrserker} Bullet Punch {o:Arbok} to {=:0}" />
       <OpponentMove move="{o:Arbok} fainted" />
     </Turn>
     <Branch if={["Azumarill Covet Hitmonlee"]} branch={["Clefable Mystical Fire Tentacruel"]} />
@@ -630,7 +629,7 @@ export const _box9 = getBox({
     </Turn>
     <Turn>
       <OpponentMove move="{o:Hitmonlee} Knock Off {p:Azumarill} to {+:29}" />
-      <PlayerMove move="{p:Azumarill} Play Rough {o:Hitmonlee} to {-:0}" />
+      <PlayerMove move="{p:Azumarill} Play Rough {o:Hitmonlee} to {=:0}" />
     </Turn>
     <Branch if={["Clefable Mystical Fire Tentacruel"]} branch={["Perrserker Iron Head Eevee"]} />
     <Branch branch={["Clefable Charge Beam"]} />
@@ -658,7 +657,7 @@ export const _box9 = getBox({
       <OpponentMove move="{o:Clefable} Charge Beam {p:Tentacruel} to {+:42}" />
     </Turn>
     <Turn>
-      <PlayerMove move="{p:Tentacruel} Sludge {o:Clefable} to {-:0}" />
+      <PlayerMove move="{p:Tentacruel} Sludge {o:Clefable} to {=:0}" />
       <OpponentMove move="{o:Clefable} fainted" />
     </Turn>
   </Matchup>
@@ -668,7 +667,7 @@ export const _box9 = getBox({
       <OpponentMove move="{o:Eevee} Round {p:Tentacruel} to {+:28}" />
     </Turn>
     <Turn>
-      <PlayerMove move="{p:Tentacruel} Bubble Beam {o:Eevee} to {-:0}" />
+      <PlayerMove move="{p:Tentacruel} Bubble Beam {o:Eevee} to {=:0}" />
       <OpponentMove move="{o:Eevee} fainted" />
     </Turn>
   </Matchup>
@@ -687,7 +686,7 @@ export const _box9 = getBox({
       <OpponentMove move="{o:Eevee} Round {p:Tentacruel} to {+:67}" />
     </Turn>
     <Turn>
-      <PlayerMove move="{p:Tentacruel} Bubble Beam {o:Eevee} to {-:0}" />
+      <PlayerMove move="{p:Tentacruel} Bubble Beam {o:Eevee} to {=:0}" />
       <OpponentMove move="{o:Eevee} fainted" />
     </Turn>
   </Matchup>
@@ -697,7 +696,7 @@ export const _box9 = getBox({
       <OpponentMove move="{o:Clefable} Charge Beam {p:Tentacruel} to {+:28}" />
     </Turn>
     <Turn>
-      <PlayerMove move="{p:Tentacruel} Sludge {o:Clefable} to {-:0}" />
+      <PlayerMove move="{p:Tentacruel} Sludge {o:Clefable} to {=:0}" />
       <OpponentMove move="{o:Clefable} fainted" />
     </Turn>
   </Matchup>
@@ -714,7 +713,7 @@ export const _box9 = getBox({
       <OpponentMove move="{o:Clefable} Charge Beam {p:Tentacruel} to {+:38}" />
     </Turn>
     <Turn>
-      <PlayerMove move="{p:Tentacruel} Sludge {o:Clefable} to {-:0}" />
+      <PlayerMove move="{p:Tentacruel} Sludge {o:Clefable} to {=:0}" />
       <OpponentMove move="{o:Clefable} fainted" />
     </Turn>
     <Branch if={["Azumarill Covet Hitmonlee"]} branch={["Tentacruel Acid Spray Eevee"]} />
@@ -729,7 +728,7 @@ export const _box9 = getBox({
       <OpponentMove move="{o:Eevee} Round {p:Tentacruel} to {+:24}" />
     </Turn>
     <Turn>
-      <PlayerMove move="{p:Tentacruel} Bubble Beam {o:Eevee} to {-:0}" />
+      <PlayerMove move="{p:Tentacruel} Bubble Beam {o:Eevee} to {=:0}" />
       <OpponentMove move="{o:Eevee} fainted" />
     </Turn>
     <Branch
@@ -747,7 +746,7 @@ export const _box9 = getBox({
     </Turn>
     <Turn>
       <OpponentMove move="{o:Hitmonlee} Low Sweep {p:Azumarill} to {+:29}" />
-      <PlayerMove move="{p:Azumarill} Play Rough {o:Hitmonlee} to {-:0}" />
+      <PlayerMove move="{p:Azumarill} Play Rough {o:Hitmonlee} to {=:0}" />
     </Turn>
   </Matchup>
 </BattleLine>
@@ -763,7 +762,7 @@ export const _box9 = getBox({
       <OpponentMove move="{o:Eevee} flinched" />
     </Turn>
     <Turn>
-      <PlayerMove move="{p:Perrserker} Iron Head {o:Eevee} to {-:0}" />
+      <PlayerMove move="{p:Perrserker} Iron Head {o:Eevee} to {=:0}" />
       <OpponentMove move="{o:Eevee} fainted" />
     </Turn>
   </Matchup>
@@ -814,8 +813,8 @@ export const _box11 = getBox({
   <BattleLine>
     <Matchup matchup={["Butterfree", "Vivillon"]}>
       <Turn>
-        <PlayerMove move="{p:Houndoom} Flame Burst {o:Vivillon} to {-:0}" />
-        <PlayerMove move="{p:Drednaw} Rock Tomb {o:Butterfree} to {-:0}" />
+        <PlayerMove move="{p:Houndoom} Flame Burst {o:Vivillon} to {=:0}" />
+        <PlayerMove move="{p:Drednaw} Rock Tomb {o:Butterfree} to {=:0}" />
         <OpponentMove move="{o:Vivillon} fainted" />
         <OpponentMove move="{o:Butterfree} fainted" />
       </Turn>
@@ -823,7 +822,7 @@ export const _box11 = getBox({
     <Matchup matchup={["Wormadam-Sa"]}>
       <Turn>
         <PlayerMove move="{p:Houndoom} Flame Burst {o:Wormadam-Sa} to {-:9}" />
-        <PlayerMove move="{p:Drednaw} Rock Tomb {o:Wormadam-Sa} to {-:0}" />
+        <PlayerMove move="{p:Drednaw} Rock Tomb {o:Wormadam-Sa} to {=:0}" />
         <OpponentMove move="{o:Wormadam-Sa} fainted" />
       </Turn>
     </Matchup>
@@ -846,8 +845,8 @@ export const _box12 = getBox({
   <BattleLine>
     <Matchup matchup={["Amaura", "Jigglypuff"]}>
       <Turn>
-        <PlayerMove move="{p:Azumarill} Aqua Tail {o:Amaura} to {-:0}" />
-        <PlayerMove move="{p:Perrserker} Iron Head {o:Jigglypuff} to {-:0}" />
+        <PlayerMove move="{p:Azumarill} Aqua Tail {o:Amaura} to {=:0}" />
+        <PlayerMove move="{p:Perrserker} Iron Head {o:Jigglypuff} to {=:0}" />
         <OpponentMove move="{o:Amaura} fainted" />
         <OpponentMove move="{o:Jigglypuff} fainted" />
       </Turn>
@@ -855,7 +854,7 @@ export const _box12 = getBox({
     <Matchup matchup={["Brionne"]}>
       <Turn>
         <PlayerMove move="{p:Perrserker} Bullet Punch {o:Brionne} to {-:63}" />
-        <PlayerMove move="{p:Azumarill} Play Rough {o:Brionne} to {-:0}" />
+        <PlayerMove move="{p:Azumarill} Play Rough {o:Brionne} to {=:0}" />
         <OpponentMove move="{o:Brionne} fainted" />
       </Turn>
     </Matchup>
@@ -872,14 +871,14 @@ export const _box13 = getBox({ box: _box12, team: ["Houndoom", "Perrserker"] });
       <Turn>
         <PlayerMove move="{p:Perrserker} Fake Out {o:Plusle} to {-:48}" />
         <OpponentMove move="{o:Plusle} flinched" />
-        <PlayerMove move="{p:Houndoom} Dark Pulse {o:Electrike} to {-:0}" />
+        <PlayerMove move="{p:Houndoom} Dark Pulse {o:Electrike} to {=:0}" />
         <OpponentMove move="{o:Electrike} fainted" />
       </Turn>
     </Matchup>
     <Matchup matchup={["Snover", "Plusle"]}>
       <Turn>
-        <PlayerMove move="{p:Houndoom} Sucker Punch {o:Plusle} to {-:0}" />
-        <PlayerMove move="{p:Perrserker} Iron Head {o:Snover} to {-:0}" />
+        <PlayerMove move="{p:Houndoom} Sucker Punch {o:Plusle} to {=:0}" />
+        <PlayerMove move="{p:Perrserker} Iron Head {o:Snover} to {=:0}" />
         <OpponentMove move="{o:Plusle} fainted" />
         <OpponentMove move="{o:Snover} fainted" />
       </Turn>
@@ -945,7 +944,7 @@ export const _box15 = getBox({
         <OpponentMove move="{o:Greedent} Facade {p:Azumarill} to {+:39}" />
       </Turn>
       <Turn>
-        <PlayerMove move="{p:Azumarill} Play Rough {o:Greedent} to {-:0}" />
+        <PlayerMove move="{p:Azumarill} Play Rough {o:Greedent} to {=:0}" />
         <OpponentMove move="{o:Greedent} fainted" />
       </Turn>
     </Matchup>
@@ -955,7 +954,7 @@ export const _box15 = getBox({
         <OpponentMove move="{o:Togetic} Thunder Wave {p:Perrserker}" />
       </Turn>
       <Turn>
-        <PlayerMove move="{p:Perrserker} Iron Head {o:Togetic} to {-:0}" />
+        <PlayerMove move="{p:Perrserker} Iron Head {o:Togetic} to {=:0}" />
         <OpponentMove move="{o:Togetic} fainted" />
       </Turn>
     </Matchup>
@@ -973,7 +972,7 @@ export const _box15 = getBox({
         <OpponentMove move="{o:Clamperl} Water Pulse {p:Tentacruel} to {+:56}" />
       </Turn>
       <Turn>
-        <PlayerMove move="{p:Tentacruel} Sludge {o:Clamperl} to {-:0}" />
+        <PlayerMove move="{p:Tentacruel} Sludge {o:Clamperl} to {=:0}" />
         <OpponentMove move="{o:Clamperl} fainted" />
       </Turn>
     </Matchup>
@@ -1005,7 +1004,7 @@ export const _box16 = getBox({
       </Turn>
       <Turn>
         <OpponentMove move="{o:Mabosstiff} Trailblaze {p:Azumarill} to {+:25}" />
-        <PlayerMove move="{p:Azumarill} Play Rough {o:Mabosstiff} to {-:0}" />
+        <PlayerMove move="{p:Azumarill} Play Rough {o:Mabosstiff} to {=:0}" />
       </Turn>
     </Matchup>
     <Matchup matchup={["Misdreavus"]}>
@@ -1024,13 +1023,13 @@ export const _box16 = getBox({
         <OpponentMove move="{o:Misdreavus} Hex {p:Houndoom} to {+:34}" />
       </Turn>
       <Turn>
-        <PlayerMove move="{p:Houndoom} Dark Pulse {o:Misdreavus} to {-:0}" />
+        <PlayerMove move="{p:Houndoom} Dark Pulse {o:Misdreavus} to {=:0}" />
         <OpponentMove move="{o:Misdreavus} fainted" />
       </Turn>
     </Matchup>
     <Matchup matchup={["Salandit"]}>
       <Turn>
-        <PlayerMove move="{p:Houndoom} Dark Pulse {o:Salandit} to {-:0}" />
+        <PlayerMove move="{p:Houndoom} Dark Pulse {o:Salandit} to {=:0}" />
         <OpponentMove move="{o:Salandit} fainted" />
       </Turn>
     </Matchup>
@@ -1069,7 +1068,7 @@ export const _box17 = getBox({
         <OpponentMove move="{o:Arcanine} Dragon Rage {p:Drednaw} to {=:57}" />
       </Turn>
       <Turn>
-        <PlayerMove move="{p:Drednaw} Razor Shell {o:Arcanine} to {-:0}" />
+        <PlayerMove move="{p:Drednaw} Razor Shell {o:Arcanine} to {=:0}" />
         <OpponentMove move="{o:Arcanine} fainted" />
       </Turn>
     </Matchup>
@@ -1088,7 +1087,7 @@ export const _box17 = getBox({
       </Turn>
       <Turn>
         <OpponentMove move="{o:Togedemaru} Zippy Zap {p:Perrserker} to {+:37}" />
-        <PlayerMove move="{p:Perrserker} Metal Burst {o:Togedemaru} to {-:0}" />
+        <PlayerMove move="{p:Perrserker} Metal Burst {o:Togedemaru} to {=:0}" />
         <OpponentMove move="{o:Togedemaru} fainted" />
       </Turn>
     </Matchup>
@@ -1127,7 +1126,7 @@ export const _box17 = getBox({
       </Turn>
       <Turn>
         <OpponentMove move="{o:Komala} Last Resort {p:Yamask-G}" />
-        <PlayerMove move="{p:Yamask-G} Rock Tomb {o:Komala} to {-:0}" />
+        <PlayerMove move="{p:Yamask-G} Rock Tomb {o:Komala} to {=:0}" />
         <OpponentMove move="{o:Komala} fainted" />
       </Turn>
     </Matchup>
@@ -1142,7 +1141,7 @@ export const _box17 = getBox({
         <OpponentMove move="{o:Druddigon} Poison Tail {p:Azumarill} to {+:34}" />
       </Turn>
       <Turn>
-        <PlayerMove move="{p:Azumarill} Play Rough {o:Druddigon} to {-:0}" />
+        <PlayerMove move="{p:Azumarill} Play Rough {o:Druddigon} to {=:0}" />
         <OpponentMove move="{o:Druddigon} Rough Skin {p:Azumarill} to {=:22}" />
         <OpponentMove move="{o:Druddigon} fainted" />
       </Turn>
@@ -1207,7 +1206,7 @@ export const _box19 = getBox({
     <Matchup matchup={["Persian-A"]}>
       <Turn>
         <OpponentMove move="{o:Persian-A} Shock Wave {p:Azumarill} to {+:36}" />
-        <PlayerMove move="{p:Azumarill} Play Rough {o:Persian-A} to {-:0}" />
+        <PlayerMove move="{p:Azumarill} Play Rough {o:Persian-A} to {=:0}" />
         <OpponentMove move="{o:Persian-A} fainted" />
       </Turn>
     </Matchup>
@@ -1229,7 +1228,7 @@ export const _box19 = getBox({
         <PlayerMove move="{p:Perrserker} Iron Head {o:Crobat} to {-:11}" />
       </Turn>
       <Turn>
-        <PlayerMove move="{p:Perrserker} Bullet Punch {o:Crobat} to {-:0}" />
+        <PlayerMove move="{p:Perrserker} Bullet Punch {o:Crobat} to {=:0}" />
         <OpponentMove move="{o:Crobat} fainted" />
       </Turn>
     </Matchup>
@@ -1243,7 +1242,7 @@ export const _box19 = getBox({
         <OpponentMove move="{o:Veluza} Psycho Cut {p:Houndoom}" />
       </Turn>
       <Turn>
-        <PlayerMove move="{p:Houndoom} Dark Pulse {o:Veluza} to {-:0}" />
+        <PlayerMove move="{p:Houndoom} Dark Pulse {o:Veluza} to {=:0}" />
         <OpponentMove move="{o:Veluza} fainted" />
       </Turn>
     </Matchup>
@@ -1263,7 +1262,7 @@ export const _box19 = getBox({
         <PlayerMove move="{o:Raticate} burn to {-:24}" />
       </Turn>
       <Turn>
-        <PlayerMove move="{p:Kricketune} Pounce {o:Raticate} to {-:0}" />
+        <PlayerMove move="{p:Kricketune} Pounce {o:Raticate} to {=:0}" />
         <PlayerMove move="{o:Raticate} fainted" />
       </Turn>
     </Matchup>
@@ -1364,7 +1363,7 @@ export const _box22 = getBox({
       <OpponentMove move="{p:Kricketune} poison to {+:84}" />
     </Turn>
     <Turn>
-      <PlayerMove move="{p:Kricketune} Bullet Seed {o:Politoed} to {-:0}" />
+      <PlayerMove move="{p:Kricketune} Bullet Seed {o:Politoed} to {=:0}" />
       <OpponentMove move="{o:Politoed} fainted" />
       <OpponentMove move="{p:Kricketune} poison to {+:74}" />
     </Turn>
@@ -1383,7 +1382,7 @@ export const _box22 = getBox({
       <PlayerMove move="{p:Perrserker} Metal Burst {o:Mantine} to {-:10}" />
     </Turn>
     <Turn>
-      <PlayerMove move="{p:Perrserker} Bullet Punch {o:Mantine} to {-:0}" />
+      <PlayerMove move="{p:Perrserker} Bullet Punch {o:Mantine} to {=:0}" />
       <OpponentMove move="{o:Mantine} fainted" />
     </Turn>
   </Matchup>
@@ -1406,7 +1405,7 @@ export const _box22 = getBox({
       <OpponentMove move="{p:Kricketune} poison to {+:37}" />
     </Turn>
     <Turn>
-      <PlayerMove move="{p:Kricketune} Bug Bite {o:Ludicolo} to {-:0}" />
+      <PlayerMove move="{p:Kricketune} Bug Bite {o:Ludicolo} to {=:0}" />
       <PlayerMove move="{p:Kricketune} heal to {+:59}" />
       <OpponentMove move="{o:Ludicolo} fainted" />
       <OpponentMove move="{p:Kricketune} poison to {+:49}" />
@@ -1430,7 +1429,7 @@ export const _box22 = getBox({
   </Matchup>
   <Matchup matchup={["Starmie"]}>
     <Turn>
-      <PlayerMove move="{p:Golduck} Me First {p:Starmie} to {-:0}" />
+      <PlayerMove move="{p:Golduck} Me First {p:Starmie} to {=:0}" />
       <OpponentMove move="{o:Starmie} fainted" />
     </Turn>
   </Matchup>
@@ -1442,14 +1441,14 @@ export const _box22 = getBox({
       <OpponentMove move="{p:Golduck} posion to {=:86}" />
     </Turn>
     <Turn>
-      <PlayerMove move="{p:Golduck} Zen Headbutt {o:Clodsire} to {-:0}" />
+      <PlayerMove move="{p:Golduck} Zen Headbutt {o:Clodsire} to {=:0}" />
       <OpponentMove move="{o:Clodsire} fainted" />
       <OpponentMove move="{p:Golduck} posion to {=:76}" />
     </Turn>
   </Matchup>
   <Matchup matchup={["Toxicroak"]}>
     <Turn>
-      <PlayerMove move="{p:Golduck} Zen Headbutt {o:Toxicroak} to {-:0}" />
+      <PlayerMove move="{p:Golduck} Zen Headbutt {o:Toxicroak} to {=:0}" />
       <OpponentMove move="{o:Toxicroak} fainted" />
     </Turn>
   </Matchup>
@@ -1458,7 +1457,7 @@ export const _box22 = getBox({
 <BattleLine line="Golduck Zen Headbutt Toxicroak">
   <Matchup matchup={["Toxicroak"]}>
     <Turn>
-      <PlayerMove move="{p:Golduck} Zen Headbutt {o:Toxicroak} to {-:0}" />
+      <PlayerMove move="{p:Golduck} Zen Headbutt {o:Toxicroak} to {=:0}" />
       <OpponentMove move="{o:Toxicroak} fainted" />
     </Turn>
   </Matchup>
@@ -1476,7 +1475,7 @@ export const _box22 = getBox({
       <OpponentMove move="{o:Starmie} Psyshock {p:Golduck} to {+:50}" />
     </Turn>
     <Turn>
-      <PlayerMove move="{p:Golduck} Me First {p:Starmie} to {-:0}" />
+      <PlayerMove move="{p:Golduck} Me First {p:Starmie} to {=:0}" />
       <OpponentMove move="{o:Starmie} fainted" />
     </Turn>
   </Matchup>
@@ -1488,7 +1487,7 @@ export const _box22 = getBox({
       <OpponentMove move="{p:Golduck} posion to {+:45}" />
     </Turn>
     <Turn>
-      <PlayerMove move="{p:Golduck} Zen Headbutt {o:Clodsire} to {-:0}" />
+      <PlayerMove move="{p:Golduck} Zen Headbutt {o:Clodsire} to {=:0}" />
       <OpponentMove move="{o:Clodsire} fainted" />
     </Turn>
   </Matchup>
