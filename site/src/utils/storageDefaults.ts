@@ -1,4 +1,17 @@
 export const STORAGE_DEFAULTS: Record<string, string> = {
   "navbar-item-highlight-level": "info",
   "navbar-item-hp-display": "percent",
+
+  "branch-kricketune-mega-drain-varoom-kricketune-mega-drain-hippopotas":
+    "Kricketune Mega Drain Varoom",
+  "branch-azumarill-play-rough-sableye-sableye-protect": "Azumarill Play Rough Sableye",
+  "branch-azumarill-covet-wartortle-azumarill-covet-hitmonlee": "Azumarill Covet Wartortle",
+  "branch-regular-damage-to-wartortle-crit-damage-to-wartortle": "Regular damage to Wartortle",
+  "branch-hitmonlee-low-sweep-azumarill-clefable-mystical-fire-tentacruel":
+    "Hitmonlee Low Sweep Azumarill",
+  "branch-clefable-icy-wind-tentacruel-clefable-switch-to-eevee": "Clefable Icy Wind Tentacruel",
+  "branch-tentacruel-acid-spray-eevee-hitmonlee-low-sweep-azumarill":
+    "Tentacruel Acid Spray Eevee",
+  "branch-golduck-zen-headbutt-starmie-golduck-zen-headbutt-toxicroak":
+    "Golduck Zen Headbutt Starmie",
 };

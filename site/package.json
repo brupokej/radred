@@ -17,6 +17,7 @@
     "pokedex": "tsx scripts/pokedex.mts",
     "postinstall": "npx playwright install chromium",
     "playwright": "playwright test",
+    "playwright:ui": "playwright test --ui",
     "playwright:update": "rm -rf tests/snapshots && playwright test --update-snapshots",
     "vitest": "vitest run"
   },

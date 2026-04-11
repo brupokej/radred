@@ -2,6 +2,8 @@ import Card from "@site/src/components/Card";
 import { ScrollFade } from "@site/src/components/ScrollFade";
 import Team from "@site/src/components/Team";
 import { Box, resolveBox } from "@site/src/utils/box";
+import { getState, setState } from "@site/src/utils/storage";
+import { slugify } from "@site/src/utils/slugify";
 import { useHpDisplay } from "@site/src/utils/hpDisplay";
 import { getHp } from "@site/src/utils/pokedex";
 import { PokemonData, resolvePokemon } from "@site/src/utils/pokemon";
@@ -319,19 +321,32 @@ export function Branch({
     return () => unregisterBranch(branchId);
   }, [branchId, parentLine, registerBranch, unregisterBranch]);
 
+  const branchKey = branch.length > 1 ? `branch-${slugify(branch)}` : undefined;
+
   useEffect(() => {
     if (!dispatch) return;
     if (isActive === false) {
       dispatch({ type: "DESELECT_BRANCH", branchId });
-    } else if (isActive === true && branch.length === 1) {
-      dispatch({ type: "SELECT_BRANCH", branchId, childLine: branch[0] });
+    } else if (isActive === true) {
+      if (branch.length === 1) {
+        dispatch({ type: "SELECT_BRANCH", branchId, childLine: branch[0] });
+      } else {
+        const childLine = branchKey ? (getState(branchKey) ?? branch[0]) : branch[0];
+        dispatch({ type: "SELECT_BRANCH", branchId, childLine });
+      }
     }
-  }, [branchId, dispatch, isActive]);
+  }, [branchId, dispatch, isActive, branchKey]);
 
   const selectedChildLine = graphCtx?.state.selectedBranches.get(branchId);
 
   if (isActive === false) return null;
   if (graphCtx && branch.length === 1) return null;
+
+  function handleChange(item: string) {
+    if (!dispatch) return;
+    if (branchKey) setState(branchKey, item);
+    dispatch({ type: "SELECT_BRANCH", branchId, childLine: item });
+  }
 
   return (
     <div className={styles.branchWrapper} data-branch>
@@ -340,29 +355,16 @@ export function Branch({
         innerClassName={styles.branchRow}
         insetBlock="var(--ifm-spacing-vertical)"
       >
-        {branch.map((item, j) => {
-          const isSelected = selectedChildLine === item;
-          return (
-            <React.Fragment key={j}>
-              {j === 0 ? "Choose" : "or"}
-              {graphCtx ? (
-                <button
-                  className={`${styles.branchOption} ${isSelected ? styles.branchOptionSelected : ""}`}
-                  aria-pressed={isSelected}
-                  onClick={() =>
-                    isSelected
-                      ? graphCtx.dispatch({ type: "DESELECT_BRANCH", branchId })
-                      : graphCtx.dispatch({ type: "SELECT_BRANCH", branchId, childLine: item })
-                  }
-                >
-                  {item}
-                </button>
-              ) : (
-                <a href={`#${item}`}>{item}</a>
-              )}
-            </React.Fragment>
-          );
-        })}
+        <span className={styles.branchLabel}>Branch →</span>
+        <select
+          className={styles.branchSelect}
+          value={selectedChildLine ?? branch[0]}
+          onChange={(e) => handleChange(e.target.value)}
+        >
+          {branch.map((item) => (
+            <option key={item} value={item}>{item}</option>
+          ))}
+        </select>
       </ScrollFade>
     </div>
   );

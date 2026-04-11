@@ -1,11 +1,6 @@
 import { expect, Locator, Page, test } from "@playwright/test";
 import { slugify } from "../src/utils/slugify";
 
-const getFilename = (parts: (string | number)[]) =>
-  parts
-    .map((p) => (typeof p === "number" ? String(p).padStart(2, "0") : slugify(p)))
-    .join("-");
-
 async function waitForRender(loc: Locator) {
   // Wait until the subtree has been DOM-stable for two animation frames.
   // Handles chains of React useEffect re-renders (e.g. auto-selected branches
@@ -39,23 +34,31 @@ async function expandAll(loc: Locator) {
 async function getSnapshot(
   card: Locator,
   parts: (string | number)[],
-  cardIndex: { value: number }
+  cardIndex: { value: number },
+  visited = new Set<string>()
 ): Promise<void> {
   for (const branch of await card.locator("[data-branch]").all()) {
-    if ((await branch.locator('[aria-pressed="true"]').count()) === 0) {
-      const options = await branch.locator("[aria-pressed]").all();
-      for (const option of options) {
-        await option.click();
-        await waitForRender(card);
-        await getSnapshot(card, parts, cardIndex);
-      }
-      await options[options.length - 1].click();
-      return;
+    const select = branch.locator("select");
+    const values = await select.locator("option").evaluateAll(
+      (options) => options.map((o) => (o as HTMLOptionElement).value)
+    );
+    const key = slugify(values);
+    if (visited.has(key)) continue;
+
+    visited.add(key);
+    for (const value of values) {
+      await select.selectOption(value);
+      await waitForRender(card);
+      await getSnapshot(card, parts, cardIndex, visited);
     }
+
+    await select.selectOption(values[0]);
+    visited.delete(key);
+    return;
   }
 
-  const filename = getFilename([...parts, cardIndex.value++]);
-  await expect(card).toHaveScreenshot([`${filename}.png`]);
+  const filename = slugify([...parts, cardIndex.value++]);
+  await expect.soft(card).toHaveScreenshot([`${filename}.png`]);
   
   const unsetKeys = await card.evaluate(() => localStorage.getItem("unset-keys"));
   expect(unsetKeys, "All keys must be set in storageDefaults.ts").toBeNull();

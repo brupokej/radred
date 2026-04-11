@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 export const STORAGE_EVENT = "storage-change";
 
 export function getState(key: string): string | null {
+  if (typeof window === "undefined") return null;
   const value = localStorage.getItem(key);
   if (value === null) {
     console.warn(`Key ${value} must be set in storageDefaults.ts`);
