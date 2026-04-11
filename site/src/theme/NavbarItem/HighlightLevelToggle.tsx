@@ -1,11 +1,11 @@
 import BrowserOnly from "@docusaurus/BrowserOnly";
 import {
   type HighlightLevel,
-  getHighlightLevel,
   nextLevel,
   setHighlightLevel,
+  useHighlightLevel,
 } from "@site/src/utils/highlightLevel";
-import { useState } from "react";
+import { useEffect } from "react";
 import styles from "./HighlightLevelToggle.module.css";
 
 const VISIBLE: Record<HighlightLevel, number> = {
@@ -16,12 +16,12 @@ const VISIBLE: Record<HighlightLevel, number> = {
 };
 
 function Toggle() {
-  const [level, setLevel] = useState<HighlightLevel>(getHighlightLevel);
+  const level = useHighlightLevel();
+
+  useEffect(() => { setHighlightLevel(level); }, []);
 
   function handleClick() {
-    const next = nextLevel(level);
-    setHighlightLevel(next);
-    setLevel(next);
+    setHighlightLevel(nextLevel(level));
   }
 
   const visible = VISIBLE[level];

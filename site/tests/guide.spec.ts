@@ -1,12 +1,9 @@
 import { expect, Locator, Page, test } from "@playwright/test";
+import { slugify } from "../src/utils/slugify";
 
 const getFilename = (parts: (string | number)[]) =>
   parts
-    .map((p) =>
-      typeof p === "number"
-        ? String(p).padStart(2, "0")
-        : p.toLowerCase().replace(/[^a-z0-9 ]+/g, "").replace(/\s+/g, "-")
-    )
+    .map((p) => (typeof p === "number" ? String(p).padStart(2, "0") : slugify(p)))
     .join("-");
 
 async function waitForRender(loc: Locator) {
@@ -59,6 +56,9 @@ async function getSnapshot(
 
   const filename = getFilename([...parts, cardIndex.value++]);
   await expect(card).toHaveScreenshot([`${filename}.png`]);
+  
+  const unsetKeys = await card.evaluate(() => localStorage.getItem("unset-keys"));
+  expect(unsetKeys, "All keys must be set in storageDefaults.ts").toBeNull();
 }
 
 async function getSnapshots(page: Page, guideIndex: number, guide: string) {
@@ -81,12 +81,6 @@ async function getSnapshots(page: Page, guideIndex: number, guide: string) {
 }
 
 const GUIDES = ["brock", "misty", "surge"];
-
-test.beforeEach(async ({ page }) => {
-  await page.addInitScript(() => {
-    localStorage.setItem("highlight-level", "info");
-  });
-});
 
 for (const [guideIndex, guide] of GUIDES.entries()) {
   test.describe(`guide/${guide}`, () => {

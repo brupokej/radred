@@ -1,32 +1,31 @@
 import { useEffect, useState } from "react";
+import { getState, setState, STORAGE_EVENT } from "./storage";
 
-export type HpDisplay = "percent" | "raw";
-const DEFAULT: HpDisplay = "percent";
-const STORAGE_KEY = "hp-display";
-const EVENT = "hp-display-change";
+export const DISPLAYS = ["percent", "raw"] as const;
+export type HpDisplay = (typeof DISPLAYS)[number];
+export const DEFAULT_DISPLAY: HpDisplay = "percent";
+const STORAGE_KEY = "navbar-item-hp-display";
+
+export function nextDisplay(display: HpDisplay): HpDisplay {
+  return DISPLAYS[(DISPLAYS.indexOf(display) + 1) % DISPLAYS.length];
+}
 
 export function getHpDisplay(): HpDisplay {
-  try {
-    const stored = localStorage.getItem(STORAGE_KEY);
-    if (stored === "percent" || stored === "raw") return stored;
-  } catch {}
-  return DEFAULT;
+  const stored = getState(STORAGE_KEY);
+  if (stored && (DISPLAYS as readonly string[]).includes(stored)) return stored as HpDisplay;
+  return DEFAULT_DISPLAY;
 }
 
 export function setHpDisplay(display: HpDisplay): void {
-  try {
-    localStorage.setItem(STORAGE_KEY, display);
-  } catch {}
-  window.dispatchEvent(new Event(EVENT));
+  setState(STORAGE_KEY, display);
 }
 
 export function useHpDisplay(): HpDisplay {
-  const [display, setDisplay] = useState<HpDisplay>(DEFAULT);
+  const [display, setDisplay] = useState<HpDisplay>(getHpDisplay);
   useEffect(() => {
-    setDisplay(getHpDisplay());
     const handler = () => setDisplay(getHpDisplay());
-    window.addEventListener(EVENT, handler);
-    return () => window.removeEventListener(EVENT, handler);
+    window.addEventListener(STORAGE_EVENT, handler);
+    return () => window.removeEventListener(STORAGE_EVENT, handler);
   }, []);
   return display;
 }

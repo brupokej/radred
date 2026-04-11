@@ -1,20 +1,22 @@
 import type * as Preset from "@docusaurus/preset-classic";
 import type { Config } from "@docusaurus/types";
 import { themes as prismThemes } from "prism-react-renderer";
+import { STORAGE_DEFAULTS } from "./src/utils/storageDefaults";
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
   plugins: [
-    function highlightLevelPlugin() {
+    function storageDefaultsPlugin() {
       return {
-        name: "highlight-level-plugin",
+        name: "storage-defaults-plugin",
         injectHtmlTags() {
+          const d = JSON.stringify(STORAGE_DEFAULTS);
           return {
             headTags: [
               {
                 tagName: "script",
-                innerHTML: `(function(){try{var l=localStorage.getItem('highlight-level');if(l&&l!=='danger')document.documentElement.setAttribute('data-highlight-level',l);}catch(e){}})();`,
+                innerHTML: `(function(){var d=${d};for(var k in d){if(!localStorage.getItem(k))localStorage.setItem(k,d[k])}})();`,
               },
             ],
           };

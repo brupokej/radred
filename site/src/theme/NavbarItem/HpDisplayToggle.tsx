@@ -1,15 +1,12 @@
 import BrowserOnly from "@docusaurus/BrowserOnly";
-import { type HpDisplay, getHpDisplay, setHpDisplay } from "@site/src/utils/hpDisplay";
-import { useState } from "react";
+import { nextDisplay, setHpDisplay, useHpDisplay } from "@site/src/utils/hpDisplay";
 import styles from "./HpDisplayToggle.module.css";
 
 function Toggle() {
-  const [display, setDisplay] = useState<HpDisplay>(getHpDisplay);
+  const display = useHpDisplay();
 
   function handleClick() {
-    const next = display === "percent" ? "raw" : "percent";
-    setHpDisplay(next);
-    setDisplay(next);
+    setHpDisplay(nextDisplay(display));
   }
 
   return (
