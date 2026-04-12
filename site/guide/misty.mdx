@@ -142,7 +142,9 @@ export const _drilbur = {
   moves: ["Fury Swipes", "Mud-Slap", "Rapid Spin", "Scratch"],
 };
 
-<Encounter encounter={_drilbur} row={[{ warning: "Floor B2F" }, "· Night · 10% · Level 12-14"]} />
+<Encounter encounter={_drilbur}>
+  <Row row={[{ warning: "Floor B2F" }, "· Night · 10% · Level 12-14"]} />
+</Encounter>
 
 ## Route 4 Encounter
 
@@ -152,7 +154,9 @@ export const _magikarp = {
   moves: ["Splash"],
 };
 
-<Encounter encounter={_magikarp} row={["Level 5"]} />
+<Encounter encounter={_magikarp}>
+  <Row row={["Level 5"]} />
+</Encounter>
 
 export const _box4 = getBox({
   box: _box3,
@@ -428,7 +432,9 @@ export const _chewtle = {
   moves: ["Aqua Jet", "Bite"],
 };
 
-<Encounter encounter={_chewtle} row={["Old Rod · 70% · Level 2-4"]} />
+<Encounter encounter={_chewtle}>
+  <Row row={["Old Rod · 70% · Level 2-4"]} />
+</Encounter>
 
 <Card title="Game Setup">
   <Row row={["Cerulean City →", { info: "Solve the Move Relearner puzzle" }]} />
@@ -1158,11 +1164,9 @@ export const _charcadet = {
   moves: ["Clear Smog", "Ember", "Fire Spin", "Leer"],
 };
 
-<Encounter
-  encounter={_charcadet}
-  row={["Grass · ", { warning: "Day" }, " · 50% · Level 14-16"]}
-  playerBox={_box18}
-/>
+<Encounter encounter={_charcadet} playerBox={_box18}>
+  <Row row={["Grass · ", { warning: "Day" }, " · 50% · Level 14-16"]} />
+</Encounter>
 
 ## Route 25 Encounter
 
@@ -1171,7 +1175,9 @@ export const _chinchou = {
   moves: ["Bubble", "Supersonic"],
 };
 
-<Encounter encounter={_chinchou} row={["Old Rod · 30% · Level 2-4"]} />
+<Encounter encounter={_chinchou}>
+  <Row row={["Old Rod · 30% · Level 2-4"]} />
+</Encounter>
 
 ## Nugget Bridge Grunt Battle
 
@@ -1280,11 +1286,9 @@ export const _growlitheH = {
   moves: ["Flame Wheel", "Helping Hand", "Leer", "Odor Sleuth"],
 };
 
-<Encounter
-  encounter={_growlitheH}
-  row={["Grass · ", { warning: "Night" }, "· 50% · Level 18-20"]}
-  playerBox={_box20}
-/>
+<Encounter encounter={_growlitheH} playerBox={_box20}>
+  <Row row={["Grass · ", { warning: "Night" }, "· 50% · Level 18-20"]} />
+</Encounter>
 
 ## Route 6 Encounter
 
@@ -1293,7 +1297,9 @@ export const _shellder = {
   moves: ["Tackle", "Water Gun"],
 };
 
-<Encounter encounter={_shellder} row={["Old Rod · 30% · Level 2-4"]} />
+<Encounter encounter={_shellder}>
+  <Row row={["Old Rod · 30% · Level 2-4"]} />
+</Encounter>
 
 export const _box21 = getBox({
   box: _box20,

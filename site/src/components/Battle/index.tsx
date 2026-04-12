@@ -349,7 +349,7 @@ export function Branch({
   }
 
   return (
-    <div className={styles.branchWrapper} data-branch>
+    <div className={styles.branchWrapper} data-branch={branchKey}>
       <ScrollFade
         className={styles.branchScrollFade}
         innerClassName={styles.branchRow}

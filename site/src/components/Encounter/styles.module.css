@@ -1,5 +1,13 @@
+.sequenceRow + .sequenceRow {
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+}
+
 .content {
   display: flex;
+}
+
+.contentSequence {
+  border-top: 1px solid var(--ifm-color-emphasis-200);
 }
 
 .spritePanel {

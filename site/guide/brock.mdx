@@ -42,7 +42,9 @@ export const _litten = {
   moves: ["Ember", "Growl", "Scratch"],
 };
 
-<Encounter encounter={_litten} row={["Level 5"]} />
+<Encounter encounter={_litten}>
+  <Row row={["Level 5"]} />
+</Encounter>
 
 export const _box1 = getBox({
   add: [_litten],
@@ -65,7 +67,9 @@ export const _tentacool = {
   moves: ["Rapid Spin", "Water Gun"],
 };
 
-<Encounter encounter={_tentacool} row={["Old Rod · 70% · Level 2-4 ·", { info: "Clear Body" }]} />
+<Encounter encounter={_tentacool}>
+  <Row row={["Old Rod · 70% · Level 2-4 ·", { info: "Clear Body" }]} />
+</Encounter>
 
 export const _box2 = getBox({
   box: _box1,
@@ -94,10 +98,9 @@ export const _wooperP = {
   moves: ["Mud Shot", "Tackle", "Tail Whip"],
 };
 
-<Encounter
-  encounter={_wooperP}
-  row={["Grass ·", { warning: "Night" }, "· 20% · Level 4-6 ·", { info: "Water Absorb" }]}
-/>
+<Encounter encounter={_wooperP}>
+  <Row row={["Grass ·", { warning: "Night" }, "· 20% · Level 4-6 ·", { info: "Water Absorb" }]} />
+</Encounter>
 
 ## Route 1 Encounter
 
@@ -109,10 +112,9 @@ export const _meowthG = {
   moves: ["Fake Out", "Growl"],
 };
 
-<Encounter
-  encounter={_meowthG}
-  row={["Grass · Night · 10% · Level 2-4 ·", { info: "Tough Claws" }]}
-/>
+<Encounter encounter={_meowthG}>
+  <Row row={["Grass · Night · 10% · Level 2-4 ·", { info: "Tough Claws" }]} />
+</Encounter>
 
 ## Viridian City Encounter
 
@@ -122,7 +124,9 @@ export const _marill = {
   moves: ["Aqua Jet", "Tackle", "Tail Whip"],
 };
 
-<Encounter encounter={_marill} row={["Old Rod · 70% · Level 3-4 ·", { info: "Huge Power" }]} />
+<Encounter encounter={_marill}>
+  <Row row={["Old Rod · 70% · Level 3-4 ·", { info: "Huge Power" }]} />
+</Encounter>
 
 ## Route 2 Encounter
 
@@ -132,10 +136,9 @@ export const _houndour = {
   moves: ["Incinerate", "Leer"],
 };
 
-<Encounter
-  encounter={_houndour}
-  row={["Grass · Night · 5% · Level 4-6 ·", { info: "Flash Fire" }]}
-/>
+<Encounter encounter={_houndour}>
+  <Row row={["Grass · Night · 5% · Level 4-6 ·", { info: "Flash Fire" }]} />
+</Encounter>
 
 ## Viridian Forest Encounter
 
@@ -145,7 +148,9 @@ export const _kricketot = {
   moves: ["Bide", "Growl", "Tackle"],
 };
 
-<Encounter encounter={_kricketot} row={["Grass · Night · 10% · Level 4-6"]} />
+<Encounter encounter={_kricketot}>
+  <Row row={["Grass · Night · 10% · Level 4-6"]} />
+</Encounter>
 
 export const _box3 = getBox({
   box: _box2,
@@ -255,7 +260,9 @@ export const _box4 = getBox({
 
 export const _psyduck = { name: "Psyduck", moves: ["Scratch", "Water Sport"] };
 
-<Encounter encounter={_psyduck} row={["Old Rod · 70% · Level 2-4"]} />
+<Encounter encounter={_psyduck}>
+  <Row row={["Old Rod · 70% · Level 2-4"]} />
+</Encounter>
 
 export const _box5 = getBox({
   box: _box4,
@@ -514,7 +521,9 @@ export const _yamaskG = {
   moves: ["Haze", "Magnitude", "Shadow Sneak"],
 };
 
-<Encounter encounter={_yamaskG} row={["Night · 10% · Level 7-9"]} />
+<Encounter encounter={_yamaskG}>
+  <Row row={["Night · 10% · Level 7-9"]} />
+</Encounter>
 
 ## Pewter Museum Leader Falkner Battle
 

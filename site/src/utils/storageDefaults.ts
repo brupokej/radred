@@ -14,4 +14,12 @@ export const STORAGE_DEFAULTS: Record<string, string> = {
     "Tentacruel Acid Spray Eevee",
   "branch-golduck-zen-headbutt-starmie-golduck-zen-headbutt-toxicroak":
     "Golduck Zen Headbutt Starmie",
+
+  "sequence-wimpod-1": '["Wimpod"]',
+  "sequence-frillish-1": '["Frillish"]',
+  "sequence-grass-1": '["Sprigatito"]',
+  "sequence-water-1": '["Mudkip"]',
+  "sequence-water-2": '["Froakie"]',
+  "sequence-fire-1": '["Chimchar"]',
+  "sequence-grass-2": '["Treecko"]',
 };

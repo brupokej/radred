@@ -12,11 +12,13 @@ import {
   Turn,
 } from "@site/src/components/Battle";
 import BoxChange from "@site/src/components/BoxChange";
+import Encounter from "@site/src/components/Encounter";
+import { Row } from "@site/src/components/Row";
+import Switch, { Case } from "@site/src/components/Switch";
 
 import { getBox } from "@site/src/utils/box";
-import {
-  route6CamperJeffBox,
-} from "@site/src/utils/opponents";
+import { getLocation } from "@site/src/utils/encounterLog";
+import { route6CamperJeffBox } from "@site/src/utils/opponents";
 
 import { box as _box1 } from "@site/guide/misty.mdx";
 
@@ -77,13 +79,23 @@ export const _box3 = getBox({
       <Turn>
         <PlayerMove move="{p:Cloyster} switch to {p:Perrserker}" />
         <OpponentMove move="{o:Ambipom} Fake Out {p:Perrserker} to {+:106}" />
-        <OpponentMove move={"{o:Mr. Mime-G} Freeze-Dry {p:Perrserker} to {+:83} or Freeze-Dry {p:Houndoom} to {+:84}"} />
-        <PlayerMove move={"{p:Houndoom} Incinerate {o:Mr. Mime-G} to {-:48} and {o:Ambipom} to {-:71}"} />
+        <OpponentMove
+          move={
+            "{o:Mr. Mime-G} Freeze-Dry {p:Perrserker} to {+:83} or Freeze-Dry {p:Houndoom} to {+:84}"
+          }
+        />
+        <PlayerMove
+          move={"{p:Houndoom} Incinerate {o:Mr. Mime-G} to {-:48} and {o:Ambipom} to {-:71}"}
+        />
         <OpponentMove move="{o:Perrserker} frostbite to {+:76}" />
       </Turn>
       <Turn>
         <PlayerMove move="{p:Perrserker} Fake Out {o:Ambipom} to {-:52}" />
-        <OpponentMove move={"{o:Mr. Mime-G} Hidden Power Fire {p:Perrserker} to {+:52} or Freeze-Dry {p:Houndoom} to {+:57}"} />
+        <OpponentMove
+          move={
+            "{o:Mr. Mime-G} Hidden Power Fire {p:Perrserker} to {+:52} or Freeze-Dry {p:Houndoom} to {+:57}"
+          }
+        />
         <PlayerMove move={"{p:Houndoom} Leer {o:Ambipom} and {o:Mr. Mime-G}"} />
         <OpponentMove move="{p:Houndoom} frostbite to {+:51}" />
       </Turn>
@@ -131,3 +143,42 @@ export const _box3 = getBox({
     </Matchup>
   </BattleLine>
 </Battle>
+
+## Fishing 1 Encounter
+
+export const _wimpod = {
+  name: "Wimpod",
+  ability: "Wimp Out",
+  moves: ["Struggle Bug"],
+};
+
+<Encounter encounter={_wimpod}>
+  <Switch switch={() => getLocation("Wimpod")}>
+    <Case case="S.S. Anne">
+      <Row row={["Old Rod · 70% · Level 2-4"]} />
+    </Case>
+    <Case case="Vermillion City">
+      <Row row={["Good Rod · 20% · Level 27-29"]} />
+    </Case>
+  </Switch>
+</Encounter>
+
+## Fishing 2 Encounter
+
+export const _frillish = {
+  name: "Frillish",
+  moves: ["Bubble Beam", "Ominous Wind", "Recover", "Water Pulse"],
+};
+
+<Encounter encounter={_frillish}>
+  <Switch switch={() => getLocation("Frillish")}>
+    <Case case="Vermillion City">
+      <Row row={["Good Rod · 60%  · Level 27-29"]} />
+    </Case>
+    <Case case="Route 11">
+      <Row row={["Good Rod · 20% · Level 27-29"]} />
+    </Case>
+  </Switch>
+</Encounter>
+
+export const box = _box3;

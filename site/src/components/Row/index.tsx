@@ -3,14 +3,25 @@ import { Pokemon, resolvePokemon } from "@site/src/utils/pokemon";
 import { parseTokens } from "@site/src/utils/tokens";
 import styles from "./styles.module.css";
 
+export type DropdownConfig = {
+  value: string;
+  options: string[];
+  disabled?: boolean;
+  onChange?: (value: string) => void;
+};
+
 export type RowCell =
   | string
+  | Pokemon
   | { info: string }
   | { warning: string }
   | { danger: string }
-  | Pokemon;
+  | { dropdown: DropdownConfig };
 
-type NormalizedCell = { sep: string } | { value: string; variant?: "info" | "warning" | "danger" };
+type NormalizedCell =
+  | { sep: string }
+  | { value: string; variant?: "info" | "warning" | "danger" }
+  | { dropdown: DropdownConfig };
 
 const SEPARATORS = ["·", "→"] as const;
 
@@ -76,7 +87,8 @@ function normalizeCell(c: RowCell): NormalizedCell[] {
   if ("base" in c) return expandPokemon(c as Pokemon).flatMap(normalizeCell);
   if ("info" in c) return [{ value: c.info, variant: "info" as const }];
   if ("warning" in c) return [{ value: c.warning, variant: "warning" as const }];
-  return [{ value: c.danger, variant: "danger" as const }];
+  if ("danger" in c) return [{ value: c.danger, variant: "danger" as const }];
+  return [c];
 }
 
 export function Row({ row }: { row: RowCell[] }) {
@@ -92,6 +104,20 @@ export function Row({ row }: { row: RowCell[] }) {
       insetBlock="var(--ifm-spacing-vertical)"
     >
       {cells.map((cell, i) => {
+        if ("dropdown" in cell) {
+          return (
+            <select
+              className={styles.select}
+              value={cell.dropdown.value}
+              disabled={cell.dropdown.disabled}
+              onChange={(e) => cell.dropdown.onChange?.(e.target.value)}
+            >
+              {cell.dropdown.options.map((o) => (
+                <option key={o} value={o}>{o}</option>
+              ))}
+            </select>
+          );
+        }
         if ("sep" in cell) {
           return (
             <span key={i} className={styles.sepCell}>

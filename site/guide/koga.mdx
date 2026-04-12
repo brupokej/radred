@@ -1,0 +1,50 @@
+---
+sidebar_position: 6
+---
+
+import Encounter from "@site/src/components/Encounter";
+import { Row } from "@site/src/components/Row";
+
+import { getBox } from "@site/src/utils/box";
+
+import { box as _box1 } from "@site/guide/sabrina.mdx";
+
+# Koga
+
+## Starter Egg 3 Encounter
+
+export const _froakie = {
+  name: "Froakie",
+  ability: "Torrent",
+  moves: ["Growl", "Pound"],
+};
+
+<Encounter encounter={_froakie}>
+  <Row row={["Water Egg · Level 1"]} />
+</Encounter>
+
+## Starter Egg 4 Encounter
+
+export const _chimchar = {
+  name: "Chimchar",
+  ability: "Blaze",
+  moves: ["Leer", "Scratch"],
+};
+
+<Encounter encounter={_chimchar}>
+  <Row row={["Fire Egg · Level 1"]} />
+</Encounter>
+
+## Starter Egg 5 Encounter
+
+export const _treecko = {
+  name: "Treecko",
+  ability: "Overgrow",
+  moves: ["Leer", "Pound"],
+};
+
+<Encounter encounter={_treecko}>
+  <Row row={["Grass Egg · Level 1"]} />
+</Encounter>
+
+export const box = _box1;
