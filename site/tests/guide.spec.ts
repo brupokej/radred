@@ -5,21 +5,22 @@ async function waitForRender(loc: Locator) {
   // Wait until the subtree has been DOM-stable for two animation frames.
   // Handles chains of React useEffect re-renders (e.g. auto-selected branches
   // triggering further renders) by resetting the timer on each mutation.
-  await loc.evaluate((el) =>
-    new Promise<void>((resolve) => {
-      let rafId: number;
-      const done = () => {
-        observer.disconnect();
-        resolve();
-      };
-      const schedule = () => {
-        cancelAnimationFrame(rafId);
-        rafId = requestAnimationFrame(() => requestAnimationFrame(done));
-      };
-      const observer = new MutationObserver(schedule);
-      observer.observe(el, { childList: true, subtree: true });
-      schedule();
-    })
+  await loc.evaluate(
+    (el) =>
+      new Promise<void>((resolve) => {
+        let rafId: number;
+        const done = () => {
+          observer.disconnect();
+          resolve();
+        };
+        const schedule = () => {
+          cancelAnimationFrame(rafId);
+          rafId = requestAnimationFrame(() => requestAnimationFrame(done));
+        };
+        const observer = new MutationObserver(schedule);
+        observer.observe(el, { childList: true, subtree: true });
+        schedule();
+      })
   );
 }
 
@@ -32,9 +33,9 @@ async function expandAll(loc: Locator) {
 }
 
 async function getValues(select: Locator): Promise<string[]> {
-  return await select.locator("option").evaluateAll(
-    (options) => options.map((o) => (o as HTMLOptionElement).value)
-  );
+  return await select
+    .locator("option")
+    .evaluateAll((options) => options.map((o) => (o as HTMLOptionElement).value));
 }
 
 async function getSnapshot(
@@ -87,7 +88,7 @@ async function getSnapshot(
 
   const filename = slugify([...parts, cardIndex.value++]);
   await expect.soft(card).toHaveScreenshot([`${filename}.png`]);
-  
+
   const unsetKeys = await card.evaluate(() => localStorage.getItem("unset-keys"));
   expect(unsetKeys, "All keys must be set in storageDefaults.ts").toBeNull();
 }

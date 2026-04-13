@@ -1103,7 +1103,7 @@ export const vermillionCityGymGentlemanTuckerBox = getOpponentBox([
   {
     name: "Farfetch'd",
     spriteKey: "farfetchd",
-    pokedexKey: "Farfetch'd",
+    pokedexKey: "Farfetch’d",
     level: 36,
     nature: "Jolly",
     ability: "Sharpness",
@@ -3582,7 +3582,7 @@ export const route23BrendanBox = getOpponentBox([
     nature: "Rash",
     ability: "Sheer Force",
     item: "Life Orb",
-    moves: ["Earth Power", "Rock Slide", "Psychic", "Hidden Power Ice"],
+    moves: ["Earth Power", "Rock Slide", "Psychic", "HP Ice"],
   },
   {
     name: "Ursaluna-BM",
@@ -3805,7 +3805,7 @@ export const victoryRoadAceTrainerCarolineBox = getOpponentBox([
     nature: "Modest",
     ability: "Sage Power",
     item: "Choice Scarf",
-    moves: ["Flamethrower", "Focus Blast", "Grass Knot", "Hidden Power Ice"],
+    moves: ["Flamethrower", "Focus Blast", "Grass Knot", "HP Ice"],
   },
 ]);
 
@@ -4081,7 +4081,7 @@ export const eliteFourLoreleiSnowBox = getOpponentBox([
     nature: "Modest",
     ability: "Slush Rush",
     item: "Choice Specs",
-    moves: ["Blizzard", "Earth Power", "Freeze-Dry", "Hidden Power Fire"],
+    moves: ["Blizzard", "Earth Power", "Freeze-Dry", "HP Fire"],
   },
   {
     name: "Landorus-T",
@@ -4126,7 +4126,7 @@ export const eliteFourLoreleiSnowBox = getOpponentBox([
     nature: "Naive",
     ability: "Slush Rush",
     item: "Abomasite",
-    moves: ["Giga Drain", "Blizzard", "Earthquake", "Hidden Power Fire"],
+    moves: ["Giga Drain", "Blizzard", "Earthquake", "HP Fire"],
   },
 ]);
 

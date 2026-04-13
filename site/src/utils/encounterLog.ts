@@ -1,4 +1,4 @@
-import { locations, encounterSequences } from "./encounterPools";
+import { encounterSequences, locations } from "./encounterPools";
 import { getState, setState } from "./storage";
 
 export function readAllSelections(): Record<string, string[]> {

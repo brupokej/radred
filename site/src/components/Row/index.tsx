@@ -53,7 +53,8 @@ export function expandPokemon(pokemon: Pokemon): Array<string | { warning: strin
       : `Rare Candy to Level ${current.level}`;
     header = toName ? `${levelPart} → ${toName}` : levelPart;
   } else if (nameChanged) {
-    header = `Rare Candy → ${toName}`;
+    const item = toName === "Arcanine-H" ? "Fire Stone" : "Rare Candy";
+    header = `${item} → ${toName}`;
   } else {
     header = `Keep at Level ${current.level}`;
   }
@@ -107,13 +108,16 @@ export function Row({ row }: { row: RowCell[] }) {
         if ("dropdown" in cell) {
           return (
             <select
+              key={i}
               className={styles.select}
               value={cell.dropdown.value}
               disabled={cell.dropdown.disabled}
               onChange={(e) => cell.dropdown.onChange?.(e.target.value)}
             >
               {cell.dropdown.options.map((o) => (
-                <option key={o} value={o}>{o}</option>
+                <option key={o} value={o}>
+                  {o}
+                </option>
               ))}
             </select>
           );

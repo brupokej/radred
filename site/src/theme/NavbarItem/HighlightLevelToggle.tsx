@@ -18,7 +18,9 @@ const VISIBLE: Record<HighlightLevel, number> = {
 function Toggle() {
   const level = useHighlightLevel();
 
-  useEffect(() => { setHighlightLevel(level); }, []);
+  useEffect(() => {
+    setHighlightLevel(level);
+  }, []);
 
   function handleClick() {
     setHighlightLevel(nextLevel(level));

@@ -1,5 +1,5 @@
 import Card from "@site/src/components/Card";
-import { Row, RowCell } from "@site/src/components/Row";
+import { Row } from "@site/src/components/Row";
 import Team from "@site/src/components/Team";
 import { Box } from "@site/src/utils/box";
 import { readAllSelections, writeAll } from "@site/src/utils/encounterLog";
@@ -22,7 +22,7 @@ function getFilteredOptions(
   for (const [seqTarget, cfg] of Object.entries(encounterSequences)) {
     if (cfg.poolName !== poolName || cfg.sequenceId === sequenceId) continue;
     if (cfg.priority > priority) continue;
-    for (const s of (all[cfg.sequenceId] ?? [seqTarget])) consumed.add(s);
+    for (const s of all[cfg.sequenceId] ?? [seqTarget]) consumed.add(s);
   }
   const mySelections = all[sequenceId] ?? [];
   for (let i = 0; i < currentIdx; i++) consumed.add(mySelections[i]);
@@ -62,10 +62,11 @@ function Sequence({ target }: { target: string }) {
     writeAll(updates);
   }
 
-  const externalEntry = Object.entries(encounterSequences).find(([seqTarget, cfg]) =>
-    cfg.poolName === poolName &&
-    cfg.sequenceId !== sequenceId &&
-    (all[cfg.sequenceId] ?? [seqTarget]).includes(target)
+  const externalEntry = Object.entries(encounterSequences).find(
+    ([seqTarget, cfg]) =>
+      cfg.poolName === poolName &&
+      cfg.sequenceId !== sequenceId &&
+      (all[cfg.sequenceId] ?? [seqTarget]).includes(target)
   );
 
   if (externalEntry) {
@@ -75,7 +76,14 @@ function Sequence({ target }: { target: string }) {
       .filter((c) => c.priority < extCfg.priority)
       .reduce((sum, c) => sum + (all[c.sequenceId]?.length ?? 1), 0);
     const location = locations[extStart + extSelections.indexOf(target)];
-    return <Row row={[`${method} → ${location} →`, { dropdown: { value: target, options: [target], disabled: true } }]} />;
+    return (
+      <Row
+        row={[
+          `${method} → ${location} →`,
+          { dropdown: { value: target, options: [target], disabled: true } },
+        ]}
+      />
+    );
   }
 
   const maxWindowIndex = Math.max(...locationWindow.map((loc) => locations.indexOf(loc)));
@@ -86,12 +94,26 @@ function Sequence({ target }: { target: string }) {
         const locationIdx = startIndex + idx;
         const location = locations[locationIdx];
         const isTerminalRow = locationIdx === maxWindowIndex;
-        const options = isTerminalRow ? [target] : getFilteredOptions(all, optionPool, poolName, sequenceId, priority, idx);
+        const options = isTerminalRow
+          ? [target]
+          : getFilteredOptions(all, optionPool, poolName, sequenceId, priority, idx);
         const outOfLocations = !locationWindow.includes(location ?? "");
         const onlyOption = options.length === 1;
         return (
           <div key={idx} className={styles.sequenceRow} data-sequence={sequenceId}>
-            <Row row={[`${method} → ${location} →`, { dropdown: { value, options, disabled: onlyOption || outOfLocations, onChange: (v) => handleChange(idx, v) } }]} />
+            <Row
+              row={[
+                `${method} → ${location} →`,
+                {
+                  dropdown: {
+                    value,
+                    options,
+                    disabled: onlyOption || outOfLocations,
+                    onChange: (v) => handleChange(idx, v),
+                  },
+                },
+              ]}
+            />
           </div>
         );
       })}

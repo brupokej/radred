@@ -7,7 +7,7 @@ export function getState(key: string): string | null {
   const value = localStorage.getItem(key);
   if (value === null) {
     console.warn(`Key ${value} must be set in storageDefaults.ts`);
-    const unsetKeys: string[] = JSON.parse(localStorage.getItem("unset-keys") ?? []);
+    const unsetKeys: string[] = JSON.parse(localStorage.getItem("unset-keys") ?? "[]");
     localStorage.setItem("unset-keys", JSON.stringify([...unsetKeys, key]));
   }
   return value;

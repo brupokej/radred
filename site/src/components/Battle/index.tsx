@@ -2,12 +2,12 @@ import Card from "@site/src/components/Card";
 import { ScrollFade } from "@site/src/components/ScrollFade";
 import Team from "@site/src/components/Team";
 import { Box, resolveBox } from "@site/src/utils/box";
-import { getState, setState } from "@site/src/utils/storage";
-import { slugify } from "@site/src/utils/slugify";
 import { useHpDisplay } from "@site/src/utils/hpDisplay";
 import { getHp } from "@site/src/utils/pokedex";
 import { PokemonData, resolvePokemon } from "@site/src/utils/pokemon";
+import { slugify } from "@site/src/utils/slugify";
 import { getColouredSpriteUrl } from "@site/src/utils/sprites";
+import { getState, setState } from "@site/src/utils/storage";
 import { parseTokens } from "@site/src/utils/tokens";
 import React, {
   useCallback,
@@ -362,7 +362,9 @@ export function Branch({
           onChange={(e) => handleChange(e.target.value)}
         >
           {branch.map((item) => (
-            <option key={item} value={item}>{item}</option>
+            <option key={item} value={item}>
+              {item}
+            </option>
           ))}
         </select>
       </ScrollFade>
