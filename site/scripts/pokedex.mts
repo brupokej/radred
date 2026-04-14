@@ -14,6 +14,7 @@ const record: Record<string, PokedexData> = {};
 for (const entry of Object.values(species)) {
   if (entry.key && entry.stats) {
     const [hp, atk, def, spe, spa, spd] = entry.stats;
+    if (entry.key in record) continue;
     record[entry.key] = { hp, atk, def, spa, spd, spe };
   }
 }

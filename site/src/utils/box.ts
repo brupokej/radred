@@ -96,7 +96,7 @@ export function getBox({
   box?: Box;
   remove?: string[];
   add?: PokemonData[];
-  cap?: number;
+  cap?: number | { level: number; exclude?: string[] };
   update?: Record<string, Partial<PokemonData>> | Record<string, Partial<PokemonData>>[];
   team?: string[];
 }): Box {
@@ -134,7 +134,9 @@ export function getBox({
   }
 
   if (cap !== undefined) {
-    newChanges.push({ type: "cap", level: cap });
+    const level = typeof cap === "number" ? cap : cap.level;
+    const exclude = typeof cap === "number" ? undefined : cap.exclude;
+    newChanges.push({ type: "cap", level, exclude });
   }
 
   for (const u of updates) {

@@ -14,6 +14,8 @@ export const STORAGE_DEFAULTS: Record<string, string> = {
   "branch-golduck-zen-headbutt-starmie-golduck-zen-headbutt-toxicroak":
     "Golduck Zen Headbutt Starmie",
   "branch-raichu-nasty-plot-pawmot-close-combat-runerigus": "Raichu Nasty Plot",
+  "branch-ceruledge-regular-shadow-claw-hawlucha-ceruledge-crit-shadow-claw-hawlucha":
+    "Ceruledge regular Shadow Claw Hawlucha",
 
   "sequence-wimpod-1": '["Wimpod"]',
   "sequence-frillish-1": '["Frillish"]',
