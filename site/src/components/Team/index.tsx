@@ -1,9 +1,9 @@
 import Card from "@site/src/components/Card";
+import { ScrollArrows } from "@site/src/components/ScrollArrows";
 import { Box, resolveBox } from "@site/src/utils/box";
 import { pokedex, type PokedexData } from "@site/src/utils/pokedex";
 import { resolvePokemon, type Pokemon } from "@site/src/utils/pokemon";
 import { getColouredSpriteUrl } from "@site/src/utils/sprites";
-import clsx from "clsx";
 import { createContext, useCallback, useContext, useEffect, useRef, useState } from "react";
 import styles from "./styles.module.css";
 export type { Pokemon };
@@ -46,8 +46,6 @@ function TeamGrid({ team }: { team: Pokemon[] }) {
   const contentRef = useRef<HTMLDivElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
   const [cols, setCols] = useState(6);
-  const [canScrollLeft, setCanScrollLeft] = useState(false);
-  const [canScrollRight, setCanScrollRight] = useState(false);
 
   useEffect(() => {
     const el = contentRef.current;
@@ -62,33 +60,7 @@ function TeamGrid({ team }: { team: Pokemon[] }) {
     return () => obs.disconnect();
   }, []);
 
-  const updateScrollState = useCallback(() => {
-    const el = scrollRef.current;
-    if (!el) return;
-    setCanScrollLeft(el.scrollLeft > 0);
-    setCanScrollRight(el.scrollLeft + el.clientWidth < el.scrollWidth - 1);
-  }, []);
-
-  useEffect(() => {
-    const el = scrollRef.current;
-    if (!el) return;
-    updateScrollState();
-    el.addEventListener("scroll", updateScrollState, { passive: true });
-    const obs = new ResizeObserver(updateScrollState);
-    obs.observe(el);
-    return () => {
-      el.removeEventListener("scroll", updateScrollState);
-      obs.disconnect();
-    };
-  }, [updateScrollState]);
-
-  useEffect(() => {
-    updateScrollState();
-  }, [cols, updateScrollState]);
-
-  const scroll = useCallback((dir: "left" | "right") => {
-    const el = scrollRef.current;
-    if (!el) return;
+  const scroll = useCallback((el: HTMLDivElement, dir: "left" | "right") => {
     const current = el.scrollLeft;
     const target =
       dir === "right"
@@ -103,32 +75,17 @@ function TeamGrid({ team }: { team: Pokemon[] }) {
 
   return (
     <div ref={contentRef} className={styles.content}>
-      <div
-        className={clsx(
-          styles.gridWrapper,
-          canScrollLeft && styles.gridFadeLeft,
-          canScrollRight && styles.gridFadeRight
-        )}
-      >
-        {canScrollLeft && (
-          <button
-            className={`${styles.scrollArrow} ${styles.scrollArrowLeft}`}
-            onClick={() => scroll("left")}
-            aria-label="Scroll left"
-          />
-        )}
-        <div ref={scrollRef} className={styles.grid} data-scroll>
+      <div className={styles.scrollArea}>
+        <ScrollArrows
+          scrollRef={scrollRef}
+          onLeft={(el) => scroll(el, "left")}
+          onRight={(el) => scroll(el, "right")}
+        />
+        <div ref={scrollRef} className={styles.grid}>
           {slots.map((pokemon, i) => (
             <PokemonCard key={i} pokemon={pokemon} />
           ))}
         </div>
-        {canScrollRight && (
-          <button
-            className={`${styles.scrollArrow} ${styles.scrollArrowRight}`}
-            onClick={() => scroll("right")}
-            aria-label="Scroll right"
-          />
-        )}
       </div>
     </div>
   );

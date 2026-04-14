@@ -112,7 +112,7 @@ async function getSnapshots(page: Page, guideIndex: number, guide: string) {
   }
 }
 
-const GUIDES = ["brock", "misty", "surge", "erika", "sabrina", "koga"];
+const GUIDES = ["brock", "misty", "surge", "erika", "sabrina", "koga", "stats"];
 
 for (const [guideIndex, guide] of GUIDES.entries()) {
   test.describe(`guide/${guide}`, () => {

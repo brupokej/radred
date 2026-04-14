@@ -82,6 +82,7 @@
   display: flex;
   gap: 0.4rem;
   overflow-x: auto;
+  overscroll-behavior-x: none;
   padding-inline-start: var(--ifm-spacing-horizontal);
   white-space: nowrap;
 }
@@ -115,6 +116,7 @@
   display: flex;
   gap: 0.4rem;
   overflow-x: auto;
+  overscroll-behavior-x: none;
   padding-block: calc(var(--ifm-spacing-vertical) - 0.15rem);
   padding-inline: var(--ifm-spacing-horizontal);
   white-space: nowrap;

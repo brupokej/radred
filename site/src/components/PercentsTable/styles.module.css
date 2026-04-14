@@ -1,0 +1,146 @@
+.tableContainer {
+  overflow: clip;
+  position: relative;
+  --scroll-arrows-vertical-inset: 1px;
+}
+
+.scrollInner {
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-x: none;
+}
+
+.table {
+  border-width: 0;
+  font-size: 0.875rem;
+  line-height: 1.8;
+  margin: 0;
+  min-width: 100%;
+  overflow: visible;
+  width: max-content;
+}
+
+.table tr:first-child th,
+.table tr:first-child td {
+  border-top-width: 0;
+}
+
+.table tr:last-child th,
+.table tr:last-child td {
+  border-bottom-width: 0;
+}
+
+.table th:last-child,
+.table td:last-child {
+  border-right-width: 0;
+}
+
+.table th,
+.table td {
+  padding-block: var(--ifm-table-cell-padding);
+  padding-inline: var(--ifm-table-cell-padding);
+  text-align: center;
+  vertical-align: middle;
+}
+
+.table td:has(.chip) {
+  padding-block: calc(var(--ifm-table-cell-padding) - 0.15rem);
+}
+
+.table thead tr {
+  border-bottom-width: 1px;
+}
+
+.table thead th {
+  background-color: var(--ifm-color-emphasis-100);
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.table th:first-child,
+.table td:first-child {
+  border-left-width: 0;
+  border-right-width: 0;
+  box-shadow: inset -1px 0 0 0 var(--ifm-color-emphasis-300);
+  left: 0;
+  position: sticky;
+  z-index: 2;
+}
+
+.table th:nth-child(2),
+.table td:nth-child(2) {
+  border-left-width: 0;
+  text-align: left;
+  width: 100%;
+}
+
+.table thead th:first-child {
+  z-index: 4;
+}
+
+.table tbody td:first-child {
+  background-color: var(--ifm-card-background-color);
+}
+
+.table tbody tr:nth-child(even) td:first-child {
+  background:
+    linear-gradient(var(--ifm-table-stripe-background), var(--ifm-table-stripe-background)),
+    var(--ifm-card-background-color);
+}
+
+.table th {
+  cursor: default;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.table th.sortable {
+  cursor: pointer;
+}
+
+.headerContent {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25em;
+  vertical-align: middle;
+}
+
+.sortArrow {
+  display: inline-block;
+  width: 1em;
+  text-align: center;
+}
+
+.sprite {
+  display: block;
+  height: 26px;
+  width: 26px;
+  object-fit: contain;
+  margin: 0 auto;
+}
+
+.detailToggle {
+  background: none;
+  border: none;
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+  color: var(--ifm-color-primary);
+  cursor: pointer;
+  display: block;
+  padding: calc(var(--ifm-spacing-vertical) * 0.6) var(--ifm-spacing-horizontal);
+  text-align: center;
+  user-select: none;
+  width: 100%;
+}
+
+.detailToggle:hover {
+  background: var(--ifm-color-emphasis-100);
+}
+
+.chip {
+  border-radius: 3px;
+  display: inline-block;
+  min-width: 2em;
+  padding-block: 0.15rem;
+  padding-inline: 0.4rem;
+}

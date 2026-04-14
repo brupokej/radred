@@ -7,7 +7,7 @@ import { getHp } from "@site/src/utils/pokedex";
 import { PokemonData, resolvePokemon } from "@site/src/utils/pokemon";
 import { slugify } from "@site/src/utils/slugify";
 import { getColouredSpriteUrl } from "@site/src/utils/sprites";
-import { getState, setState } from "@site/src/utils/storage";
+import { setState } from "@site/src/utils/storage";
 import { parseTokens } from "@site/src/utils/tokens";
 import React, {
   useCallback,
@@ -19,6 +19,34 @@ import React, {
   useRef,
 } from "react";
 import styles from "./styles.module.css";
+
+export interface MoveData {
+  player?: string;
+  opponent?: string;
+}
+
+export interface BranchData {
+  if?: string[];
+  ifNot?: string[];
+  branches: string[];
+}
+
+export interface MatchupData {
+  matchup: string[];
+  turns: MoveData[][];
+  branches?: BranchData[];
+}
+
+export interface LineData {
+  line?: string;
+  matchups: MatchupData[];
+  frags?: Record<string, number>;
+}
+
+export interface BattleData {
+  opponentBox: Box;
+  lines: LineData[];
+}
 
 type GraphState = {
   visibleOrder: string[];
@@ -109,18 +137,52 @@ type GraphCtxValue = {
 const BattleGraphCtx = React.createContext<GraphCtxValue | null>(null);
 const BattleLineCtx = React.createContext<string | null>(null);
 
+function battleDataToChildren(data: BattleData): React.ReactNode {
+  return data.lines.map((lineData, li) => (
+    <BattleLine key={lineData.line ?? `line-${li}`} line={lineData.line}>
+      {lineData.matchups.map((matchupData, mi) => (
+        <Matchup key={mi} matchup={matchupData.matchup}>
+          {matchupData.turns.map((moves, ti) => (
+            <Turn key={ti}>
+              {moves.map((move, mvi) =>
+                move.player !== undefined ? (
+                  <PlayerMove key={mvi} move={move.player} />
+                ) : move.opponent !== undefined ? (
+                  <OpponentMove key={mvi} move={move.opponent} />
+                ) : null
+              )}
+            </Turn>
+          ))}
+          {matchupData.branches?.map((branchData, bi) => (
+            <Branch
+              key={bi}
+              branch={branchData.branches}
+              if={branchData.if}
+              ifNot={branchData.ifNot}
+            />
+          ))}
+        </Matchup>
+      ))}
+    </BattleLine>
+  ));
+}
+
 export function Battle({
   playerBox,
-  opponentBox,
+  opponentBox: opponentBoxProp,
   children,
+  data,
 }: {
   playerBox: Box;
-  opponentBox: Box;
-  children: React.ReactNode;
+  opponentBox?: Box;
+  children?: React.ReactNode;
+  data?: BattleData;
 }) {
+  const opponentBox = opponentBoxProp ?? data!.opponentBox;
+  const resolvedChildren = data ? battleDataToChildren(data) : children;
   const playerResolved = resolveBox(playerBox);
   const opponentResolved = resolveBox(opponentBox);
-  const lineElements = React.Children.toArray(children).filter(
+  const lineElements = React.Children.toArray(resolvedChildren).filter(
     (c): c is React.ReactElement<{ line?: string; children: React.ReactNode }> =>
       React.isValidElement(c) && c.type === BattleLine
   );
@@ -327,11 +389,14 @@ export function Branch({
     if (!dispatch) return;
     if (isActive === false) {
       dispatch({ type: "DESELECT_BRANCH", branchId });
+      if (branchKey) localStorage.removeItem(branchKey);
     } else if (isActive === true) {
       if (branch.length === 1) {
         dispatch({ type: "SELECT_BRANCH", branchId, childLine: branch[0] });
       } else {
-        const childLine = branchKey ? (getState(branchKey) ?? branch[0]) : branch[0];
+        const stored = branchKey ? localStorage.getItem(branchKey) : null;
+        const childLine = stored ?? branch[0];
+        if (branchKey && stored === null) localStorage.setItem(branchKey, childLine);
         dispatch({ type: "SELECT_BRANCH", branchId, childLine });
       }
     }

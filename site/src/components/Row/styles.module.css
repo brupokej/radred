@@ -8,6 +8,7 @@
   font-size: 0.875rem;
   line-height: 1.8;
   overflow-x: auto;
+  overscroll-behavior-x: none;
   padding-block: var(--ifm-spacing-vertical);
   padding-inline: calc(var(--ifm-spacing-horizontal) - 0.4rem);
   white-space: nowrap;

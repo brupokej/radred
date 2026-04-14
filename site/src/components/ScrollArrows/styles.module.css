@@ -1,0 +1,96 @@
+/* Overlay mode: absolutely covers the parent's position:relative container */
+.overlay {
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+  z-index: 4;
+}
+
+.overlay .arrow {
+  pointer-events: auto;
+}
+
+/* Fade pseudo-elements */
+.overlay::before,
+.overlay::after {
+  bottom: var(--scroll-arrows-vertical-inset, 0px);
+  content: "";
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  top: var(--scroll-arrows-vertical-inset, 0px);
+  transition: opacity 0.15s;
+  width: 2rem;
+  z-index: 4;
+}
+
+.overlay::before {
+  background: linear-gradient(
+    to right,
+    var(--scroll-arrows-fade-color, var(--ifm-card-background-color)),
+    transparent
+  );
+  left: var(--scroll-arrows-left-offset, 0px);
+}
+
+.overlay::after {
+  background: linear-gradient(
+    to left,
+    var(--scroll-arrows-fade-color, var(--ifm-card-background-color)),
+    transparent
+  );
+  right: 0;
+}
+
+.fadeLeft::before {
+  opacity: 1;
+}
+
+.fadeRight::after {
+  opacity: 1;
+}
+
+.arrow {
+  background: var(--ifm-color-emphasis-200);
+  border: none;
+  border-radius: 50%;
+  box-shadow: var(--ifm-global-shadow-lw);
+  cursor: pointer;
+  height: 2rem;
+  padding: 0;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: background var(--ifm-transition-fast) var(--ifm-transition-timing-default);
+  width: 2rem;
+  z-index: 5;
+}
+
+.arrow::after {
+  background-color: var(--ifm-color-emphasis-1000);
+  content: "";
+  display: block;
+  height: 100%;
+  mask: var(--ifm-menu-link-sublist-icon) 50% / 1.25rem 1.25rem no-repeat;
+  width: 100%;
+}
+
+.arrow:hover {
+  background: var(--ifm-color-emphasis-300);
+}
+
+.arrowLeft {
+  left: calc(var(--ifm-spacing-horizontal) / 4 + var(--scroll-arrows-left-offset, 0px));
+}
+
+.arrowLeft::after {
+  transform: rotate(-90deg);
+}
+
+.arrowRight {
+  right: calc(var(--ifm-spacing-horizontal) / 4);
+}
+
+.arrowRight::after {
+  transform: rotate(90deg);
+}

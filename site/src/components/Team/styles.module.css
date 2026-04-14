@@ -2,39 +2,9 @@
   padding-block-start: var(--ifm-spacing-vertical);
 }
 
-.gridWrapper {
+.scrollArea {
+  overflow: clip;
   position: relative;
-}
-
-.gridWrapper::before,
-.gridWrapper::after {
-  bottom: 0;
-  content: "";
-  opacity: 0;
-  pointer-events: none;
-  position: absolute;
-  top: 0;
-  transition: opacity 0.15s;
-  width: 2rem;
-  z-index: 1;
-}
-
-.gridWrapper::before {
-  background: linear-gradient(to right, var(--ifm-card-background-color), transparent);
-  left: 0;
-}
-
-.gridWrapper::after {
-  background: linear-gradient(to left, var(--ifm-card-background-color), transparent);
-  right: 0;
-}
-
-.gridWrapper.gridFadeLeft::before {
-  opacity: 1;
-}
-
-.gridWrapper.gridFadeRight::after {
-  opacity: 1;
 }
 
 .grid {
@@ -42,53 +12,9 @@
   flex-wrap: nowrap;
   gap: 0.75rem;
   overflow-x: auto;
+  overscroll-behavior-x: none;
   padding-block-end: var(--ifm-spacing-vertical);
   padding-inline: var(--ifm-spacing-horizontal);
-}
-
-.scrollArrow {
-  background: var(--ifm-color-emphasis-200);
-  border: none;
-  border-radius: 50%;
-  box-shadow: var(--ifm-global-shadow-lw);
-  cursor: pointer;
-  height: 2rem;
-  padding: 0;
-  position: absolute;
-  top: calc(50% - var(--ifm-spacing-vertical) / 2);
-  transform: translateY(-50%);
-  transition: background var(--ifm-transition-fast) var(--ifm-transition-timing-default);
-  width: 2rem;
-  z-index: 2;
-}
-
-.scrollArrow::after {
-  background-color: var(--ifm-color-emphasis-1000);
-  content: "";
-  display: block;
-  height: 100%;
-  mask: var(--ifm-menu-link-sublist-icon) 50% / 1.25rem 1.25rem no-repeat;
-  width: 100%;
-}
-
-.scrollArrow:hover {
-  background: var(--ifm-color-emphasis-300);
-}
-
-.scrollArrowLeft {
-  left: calc(var(--ifm-spacing-horizontal) / 4);
-}
-
-.scrollArrowLeft::after {
-  transform: rotate(-90deg);
-}
-
-.scrollArrowRight {
-  right: calc(var(--ifm-spacing-horizontal) / 4);
-}
-
-.scrollArrowRight::after {
-  transform: rotate(90deg);
 }
 
 .card {

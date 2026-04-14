@@ -53,10 +53,11 @@ export function expandPokemon(pokemon: Pokemon): Array<string | { warning: strin
       : `Rare Candy to Level ${current.level}`;
     header = toName ? `${levelPart} → ${toName}` : levelPart;
   } else if (nameChanged) {
-    const item = {
-       "Arcanine-H": "Fire Stone",
-       "Ceruledge": "Moon Stone",
-    }[toName] ?? "Rare Candy";
+    const item =
+      {
+        "Arcanine-H": "Fire Stone",
+        Ceruledge: "Moon Stone",
+      }[toName] ?? "Rare Candy";
     header = `${item} → ${toName}`;
   } else {
     header = `Keep at Level ${current.level}`;
