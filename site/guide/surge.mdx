@@ -191,7 +191,14 @@ export const _frillish = {
       <Row row={[{ warning: "Good Rod" }, "· 60%  · Level 27-29"]} />
     </Case>
     <Case case="Route 11">
-      <Row row={["Good Rod · 20% · Level 27-29"]} />
+      <Switch switch={() => getLocation("Wimpod")}>
+        <Case case="S.S. Anne">
+          <Row row={[{ warning: "Good Rod" }, "· 20% · Level 27-29"]} />
+        </Case>
+        <Case case="Vermillion City">
+          <Row row={["Good Rod · 20% · Level 27-29"]} />
+        </Case>
+      </Switch>
     </Case>
   </Switch>
 </Encounter>
