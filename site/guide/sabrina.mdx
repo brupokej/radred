@@ -5,34 +5,24 @@ sidebar_position: 5
 import Encounter from "@site/src/components/Encounter";
 import { Row } from "@site/src/components/Row";
 
-import { getBox } from "@site/src/utils/box";
+import {
+  sprigatitoEncounter,
+  mudkipEncounter,
+  box,
+} from "@site/src/data/battles/sabrina";
 
-import { box as _box1 } from "@site/guide/erika.mdx";
+export { box };
 
 # Sabrina
 
 ## Starter Egg 1 Encounter
 
-export const _sprigatito = {
-  name: "Sprigatito",
-  ability: "Overgrow",
-  moves: ["Scratch", "Tail Whip"],
-};
-
-<Encounter encounter={_sprigatito}>
+<Encounter data={sprigatitoEncounter}>
   <Row row={["Grass Egg · Level 1"]} />
 </Encounter>
 
 ## Starter Egg 2 Encounter
 
-export const _mudkip = {
-  name: "Mudkip",
-  ability: "Torrent",
-  moves: ["Growl", "Tackle"],
-};
-
-<Encounter encounter={_mudkip}>
+<Encounter data={mudkipEncounter}>
   <Row row={["Water Egg · Level 1"]} />
 </Encounter>
-
-export const box = _box1;
