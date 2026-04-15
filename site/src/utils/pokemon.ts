@@ -7,6 +7,7 @@ export interface PokemonData {
   ability?: string | null;
   item?: string | null;
   moves?: (string | null)[];
+  boxOrder?: number;
 }
 
 export interface Pokemon {

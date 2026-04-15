@@ -9,11 +9,19 @@ import {
   flexRender,
   getCoreRowModel,
   getSortedRowModel,
+  RowData,
   SortingState,
   useReactTable,
 } from "@tanstack/react-table";
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import styles from "./styles.module.css";
+
+declare module "@tanstack/react-table" {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  interface ColumnMeta<TData extends RowData, TValue> {
+    tooltip?: string;
+  }
+}
 
 type TableRow = { pokemon: string } & PokemonStats;
 
@@ -41,16 +49,19 @@ const columns = [
     enableSorting: false,
     cell: ({ row }) => (
       <img
-        src={getColouredSpriteUrl({ name: row.original.pokemon, spriteKey: row.original.spriteKey })}
+        src={getColouredSpriteUrl({
+          name: row.original.pokemon,
+          spriteKey: row.original.spriteKey,
+        })}
         alt={row.original.pokemon}
         className={styles.sprite}
       />
     ),
   }),
-  columnHelper.accessor("pokemon", { header: "Pokemon", size: 148 }),
+  columnHelper.accessor("pokemon", { header: "Pokemon", size: 144 }),
   columnHelper.accessor("battles", {
     header: "Battles",
-    size: 148,
+    size: 92,
     cell: ({ getValue, table }) => {
       const value = getValue<number>();
       const max = Math.max(0, ...table.getCoreRowModel().rows.map((r) => r.original.battles));
@@ -66,7 +77,7 @@ const columns = [
   }),
   columnHelper.accessor("frags", {
     header: "Frags",
-    size: 148,
+    size: 92,
     cell: ({ getValue, table }) => {
       const value = getValue<number>();
       const max = Math.max(0, ...table.getCoreRowModel().rows.map((r) => r.original.frags));
@@ -82,8 +93,9 @@ const columns = [
   }),
   columnHelper.accessor((row) => row.battles - row.frags, {
     id: "batt-minus-frags",
-    header: "Batt. - Frags",
-    size: 148,
+    header: "B − F",
+    meta: { tooltip: "Battles − Frags" },
+    size: 92,
     cell: ({ getValue, table }) => {
       const value = getValue<number>();
       const maxAbs = Math.max(
@@ -103,6 +115,116 @@ const columns = [
       );
     },
   }),
+  columnHelper.accessor("possibleBattles", {
+    header: "P. Batt.",
+    meta: { tooltip: "Possible Battles" },
+    size: 92,
+  }),
+  columnHelper.accessor(
+    (row) => (row.possibleBattles > 0 ? row.battles / row.possibleBattles : 0),
+    {
+      id: "battles-pct",
+      header: "Batt. %",
+      meta: { tooltip: "Battles %" },
+      size: 92,
+      cell: ({ getValue, table }) => {
+        const value = getValue<number>();
+        const max = Math.max(
+          0,
+          ...table
+            .getCoreRowModel()
+            .rows.map((r) =>
+              r.original.possibleBattles > 0 ? r.original.battles / r.original.possibleBattles : 0
+            )
+        );
+        return (
+          <span
+            className={styles.chip}
+            style={shadeCell(
+              value,
+              max,
+              "--ifm-color-success-contrast-background",
+              "--ifm-color-success"
+            )}
+          >
+            {Math.round(value * 100)}%
+          </span>
+        );
+      },
+    }
+  ),
+  columnHelper.accessor("possibleFrags", {
+    header: "P. Frags",
+    meta: { tooltip: "Possible Frags" },
+    size: 92,
+  }),
+  columnHelper.accessor((row) => (row.possibleFrags > 0 ? row.frags / row.possibleFrags : 0), {
+    id: "frags-pct",
+    header: "Frags %",
+    size: 92,
+    cell: ({ getValue, table }) => {
+      const value = getValue<number>();
+      const max = Math.max(
+        0,
+        ...table
+          .getCoreRowModel()
+          .rows.map((r) =>
+            r.original.possibleFrags > 0 ? r.original.frags / r.original.possibleFrags : 0
+          )
+      );
+      return (
+        <span
+          className={styles.chip}
+          style={shadeCell(
+            value,
+            max,
+            "--ifm-color-success-contrast-background",
+            "--ifm-color-success"
+          )}
+        >
+          {Math.round(value * 100)}%
+        </span>
+      );
+    },
+  }),
+  columnHelper.accessor(
+    (row) => {
+      const battlesPct = row.possibleBattles > 0 ? row.battles / row.possibleBattles : 0;
+      const fragsPct = row.possibleFrags > 0 ? row.frags / row.possibleFrags : 0;
+      return battlesPct + fragsPct;
+    },
+    {
+      id: "added-pct",
+      header: "Added %",
+      size: 92,
+      cell: ({ getValue, table }) => {
+        const value = getValue<number>();
+        const max = Math.max(
+          0,
+          ...table.getCoreRowModel().rows.map((r) => {
+            const bp =
+              r.original.possibleBattles > 0 ? r.original.battles / r.original.possibleBattles : 0;
+            const fp =
+              r.original.possibleFrags > 0 ? r.original.frags / r.original.possibleFrags : 0;
+            return bp + fp;
+          })
+        );
+        return (
+          <span
+            className={styles.chip}
+            style={shadeCell(
+              value,
+              max,
+              "--ifm-color-success-contrast-background",
+              "--ifm-color-success"
+            )}
+          >
+            {Math.round(value * 100)}%
+          </span>
+        );
+      },
+    }
+  ),
 ];
 
 const COLLAPSED_ROWS = 3;
@@ -114,7 +236,7 @@ export default function PercentsTable({ moments }: { moments: Moment[] }) {
   );
 
   const [stats, setStats] = useState<Record<string, PokemonStats>>({});
-  const [sorting, setSorting] = useState<SortingState>([{ id: "frags", desc: true }]);
+  const [sorting, setSorting] = useState<SortingState>([{ id: "added-pct", desc: true }]);
   const [isExpanded, setIsExpanded] = useState(false);
 
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -125,7 +247,10 @@ export default function PercentsTable({ moments }: { moments: Moment[] }) {
       const startLabel = getState("stats-filter-start");
       const endLabel = getState("stats-filter-end");
       const startIdx = startLabel
-        ? Math.max(0, battleMoments.findIndex((m) => m.label === startLabel))
+        ? Math.max(
+            0,
+            battleMoments.findIndex((m) => m.label === startLabel)
+          )
         : 0;
       const rawEnd = endLabel ? battleMoments.findIndex((m) => m.label === endLabel) : -1;
       const endIdx = rawEnd >= 0 ? rawEnd : battleMoments.length - 1;
@@ -138,7 +263,10 @@ export default function PercentsTable({ moments }: { moments: Moment[] }) {
   }, [battleMoments]);
 
   const data = useMemo<TableRow[]>(
-    () => Object.entries(stats).map(([pokemon, s]) => ({ pokemon, ...s })),
+    () =>
+      Object.entries(stats)
+        .map(([pokemon, s]) => ({ pokemon, ...s }))
+        .sort((a, b) => a.boxOrder - b.boxOrder),
     [stats]
   );
 
@@ -190,19 +318,22 @@ export default function PercentsTable({ moments }: { moments: Moment[] }) {
                       onClick={header.column.getToggleSortingHandler()}
                       className={header.column.getCanSort() ? styles.sortable : undefined}
                       style={{ minWidth: header.column.getSize() }}
+                      title={header.column.columnDef.meta?.tooltip}
                     >
                       <span className={styles.headerContent}>
                         {header.column.getCanSort() && header.column.id !== "pokemon" && (
                           <span className={styles.sortArrow} />
                         )}
                         {flexRender(header.column.columnDef.header, header.getContext())}
-                        <span className={styles.sortArrow}>
-                          {header.column.getIsSorted() === "asc"
-                            ? "↑"
-                            : header.column.getIsSorted() === "desc"
-                              ? "↓"
-                              : null}
-                        </span>
+                        {header.column.getCanSort() && (
+                          <span className={styles.sortArrow}>
+                            {header.column.getIsSorted() === "asc"
+                              ? "↑"
+                              : header.column.getIsSorted() === "desc"
+                                ? "↓"
+                                : null}
+                          </span>
+                        )}
                       </span>
                     </th>
                   ))}

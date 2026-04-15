@@ -4,16 +4,16 @@ import { EncounterData } from "@site/src/components/Encounter";
 import { getBox } from "@site/src/utils/box";
 import { Moment } from "@site/src/utils/moments";
 import {
-  route6CamperJeffBox,
-  route25LeaderBugsyBox,
-  ssAnneLassAnnGentlemanBrooksBox,
-  ssAnneSailorEdmundSailorTrevorBox,
-  ssAnneBrendanBox,
-  route9PicnickerAliciaBox,
-  route9PicnickerCaitlinBox,
   rockTunnelPicnickerDanaBox,
   route10PokeManiacHermanBox,
+  route25LeaderBugsyBox,
+  route6CamperJeffBox,
   route8SuperNerdAidanBox,
+  route9PicnickerAliciaBox,
+  route9PicnickerCaitlinBox,
+  ssAnneBrendanBox,
+  ssAnneLassAnnGentlemanBrooksBox,
+  ssAnneSailorEdmundSailorTrevorBox,
   vermillionCityGymGentlemanTuckerBox,
   vermillionCityLeaderLtSurgeBox,
 } from "@site/src/utils/opponents";
@@ -428,13 +428,22 @@ export const route6CamperJeffBattle: BattleData = {
             [
               { player: "{p:Cloyster} switch to {p:Perrserker}" },
               { opponent: "{o:Ambipom} Fake Out {p:Perrserker} to {+:106}" },
-              { opponent: "{o:Mr. Mime-G} Freeze-Dry {p:Perrserker} to {+:83} or Freeze-Dry {p:Houndoom} to {+:84}" },
-              { player: "{p:Houndoom} Incinerate {o:Mr. Mime-G} to {-:48} and {o:Ambipom} to {-:71}" },
+              {
+                opponent:
+                  "{o:Mr. Mime-G} Freeze-Dry {p:Perrserker} to {+:83} or Freeze-Dry {p:Houndoom} to {+:84}",
+              },
+              {
+                player:
+                  "{p:Houndoom} Incinerate {o:Mr. Mime-G} to {-:48} and {o:Ambipom} to {-:71}",
+              },
               { opponent: "{o:Perrserker} frostbite to {+:76}" },
             ],
             [
               { player: "{p:Perrserker} Fake Out {o:Ambipom} to {-:52}" },
-              { opponent: "{o:Mr. Mime-G} HP Fire {p:Perrserker} to {+:52} or Freeze-Dry {p:Houndoom} to {+:57}" },
+              {
+                opponent:
+                  "{o:Mr. Mime-G} HP Fire {p:Perrserker} to {+:52} or Freeze-Dry {p:Houndoom} to {+:57}",
+              },
               { player: "{p:Houndoom} Leer {o:Ambipom} and {o:Mr. Mime-G}" },
               { opponent: "{p:Houndoom} frostbite to {+:51}" },
             ],
@@ -454,8 +463,14 @@ export const route6CamperJeffBattle: BattleData = {
             [
               { player: "{p:Houndoom} switch to {p:Excadrill}" },
               { player: "{p:Perrserker} switch to {p:Golduck}" },
-              { opponent: "{o:Perrserker} Fake Out {p:Excadrill} to {+:113} or Fake Out {p:Golduck} to {+:75}" },
-              { opponent: "{o:Boltund} Thunder Fang {p:Excadrill} or Fire Fang {p:Golduck} to {+:75}" },
+              {
+                opponent:
+                  "{o:Perrserker} Fake Out {p:Excadrill} to {+:113} or Fake Out {p:Golduck} to {+:75}",
+              },
+              {
+                opponent:
+                  "{o:Boltund} Thunder Fang {p:Excadrill} or Fire Fang {p:Golduck} to {+:75}",
+              },
               { opponent: "{p:Golduck} burn to {+:68}" },
             ],
             [
@@ -466,7 +481,10 @@ export const route6CamperJeffBattle: BattleData = {
             ],
             [
               { player: "{p:Clodsire} switch to {p:Cloyster}" },
-              { player: "{p:Excadrill} Earthquake {o:Boltund} to {=:0} and {o:Perrserker} to {=:0} and {p:Cloyster} to {+:38}" },
+              {
+                player:
+                  "{p:Excadrill} Earthquake {o:Boltund} to {=:0} and {o:Perrserker} to {=:0} and {p:Cloyster} to {+:38}",
+              },
               { opponent: "{p:Boltund} fainted" },
               { opponent: "{p:Perrserker} fainted" },
             ],
@@ -630,7 +648,10 @@ export const ssAnneLassAnnGentlemanBrooksBattle: BattleData = {
           turns: [
             [
               { player: "{p:Golisopod} Sucker Punch {o:Wigglytuff} to {-:136}" },
-              { opponent: "{o:Samurott} HP Grass {p:Golisopod} to {+:81} or Water Pledge {p:Perrserker} to {+:37}" },
+              {
+                opponent:
+                  "{o:Samurott} HP Grass {p:Golisopod} to {+:81} or Water Pledge {p:Perrserker} to {+:37}",
+              },
               { player: "{p:Perrserker} Iron Head {o:Wigglytuff} to {=:0}" },
               { opponent: "{o:Wigglytuff} fainted" },
             ],
@@ -642,7 +663,10 @@ export const ssAnneLassAnnGentlemanBrooksBattle: BattleData = {
             [
               { player: "{p:Golisopod} switch to {p:Arcanine-H}" },
               { player: "{p:Perrserker} switch to {p:Golduck}" },
-              { opponent: "{o:Samurott} HP Grass {p:Arcanine-H} to {+:89} or Water Pledge {p:Golduck} to {+:79}" },
+              {
+                opponent:
+                  "{o:Samurott} HP Grass {p:Arcanine-H} to {+:89} or Water Pledge {p:Golduck} to {+:79}",
+              },
             ],
             [
               { player: "{p:Golduck} Low Sweep {o:Samurott} to {-:53}" },
@@ -729,7 +753,10 @@ export const ssAnneSailorEdmundSailorTrevorBattle: BattleData = {
               { player: "{p:Arcanine-H} switch to {p:Tentacruel}" },
               { player: "{p:Perrserker} U-Turn {o:Cradily} to {-:49}" },
               { player: "{p:Perrserker} switch to {p:Azumarill}" },
-              { opponent: "{o:Cradily} HP Fire {p:Azumarill} to {+:114} or Earth Power {p:Tentacruel} to {+:48}" },
+              {
+                opponent:
+                  "{o:Cradily} HP Fire {p:Azumarill} to {+:114} or Earth Power {p:Tentacruel} to {+:48}",
+              },
             ],
             [
               { player: "{p:Tentacruel} Sludge {o:Cradily} to {-:33}" },
@@ -742,7 +769,10 @@ export const ssAnneSailorEdmundSailorTrevorBattle: BattleData = {
           matchup: ["Lumineon"],
           turns: [
             [
-              { opponent: "{o:Lumineon} HP Grass {p:Azumarill} to {+:42} or Hydro Pump {p:Tentacruel} to {+:8}" },
+              {
+                opponent:
+                  "{o:Lumineon} HP Grass {p:Azumarill} to {+:42} or Hydro Pump {p:Tentacruel} to {+:8}",
+              },
               { player: "{p:Tentacruel} Sludge {o:Lumineon} to {-:71}" },
               { player: "{p:Azumarill} Play Rough {o:Lumineon} to {=:0}" },
               { opponent: "{o:Lumineon} fainted" },
@@ -791,10 +821,7 @@ export const ssAnneBrendanBattle: BattleData = {
               { player: "{p:Perrserker} switch to {p:Runerigus}" },
               { opponent: "{o:Slaking} Body Slam {p:Runerigus}" },
             ],
-            [
-              { player: "{p:Runerigus} switch to {p:Drednaw}" },
-              { opponent: "{o:Slaking} Truant" },
-            ],
+            [{ player: "{p:Runerigus} switch to {p:Drednaw}" }, { opponent: "{o:Slaking} Truant" }],
             [
               { opponent: "{o:Slaking} Brick Break {p:Drednaw} to {+:31}" },
               { player: "{p:Drednaw} Counter {o:Slaking} to {-:23}" },
@@ -1150,7 +1177,10 @@ export const route10PokeManiacHermanBattle: BattleData = {
               { player: "{p:Golduck} Psychic {o:Cherrim} to {-:56}" },
               { player: "{p:Gyarados} Ice Fang {o:Cherrim} to {=:0}" },
               { opponent: "{o:Cherrim} fainted" },
-              { opponent: "{o:Sylveon} Hyper Voice {p:Golduck} to {+:39} and {p:Gyarados} to {+:68}" },
+              {
+                opponent:
+                  "{o:Sylveon} Hyper Voice {p:Golduck} to {+:39} and {p:Gyarados} to {+:68}",
+              },
             ],
           ],
         },
@@ -1160,7 +1190,10 @@ export const route10PokeManiacHermanBattle: BattleData = {
             [
               { player: "{p:Golduck} switch to {p:Perrserker}" },
               { player: "{p:Gyarados} switch to {p:Tentacruel}" },
-              { opponent: "{o:Sylveon} Misty Explosion {p:Perrserker} to {+:73} and {p:Tentacruel} to {+:53}" },
+              {
+                opponent:
+                  "{o:Sylveon} Misty Explosion {p:Perrserker} to {+:73} and {p:Tentacruel} to {+:53}",
+              },
               { opponent: "{o:Sylveon} fainted" },
             ],
           ],
@@ -1184,7 +1217,10 @@ export const route8SuperNerdAidanBattle: BattleData = {
               { player: "{p:Golduck} switch to {p:Arcanine-H}" },
               { opponent: "{o:Tsareena} Power Whip {p:Arcanine-H} to {+:38}" },
               { opponent: "{o:Armarouge} Flamethrower {p:Golisopod} to {+:6}" },
-              { player: "{p:Golisopod} Icy Wind {o:Tsareena} to {-:86} and {o:Armarouge} to {-:109}" },
+              {
+                player:
+                  "{p:Golisopod} Icy Wind {o:Tsareena} to {-:86} and {o:Armarouge} to {-:109}",
+              },
               { player: "{p:Golisopod} Emergency Exit to {p:Golduck}" },
             ],
             [
@@ -1206,7 +1242,10 @@ export const route8SuperNerdAidanBattle: BattleData = {
               { opponent: "{o:Basculegion-F} Shadow Ball {p:Gyarados} to {+:55}" },
             ],
             [
-              { player: "{p:Excadrill} Earthquake {o:Arcanine-H} to {=:0} and {o:Basculegion-F} to {-:64}" },
+              {
+                player:
+                  "{p:Excadrill} Earthquake {o:Arcanine-H} to {=:0} and {o:Basculegion-F} to {-:64}",
+              },
               { opponent: "{o:Arcanine-H} fainted" },
               { player: "{p:Gyarados} Bite {o:Basculegion-F} to {=:0}" },
               { opponent: "{o:Basculegion-F} fainted" },
@@ -1403,7 +1442,10 @@ export const vermillionCityLeaderLtSurgeBattle: BattleData = {
             ],
           ],
           branches: [
-            { if: ["Pawmot Close Combat Runerigus"], branches: ["Hitmonlee Close Combat Azumarill"] },
+            {
+              if: ["Pawmot Close Combat Runerigus"],
+              branches: ["Hitmonlee Close Combat Azumarill"],
+            },
             { branches: ["Pawmot Close Combat Runerigus 2"] },
           ],
         },
@@ -1534,14 +1576,38 @@ export const moments: Moment[] = [
   { label: "Fishing 2 Encounter", kind: "encounter", data: frillishEncounter },
   { label: "Fishing Box Change", kind: "boxChange", data: fishingBoxChange },
   { label: "Route 25 Leader Bugsy Battle", kind: "battle", data: route25LeaderBugsyBattle },
-  { label: "S.S. Anne Lass Ann & Gentleman Brooks Battle", kind: "battle", data: ssAnneLassAnnGentlemanBrooksBattle },
-  { label: "S.S. Anne Sailor Edmund & Sailor Trevor Battle", kind: "battle", data: ssAnneSailorEdmundSailorTrevorBattle },
+  {
+    label: "S.S. Anne Lass Ann & Gentleman Brooks Battle",
+    kind: "battle",
+    data: ssAnneLassAnnGentlemanBrooksBattle,
+  },
+  {
+    label: "S.S. Anne Sailor Edmund & Sailor Trevor Battle",
+    kind: "battle",
+    data: ssAnneSailorEdmundSailorTrevorBattle,
+  },
   { label: "S.S. Anne Brendan Battle", kind: "battle", data: ssAnneBrendanBattle },
   { label: "Route 9 Picnicker Alicia Battle", kind: "battle", data: route9PicnickerAliciaBattle },
   { label: "Route 9 Picnicker Caitlin Battle", kind: "battle", data: route9PicnickerCaitlinBattle },
-  { label: "Rock Tunnel Picnicker Dana Battle", kind: "battle", data: rockTunnelPicnickerDanaBattle },
-  { label: "Route 10 Poké Maniac Herman Battle", kind: "battle", data: route10PokeManiacHermanBattle },
+  {
+    label: "Rock Tunnel Picnicker Dana Battle",
+    kind: "battle",
+    data: rockTunnelPicnickerDanaBattle,
+  },
+  {
+    label: "Route 10 Poké Maniac Herman Battle",
+    kind: "battle",
+    data: route10PokeManiacHermanBattle,
+  },
   { label: "Route 8 Super Nerd Aidan Battle", kind: "battle", data: route8SuperNerdAidanBattle },
-  { label: "Vermillion City Gym Gentleman Tucker Battle", kind: "battle", data: vermillionCityGymGentlemanTuckerBattle },
-  { label: "Vermillion City Leader Lt. Surge Battle", kind: "battle", data: vermillionCityLeaderLtSurgeBattle },
+  {
+    label: "Vermillion City Gym Gentleman Tucker Battle",
+    kind: "battle",
+    data: vermillionCityGymGentlemanTuckerBattle,
+  },
+  {
+    label: "Vermillion City Leader Lt. Surge Battle",
+    kind: "battle",
+    data: vermillionCityLeaderLtSurgeBattle,
+  },
 ];

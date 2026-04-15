@@ -4,12 +4,12 @@ import { EncounterData } from "@site/src/components/Encounter";
 import { getBox } from "@site/src/utils/box";
 import { Moment } from "@site/src/utils/moments";
 import {
+  pewterCityLeaderBrockBox,
+  pewterMuseumLeaderFalknerBox,
   route22RivalBox,
   viridianForestBrendanBox,
-  viridianForestLassAnneBox,
   viridianForestBugCatcherSammyBox,
-  pewterMuseumLeaderFalknerBox,
-  pewterCityLeaderBrockBox,
+  viridianForestLassAnneBox,
 } from "@site/src/utils/opponents";
 
 // ─── Encounter pokemon ────────────────────────────────────────────────────────
@@ -267,7 +267,13 @@ export const route22RivalBattle: BattleData = {
       matchups: [
         {
           matchup: ["Snubbull"],
-          row: ["Risk →", { danger: "Snubbull double crit Pow-Up Punch Wooper-P into Snubbull Fire Fang Kricketune is {c:0.3%}" }],
+          row: [
+            "Risk →",
+            {
+              danger:
+                "Snubbull double crit Pow-Up Punch Wooper-P into Snubbull Fire Fang Kricketune is {c:0.3%}",
+            },
+          ],
           turns: [
             [
               { player: "{p:Wooper-P} switch to {p:Kricketune}" },
@@ -768,7 +774,13 @@ export const pewterCityLeaderBrockBattle: BattleData = {
       matchups: [
         {
           matchup: ["Lileep"],
-          row: ["Risk →", { danger: "Varoom crit Bulldoze Kricketune into Cacnea crit Pow-Up Punch Kricketune into Lileep double crit Mega Drain Kricketune is {c:0.001%}" }],
+          row: [
+            "Risk →",
+            {
+              danger:
+                "Varoom crit Bulldoze Kricketune into Cacnea crit Pow-Up Punch Kricketune into Lileep double crit Mega Drain Kricketune is {c:0.001%}",
+            },
+          ],
           turns: [
             [
               { player: "{p:Kricketune} Bug Bite {o:Lileep} to {=:0}" },
@@ -777,7 +789,10 @@ export const pewterCityLeaderBrockBattle: BattleData = {
             ],
           ],
           branches: [
-            { if: ["Kricketune Mega Drain Varoom"], branches: ["Kricketune Mega Drain Hippopotas 2"] },
+            {
+              if: ["Kricketune Mega Drain Varoom"],
+              branches: ["Kricketune Mega Drain Hippopotas 2"],
+            },
             { branches: ["Kricketune Bug Bite Lunatone"] },
           ],
         },
@@ -869,9 +884,17 @@ export const moments: Moment[] = [
   { label: "Viridian Forest Brendan Battle", kind: "battle", data: viridianForestBrendanBattle },
   { label: "Exp Share Box Change", kind: "boxChange", data: expShareBoxChange },
   { label: "Viridian Forest Lass Anne Battle", kind: "battle", data: viridianForestLassAnneBattle },
-  { label: "Viridian Forest Bug Catcher Sammy Battle", kind: "battle", data: viridianForestBugCatcherSammyBattle },
+  {
+    label: "Viridian Forest Bug Catcher Sammy Battle",
+    kind: "battle",
+    data: viridianForestBugCatcherSammyBattle,
+  },
   { label: "Diglett Cave Encounter", kind: "encounter", data: yamaskGEncounter },
-  { label: "Pewter Museum Leader Falkner Battle", kind: "battle", data: pewterMuseumLeaderFalknerBattle },
+  {
+    label: "Pewter Museum Leader Falkner Battle",
+    kind: "battle",
+    data: pewterMuseumLeaderFalknerBattle,
+  },
   { label: "After Falkner Box Change", kind: "boxChange", data: afterFalknerBoxChange },
   { label: "Pewter City Leader Brock Battle", kind: "battle", data: pewterCityLeaderBrockBattle },
 ];

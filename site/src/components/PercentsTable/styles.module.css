@@ -38,7 +38,7 @@
 .table th,
 .table td {
   padding-block: var(--ifm-table-cell-padding);
-  padding-inline: var(--ifm-table-cell-padding);
+  padding-inline: 0;
   text-align: center;
   vertical-align: middle;
 }
@@ -49,6 +49,7 @@
 
 .table thead tr {
   border-bottom-width: 1px;
+  border-top: none;
 }
 
 .table thead th {
@@ -71,6 +72,7 @@
 .table th:nth-child(2),
 .table td:nth-child(2) {
   border-left-width: 0;
+  padding-inline-start: var(--ifm-table-cell-padding);
   text-align: left;
   width: 100%;
 }
@@ -102,14 +104,15 @@
 .headerContent {
   display: inline-flex;
   align-items: center;
-  gap: 0.25em;
+  gap: 0;
   vertical-align: middle;
 }
 
 .sortArrow {
   display: inline-block;
-  width: 1em;
+  font-family: var(--ifm-font-family-monospace);
   text-align: center;
+  width: 1ch;
 }
 
 .sprite {

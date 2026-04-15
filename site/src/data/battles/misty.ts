@@ -4,18 +4,18 @@ import { EncounterData } from "@site/src/components/Encounter";
 import { getBox } from "@site/src/utils/box";
 import { Moment } from "@site/src/utils/moments";
 import {
-  route3LassSallyBox,
-  mtMoonSuperNerdMiguelBox,
-  mtMoonArcherBox,
+  ceruleanCityLeaderMistyBox,
   ceruleanCityRivalBox,
+  digHouseGruntBox,
+  mtMoonArcherBox,
+  mtMoonSuperNerdMiguelBox,
   nuggetBridgeBugCatcherCaleBox,
-  nuggetBridgeLassAliBox,
-  nuggetBridgeYoungsterTimmyBox,
-  nuggetBridgeLassReliBox,
   nuggetBridgeCamperEthanBox,
   nuggetBridgeGruntBox,
-  digHouseGruntBox,
-  ceruleanCityLeaderMistyBox,
+  nuggetBridgeLassAliBox,
+  nuggetBridgeLassReliBox,
+  nuggetBridgeYoungsterTimmyBox,
+  route3LassSallyBox,
 } from "@site/src/utils/opponents";
 
 import { box as _box1 } from "@site/src/data/battles/brock";
@@ -546,7 +546,10 @@ export const mtMoonSuperNerdMiguelBattle: BattleData = {
               { player: "{p:Torracat} switch to {p:Kricketune}" },
               { player: "{p:Houndour} switch to {p:Yamask-G}" },
               { opponent: "{o:Thwackey} Fake Out {p:Yamask-G}" },
-              { opponent: "{o:Voltorb-H} Self-Destruct {p:Kricketune} to {+:43} and {o:Thwackey} to {-:46}" },
+              {
+                opponent:
+                  "{o:Voltorb-H} Self-Destruct {p:Kricketune} to {+:43} and {o:Thwackey} to {-:46}",
+              },
               { opponent: "{o:Voltorb-H} fainted" },
               { player: "{p:Kricketune} terrain to {+:47}" },
               { opponent: "{o:Thwackey} terrain to {-:50}" },
@@ -577,7 +580,10 @@ export const mtMoonSuperNerdMiguelBattle: BattleData = {
               { player: "{p:Yamask-G} switch to {p:Azumarill}" },
               { opponent: "{o:Swoobat} Calm Mind" },
               { player: "{p:Houndour} Leer {o:Swoobat} and {o:Sableye}" },
-              { opponent: "{o:Sableye} Foul Play {p:Azumarill} to {+:71} or Foul Play {p:Houndour} to {+:29}" },
+              {
+                opponent:
+                  "{o:Sableye} Foul Play {p:Azumarill} to {+:71} or Foul Play {p:Houndour} to {+:29}",
+              },
               { player: "{p:Azumarill} terrain to {+:76} or {p:Houndour} terrain to {+:32}" },
             ],
           ],
@@ -635,7 +641,10 @@ export const mtMoonSuperNerdMiguelBattle: BattleData = {
             [
               { player: "{p:Houndour} Incinerate {o:Sableye} to {-:41} and {o:Skiddo} to {-:19}" },
               { player: "{p:Azumarill} Play Rough {o:Skiddo} to {=:0}" },
-              { opponent: "{o:Sableye} Foul Play {p:Azumarill} to {+:66} or Foul Play {p:Houndour} to {+:4}" },
+              {
+                opponent:
+                  "{o:Sableye} Foul Play {p:Azumarill} to {+:66} or Foul Play {p:Houndour} to {+:4}",
+              },
               { player: "{p:Azumarill} terrain to {+:71} or {p:Houndour} terrain to {+:7}" },
               { player: "{o:Sableye} terrain to {+:47}" },
               { opponent: "{o:Skiddo} fainted" },
@@ -1662,7 +1671,9 @@ export const ceruleanCityLeaderMistyBattle: BattleData = {
               { opponent: "{o:Toxicroak} Swords Dance" },
             ],
           ],
-          branches: [{ branches: ["Golduck Zen Headbutt Starmie", "Golduck Zen Headbutt Toxicroak"] }],
+          branches: [
+            { branches: ["Golduck Zen Headbutt Starmie", "Golduck Zen Headbutt Toxicroak"] },
+          ],
         },
       ],
       frags: { Kricketune: 2, Perrserker: 1 },
@@ -1785,12 +1796,24 @@ export const moments: Moment[] = [
   { label: "Cerulean City Box Change", kind: "boxChange", data: ceruleanCityBoxChange },
   { label: "Cerulean City Rival Battle", kind: "battle", data: ceruleanCityRivalBattle },
   { label: "After Rival Box Change", kind: "boxChange", data: afterRivalBoxChange },
-  { label: "Nugget Bridge Bug Catcher Cale Battle", kind: "battle", data: nuggetBridgeBugCatcherCaleBattle },
+  {
+    label: "Nugget Bridge Bug Catcher Cale Battle",
+    kind: "battle",
+    data: nuggetBridgeBugCatcherCaleBattle,
+  },
   { label: "Nugget Bridge Lass Ali Battle", kind: "battle", data: nuggetBridgeLassAliBattle },
-  { label: "Nugget Bridge Youngster Timmy Battle", kind: "battle", data: nuggetBridgeYoungsterTimmyBattle },
+  {
+    label: "Nugget Bridge Youngster Timmy Battle",
+    kind: "battle",
+    data: nuggetBridgeYoungsterTimmyBattle,
+  },
   { label: "Gyarados Box Change", kind: "boxChange", data: gyaradosBoxChange },
   { label: "Nugget Bridge Lass Reli Battle", kind: "battle", data: nuggetBridgeLassReliBattle },
-  { label: "Nugget Bridge Camper Ethan Battle", kind: "battle", data: nuggetBridgeCamperEthanBattle },
+  {
+    label: "Nugget Bridge Camper Ethan Battle",
+    kind: "battle",
+    data: nuggetBridgeCamperEthanBattle,
+  },
   { label: "Nugget Bridge Grunt Battle", kind: "battle", data: nuggetBridgeGruntBattle },
   { label: "Route 24 Encounter", kind: "encounter", data: charcadetEncounter },
   { label: "Route 25 Encounter", kind: "encounter", data: chinchouEncounter },
@@ -1798,6 +1821,10 @@ export const moments: Moment[] = [
   { label: "Route 5 Encounter", kind: "encounter", data: growlitheHEncounter },
   { label: "Route 6 Encounter", kind: "encounter", data: shelderEncounter },
   { label: "Route 6 Box Change", kind: "boxChange", data: route6BoxChange },
-  { label: "Cerulean City Leader Misty Battle", kind: "battle", data: ceruleanCityLeaderMistyBattle },
+  {
+    label: "Cerulean City Leader Misty Battle",
+    kind: "battle",
+    data: ceruleanCityLeaderMistyBattle,
+  },
   { label: "After Misty Box Change", kind: "boxChange", data: afterMistyBoxChange },
 ];

@@ -27,9 +27,8 @@ function replayBox(box: Box, version: number): Map<string, Pokemon> {
   for (let i = 0; i < version; i++) {
     const change = box.changes[i];
     if (change.type === "remove") {
-      for (const name of change.names) {
-        state.delete(name);
-      }
+      // removal is preserved in `changes` for BoxChange rendering but not applied
+      // to state, so removed pokemon retain their boxOrder and stay in the resolved map
     } else if (change.type === "add") {
       for (const [name, pokemon] of Object.entries(change.pokemon)) {
         state.set(name, pokemon);
@@ -130,11 +129,15 @@ export function getBox({
 
   for (const data of add) {
     const { name } = data;
-    if (replayBox(working, working.changes.length).has(name)) {
+    const currentState = replayBox(working, working.changes.length);
+    if (currentState.has(name)) {
       console.error(`getBox: "${name}" already exists — skipping add.`);
       continue;
     }
-    newChanges.push({ type: "add", pokemon: { [name]: { base: data } } });
+    newChanges.push({
+      type: "add",
+      pokemon: { [name]: { base: { ...data, boxOrder: currentState.size } } },
+    });
   }
 
   if (cap !== undefined) {

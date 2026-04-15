@@ -115,7 +115,9 @@ export const celadonCityGymAceTrainerMaryBattle: BattleData = {
             [
               { player: "{p:Incineroar} Fake Out {o:Weavile} to {-:104}" },
               { opponent: "{o:Weavile} flinched" },
-              { player: "{p:Jellicent} Water Spout {o:Weavile} to {=:0} and {o:Coalossal} to {=:0}" },
+              {
+                player: "{p:Jellicent} Water Spout {o:Weavile} to {=:0} and {o:Coalossal} to {=:0}",
+              },
               { opponent: "{o:Weavile} fainted" },
               { opponent: "{o:Coalossal} fainted" },
             ],
@@ -125,7 +127,10 @@ export const celadonCityGymAceTrainerMaryBattle: BattleData = {
           matchup: ["Maractus", "Copperajah"],
           turns: [
             [
-              { opponent: "{o:Maractus} Sucker Punch {p:Jellicent} to {+:22} or Drain Punch {p:Incineroar} to {+:81}" },
+              {
+                opponent:
+                  "{o:Maractus} Sucker Punch {p:Jellicent} to {+:22} or Drain Punch {p:Incineroar} to {+:81}",
+              },
               { player: "{p:Incineroar} Flamethrower {o:Copperajah} to {-:85}" },
               { player: "{p:Jellicent} Brine {o:Copperajah} to {=:0}" },
               { opponent: "{o:Copperajah} fainted" },
@@ -258,7 +263,14 @@ export const celadonCityLeaderErikaBattle: BattleData = {
               { player: "{o:Hawlucha} burn to {=:128}" },
             ],
           ],
-          branches: [{ branches: ["Ceruledge regular Shadow Claw Hawlucha", "Ceruledge crit Shadow Claw Hawlucha"] }],
+          branches: [
+            {
+              branches: [
+                "Ceruledge regular Shadow Claw Hawlucha",
+                "Ceruledge crit Shadow Claw Hawlucha",
+              ],
+            },
+          ],
         },
       ],
       frags: { Golisopod: 1, "Arcanine-H": 1, Golduck: 1, Ceruledge: 1 },
@@ -355,6 +367,10 @@ export const box = _box4;
 
 export const moments: Moment[] = [
   { label: "Celadon City Box Change", kind: "boxChange", data: celadonCityBoxChange },
-  { label: "Celadon City Gym Ace Trainer Mary Battle", kind: "battle", data: celadonCityGymAceTrainerMaryBattle },
+  {
+    label: "Celadon City Gym Ace Trainer Mary Battle",
+    kind: "battle",
+    data: celadonCityGymAceTrainerMaryBattle,
+  },
   { label: "Celadon City Leader Erika Battle", kind: "battle", data: celadonCityLeaderErikaBattle },
 ];

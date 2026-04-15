@@ -1,4 +1,6 @@
 import { BattleData } from "@site/src/components/Battle";
+import { resolveBox } from "@site/src/utils/box";
+import { resolvePokemon } from "@site/src/utils/pokemon";
 import { slugify } from "@site/src/utils/slugify";
 import { getState } from "@site/src/utils/storage";
 
@@ -39,7 +41,14 @@ function getVisibleSlugs(data: BattleData): Set<string> {
   return visible;
 }
 
-export type PokemonStats = { battles: number; frags: number; spriteKey?: string };
+export type PokemonStats = {
+  battles: number;
+  frags: number;
+  possibleBattles: number;
+  possibleFrags: number;
+  boxOrder: number;
+  spriteKey?: string;
+};
 
 export function computeStats(battles: BattleData[]): Record<string, PokemonStats> {
   const lastBattle = battles[battles.length - 1];
@@ -47,8 +56,25 @@ export function computeStats(battles: BattleData[]): Record<string, PokemonStats
   const canon = (name: string) => renames[name] ?? name;
 
   const spriteKeyMap: Record<string, string> = {};
-  for (const p of lastBattle?.playerBox.base ?? []) {
-    if (p.spriteKey) spriteKeyMap[p.name] = p.spriteKey;
+  const boxOrderMap: Record<string, number> = {};
+  for (const [, pokemon] of resolveBox(
+    lastBattle?.playerBox ?? { base: [], changes: [], team: [] }
+  )) {
+    const p = resolvePokemon(pokemon);
+    const key = canon(p.name);
+    if (p.spriteKey) spriteKeyMap[key] = p.spriteKey;
+    if (p.boxOrder !== undefined) boxOrderMap[key] = p.boxOrder;
+  }
+
+  // Find the first battle index where each canonical pokemon appeared in the player box.
+  // Use resolveBox (base + changes) so pokemon added via BoxChange.add are detected in
+  // the same battle they were added, not deferred to the next box snapshot.
+  const firstAppearance: Record<string, number> = {};
+  for (let i = 0; i < battles.length; i++) {
+    for (const name of resolveBox(battles[i].playerBox).keys()) {
+      const key = canon(name);
+      if (!(key in firstAppearance)) firstAppearance[key] = i;
+    }
   }
 
   const totals: Record<string, PokemonStats> = {};
@@ -56,7 +82,13 @@ export function computeStats(battles: BattleData[]): Record<string, PokemonStats
   for (const battle of battles) {
     for (const name of battle.playerBox.team) {
       const key = canon(name);
-      const entry = totals[key] ?? { battles: 0, frags: 0 };
+      const entry = totals[key] ?? {
+        battles: 0,
+        frags: 0,
+        possibleBattles: 0,
+        possibleFrags: 0,
+        boxOrder: Infinity,
+      };
       totals[key] = { ...entry, battles: entry.battles + 1 };
     }
   }
@@ -67,15 +99,47 @@ export function computeStats(battles: BattleData[]): Record<string, PokemonStats
       if (!visible.has(line.line ?? "")) continue;
       for (const [pokemon, count] of Object.entries(line.frags ?? {})) {
         const key = canon(pokemon);
-        const entry = totals[key] ?? { battles: 0, frags: 0 };
+        const entry = totals[key] ?? {
+          battles: 0,
+          frags: 0,
+          possibleBattles: 0,
+          possibleFrags: 0,
+          boxOrder: Infinity,
+        };
         totals[key] = { ...entry, frags: entry.frags + count };
       }
     }
   }
 
+  // Compute possible battles/frags: for each battle, credit every pokemon whose
+  // first appearance was at or before this battle index.
+  for (let i = 0; i < battles.length; i++) {
+    const opponentCount = battles[i].opponentBox.team.length;
+    for (const [key, firstIdx] of Object.entries(firstAppearance)) {
+      if (i < firstIdx) continue;
+      const entry = totals[key] ?? {
+        battles: 0,
+        frags: 0,
+        possibleBattles: 0,
+        possibleFrags: 0,
+        boxOrder: Infinity,
+      };
+      totals[key] = {
+        ...entry,
+        possibleBattles: entry.possibleBattles + 1,
+        possibleFrags: entry.possibleFrags + opponentCount,
+      };
+    }
+  }
+
   for (const [key, stats] of Object.entries(totals)) {
     const sk = spriteKeyMap[key];
-    if (sk) totals[key] = { ...stats, spriteKey: sk };
+    const bo = boxOrderMap[key];
+    totals[key] = {
+      ...stats,
+      ...(sk !== undefined && { spriteKey: sk }),
+      boxOrder: bo ?? Infinity,
+    };
   }
 
   return totals;
