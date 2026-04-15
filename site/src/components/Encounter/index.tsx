@@ -121,33 +121,42 @@ function Sequence({ target }: { target: string }) {
   );
 }
 
+export interface EncounterData {
+  pokemon: PokemonData;
+  playerBox?: Box;
+}
+
 export default function Encounter({
   encounter,
   children,
   playerBox,
+  data,
 }: {
-  encounter: PokemonData;
+  encounter?: PokemonData;
   children?: ReactNode;
   playerBox?: Box;
+  data?: EncounterData;
 }) {
-  const isSequence = encounter.name in encounterSequences;
+  const resolvedEncounter = (data?.pokemon ?? encounter)!;
+  const resolvedPlayerBox = data?.playerBox ?? playerBox;
+  const isSequence = resolvedEncounter.name in encounterSequences;
   return (
     <>
-      {playerBox && (playerBox.team ?? []).length > 0 && (
-        <Team title="Player Team" box={playerBox} />
+      {resolvedPlayerBox && (resolvedPlayerBox.team ?? []).length > 0 && (
+        <Team title="Player Team" box={resolvedPlayerBox} />
       )}
       <Card title="Encounter Plan">
-        {isSequence && <Sequence target={encounter.name} />}
+        {isSequence && <Sequence target={resolvedEncounter.name} />}
         <div className={`${styles.content}${isSequence ? ` ${styles.contentSequence}` : ""}`}>
           <div className={styles.spritePanel}>
             <img
-              src={getColouredSpriteUrl(encounter)}
-              alt={encounter.name}
+              src={getColouredSpriteUrl(resolvedEncounter)}
+              alt={resolvedEncounter.name}
               className={styles.sprite}
             />
           </div>
           <div className={styles.info}>
-            <div className={styles.name}>{encounter.name}</div>
+            <div className={styles.name}>{resolvedEncounter.name}</div>
             {children}
           </div>
         </div>

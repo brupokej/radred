@@ -2,8 +2,13 @@ import Card from "@site/src/components/Card";
 import { Row } from "@site/src/components/Row";
 import { Box, getChanges, getLevelCap, getRemovals, splitChanges } from "@site/src/utils/box";
 
-export default function BoxChange({ box }: { box: Box }) {
-  const boxes = splitChanges(box);
+export interface BoxChangeData {
+  playerBox: Box;
+}
+
+export default function BoxChange({ box, data }: { box?: Box; data?: BoxChangeData }) {
+  const resolvedBox = (data?.playerBox ?? box)!;
+  const boxes = splitChanges(resolvedBox);
   const removalRows: React.ReactNode[] = [];
   const capRows: React.ReactNode[] = [];
   const updateRows: React.ReactNode[] = [];

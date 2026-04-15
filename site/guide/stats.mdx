@@ -3,11 +3,28 @@ sidebar_position: 99
 ---
 
 import PercentsTable from "@site/src/components/PercentsTable";
+import {
+  route22RivalBattle,
+  viridianForestBrendanBattle,
+  viridianForestLassAnneBattle,
+  viridianForestBugCatcherSammyBattle,
+  pewterMuseumLeaderFalknerBattle,
+  pewterCityLeaderBrockBattle,
+} from "@site/src/data/battles/brock";
 import { ceruleanCityRivalBattle } from "@site/src/data/battles/misty";
-import { _box9 } from "@site/guide/misty.mdx";
 
 # Stats
 
 ## Percents Table
 
-<PercentsTable battles={[ceruleanCityRivalBattle]} playerBoxes={[_box9]} />
+<PercentsTable
+  battles={[
+    route22RivalBattle,
+    viridianForestBrendanBattle,
+    viridianForestLassAnneBattle,
+    viridianForestBugCatcherSammyBattle,
+    pewterMuseumLeaderFalknerBattle,
+    pewterCityLeaderBrockBattle,
+    ceruleanCityRivalBattle,
+  ]}
+/>

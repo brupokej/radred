@@ -1,5 +1,4 @@
 import { BattleData } from "@site/src/components/Battle";
-import { Box } from "@site/src/utils/box";
 import { slugify } from "@site/src/utils/slugify";
 import { getState } from "@site/src/utils/storage";
 
@@ -42,16 +41,12 @@ function getVisibleSlugs(data: BattleData): Set<string> {
 
 export type PokemonStats = { battles: number; frags: number };
 
-export function computeStats(
-  battles: BattleData[],
-  playerBoxes: Box[]
-): Record<string, PokemonStats> {
+export function computeStats(battles: BattleData[]): Record<string, PokemonStats> {
   const totals: Record<string, PokemonStats> = {};
 
-  for (let i = 0; i < battles.length; i++) {
-    const box = playerBoxes[i];
-    if (!box) continue;
-    for (const name of box.team) {
+  for (const battle of battles) {
+    if (!battle.playerBox) continue;
+    for (const name of battle.playerBox.team) {
       const entry = totals[name] ?? { battles: 0, frags: 0 };
       totals[name] = { ...entry, battles: entry.battles + 1 };
     }

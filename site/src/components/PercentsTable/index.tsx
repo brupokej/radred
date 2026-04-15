@@ -1,7 +1,6 @@
 import { BattleData } from "@site/src/components/Battle";
 import Card from "@site/src/components/Card";
 import { ScrollArrows } from "@site/src/components/ScrollArrows";
-import { Box } from "@site/src/utils/box";
 import { computeStats, PokemonStats } from "@site/src/utils/frags";
 import { getColouredSpriteUrl } from "@site/src/utils/sprites";
 import { STORAGE_EVENT } from "@site/src/utils/storage";
@@ -108,13 +107,7 @@ const columns = [
 
 const COLLAPSED_ROWS = 3;
 
-export default function PercentsTable({
-  battles,
-  playerBoxes,
-}: {
-  battles: BattleData[];
-  playerBoxes: Box[];
-}) {
+export default function PercentsTable({ battles }: { battles: BattleData[] }) {
   const [stats, setStats] = useState<Record<string, PokemonStats>>({});
   const [sorting, setSorting] = useState<SortingState>([{ id: "frags", desc: true }]);
   const [isExpanded, setIsExpanded] = useState(false);
@@ -123,11 +116,11 @@ export default function PercentsTable({
   const theadRef = useRef<HTMLTableSectionElement>(null);
 
   useEffect(() => {
-    const update = () => setStats(computeStats(battles, playerBoxes));
+    const update = () => setStats(computeStats(battles));
     update();
     window.addEventListener(STORAGE_EVENT, update);
     return () => window.removeEventListener(STORAGE_EVENT, update);
-  }, [battles, playerBoxes]);
+  }, [battles]);
 
   const data = useMemo<TableRow[]>(
     () => Object.entries(stats).map(([pokemon, s]) => ({ pokemon, ...s })),

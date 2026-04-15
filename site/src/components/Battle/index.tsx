@@ -1,4 +1,5 @@
 import Card from "@site/src/components/Card";
+import { Row, RowCell } from "@site/src/components/Row";
 import { ScrollFade } from "@site/src/components/ScrollFade";
 import Team from "@site/src/components/Team";
 import { Box, resolveBox } from "@site/src/utils/box";
@@ -34,6 +35,7 @@ export interface BranchData {
 export interface MatchupData {
   matchup: string[];
   turns: MoveData[][];
+  row?: RowCell[];
   branches?: BranchData[];
 }
 
@@ -45,6 +47,7 @@ export interface LineData {
 
 export interface BattleData {
   opponentBox: Box;
+  playerBox?: Box;
   lines: LineData[];
 }
 
@@ -142,6 +145,7 @@ function battleDataToChildren(data: BattleData): React.ReactNode {
     <BattleLine key={lineData.line ?? `line-${li}`} line={lineData.line}>
       {lineData.matchups.map((matchupData, mi) => (
         <Matchup key={mi} matchup={matchupData.matchup}>
+          {matchupData.row && <Row row={matchupData.row} />}
           {matchupData.turns.map((moves, ti) => (
             <Turn key={ti}>
               {moves.map((move, mvi) =>
@@ -173,14 +177,15 @@ export function Battle({
   children,
   data,
 }: {
-  playerBox: Box;
+  playerBox?: Box;
   opponentBox?: Box;
   children?: React.ReactNode;
   data?: BattleData;
 }) {
   const opponentBox = opponentBoxProp ?? data!.opponentBox;
   const resolvedChildren = data ? battleDataToChildren(data) : children;
-  const playerResolved = resolveBox(playerBox);
+  const resolvedPlayerBox = (playerBox ?? data?.playerBox)!;
+  const playerResolved = resolveBox(resolvedPlayerBox);
   const opponentResolved = resolveBox(opponentBox);
   const lineElements = React.Children.toArray(resolvedChildren).filter(
     (c): c is React.ReactElement<{ line?: string; children: React.ReactNode }> =>
@@ -236,7 +241,7 @@ export function Battle({
   const maxHp = useMemo(
     () =>
       Object.fromEntries([
-        ...(playerBox.team ?? []).flatMap((name) => {
+        ...(resolvedPlayerBox.team ?? []).flatMap((name) => {
           const p = playerResolved.get(name);
           return p ? [[`p:${name}`, getHp(resolvePokemon(p))]] : [];
         }),
@@ -245,12 +250,12 @@ export function Battle({
           return p ? [[`o:${name}`, getHp(resolvePokemon(p))]] : [];
         }),
       ]),
-    [playerBox, opponentBox, playerResolved, opponentResolved]
+    [resolvedPlayerBox, opponentBox, playerResolved, opponentResolved]
   );
 
   const teamMap = useMemo(() => {
     const map: Record<string, PokemonData> = {};
-    for (const name of playerBox.team ?? []) {
+    for (const name of resolvedPlayerBox.team ?? []) {
       const p = playerResolved.get(name);
       if (p) map[`p:${name}`] = resolvePokemon(p);
     }
@@ -259,7 +264,7 @@ export function Battle({
       if (p) map[`o:${name}`] = resolvePokemon(p);
     }
     return map;
-  }, [playerBox, opponentBox, playerResolved, opponentResolved]);
+  }, [resolvedPlayerBox, opponentBox, playerResolved, opponentResolved]);
 
   const ctx = useMemo(
     () => ({ state, dispatch, registerBranch, unregisterBranch, maxHp, teamMap }),
@@ -280,7 +285,7 @@ export function Battle({
   return (
     <>
       <Team title="Opponent Team" box={opponentBox} />
-      <Team title="Player Team" box={playerBox} />
+      <Team title="Player Team" box={resolvedPlayerBox} />
       <BattleGraphCtx.Provider value={ctx}>
         <Card title="Battle Plan">
           {state.visibleOrder.map((slug) => (
