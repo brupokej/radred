@@ -1,9 +1,9 @@
-import { BattleData } from "@site/src/components/Battle";
 import Card from "@site/src/components/Card";
 import { ScrollArrows } from "@site/src/components/ScrollArrows";
 import { computeStats, PokemonStats } from "@site/src/utils/frags";
+import { Moment } from "@site/src/utils/moments";
 import { getColouredSpriteUrl } from "@site/src/utils/sprites";
-import { STORAGE_EVENT } from "@site/src/utils/storage";
+import { getState, STORAGE_EVENT } from "@site/src/utils/storage";
 import {
   createColumnHelper,
   flexRender,
@@ -41,7 +41,7 @@ const columns = [
     enableSorting: false,
     cell: ({ row }) => (
       <img
-        src={getColouredSpriteUrl({ name: row.original.pokemon })}
+        src={getColouredSpriteUrl({ name: row.original.pokemon, spriteKey: row.original.spriteKey })}
         alt={row.original.pokemon}
         className={styles.sprite}
       />
@@ -107,7 +107,12 @@ const columns = [
 
 const COLLAPSED_ROWS = 3;
 
-export default function PercentsTable({ battles }: { battles: BattleData[] }) {
+export default function PercentsTable({ moments }: { moments: Moment[] }) {
+  const battleMoments = useMemo(
+    () => moments.filter((m): m is Extract<Moment, { kind: "battle" }> => m.kind === "battle"),
+    [moments]
+  );
+
   const [stats, setStats] = useState<Record<string, PokemonStats>>({});
   const [sorting, setSorting] = useState<SortingState>([{ id: "frags", desc: true }]);
   const [isExpanded, setIsExpanded] = useState(false);
@@ -116,11 +121,21 @@ export default function PercentsTable({ battles }: { battles: BattleData[] }) {
   const theadRef = useRef<HTMLTableSectionElement>(null);
 
   useEffect(() => {
-    const update = () => setStats(computeStats(battles));
+    const update = () => {
+      const startLabel = getState("stats-filter-start");
+      const endLabel = getState("stats-filter-end");
+      const startIdx = startLabel
+        ? Math.max(0, battleMoments.findIndex((m) => m.label === startLabel))
+        : 0;
+      const rawEnd = endLabel ? battleMoments.findIndex((m) => m.label === endLabel) : -1;
+      const endIdx = rawEnd >= 0 ? rawEnd : battleMoments.length - 1;
+      const filtered = battleMoments.slice(startIdx, endIdx + 1).map((m) => m.data);
+      setStats(computeStats(filtered));
+    };
     update();
     window.addEventListener(STORAGE_EVENT, update);
     return () => window.removeEventListener(STORAGE_EVENT, update);
-  }, [battles]);
+  }, [battleMoments]);
 
   const data = useMemo<TableRow[]>(
     () => Object.entries(stats).map(([pokemon, s]) => ({ pokemon, ...s })),
@@ -141,8 +156,6 @@ export default function PercentsTable({ battles }: { battles: BattleData[] }) {
     if (!thead) return;
     const ths = Array.from(thead.querySelectorAll("th")) as HTMLElement[];
     const stickyWidth = ths[0]?.offsetWidth ?? 0;
-    // Subtract sticky column width so each snap target puts that column's left edge
-    // flush with the sticky column's right edge rather than the table's left edge.
     const snapPoints = ths.map((th) => th.offsetLeft - stickyWidth).filter((x) => x >= 0);
     const current = el.scrollLeft;
     if (dir === "right") {

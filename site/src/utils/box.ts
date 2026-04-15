@@ -10,6 +10,8 @@ export interface Box {
   base: PokemonData[];
   changes: BoxChange[];
   team: string[];
+  extraTeam?: string[];
+  renames?: Record<string, string>;
 }
 
 // Replays changes on top of base, returning the live state as a Map.
@@ -92,6 +94,7 @@ export function getBox({
   cap,
   update = [],
   team,
+  extraTeam,
 }: {
   box?: Box;
   remove?: string[];
@@ -99,6 +102,7 @@ export function getBox({
   cap?: number | { level: number; exclude?: string[] };
   update?: Record<string, Partial<PokemonData>> | Record<string, Partial<PokemonData>>[];
   team?: string[];
+  extraTeam?: string[];
 }): Box {
   const updates = Array.isArray(update) ? update : [update];
 
@@ -154,7 +158,28 @@ export function getBox({
   }
 
   const inferredTeam = [...replayBox(working, working.changes.length).keys()];
-  return { base: inputBase, changes: newChanges, team: team ?? box?.team ?? inferredTeam };
+
+  const accRenames: Record<string, string> = { ...(box?.renames ?? {}) };
+  for (const change of newChanges) {
+    if (change.type === "update") {
+      for (const [oldName, upd] of Object.entries(change.changes)) {
+        if (upd.name && upd.name !== oldName) {
+          for (const k of Object.keys(accRenames)) {
+            if (accRenames[k] === oldName) accRenames[k] = upd.name;
+          }
+          accRenames[oldName] = upd.name;
+        }
+      }
+    }
+  }
+
+  return {
+    base: inputBase,
+    changes: newChanges,
+    team: team ?? box?.team ?? inferredTeam,
+    extraTeam,
+    renames: Object.keys(accRenames).length > 0 ? accRenames : undefined,
+  };
 }
 
 // Returns the fully resolved state of the box including all changes applied.

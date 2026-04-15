@@ -2,6 +2,7 @@ import { BattleData } from "@site/src/components/Battle";
 import { BoxChangeData } from "@site/src/components/BoxChange";
 import { EncounterData } from "@site/src/components/Encounter";
 import { getBox } from "@site/src/utils/box";
+import { Moment } from "@site/src/utils/moments";
 import {
   route22RivalBox,
   viridianForestBrendanBox,
@@ -850,3 +851,27 @@ export const pewterCityLeaderBrockBattle: BattleData = {
 // ─── Chapter hand-off ─────────────────────────────────────────────────────────
 
 export const box = _box12;
+
+export const moments: Moment[] = [
+  { label: "Oak's Lab Encounter", kind: "encounter", data: littenEncounter },
+  { label: "Oak's Lab Box Change", kind: "boxChange", data: oaksLabBoxChange },
+  { label: "Pallet Town Encounter", kind: "encounter", data: tentacoolEncounter },
+  { label: "Pallet Town Box Change", kind: "boxChange", data: palletTownBoxChange },
+  { label: "Route 21 Encounter", kind: "encounter", data: wooperPEncounter },
+  { label: "Route 1 Encounter", kind: "encounter", data: meowthGEncounter },
+  { label: "Viridian City Encounter", kind: "encounter", data: marillEncounter },
+  { label: "Route 2 Encounter", kind: "encounter", data: houndourEncounter },
+  { label: "Viridian Forest Encounter", kind: "encounter", data: kricketotEncounter },
+  { label: "Viridian Forest Box Change", kind: "boxChange", data: viridianForestBoxChange },
+  { label: "Route 22 Rival Battle", kind: "battle", data: route22RivalBattle },
+  { label: "Route 22 Encounter", kind: "encounter", data: psyduckEncounter },
+  { label: "Route 22 Box Change", kind: "boxChange", data: route22BoxChange },
+  { label: "Viridian Forest Brendan Battle", kind: "battle", data: viridianForestBrendanBattle },
+  { label: "Exp Share Box Change", kind: "boxChange", data: expShareBoxChange },
+  { label: "Viridian Forest Lass Anne Battle", kind: "battle", data: viridianForestLassAnneBattle },
+  { label: "Viridian Forest Bug Catcher Sammy Battle", kind: "battle", data: viridianForestBugCatcherSammyBattle },
+  { label: "Diglett Cave Encounter", kind: "encounter", data: yamaskGEncounter },
+  { label: "Pewter Museum Leader Falkner Battle", kind: "battle", data: pewterMuseumLeaderFalknerBattle },
+  { label: "After Falkner Box Change", kind: "boxChange", data: afterFalknerBoxChange },
+  { label: "Pewter City Leader Brock Battle", kind: "battle", data: pewterCityLeaderBrockBattle },
+];

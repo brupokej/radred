@@ -3,84 +3,23 @@ sidebar_position: 99
 ---
 
 import PercentsTable from "@site/src/components/PercentsTable";
-import {
-  route22RivalBattle,
-  viridianForestBrendanBattle,
-  viridianForestLassAnneBattle,
-  viridianForestBugCatcherSammyBattle,
-  pewterMuseumLeaderFalknerBattle,
-  pewterCityLeaderBrockBattle,
-} from "@site/src/data/battles/brock";
-import {
-  route3LassSallyBattle,
-  mtMoonSuperNerdMiguelBattle,
-  mtMoonArcherBattle,
-  ceruleanCityRivalBattle,
-  nuggetBridgeBugCatcherCaleBattle,
-  nuggetBridgeLassAliBattle,
-  nuggetBridgeYoungsterTimmyBattle,
-  nuggetBridgeLassReliBattle,
-  nuggetBridgeCamperEthanBattle,
-  nuggetBridgeGruntBattle,
-  digHouseGruntBattle,
-  ceruleanCityLeaderMistyBattle,
-} from "@site/src/data/battles/misty";
-import {
-  route6CamperJeffBattle,
-  route25LeaderBugsyBattle,
-  ssAnneLassAnnGentlemanBrooksBattle,
-  ssAnneSailorEdmundSailorTrevorBattle,
-  ssAnneBrendanBattle,
-  route9PicnickerAliciaBattle,
-  route9PicnickerCaitlinBattle,
-  rockTunnelPicnickerDanaBattle,
-  route10PokeManiacHermanBattle,
-  route8SuperNerdAidanBattle,
-  vermillionCityGymGentlemanTuckerBattle,
-  vermillionCityLeaderLtSurgeBattle,
-} from "@site/src/data/battles/surge";
-import {
-  celadonCityGymAceTrainerMaryBattle,
-  celadonCityLeaderErikaBattle,
-} from "@site/src/data/battles/erika";
+import StatsFilter from "@site/src/components/StatsFilter";
+import { moments as brockMoments } from "@site/src/data/battles/brock";
+import { moments as mistyMoments } from "@site/src/data/battles/misty";
+import { moments as surgeMoments } from "@site/src/data/battles/surge";
+import { moments as erikaMoments } from "@site/src/data/battles/erika";
+import { moments as sabrinaMoments } from "@site/src/data/battles/sabrina";
+import { moments as kogaMoments } from "@site/src/data/battles/koga";
 
 # Stats
 
+<StatsFilter moments={allMoments} />
+
 ## Percents Table
 
-<PercentsTable
-  battles={[
-    route22RivalBattle,
-    viridianForestBrendanBattle,
-    viridianForestLassAnneBattle,
-    viridianForestBugCatcherSammyBattle,
-    pewterMuseumLeaderFalknerBattle,
-    pewterCityLeaderBrockBattle,
-    ceruleanCityRivalBattle,
-    route3LassSallyBattle,
-    mtMoonSuperNerdMiguelBattle,
-    mtMoonArcherBattle,
-    nuggetBridgeBugCatcherCaleBattle,
-    nuggetBridgeLassAliBattle,
-    nuggetBridgeYoungsterTimmyBattle,
-    nuggetBridgeLassReliBattle,
-    nuggetBridgeCamperEthanBattle,
-    nuggetBridgeGruntBattle,
-    digHouseGruntBattle,
-    ceruleanCityLeaderMistyBattle,
-    route6CamperJeffBattle,
-    route25LeaderBugsyBattle,
-    ssAnneLassAnnGentlemanBrooksBattle,
-    ssAnneSailorEdmundSailorTrevorBattle,
-    ssAnneBrendanBattle,
-    route9PicnickerAliciaBattle,
-    route9PicnickerCaitlinBattle,
-    rockTunnelPicnickerDanaBattle,
-    route10PokeManiacHermanBattle,
-    route8SuperNerdAidanBattle,
-    vermillionCityGymGentlemanTuckerBattle,
-    vermillionCityLeaderLtSurgeBattle,
-    celadonCityGymAceTrainerMaryBattle,
-    celadonCityLeaderErikaBattle,
-  ]}
-/>
+<PercentsTable moments={allMoments} />
+
+export const allMoments = [
+  ...brockMoments, ...mistyMoments, ...surgeMoments,
+  ...erikaMoments, ...sabrinaMoments, ...kogaMoments,
+];

@@ -39,16 +39,25 @@ function getVisibleSlugs(data: BattleData): Set<string> {
   return visible;
 }
 
-export type PokemonStats = { battles: number; frags: number };
+export type PokemonStats = { battles: number; frags: number; spriteKey?: string };
 
 export function computeStats(battles: BattleData[]): Record<string, PokemonStats> {
+  const lastBattle = battles[battles.length - 1];
+  const renames = lastBattle?.playerBox.renames ?? {};
+  const canon = (name: string) => renames[name] ?? name;
+
+  const spriteKeyMap: Record<string, string> = {};
+  for (const p of lastBattle?.playerBox.base ?? []) {
+    if (p.spriteKey) spriteKeyMap[p.name] = p.spriteKey;
+  }
+
   const totals: Record<string, PokemonStats> = {};
 
   for (const battle of battles) {
-    if (!battle.playerBox) continue;
     for (const name of battle.playerBox.team) {
-      const entry = totals[name] ?? { battles: 0, frags: 0 };
-      totals[name] = { ...entry, battles: entry.battles + 1 };
+      const key = canon(name);
+      const entry = totals[key] ?? { battles: 0, frags: 0 };
+      totals[key] = { ...entry, battles: entry.battles + 1 };
     }
   }
 
@@ -57,10 +66,16 @@ export function computeStats(battles: BattleData[]): Record<string, PokemonStats
     for (const line of battle.lines) {
       if (!visible.has(line.line ?? "")) continue;
       for (const [pokemon, count] of Object.entries(line.frags ?? {})) {
-        const entry = totals[pokemon] ?? { battles: 0, frags: 0 };
-        totals[pokemon] = { ...entry, frags: entry.frags + count };
+        const key = canon(pokemon);
+        const entry = totals[key] ?? { battles: 0, frags: 0 };
+        totals[key] = { ...entry, frags: entry.frags + count };
       }
     }
+  }
+
+  for (const [key, stats] of Object.entries(totals)) {
+    const sk = spriteKeyMap[key];
+    if (sk) totals[key] = { ...stats, spriteKey: sk };
   }
 
   return totals;

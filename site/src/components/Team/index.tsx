@@ -33,16 +33,19 @@ export default function Team({ box, title = "Team" }: { box: Box; title?: string
   const team = (box.team ?? [])
     .map((name) => resolved.get(name))
     .filter((p): p is Pokemon => p !== undefined);
+  const extraTeam = (box.extraTeam ?? [])
+    .map((name) => resolved.get(name))
+    .filter((p): p is Pokemon => p !== undefined);
   return (
     <Card title={title}>
       <CardDetail>
-        <TeamGrid team={team} />
+        <TeamGrid team={team} extraTeam={extraTeam} />
       </CardDetail>
     </Card>
   );
 }
 
-function TeamGrid({ team }: { team: Pokemon[] }) {
+function TeamGrid({ team, extraTeam = [] }: { team: Pokemon[]; extraTeam?: Pokemon[] }) {
   const contentRef = useRef<HTMLDivElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
   const [cols, setCols] = useState(6);
@@ -69,9 +72,9 @@ function TeamGrid({ team }: { team: Pokemon[] }) {
     el.scrollTo({ left: Math.max(0, target), behavior: "smooth" });
   }, []);
 
-  const filled = team.length;
+  const filled = team.length + extraTeam.length;
   const emptiesToShow = Math.max(0, Math.min(cols, 6) - filled);
-  const slots = Array.from({ length: filled + emptiesToShow }, (_, i) => team[i] ?? null);
+  const emptySlots = Array.from({ length: emptiesToShow }, () => null);
 
   return (
     <div ref={contentRef} className={styles.content}>
@@ -82,8 +85,14 @@ function TeamGrid({ team }: { team: Pokemon[] }) {
           onRight={(el) => scroll(el, "right")}
         />
         <div ref={scrollRef} className={styles.grid}>
-          {slots.map((pokemon, i) => (
+          {team.map((pokemon, i) => (
             <PokemonCard key={i} pokemon={pokemon} />
+          ))}
+          {extraTeam.map((pokemon, i) => (
+            <PokemonCard key={`extra-${i}`} pokemon={pokemon} />
+          ))}
+          {emptySlots.map((_, i) => (
+            <PokemonCard key={`empty-${i}`} pokemon={null} />
           ))}
         </div>
       </div>

@@ -2,6 +2,7 @@ import { BattleData } from "@site/src/components/Battle";
 import { BoxChangeData } from "@site/src/components/BoxChange";
 import { EncounterData } from "@site/src/components/Encounter";
 import { getBox } from "@site/src/utils/box";
+import { Moment } from "@site/src/utils/moments";
 import {
   route6CamperJeffBox,
   route25LeaderBugsyBox,
@@ -1165,7 +1166,7 @@ export const route10PokeManiacHermanBattle: BattleData = {
           ],
         },
       ],
-      frags: { Golduck: 1, Gyarados: 2 },
+      frags: { Golduck: 1, Gyarados: 2, Tentacruel: 1 },
     },
   ],
 };
@@ -1376,7 +1377,7 @@ export const vermillionCityLeaderLtSurgeBattle: BattleData = {
           branches: [{ branches: ["Raichu Nasty Plot", "Pawmot Close Combat Runerigus"] }],
         },
       ],
-      frags: { Excadrill: 2 },
+      frags: { Excadrill: 2, Runerigus: 1 },
     },
     {
       line: "Raichu Nasty Plot",
@@ -1525,3 +1526,22 @@ export const vermillionCityLeaderLtSurgeBattle: BattleData = {
 };
 
 export const box = _box15;
+
+export const moments: Moment[] = [
+  { label: "Start Box Change", kind: "boxChange", data: startBoxChange },
+  { label: "Route 6 Camper Jeff Battle", kind: "battle", data: route6CamperJeffBattle },
+  { label: "Fishing 1 Encounter", kind: "encounter", data: wimpodEncounter },
+  { label: "Fishing 2 Encounter", kind: "encounter", data: frillishEncounter },
+  { label: "Fishing Box Change", kind: "boxChange", data: fishingBoxChange },
+  { label: "Route 25 Leader Bugsy Battle", kind: "battle", data: route25LeaderBugsyBattle },
+  { label: "S.S. Anne Lass Ann & Gentleman Brooks Battle", kind: "battle", data: ssAnneLassAnnGentlemanBrooksBattle },
+  { label: "S.S. Anne Sailor Edmund & Sailor Trevor Battle", kind: "battle", data: ssAnneSailorEdmundSailorTrevorBattle },
+  { label: "S.S. Anne Brendan Battle", kind: "battle", data: ssAnneBrendanBattle },
+  { label: "Route 9 Picnicker Alicia Battle", kind: "battle", data: route9PicnickerAliciaBattle },
+  { label: "Route 9 Picnicker Caitlin Battle", kind: "battle", data: route9PicnickerCaitlinBattle },
+  { label: "Rock Tunnel Picnicker Dana Battle", kind: "battle", data: rockTunnelPicnickerDanaBattle },
+  { label: "Route 10 Poké Maniac Herman Battle", kind: "battle", data: route10PokeManiacHermanBattle },
+  { label: "Route 8 Super Nerd Aidan Battle", kind: "battle", data: route8SuperNerdAidanBattle },
+  { label: "Vermillion City Gym Gentleman Tucker Battle", kind: "battle", data: vermillionCityGymGentlemanTuckerBattle },
+  { label: "Vermillion City Leader Lt. Surge Battle", kind: "battle", data: vermillionCityLeaderLtSurgeBattle },
+];

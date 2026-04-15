@@ -2,6 +2,7 @@ import { BattleData } from "@site/src/components/Battle";
 import { BoxChangeData } from "@site/src/components/BoxChange";
 import { EncounterData } from "@site/src/components/Encounter";
 import { getBox } from "@site/src/utils/box";
+import { Moment } from "@site/src/utils/moments";
 import {
   route3LassSallyBox,
   mtMoonSuperNerdMiguelBox,
@@ -138,7 +139,8 @@ const _box5 = getBox({
       nature: "Impish",
     },
   },
-  team: ["Torracat", "Houndour", "Kricketune", "Yamask-G", "Azumarill", "Meowth-G"],
+  team: ["Torracat", "Houndour", "Kricketune", "Yamask-G", "Azumarill"],
+  extraTeam: ["Meowth-G"],
 });
 
 const _box6 = getBox({
@@ -272,7 +274,8 @@ const _box11 = getBox({
       nature: "Adamant",
     },
   },
-  team: ["Houndoom", "Drednaw", "Azumarill", "Perrserker", "Magikarp"],
+  team: ["Houndoom", "Drednaw"],
+  extraTeam: ["Azumarill", "Perrserker", "Magikarp"],
 });
 
 const _box12 = getBox({
@@ -581,7 +584,7 @@ export const mtMoonSuperNerdMiguelBattle: BattleData = {
           branches: [{ branches: ["Azumarill Play Rough Sableye", "Sableye Protect"] }],
         },
       ],
-      frags: { Kricketune: 1 },
+      frags: { Kricketune: 1, "Yamask-G": 1 },
     },
     {
       line: "Azumarill Play Rough Sableye",
@@ -1768,3 +1771,33 @@ export const ceruleanCityLeaderMistyBattle: BattleData = {
 };
 
 export const box = _box23;
+
+export const moments: Moment[] = [
+  { label: "Route 3 Box Change", kind: "boxChange", data: route3BoxChange },
+  { label: "Route 3 Lass Sally Battle", kind: "battle", data: route3LassSallyBattle },
+  { label: "Mt. Moon Encounter", kind: "encounter", data: drilburEncounter },
+  { label: "Route 4 Encounter", kind: "encounter", data: magikarpEncounter },
+  { label: "Route 4 Box Change", kind: "boxChange", data: route4BoxChange },
+  { label: "Mt. Moon Super Nerd Miguel Battle", kind: "battle", data: mtMoonSuperNerdMiguelBattle },
+  { label: "After Miguel Box Change", kind: "boxChange", data: afterMiguelBoxChange },
+  { label: "Mt. Moon Archer Battle", kind: "battle", data: mtMoonArcherBattle },
+  { label: "Cerulean City Encounter", kind: "encounter", data: chewtleEncounter },
+  { label: "Cerulean City Box Change", kind: "boxChange", data: ceruleanCityBoxChange },
+  { label: "Cerulean City Rival Battle", kind: "battle", data: ceruleanCityRivalBattle },
+  { label: "After Rival Box Change", kind: "boxChange", data: afterRivalBoxChange },
+  { label: "Nugget Bridge Bug Catcher Cale Battle", kind: "battle", data: nuggetBridgeBugCatcherCaleBattle },
+  { label: "Nugget Bridge Lass Ali Battle", kind: "battle", data: nuggetBridgeLassAliBattle },
+  { label: "Nugget Bridge Youngster Timmy Battle", kind: "battle", data: nuggetBridgeYoungsterTimmyBattle },
+  { label: "Gyarados Box Change", kind: "boxChange", data: gyaradosBoxChange },
+  { label: "Nugget Bridge Lass Reli Battle", kind: "battle", data: nuggetBridgeLassReliBattle },
+  { label: "Nugget Bridge Camper Ethan Battle", kind: "battle", data: nuggetBridgeCamperEthanBattle },
+  { label: "Nugget Bridge Grunt Battle", kind: "battle", data: nuggetBridgeGruntBattle },
+  { label: "Route 24 Encounter", kind: "encounter", data: charcadetEncounter },
+  { label: "Route 25 Encounter", kind: "encounter", data: chinchouEncounter },
+  { label: "Dig House Grunt Battle", kind: "battle", data: digHouseGruntBattle },
+  { label: "Route 5 Encounter", kind: "encounter", data: growlitheHEncounter },
+  { label: "Route 6 Encounter", kind: "encounter", data: shelderEncounter },
+  { label: "Route 6 Box Change", kind: "boxChange", data: route6BoxChange },
+  { label: "Cerulean City Leader Misty Battle", kind: "battle", data: ceruleanCityLeaderMistyBattle },
+  { label: "After Misty Box Change", kind: "boxChange", data: afterMistyBoxChange },
+];

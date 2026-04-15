@@ -1,6 +1,7 @@
 import { EncounterData } from "@site/src/components/Encounter";
 
 import { box as _box1 } from "@site/src/data/battles/erika";
+import { Moment } from "@site/src/utils/moments";
 
 // ─── Encounters ───────────────────────────────────────────────────────────────
 
@@ -21,3 +22,8 @@ export const mudkipEncounter: EncounterData = {
 };
 
 export const box = _box1;
+
+export const moments: Moment[] = [
+  { label: "Starter Egg 1 Encounter", kind: "encounter", data: sprigatitoEncounter },
+  { label: "Starter Egg 2 Encounter", kind: "encounter", data: mudkipEncounter },
+];

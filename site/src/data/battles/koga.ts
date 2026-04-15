@@ -1,6 +1,7 @@
 import { EncounterData } from "@site/src/components/Encounter";
 
 import { box as _box1 } from "@site/src/data/battles/sabrina";
+import { Moment } from "@site/src/utils/moments";
 
 // ─── Encounters ───────────────────────────────────────────────────────────────
 
@@ -29,3 +30,9 @@ export const treeckoEncounter: EncounterData = {
 };
 
 export const box = _box1;
+
+export const moments: Moment[] = [
+  { label: "Starter Egg 3 Encounter", kind: "encounter", data: froakieEncounter },
+  { label: "Starter Egg 4 Encounter", kind: "encounter", data: chimcharEncounter },
+  { label: "Starter Egg 5 Encounter", kind: "encounter", data: treeckoEncounter },
+];

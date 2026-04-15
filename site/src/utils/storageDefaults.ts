@@ -2,6 +2,9 @@ export const STORAGE_DEFAULTS: Record<string, string> = {
   "navbar-item-highlight-level": "info",
   "navbar-item-hp-display": "percent",
 
+  "stats-filter-start": "",
+  "stats-filter-end": "",
+
   "branch-kricketune-mega-drain-varoom-kricketune-mega-drain-hippopotas":
     "Kricketune Mega Drain Varoom",
   "branch-azumarill-play-rough-sableye-sableye-protect": "Azumarill Play Rough Sableye",

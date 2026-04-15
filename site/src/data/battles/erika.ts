@@ -1,6 +1,7 @@
 import { BattleData } from "@site/src/components/Battle";
 import { BoxChangeData } from "@site/src/components/BoxChange";
 import { getBox } from "@site/src/utils/box";
+import { Moment } from "@site/src/utils/moments";
 import {
   celadonCityGymAceTrainerMaryBox,
   celadonCityLeaderErikaBox,
@@ -351,3 +352,9 @@ export const celadonCityLeaderErikaBattle: BattleData = {
 };
 
 export const box = _box4;
+
+export const moments: Moment[] = [
+  { label: "Celadon City Box Change", kind: "boxChange", data: celadonCityBoxChange },
+  { label: "Celadon City Gym Ace Trainer Mary Battle", kind: "battle", data: celadonCityGymAceTrainerMaryBattle },
+  { label: "Celadon City Leader Erika Battle", kind: "battle", data: celadonCityLeaderErikaBattle },
+];
