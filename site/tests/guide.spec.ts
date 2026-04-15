@@ -1,5 +1,18 @@
 import { expect, Locator, Page, test } from "@playwright/test";
+import fs from "fs";
+import path from "path";
 import { slugify } from "../src/utils/slugify";
+
+test.describe.configure({ mode: "serial" });
+
+const SNAPSHOT_DIR = path.join(__dirname, "snapshots/guide.spec.ts-snapshots");
+const SNAPSHOT_SUFFIX = `desktop-${process.platform}`;
+const seenSnapshots = new Set<string>();
+
+async function expectSnapshot(card: Locator, filename: string) {
+  seenSnapshots.add(filename.replace(/\.png$/, `-${SNAPSHOT_SUFFIX}.png`));
+  await expect.soft(card).toHaveScreenshot([filename]);
+}
 
 async function waitForRender(loc: Locator) {
   // Wait until the subtree has been DOM-stable for two animation frames.
@@ -50,7 +63,7 @@ async function getSnapshot(
     visited.add(key);
 
     const filename = slugify([...parts, cardIndex.value++]);
-    await expect.soft(card).toHaveScreenshot([`${filename}.png`]);
+    await expectSnapshot(card, `${filename}.png`);
 
     const select = sequence.locator("select");
     const values = await getValues(select);
@@ -87,7 +100,7 @@ async function getSnapshot(
   }
 
   const filename = slugify([...parts, cardIndex.value++]);
-  await expect.soft(card).toHaveScreenshot([`${filename}.png`]);
+  await expectSnapshot(card, `${filename}.png`);
 
   const unsetKeys = await card.evaluate(() => localStorage.getItem("unset-keys"));
   expect(unsetKeys, "All keys must be set in storageDefaults.ts").toBeNull();
@@ -127,3 +140,11 @@ for (const [guideIndex, guide] of GUIDES.entries()) {
     });
   });
 }
+
+test.afterAll(() => {
+  if (!fs.existsSync(SNAPSHOT_DIR)) return;
+  const staleSnapshots = fs
+    .readdirSync(SNAPSHOT_DIR)
+    .filter((f) => f.endsWith(".png") && !seenSnapshots.has(f));
+  expect(staleSnapshots, "Snapshots must not be stale").toEqual([]);
+});

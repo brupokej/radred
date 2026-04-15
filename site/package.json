@@ -18,7 +18,7 @@
     "postinstall": "npx playwright install chromium",
     "playwright": "playwright test",
     "playwright:ui": "playwright test --ui",
-    "playwright:update": "rm -rf tests/snapshots && playwright test --update-snapshots",
+    "playwright:update": "playwright test --update-snapshots",
     "vitest": "vitest run"
   },
   "dependencies": {
