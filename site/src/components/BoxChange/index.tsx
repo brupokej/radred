@@ -6,8 +6,8 @@ export interface BoxChangeData {
   playerBox: Box;
 }
 
-export default function BoxChange({ box, data }: { box?: Box; data?: BoxChangeData }) {
-  const resolvedBox = (data?.playerBox ?? box)!;
+export default function BoxChange({ data }: { data: BoxChangeData }) {
+  const resolvedBox = data.playerBox;
   const boxes = splitChanges(resolvedBox);
   const removalRows: React.ReactNode[] = [];
   const capRows: React.ReactNode[] = [];

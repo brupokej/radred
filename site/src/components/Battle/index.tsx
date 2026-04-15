@@ -47,7 +47,7 @@ export interface LineData {
 
 export interface BattleData {
   opponentBox: Box;
-  playerBox?: Box;
+  playerBox: Box;
   lines: LineData[];
 }
 
@@ -171,20 +171,9 @@ function battleDataToChildren(data: BattleData): React.ReactNode {
   ));
 }
 
-export function Battle({
-  playerBox,
-  opponentBox: opponentBoxProp,
-  children,
-  data,
-}: {
-  playerBox?: Box;
-  opponentBox?: Box;
-  children?: React.ReactNode;
-  data?: BattleData;
-}) {
-  const opponentBox = opponentBoxProp ?? data!.opponentBox;
-  const resolvedChildren = data ? battleDataToChildren(data) : children;
-  const resolvedPlayerBox = (playerBox ?? data?.playerBox)!;
+export function Battle({ data }: { data: BattleData }) {
+  const { opponentBox, playerBox: resolvedPlayerBox } = data;
+  const resolvedChildren = battleDataToChildren(data);
   const playerResolved = resolveBox(resolvedPlayerBox);
   const opponentResolved = resolveBox(opponentBox);
   const lineElements = React.Children.toArray(resolvedChildren).filter(
@@ -299,11 +288,11 @@ export function Battle({
   );
 }
 
-export function BattleLine({ line, children }: { line?: string; children: React.ReactNode }) {
+function BattleLine({ line, children }: { line?: string; children: React.ReactNode }) {
   return null;
 }
 
-export function Matchup({
+function Matchup({
   matchup,
   isContinued = false,
   children,
@@ -334,7 +323,7 @@ export function Matchup({
   );
 }
 
-export function Turn({ children }: { children: React.ReactNode }) {
+function Turn({ children }: { children: React.ReactNode }) {
   return (
     <div className={styles.turn}>
       {React.Children.map(children, (item, i) => (
@@ -355,15 +344,15 @@ function Move({ move, side, className }: { move: string; className?: string }) {
   );
 }
 
-export function PlayerMove({ move }: { move: string }) {
+function PlayerMove({ move }: { move: string }) {
   return <Move move={move} side="player" />;
 }
 
-export function OpponentMove({ move }: { move: string }) {
+function OpponentMove({ move }: { move: string }) {
   return <Move move={move} side="opponent" className={styles.opponentMove} />;
 }
 
-export function Branch({
+function Branch({
   branch,
   if: condition,
   ifNot,

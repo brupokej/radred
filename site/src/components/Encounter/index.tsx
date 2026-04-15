@@ -127,18 +127,14 @@ export interface EncounterData {
 }
 
 export default function Encounter({
-  encounter,
-  children,
-  playerBox,
   data,
+  children,
 }: {
-  encounter?: PokemonData;
+  data: EncounterData;
   children?: ReactNode;
-  playerBox?: Box;
-  data?: EncounterData;
 }) {
-  const resolvedEncounter = (data?.pokemon ?? encounter)!;
-  const resolvedPlayerBox = data?.playerBox ?? playerBox;
+  const resolvedEncounter = data.pokemon;
+  const resolvedPlayerBox = data.playerBox;
   const isSequence = resolvedEncounter.name in encounterSequences;
   return (
     <>
