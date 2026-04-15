@@ -2,437 +2,80 @@
 sidebar_position: 2
 ---
 
-import {
-  Battle,
-  BattleLine,
-  Branch,
-  Matchup,
-  PlayerMove,
-  OpponentMove,
-  Turn,
-} from "@site/src/components/Battle";
-import { ceruleanCityRivalBattle } from "@site/src/data/battles/misty";
+import { Battle } from "@site/src/components/Battle";
 import BoxChange from "@site/src/components/BoxChange";
 import Card from "@site/src/components/Card";
 import Encounter from "@site/src/components/Encounter";
 import { Row } from "@site/src/components/Row";
 
-import { getBox } from "@site/src/utils/box";
 import {
-  route3LassSallyBox,
-  mtMoonSuperNerdMiguelBox,
-  mtMoonArcherBox,
-  nuggetBridgeBugCatcherCaleBox,
-  nuggetBridgeLassAliBox,
-  nuggetBridgeYoungsterTimmyBox,
-  nuggetBridgeLassReliBox,
-  nuggetBridgeCamperEthanBox,
-  nuggetBridgeGruntBox,
-  digHouseGruntBox,
-  ceruleanCityLeaderMistyBox,
-} from "@site/src/utils/opponents";
+  drilburEncounter,
+  magikarpEncounter,
+  chewtleEncounter,
+  charcadetEncounter,
+  chinchouEncounter,
+  growlitheHEncounter,
+  shelderEncounter,
+  route3BoxChange,
+  route4BoxChange,
+  afterMiguelBoxChange,
+  ceruleanCityBoxChange,
+  afterRivalBoxChange,
+  gyaradosBoxChange,
+  route6BoxChange,
+  afterMistyBoxChange,
+  route3LassSallyBattle,
+  mtMoonSuperNerdMiguelBattle,
+  mtMoonArcherBattle,
+  ceruleanCityRivalBattle,
+  nuggetBridgeBugCatcherCaleBattle,
+  nuggetBridgeLassAliBattle,
+  nuggetBridgeYoungsterTimmyBattle,
+  nuggetBridgeLassReliBattle,
+  nuggetBridgeCamperEthanBattle,
+  nuggetBridgeGruntBattle,
+  digHouseGruntBattle,
+  ceruleanCityLeaderMistyBattle,
+  box,
+} from "@site/src/data/battles/misty";
 
-import { box as _box1 } from "@site/guide/brock.mdx";
+export { box };
 
 # Misty
 
-export const _box2 = getBox({
-  box: _box1,
-  update: [
-    {
-      Kricketune: {
-        level: 23,
-        moves: ["Bug Bite", "Bulldoze", "Mega Drain", "Rock Tomb"],
-      },
-      Houndour: {
-        level: 23,
-      },
-      Marill: {
-        level: 20,
-        moves: ["Aqua Jet", "Aqua Tail", "Covet", "Tail Whip"],
-      },
-    },
-    {
-      Marill: {
-        name: "Azumarill",
-        level: 23,
-        moves: ["Aqua Jet", "Aqua Tail", "Ice Punch", "Play Rough"],
-      },
-    },
-  ],
-});
-
-<BoxChange box={_box2} />
+<BoxChange data={route3BoxChange} />
 
 ## Route 3 Lass Sally Battle
 
-export const _box3 = getBox({
-  box: _box2,
-  update: {
-    Kricketune: {
-      item: "Coba Berry",
-    },
-    Houndour: {
-      item: "Wise Glasses",
-    },
-  },
-  team: ["Kricketune", "Houndour", "Azumarill", "Meowth-G"],
-});
-
-<Battle playerBox={_box3} opponentBox={route3LassSallyBox}>
-  <BattleLine>
-    <Matchup matchup={["Pikachu-Flying"]}>
-      <Turn>
-        <OpponentMove move="{o:Pikachu-Flying} Zippy Zap {p:Kricketune} to {+:38}" />
-        <PlayerMove move="{p:Kricketune} Rock Tomb {o:Pikachu-Flying} to {=:0}" />
-        <OpponentMove move="{o:Pikachu-Flying} fainted" />
-      </Turn>
-    </Matchup>
-    <Matchup matchup={["Whimsicott"]}>
-      <Turn>
-        <PlayerMove move="{p:Kricketune} switch to {p:Houndour}" />
-        <OpponentMove move="{o:Whimsicott} Leech Seed {p:Houndour}" />
-      </Turn>
-      <Turn>
-        <OpponentMove move="{o:Whimsicott} Mega Drain {p:Houndour} to {+:40}" />
-        <PlayerMove move="{p:Houndour} Incinerate {o:Whimsicott} to {-:17}" />
-      </Turn>
-      <Turn>
-        <OpponentMove move="{o:Whimsicott} Mega Drain {p:Houndour} to {+:20}" />
-        <OpponentMove move="{o:Whimsicott} heal to {-:27}" />
-        <PlayerMove move="{p:Houndour} Incinerate {o:Whimsicott} to {=:0}" />
-        <OpponentMove move="{o:Whimsicott} fainted" />
-      </Turn>
-    </Matchup>
-    <Matchup matchup={["Oricorio-Sensu"]}>
-      <Turn>
-        <PlayerMove move="{p:Houndour} switch to {p:Azumarill}" />
-        <OpponentMove move="{o:Oricorio-Sensu} Air Cutter {p:Azumarill} to {+:53}" />
-      </Turn>
-      <Turn>
-        <OpponentMove move="{o:Oricorio-Sensu} HP Ghost {p:Azumarill} to {+:23}" />
-        <PlayerMove move="{p:Azumarill} Ice Punch {o:Oricorio-Sensu} to {-:19}" />
-      </Turn>
-      <Turn>
-        <PlayerMove move="{p:Azumarill} Aqua Jet {o:Oricorio-Sensu} to {=:0}" />
-        <OpponentMove move="{o:Oricorio-Sensu} fainted" />
-      </Turn>
-    </Matchup>
-    <Matchup matchup={["mawile"]}>
-      <Turn>
-        <PlayerMove move="{p:Azumarill} switch to {p:Meowth-G}" />
-        <OpponentMove move="{o:Mawile} Covet {p:Meowth-G} to {+:19}" />
-      </Turn>
-      <Turn>
-        <PlayerMove move="{p:Meowth-G} switch to {p:Houndour}" />
-        <OpponentMove move="{o:Mawile} Fire Fang {p:Houndour}" />
-      </Turn>
-      <Turn>
-        <PlayerMove move="{p:Houndour} Incinerate {o:Mawile} to {=:0}" />
-        <OpponentMove move="{o:Mawile} fainted" />
-      </Turn>
-    </Matchup>
-  </BattleLine>
-</Battle>
+<Battle data={route3LassSallyBattle} />
 
 ## Mt. Moon Encounter
 
-export const _drilbur = {
-  name: "Drilbur",
-  moves: ["Fury Swipes", "Mud-Slap", "Rapid Spin", "Scratch"],
-};
-
-<Encounter encounter={_drilbur}>
+<Encounter data={drilburEncounter}>
   <Row row={[{ warning: "Floor B2F" }, "· Night · 10% · Level 12-14"]} />
 </Encounter>
 
 ## Route 4 Encounter
 
-export const _magikarp = {
-  name: "Magikarp",
-  ability: "Swift Swim",
-  moves: ["Splash"],
-};
-
-<Encounter encounter={_magikarp}>
+<Encounter data={magikarpEncounter}>
   <Row row={["Level 5"]} />
 </Encounter>
 
-export const _box4 = getBox({
-  box: _box3,
-  add: [_drilbur, _magikarp],
-  update: {
-    Torracat: {
-      level: 23,
-    },
-    "Yamask-G": {
-      level: 23,
-    },
-    "Meowth-G": {
-      level: 23,
-      moves: ["Fake Out", "Bullet Punch", "Metal Claw", "Scratch"],
-    },
-  },
-});
-
-<BoxChange box={_box4} />
+<BoxChange data={route4BoxChange} />
 
 ## Mt. Moon Super Nerd Miguel Battle
 
-export const _box5 = getBox({
-  box: _box4,
-  update: {
-    Houndour: {
-      item: "Black Glasses",
-    },
-    Kricketune: {
-      nature: "Impish",
-      item: "Silver Powder",
-    },
-    "Yamask-G": {
-      item: "Rawst Berry",
-    },
-    Azumarill: {
-      nature: "Impish",
-      item: "Rawst Berry",
-    },
-    "Meowth-G": {
-      nature: "Impish",
-    },
-  },
-  team: ["Torracat", "Houndour", "Kricketune", "Yamask-G", "Azumarill", "Meowth-G"],
-});
+<Battle data={mtMoonSuperNerdMiguelBattle} />
 
-<Battle
-  playerBox={_box5}
-  opponentBox={mtMoonSuperNerdMiguelBox}
->
-<BattleLine>
-  <Matchup matchup={["Voltorb-H", "Thwackey"]}>
-    <Turn>
-      <PlayerMove move="{p:Torracat} switch to {p:Kricketune}" />
-      <PlayerMove move="{p:Houndour} switch to {p:Yamask-G}" />
-      <OpponentMove move="{o:Thwackey} Fake Out {p:Yamask-G}" />
-      <OpponentMove move="{o:Voltorb-H} Self-Destruct {p:Kricketune} to {+:43} and {o:Thwackey} to {-:46}" />
-      <OpponentMove move="{o:Voltorb-H} fainted" />
-      <PlayerMove move="{p:Kricketune} terrain to {+:47}" />
-      <OpponentMove move="{o:Thwackey} terrain to {-:50}" />
-    </Turn>
-  </Matchup>
-  <Matchup matchup={["Swoobat", "Thwackey"]}>
-    <Turn>
-      <OpponentMove move="{o:Swoobat} Calm Mind" />
-      <PlayerMove move="{p:Kricketune} Bug Bite {o:Thwackey} to {=:0}" />
-      <PlayerMove move="{p:Yamask-G} Haze" />
-      <OpponentMove move="{o:Thwackey} fainted" />
-    </Turn>
-  </Matchup>
-  <Matchup matchup={["Swoobat", "Sableye"]}>
-    <Turn>
-      <PlayerMove move="{p:Kricketune} switch to {p:Houndour}" />
-      <OpponentMove move="{o:Swoobat} Calm Mind" />
-      <OpponentMove move="{o:Sableye} Will-O-Wisp {p:Houndour}" />
-      <PlayerMove move="{p:Yamask-G} Haze" />
-    </Turn>
-    <Turn>
-      <PlayerMove move="{p:Yamask-G} switch to {p:Azumarill}" />
-      <OpponentMove move="{o:Swoobat} Calm Mind" />
-      <PlayerMove move="{p:Houndour} Leer {o:Swoobat} and {o:Sableye}" />
-      <OpponentMove move="{o:Sableye} Foul Play {p:Azumarill} to {+:71} or Foul Play {p:Houndour} to {+:29}" />
-      <PlayerMove move="{p:Azumarill} terrain to {+:76} or {p:Houndour} terrain to {+:32}" />
-    </Turn>
-    <Branch branch={["Azumarill Play Rough Sableye", "Sableye Protect"]} />
-  </Matchup>
-</BattleLine>
-
-<BattleLine line="Azumarill Play Rough Sableye">
-  <Matchup matchup={["Swoobat", "Sableye"]}>
-    <Turn>
-      <PlayerMove move="{p:Houndour} Sucker Punch {o:Swoobat} to {=:0}" />
-      <PlayerMove move="{p:Azumarill} Play Rough {o:Sableye} to {=:0}" />
-      <OpponentMove move="{o:Swoobat} fainted" />
-      <OpponentMove move="{o:Sableye} fainted" />
-      <PlayerMove move="{p:Azumarill} terrain to {+:81} or {p:Houndour} terrain to {+:35}" />
-    </Turn>
-  </Matchup>
-  <Matchup matchup={["Skiddo"]}>
-    <Turn>
-      <PlayerMove move="{p:Houndour} Incinerate {o:Skiddo} to {-:17}" />
-      <PlayerMove move="{p:Azumarill} Play Rough {o:Skiddo} to {=:0}" />
-      <OpponentMove move="{o:Skiddo} fainted" />
-    </Turn>
-  </Matchup>
-</BattleLine>
-
-<BattleLine line="Sableye Protect">
-  <Matchup matchup={["Swoobat", "Sableye"]}>
-    <Turn>
-      <PlayerMove move="{p:Houndour} Sucker Punch {o:Swoobat} to {=:0}" />
-      <OpponentMove move="{o:Sableye} Protect" />
-      <PlayerMove move="{p:Azumarill} Play Rough {o:Sableye}" />
-      <OpponentMove move="{o:Swoobat} fainted" />
-      <PlayerMove move="{p:Azumarill} terrain to {+:81} or {p:Houndour} terrain to {+:35}" />
-    </Turn>
-  </Matchup>
-  <Matchup matchup={["Skiddo", "Sableye"]}>
-    <Turn>
-      <PlayerMove move="{p:Houndour} Incinerate {o:Sableye} to {-:41} and {o:Skiddo} to {-:19}" />
-      <PlayerMove move="{p:Azumarill} Play Rough {o:Skiddo} to {=:0}" />
-      <OpponentMove move="{o:Sableye} Foul Play {p:Azumarill} to {+:66} or Foul Play {p:Houndour} to {+:4}" />
-      <PlayerMove move="{p:Azumarill} terrain to {+:71} or {p:Houndour} terrain to {+:7}" />
-      <PlayerMove move="{o:Sableye} terrain to {+:47}" />
-      <OpponentMove move="{o:Skiddo} fainted" />
-    </Turn>
-  </Matchup>
-  <Matchup matchup={["Sableye"]}>
-    <Turn>
-      <PlayerMove move="{p:Houndour} Incinerate {o:Sableye} to {-:31}" />
-      <PlayerMove move="{p:Azumarill} Play Rough {o:Sableye} to {=:0}" />
-      <OpponentMove move="{o:Sableye} fainted" />
-    </Turn>
-  </Matchup>
-</BattleLine>
-</Battle>
-
-export const _box6 = getBox({
-  box: _box5,
-  update: [
-    {
-      "Wooper-P": {
-        name: "Clodsire",
-        spriteKey: null,
-        pokedexKey: null,
-        level: 20,
-      },
-    },
-    {
-      Clodsire: {
-        level: 23,
-      },
-    },
-  ],
-});
-
-<BoxChange box={_box6} />
+<BoxChange data={afterMiguelBoxChange} />
 
 ## Mt. Moon Archer Battle
 
-export const _box7 = getBox({
-  box: _box6,
-  update: {
-    Azumarill: {
-      item: "Pecha Berry",
-    },
-    "Meowth-G": {
-      item: "Chesto Berry",
-    },
-    Kricketune: {
-      item: "Sitrus Berry",
-      moves: ["Bug Bite", "Bulldoze", "Bullet Seed", "Mega Drain"],
-    },
-    "Yamask-G": {
-      item: "Pecha Berry",
-    },
-    Clodsire: {
-      item: "Yache Berry",
-    },
-  },
-  team: ["Azumarill", "Meowth-G", "Kricketune", "Yamask-G", "Clodsire", "Torracat"],
-});
-
-<Battle playerBox={_box7} opponentBox={mtMoonArcherBox}>
-  <BattleLine>
-    <Matchup matchup={["Glimmet"]}>
-      <Turn>
-        <PlayerMove move="{p:Azumarill} Aqua Jet {o:Glimmet} to {=:0}" />
-        <OpponentMove move="{o:Glimmet} Toxic Debris" />
-        <OpponentMove move="{o:Glimmet} fainted" />
-      </Turn>
-    </Matchup>
-    <Matchup matchup={["Seviper"]}>
-      <Turn>
-        <PlayerMove move="{p:Azumarill} switch to {p:Meowth-G}" />
-        <OpponentMove move="{o:Seviper} Hypnosis {p:Meowth-G}" />
-      </Turn>
-      <Turn>
-        <PlayerMove move="{p:Meowth-G} Fake Out {o:Seviper} to {-:61}" />
-        <OpponentMove move="{o:Seviper} flinched" />
-      </Turn>
-      <Turn>
-        <PlayerMove move="{p:Meowth-G} switch to {p:Kricketune}" />
-        <OpponentMove move="{o:Seviper} Hypnosis {p:Kricketune}" />
-        <OpponentMove move="{p:Kricketune} poison to {=:66}" />
-      </Turn>
-      <Turn>
-        <PlayerMove move="{p:Kricketune} Bulldoze {o:Seviper} to {-:40}" />
-        <OpponentMove move="{o:Seviper} Poison Fang {p:Kricketune} to {+:44}" />
-        <OpponentMove move="{p:Kricketune} poison to {+:35}" />
-      </Turn>
-      <Turn>
-        <PlayerMove move="{p:Kricketune} Bulldoze {o:Seviper} to {=:0}" />
-        <OpponentMove move="{o:Seviper} fainted" />
-        <OpponentMove move="{p:Kricketune} poison to {+:26}" />
-      </Turn>
-    </Matchup>
-    <Matchup matchup={["Fearow"]}>
-      <Turn>
-        <PlayerMove move="{p:Kricketune} switch to {p:Meowth-G}" />
-        <OpponentMove move="{o:Fearow} Double Hit {p:Meowth-G} to {+:27}" />
-      </Turn>
-      <Turn>
-        <PlayerMove move="{p:Meowth-G} Fake Out {o:Fearow} to {-:51}" />
-        <OpponentMove move="{o:Fearow} flinched" />
-      </Turn>
-      <Turn>
-        <PlayerMove move="{p:Meowth-G} switch to {p:Yamask-G}" />
-        <OpponentMove move="{o:Fearow} Drill Run {p:Yamask-G} to {+:30}" />
-      </Turn>
-      <Turn>
-        <PlayerMove move="{p:Yamask-G} switch to {p:Azumarill}" />
-        <OpponentMove move="{o:Fearow} Pluck {p:Azumarill} to {+:55}" />
-      </Turn>
-      <Turn>
-        <OpponentMove move="{o:Fearow} Double Hit {p:Azumarill} to {+:17}" />
-        <PlayerMove move="{p:Azumarill} Ice Punch {o:Fearow} to {=:0}" />
-      </Turn>
-    </Matchup>
-    <Matchup matchup={["Mightyena"]}>
-      <Turn>
-        <PlayerMove move="{p:Azumarill} switch to {p:Clodsire}" />
-        <OpponentMove move="{o:Mightyena} Poison Fang {p:Clodsire} to {+:89}" />
-      </Turn>
-      <Turn>
-        <PlayerMove move="{p:Clodsire} switch to {p:Kricketune}" />
-        <OpponentMove move="{o:Mightyena} Howl" />
-        <OpponentMove move="{p:Kricketune} poison to {+:17}" />
-      </Turn>
-      <Turn>
-        <PlayerMove move="{p:Kricketune} Bug Bite {o:Mightyena} to {=:0}" />
-        <OpponentMove move="{o:Mightyena} fainted" />
-        <OpponentMove move="{p:Kricketune} poison to {+:8}" />
-      </Turn>
-    </Matchup>
-    <Matchup matchup={["Houndour"]}>
-      <Turn>
-        <PlayerMove move="{p:Kricketune} switch to {p:Torracat}" />
-        <OpponentMove move="{o:Houndour} Incinerate {p:Torracat} to {+:48}" />
-      </Turn>
-      <Turn>
-        <PlayerMove move="{p:Torracat} Double Kick {o:Houndour} to {=:0}" />
-        <OpponentMove move="{o:Houndour} fainted" />
-      </Turn>
-    </Matchup>
-  </BattleLine>
-</Battle>
+<Battle data={mtMoonArcherBattle} />
 
 ## Cerulean City Encounter
 
-export const _chewtle = {
-  name: "Chewtle",
-  moves: ["Aqua Jet", "Bite"],
-};
-
-<Encounter encounter={_chewtle}>
+<Encounter data={chewtleEncounter}>
   <Row row={["Old Rod · 70% · Level 2-4"]} />
 </Encounter>
 
@@ -440,798 +83,72 @@ export const _chewtle = {
   <Row row={["Cerulean City →", { info: "Solve the Move Relearner puzzle" }]} />
 </Card>
 
-export const _box8 = getBox({
-  box: _box7,
-  add: [_chewtle],
-  cap: 28,
-  update: {
-    "Meowth-G": {
-      name: "Perrserker",
-      spriteKey: null,
-      pokedexKey: null,
-      moves: ["Fake Out", "Bullet Punch", "Iron Head", "Scratch"],
-    },
-    Chewtle: {
-      name: "Drednaw",
-      moves: ["Aqua Jet", "Bite", "Rock Tomb"],
-    },
-    Tentacool: {
-      name: "Tentacruel",
-    },
-  },
-});
-
-<BoxChange box={_box8} />
+<BoxChange data={ceruleanCityBoxChange} />
 
 ## Cerulean City Rival Battle
 
-export const _box9 = getBox({
-  box: _box8,
-  update: {
-    Azumarill: {
-      item: "Sitrus Berry",
-      moves: ["Aqua Jet", "Aqua Tail", "Covet", "Play Rough"],
-    },
-    Torracat: {
-      nature: "Careful",
-      item: "Sitrus Berry",
-    },
-    Clodsire: {
-      nature: "Sassy",
-      item: "Poison Barb",
-      moves: ["Mud Shot", "Poison Jab", "Rock Tomb", "Yawn"],
-    },
-    Perrserker: {
-      nature: "Hasty",
-      item: "Sitrus Berry",
-    },
-    Drednaw: {
-      nature: "Adamant",
-      ability: "Shell Armor",
-      item: "Mystic Water",
-      moves: ["Aqua Jet", "Bite", "Razor Shell", "Rock Tomb"],
-    },
-    Tentacruel: {
-      nature: "Calm",
-      item: "Mystic Water",
-      moves: ["Acid Spray", "Bubble Beam", "Rapid Spin", "Sludge"],
-    },
-  },
-  team: ["Azumarill", "Torracat", "Clodsire", "Perrserker", "Drednaw", "Tentacruel"],
-});
+<Battle data={ceruleanCityRivalBattle} />
 
-<Battle data={ceruleanCityRivalBattle} playerBox={_box9} />
-
-export const _box10 = getBox({
-  box: _box9,
-  update: [
-    {
-      Houndour: {
-        moves: ["Dark Pulse", "Incinerate", "Leer", "Sucker Punch"],
-      },
-    },
-    {
-      Houndour: {
-        name: "Houndoom",
-        moves: ["Dark Pulse", "Flame Burst", "Leer", "Sucker Punch"],
-      },
-    },
-  ],
-});
-
-<BoxChange box={_box10} />
+<BoxChange data={afterRivalBoxChange} />
 
 ## Nugget Bridge Bug Catcher Cale Battle
 
-export const _box11 = getBox({
-  box: _box10,
-  update: {
-    Drednaw: {
-      moves: ["Aqua Jet", "Ice Fang", "Razor Shell", "Rock Tomb"],
-    },
-    Azumarill: {
-      nature: "Adamant",
-    },
-    Perrserker: {
-      nature: "Adamant",
-    },
-    Magikarp: {
-      nature: "Adamant",
-    },
-  },
-  team: ["Houndoom", "Drednaw", "Azumarill", "Perrserker", "Magikarp"],
-});
-
-<Battle playerBox={_box11} opponentBox={nuggetBridgeBugCatcherCaleBox}>
-  <BattleLine>
-    <Matchup matchup={["Butterfree", "Vivillon"]}>
-      <Turn>
-        <PlayerMove move="{p:Houndoom} Flame Burst {o:Vivillon} to {=:0}" />
-        <PlayerMove move="{p:Drednaw} Rock Tomb {o:Butterfree} to {=:0}" />
-        <OpponentMove move="{o:Vivillon} fainted" />
-        <OpponentMove move="{o:Butterfree} fainted" />
-      </Turn>
-    </Matchup>
-    <Matchup matchup={["Wormadam-Sa"]}>
-      <Turn>
-        <PlayerMove move="{p:Houndoom} Flame Burst {o:Wormadam-Sa} to {-:9}" />
-        <PlayerMove move="{p:Drednaw} Rock Tomb {o:Wormadam-Sa} to {=:0}" />
-        <OpponentMove move="{o:Wormadam-Sa} fainted" />
-      </Turn>
-    </Matchup>
-  </BattleLine>
-</Battle>
+<Battle data={nuggetBridgeBugCatcherCaleBattle} />
 
 ## Nugget Bridge Lass Ali Battle
 
-export const _box12 = getBox({
-  box: _box11,
-  update: {
-    Azumarill: {
-      item: "Pixie Plate",
-    },
-  },
-  team: ["Azumarill", "Perrserker"],
-});
-
-<Battle playerBox={_box12} opponentBox={nuggetBridgeLassAliBox}>
-  <BattleLine>
-    <Matchup matchup={["Amaura", "Jigglypuff"]}>
-      <Turn>
-        <PlayerMove move="{p:Azumarill} Aqua Tail {o:Amaura} to {=:0}" />
-        <PlayerMove move="{p:Perrserker} Iron Head {o:Jigglypuff} to {=:0}" />
-        <OpponentMove move="{o:Amaura} fainted" />
-        <OpponentMove move="{o:Jigglypuff} fainted" />
-      </Turn>
-    </Matchup>
-    <Matchup matchup={["Brionne"]}>
-      <Turn>
-        <PlayerMove move="{p:Perrserker} Bullet Punch {o:Brionne} to {-:63}" />
-        <PlayerMove move="{p:Azumarill} Play Rough {o:Brionne} to {=:0}" />
-        <OpponentMove move="{o:Brionne} fainted" />
-      </Turn>
-    </Matchup>
-  </BattleLine>
-</Battle>
+<Battle data={nuggetBridgeLassAliBattle} />
 
 ## Nugget Bridge Youngster Timmy Battle
 
-export const _box13 = getBox({ box: _box12, team: ["Houndoom", "Perrserker"] });
+<Battle data={nuggetBridgeYoungsterTimmyBattle} />
 
-<Battle playerBox={_box13} opponentBox={nuggetBridgeYoungsterTimmyBox}>
-  <BattleLine>
-    <Matchup matchup={["Electrike", "Plusle"]}>
-      <Turn>
-        <PlayerMove move="{p:Perrserker} Fake Out {o:Plusle} to {-:48}" />
-        <OpponentMove move="{o:Plusle} flinched" />
-        <PlayerMove move="{p:Houndoom} Dark Pulse {o:Electrike} to {=:0}" />
-        <OpponentMove move="{o:Electrike} fainted" />
-      </Turn>
-    </Matchup>
-    <Matchup matchup={["Snover", "Plusle"]}>
-      <Turn>
-        <PlayerMove move="{p:Houndoom} Sucker Punch {o:Plusle} to {=:0}" />
-        <PlayerMove move="{p:Perrserker} Iron Head {o:Snover} to {=:0}" />
-        <OpponentMove move="{o:Plusle} fainted" />
-        <OpponentMove move="{o:Snover} fainted" />
-      </Turn>
-    </Matchup>
-  </BattleLine>
-</Battle>
-
-export const _box14 = getBox({
-  box: _box13,
-  update: {
-    Magikarp: {
-      name: "Gyarados",
-      moves: ["Bite", "Splash"],
-    },
-  },
-});
-
-<BoxChange box={_box14} />
+<BoxChange data={gyaradosBoxChange} />
 
 ## Nugget Bridge Lass Reli Battle
 
-export const _box15 = getBox({
-  box: _box14,
-  update: {
-    Perrserker: {
-      item: "Cheri Berry",
-    },
-    Gyarados: {
-      item: "Sitrus Berry",
-      moves: ["Bite", "Ice Fang", "Leer", "Thrash"],
-    },
-    Azumarill: {
-      moves: ["Aqua Jet", "Aqua Tail", "Ice Punch", "Play Rough"],
-    },
-    Tentacruel: {
-      item: "Persim Berry",
-    },
-  },
-  team: ["Perrserker", "Gyarados", "Azumarill", "Clodsire", "Tentacruel"],
-});
-
-<Battle playerBox={_box15} opponentBox={nuggetBridgeLassReliBox}>
-  <BattleLine>
-    <Matchup matchup={["Greedent"]}>
-      <Turn>
-        <PlayerMove move="{p:Perrserker} Fake Out {o:Greedent} to {-:90}" />
-        <OpponentMove move="{o:Greedent} flinched" />
-      </Turn>
-      <Turn>
-        <PlayerMove move="{p:Perrserker} switch to {p:Gyarados}" />
-        <OpponentMove move="{o:Greedent} Stom. Tantrum {p:Gyarados}" />
-      </Turn>
-      <Turn>
-        <PlayerMove move="{p:Gyarados} Leer {o:Greedent}" />
-        <OpponentMove move="{o:Greedent} Facade {p:Gyarados} to {+:54}" />
-      </Turn>
-      <Turn>
-        <PlayerMove move="{p:Gyarados} Leer {o:Greedent}" />
-        <OpponentMove move="{o:Greedent} Facade {p:Gyarados} to {+:33}" />
-      </Turn>
-      <Turn>
-        <PlayerMove move="{p:Gyarados} switch to {p:Azumarill}" />
-        <OpponentMove move="{o:Greedent} Facade {p:Azumarill} to {+:39}" />
-      </Turn>
-      <Turn>
-        <PlayerMove move="{p:Azumarill} Play Rough {o:Greedent} to {=:0}" />
-        <OpponentMove move="{o:Greedent} fainted" />
-      </Turn>
-    </Matchup>
-    <Matchup matchup={["Togetic"]}>
-      <Turn>
-        <PlayerMove move="{p:Azumarill} switch to {p:Perrserker}" />
-        <OpponentMove move="{o:Togetic} Thunder Wave {p:Perrserker}" />
-      </Turn>
-      <Turn>
-        <PlayerMove move="{p:Perrserker} Iron Head {o:Togetic} to {=:0}" />
-        <OpponentMove move="{o:Togetic} fainted" />
-      </Turn>
-    </Matchup>
-    <Matchup matchup={["Clamperl"]}>
-      <Turn>
-        <PlayerMove move="{p:Perrserker} switch to {p:Clodsire}" />
-        <OpponentMove move="{o:Clamperl} Icy Wind {p:Clodsire} to {+:57}" />
-      </Turn>
-      <Turn>
-        <PlayerMove move="{p:Clodsire} switch to {p:Tentacruel}" />
-        <OpponentMove move="{o:Clamperl} Icy Wind {p:Tentacruel} to {+:78}" />
-      </Turn>
-      <Turn>
-        <PlayerMove move="{p:Tentacruel} Acid Spray {o:Clamperl} to {-:40}" />
-        <OpponentMove move="{o:Clamperl} Water Pulse {p:Tentacruel} to {+:56}" />
-      </Turn>
-      <Turn>
-        <PlayerMove move="{p:Tentacruel} Sludge {o:Clamperl} to {=:0}" />
-        <OpponentMove move="{o:Clamperl} fainted" />
-      </Turn>
-    </Matchup>
-  </BattleLine>
-</Battle>
+<Battle data={nuggetBridgeLassReliBattle} />
 
 ## Nugget Bridge Camper Ethan Battle
 
-export const _box16 = getBox({
-  box: _box15,
-  update: {
-    Houndoom: {
-      item: "Wise Glasses",
-    },
-  },
-  team: ["Houndoom", "Azumarill", "Tentacruel"],
-});
-
-<Battle playerBox={_box16} opponentBox={nuggetBridgeCamperEthanBox}>
-  <BattleLine>
-    <Matchup matchup={["Mabosstiff"]}>
-      <Turn>
-        <PlayerMove move="{p:Houndoom} Flame Burst {o:Mabosstiff} to {-:45}" />
-        <OpponentMove move="{o:Mabosstiff} Bite {p:Houndoom} to {+:52}" />
-      </Turn>
-      <Turn>
-        <PlayerMove move="{p:Houndoom} switch to {p:Azumarill}" />
-        <OpponentMove move="{o:Mabosstiff} Bite {p:Azumarill} to {+:75}" />
-      </Turn>
-      <Turn>
-        <OpponentMove move="{o:Mabosstiff} Trailblaze {p:Azumarill} to {+:25}" />
-        <PlayerMove move="{p:Azumarill} Play Rough {o:Mabosstiff} to {=:0}" />
-      </Turn>
-    </Matchup>
-    <Matchup matchup={["Misdreavus"]}>
-      <Turn>
-        <PlayerMove move="{p:Azumarill} switch to {p:Tentacruel}" />
-        <OpponentMove move="{o:Misdreavus} Will-O-Wisp {p:Tentacruel}" />
-        <OpponentMove move="{p:Tentacruel} burn to {+:86}" />
-      </Turn>
-      <Turn>
-        <PlayerMove move="{p:Tentacruel} Acid Spray {o:Misdreavus} to {-:70}" />
-        <OpponentMove move="{o:Misdreavus} Hex {p:Tentacruel} to {+:37}" />
-        <OpponentMove move="{p:Tentacruel} burn to {+:32}" />
-      </Turn>
-      <Turn>
-        <PlayerMove move="{p:Tentacruel} switch to {p:Houndoom}" />
-        <OpponentMove move="{o:Misdreavus} Hex {p:Houndoom} to {+:34}" />
-      </Turn>
-      <Turn>
-        <PlayerMove move="{p:Houndoom} Dark Pulse {o:Misdreavus} to {=:0}" />
-        <OpponentMove move="{o:Misdreavus} fainted" />
-      </Turn>
-    </Matchup>
-    <Matchup matchup={["Salandit"]}>
-      <Turn>
-        <PlayerMove move="{p:Houndoom} Dark Pulse {o:Salandit} to {=:0}" />
-        <OpponentMove move="{o:Salandit} fainted" />
-      </Turn>
-    </Matchup>
-  </BattleLine>
-</Battle>
+<Battle data={nuggetBridgeCamperEthanBattle} />
 
 ## Nugget Bridge Grunt Battle
 
-export const _box17 = getBox({
-  box: _box16,
-  update: {
-    "Yamask-G": {
-      moves: ["Disable", "Haze", "Rock Tomb", "Shadow Sneak"],
-    },
-    Perrserker: {
-      ability: "Battle Armor",
-      item: "Sitrus Berry",
-      moves: ["Fake Out", "Bullet Punch", "Iron Head", "Metal Burst"],
-    },
-    Azumarill: {
-      item: "Pecha Berry",
-    },
-  },
-  team: ["Yamask-G", "Drednaw", "Perrserker", "Azumarill"],
-});
-
-<Battle playerBox={_box17} opponentBox={nuggetBridgeGruntBox}>
-  <BattleLine>
-    <Matchup matchup={["Arcanine"]}>
-      <Turn>
-        <OpponentMove move="{o:Arcanine} Dragon Rage {p:Yamask-G} to {=:27}" />
-        <PlayerMove move="{p:Yamask-G} Rock Tomb {o:Arcanine} to {-:74}" />
-      </Turn>
-      <Turn>
-        <PlayerMove move="{p:Yamask-G} switch to {p:Drednaw}" />
-        <OpponentMove move="{o:Arcanine} Dragon Rage {p:Drednaw} to {=:57}" />
-      </Turn>
-      <Turn>
-        <PlayerMove move="{p:Drednaw} Razor Shell {o:Arcanine} to {=:0}" />
-        <OpponentMove move="{o:Arcanine} fainted" />
-      </Turn>
-    </Matchup>
-    <Matchup matchup={["Togedemaru"]}>
-      <Turn>
-        <PlayerMove move="{p:Drednaw} switch to {p:Perrserker}" />
-        <OpponentMove move="{o:Togedemaru} Zippy Zap {p:Perrserker} to {+:76}" />
-      </Turn>
-      <Turn>
-        <OpponentMove move="{o:Togedemaru} Zippy Zap {p:Perrserker} to {+:55}" />
-        <PlayerMove move="{p:Perrserker} Metal Burst {o:Togedemaru} to {-:53}" />
-      </Turn>
-      <Turn>
-        <OpponentMove move="{o:Togedemaru} Zippy Zap {p:Perrserker} to {+:58}" />
-        <PlayerMove move="{p:Perrserker} Metal Burst {o:Togedemaru} to {-:26}" />
-      </Turn>
-      <Turn>
-        <OpponentMove move="{o:Togedemaru} Zippy Zap {p:Perrserker} to {+:37}" />
-        <PlayerMove move="{p:Perrserker} Metal Burst {o:Togedemaru} to {=:0}" />
-        <OpponentMove move="{o:Togedemaru} fainted" />
-      </Turn>
-    </Matchup>
-    <Matchup matchup={["Komala"]}>
-      <Turn>
-        <PlayerMove move="{p:Perrserker} switch to {p:Yamask-G}" />
-        <OpponentMove move="{o:Komala} Last Resort {p:Yamask-G}" />
-      </Turn>
-      <Turn>
-        <OpponentMove move="{o:Komala} Last Resort {p:Yamask-G}" />
-        <PlayerMove move="{p:Yamask-G} Rock Tomb {o:Komala} to {-:76}" />
-      </Turn>
-      <Turn>
-        <OpponentMove move="{o:Komala} Last Resort {p:Yamask-G}" />
-        <PlayerMove move="{p:Yamask-G} Rock Tomb {o:Komala} to {-:64}" />
-      </Turn>
-      <Turn>
-        <OpponentMove move="{o:Komala} Last Resort {p:Yamask-G}" />
-        <PlayerMove move="{p:Yamask-G} Rock Tomb {o:Komala} to {-:52}" />
-      </Turn>
-      <Turn>
-        <OpponentMove move="{o:Komala} Last Resort {p:Yamask-G}" />
-        <PlayerMove move="{p:Yamask-G} Rock Tomb {o:Komala} to {-:40}" />
-      </Turn>
-      <Turn>
-        <OpponentMove move="{o:Komala} Last Resort {p:Yamask-G}" />
-        <PlayerMove move="{p:Yamask-G} Rock Tomb {o:Komala} to {-:28}" />
-      </Turn>
-      <Turn>
-        <OpponentMove move="{o:Komala} Last Resort {p:Yamask-G}" />
-        <PlayerMove move="{p:Yamask-G} Rock Tomb {o:Komala} to {-:16}" />
-      </Turn>
-      <Turn>
-        <OpponentMove move="{o:Komala} Last Resort {p:Yamask-G}" />
-        <PlayerMove move="{p:Yamask-G} Rock Tomb {o:Komala} to {-:4}" />
-      </Turn>
-      <Turn>
-        <OpponentMove move="{o:Komala} Last Resort {p:Yamask-G}" />
-        <PlayerMove move="{p:Yamask-G} Rock Tomb {o:Komala} to {=:0}" />
-        <OpponentMove move="{o:Komala} fainted" />
-      </Turn>
-    </Matchup>
-    <Matchup matchup={["Druddigon"]}>
-      <Turn>
-        <PlayerMove move="{p:Yamask-G} switch to {p:Azumarill}" />
-        <OpponentMove move="{o:Druddigon} Dragon Tail {p:Azumarill}" />
-      </Turn>
-      <Turn>
-        <PlayerMove move="{p:Azumarill} Play Rough {o:Druddigon} to {-:17}" />
-        <OpponentMove move="{o:Druddigon} Rough Skin {p:Azumarill} to {=:90}" />
-        <OpponentMove move="{o:Druddigon} Poison Tail {p:Azumarill} to {+:34}" />
-      </Turn>
-      <Turn>
-        <PlayerMove move="{p:Azumarill} Play Rough {o:Druddigon} to {=:0}" />
-        <OpponentMove move="{o:Druddigon} Rough Skin {p:Azumarill} to {=:22}" />
-        <OpponentMove move="{o:Druddigon} fainted" />
-      </Turn>
-    </Matchup>
-  </BattleLine>
-</Battle>
+<Battle data={nuggetBridgeGruntBattle} />
 
 ## Route 24 Encounter
 
-export const _box18 = getBox({ box: _box17, team: ["Houndoom"] });
-
-export const _charcadet = {
-  name: "Charcadet",
-  moves: ["Clear Smog", "Ember", "Fire Spin", "Leer"],
-};
-
-<Encounter encounter={_charcadet} playerBox={_box18}>
+<Encounter data={charcadetEncounter}>
   <Row row={["Grass · ", { warning: "Day" }, " · 50% · Level 14-16"]} />
 </Encounter>
 
 ## Route 25 Encounter
 
-export const _chinchou = {
-  name: "Chinchou",
-  moves: ["Bubble", "Supersonic"],
-};
-
-<Encounter encounter={_chinchou}>
+<Encounter data={chinchouEncounter}>
   <Row row={["Old Rod · 30% · Level 2-4"]} />
 </Encounter>
 
 ## Nugget Bridge Grunt Battle
 
-export const _box19 = getBox({
-  box: _box18,
-  add: [_charcadet, _chinchou],
-  update: {
-    Azumarill: {
-      item: "Pixie Plate",
-      moves: ["Aqua Jet", "Body Slam", "Helping Hand", "Play Rough"],
-    },
-    Perrserker: {
-      nature: "Calm",
-      moves: ["Fake Out", "Bullet Punch", "Iron Head", "Thief"],
-    },
-    Clodsire: {
-      nature: "Impish",
-    },
-    Houndoom: {
-      item: "Black Glasses",
-    },
-    Kricketune: {
-      item: "Chilan",
-      moves: ["Bug Bite", "Bulldoze", "Bullet Seed", "Pounce"],
-    },
-  },
-  team: ["Azumarill", "Perrserker", "Clodsire", "Houndoom", "Yamask-G", "Kricketune"],
-});
-
-<Battle playerBox={_box19} opponentBox={digHouseGruntBox}>
-  <BattleLine>
-    <Matchup matchup={["Persian-A"]}>
-      <Turn>
-        <OpponentMove move="{o:Persian-A} Shock Wave {p:Azumarill} to {+:36}" />
-        <PlayerMove move="{p:Azumarill} Play Rough {o:Persian-A} to {=:0}" />
-        <OpponentMove move="{o:Persian-A} fainted" />
-      </Turn>
-    </Matchup>
-    <Matchup matchup={["Crobat"]}>
-      <Turn>
-        <PlayerMove move="{p:Azumarill} switch to {p:Perrserker}" />
-        <OpponentMove move="{o:Crobat} Air Cutter {p:Perrserker} to {+:84}" />
-      </Turn>
-      <Turn>
-        <PlayerMove move="{p:Perrserker} Fake Out {o:Crobat} to {-:77}" />
-        <OpponentMove move="{o:Crobat} flinched" />
-      </Turn>
-      <Turn>
-        <OpponentMove move="{o:Crobat} HP Fire {p:Perrserker} to {+:48}" />
-        <PlayerMove move="{p:Perrserker} Iron Head {o:Crobat} to {-:44}" />
-      </Turn>
-      <Turn>
-        <OpponentMove move="{o:Crobat} HP Fire {p:Perrserker} to {+:36}" />
-        <PlayerMove move="{p:Perrserker} Iron Head {o:Crobat} to {-:11}" />
-      </Turn>
-      <Turn>
-        <PlayerMove move="{p:Perrserker} Bullet Punch {o:Crobat} to {=:0}" />
-        <OpponentMove move="{o:Crobat} fainted" />
-      </Turn>
-    </Matchup>
-    <Matchup matchup={["Veluza"]}>
-      <Turn>
-        <PlayerMove move="{p:Perrserker} switch to {p:Clodsire}" />
-        <OpponentMove move="{o:Veluza} Aqua Cutter {p:Clodsire}" />
-      </Turn>
-      <Turn>
-        <PlayerMove move="{p:Clodsire} switch to {p:Houndoom}" />
-        <OpponentMove move="{o:Veluza} Psycho Cut {p:Houndoom}" />
-      </Turn>
-      <Turn>
-        <PlayerMove move="{p:Houndoom} Dark Pulse {o:Veluza} to {=:0}" />
-        <OpponentMove move="{o:Veluza} fainted" />
-      </Turn>
-    </Matchup>
-    <Matchup matchup={["Raticate"]}>
-      <Turn>
-        <PlayerMove move="{p:Houndoom} switch to {p:Yamask-G}" />
-        <OpponentMove move="{o:Raticate} Stom. Tantrum {p:Yamask-G} to {+:37}" />
-      </Turn>
-      <Turn>
-        <PlayerMove move="{p:Yamask-G} switch to {p:Kricketune}" />
-        <OpponentMove move="{o:Raticate} Stom. Tantrum {p:Kricketune} to {+:82}" />
-        <PlayerMove move="{o:Raticate} burn to {=:73}" />
-      </Turn>
-      <Turn>
-        <OpponentMove move="{o:Raticate} Facade {p:Kricketune} to {+:41}" />
-        <PlayerMove move="{p:Kricketune} Pounce {o:Raticate} to {-:28}" />
-        <PlayerMove move="{o:Raticate} burn to {-:24}" />
-      </Turn>
-      <Turn>
-        <PlayerMove move="{p:Kricketune} Pounce {o:Raticate} to {=:0}" />
-        <PlayerMove move="{o:Raticate} fainted" />
-      </Turn>
-    </Matchup>
-  </BattleLine>
-</Battle>
+<Battle data={digHouseGruntBattle} />
 
 ## Route 5 Encounter
 
-export const _box20 = getBox({ box: _box19, team: ["Houndoom"] });
-
-export const _growlitheH = {
-  name: "Growlithe-H",
-  spriteKey: "growlithe-hisui",
-  pokedexKey: "Growlithe-Hisui",
-  moves: ["Flame Wheel", "Helping Hand", "Leer", "Odor Sleuth"],
-};
-
-<Encounter encounter={_growlitheH} playerBox={_box20}>
+<Encounter data={growlitheHEncounter}>
   <Row row={["Grass · ", { warning: "Night" }, "· 50% · Level 18-20"]} />
 </Encounter>
 
 ## Route 6 Encounter
 
-export const _shellder = {
-  name: "Shellder",
-  moves: ["Tackle", "Water Gun"],
-};
-
-<Encounter encounter={_shellder}>
+<Encounter data={shelderEncounter}>
   <Row row={["Old Rod · 30% · Level 2-4"]} />
 </Encounter>
 
-export const _box21 = getBox({
-  box: _box20,
-  add: [_growlitheH, _shellder],
-  cap: 28,
-  update: {
-    Chinchou: {
-      name: "Lanturn",
-    },
-    Psyduck: {
-      name: "Golduck",
-      moves: ["Scald", "Scratch", "Water Sport"],
-    },
-  },
-});
-
-<BoxChange box={_box21} />
+<BoxChange data={route6BoxChange} />
 
 ## Cerulean City Leader Misty Battle
 
-export const _box22 = getBox({
-  box: _box21,
-  update: {
-    Kricketune: {
-      nature: "Adamant",
-      item: "Muscle Band",
-      moves: ["Aerial Ace", "Bug Bite", "Bulldoze", "Bullet Seed"],
-    },
-    Lanturn: {
-      nature: "Calm",
-      ability: "Volt Absorb",
-      item: "Sitrus Berry",
-      moves: ["Bubble Beam", "Icy Wind", "Shock Wave", "Thunder Wave"],
-    },
-    Perrserker: {
-      nature: "Adamant",
-      item: "Rawst Berry",
-      moves: ["Bullet Punch", "Iron Head", "Metal Burst", "Thief"],
-    },
-    Gyarados: {
-      moves: ["Bite", "Bulldoze", "Ice Fang", "Leer"],
-    },
-    Golduck: {
-      nature: "Rash",
-      ability: "Swift Swim",
-      item: "Colbur Berry",
-      moves: ["Disable", "Me First", "Tail Whip", "Zen Headbutt"],
-    },
-    Clodsire: {
-      nature: "Careful",
-      item: "Payapa Berry",
-      moves: ["Bulldoze", "Poison Jab", "Rock Tomb", "Yawn"],
-    },
-  },
-  team: ["Kricketune", "Lanturn", "Perrserker", "Gyarados", "Golduck", "Clodsire"],
-});
+<Battle data={ceruleanCityLeaderMistyBattle} />
 
-<Battle
-  playerBox={_box22}
-  opponentBox={ceruleanCityLeaderMistyBox}
->
-<BattleLine>
-  <Matchup matchup={["Politoed"]}>
-    <Turn>
-      <PlayerMove move="{p:Kricketune} Bug Bite {o:Politoed} to {-:48}" />
-      <OpponentMove move="{o:Politoed} Toxic {p:Kricketune}" />
-      <OpponentMove move="{p:Kricketune} poison to {+:84}" />
-    </Turn>
-    <Turn>
-      <PlayerMove move="{p:Kricketune} Bullet Seed {o:Politoed} to {=:0}" />
-      <OpponentMove move="{o:Politoed} fainted" />
-      <OpponentMove move="{p:Kricketune} poison to {+:74}" />
-    </Turn>
-  </Matchup>
-  <Matchup matchup={["Mantine"]}>
-    <Turn>
-      <PlayerMove move="{p:Kricketune} switch to {p:Lanturn}" />
-      <OpponentMove move="{o:Mantine} Hurricane {p:Lanturn} to {+:83}" />
-    </Turn>
-    <Turn>
-      <PlayerMove move="{p:Lanturn} switch to {p:Perrserker}" />
-      <OpponentMove move="{o:Mantine} HP Grass {p:Perrserker} to {+:86}" />
-    </Turn>
-    <Turn>
-      <OpponentMove move="{o:Mantine} Scald {p:Perrserker} to {+:22}" />
-      <PlayerMove move="{p:Perrserker} Metal Burst {o:Mantine} to {-:10}" />
-    </Turn>
-    <Turn>
-      <PlayerMove move="{p:Perrserker} Bullet Punch {o:Mantine} to {=:0}" />
-      <OpponentMove move="{o:Mantine} fainted" />
-    </Turn>
-  </Matchup>
-  <Matchup matchup={["Ludicolo"]}>
-    <Turn>
-      <PlayerMove move="{p:Perrserker} switch to {p:Gyarados}" />
-      <OpponentMove move="{o:Ludicolo} Scald {p:Gyarados} to {+:53}" />
-    </Turn>
-    <Turn>
-      <PlayerMove move="{p:Gyarados} switch to {p:Lanturn}" />
-      <OpponentMove move="{o:Ludicolo} Thunder Punch {p:Lanturn} to {+:112}" />
-    </Turn>
-    <Turn>
-      <OpponentMove move="{o:Ludicolo} Giga Drain {p:Lanturn} to {+:31}" />
-      <PlayerMove move="{p:Lanturn} Thunder Wave {o:Ludicolo}" />
-    </Turn>
-    <Turn>
-      <PlayerMove move="{p:Lanturn} switch to {p:Kricketune}" />
-      <OpponentMove move="{o:Ludicolo} Giga Drain {p:Kricketune} to {+:42}" />
-      <OpponentMove move="{p:Kricketune} poison to {+:37}" />
-    </Turn>
-    <Turn>
-      <PlayerMove move="{p:Kricketune} Bug Bite {o:Ludicolo} to {=:0}" />
-      <PlayerMove move="{p:Kricketune} heal to {+:59}" />
-      <OpponentMove move="{o:Ludicolo} fainted" />
-      <OpponentMove move="{p:Kricketune} poison to {+:49}" />
-    </Turn>
-  </Matchup>
-  <Matchup matchup={["Toxicroak"]}>
-    <Turn>
-      <PlayerMove move="{p:Kricketune} switch to {p:Golduck}" />
-      <OpponentMove move="{o:Toxicroak} Swords Dance" />
-    </Turn>
-    <Branch branch={["Golduck Zen Headbutt Starmie", "Golduck Zen Headbutt Toxicroak"]} />
-  </Matchup>
-</BattleLine>
-
-<BattleLine line="Golduck Zen Headbutt Starmie">
-  <Matchup matchup={["Toxicroak"]}>
-    <Turn>
-      <OpponentMove move="{o:Toxicroak} switch to {o:Starmie}" />
-      <PlayerMove move="{p:Golduck} Zen Headbutt {o:Starmie} to {-:67}" />
-    </Turn>
-  </Matchup>
-  <Matchup matchup={["Starmie"]}>
-    <Turn>
-      <PlayerMove move="{p:Golduck} Me First {p:Starmie} to {=:0}" />
-      <OpponentMove move="{o:Starmie} fainted" />
-    </Turn>
-  </Matchup>
-  <Matchup matchup={["Clodsire"]}>
-    <Turn>
-      <PlayerMove move="{p:Golduck} Zen Headbutt {o:Clodsire} to {-:51}" />
-      <OpponentMove move="{o:Clodsire} Toxic {p:Golduck}" />
-      <OpponentMove move="{o:Clodsire} heal to {-:58}" />
-      <OpponentMove move="{p:Golduck} posion to {=:86}" />
-    </Turn>
-    <Turn>
-      <PlayerMove move="{p:Golduck} Zen Headbutt {o:Clodsire} to {=:0}" />
-      <OpponentMove move="{o:Clodsire} fainted" />
-      <OpponentMove move="{p:Golduck} posion to {=:76}" />
-    </Turn>
-  </Matchup>
-  <Matchup matchup={["Toxicroak"]}>
-    <Turn>
-      <PlayerMove move="{p:Golduck} Zen Headbutt {o:Toxicroak} to {=:0}" />
-      <OpponentMove move="{o:Toxicroak} fainted" />
-    </Turn>
-  </Matchup>
-</BattleLine>
-
-<BattleLine line="Golduck Zen Headbutt Toxicroak">
-  <Matchup matchup={["Toxicroak"]}>
-    <Turn>
-      <PlayerMove move="{p:Golduck} Zen Headbutt {o:Toxicroak} to {=:0}" />
-      <OpponentMove move="{o:Toxicroak} fainted" />
-    </Turn>
-  </Matchup>
-  <Matchup matchup={["Starmie"]}>
-    <Turn>
-      <PlayerMove move="{p:Golduck} switch to {p:Clodsire}" />
-      <OpponentMove move="{o:Starmie} Thunderbolt {p:Clodsire}" />
-    </Turn>
-    <Turn>
-      <OpponentMove move="{o:Starmie} Psyshock {p:Clodsire} to {+:41}" />
-      <PlayerMove move="{p:Clodsire} Poison Jab {o:Starmie} to {-:55}" />
-    </Turn>
-    <Turn>
-      <PlayerMove move="{p:Clodsire} switch to {p:Golduck}" />
-      <OpponentMove move="{o:Starmie} Psyshock {p:Golduck} to {+:50}" />
-    </Turn>
-    <Turn>
-      <PlayerMove move="{p:Golduck} Me First {p:Starmie} to {=:0}" />
-      <OpponentMove move="{o:Starmie} fainted" />
-    </Turn>
-  </Matchup>
-  <Matchup matchup={["Clodsire"]}>
-    <Turn>
-      <PlayerMove move="{p:Golduck} Zen Headbutt {o:Clodsire} to {-:51}" />
-      <OpponentMove move="{o:Clodsire} Toxic {p:Golduck}" />
-      <OpponentMove move="{o:Clodsire} heal to {-:58}" />
-      <OpponentMove move="{p:Golduck} posion to {+:45}" />
-    </Turn>
-    <Turn>
-      <PlayerMove move="{p:Golduck} Zen Headbutt {o:Clodsire} to {=:0}" />
-      <OpponentMove move="{o:Clodsire} fainted" />
-    </Turn>
-  </Matchup>
-</BattleLine>
-</Battle>
-
-export const _box23 = getBox({
-  box: _box22,
-  remove: ["Kricketune"],
-});
-
-<BoxChange box={_box23} />
-
-export const box = _box23;
+<BoxChange data={afterMistyBoxChange} />
