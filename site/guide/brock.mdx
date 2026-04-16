@@ -10,131 +10,134 @@ import StartButton from "@site/src/components/StartButton";
 import { Row } from "@site/src/components/Row";
 
 import {
-  littenEncounter,
-  tentacoolEncounter,
-  wooperPEncounter,
-  meowthGEncounter,
-  marillEncounter,
-  houndourEncounter,
-  kricketotEncounter,
-  psyduckEncounter,
-  yamaskGEncounter,
+  newGameMoment,
+  oaksLabEncounter,
   oaksLabBoxChange,
+  palletTownEncounter,
   palletTownBoxChange,
+  route21Encounter,
+  route1Encounter,
+  viridianCityEncounter,
+  route2Encounter,
+  viridianForestEncounter,
   viridianForestBoxChange,
-  route22BoxChange,
-  expShareBoxChange,
-  afterFalknerBoxChange,
   route22RivalBattle,
+  route22Encounter,
+  route22BoxChange,
   viridianForestBrendanBattle,
+  viridianForestBrendanBoxChange,
   viridianForestLassAnneBattle,
   viridianForestBugCatcherSammyBattle,
-  pewterMuseumLeaderFalknerMoment,
-  pewterCityLeaderBrockMoment,
+  diglettCaveEncounter,
+  pewterMuseumLeaderFalknerBattle,
+  pewterMuseumLeaderFalknerBoxChange,
+  pewterCityLeaderBrockBattle,
 } from "@site/src/data/battles/brock";
 
 # Brock
 
+## New Game<StartButton moment={newGameMoment} />
+
 <Card title="Game Setup">
-  <Row row={["New Game →", { info: "Difficulty Options to {c:Hardcore Mode}" }]} />
-  <Row row={["Cheats → {c:SO2Toxic} · {c:Woyaopp} · {c:EZCatch} · {c:TeamPreview}"]} />
+  <Row row={["Setup Menu →", { info: "Difficulty Options to {c:Hardcore Mode}" }]} />
+  <Row row={["Enter Cheats → {c:SO2Toxic} · {c:Woyaopp} · {c:EZCatch} · {c:TeamPreview}"]} />
   <Row row={["Talk to Mom →", { info: "Starter Region to {c:Alola}" }]} />
 </Card>
 
-## Oak's Lab Encounter
+## Oak's Lab Encounter<StartButton moment={oaksLabEncounter} />
 
-<Encounter data={littenEncounter}>
+<Encounter data={oaksLabEncounter.data}>
   <Row row={["Level 5"]} />
 </Encounter>
 
-<BoxChange data={oaksLabBoxChange} />
+<BoxChange data={oaksLabBoxChange.data} />
 
-## Pallet Town Encounter
+## Pallet Town Encounter<StartButton moment={palletTownEncounter} />
 
-<Encounter data={tentacoolEncounter}>
+<Encounter data={palletTownEncounter.data}>
   <Row row={["Old Rod · 70% · Level 2-4 ·", { info: "Clear Body" }]} />
 </Encounter>
 
-<BoxChange data={palletTownBoxChange} />
+<BoxChange data={palletTownBoxChange.data} />
 
 <Card title="Game Setup">
   <Row row={["Option →", { info: "Wild Double Battle to {c:On}" }]} />
 </Card>
 
-## Route 21 Encounter
+## Route 21 Encounter<StartButton moment={route21Encounter} />
 
-<Encounter data={wooperPEncounter}>
+<Encounter data={route21Encounter.data}>
   <Row row={["Grass ·", { warning: "Night" }, "· 20% · Level 4-6 ·", { info: "Water Absorb" }]} />
 </Encounter>
 
-## Route 1 Encounter
+## Route 1 Encounter<StartButton moment={route1Encounter} />
 
-<Encounter data={meowthGEncounter}>
+<Encounter data={route1Encounter.data}>
   <Row row={["Grass · Night · 10% · Level 2-4 ·", { info: "Tough Claws" }]} />
 </Encounter>
 
-## Viridian City Encounter
+## Viridian City Encounter<StartButton moment={viridianCityEncounter} />
 
-<Encounter data={marillEncounter}>
+<Encounter data={viridianCityEncounter.data}>
   <Row row={["Old Rod · 70% · Level 3-4 ·", { info: "Huge Power" }]} />
 </Encounter>
 
-## Route 2 Encounter
+## Route 2 Encounter<StartButton moment={route2Encounter} />
 
-<Encounter data={houndourEncounter}>
+<Encounter data={route2Encounter.data}>
   <Row row={["Grass · Night · 5% · Level 4-6 ·", { info: "Flash Fire" }]} />
 </Encounter>
 
-## Viridian Forest Encounter
+## Viridian Forest Encounter<StartButton moment={viridianForestEncounter} />
 
-<Encounter data={kricketotEncounter}>
+<Encounter data={viridianForestEncounter.data}>
   <Row row={["Grass · Night · 10% · Level 4-6"]} />
 </Encounter>
 
-<BoxChange data={viridianForestBoxChange} />
+<BoxChange data={viridianForestBoxChange.data} />
 
-## Route 22 Rival Battle
+## Route 22 Rival Battle<StartButton moment={route22RivalBattle} />
 
-<Battle data={route22RivalBattle} />
+<Battle data={route22RivalBattle.data} />
 
-## Route 22 Encounter
+## Route 22 Encounter<StartButton moment={route22Encounter} />
 
-<Encounter data={psyduckEncounter}>
+<Encounter data={route22Encounter.data}>
   <Row row={["Old Rod · 70% · Level 2-4"]} />
 </Encounter>
 
-<BoxChange data={route22BoxChange} />
+<BoxChange data={route22BoxChange.data} />
 
-## Viridian Forest Brendan Battle
+## Viridian Forest Brendan Battle<StartButton moment={viridianForestBrendanBattle} />
 
-<Battle data={viridianForestBrendanBattle} />
+<Battle data={viridianForestBrendanBattle.data} />
 
 <Card title="Game Setup">
   <Row row={["Bag →", { warning: "Exp. Share to {c:Off}" }]} />
 </Card>
 
-<BoxChange data={expShareBoxChange} />
+<BoxChange data={viridianForestBrendanBoxChange.data} />
 
-## Viridian Forest Lass Anne Battle
+## Viridian Forest Lass Anne Battle<StartButton moment={viridianForestLassAnneBattle} />
 
-<Battle data={viridianForestLassAnneBattle} />
+<Battle data={viridianForestLassAnneBattle.data} />
 
-## Viridian Forest Bug Catcher Sammy Battle
+## Viridian Forest Bug Catcher Sammy Battle<StartButton moment={viridianForestBugCatcherSammyBattle} />
 
-<Battle data={viridianForestBugCatcherSammyBattle} />
+<Battle data={viridianForestBugCatcherSammyBattle.data} />
 
-## Diglett Cave Encounter
+## Diglett Cave Encounter<StartButton moment={diglettCaveEncounter} />
 
-<Encounter data={yamaskGEncounter}>
+<Encounter data={diglettCaveEncounter.data}>
   <Row row={["Night · 10% · Level 7-9"]} />
 </Encounter>
 
-## Pewter Museum Leader Falkner Battle<StartButton moment={pewterMuseumLeaderFalknerMoment} />
+## Pewter Museum Leader Falkner Battle<StartButton moment={pewterMuseumLeaderFalknerBattle} />
 
-<Battle data={pewterMuseumLeaderFalknerMoment.data} />
+<Battle data={pewterMuseumLeaderFalknerBattle.data} />
 
-<BoxChange data={afterFalknerBoxChange} />
+<BoxChange data={pewterMuseumLeaderFalknerBoxChange.data} />
 
-## Pewter City Leader Brock Battle<StartButton moment={pewterCityLeaderBrockMoment} />
+## Pewter City Leader Brock Battle<StartButton moment={pewterCityLeaderBrockBattle} />
 
-<Battle data={pewterCityLeaderBrockMoment.data} />
+<Battle data={pewterCityLeaderBrockBattle.data} />
