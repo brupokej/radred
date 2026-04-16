@@ -1,5 +1,6 @@
 /* Reserve space on the right of any h2 that contains the button */
 :global(h2):has(.button) {
+  min-height: 2rem;
   overflow: hidden;
   padding-right: 5rem;
   position: relative;

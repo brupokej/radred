@@ -1,6 +1,3 @@
-import { BattleData } from "@site/src/components/Battle";
-import { BoxChangeData } from "@site/src/components/BoxChange";
-import { EncounterData } from "@site/src/components/Encounter";
 import { getBox } from "@site/src/utils/box";
 import { Moment } from "@site/src/utils/moments";
 import {
@@ -19,48 +16,6 @@ import {
 } from "@site/src/utils/opponents";
 
 import { box as _box1 } from "@site/src/data/battles/brock";
-
-// ─── Encounter pokemon ────────────────────────────────────────────────────────
-
-const drilbur = {
-  name: "Drilbur",
-  moves: ["Fury Swipes", "Mud-Slap", "Rapid Spin", "Scratch"],
-};
-
-const magikarp = {
-  name: "Magikarp",
-  ability: "Swift Swim",
-  moves: ["Splash"],
-};
-
-const chewtle = {
-  name: "Chewtle",
-  moves: ["Aqua Jet", "Bite"],
-};
-
-const charcadet = {
-  name: "Charcadet",
-  moves: ["Clear Smog", "Ember", "Fire Spin", "Leer"],
-};
-
-const chinchou = {
-  name: "Chinchou",
-  moves: ["Bubble", "Supersonic"],
-};
-
-const growlitheH = {
-  name: "Growlithe-H",
-  spriteKey: "growlithe-hisui",
-  pokedexKey: "Growlithe-Hisui",
-  moves: ["Flame Wheel", "Helping Hand", "Leer", "Odor Sleuth"],
-};
-
-const shellder = {
-  name: "Shellder",
-  moves: ["Tackle", "Water Gun"],
-};
-
-// ─── Box chain (private) ──────────────────────────────────────────────────────
 
 const _box2 = getBox({
   box: _box1,
@@ -88,6 +43,12 @@ const _box2 = getBox({
   ],
 });
 
+export const mistyBoxChange: Moment = {
+  label: "Misty Box Change",
+  kind: "boxChange",
+  data: { playerBox: _box2 },
+};
+
 const _box3 = getBox({
   box: _box2,
   update: {
@@ -101,9 +62,111 @@ const _box3 = getBox({
   team: ["Kricketune", "Houndour", "Azumarill", "Meowth-G"],
 });
 
+export const route3LassSallyBattle: Moment = {
+  label: "Route 3 Lass Sally Battle",
+  kind: "battle",
+  data: {
+    playerBox: _box3,
+    opponentBox: route3LassSallyBox,
+    lines: [
+      {
+        matchups: [
+          {
+            matchup: ["Pikachu-Flying"],
+            turns: [
+              [
+                { opponent: "{o:Pikachu-Flying} Zippy Zap {p:Kricketune} to {+:38}" },
+                { player: "{p:Kricketune} Rock Tomb {o:Pikachu-Flying} to {=:0}" },
+                { opponent: "{o:Pikachu-Flying} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Whimsicott"],
+            turns: [
+              [
+                { player: "{p:Kricketune} switch to {p:Houndour}" },
+                { opponent: "{o:Whimsicott} Leech Seed {p:Houndour}" },
+              ],
+              [
+                { opponent: "{o:Whimsicott} Mega Drain {p:Houndour} to {+:40}" },
+                { player: "{p:Houndour} Incinerate {o:Whimsicott} to {-:17}" },
+              ],
+              [
+                { opponent: "{o:Whimsicott} Mega Drain {p:Houndour} to {+:20}" },
+                { opponent: "{o:Whimsicott} heal to {-:27}" },
+                { player: "{p:Houndour} Incinerate {o:Whimsicott} to {=:0}" },
+                { opponent: "{o:Whimsicott} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Oricorio-Sensu"],
+            turns: [
+              [
+                { player: "{p:Houndour} switch to {p:Azumarill}" },
+                { opponent: "{o:Oricorio-Sensu} Air Cutter {p:Azumarill} to {+:53}" },
+              ],
+              [
+                { opponent: "{o:Oricorio-Sensu} HP Ghost {p:Azumarill} to {+:23}" },
+                { player: "{p:Azumarill} Ice Punch {o:Oricorio-Sensu} to {-:19}" },
+              ],
+              [
+                { player: "{p:Azumarill} Aqua Jet {o:Oricorio-Sensu} to {=:0}" },
+                { opponent: "{o:Oricorio-Sensu} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["mawile"],
+            turns: [
+              [
+                { player: "{p:Azumarill} switch to {p:Meowth-G}" },
+                { opponent: "{o:Mawile} Covet {p:Meowth-G} to {+:19}" },
+              ],
+              [
+                { player: "{p:Meowth-G} switch to {p:Houndour}" },
+                { opponent: "{o:Mawile} Fire Fang {p:Houndour}" },
+              ],
+              [
+                { player: "{p:Houndour} Incinerate {o:Mawile} to {=:0}" },
+                { opponent: "{o:Mawile} fainted" },
+              ],
+            ],
+          },
+        ],
+        frags: { Kricketune: 1, Houndour: 2, Azumarill: 1 },
+      },
+    ],
+  },
+};
+
+const _drilbur = {
+  name: "Drilbur",
+  moves: ["Fury Swipes", "Mud-Slap", "Rapid Spin", "Scratch"],
+};
+
+export const mtMoonEncounter: Moment = {
+  label: "Mt. Moon Encounter",
+  kind: "encounter",
+  data: { pokemon: _drilbur },
+};
+
+const _magikarp = {
+  name: "Magikarp",
+  ability: "Swift Swim",
+  moves: ["Splash"],
+};
+
+export const route4Encounter: Moment = {
+  label: "Route 4 Encounter",
+  kind: "encounter",
+  data: { pokemon: _magikarp },
+};
+
 const _box4 = getBox({
   box: _box3,
-  add: [drilbur, magikarp],
+  add: [_drilbur, _magikarp],
   update: {
     Torracat: {
       level: 23,
@@ -117,6 +180,12 @@ const _box4 = getBox({
     },
   },
 });
+
+export const route4BoxChange: Moment = {
+  label: "Route 4 Box Change",
+  kind: "boxChange",
+  data: { playerBox: _box4 },
+};
 
 const _box5 = getBox({
   box: _box4,
@@ -143,6 +212,146 @@ const _box5 = getBox({
   extraTeam: ["Meowth-G"],
 });
 
+export const mtMoonSuperNerdMiguelBattle: Moment = {
+  label: "Mt. Moon Super Nerd Miguel Battle",
+  kind: "battle",
+  data: {
+    playerBox: _box5,
+    opponentBox: mtMoonSuperNerdMiguelBox,
+    lines: [
+      {
+        matchups: [
+          {
+            matchup: ["Voltorb-H", "Thwackey"],
+            turns: [
+              [
+                { player: "{p:Torracat} switch to {p:Kricketune}" },
+                { player: "{p:Houndour} switch to {p:Yamask-G}" },
+                { opponent: "{o:Thwackey} Fake Out {p:Yamask-G}" },
+                {
+                  opponent:
+                    "{o:Voltorb-H} Self-Destruct {p:Kricketune} to {+:43} and {o:Thwackey} to {-:46}",
+                },
+                { opponent: "{o:Voltorb-H} fainted" },
+                { player: "{p:Kricketune} terrain to {+:47}" },
+                { opponent: "{o:Thwackey} terrain to {-:50}" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Swoobat", "Thwackey"],
+            turns: [
+              [
+                { opponent: "{o:Swoobat} Calm Mind" },
+                { player: "{p:Kricketune} Bug Bite {o:Thwackey} to {=:0}" },
+                { player: "{p:Yamask-G} Haze" },
+                { opponent: "{o:Thwackey} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Swoobat", "Sableye"],
+            turns: [
+              [
+                { player: "{p:Kricketune} switch to {p:Houndour}" },
+                { opponent: "{o:Swoobat} Calm Mind" },
+                { opponent: "{o:Sableye} Will-O-Wisp {p:Houndour}" },
+                { player: "{p:Yamask-G} Haze" },
+              ],
+              [
+                { player: "{p:Yamask-G} switch to {p:Azumarill}" },
+                { opponent: "{o:Swoobat} Calm Mind" },
+                { player: "{p:Houndour} Leer {o:Swoobat} and {o:Sableye}" },
+                {
+                  opponent:
+                    "{o:Sableye} Foul Play {p:Azumarill} to {+:71} or Foul Play {p:Houndour} to {+:29}",
+                },
+                { player: "{p:Azumarill} terrain to {+:76} or {p:Houndour} terrain to {+:32}" },
+              ],
+            ],
+            branches: [{ branches: ["Azumarill Play Rough Sableye", "Sableye Protect"] }],
+          },
+        ],
+        frags: { Kricketune: 1, "Yamask-G": 1 },
+      },
+      {
+        line: "Azumarill Play Rough Sableye",
+        matchups: [
+          {
+            matchup: ["Swoobat", "Sableye"],
+            turns: [
+              [
+                { player: "{p:Houndour} Sucker Punch {o:Swoobat} to {=:0}" },
+                { player: "{p:Azumarill} Play Rough {o:Sableye} to {=:0}" },
+                { opponent: "{o:Swoobat} fainted" },
+                { opponent: "{o:Sableye} fainted" },
+                { player: "{p:Azumarill} terrain to {+:81} or {p:Houndour} terrain to {+:35}" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Skiddo"],
+            turns: [
+              [
+                { player: "{p:Houndour} Incinerate {o:Skiddo} to {-:17}" },
+                { player: "{p:Azumarill} Play Rough {o:Skiddo} to {=:0}" },
+                { opponent: "{o:Skiddo} fainted" },
+              ],
+            ],
+          },
+        ],
+        frags: { Houndour: 1, Azumarill: 2 },
+      },
+      {
+        line: "Sableye Protect",
+        matchups: [
+          {
+            matchup: ["Swoobat", "Sableye"],
+            turns: [
+              [
+                { player: "{p:Houndour} Sucker Punch {o:Swoobat} to {=:0}" },
+                { opponent: "{o:Sableye} Protect" },
+                { player: "{p:Azumarill} Play Rough {o:Sableye}" },
+                { opponent: "{o:Swoobat} fainted" },
+                { player: "{p:Azumarill} terrain to {+:81} or {p:Houndour} terrain to {+:35}" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Skiddo", "Sableye"],
+            turns: [
+              [
+                {
+                  player: "{p:Houndour} Incinerate {o:Sableye} to {-:41} and {o:Skiddo} to {-:19}",
+                },
+                { player: "{p:Azumarill} Play Rough {o:Skiddo} to {=:0}" },
+                {
+                  opponent:
+                    "{o:Sableye} Foul Play {p:Azumarill} to {+:66} or Foul Play {p:Houndour} to {+:4}",
+                },
+                { player: "{p:Azumarill} terrain to {+:71} or {p:Houndour} terrain to {+:7}" },
+                { player: "{o:Sableye} terrain to {+:47}" },
+                { opponent: "{o:Skiddo} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Sableye"],
+            turns: [
+              [
+                { player: "{p:Houndour} Incinerate {o:Sableye} to {-:31}" },
+                { player: "{p:Azumarill} Play Rough {o:Sableye} to {=:0}" },
+                { opponent: "{o:Sableye} fainted" },
+              ],
+            ],
+          },
+        ],
+        frags: { Houndour: 1, Azumarill: 2 },
+      },
+    ],
+  },
+};
+
 const _box6 = getBox({
   box: _box5,
   update: [
@@ -161,6 +370,12 @@ const _box6 = getBox({
     },
   ],
 });
+
+export const mtMoonSuperNerdMiguelBoxChange: Moment = {
+  label: "Mt. Moon Super Nerd Miguel Box Change",
+  kind: "boxChange",
+  data: { playerBox: _box6 },
+};
 
 const _box7 = getBox({
   box: _box6,
@@ -185,9 +400,131 @@ const _box7 = getBox({
   team: ["Azumarill", "Meowth-G", "Kricketune", "Yamask-G", "Clodsire", "Torracat"],
 });
 
+export const mtMoonArcherBattle: Moment = {
+  label: "Mt. Moon Archer Battle",
+  kind: "battle",
+  data: {
+    playerBox: _box7,
+    opponentBox: mtMoonArcherBox,
+    lines: [
+      {
+        matchups: [
+          {
+            matchup: ["Glimmet"],
+            turns: [
+              [
+                { player: "{p:Azumarill} Aqua Jet {o:Glimmet} to {=:0}" },
+                { opponent: "{o:Glimmet} Toxic Debris" },
+                { opponent: "{o:Glimmet} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Seviper"],
+            turns: [
+              [
+                { player: "{p:Azumarill} switch to {p:Meowth-G}" },
+                { opponent: "{o:Seviper} Hypnosis {p:Meowth-G}" },
+              ],
+              [
+                { player: "{p:Meowth-G} Fake Out {o:Seviper} to {-:61}" },
+                { opponent: "{o:Seviper} flinched" },
+              ],
+              [
+                { player: "{p:Meowth-G} switch to {p:Kricketune}" },
+                { opponent: "{o:Seviper} Hypnosis {p:Kricketune}" },
+                { opponent: "{p:Kricketune} poison to {=:66}" },
+              ],
+              [
+                { player: "{p:Kricketune} Bulldoze {o:Seviper} to {-:40}" },
+                { opponent: "{o:Seviper} Poison Fang {p:Kricketune} to {+:44}" },
+                { opponent: "{p:Kricketune} poison to {+:35}" },
+              ],
+              [
+                { player: "{p:Kricketune} Bulldoze {o:Seviper} to {=:0}" },
+                { opponent: "{o:Seviper} fainted" },
+                { opponent: "{p:Kricketune} poison to {+:26}" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Fearow"],
+            turns: [
+              [
+                { player: "{p:Kricketune} switch to {p:Meowth-G}" },
+                { opponent: "{o:Fearow} Double Hit {p:Meowth-G} to {+:27}" },
+              ],
+              [
+                { player: "{p:Meowth-G} Fake Out {o:Fearow} to {-:51}" },
+                { opponent: "{o:Fearow} flinched" },
+              ],
+              [
+                { player: "{p:Meowth-G} switch to {p:Yamask-G}" },
+                { opponent: "{o:Fearow} Drill Run {p:Yamask-G} to {+:30}" },
+              ],
+              [
+                { player: "{p:Yamask-G} switch to {p:Azumarill}" },
+                { opponent: "{o:Fearow} Pluck {p:Azumarill} to {+:55}" },
+              ],
+              [
+                { opponent: "{o:Fearow} Double Hit {p:Azumarill} to {+:17}" },
+                { player: "{p:Azumarill} Ice Punch {o:Fearow} to {=:0}" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Mightyena"],
+            turns: [
+              [
+                { player: "{p:Azumarill} switch to {p:Clodsire}" },
+                { opponent: "{o:Mightyena} Poison Fang {p:Clodsire} to {+:89}" },
+              ],
+              [
+                { player: "{p:Clodsire} switch to {p:Kricketune}" },
+                { opponent: "{o:Mightyena} Howl" },
+                { opponent: "{p:Kricketune} poison to {+:17}" },
+              ],
+              [
+                { player: "{p:Kricketune} Bug Bite {o:Mightyena} to {=:0}" },
+                { opponent: "{o:Mightyena} fainted" },
+                { opponent: "{p:Kricketune} poison to {+:8}" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Houndour"],
+            turns: [
+              [
+                { player: "{p:Kricketune} switch to {p:Torracat}" },
+                { opponent: "{o:Houndour} Incinerate {p:Torracat} to {+:48}" },
+              ],
+              [
+                { player: "{p:Torracat} Double Kick {o:Houndour} to {=:0}" },
+                { opponent: "{o:Houndour} fainted" },
+              ],
+            ],
+          },
+        ],
+        frags: { Azumarill: 2, Kricketune: 2, Torracat: 1 },
+      },
+    ],
+  },
+};
+
+const _chewtle = {
+  name: "Chewtle",
+  moves: ["Aqua Jet", "Bite"],
+};
+
+export const ceruleanCityEncounter: Moment = {
+  label: "Cerulean City Encounter",
+  kind: "encounter",
+  data: { pokemon: _chewtle },
+};
+
 const _box8 = getBox({
   box: _box7,
-  add: [chewtle],
+  add: [_chewtle],
   cap: 28,
   update: {
     "Meowth-G": {
@@ -205,6 +542,12 @@ const _box8 = getBox({
     },
   },
 });
+
+export const ceruleanCityBoxChange: Moment = {
+  label: "Cerulean City Box Change",
+  kind: "boxChange",
+  data: { playerBox: _box8 },
+};
 
 const _box9 = getBox({
   box: _box8,
@@ -241,6 +584,400 @@ const _box9 = getBox({
   team: ["Azumarill", "Torracat", "Clodsire", "Perrserker", "Drednaw", "Tentacruel"],
 });
 
+export const ceruleanCityRivalBattle: Moment = {
+  label: "Cerulean City Rival Battle",
+  kind: "battle",
+  data: {
+    playerBox: _box9,
+    opponentBox: ceruleanCityRivalBox,
+    lines: [
+      {
+        matchups: [
+          {
+            matchup: ["Hitmonlee"],
+            turns: [
+              [
+                { opponent: "{o:Hitmonlee} Fake Out {p:Azumarill} to {+:83}" },
+                { player: "{p:Azumarill} flinched" },
+              ],
+            ],
+            branches: [{ branches: ["Azumarill Covet Wartortle", "Azumarill Covet Hitmonlee"] }],
+          },
+        ],
+      },
+      {
+        line: "Azumarill Covet Wartortle",
+        matchups: [
+          {
+            matchup: ["Hitmonlee"],
+            turns: [
+              [
+                { opponent: "{o:Hitmonlee} switch to {o:Wartortle}" },
+                { player: "{p:Azumarill} Covet {o:Wartortle} to {-:60}" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Wartortle"],
+            turns: [
+              [
+                { opponent: "{o:Wartortle} Shell Smash" },
+                { player: "{p:Azumarill} Aqua Tail {o:Wartortle} to {-:39}" },
+              ],
+            ],
+            branches: [{ branches: ["Regular damage to Wartortle", "Crit damage to Wartortle"] }],
+          },
+        ],
+      },
+      {
+        line: "Azumarill Covet Hitmonlee",
+        matchups: [
+          {
+            matchup: ["Hitmonlee"],
+            turns: [
+              [
+                { opponent: "{o:Hitmonlee} Knock Off {p:Azumarill} to {+:61}" },
+                { player: "{p:Azumarill} Covet {o:Hitmonlee} to {=:0}" },
+                { opponent: "{o:Hitmonlee} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Wartortle"],
+            turns: [
+              [
+                { opponent: "{o:Wartortle} Shell Smash" },
+                { player: "{p:Azumarill} Play Rough {o:Wartortle} to {-:36}" },
+              ],
+            ],
+            branches: [{ branches: ["Regular damage to Wartortle", "Crit damage to Wartortle"] }],
+          },
+        ],
+        frags: { Azumarill: 1 },
+      },
+      {
+        line: "Regular damage to Wartortle",
+        matchups: [
+          {
+            matchup: ["Wartortle"],
+            turns: [
+              [
+                { player: "{p:Azumarill} switch to {p:Torracat}" },
+                { opponent: "{o:Wartortle} HP Electric {p:Torracat} to {+:45}" },
+              ],
+              [
+                { player: "{p:Torracat} Fake Out {o:Wartortle} to {-:25}" },
+                { opponent: "{o:Wartortle} flinched" },
+              ],
+              [
+                { player: "{p:Torracat} switch to {p:Clodsire}" },
+                { opponent: "{o:Wartortle} Water Pulse {p:Clodsire}" },
+              ],
+            ],
+            branches: [{ branches: ["Perrserker Bullet Punch Wartortle"] }],
+          },
+        ],
+      },
+      {
+        line: "Crit damage to Wartortle",
+        matchups: [
+          {
+            matchup: ["Wartortle"],
+            turns: [
+              [
+                { player: "{p:Azumarill} switch to {p:Clodsire}" },
+                { opponent: "{o:Wartortle} HP Electric {p:Clodsire}" },
+              ],
+            ],
+            branches: [{ branches: ["Perrserker Bullet Punch Wartortle"] }],
+          },
+        ],
+      },
+      {
+        line: "Perrserker Bullet Punch Wartortle",
+        matchups: [
+          {
+            matchup: ["Wartortle"],
+            turns: [
+              [
+                { player: "{p:Clodsire} switch to {p:Perrserker}" },
+                { opponent: "{o:Wartortle} Icy Wind {p:Perrserker} to {+:72}" },
+              ],
+              [
+                { player: "{p:Perrserker} Fake Out {o:Wartortle} to {-:12}" },
+                { opponent: "{o:Wartortle} flinched" },
+              ],
+              [
+                { player: "{p:Perrserker} Bullet Punch {o:Wartortle} to {=:0}" },
+                { opponent: "{o:Wartortle} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Simisear"],
+            turns: [
+              [
+                { player: "{p:Perrserker} switch to {p:Drednaw}" },
+                { opponent: "{o:Simisear} Incinerate {p:Drednaw} to {+:84}" },
+              ],
+              [
+                { opponent: "{o:Simisear} Incinerate {p:Drednaw} to {+:71}" },
+                { player: "{p:Drednaw} Razor Shell {o:Simisear} to {=:0}" },
+                { opponent: "{o:Simisear} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Arbok"],
+            turns: [
+              [
+                { player: "{p:Drednaw} switch to {p:Clodsire}" },
+                { opponent: "{o:Arbok} Thunder Fang {p:Clodsire}" },
+              ],
+              [
+                { opponent: "{o:Arbok} Crunch {p:Clodsire} to {+:50}" },
+                { player: "{p:Clodsire} Mud Shot {o:Arbok} to {-:62}" },
+              ],
+              [
+                { player: "{p:Clodsire} switch to {p:Perrserker}" },
+                { opponent: "{o:Arbok} Crunch {p:Perrserker} to {+:42}" },
+              ],
+              [
+                { player: "{p:Perrserker} Fake Out {o:Arbok} to {-:45}" },
+                { opponent: "{o:Arbok} flinched" },
+              ],
+              [
+                { player: "{p:Perrserker} Bullet Punch {o:Arbok} to {=:0}" },
+                { opponent: "{o:Arbok} fainted" },
+              ],
+            ],
+            branches: [
+              {
+                if: ["Azumarill Covet Hitmonlee"],
+                branches: ["Clefable Mystical Fire Tentacruel"],
+              },
+              { branches: ["Hitmonlee Low Sweep Azumarill", "Clefable Mystical Fire Tentacruel"] },
+            ],
+          },
+        ],
+        frags: { Perrserker: 2, Drednaw: 1 },
+      },
+      {
+        line: "Hitmonlee Low Sweep Azumarill",
+        matchups: [
+          {
+            matchup: ["Hitmonlee"],
+            turns: [
+              [
+                { player: "{p:Perrserker} switch to {p:Azumarill}" },
+                { opponent: "{o:Hitmonlee} Low Sweep {p:Azumarill} to {+:51}" },
+              ],
+              [
+                { opponent: "{o:Hitmonlee} Knock Off {p:Azumarill} to {+:29}" },
+                { player: "{p:Azumarill} Play Rough {o:Hitmonlee} to {=:0}" },
+              ],
+            ],
+            branches: [
+              {
+                if: ["Clefable Mystical Fire Tentacruel"],
+                branches: ["Perrserker Iron Head Eevee"],
+              },
+              { branches: ["Clefable Charge Beam"] },
+            ],
+          },
+        ],
+        frags: { Azumarill: 1 },
+      },
+      {
+        line: "Clefable Charge Beam",
+        matchups: [
+          {
+            matchup: ["Clefable"],
+            turns: [
+              [
+                { player: "{p:Azumarill} switch to {p:Clodsire}" },
+                { opponent: "{o:Clefable} Charge Beam {p:Clodsire}" },
+              ],
+            ],
+            branches: [{ branches: ["Clefable Icy Wind Tentacruel", "Clefable switch to Eevee"] }],
+          },
+        ],
+      },
+      {
+        line: "Clefable Icy Wind Tentacruel",
+        matchups: [
+          {
+            matchup: ["Clefable"],
+            turns: [
+              [
+                { player: "{p:Clodsire} switch to {p:Tentacruel}" },
+                { opponent: "{o:Clefable} Icy Wind {p:Tentacruel} to {+:81}" },
+              ],
+              [
+                { player: "{p:Tentacruel} Acid Spray {o:Clefable} to {-:66}" },
+                { opponent: "{o:Clefable} Charge Beam {p:Tentacruel} to {+:42}" },
+              ],
+              [
+                { player: "{p:Tentacruel} Sludge {o:Clefable} to {=:0}" },
+                { opponent: "{o:Clefable} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Eevee"],
+            turns: [
+              [
+                { player: "{p:Tentacruel} Acid Spray {o:Eevee} to {-:53}" },
+                { opponent: "{o:Eevee} Round {p:Tentacruel} to {+:28}" },
+              ],
+              [
+                { player: "{p:Tentacruel} Bubble Beam {o:Eevee} to {=:0}" },
+                { opponent: "{o:Eevee} fainted" },
+              ],
+            ],
+          },
+        ],
+        frags: { Tentacruel: 2 },
+      },
+      {
+        line: "Clefable switch to Eevee",
+        matchups: [
+          {
+            matchup: ["Clefable"],
+            turns: [
+              [
+                { player: "{p:Clodsire} switch to {p:Tentacruel}" },
+                { opponent: "{o:Clefable} switch to {o:Eevee}" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Eevee"],
+            turns: [
+              [
+                { player: "{p:Tentacruel} Acid Spray {o:Eevee} to {-:53}" },
+                { opponent: "{o:Eevee} Round {p:Tentacruel} to {+:67}" },
+              ],
+              [
+                { player: "{p:Tentacruel} Bubble Beam {o:Eevee} to {=:0}" },
+                { opponent: "{o:Eevee} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Clefable"],
+            turns: [
+              [
+                { player: "{p:Tentacruel} Acid Spray {o:Clefable} to {-:66}" },
+                { opponent: "{o:Clefable} Charge Beam {p:Tentacruel} to {+:28}" },
+              ],
+              [
+                { player: "{p:Tentacruel} Sludge {o:Clefable} to {=:0}" },
+                { opponent: "{o:Clefable} fainted" },
+              ],
+            ],
+          },
+        ],
+        frags: { Tentacruel: 2 },
+      },
+      {
+        line: "Clefable Mystical Fire Tentacruel",
+        matchups: [
+          {
+            matchup: ["Clefable"],
+            turns: [
+              [
+                { player: "{p:Perrserker} switch to {p:Tentacruel}" },
+                { opponent: "{o:Clefable} Mystical Fire {p:Tentacruel} to {+:77}" },
+              ],
+              [
+                { player: "{p:Tentacruel} Acid Spray {o:Clefable} to {-:66}" },
+                { opponent: "{o:Clefable} Charge Beam {p:Tentacruel} to {+:38}" },
+              ],
+              [
+                { player: "{p:Tentacruel} Sludge {o:Clefable} to {=:0}" },
+                { opponent: "{o:Clefable} fainted" },
+              ],
+            ],
+            branches: [
+              { if: ["Azumarill Covet Hitmonlee"], branches: ["Tentacruel Acid Spray Eevee"] },
+              { branches: ["Tentacruel Acid Spray Eevee", "Hitmonlee Low Sweep Azumarill"] },
+            ],
+          },
+        ],
+        frags: { Tentacruel: 1 },
+      },
+      {
+        line: "Tentacruel Acid Spray Eevee",
+        matchups: [
+          {
+            matchup: ["Eevee"],
+            turns: [
+              [
+                { player: "{p:Tentacruel} Acid Spray {o:Eevee} to {-:53}" },
+                { opponent: "{o:Eevee} Round {p:Tentacruel} to {+:24}" },
+              ],
+              [
+                { player: "{p:Tentacruel} Bubble Beam {o:Eevee} to {=:0}" },
+                { opponent: "{o:Eevee} fainted" },
+              ],
+            ],
+            branches: [
+              {
+                ifNot: ["Azumarill Covet Hitmonlee", "Hitmonlee Low Sweep Azumarill"],
+                branches: ["Hitmonlee Knock Off"],
+              },
+            ],
+          },
+        ],
+        frags: { Tentacruel: 1 },
+      },
+      {
+        line: "Hitmonlee Knock Off",
+        matchups: [
+          {
+            matchup: ["Hitmonlee"],
+            turns: [
+              [
+                { player: "{p:Tentacruel} switch to {p:Azumarill}" },
+                { opponent: "{o:Hitmonlee} Knock Off {p:Azumarill} to {+:61}" },
+              ],
+              [
+                { opponent: "{o:Hitmonlee} Low Sweep {p:Azumarill} to {+:29}" },
+                { player: "{p:Azumarill} Play Rough {o:Hitmonlee} to {=:0}" },
+              ],
+            ],
+          },
+        ],
+        frags: { Azumarill: 1 },
+      },
+      {
+        line: "Perrserker Iron Head Eevee",
+        matchups: [
+          {
+            matchup: ["Eevee"],
+            turns: [
+              [
+                { player: "{p:Azumarill} switch to {p:Perrserker}" },
+                { opponent: "{o:Eevee} Double Kick {p:Perrserker} to {+:6}" },
+              ],
+              [
+                { player: "{p:Perrserker} Fake Out {o:Eevee} to {-:49}" },
+                { opponent: "{o:Eevee} flinched" },
+              ],
+              [
+                { player: "{p:Perrserker} Iron Head {o:Eevee} to {=:0}" },
+                { opponent: "{o:Eevee} fainted" },
+              ],
+            ],
+          },
+        ],
+        frags: { Perrserker: 1 },
+      },
+    ],
+  },
+};
+
 const _box10 = getBox({
   box: _box9,
   update: [
@@ -257,6 +994,12 @@ const _box10 = getBox({
     },
   ],
 });
+
+export const ceruleanCityRivalBoxChange: Moment = {
+  label: "Cerulean City Rival Box Change",
+  kind: "boxChange",
+  data: { playerBox: _box10 },
+};
 
 const _box11 = getBox({
   box: _box10,
@@ -278,6 +1021,43 @@ const _box11 = getBox({
   extraTeam: ["Azumarill", "Perrserker", "Magikarp"],
 });
 
+export const nuggetBridgeBugCatcherCaleBattle: Moment = {
+  label: "Nugget Bridge Bug Catcher Cale Battle",
+  kind: "battle",
+  data: {
+    playerBox: _box11,
+    opponentBox: nuggetBridgeBugCatcherCaleBox,
+    lines: [
+      {
+        matchups: [
+          {
+            matchup: ["Butterfree", "Vivillon"],
+            turns: [
+              [
+                { player: "{p:Houndoom} Flame Burst {o:Vivillon} to {=:0}" },
+                { player: "{p:Drednaw} Rock Tomb {o:Butterfree} to {=:0}" },
+                { opponent: "{o:Vivillon} fainted" },
+                { opponent: "{o:Butterfree} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Wormadam-Sa"],
+            turns: [
+              [
+                { player: "{p:Houndoom} Flame Burst {o:Wormadam-Sa} to {-:9}" },
+                { player: "{p:Drednaw} Rock Tomb {o:Wormadam-Sa} to {=:0}" },
+                { opponent: "{o:Wormadam-Sa} fainted" },
+              ],
+            ],
+          },
+        ],
+        frags: { Houndoom: 1, Drednaw: 2 },
+      },
+    ],
+  },
+};
+
 const _box12 = getBox({
   box: _box11,
   update: {
@@ -288,7 +1068,82 @@ const _box12 = getBox({
   team: ["Azumarill", "Perrserker"],
 });
 
+export const nuggetBridgeLassAliBattle: Moment = {
+  label: "Nugget Bridge Lass Ali Battle",
+  kind: "battle",
+  data: {
+    playerBox: _box12,
+    opponentBox: nuggetBridgeLassAliBox,
+    lines: [
+      {
+        matchups: [
+          {
+            matchup: ["Amaura", "Jigglypuff"],
+            turns: [
+              [
+                { player: "{p:Azumarill} Aqua Tail {o:Amaura} to {=:0}" },
+                { player: "{p:Perrserker} Iron Head {o:Jigglypuff} to {=:0}" },
+                { opponent: "{o:Amaura} fainted" },
+                { opponent: "{o:Jigglypuff} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Brionne"],
+            turns: [
+              [
+                { player: "{p:Perrserker} Bullet Punch {o:Brionne} to {-:63}" },
+                { player: "{p:Azumarill} Play Rough {o:Brionne} to {=:0}" },
+                { opponent: "{o:Brionne} fainted" },
+              ],
+            ],
+          },
+        ],
+        frags: { Azumarill: 2, Perrserker: 1 },
+      },
+    ],
+  },
+};
+
 const _box13 = getBox({ box: _box12, team: ["Houndoom", "Perrserker"] });
+
+export const nuggetBridgeYoungsterTimmyBattle: Moment = {
+  label: "Nugget Bridge Youngster Timmy Battle",
+  kind: "battle",
+  data: {
+    playerBox: _box13,
+    opponentBox: nuggetBridgeYoungsterTimmyBox,
+    lines: [
+      {
+        matchups: [
+          {
+            matchup: ["Electrike", "Plusle"],
+            turns: [
+              [
+                { player: "{p:Perrserker} Fake Out {o:Plusle} to {-:48}" },
+                { opponent: "{o:Plusle} flinched" },
+                { player: "{p:Houndoom} Dark Pulse {o:Electrike} to {=:0}" },
+                { opponent: "{o:Electrike} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Snover", "Plusle"],
+            turns: [
+              [
+                { player: "{p:Houndoom} Sucker Punch {o:Plusle} to {=:0}" },
+                { player: "{p:Perrserker} Iron Head {o:Snover} to {=:0}" },
+                { opponent: "{o:Plusle} fainted" },
+                { opponent: "{o:Snover} fainted" },
+              ],
+            ],
+          },
+        ],
+        frags: { Houndoom: 2, Perrserker: 1 },
+      },
+    ],
+  },
+};
 
 const _box14 = getBox({
   box: _box13,
@@ -299,6 +1154,12 @@ const _box14 = getBox({
     },
   },
 });
+
+export const nuggetBridgeYoungsterTimmyBoxChange: Moment = {
+  label: "Nugget Bridge Youngster Timmy Box Change",
+  kind: "boxChange",
+  data: { playerBox: _box14 },
+};
 
 const _box15 = getBox({
   box: _box14,
@@ -320,6 +1181,85 @@ const _box15 = getBox({
   team: ["Perrserker", "Gyarados", "Azumarill", "Clodsire", "Tentacruel"],
 });
 
+export const nuggetBridgeLassReliBattle: Moment = {
+  label: "Nugget Bridge Lass Reli Battle",
+  kind: "battle",
+  data: {
+    playerBox: _box15,
+    opponentBox: nuggetBridgeLassReliBox,
+    lines: [
+      {
+        matchups: [
+          {
+            matchup: ["Greedent"],
+            turns: [
+              [
+                { player: "{p:Perrserker} Fake Out {o:Greedent} to {-:90}" },
+                { opponent: "{o:Greedent} flinched" },
+              ],
+              [
+                { player: "{p:Perrserker} switch to {p:Gyarados}" },
+                { opponent: "{o:Greedent} Stom. Tantrum {p:Gyarados}" },
+              ],
+              [
+                { player: "{p:Gyarados} Leer {o:Greedent}" },
+                { opponent: "{o:Greedent} Facade {p:Gyarados} to {+:54}" },
+              ],
+              [
+                { player: "{p:Gyarados} Leer {o:Greedent}" },
+                { opponent: "{o:Greedent} Facade {p:Gyarados} to {+:33}" },
+              ],
+              [
+                { player: "{p:Gyarados} switch to {p:Azumarill}" },
+                { opponent: "{o:Greedent} Facade {p:Azumarill} to {+:39}" },
+              ],
+              [
+                { player: "{p:Azumarill} Play Rough {o:Greedent} to {=:0}" },
+                { opponent: "{o:Greedent} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Togetic"],
+            turns: [
+              [
+                { player: "{p:Azumarill} switch to {p:Perrserker}" },
+                { opponent: "{o:Togetic} Thunder Wave {p:Perrserker}" },
+              ],
+              [
+                { player: "{p:Perrserker} Iron Head {o:Togetic} to {=:0}" },
+                { opponent: "{o:Togetic} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Clamperl"],
+            turns: [
+              [
+                { player: "{p:Perrserker} switch to {p:Clodsire}" },
+                { opponent: "{o:Clamperl} Icy Wind {p:Clodsire} to {+:57}" },
+              ],
+              [
+                { player: "{p:Clodsire} switch to {p:Tentacruel}" },
+                { opponent: "{o:Clamperl} Icy Wind {p:Tentacruel} to {+:78}" },
+              ],
+              [
+                { player: "{p:Tentacruel} Acid Spray {o:Clamperl} to {-:40}" },
+                { opponent: "{o:Clamperl} Water Pulse {p:Tentacruel} to {+:56}" },
+              ],
+              [
+                { player: "{p:Tentacruel} Sludge {o:Clamperl} to {=:0}" },
+                { opponent: "{o:Clamperl} fainted" },
+              ],
+            ],
+          },
+        ],
+        frags: { Azumarill: 1, Perrserker: 1, Tentacruel: 1 },
+      },
+    ],
+  },
+};
+
 const _box16 = getBox({
   box: _box15,
   update: {
@@ -329,6 +1269,71 @@ const _box16 = getBox({
   },
   team: ["Houndoom", "Azumarill", "Tentacruel"],
 });
+
+export const nuggetBridgeCamperEthanBattle: Moment = {
+  label: "Nugget Bridge Camper Ethan Battle",
+  kind: "battle",
+  data: {
+    playerBox: _box16,
+    opponentBox: nuggetBridgeCamperEthanBox,
+    lines: [
+      {
+        matchups: [
+          {
+            matchup: ["Mabosstiff"],
+            turns: [
+              [
+                { player: "{p:Houndoom} Flame Burst {o:Mabosstiff} to {-:45}" },
+                { opponent: "{o:Mabosstiff} Bite {p:Houndoom} to {+:52}" },
+              ],
+              [
+                { player: "{p:Houndoom} switch to {p:Azumarill}" },
+                { opponent: "{o:Mabosstiff} Bite {p:Azumarill} to {+:75}" },
+              ],
+              [
+                { opponent: "{o:Mabosstiff} Trailblaze {p:Azumarill} to {+:25}" },
+                { player: "{p:Azumarill} Play Rough {o:Mabosstiff} to {=:0}" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Misdreavus"],
+            turns: [
+              [
+                { player: "{p:Azumarill} switch to {p:Tentacruel}" },
+                { opponent: "{o:Misdreavus} Will-O-Wisp {p:Tentacruel}" },
+                { opponent: "{p:Tentacruel} burn to {+:86}" },
+              ],
+              [
+                { player: "{p:Tentacruel} Acid Spray {o:Misdreavus} to {-:70}" },
+                { opponent: "{o:Misdreavus} Hex {p:Tentacruel} to {+:37}" },
+                { opponent: "{p:Tentacruel} burn to {+:32}" },
+              ],
+              [
+                { player: "{p:Tentacruel} switch to {p:Houndoom}" },
+                { opponent: "{o:Misdreavus} Hex {p:Houndoom} to {+:34}" },
+              ],
+              [
+                { player: "{p:Houndoom} Dark Pulse {o:Misdreavus} to {=:0}" },
+                { opponent: "{o:Misdreavus} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Salandit"],
+            turns: [
+              [
+                { player: "{p:Houndoom} Dark Pulse {o:Salandit} to {=:0}" },
+                { opponent: "{o:Salandit} fainted" },
+              ],
+            ],
+          },
+        ],
+        frags: { Azumarill: 1, Houndoom: 2 },
+      },
+    ],
+  },
+};
 
 const _box17 = getBox({
   box: _box16,
@@ -348,11 +1353,149 @@ const _box17 = getBox({
   team: ["Yamask-G", "Drednaw", "Perrserker", "Azumarill"],
 });
 
+export const nuggetBridgeGruntBattle: Moment = {
+  label: "Nugget Bridge Grunt Battle",
+  kind: "battle",
+  data: {
+    playerBox: _box17,
+    opponentBox: nuggetBridgeGruntBox,
+    lines: [
+      {
+        matchups: [
+          {
+            matchup: ["Arcanine"],
+            turns: [
+              [
+                { opponent: "{o:Arcanine} Dragon Rage {p:Yamask-G} to {=:27}" },
+                { player: "{p:Yamask-G} Rock Tomb {o:Arcanine} to {-:74}" },
+              ],
+              [
+                { player: "{p:Yamask-G} switch to {p:Drednaw}" },
+                { opponent: "{o:Arcanine} Dragon Rage {p:Drednaw} to {=:57}" },
+              ],
+              [
+                { player: "{p:Drednaw} Razor Shell {o:Arcanine} to {=:0}" },
+                { opponent: "{o:Arcanine} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Togedemaru"],
+            turns: [
+              [
+                { player: "{p:Drednaw} switch to {p:Perrserker}" },
+                { opponent: "{o:Togedemaru} Zippy Zap {p:Perrserker} to {+:76}" },
+              ],
+              [
+                { opponent: "{o:Togedemaru} Zippy Zap {p:Perrserker} to {+:55}" },
+                { player: "{p:Perrserker} Metal Burst {o:Togedemaru} to {-:53}" },
+              ],
+              [
+                { opponent: "{o:Togedemaru} Zippy Zap {p:Perrserker} to {+:58}" },
+                { player: "{p:Perrserker} Metal Burst {o:Togedemaru} to {-:26}" },
+              ],
+              [
+                { opponent: "{o:Togedemaru} Zippy Zap {p:Perrserker} to {+:37}" },
+                { player: "{p:Perrserker} Metal Burst {o:Togedemaru} to {=:0}" },
+                { opponent: "{o:Togedemaru} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Komala"],
+            turns: [
+              [
+                { player: "{p:Perrserker} switch to {p:Yamask-G}" },
+                { opponent: "{o:Komala} Last Resort {p:Yamask-G}" },
+              ],
+              [
+                { opponent: "{o:Komala} Last Resort {p:Yamask-G}" },
+                { player: "{p:Yamask-G} Rock Tomb {o:Komala} to {-:76}" },
+              ],
+              [
+                { opponent: "{o:Komala} Last Resort {p:Yamask-G}" },
+                { player: "{p:Yamask-G} Rock Tomb {o:Komala} to {-:64}" },
+              ],
+              [
+                { opponent: "{o:Komala} Last Resort {p:Yamask-G}" },
+                { player: "{p:Yamask-G} Rock Tomb {o:Komala} to {-:52}" },
+              ],
+              [
+                { opponent: "{o:Komala} Last Resort {p:Yamask-G}" },
+                { player: "{p:Yamask-G} Rock Tomb {o:Komala} to {-:40}" },
+              ],
+              [
+                { opponent: "{o:Komala} Last Resort {p:Yamask-G}" },
+                { player: "{p:Yamask-G} Rock Tomb {o:Komala} to {-:28}" },
+              ],
+              [
+                { opponent: "{o:Komala} Last Resort {p:Yamask-G}" },
+                { player: "{p:Yamask-G} Rock Tomb {o:Komala} to {-:16}" },
+              ],
+              [
+                { opponent: "{o:Komala} Last Resort {p:Yamask-G}" },
+                { player: "{p:Yamask-G} Rock Tomb {o:Komala} to {-:4}" },
+              ],
+              [
+                { opponent: "{o:Komala} Last Resort {p:Yamask-G}" },
+                { player: "{p:Yamask-G} Rock Tomb {o:Komala} to {=:0}" },
+                { opponent: "{o:Komala} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Druddigon"],
+            turns: [
+              [
+                { player: "{p:Yamask-G} switch to {p:Azumarill}" },
+                { opponent: "{o:Druddigon} Dragon Tail {p:Azumarill}" },
+              ],
+              [
+                { player: "{p:Azumarill} Play Rough {o:Druddigon} to {-:17}" },
+                { opponent: "{o:Druddigon} Rough Skin {p:Azumarill} to {=:90}" },
+                { opponent: "{o:Druddigon} Poison Tail {p:Azumarill} to {+:34}" },
+              ],
+              [
+                { player: "{p:Azumarill} Play Rough {o:Druddigon} to {=:0}" },
+                { opponent: "{o:Druddigon} Rough Skin {p:Azumarill} to {=:22}" },
+                { opponent: "{o:Druddigon} fainted" },
+              ],
+            ],
+          },
+        ],
+        frags: { Drednaw: 1, Perrserker: 1, "Yamask-G": 1, Azumarill: 1 },
+      },
+    ],
+  },
+};
+
+const _charcadet = {
+  name: "Charcadet",
+  moves: ["Clear Smog", "Ember", "Fire Spin", "Leer"],
+};
+
 const _box18 = getBox({ box: _box17, team: ["Houndoom"] });
+
+export const route24Encounter: Moment = {
+  label: "Route 24 Encounter",
+  kind: "encounter",
+  data: { pokemon: _charcadet, playerBox: _box18 },
+};
+
+const _chinchou = {
+  name: "Chinchou",
+  moves: ["Bubble", "Supersonic"],
+};
+
+export const route25Encounter: Moment = {
+  label: "Route 25 Encounter",
+  kind: "encounter",
+  data: { pokemon: _chinchou },
+};
 
 const _box19 = getBox({
   box: _box18,
-  add: [charcadet, chinchou],
+  add: [_charcadet, _chinchou],
   update: {
     Azumarill: {
       item: "Pixie Plate",
@@ -376,11 +1519,126 @@ const _box19 = getBox({
   team: ["Azumarill", "Perrserker", "Clodsire", "Houndoom", "Yamask-G", "Kricketune"],
 });
 
+export const digHouseGruntBattle: Moment = {
+  label: "Dig House Grunt Battle",
+  kind: "battle",
+  data: {
+    playerBox: _box19,
+    opponentBox: digHouseGruntBox,
+    lines: [
+      {
+        matchups: [
+          {
+            matchup: ["Persian-A"],
+            turns: [
+              [
+                { opponent: "{o:Persian-A} Shock Wave {p:Azumarill} to {+:36}" },
+                { player: "{p:Azumarill} Play Rough {o:Persian-A} to {=:0}" },
+                { opponent: "{o:Persian-A} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Crobat"],
+            turns: [
+              [
+                { player: "{p:Azumarill} switch to {p:Perrserker}" },
+                { opponent: "{o:Crobat} Air Cutter {p:Perrserker} to {+:84}" },
+              ],
+              [
+                { player: "{p:Perrserker} Fake Out {o:Crobat} to {-:77}" },
+                { opponent: "{o:Crobat} flinched" },
+              ],
+              [
+                { opponent: "{o:Crobat} HP Fire {p:Perrserker} to {+:48}" },
+                { player: "{p:Perrserker} Iron Head {o:Crobat} to {-:44}" },
+              ],
+              [
+                { opponent: "{o:Crobat} HP Fire {p:Perrserker} to {+:36}" },
+                { player: "{p:Perrserker} Iron Head {o:Crobat} to {-:11}" },
+              ],
+              [
+                { player: "{p:Perrserker} Bullet Punch {o:Crobat} to {=:0}" },
+                { opponent: "{o:Crobat} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Veluza"],
+            turns: [
+              [
+                { player: "{p:Perrserker} switch to {p:Clodsire}" },
+                { opponent: "{o:Veluza} Aqua Cutter {p:Clodsire}" },
+              ],
+              [
+                { player: "{p:Clodsire} switch to {p:Houndoom}" },
+                { opponent: "{o:Veluza} Psycho Cut {p:Houndoom}" },
+              ],
+              [
+                { player: "{p:Houndoom} Dark Pulse {o:Veluza} to {=:0}" },
+                { opponent: "{o:Veluza} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Raticate"],
+            turns: [
+              [
+                { player: "{p:Houndoom} switch to {p:Yamask-G}" },
+                { opponent: "{o:Raticate} Stom. Tantrum {p:Yamask-G} to {+:37}" },
+              ],
+              [
+                { player: "{p:Yamask-G} switch to {p:Kricketune}" },
+                { opponent: "{o:Raticate} Stom. Tantrum {p:Kricketune} to {+:82}" },
+                { player: "{o:Raticate} burn to {=:73}" },
+              ],
+              [
+                { opponent: "{o:Raticate} Facade {p:Kricketune} to {+:41}" },
+                { player: "{p:Kricketune} Pounce {o:Raticate} to {-:28}" },
+                { player: "{o:Raticate} burn to {-:24}" },
+              ],
+              [
+                { player: "{p:Kricketune} Pounce {o:Raticate} to {=:0}" },
+                { player: "{o:Raticate} fainted" },
+              ],
+            ],
+          },
+        ],
+        frags: { Azumarill: 1, Perrserker: 1, Houndoom: 1, Kricketune: 1 },
+      },
+    ],
+  },
+};
+
+const _growlitheH = {
+  name: "Growlithe-H",
+  spriteKey: "growlithe-hisui",
+  pokedexKey: "Growlithe-Hisui",
+  moves: ["Flame Wheel", "Helping Hand", "Leer", "Odor Sleuth"],
+};
+
 const _box20 = getBox({ box: _box19, team: ["Houndoom"] });
+
+export const route5Encounter: Moment = {
+  label: "Route 5 Encounter",
+  kind: "encounter",
+  data: { pokemon: _growlitheH, playerBox: _box20 },
+};
+
+const _shellder = {
+  name: "Shellder",
+  moves: ["Tackle", "Water Gun"],
+};
+
+export const route6Encounter: Moment = {
+  label: "Route 6 Encounter",
+  kind: "encounter",
+  data: { pokemon: _shellder },
+};
 
 const _box21 = getBox({
   box: _box20,
-  add: [growlitheH, shellder],
+  add: [_growlitheH, _shellder],
   cap: 28,
   update: {
     Chinchou: {
@@ -392,6 +1650,12 @@ const _box21 = getBox({
     },
   },
 });
+
+export const route6BoxChange: Moment = {
+  label: "Route 6 Box Change",
+  kind: "boxChange",
+  data: { playerBox: _box21 },
+};
 
 const _box22 = getBox({
   box: _box21,
@@ -430,1401 +1694,237 @@ const _box22 = getBox({
   team: ["Kricketune", "Lanturn", "Perrserker", "Gyarados", "Golduck", "Clodsire"],
 });
 
+export const ceruleanCityLeaderMistyBattle: Moment = {
+  label: "Cerulean City Leader Misty Battle",
+  kind: "battle",
+  data: {
+    playerBox: _box22,
+    opponentBox: ceruleanCityLeaderMistyBox,
+    lines: [
+      {
+        matchups: [
+          {
+            matchup: ["Politoed"],
+            turns: [
+              [
+                { player: "{p:Kricketune} Bug Bite {o:Politoed} to {-:48}" },
+                { opponent: "{o:Politoed} Toxic {p:Kricketune}" },
+                { opponent: "{p:Kricketune} poison to {+:84}" },
+              ],
+              [
+                { player: "{p:Kricketune} Bullet Seed {o:Politoed} to {=:0}" },
+                { opponent: "{o:Politoed} fainted" },
+                { opponent: "{p:Kricketune} poison to {+:74}" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Mantine"],
+            turns: [
+              [
+                { player: "{p:Kricketune} switch to {p:Lanturn}" },
+                { opponent: "{o:Mantine} Hurricane {p:Lanturn} to {+:83}" },
+              ],
+              [
+                { player: "{p:Lanturn} switch to {p:Perrserker}" },
+                { opponent: "{o:Mantine} HP Grass {p:Perrserker} to {+:86}" },
+              ],
+              [
+                { opponent: "{o:Mantine} Scald {p:Perrserker} to {+:22}" },
+                { player: "{p:Perrserker} Metal Burst {o:Mantine} to {-:10}" },
+              ],
+              [
+                { player: "{p:Perrserker} Bullet Punch {o:Mantine} to {=:0}" },
+                { opponent: "{o:Mantine} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Ludicolo"],
+            turns: [
+              [
+                { player: "{p:Perrserker} switch to {p:Gyarados}" },
+                { opponent: "{o:Ludicolo} Scald {p:Gyarados} to {+:53}" },
+              ],
+              [
+                { player: "{p:Gyarados} switch to {p:Lanturn}" },
+                { opponent: "{o:Ludicolo} Thunder Punch {p:Lanturn} to {+:112}" },
+              ],
+              [
+                { opponent: "{o:Ludicolo} Giga Drain {p:Lanturn} to {+:31}" },
+                { player: "{p:Lanturn} Thunder Wave {o:Ludicolo}" },
+              ],
+              [
+                { player: "{p:Lanturn} switch to {p:Kricketune}" },
+                { opponent: "{o:Ludicolo} Giga Drain {p:Kricketune} to {+:42}" },
+                { opponent: "{p:Kricketune} poison to {+:37}" },
+              ],
+              [
+                { player: "{p:Kricketune} Bug Bite {o:Ludicolo} to {=:0}" },
+                { player: "{p:Kricketune} heal to {+:59}" },
+                { opponent: "{o:Ludicolo} fainted" },
+                { opponent: "{p:Kricketune} poison to {+:49}" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Toxicroak"],
+            turns: [
+              [
+                { player: "{p:Kricketune} switch to {p:Golduck}" },
+                { opponent: "{o:Toxicroak} Swords Dance" },
+              ],
+            ],
+            branches: [
+              { branches: ["Golduck Zen Headbutt Starmie", "Golduck Zen Headbutt Toxicroak"] },
+            ],
+          },
+        ],
+        frags: { Kricketune: 2, Perrserker: 1 },
+      },
+      {
+        line: "Golduck Zen Headbutt Starmie",
+        matchups: [
+          {
+            matchup: ["Toxicroak"],
+            turns: [
+              [
+                { opponent: "{o:Toxicroak} switch to {o:Starmie}" },
+                { player: "{p:Golduck} Zen Headbutt {o:Starmie} to {-:67}" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Starmie"],
+            turns: [
+              [
+                { player: "{p:Golduck} Me First {p:Starmie} to {=:0}" },
+                { opponent: "{o:Starmie} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Clodsire"],
+            turns: [
+              [
+                { player: "{p:Golduck} Zen Headbutt {o:Clodsire} to {-:51}" },
+                { opponent: "{o:Clodsire} Toxic {p:Golduck}" },
+                { opponent: "{o:Clodsire} heal to {-:58}" },
+                { opponent: "{p:Golduck} posion to {=:86}" },
+              ],
+              [
+                { player: "{p:Golduck} Zen Headbutt {o:Clodsire} to {=:0}" },
+                { opponent: "{o:Clodsire} fainted" },
+                { opponent: "{p:Golduck} posion to {=:76}" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Toxicroak"],
+            turns: [
+              [
+                { player: "{p:Golduck} Zen Headbutt {o:Toxicroak} to {=:0}" },
+                { opponent: "{o:Toxicroak} fainted" },
+              ],
+            ],
+          },
+        ],
+        frags: { Golduck: 3 },
+      },
+      {
+        line: "Golduck Zen Headbutt Toxicroak",
+        matchups: [
+          {
+            matchup: ["Toxicroak"],
+            turns: [
+              [
+                { player: "{p:Golduck} Zen Headbutt {o:Toxicroak} to {=:0}" },
+                { opponent: "{o:Toxicroak} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Starmie"],
+            turns: [
+              [
+                { player: "{p:Golduck} switch to {p:Clodsire}" },
+                { opponent: "{o:Starmie} Thunderbolt {p:Clodsire}" },
+              ],
+              [
+                { opponent: "{o:Starmie} Psyshock {p:Clodsire} to {+:41}" },
+                { player: "{p:Clodsire} Poison Jab {o:Starmie} to {-:55}" },
+              ],
+              [
+                { player: "{p:Clodsire} switch to {p:Golduck}" },
+                { opponent: "{o:Starmie} Psyshock {p:Golduck} to {+:50}" },
+              ],
+              [
+                { player: "{p:Golduck} Me First {p:Starmie} to {=:0}" },
+                { opponent: "{o:Starmie} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Clodsire"],
+            turns: [
+              [
+                { player: "{p:Golduck} Zen Headbutt {o:Clodsire} to {-:51}" },
+                { opponent: "{o:Clodsire} Toxic {p:Golduck}" },
+                { opponent: "{o:Clodsire} heal to {-:58}" },
+                { opponent: "{p:Golduck} posion to {+:45}" },
+              ],
+              [
+                { player: "{p:Golduck} Zen Headbutt {o:Clodsire} to {=:0}" },
+                { opponent: "{o:Clodsire} fainted" },
+              ],
+            ],
+          },
+        ],
+        frags: { Golduck: 3 },
+      },
+    ],
+  },
+};
+
 const _box23 = getBox({
   box: _box22,
   remove: ["Kricketune"],
 });
 
-// ─── Encounters ───────────────────────────────────────────────────────────────
-
-export const drilburEncounter: EncounterData = { pokemon: drilbur };
-export const magikarpEncounter: EncounterData = { pokemon: magikarp };
-export const chewtleEncounter: EncounterData = { pokemon: chewtle };
-export const charcadetEncounter: EncounterData = { pokemon: charcadet, playerBox: _box18 };
-export const chinchouEncounter: EncounterData = { pokemon: chinchou };
-export const growlitheHEncounter: EncounterData = { pokemon: growlitheH, playerBox: _box20 };
-export const shelderEncounter: EncounterData = { pokemon: shellder };
-
-// ─── Box changes ──────────────────────────────────────────────────────────────
-
-export const route3BoxChange: BoxChangeData = { playerBox: _box2 };
-export const route4BoxChange: BoxChangeData = { playerBox: _box4 };
-export const afterMiguelBoxChange: BoxChangeData = { playerBox: _box6 };
-export const ceruleanCityBoxChange: BoxChangeData = { playerBox: _box8 };
-export const afterRivalBoxChange: BoxChangeData = { playerBox: _box10 };
-export const gyaradosBoxChange: BoxChangeData = { playerBox: _box14 };
-export const route6BoxChange: BoxChangeData = { playerBox: _box21 };
-export const afterMistyBoxChange: BoxChangeData = { playerBox: _box23 };
-
-// ─── Battles ──────────────────────────────────────────────────────────────────
-
-export const route3LassSallyBattle: BattleData = {
-  playerBox: _box3,
-  opponentBox: route3LassSallyBox,
-  lines: [
-    {
-      matchups: [
-        {
-          matchup: ["Pikachu-Flying"],
-          turns: [
-            [
-              { opponent: "{o:Pikachu-Flying} Zippy Zap {p:Kricketune} to {+:38}" },
-              { player: "{p:Kricketune} Rock Tomb {o:Pikachu-Flying} to {=:0}" },
-              { opponent: "{o:Pikachu-Flying} fainted" },
-            ],
-          ],
-        },
-        {
-          matchup: ["Whimsicott"],
-          turns: [
-            [
-              { player: "{p:Kricketune} switch to {p:Houndour}" },
-              { opponent: "{o:Whimsicott} Leech Seed {p:Houndour}" },
-            ],
-            [
-              { opponent: "{o:Whimsicott} Mega Drain {p:Houndour} to {+:40}" },
-              { player: "{p:Houndour} Incinerate {o:Whimsicott} to {-:17}" },
-            ],
-            [
-              { opponent: "{o:Whimsicott} Mega Drain {p:Houndour} to {+:20}" },
-              { opponent: "{o:Whimsicott} heal to {-:27}" },
-              { player: "{p:Houndour} Incinerate {o:Whimsicott} to {=:0}" },
-              { opponent: "{o:Whimsicott} fainted" },
-            ],
-          ],
-        },
-        {
-          matchup: ["Oricorio-Sensu"],
-          turns: [
-            [
-              { player: "{p:Houndour} switch to {p:Azumarill}" },
-              { opponent: "{o:Oricorio-Sensu} Air Cutter {p:Azumarill} to {+:53}" },
-            ],
-            [
-              { opponent: "{o:Oricorio-Sensu} HP Ghost {p:Azumarill} to {+:23}" },
-              { player: "{p:Azumarill} Ice Punch {o:Oricorio-Sensu} to {-:19}" },
-            ],
-            [
-              { player: "{p:Azumarill} Aqua Jet {o:Oricorio-Sensu} to {=:0}" },
-              { opponent: "{o:Oricorio-Sensu} fainted" },
-            ],
-          ],
-        },
-        {
-          matchup: ["mawile"],
-          turns: [
-            [
-              { player: "{p:Azumarill} switch to {p:Meowth-G}" },
-              { opponent: "{o:Mawile} Covet {p:Meowth-G} to {+:19}" },
-            ],
-            [
-              { player: "{p:Meowth-G} switch to {p:Houndour}" },
-              { opponent: "{o:Mawile} Fire Fang {p:Houndour}" },
-            ],
-            [
-              { player: "{p:Houndour} Incinerate {o:Mawile} to {=:0}" },
-              { opponent: "{o:Mawile} fainted" },
-            ],
-          ],
-        },
-      ],
-      frags: { Kricketune: 1, Houndour: 2, Azumarill: 1 },
-    },
-  ],
-};
-
-export const mtMoonSuperNerdMiguelBattle: BattleData = {
-  playerBox: _box5,
-  opponentBox: mtMoonSuperNerdMiguelBox,
-  lines: [
-    {
-      matchups: [
-        {
-          matchup: ["Voltorb-H", "Thwackey"],
-          turns: [
-            [
-              { player: "{p:Torracat} switch to {p:Kricketune}" },
-              { player: "{p:Houndour} switch to {p:Yamask-G}" },
-              { opponent: "{o:Thwackey} Fake Out {p:Yamask-G}" },
-              {
-                opponent:
-                  "{o:Voltorb-H} Self-Destruct {p:Kricketune} to {+:43} and {o:Thwackey} to {-:46}",
-              },
-              { opponent: "{o:Voltorb-H} fainted" },
-              { player: "{p:Kricketune} terrain to {+:47}" },
-              { opponent: "{o:Thwackey} terrain to {-:50}" },
-            ],
-          ],
-        },
-        {
-          matchup: ["Swoobat", "Thwackey"],
-          turns: [
-            [
-              { opponent: "{o:Swoobat} Calm Mind" },
-              { player: "{p:Kricketune} Bug Bite {o:Thwackey} to {=:0}" },
-              { player: "{p:Yamask-G} Haze" },
-              { opponent: "{o:Thwackey} fainted" },
-            ],
-          ],
-        },
-        {
-          matchup: ["Swoobat", "Sableye"],
-          turns: [
-            [
-              { player: "{p:Kricketune} switch to {p:Houndour}" },
-              { opponent: "{o:Swoobat} Calm Mind" },
-              { opponent: "{o:Sableye} Will-O-Wisp {p:Houndour}" },
-              { player: "{p:Yamask-G} Haze" },
-            ],
-            [
-              { player: "{p:Yamask-G} switch to {p:Azumarill}" },
-              { opponent: "{o:Swoobat} Calm Mind" },
-              { player: "{p:Houndour} Leer {o:Swoobat} and {o:Sableye}" },
-              {
-                opponent:
-                  "{o:Sableye} Foul Play {p:Azumarill} to {+:71} or Foul Play {p:Houndour} to {+:29}",
-              },
-              { player: "{p:Azumarill} terrain to {+:76} or {p:Houndour} terrain to {+:32}" },
-            ],
-          ],
-          branches: [{ branches: ["Azumarill Play Rough Sableye", "Sableye Protect"] }],
-        },
-      ],
-      frags: { Kricketune: 1, "Yamask-G": 1 },
-    },
-    {
-      line: "Azumarill Play Rough Sableye",
-      matchups: [
-        {
-          matchup: ["Swoobat", "Sableye"],
-          turns: [
-            [
-              { player: "{p:Houndour} Sucker Punch {o:Swoobat} to {=:0}" },
-              { player: "{p:Azumarill} Play Rough {o:Sableye} to {=:0}" },
-              { opponent: "{o:Swoobat} fainted" },
-              { opponent: "{o:Sableye} fainted" },
-              { player: "{p:Azumarill} terrain to {+:81} or {p:Houndour} terrain to {+:35}" },
-            ],
-          ],
-        },
-        {
-          matchup: ["Skiddo"],
-          turns: [
-            [
-              { player: "{p:Houndour} Incinerate {o:Skiddo} to {-:17}" },
-              { player: "{p:Azumarill} Play Rough {o:Skiddo} to {=:0}" },
-              { opponent: "{o:Skiddo} fainted" },
-            ],
-          ],
-        },
-      ],
-      frags: { Houndour: 1, Azumarill: 2 },
-    },
-    {
-      line: "Sableye Protect",
-      matchups: [
-        {
-          matchup: ["Swoobat", "Sableye"],
-          turns: [
-            [
-              { player: "{p:Houndour} Sucker Punch {o:Swoobat} to {=:0}" },
-              { opponent: "{o:Sableye} Protect" },
-              { player: "{p:Azumarill} Play Rough {o:Sableye}" },
-              { opponent: "{o:Swoobat} fainted" },
-              { player: "{p:Azumarill} terrain to {+:81} or {p:Houndour} terrain to {+:35}" },
-            ],
-          ],
-        },
-        {
-          matchup: ["Skiddo", "Sableye"],
-          turns: [
-            [
-              { player: "{p:Houndour} Incinerate {o:Sableye} to {-:41} and {o:Skiddo} to {-:19}" },
-              { player: "{p:Azumarill} Play Rough {o:Skiddo} to {=:0}" },
-              {
-                opponent:
-                  "{o:Sableye} Foul Play {p:Azumarill} to {+:66} or Foul Play {p:Houndour} to {+:4}",
-              },
-              { player: "{p:Azumarill} terrain to {+:71} or {p:Houndour} terrain to {+:7}" },
-              { player: "{o:Sableye} terrain to {+:47}" },
-              { opponent: "{o:Skiddo} fainted" },
-            ],
-          ],
-        },
-        {
-          matchup: ["Sableye"],
-          turns: [
-            [
-              { player: "{p:Houndour} Incinerate {o:Sableye} to {-:31}" },
-              { player: "{p:Azumarill} Play Rough {o:Sableye} to {=:0}" },
-              { opponent: "{o:Sableye} fainted" },
-            ],
-          ],
-        },
-      ],
-      frags: { Houndour: 1, Azumarill: 2 },
-    },
-  ],
-};
-
-export const mtMoonArcherBattle: BattleData = {
-  playerBox: _box7,
-  opponentBox: mtMoonArcherBox,
-  lines: [
-    {
-      matchups: [
-        {
-          matchup: ["Glimmet"],
-          turns: [
-            [
-              { player: "{p:Azumarill} Aqua Jet {o:Glimmet} to {=:0}" },
-              { opponent: "{o:Glimmet} Toxic Debris" },
-              { opponent: "{o:Glimmet} fainted" },
-            ],
-          ],
-        },
-        {
-          matchup: ["Seviper"],
-          turns: [
-            [
-              { player: "{p:Azumarill} switch to {p:Meowth-G}" },
-              { opponent: "{o:Seviper} Hypnosis {p:Meowth-G}" },
-            ],
-            [
-              { player: "{p:Meowth-G} Fake Out {o:Seviper} to {-:61}" },
-              { opponent: "{o:Seviper} flinched" },
-            ],
-            [
-              { player: "{p:Meowth-G} switch to {p:Kricketune}" },
-              { opponent: "{o:Seviper} Hypnosis {p:Kricketune}" },
-              { opponent: "{p:Kricketune} poison to {=:66}" },
-            ],
-            [
-              { player: "{p:Kricketune} Bulldoze {o:Seviper} to {-:40}" },
-              { opponent: "{o:Seviper} Poison Fang {p:Kricketune} to {+:44}" },
-              { opponent: "{p:Kricketune} poison to {+:35}" },
-            ],
-            [
-              { player: "{p:Kricketune} Bulldoze {o:Seviper} to {=:0}" },
-              { opponent: "{o:Seviper} fainted" },
-              { opponent: "{p:Kricketune} poison to {+:26}" },
-            ],
-          ],
-        },
-        {
-          matchup: ["Fearow"],
-          turns: [
-            [
-              { player: "{p:Kricketune} switch to {p:Meowth-G}" },
-              { opponent: "{o:Fearow} Double Hit {p:Meowth-G} to {+:27}" },
-            ],
-            [
-              { player: "{p:Meowth-G} Fake Out {o:Fearow} to {-:51}" },
-              { opponent: "{o:Fearow} flinched" },
-            ],
-            [
-              { player: "{p:Meowth-G} switch to {p:Yamask-G}" },
-              { opponent: "{o:Fearow} Drill Run {p:Yamask-G} to {+:30}" },
-            ],
-            [
-              { player: "{p:Yamask-G} switch to {p:Azumarill}" },
-              { opponent: "{o:Fearow} Pluck {p:Azumarill} to {+:55}" },
-            ],
-            [
-              { opponent: "{o:Fearow} Double Hit {p:Azumarill} to {+:17}" },
-              { player: "{p:Azumarill} Ice Punch {o:Fearow} to {=:0}" },
-            ],
-          ],
-        },
-        {
-          matchup: ["Mightyena"],
-          turns: [
-            [
-              { player: "{p:Azumarill} switch to {p:Clodsire}" },
-              { opponent: "{o:Mightyena} Poison Fang {p:Clodsire} to {+:89}" },
-            ],
-            [
-              { player: "{p:Clodsire} switch to {p:Kricketune}" },
-              { opponent: "{o:Mightyena} Howl" },
-              { opponent: "{p:Kricketune} poison to {+:17}" },
-            ],
-            [
-              { player: "{p:Kricketune} Bug Bite {o:Mightyena} to {=:0}" },
-              { opponent: "{o:Mightyena} fainted" },
-              { opponent: "{p:Kricketune} poison to {+:8}" },
-            ],
-          ],
-        },
-        {
-          matchup: ["Houndour"],
-          turns: [
-            [
-              { player: "{p:Kricketune} switch to {p:Torracat}" },
-              { opponent: "{o:Houndour} Incinerate {p:Torracat} to {+:48}" },
-            ],
-            [
-              { player: "{p:Torracat} Double Kick {o:Houndour} to {=:0}" },
-              { opponent: "{o:Houndour} fainted" },
-            ],
-          ],
-        },
-      ],
-      frags: { Azumarill: 2, Kricketune: 2, Torracat: 1 },
-    },
-  ],
-};
-
-export const ceruleanCityRivalBattle: BattleData = {
-  playerBox: _box9,
-  opponentBox: ceruleanCityRivalBox,
-  lines: [
-    {
-      matchups: [
-        {
-          matchup: ["Hitmonlee"],
-          turns: [
-            [
-              { opponent: "{o:Hitmonlee} Fake Out {p:Azumarill} to {+:83}" },
-              { player: "{p:Azumarill} flinched" },
-            ],
-          ],
-          branches: [{ branches: ["Azumarill Covet Wartortle", "Azumarill Covet Hitmonlee"] }],
-        },
-      ],
-    },
-    {
-      line: "Azumarill Covet Wartortle",
-      matchups: [
-        {
-          matchup: ["Hitmonlee"],
-          turns: [
-            [
-              { opponent: "{o:Hitmonlee} switch to {o:Wartortle}" },
-              { player: "{p:Azumarill} Covet {o:Wartortle} to {-:60}" },
-            ],
-          ],
-        },
-        {
-          matchup: ["Wartortle"],
-          turns: [
-            [
-              { opponent: "{o:Wartortle} Shell Smash" },
-              { player: "{p:Azumarill} Aqua Tail {o:Wartortle} to {-:39}" },
-            ],
-          ],
-          branches: [{ branches: ["Regular damage to Wartortle", "Crit damage to Wartortle"] }],
-        },
-      ],
-    },
-    {
-      line: "Azumarill Covet Hitmonlee",
-      matchups: [
-        {
-          matchup: ["Hitmonlee"],
-          turns: [
-            [
-              { opponent: "{o:Hitmonlee} Knock Off {p:Azumarill} to {+:61}" },
-              { player: "{p:Azumarill} Covet {o:Hitmonlee} to {=:0}" },
-              { opponent: "{o:Hitmonlee} fainted" },
-            ],
-          ],
-        },
-        {
-          matchup: ["Wartortle"],
-          turns: [
-            [
-              { opponent: "{o:Wartortle} Shell Smash" },
-              { player: "{p:Azumarill} Play Rough {o:Wartortle} to {-:36}" },
-            ],
-          ],
-          branches: [{ branches: ["Regular damage to Wartortle", "Crit damage to Wartortle"] }],
-        },
-      ],
-      frags: { Azumarill: 1 },
-    },
-    {
-      line: "Regular damage to Wartortle",
-      matchups: [
-        {
-          matchup: ["Wartortle"],
-          turns: [
-            [
-              { player: "{p:Azumarill} switch to {p:Torracat}" },
-              { opponent: "{o:Wartortle} HP Electric {p:Torracat} to {+:45}" },
-            ],
-            [
-              { player: "{p:Torracat} Fake Out {o:Wartortle} to {-:25}" },
-              { opponent: "{o:Wartortle} flinched" },
-            ],
-            [
-              { player: "{p:Torracat} switch to {p:Clodsire}" },
-              { opponent: "{o:Wartortle} Water Pulse {p:Clodsire}" },
-            ],
-          ],
-          branches: [{ branches: ["Perrserker Bullet Punch Wartortle"] }],
-        },
-      ],
-    },
-    {
-      line: "Crit damage to Wartortle",
-      matchups: [
-        {
-          matchup: ["Wartortle"],
-          turns: [
-            [
-              { player: "{p:Azumarill} switch to {p:Clodsire}" },
-              { opponent: "{o:Wartortle} HP Electric {p:Clodsire}" },
-            ],
-          ],
-          branches: [{ branches: ["Perrserker Bullet Punch Wartortle"] }],
-        },
-      ],
-    },
-    {
-      line: "Perrserker Bullet Punch Wartortle",
-      matchups: [
-        {
-          matchup: ["Wartortle"],
-          turns: [
-            [
-              { player: "{p:Clodsire} switch to {p:Perrserker}" },
-              { opponent: "{o:Wartortle} Icy Wind {p:Perrserker} to {+:72}" },
-            ],
-            [
-              { player: "{p:Perrserker} Fake Out {o:Wartortle} to {-:12}" },
-              { opponent: "{o:Wartortle} flinched" },
-            ],
-            [
-              { player: "{p:Perrserker} Bullet Punch {o:Wartortle} to {=:0}" },
-              { opponent: "{o:Wartortle} fainted" },
-            ],
-          ],
-        },
-        {
-          matchup: ["Simisear"],
-          turns: [
-            [
-              { player: "{p:Perrserker} switch to {p:Drednaw}" },
-              { opponent: "{o:Simisear} Incinerate {p:Drednaw} to {+:84}" },
-            ],
-            [
-              { opponent: "{o:Simisear} Incinerate {p:Drednaw} to {+:71}" },
-              { player: "{p:Drednaw} Razor Shell {o:Simisear} to {=:0}" },
-              { opponent: "{o:Simisear} fainted" },
-            ],
-          ],
-        },
-        {
-          matchup: ["Arbok"],
-          turns: [
-            [
-              { player: "{p:Drednaw} switch to {p:Clodsire}" },
-              { opponent: "{o:Arbok} Thunder Fang {p:Clodsire}" },
-            ],
-            [
-              { opponent: "{o:Arbok} Crunch {p:Clodsire} to {+:50}" },
-              { player: "{p:Clodsire} Mud Shot {o:Arbok} to {-:62}" },
-            ],
-            [
-              { player: "{p:Clodsire} switch to {p:Perrserker}" },
-              { opponent: "{o:Arbok} Crunch {p:Perrserker} to {+:42}" },
-            ],
-            [
-              { player: "{p:Perrserker} Fake Out {o:Arbok} to {-:45}" },
-              { opponent: "{o:Arbok} flinched" },
-            ],
-            [
-              { player: "{p:Perrserker} Bullet Punch {o:Arbok} to {=:0}" },
-              { opponent: "{o:Arbok} fainted" },
-            ],
-          ],
-          branches: [
-            { if: ["Azumarill Covet Hitmonlee"], branches: ["Clefable Mystical Fire Tentacruel"] },
-            { branches: ["Hitmonlee Low Sweep Azumarill", "Clefable Mystical Fire Tentacruel"] },
-          ],
-        },
-      ],
-      frags: { Perrserker: 2, Drednaw: 1 },
-    },
-    {
-      line: "Hitmonlee Low Sweep Azumarill",
-      matchups: [
-        {
-          matchup: ["Hitmonlee"],
-          turns: [
-            [
-              { player: "{p:Perrserker} switch to {p:Azumarill}" },
-              { opponent: "{o:Hitmonlee} Low Sweep {p:Azumarill} to {+:51}" },
-            ],
-            [
-              { opponent: "{o:Hitmonlee} Knock Off {p:Azumarill} to {+:29}" },
-              { player: "{p:Azumarill} Play Rough {o:Hitmonlee} to {=:0}" },
-            ],
-          ],
-          branches: [
-            { if: ["Clefable Mystical Fire Tentacruel"], branches: ["Perrserker Iron Head Eevee"] },
-            { branches: ["Clefable Charge Beam"] },
-          ],
-        },
-      ],
-      frags: { Azumarill: 1 },
-    },
-    {
-      line: "Clefable Charge Beam",
-      matchups: [
-        {
-          matchup: ["Clefable"],
-          turns: [
-            [
-              { player: "{p:Azumarill} switch to {p:Clodsire}" },
-              { opponent: "{o:Clefable} Charge Beam {p:Clodsire}" },
-            ],
-          ],
-          branches: [{ branches: ["Clefable Icy Wind Tentacruel", "Clefable switch to Eevee"] }],
-        },
-      ],
-    },
-    {
-      line: "Clefable Icy Wind Tentacruel",
-      matchups: [
-        {
-          matchup: ["Clefable"],
-          turns: [
-            [
-              { player: "{p:Clodsire} switch to {p:Tentacruel}" },
-              { opponent: "{o:Clefable} Icy Wind {p:Tentacruel} to {+:81}" },
-            ],
-            [
-              { player: "{p:Tentacruel} Acid Spray {o:Clefable} to {-:66}" },
-              { opponent: "{o:Clefable} Charge Beam {p:Tentacruel} to {+:42}" },
-            ],
-            [
-              { player: "{p:Tentacruel} Sludge {o:Clefable} to {=:0}" },
-              { opponent: "{o:Clefable} fainted" },
-            ],
-          ],
-        },
-        {
-          matchup: ["Eevee"],
-          turns: [
-            [
-              { player: "{p:Tentacruel} Acid Spray {o:Eevee} to {-:53}" },
-              { opponent: "{o:Eevee} Round {p:Tentacruel} to {+:28}" },
-            ],
-            [
-              { player: "{p:Tentacruel} Bubble Beam {o:Eevee} to {=:0}" },
-              { opponent: "{o:Eevee} fainted" },
-            ],
-          ],
-        },
-      ],
-      frags: { Tentacruel: 2 },
-    },
-    {
-      line: "Clefable switch to Eevee",
-      matchups: [
-        {
-          matchup: ["Clefable"],
-          turns: [
-            [
-              { player: "{p:Clodsire} switch to {p:Tentacruel}" },
-              { opponent: "{o:Clefable} switch to {o:Eevee}" },
-            ],
-          ],
-        },
-        {
-          matchup: ["Eevee"],
-          turns: [
-            [
-              { player: "{p:Tentacruel} Acid Spray {o:Eevee} to {-:53}" },
-              { opponent: "{o:Eevee} Round {p:Tentacruel} to {+:67}" },
-            ],
-            [
-              { player: "{p:Tentacruel} Bubble Beam {o:Eevee} to {=:0}" },
-              { opponent: "{o:Eevee} fainted" },
-            ],
-          ],
-        },
-        {
-          matchup: ["Clefable"],
-          turns: [
-            [
-              { player: "{p:Tentacruel} Acid Spray {o:Clefable} to {-:66}" },
-              { opponent: "{o:Clefable} Charge Beam {p:Tentacruel} to {+:28}" },
-            ],
-            [
-              { player: "{p:Tentacruel} Sludge {o:Clefable} to {=:0}" },
-              { opponent: "{o:Clefable} fainted" },
-            ],
-          ],
-        },
-      ],
-      frags: { Tentacruel: 2 },
-    },
-    {
-      line: "Clefable Mystical Fire Tentacruel",
-      matchups: [
-        {
-          matchup: ["Clefable"],
-          turns: [
-            [
-              { player: "{p:Perrserker} switch to {p:Tentacruel}" },
-              { opponent: "{o:Clefable} Mystical Fire {p:Tentacruel} to {+:77}" },
-            ],
-            [
-              { player: "{p:Tentacruel} Acid Spray {o:Clefable} to {-:66}" },
-              { opponent: "{o:Clefable} Charge Beam {p:Tentacruel} to {+:38}" },
-            ],
-            [
-              { player: "{p:Tentacruel} Sludge {o:Clefable} to {=:0}" },
-              { opponent: "{o:Clefable} fainted" },
-            ],
-          ],
-          branches: [
-            { if: ["Azumarill Covet Hitmonlee"], branches: ["Tentacruel Acid Spray Eevee"] },
-            { branches: ["Tentacruel Acid Spray Eevee", "Hitmonlee Low Sweep Azumarill"] },
-          ],
-        },
-      ],
-      frags: { Tentacruel: 1 },
-    },
-    {
-      line: "Tentacruel Acid Spray Eevee",
-      matchups: [
-        {
-          matchup: ["Eevee"],
-          turns: [
-            [
-              { player: "{p:Tentacruel} Acid Spray {o:Eevee} to {-:53}" },
-              { opponent: "{o:Eevee} Round {p:Tentacruel} to {+:24}" },
-            ],
-            [
-              { player: "{p:Tentacruel} Bubble Beam {o:Eevee} to {=:0}" },
-              { opponent: "{o:Eevee} fainted" },
-            ],
-          ],
-          branches: [
-            {
-              ifNot: ["Azumarill Covet Hitmonlee", "Hitmonlee Low Sweep Azumarill"],
-              branches: ["Hitmonlee Knock Off"],
-            },
-          ],
-        },
-      ],
-      frags: { Tentacruel: 1 },
-    },
-    {
-      line: "Hitmonlee Knock Off",
-      matchups: [
-        {
-          matchup: ["Hitmonlee"],
-          turns: [
-            [
-              { player: "{p:Tentacruel} switch to {p:Azumarill}" },
-              { opponent: "{o:Hitmonlee} Knock Off {p:Azumarill} to {+:61}" },
-            ],
-            [
-              { opponent: "{o:Hitmonlee} Low Sweep {p:Azumarill} to {+:29}" },
-              { player: "{p:Azumarill} Play Rough {o:Hitmonlee} to {=:0}" },
-            ],
-          ],
-        },
-      ],
-      frags: { Azumarill: 1 },
-    },
-    {
-      line: "Perrserker Iron Head Eevee",
-      matchups: [
-        {
-          matchup: ["Eevee"],
-          turns: [
-            [
-              { player: "{p:Azumarill} switch to {p:Perrserker}" },
-              { opponent: "{o:Eevee} Double Kick {p:Perrserker} to {+:6}" },
-            ],
-            [
-              { player: "{p:Perrserker} Fake Out {o:Eevee} to {-:49}" },
-              { opponent: "{o:Eevee} flinched" },
-            ],
-            [
-              { player: "{p:Perrserker} Iron Head {o:Eevee} to {=:0}" },
-              { opponent: "{o:Eevee} fainted" },
-            ],
-          ],
-        },
-      ],
-      frags: { Perrserker: 1 },
-    },
-  ],
-};
-
-export const nuggetBridgeBugCatcherCaleBattle: BattleData = {
-  playerBox: _box11,
-  opponentBox: nuggetBridgeBugCatcherCaleBox,
-  lines: [
-    {
-      matchups: [
-        {
-          matchup: ["Butterfree", "Vivillon"],
-          turns: [
-            [
-              { player: "{p:Houndoom} Flame Burst {o:Vivillon} to {=:0}" },
-              { player: "{p:Drednaw} Rock Tomb {o:Butterfree} to {=:0}" },
-              { opponent: "{o:Vivillon} fainted" },
-              { opponent: "{o:Butterfree} fainted" },
-            ],
-          ],
-        },
-        {
-          matchup: ["Wormadam-Sa"],
-          turns: [
-            [
-              { player: "{p:Houndoom} Flame Burst {o:Wormadam-Sa} to {-:9}" },
-              { player: "{p:Drednaw} Rock Tomb {o:Wormadam-Sa} to {=:0}" },
-              { opponent: "{o:Wormadam-Sa} fainted" },
-            ],
-          ],
-        },
-      ],
-      frags: { Houndoom: 1, Drednaw: 2 },
-    },
-  ],
-};
-
-export const nuggetBridgeLassAliBattle: BattleData = {
-  playerBox: _box12,
-  opponentBox: nuggetBridgeLassAliBox,
-  lines: [
-    {
-      matchups: [
-        {
-          matchup: ["Amaura", "Jigglypuff"],
-          turns: [
-            [
-              { player: "{p:Azumarill} Aqua Tail {o:Amaura} to {=:0}" },
-              { player: "{p:Perrserker} Iron Head {o:Jigglypuff} to {=:0}" },
-              { opponent: "{o:Amaura} fainted" },
-              { opponent: "{o:Jigglypuff} fainted" },
-            ],
-          ],
-        },
-        {
-          matchup: ["Brionne"],
-          turns: [
-            [
-              { player: "{p:Perrserker} Bullet Punch {o:Brionne} to {-:63}" },
-              { player: "{p:Azumarill} Play Rough {o:Brionne} to {=:0}" },
-              { opponent: "{o:Brionne} fainted" },
-            ],
-          ],
-        },
-      ],
-      frags: { Azumarill: 2, Perrserker: 1 },
-    },
-  ],
-};
-
-export const nuggetBridgeYoungsterTimmyBattle: BattleData = {
-  playerBox: _box13,
-  opponentBox: nuggetBridgeYoungsterTimmyBox,
-  lines: [
-    {
-      matchups: [
-        {
-          matchup: ["Electrike", "Plusle"],
-          turns: [
-            [
-              { player: "{p:Perrserker} Fake Out {o:Plusle} to {-:48}" },
-              { opponent: "{o:Plusle} flinched" },
-              { player: "{p:Houndoom} Dark Pulse {o:Electrike} to {=:0}" },
-              { opponent: "{o:Electrike} fainted" },
-            ],
-          ],
-        },
-        {
-          matchup: ["Snover", "Plusle"],
-          turns: [
-            [
-              { player: "{p:Houndoom} Sucker Punch {o:Plusle} to {=:0}" },
-              { player: "{p:Perrserker} Iron Head {o:Snover} to {=:0}" },
-              { opponent: "{o:Plusle} fainted" },
-              { opponent: "{o:Snover} fainted" },
-            ],
-          ],
-        },
-      ],
-      frags: { Houndoom: 2, Perrserker: 1 },
-    },
-  ],
-};
-
-export const nuggetBridgeLassReliBattle: BattleData = {
-  playerBox: _box15,
-  opponentBox: nuggetBridgeLassReliBox,
-  lines: [
-    {
-      matchups: [
-        {
-          matchup: ["Greedent"],
-          turns: [
-            [
-              { player: "{p:Perrserker} Fake Out {o:Greedent} to {-:90}" },
-              { opponent: "{o:Greedent} flinched" },
-            ],
-            [
-              { player: "{p:Perrserker} switch to {p:Gyarados}" },
-              { opponent: "{o:Greedent} Stom. Tantrum {p:Gyarados}" },
-            ],
-            [
-              { player: "{p:Gyarados} Leer {o:Greedent}" },
-              { opponent: "{o:Greedent} Facade {p:Gyarados} to {+:54}" },
-            ],
-            [
-              { player: "{p:Gyarados} Leer {o:Greedent}" },
-              { opponent: "{o:Greedent} Facade {p:Gyarados} to {+:33}" },
-            ],
-            [
-              { player: "{p:Gyarados} switch to {p:Azumarill}" },
-              { opponent: "{o:Greedent} Facade {p:Azumarill} to {+:39}" },
-            ],
-            [
-              { player: "{p:Azumarill} Play Rough {o:Greedent} to {=:0}" },
-              { opponent: "{o:Greedent} fainted" },
-            ],
-          ],
-        },
-        {
-          matchup: ["Togetic"],
-          turns: [
-            [
-              { player: "{p:Azumarill} switch to {p:Perrserker}" },
-              { opponent: "{o:Togetic} Thunder Wave {p:Perrserker}" },
-            ],
-            [
-              { player: "{p:Perrserker} Iron Head {o:Togetic} to {=:0}" },
-              { opponent: "{o:Togetic} fainted" },
-            ],
-          ],
-        },
-        {
-          matchup: ["Clamperl"],
-          turns: [
-            [
-              { player: "{p:Perrserker} switch to {p:Clodsire}" },
-              { opponent: "{o:Clamperl} Icy Wind {p:Clodsire} to {+:57}" },
-            ],
-            [
-              { player: "{p:Clodsire} switch to {p:Tentacruel}" },
-              { opponent: "{o:Clamperl} Icy Wind {p:Tentacruel} to {+:78}" },
-            ],
-            [
-              { player: "{p:Tentacruel} Acid Spray {o:Clamperl} to {-:40}" },
-              { opponent: "{o:Clamperl} Water Pulse {p:Tentacruel} to {+:56}" },
-            ],
-            [
-              { player: "{p:Tentacruel} Sludge {o:Clamperl} to {=:0}" },
-              { opponent: "{o:Clamperl} fainted" },
-            ],
-          ],
-        },
-      ],
-      frags: { Azumarill: 1, Perrserker: 1, Tentacruel: 1 },
-    },
-  ],
-};
-
-export const nuggetBridgeCamperEthanBattle: BattleData = {
-  playerBox: _box16,
-  opponentBox: nuggetBridgeCamperEthanBox,
-  lines: [
-    {
-      matchups: [
-        {
-          matchup: ["Mabosstiff"],
-          turns: [
-            [
-              { player: "{p:Houndoom} Flame Burst {o:Mabosstiff} to {-:45}" },
-              { opponent: "{o:Mabosstiff} Bite {p:Houndoom} to {+:52}" },
-            ],
-            [
-              { player: "{p:Houndoom} switch to {p:Azumarill}" },
-              { opponent: "{o:Mabosstiff} Bite {p:Azumarill} to {+:75}" },
-            ],
-            [
-              { opponent: "{o:Mabosstiff} Trailblaze {p:Azumarill} to {+:25}" },
-              { player: "{p:Azumarill} Play Rough {o:Mabosstiff} to {=:0}" },
-            ],
-          ],
-        },
-        {
-          matchup: ["Misdreavus"],
-          turns: [
-            [
-              { player: "{p:Azumarill} switch to {p:Tentacruel}" },
-              { opponent: "{o:Misdreavus} Will-O-Wisp {p:Tentacruel}" },
-              { opponent: "{p:Tentacruel} burn to {+:86}" },
-            ],
-            [
-              { player: "{p:Tentacruel} Acid Spray {o:Misdreavus} to {-:70}" },
-              { opponent: "{o:Misdreavus} Hex {p:Tentacruel} to {+:37}" },
-              { opponent: "{p:Tentacruel} burn to {+:32}" },
-            ],
-            [
-              { player: "{p:Tentacruel} switch to {p:Houndoom}" },
-              { opponent: "{o:Misdreavus} Hex {p:Houndoom} to {+:34}" },
-            ],
-            [
-              { player: "{p:Houndoom} Dark Pulse {o:Misdreavus} to {=:0}" },
-              { opponent: "{o:Misdreavus} fainted" },
-            ],
-          ],
-        },
-        {
-          matchup: ["Salandit"],
-          turns: [
-            [
-              { player: "{p:Houndoom} Dark Pulse {o:Salandit} to {=:0}" },
-              { opponent: "{o:Salandit} fainted" },
-            ],
-          ],
-        },
-      ],
-      frags: { Azumarill: 1, Houndoom: 2 },
-    },
-  ],
-};
-
-export const nuggetBridgeGruntBattle: BattleData = {
-  playerBox: _box17,
-  opponentBox: nuggetBridgeGruntBox,
-  lines: [
-    {
-      matchups: [
-        {
-          matchup: ["Arcanine"],
-          turns: [
-            [
-              { opponent: "{o:Arcanine} Dragon Rage {p:Yamask-G} to {=:27}" },
-              { player: "{p:Yamask-G} Rock Tomb {o:Arcanine} to {-:74}" },
-            ],
-            [
-              { player: "{p:Yamask-G} switch to {p:Drednaw}" },
-              { opponent: "{o:Arcanine} Dragon Rage {p:Drednaw} to {=:57}" },
-            ],
-            [
-              { player: "{p:Drednaw} Razor Shell {o:Arcanine} to {=:0}" },
-              { opponent: "{o:Arcanine} fainted" },
-            ],
-          ],
-        },
-        {
-          matchup: ["Togedemaru"],
-          turns: [
-            [
-              { player: "{p:Drednaw} switch to {p:Perrserker}" },
-              { opponent: "{o:Togedemaru} Zippy Zap {p:Perrserker} to {+:76}" },
-            ],
-            [
-              { opponent: "{o:Togedemaru} Zippy Zap {p:Perrserker} to {+:55}" },
-              { player: "{p:Perrserker} Metal Burst {o:Togedemaru} to {-:53}" },
-            ],
-            [
-              { opponent: "{o:Togedemaru} Zippy Zap {p:Perrserker} to {+:58}" },
-              { player: "{p:Perrserker} Metal Burst {o:Togedemaru} to {-:26}" },
-            ],
-            [
-              { opponent: "{o:Togedemaru} Zippy Zap {p:Perrserker} to {+:37}" },
-              { player: "{p:Perrserker} Metal Burst {o:Togedemaru} to {=:0}" },
-              { opponent: "{o:Togedemaru} fainted" },
-            ],
-          ],
-        },
-        {
-          matchup: ["Komala"],
-          turns: [
-            [
-              { player: "{p:Perrserker} switch to {p:Yamask-G}" },
-              { opponent: "{o:Komala} Last Resort {p:Yamask-G}" },
-            ],
-            [
-              { opponent: "{o:Komala} Last Resort {p:Yamask-G}" },
-              { player: "{p:Yamask-G} Rock Tomb {o:Komala} to {-:76}" },
-            ],
-            [
-              { opponent: "{o:Komala} Last Resort {p:Yamask-G}" },
-              { player: "{p:Yamask-G} Rock Tomb {o:Komala} to {-:64}" },
-            ],
-            [
-              { opponent: "{o:Komala} Last Resort {p:Yamask-G}" },
-              { player: "{p:Yamask-G} Rock Tomb {o:Komala} to {-:52}" },
-            ],
-            [
-              { opponent: "{o:Komala} Last Resort {p:Yamask-G}" },
-              { player: "{p:Yamask-G} Rock Tomb {o:Komala} to {-:40}" },
-            ],
-            [
-              { opponent: "{o:Komala} Last Resort {p:Yamask-G}" },
-              { player: "{p:Yamask-G} Rock Tomb {o:Komala} to {-:28}" },
-            ],
-            [
-              { opponent: "{o:Komala} Last Resort {p:Yamask-G}" },
-              { player: "{p:Yamask-G} Rock Tomb {o:Komala} to {-:16}" },
-            ],
-            [
-              { opponent: "{o:Komala} Last Resort {p:Yamask-G}" },
-              { player: "{p:Yamask-G} Rock Tomb {o:Komala} to {-:4}" },
-            ],
-            [
-              { opponent: "{o:Komala} Last Resort {p:Yamask-G}" },
-              { player: "{p:Yamask-G} Rock Tomb {o:Komala} to {=:0}" },
-              { opponent: "{o:Komala} fainted" },
-            ],
-          ],
-        },
-        {
-          matchup: ["Druddigon"],
-          turns: [
-            [
-              { player: "{p:Yamask-G} switch to {p:Azumarill}" },
-              { opponent: "{o:Druddigon} Dragon Tail {p:Azumarill}" },
-            ],
-            [
-              { player: "{p:Azumarill} Play Rough {o:Druddigon} to {-:17}" },
-              { opponent: "{o:Druddigon} Rough Skin {p:Azumarill} to {=:90}" },
-              { opponent: "{o:Druddigon} Poison Tail {p:Azumarill} to {+:34}" },
-            ],
-            [
-              { player: "{p:Azumarill} Play Rough {o:Druddigon} to {=:0}" },
-              { opponent: "{o:Druddigon} Rough Skin {p:Azumarill} to {=:22}" },
-              { opponent: "{o:Druddigon} fainted" },
-            ],
-          ],
-        },
-      ],
-      frags: { Drednaw: 1, Perrserker: 1, "Yamask-G": 1, Azumarill: 1 },
-    },
-  ],
-};
-
-export const digHouseGruntBattle: BattleData = {
-  playerBox: _box19,
-  opponentBox: digHouseGruntBox,
-  lines: [
-    {
-      matchups: [
-        {
-          matchup: ["Persian-A"],
-          turns: [
-            [
-              { opponent: "{o:Persian-A} Shock Wave {p:Azumarill} to {+:36}" },
-              { player: "{p:Azumarill} Play Rough {o:Persian-A} to {=:0}" },
-              { opponent: "{o:Persian-A} fainted" },
-            ],
-          ],
-        },
-        {
-          matchup: ["Crobat"],
-          turns: [
-            [
-              { player: "{p:Azumarill} switch to {p:Perrserker}" },
-              { opponent: "{o:Crobat} Air Cutter {p:Perrserker} to {+:84}" },
-            ],
-            [
-              { player: "{p:Perrserker} Fake Out {o:Crobat} to {-:77}" },
-              { opponent: "{o:Crobat} flinched" },
-            ],
-            [
-              { opponent: "{o:Crobat} HP Fire {p:Perrserker} to {+:48}" },
-              { player: "{p:Perrserker} Iron Head {o:Crobat} to {-:44}" },
-            ],
-            [
-              { opponent: "{o:Crobat} HP Fire {p:Perrserker} to {+:36}" },
-              { player: "{p:Perrserker} Iron Head {o:Crobat} to {-:11}" },
-            ],
-            [
-              { player: "{p:Perrserker} Bullet Punch {o:Crobat} to {=:0}" },
-              { opponent: "{o:Crobat} fainted" },
-            ],
-          ],
-        },
-        {
-          matchup: ["Veluza"],
-          turns: [
-            [
-              { player: "{p:Perrserker} switch to {p:Clodsire}" },
-              { opponent: "{o:Veluza} Aqua Cutter {p:Clodsire}" },
-            ],
-            [
-              { player: "{p:Clodsire} switch to {p:Houndoom}" },
-              { opponent: "{o:Veluza} Psycho Cut {p:Houndoom}" },
-            ],
-            [
-              { player: "{p:Houndoom} Dark Pulse {o:Veluza} to {=:0}" },
-              { opponent: "{o:Veluza} fainted" },
-            ],
-          ],
-        },
-        {
-          matchup: ["Raticate"],
-          turns: [
-            [
-              { player: "{p:Houndoom} switch to {p:Yamask-G}" },
-              { opponent: "{o:Raticate} Stom. Tantrum {p:Yamask-G} to {+:37}" },
-            ],
-            [
-              { player: "{p:Yamask-G} switch to {p:Kricketune}" },
-              { opponent: "{o:Raticate} Stom. Tantrum {p:Kricketune} to {+:82}" },
-              { player: "{o:Raticate} burn to {=:73}" },
-            ],
-            [
-              { opponent: "{o:Raticate} Facade {p:Kricketune} to {+:41}" },
-              { player: "{p:Kricketune} Pounce {o:Raticate} to {-:28}" },
-              { player: "{o:Raticate} burn to {-:24}" },
-            ],
-            [
-              { player: "{p:Kricketune} Pounce {o:Raticate} to {=:0}" },
-              { player: "{o:Raticate} fainted" },
-            ],
-          ],
-        },
-      ],
-      frags: { Azumarill: 1, Perrserker: 1, Houndoom: 1, Kricketune: 1 },
-    },
-  ],
-};
-
-export const ceruleanCityLeaderMistyBattle: BattleData = {
-  playerBox: _box22,
-  opponentBox: ceruleanCityLeaderMistyBox,
-  lines: [
-    {
-      matchups: [
-        {
-          matchup: ["Politoed"],
-          turns: [
-            [
-              { player: "{p:Kricketune} Bug Bite {o:Politoed} to {-:48}" },
-              { opponent: "{o:Politoed} Toxic {p:Kricketune}" },
-              { opponent: "{p:Kricketune} poison to {+:84}" },
-            ],
-            [
-              { player: "{p:Kricketune} Bullet Seed {o:Politoed} to {=:0}" },
-              { opponent: "{o:Politoed} fainted" },
-              { opponent: "{p:Kricketune} poison to {+:74}" },
-            ],
-          ],
-        },
-        {
-          matchup: ["Mantine"],
-          turns: [
-            [
-              { player: "{p:Kricketune} switch to {p:Lanturn}" },
-              { opponent: "{o:Mantine} Hurricane {p:Lanturn} to {+:83}" },
-            ],
-            [
-              { player: "{p:Lanturn} switch to {p:Perrserker}" },
-              { opponent: "{o:Mantine} HP Grass {p:Perrserker} to {+:86}" },
-            ],
-            [
-              { opponent: "{o:Mantine} Scald {p:Perrserker} to {+:22}" },
-              { player: "{p:Perrserker} Metal Burst {o:Mantine} to {-:10}" },
-            ],
-            [
-              { player: "{p:Perrserker} Bullet Punch {o:Mantine} to {=:0}" },
-              { opponent: "{o:Mantine} fainted" },
-            ],
-          ],
-        },
-        {
-          matchup: ["Ludicolo"],
-          turns: [
-            [
-              { player: "{p:Perrserker} switch to {p:Gyarados}" },
-              { opponent: "{o:Ludicolo} Scald {p:Gyarados} to {+:53}" },
-            ],
-            [
-              { player: "{p:Gyarados} switch to {p:Lanturn}" },
-              { opponent: "{o:Ludicolo} Thunder Punch {p:Lanturn} to {+:112}" },
-            ],
-            [
-              { opponent: "{o:Ludicolo} Giga Drain {p:Lanturn} to {+:31}" },
-              { player: "{p:Lanturn} Thunder Wave {o:Ludicolo}" },
-            ],
-            [
-              { player: "{p:Lanturn} switch to {p:Kricketune}" },
-              { opponent: "{o:Ludicolo} Giga Drain {p:Kricketune} to {+:42}" },
-              { opponent: "{p:Kricketune} poison to {+:37}" },
-            ],
-            [
-              { player: "{p:Kricketune} Bug Bite {o:Ludicolo} to {=:0}" },
-              { player: "{p:Kricketune} heal to {+:59}" },
-              { opponent: "{o:Ludicolo} fainted" },
-              { opponent: "{p:Kricketune} poison to {+:49}" },
-            ],
-          ],
-        },
-        {
-          matchup: ["Toxicroak"],
-          turns: [
-            [
-              { player: "{p:Kricketune} switch to {p:Golduck}" },
-              { opponent: "{o:Toxicroak} Swords Dance" },
-            ],
-          ],
-          branches: [
-            { branches: ["Golduck Zen Headbutt Starmie", "Golduck Zen Headbutt Toxicroak"] },
-          ],
-        },
-      ],
-      frags: { Kricketune: 2, Perrserker: 1 },
-    },
-    {
-      line: "Golduck Zen Headbutt Starmie",
-      matchups: [
-        {
-          matchup: ["Toxicroak"],
-          turns: [
-            [
-              { opponent: "{o:Toxicroak} switch to {o:Starmie}" },
-              { player: "{p:Golduck} Zen Headbutt {o:Starmie} to {-:67}" },
-            ],
-          ],
-        },
-        {
-          matchup: ["Starmie"],
-          turns: [
-            [
-              { player: "{p:Golduck} Me First {p:Starmie} to {=:0}" },
-              { opponent: "{o:Starmie} fainted" },
-            ],
-          ],
-        },
-        {
-          matchup: ["Clodsire"],
-          turns: [
-            [
-              { player: "{p:Golduck} Zen Headbutt {o:Clodsire} to {-:51}" },
-              { opponent: "{o:Clodsire} Toxic {p:Golduck}" },
-              { opponent: "{o:Clodsire} heal to {-:58}" },
-              { opponent: "{p:Golduck} posion to {=:86}" },
-            ],
-            [
-              { player: "{p:Golduck} Zen Headbutt {o:Clodsire} to {=:0}" },
-              { opponent: "{o:Clodsire} fainted" },
-              { opponent: "{p:Golduck} posion to {=:76}" },
-            ],
-          ],
-        },
-        {
-          matchup: ["Toxicroak"],
-          turns: [
-            [
-              { player: "{p:Golduck} Zen Headbutt {o:Toxicroak} to {=:0}" },
-              { opponent: "{o:Toxicroak} fainted" },
-            ],
-          ],
-        },
-      ],
-      frags: { Golduck: 3 },
-    },
-    {
-      line: "Golduck Zen Headbutt Toxicroak",
-      matchups: [
-        {
-          matchup: ["Toxicroak"],
-          turns: [
-            [
-              { player: "{p:Golduck} Zen Headbutt {o:Toxicroak} to {=:0}" },
-              { opponent: "{o:Toxicroak} fainted" },
-            ],
-          ],
-        },
-        {
-          matchup: ["Starmie"],
-          turns: [
-            [
-              { player: "{p:Golduck} switch to {p:Clodsire}" },
-              { opponent: "{o:Starmie} Thunderbolt {p:Clodsire}" },
-            ],
-            [
-              { opponent: "{o:Starmie} Psyshock {p:Clodsire} to {+:41}" },
-              { player: "{p:Clodsire} Poison Jab {o:Starmie} to {-:55}" },
-            ],
-            [
-              { player: "{p:Clodsire} switch to {p:Golduck}" },
-              { opponent: "{o:Starmie} Psyshock {p:Golduck} to {+:50}" },
-            ],
-            [
-              { player: "{p:Golduck} Me First {p:Starmie} to {=:0}" },
-              { opponent: "{o:Starmie} fainted" },
-            ],
-          ],
-        },
-        {
-          matchup: ["Clodsire"],
-          turns: [
-            [
-              { player: "{p:Golduck} Zen Headbutt {o:Clodsire} to {-:51}" },
-              { opponent: "{o:Clodsire} Toxic {p:Golduck}" },
-              { opponent: "{o:Clodsire} heal to {-:58}" },
-              { opponent: "{p:Golduck} posion to {+:45}" },
-            ],
-            [
-              { player: "{p:Golduck} Zen Headbutt {o:Clodsire} to {=:0}" },
-              { opponent: "{o:Clodsire} fainted" },
-            ],
-          ],
-        },
-      ],
-      frags: { Golduck: 3 },
-    },
-  ],
+export const ceruleanCityLeaderMistyBoxChange: Moment = {
+  label: "Cerulean City Leader Misty Box Change",
+  kind: "boxChange",
+  data: { playerBox: _box23 },
 };
 
 export const box = _box23;
 
 export const moments: Moment[] = [
-  { label: "Route 3 Box Change", kind: "boxChange", data: route3BoxChange },
-  { label: "Route 3 Lass Sally Battle", kind: "battle", data: route3LassSallyBattle },
-  { label: "Mt. Moon Encounter", kind: "encounter", data: drilburEncounter },
-  { label: "Route 4 Encounter", kind: "encounter", data: magikarpEncounter },
-  { label: "Route 4 Box Change", kind: "boxChange", data: route4BoxChange },
-  { label: "Mt. Moon Super Nerd Miguel Battle", kind: "battle", data: mtMoonSuperNerdMiguelBattle },
-  { label: "After Miguel Box Change", kind: "boxChange", data: afterMiguelBoxChange },
-  { label: "Mt. Moon Archer Battle", kind: "battle", data: mtMoonArcherBattle },
-  { label: "Cerulean City Encounter", kind: "encounter", data: chewtleEncounter },
-  { label: "Cerulean City Box Change", kind: "boxChange", data: ceruleanCityBoxChange },
-  { label: "Cerulean City Rival Battle", kind: "battle", data: ceruleanCityRivalBattle },
-  { label: "After Rival Box Change", kind: "boxChange", data: afterRivalBoxChange },
-  {
-    label: "Nugget Bridge Bug Catcher Cale Battle",
-    kind: "battle",
-    data: nuggetBridgeBugCatcherCaleBattle,
-  },
-  { label: "Nugget Bridge Lass Ali Battle", kind: "battle", data: nuggetBridgeLassAliBattle },
-  {
-    label: "Nugget Bridge Youngster Timmy Battle",
-    kind: "battle",
-    data: nuggetBridgeYoungsterTimmyBattle,
-  },
-  { label: "Gyarados Box Change", kind: "boxChange", data: gyaradosBoxChange },
-  { label: "Nugget Bridge Lass Reli Battle", kind: "battle", data: nuggetBridgeLassReliBattle },
-  {
-    label: "Nugget Bridge Camper Ethan Battle",
-    kind: "battle",
-    data: nuggetBridgeCamperEthanBattle,
-  },
-  { label: "Nugget Bridge Grunt Battle", kind: "battle", data: nuggetBridgeGruntBattle },
-  { label: "Route 24 Encounter", kind: "encounter", data: charcadetEncounter },
-  { label: "Route 25 Encounter", kind: "encounter", data: chinchouEncounter },
-  { label: "Dig House Grunt Battle", kind: "battle", data: digHouseGruntBattle },
-  { label: "Route 5 Encounter", kind: "encounter", data: growlitheHEncounter },
-  { label: "Route 6 Encounter", kind: "encounter", data: shelderEncounter },
-  { label: "Route 6 Box Change", kind: "boxChange", data: route6BoxChange },
-  {
-    label: "Cerulean City Leader Misty Battle",
-    kind: "battle",
-    data: ceruleanCityLeaderMistyBattle,
-  },
-  { label: "After Misty Box Change", kind: "boxChange", data: afterMistyBoxChange },
+  mistyBoxChange,
+  route3LassSallyBattle,
+  mtMoonEncounter,
+  route4Encounter,
+  route4BoxChange,
+  mtMoonSuperNerdMiguelBattle,
+  mtMoonSuperNerdMiguelBoxChange,
+  mtMoonArcherBattle,
+  ceruleanCityEncounter,
+  ceruleanCityBoxChange,
+  ceruleanCityRivalBattle,
+  ceruleanCityRivalBoxChange,
+  nuggetBridgeBugCatcherCaleBattle,
+  nuggetBridgeLassAliBattle,
+  nuggetBridgeYoungsterTimmyBattle,
+  nuggetBridgeYoungsterTimmyBoxChange,
+  nuggetBridgeLassReliBattle,
+  nuggetBridgeCamperEthanBattle,
+  nuggetBridgeGruntBattle,
+  route24Encounter,
+  route25Encounter,
+  digHouseGruntBattle,
+  route5Encounter,
+  route6Encounter,
+  route6BoxChange,
+  ceruleanCityLeaderMistyBattle,
+  ceruleanCityLeaderMistyBoxChange,
 ];
