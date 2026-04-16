@@ -30,6 +30,7 @@ const config: Config = {
   baseUrl: "/radred/",
   organizationName: "brupokej",
   projectName: "radred",
+  trailingSlash: true,
   onBrokenLinks: "throw",
   i18n: {
     defaultLocale: "en",
