@@ -48,9 +48,7 @@ export type PageStats = {
   spriteKey?: string;
 };
 
-function resolvePageMeta(
-  pages: { label: string; battles: BattleData[] }[]
-): {
+function resolvePageMeta(pages: { label: string; battles: BattleData[] }[]): {
   canon: (name: string) => string;
   spriteKeyMap: Record<string, string>;
   boxOrderMap: Record<string, number>;

@@ -1,7 +1,7 @@
 import { getBox } from "@site/src/utils/box";
 import { PokemonData } from "@site/src/utils/pokemon";
 
-const getOpponentBox = (add: PokemonData[]) => getBox({ add });
+const getOpponentBox = (add: PokemonData[], team?: string[]) => getBox({ add, team });
 
 export const route22RivalBox = getOpponentBox([
   {
@@ -3969,56 +3969,27 @@ export const victoryRoadCoolCoupleRayAndTyraBox = getOpponentBox([
   },
 ]);
 
-export const indigoPlateauCreatorSoupercellBox = getOpponentBox([
-  {
-    name: "Gigalith",
-    level: 250,
-    nature: "Adamant",
-    ability: "Sand Stream",
-    item: "Smooth Rock",
-    moves: ["Explosion"],
-  },
-  {
-    name: "Shedinja",
-    level: 250,
-    nature: "Jolly",
-    ability: "Wonder Guard",
-    item: "Focus Sash",
-    moves: ["Soupercell Slam"],
-  },
-  {
-    name: "Shedinja",
-    level: 250,
-    nature: "Jolly",
-    ability: "Wonder Guard",
-    item: "Focus Sash",
-    moves: ["Soupercell Slam"],
-  },
-  {
-    name: "Shedinja",
-    level: 250,
-    nature: "Jolly",
-    ability: "Wonder Guard",
-    item: "Focus Sash",
-    moves: ["Soupercell Slam"],
-  },
-  {
-    name: "Shedinja",
-    level: 250,
-    nature: "Jolly",
-    ability: "Wonder Guard",
-    item: "Focus Sash",
-    moves: ["Soupercell Slam"],
-  },
-  {
-    name: "Shedinja",
-    level: 250,
-    nature: "Jolly",
-    ability: "Wonder Guard",
-    item: "Focus Sash",
-    moves: ["Soupercell Slam"],
-  },
-]);
+export const indigoPlateauCreatorSoupercellBox = getOpponentBox(
+  [
+    {
+      name: "Gigalith",
+      level: 250,
+      nature: "Adamant",
+      ability: "Sand Stream",
+      item: "Smooth Rock",
+      moves: ["Explosion"],
+    },
+    {
+      name: "Shedinja",
+      level: 250,
+      nature: "Jolly",
+      ability: "Wonder Guard",
+      item: "Focus Sash",
+      moves: ["Soupercell Slam"],
+    },
+  ],
+  ["Gigalith", "Shedinja", "Shedinja", "Shedinja", "Shedinja", "Shedinja"]
+);
 
 export const eliteFourLoreleiRainBox = getOpponentBox([
   {

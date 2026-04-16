@@ -1,5 +1,7 @@
 import Card from "@site/src/components/Card";
 import { ScrollArrows } from "@site/src/components/ScrollArrows";
+import { Moment } from "@site/src/utils/moments";
+import { getColouredSpriteUrl } from "@site/src/utils/sprites";
 import {
   computePageFragStats,
   computePageStats,
@@ -7,8 +9,6 @@ import {
   PageStats,
   PokemonStats,
 } from "@site/src/utils/stats";
-import { Moment } from "@site/src/utils/moments";
-import { getColouredSpriteUrl } from "@site/src/utils/sprites";
 import { getState, STORAGE_EVENT } from "@site/src/utils/storage";
 import {
   ColumnDef,
@@ -207,7 +207,10 @@ export function PageStatsTable({
       const startLabel = getState("stats-filter-start");
       const endLabel = getState("stats-filter-end");
       const startIdx = startLabel
-        ? Math.max(0, allBattleMoments.findIndex((m) => m.label === startLabel))
+        ? Math.max(
+            0,
+            allBattleMoments.findIndex((m) => m.label === startLabel)
+          )
         : 0;
       const rawEnd = endLabel ? allBattleMoments.findIndex((m) => m.label === endLabel) : -1;
       const endIdx = rawEnd >= 0 ? rawEnd : allBattleMoments.length - 1;
@@ -291,13 +294,7 @@ export function PageStatsTable({
     [pages, bgVar, outlineVar]
   );
 
-  return (
-    <StatsTable
-      columns={columns}
-      data={data}
-      initialSort={[{ id: "total", desc: true }]}
-    />
-  );
+  return <StatsTable columns={columns} data={data} initialSort={[{ id: "total", desc: true }]} />;
 }
 
 // ---- PercentsTable ---------------------------------------------------------
@@ -331,7 +328,10 @@ const percentsColumns = [
       const value = getValue<number>();
       const max = Math.max(0, ...table.getCoreRowModel().rows.map((r) => r.original.battles));
       return (
-        <span className={styles.chip} style={shadeCell(value, max, "--hl-info-bg", "--ifm-color-info")}>
+        <span
+          className={styles.chip}
+          style={shadeCell(value, max, "--hl-info-bg", "--ifm-color-info")}
+        >
           {value}
         </span>
       );
@@ -344,7 +344,10 @@ const percentsColumns = [
       const value = getValue<number>();
       const max = Math.max(0, ...table.getCoreRowModel().rows.map((r) => r.original.frags));
       return (
-        <span className={styles.chip} style={shadeCell(value, max, "--hl-danger-bg", "--ifm-color-danger")}>
+        <span
+          className={styles.chip}
+          style={shadeCell(value, max, "--hl-danger-bg", "--ifm-color-danger")}
+        >
           {value}
         </span>
       );
@@ -399,7 +402,12 @@ const percentsColumns = [
         return (
           <span
             className={styles.chip}
-            style={shadeCell(value, max, "--ifm-color-success-contrast-background", "--ifm-color-success")}
+            style={shadeCell(
+              value,
+              max,
+              "--ifm-color-success-contrast-background",
+              "--ifm-color-success"
+            )}
           >
             {Math.round(value * 100)}%
           </span>
@@ -429,7 +437,12 @@ const percentsColumns = [
       return (
         <span
           className={styles.chip}
-          style={shadeCell(value, max, "--ifm-color-success-contrast-background", "--ifm-color-success")}
+          style={shadeCell(
+            value,
+            max,
+            "--ifm-color-success-contrast-background",
+            "--ifm-color-success"
+          )}
         >
           {Math.round(value * 100)}%
         </span>
@@ -461,7 +474,12 @@ const percentsColumns = [
         return (
           <span
             className={styles.chip}
-            style={shadeCell(value, max, "--ifm-color-success-contrast-background", "--ifm-color-success")}
+            style={shadeCell(
+              value,
+              max,
+              "--ifm-color-success-contrast-background",
+              "--ifm-color-success"
+            )}
           >
             {Math.round(value * 100)}%
           </span>
@@ -484,7 +502,10 @@ export function PercentsTable({ moments }: { moments: Moment[] }) {
       const startLabel = getState("stats-filter-start");
       const endLabel = getState("stats-filter-end");
       const startIdx = startLabel
-        ? Math.max(0, battleMoments.findIndex((m) => m.label === startLabel))
+        ? Math.max(
+            0,
+            battleMoments.findIndex((m) => m.label === startLabel)
+          )
         : 0;
       const rawEnd = endLabel ? battleMoments.findIndex((m) => m.label === endLabel) : -1;
       const endIdx = rawEnd >= 0 ? rawEnd : battleMoments.length - 1;
