@@ -128,9 +128,10 @@ async function getSnapshots(page: Page, guideIndex: number, guide: string) {
 const GUIDES = ["brock", "misty", "surge", "erika", "sabrina", "koga", "stats"];
 
 for (const [guideIndex, guide] of GUIDES.entries()) {
-  test.describe(`guide/${guide}`, () => {
+  test.describe(guide, () => {
     test.beforeEach(async ({ page }) => {
-      await page.goto(`/radred/guide/${guide}`);
+      const dir = guide === "stats" ? "box" : "guide";
+      await page.goto(`/radred/${dir}/${guide}`);
       await page.waitForLoadState("networkidle");
       await page.addStyleTag({ content: "nav.navbar { visibility: hidden !important; }" });
     });

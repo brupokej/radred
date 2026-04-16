@@ -13,7 +13,7 @@ export default function StartButton({ moment }: { moment: Moment }) {
 
   return (
     <button className={styles.button} onClick={handleStart}>
-      ▶ Start
+      Start →
     </button>
   );
 }

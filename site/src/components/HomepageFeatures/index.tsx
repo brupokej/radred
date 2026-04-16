@@ -5,48 +5,39 @@ import styles from "./styles.module.css";
 
 type FeatureItem = {
   title: string;
-  Svg: React.ComponentType<React.ComponentProps<"svg">>;
   description: ReactNode;
 };
 
+const LogoIcon = require("@site/static/img/logo.svg").default;
+
 const FeatureList: FeatureItem[] = [
   {
-    title: "Title 1",
-    Svg: require("@site/static/img/logo.svg").default,
+    title: "New Deathless Strategies",
     description: (
       <>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec commodo enim ut nisl lacinia,
-        id viverra mauris facilisis.
+        All battle plans are built for 1DR: one death equals reset. Every line is built to minimize
+        branching and keep risk as low as possible, even in the Elite Four.
       </>
     ),
   },
   {
-    title: "Title 2",
-    Svg: require("@site/static/img/logo.svg").default,
+    title: "Live Stats & Overlays",
     description: (
       <>
-        Vestibulum ante felis, consequat ac sagittis eu, imperdiet a erat. Morbi vitae erat eu nibh
-        venenatis euismod non vel odio.
-      </>
-    ),
-  },
-  {
-    title: "Title 3",
-    Svg: require("@site/static/img/logo.svg").default,
-    description: (
-      <>
-        Maecenas blandit fermentum maximus. Vestibulum volutpat consequat nulla ac porttitor. Cras
-        hendrerit ante nisi.
+        Frags and battle appearances are automatically tracked throughout the guide. Browse the full
+        stats in the Box sheet or on the Twitch stream overlays.
       </>
     ),
   },
 ];
 
-function Feature({ title, Svg, description }: FeatureItem) {
+function Feature({ title, description }: FeatureItem) {
   return (
-    <div className={clsx("col col--4")}>
+    <div className={clsx("col col--6")}>
       <div className="text--center">
-        <Svg className={styles.featureSvg} role="img" />
+        <div className={styles.featureSvg}>
+          <LogoIcon className={styles.featureSvg} role="img" />
+        </div>
       </div>
       <div className="text--center padding-horiz--md">
         <Heading as="h3">{title}</Heading>

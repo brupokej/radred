@@ -7,9 +7,21 @@ import storageDefaultsPlugin from "./src/plugins/storageDefaults";
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
-  plugins: [overlayServerPlugin, storageDefaultsPlugin],
+  plugins: [
+    overlayServerPlugin,
+    storageDefaultsPlugin,
+    [
+      "@docusaurus/plugin-content-docs",
+      {
+        id: "box",
+        path: "box",
+        routeBasePath: "box",
+        sidebarPath: "./sidebars.ts",
+      },
+    ],
+  ],
   title: "Radical Red Handbook",
-  tagline: "A guide to a nuzlocke of Radical Red 4.1 on hardcore mode.",
+  tagline: "How to nuzlocke Radical Red 4.1 on hardcore mode.",
   favicon: "img/favicon.ico",
   future: {
     v4: true,
@@ -54,7 +66,19 @@ const config: Config = {
           type: "docSidebar",
           sidebarId: "guideSidebar",
           position: "left",
-          label: "Strategy Guide",
+          label: "Guide",
+        },
+        {
+          type: "docSidebar",
+          sidebarId: "boxSidebar",
+          docsPluginId: "box",
+          position: "left",
+          label: "Box",
+        },
+        {
+          to: "/overlays/1",
+          position: "left",
+          label: "Overlays",
         },
         {
           href: "https://github.com/brupokej/radred",
@@ -70,8 +94,12 @@ const config: Config = {
           title: "Docs",
           items: [
             {
-              label: "Strategy Guide",
+              label: "Guide",
               to: "/guide/brock",
+            },
+            {
+              label: "Box",
+              to: "/box/stats",
             },
           ],
         },
@@ -91,6 +119,10 @@ const config: Config = {
         {
           title: "More",
           items: [
+            {
+              label: "Overlays",
+              href: "/overlays/1",
+            },
             {
               label: "GitHub",
               href: "https://github.com/brupokej/radred",

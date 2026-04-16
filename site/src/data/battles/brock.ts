@@ -266,7 +266,7 @@ export const route22RivalBattle: Moment = {
 
 const _psyduck = { name: "Psyduck", moves: ["Scratch", "Water Sport"] };
 
-export const route22Encounter = {
+export const route22Encounter: Moment = {
   label: "Route 22 Encounter",
   kind: "encounter",
   data: { pokemon: _psyduck },

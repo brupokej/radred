@@ -8,4 +8,13 @@
 .featureSvg {
   height: 200px;
   width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.featureSvg svg {
+  height: 100%;
+  width: 100%;
 }
