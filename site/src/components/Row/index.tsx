@@ -140,9 +140,9 @@ export function Row({ row }: { row: RowCell[] }) {
                 <span key={j} className={styles.sepCell}>
                   {sub.sep}
                 </span>
-              ) : (
+              ) : "value" in sub ? (
                 parseTokens(sub.value)
-              )
+              ) : null
             )}
           </span>
         ) : (

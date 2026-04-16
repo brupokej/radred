@@ -12,8 +12,8 @@ export type HpContext = {
 
 export function parseTokens(
   text: string,
-  side?: "player" | "opponent" | null = null,
-  hpCtx?: HpContext | null = null,
+  side: "player" | "opponent" | null = null,
+  hpCtx: HpContext | null = null,
   hpDisplay: "percent" | "raw" = "percent"
 ): React.ReactNode[] {
   const parts: React.ReactNode[] = [];

@@ -867,12 +867,12 @@ export const pewterCityLeaderBrockBattle: BattleData = {
 
 export const box = _box12;
 
-export const pewterMuseumLeaderFalknerMoment = {
+export const pewterMuseumLeaderFalknerMoment: Moment = {
   label: "Pewter Museum Leader Falkner Battle",
   kind: "battle",
   data: pewterMuseumLeaderFalknerBattle,
 };
-export const pewterCityLeaderBrockMoment = {
+export const pewterCityLeaderBrockMoment: Moment = {
   label: "Pewter City Leader Brock Battle",
   kind: "battle",
   data: pewterCityLeaderBrockBattle,

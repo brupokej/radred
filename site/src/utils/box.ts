@@ -111,7 +111,7 @@ export function getBox({
 
   // Build changes on a local working state — never touches the input box.
   const newChanges: BoxChange[] = [];
-  const working: Box = { base: inputBase, changes: newChanges };
+  const working: Box = { base: inputBase, changes: newChanges, team: [] };
 
   if (remove.length > 0) {
     const state = replayBox(working, working.changes.length);

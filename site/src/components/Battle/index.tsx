@@ -335,7 +335,15 @@ function Turn({ children }: { children: React.ReactNode }) {
   );
 }
 
-function Move({ move, side, className }: { move: string; className?: string }) {
+function Move({
+  move,
+  side,
+  className,
+}: {
+  move: string;
+  side?: "player" | "opponent";
+  className?: string;
+}) {
   const graphCtx = useContext(BattleGraphCtx);
   const hpDisplay = useHpDisplay();
   const parts = parseTokens(move, side, graphCtx, hpDisplay);

@@ -5,6 +5,7 @@ import {
   setHighlightLevel,
   useHighlightLevel,
 } from "@site/src/utils/highlightLevel";
+import type { JSX } from "react";
 import { useEffect } from "react";
 import styles from "./HighlightLevelToggle.module.css";
 

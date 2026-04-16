@@ -1,5 +1,6 @@
 import BrowserOnly from "@docusaurus/BrowserOnly";
 import { nextDisplay, setHpDisplay, useHpDisplay } from "@site/src/utils/hpDisplay";
+import type { JSX } from "react";
 import styles from "./HpDisplayToggle.module.css";
 
 function Toggle() {

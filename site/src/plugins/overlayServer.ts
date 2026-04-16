@@ -1,11 +1,12 @@
+import type { Plugin } from "@docusaurus/types";
 import http from "http";
 import { WebSocketServer } from "ws";
 
-export default function overlayServerPlugin() {
+export default function overlayServerPlugin(): Plugin {
   return {
     name: "overlay-server-plugin",
     configureWebpack(_config: object, isServer: boolean) {
-      if (isServer) return {};
+      if (isServer) return;
       let currentState: object | null = null;
 
       const server = http.createServer((req, res) => {
@@ -67,7 +68,8 @@ export default function overlayServerPlugin() {
             return middlewares;
           },
         },
-      };
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      } as any;
     },
   };
 }
