@@ -867,6 +867,17 @@ export const pewterCityLeaderBrockBattle: BattleData = {
 
 export const box = _box12;
 
+export const pewterMuseumLeaderFalknerMoment = {
+  label: "Pewter Museum Leader Falkner Battle",
+  kind: "battle",
+  data: pewterMuseumLeaderFalknerBattle,
+};
+export const pewterCityLeaderBrockMoment = {
+  label: "Pewter City Leader Brock Battle",
+  kind: "battle",
+  data: pewterCityLeaderBrockBattle,
+};
+
 export const moments: Moment[] = [
   { label: "Oak's Lab Encounter", kind: "encounter", data: littenEncounter },
   { label: "Oak's Lab Box Change", kind: "boxChange", data: oaksLabBoxChange },
@@ -890,11 +901,7 @@ export const moments: Moment[] = [
     data: viridianForestBugCatcherSammyBattle,
   },
   { label: "Diglett Cave Encounter", kind: "encounter", data: yamaskGEncounter },
-  {
-    label: "Pewter Museum Leader Falkner Battle",
-    kind: "battle",
-    data: pewterMuseumLeaderFalknerBattle,
-  },
+  pewterMuseumLeaderFalknerMoment,
   { label: "After Falkner Box Change", kind: "boxChange", data: afterFalknerBoxChange },
-  { label: "Pewter City Leader Brock Battle", kind: "battle", data: pewterCityLeaderBrockBattle },
+  pewterCityLeaderBrockMoment,
 ];

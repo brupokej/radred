@@ -92,7 +92,7 @@ export function StatsTable<TRow extends object>({
   const visibleRows = isExpanded ? allRows : allRows.slice(0, COLLAPSED_ROWS);
 
   return (
-    <Card title="Stats Table">
+    <Card title="Table Stats">
       <div className={styles.tableContainer}>
         <ScrollArrows
           scrollRef={scrollRef}

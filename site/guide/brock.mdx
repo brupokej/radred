@@ -6,6 +6,7 @@ import { Battle } from "@site/src/components/Battle";
 import BoxChange from "@site/src/components/BoxChange";
 import Card from "@site/src/components/Card";
 import Encounter from "@site/src/components/Encounter";
+import StartButton from "@site/src/components/StartButton";
 import { Row } from "@site/src/components/Row";
 
 import {
@@ -28,8 +29,8 @@ import {
   viridianForestBrendanBattle,
   viridianForestLassAnneBattle,
   viridianForestBugCatcherSammyBattle,
-  pewterMuseumLeaderFalknerBattle,
-  pewterCityLeaderBrockBattle,
+  pewterMuseumLeaderFalknerMoment,
+  pewterCityLeaderBrockMoment,
 } from "@site/src/data/battles/brock";
 
 # Brock
@@ -128,12 +129,12 @@ import {
   <Row row={["Night · 10% · Level 7-9"]} />
 </Encounter>
 
-## Pewter Museum Leader Falkner Battle
+## Pewter Museum Leader Falkner Battle<StartButton moment={pewterMuseumLeaderFalknerMoment} />
 
-<Battle data={pewterMuseumLeaderFalknerBattle} />
+<Battle data={pewterMuseumLeaderFalknerMoment.data} />
 
 <BoxChange data={afterFalknerBoxChange} />
 
-## Pewter City Leader Brock Battle
+## Pewter City Leader Brock Battle<StartButton moment={pewterCityLeaderBrockMoment} />
 
-<Battle data={pewterCityLeaderBrockBattle} />
+<Battle data={pewterCityLeaderBrockMoment.data} />

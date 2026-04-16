@@ -1,29 +1,13 @@
 import type * as Preset from "@docusaurus/preset-classic";
 import type { Config } from "@docusaurus/types";
 import { themes as prismThemes } from "prism-react-renderer";
-import { STORAGE_DEFAULTS } from "./src/utils/storageDefaults";
+import overlayServerPlugin from "./src/plugins/overlayServer";
+import storageDefaultsPlugin from "./src/plugins/storageDefaults";
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
-  plugins: [
-    function storageDefaultsPlugin() {
-      return {
-        name: "storage-defaults-plugin",
-        injectHtmlTags() {
-          const d = JSON.stringify(STORAGE_DEFAULTS);
-          return {
-            headTags: [
-              {
-                tagName: "script",
-                innerHTML: `(function(){var d=${d};for(var k in d){if(!localStorage.getItem(k))localStorage.setItem(k,d[k])}})();`,
-              },
-            ],
-          };
-        },
-      };
-    },
-  ],
+  plugins: [overlayServerPlugin, storageDefaultsPlugin],
   title: "Radical Red Handbook",
   tagline: "A guide to a nuzlocke of Radical Red 4.1 on hardcore mode.",
   favicon: "img/favicon.ico",
