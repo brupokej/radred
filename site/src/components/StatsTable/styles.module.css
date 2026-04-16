@@ -54,6 +54,7 @@
 
 .table thead th {
   background-color: var(--ifm-color-emphasis-100);
+  border-top-width: 0;
   position: sticky;
   top: 0;
   z-index: 2;

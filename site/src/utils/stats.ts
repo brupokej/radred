@@ -41,6 +41,103 @@ function getVisibleSlugs(data: BattleData): Set<string> {
   return visible;
 }
 
+export type PageStats = {
+  total: number;
+  byPage: Record<string, number>;
+  boxOrder: number;
+  spriteKey?: string;
+};
+
+function resolvePageMeta(
+  pages: { label: string; battles: BattleData[] }[]
+): {
+  canon: (name: string) => string;
+  spriteKeyMap: Record<string, string>;
+  boxOrderMap: Record<string, number>;
+} {
+  const allBattles = pages.flatMap((p) => p.battles);
+  const lastBattle = allBattles[allBattles.length - 1];
+  const renames = lastBattle.playerBox.renames ?? {};
+  const canon = (name: string) => renames[name] ?? name;
+
+  const spriteKeyMap: Record<string, string> = {};
+  const boxOrderMap: Record<string, number> = {};
+  for (const [, pokemon] of resolveBox(lastBattle.playerBox)) {
+    const p = resolvePokemon(pokemon);
+    const key = canon(p.name);
+    if (p.spriteKey) spriteKeyMap[key] = p.spriteKey;
+    if (p.boxOrder !== undefined) boxOrderMap[key] = p.boxOrder;
+  }
+
+  return { canon, spriteKeyMap, boxOrderMap };
+}
+
+function attachSprites(
+  totals: Record<string, PageStats>,
+  spriteKeyMap: Record<string, string>
+): void {
+  for (const [key, stats] of Object.entries(totals)) {
+    const sk = spriteKeyMap[key];
+    if (sk) totals[key] = { ...stats, spriteKey: sk };
+  }
+}
+
+export function computePageStats(
+  pages: { label: string; battles: BattleData[] }[]
+): Record<string, PageStats> {
+  const allBattles = pages.flatMap((p) => p.battles);
+  if (allBattles.length === 0) return {};
+
+  const { canon, spriteKeyMap, boxOrderMap } = resolvePageMeta(pages);
+  const totals: Record<string, PageStats> = {};
+
+  for (const { label, battles } of pages) {
+    for (const battle of battles) {
+      for (const name of battle.playerBox.team) {
+        const key = canon(name);
+        if (!totals[key]) {
+          totals[key] = { total: 0, byPage: {}, boxOrder: boxOrderMap[key] ?? Infinity };
+        }
+        totals[key].total++;
+        totals[key].byPage[label] = (totals[key].byPage[label] ?? 0) + 1;
+      }
+    }
+  }
+
+  attachSprites(totals, spriteKeyMap);
+  return totals;
+}
+
+export function computePageFragStats(
+  pages: { label: string; battles: BattleData[] }[]
+): Record<string, PageStats> {
+  const allBattles = pages.flatMap((p) => p.battles);
+  if (allBattles.length === 0) return {};
+
+  const { canon, spriteKeyMap, boxOrderMap } = resolvePageMeta(pages);
+  const totals: Record<string, PageStats> = {};
+
+  for (const { label, battles } of pages) {
+    for (const battle of battles) {
+      const visible = getVisibleSlugs(battle);
+      for (const line of battle.lines) {
+        if (!visible.has(line.line ?? "")) continue;
+        for (const [pokemon, count] of Object.entries(line.frags ?? {})) {
+          const key = canon(pokemon);
+          if (!totals[key]) {
+            totals[key] = { total: 0, byPage: {}, boxOrder: boxOrderMap[key] ?? Infinity };
+          }
+          totals[key].total += count;
+          totals[key].byPage[label] = (totals[key].byPage[label] ?? 0) + count;
+        }
+      }
+    }
+  }
+
+  attachSprites(totals, spriteKeyMap);
+  return totals;
+}
+
 export type PokemonStats = {
   battles: number;
   frags: number;

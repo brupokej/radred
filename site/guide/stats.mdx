@@ -2,7 +2,7 @@
 sidebar_position: 99
 ---
 
-import PercentsTable from "@site/src/components/PercentsTable";
+import { PageStatsTable, PercentsTable } from "@site/src/components/StatsTable";
 import StatsFilter from "@site/src/components/StatsFilter";
 import { moments as brockMoments } from "@site/src/data/battles/brock";
 import { moments as mistyMoments } from "@site/src/data/battles/misty";
@@ -14,6 +14,36 @@ import { moments as kogaMoments } from "@site/src/data/battles/koga";
 # Stats
 
 <StatsFilter moments={allMoments} />
+
+## Most Battles Table
+
+<PageStatsTable metric="battles" pages={[
+  { label: "Brock", moments: brockMoments },
+  { label: "Misty", moments: mistyMoments },
+  { label: "Surge", moments: surgeMoments },
+  { label: "Erika", moments: erikaMoments },
+  { label: "Sabrina", moments: sabrinaMoments },
+  { label: "Koga", moments: kogaMoments },
+  { label: "Blaine", moments: [] },
+  { label: "Clair", moments: [] },
+  { label: "VR", moments: [], tooltip: "Victory Road" },
+  { label: "E4", moments: [], tooltip: "Elite Four" },
+]} />
+
+## Most Frags Table
+
+<PageStatsTable metric="frags" pages={[
+  { label: "Brock", moments: brockMoments },
+  { label: "Misty", moments: mistyMoments },
+  { label: "Surge", moments: surgeMoments },
+  { label: "Erika", moments: erikaMoments },
+  { label: "Sabrina", moments: sabrinaMoments },
+  { label: "Koga", moments: kogaMoments },
+  { label: "Blaine", moments: [] },
+  { label: "Clair", moments: [] },
+  { label: "VR", moments: [], tooltip: "Victory Road" },
+  { label: "E4", moments: [], tooltip: "Elite Four" },
+]} />
 
 ## Percents Table
 
