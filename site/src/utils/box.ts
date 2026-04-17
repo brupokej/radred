@@ -1,4 +1,4 @@
-import { Pokemon, PokemonData, resolvePokemon } from "@site/src/utils/pokemon";
+import { IVs, Pokemon, PokemonData, resolvePokemon } from "@site/src/utils/pokemon";
 
 type BoxChange =
   | { type: "remove"; names: string[] }
@@ -216,14 +216,36 @@ export function getRemovals(box: Box): string[] {
   return change.names;
 }
 
+// Fields that expandPokemon actually renders — only include a row if at least one is present.
+const RENDERED_FIELDS = new Set<keyof PokemonData>(["name", "level", "moves"]);
+
 // Returns the pokemon that visibly changed (with `update` populated) in a box.
+// Filters to only pokemon whose update contains a field that expandPokemon renders.
 // Used by BoxChange.
 export function getChanges(box: Box): Pokemon[] {
   const change = box.changes[0];
   if (!change || change.type !== "update") return [];
 
   const state = replayBox(box, box.changes.length);
-  return [...state.values()].filter((p) => p.update !== undefined);
+  return [...state.values()].filter(
+    (p) => p.update !== undefined && (Object.keys(p.update) as (keyof PokemonData)[]).some((k) => RENDERED_FIELDS.has(k))
+  );
+}
+
+// Returns IV changes from an update change in a box.
+// Used by BoxChange to render IV rows.
+export function getIVChanges(box: Box): { name: string; ivs: IVs }[] {
+  const change = box.changes[0];
+  if (!change || change.type !== "update") return [];
+
+  const state = replayBox(box, box.changes.length);
+  const result: { name: string; ivs: IVs }[] = [];
+  for (const [name, pokemon] of state) {
+    if (pokemon.update?.ivs) {
+      result.push({ name, ivs: pokemon.update.ivs });
+    }
+  }
+  return result;
 }
 
 // Splits a multi-change box into multiple single-change boxes for the display helpers.

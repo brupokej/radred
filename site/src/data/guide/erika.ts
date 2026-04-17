@@ -367,7 +367,16 @@ export const celadonCityLeaderErikaBattle: Moment = {
   },
 };
 
-export const box = _box4;
+const _box5 = getBox({
+  box: _box4,
+  update: {
+    Golisopod: {
+      level: 43,
+    },
+  },
+});
+
+export const box = _box5;
 
 export const moments: Moment[] = [
   erikaBoxChange,

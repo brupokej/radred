@@ -1,6 +1,7 @@
 import Card from "@site/src/components/Card";
 import { Row } from "@site/src/components/Row";
-import { Box, getChanges, getLevelCap, getRemovals, splitChanges } from "@site/src/utils/box";
+import { Box, getChanges, getIVChanges, getLevelCap, getRemovals, splitChanges } from "@site/src/utils/box";
+import { formatIVs } from "@site/src/utils/pokemon";
 
 export interface BoxChangeData {
   playerBox: Box;
@@ -41,7 +42,16 @@ export default function BoxChange({ data }: { data: BoxChangeData }) {
     }
   }
 
-  const rows = [...removalRows, ...capRows, ...updateRows];
+  const ivRows: React.ReactNode[] = [];
+  for (const box of boxes) {
+    for (const { name, ivs } of getIVChanges(box)) {
+      ivRows.push(
+        <Row key={key++} row={[`${name} → `, { warning: `Set to ${formatIVs(ivs)} IVs` }]} />
+      );
+    }
+  }
+
+  const rows = [...removalRows, ...capRows, ...updateRows, ...ivRows];
   if (rows.length === 0) return null;
 
   return <Card title="Box Change">{rows}</Card>;

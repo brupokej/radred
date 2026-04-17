@@ -2,7 +2,7 @@ import Card from "@site/src/components/Card";
 import { ScrollArrows } from "@site/src/components/ScrollArrows";
 import { Box, resolveBox } from "@site/src/utils/box";
 import { pokedex, type PokedexData } from "@site/src/utils/pokedex";
-import { resolvePokemon, type Pokemon } from "@site/src/utils/pokemon";
+import { formatIVs, resolvePokemon, type Pokemon } from "@site/src/utils/pokemon";
 import { getColouredSpriteUrl } from "@site/src/utils/sprites";
 import { createContext, useCallback, useContext, useEffect, useRef, useState } from "react";
 import styles from "./styles.module.css";
@@ -75,6 +75,7 @@ function TeamGrid({ team, extraTeam = [] }: { team: Pokemon[]; extraTeam?: Pokem
   const filled = team.length + extraTeam.length;
   const emptiesToShow = Math.max(0, Math.min(cols, 6) - filled);
   const emptySlots = Array.from({ length: emptiesToShow }, () => null);
+  const showIVs = [...team, ...extraTeam].some((p) => resolvePokemon(p).ivs !== undefined);
 
   return (
     <div ref={contentRef} className={styles.content}>
@@ -86,13 +87,13 @@ function TeamGrid({ team, extraTeam = [] }: { team: Pokemon[]; extraTeam?: Pokem
         />
         <div ref={scrollRef} className={styles.grid}>
           {team.map((pokemon, i) => (
-            <PokemonCard key={i} pokemon={pokemon} />
+            <PokemonCard key={i} pokemon={pokemon} showIVs={showIVs} />
           ))}
           {extraTeam.map((pokemon, i) => (
-            <PokemonCard key={`extra-${i}`} pokemon={pokemon} />
+            <PokemonCard key={`extra-${i}`} pokemon={pokemon} showIVs={showIVs} />
           ))}
           {emptySlots.map((_, i) => (
-            <PokemonCard key={`empty-${i}`} pokemon={null} />
+            <PokemonCard key={`empty-${i}`} pokemon={null} showIVs={showIVs} />
           ))}
         </div>
       </div>
@@ -119,7 +120,7 @@ function statColor(v: number): string {
   return "var(--ifm-color-danger)";
 }
 
-function PokemonCard({ pokemon }: { pokemon: Pokemon | null }) {
+function PokemonCard({ pokemon, showIVs }: { pokemon: Pokemon | null; showIVs: boolean }) {
   const isExpanded = useCardDetail();
   const { update, base } = pokemon ?? {};
   const current = pokemon ? resolvePokemon(pokemon) : null;
@@ -141,6 +142,14 @@ function PokemonCard({ pokemon }: { pokemon: Pokemon | null }) {
       {isExpanded && (
         <>
           <div className={styles.divider} />
+          {showIVs && (
+            <>
+              <div className={`${styles.detail} ${current?.ivs ? styles.fieldInfo : ""}`}>
+                {current?.ivs ? formatIVs(current.ivs) : "-"}
+              </div>
+              <div className={styles.divider} />
+            </>
+          )}
           <div className={`${styles.detail} ${wc("nature")}`}>{current?.nature ?? "-"}</div>
           <div className={`${styles.detail} ${wc("ability")}`}>{current?.ability ?? "-"}</div>
           <div className={`${styles.detail} ${wc("item")}`}>

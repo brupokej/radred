@@ -2,15 +2,28 @@
 sidebar_position: 5
 ---
 
+import { Battle } from "@site/src/components/Battle";
+import BoxChange from "@site/src/components/BoxChange";
 import Encounter from "@site/src/components/Encounter";
 import { Row } from "@site/src/components/Row";
 import StartButton from "@site/src/components/StartButton";
 
-import { starterEgg1Encounter, starterEgg2Encounter, } from "@site/src/data/guide/sabrina";
+import {
+  sabrinaBoxChange,
+  gameCornerGuardBattle,
+  starterEgg1Encounter,
+  starterEgg2Encounter,
+} from "@site/src/data/guide/sabrina";
 
 # Sabrina
 
-## Starter Egg 1 Encounter<StartButton moment={starterEgg1Encounter} />
+<BoxChange data={sabrinaBoxChange.data} />
+
+## Game Corner Guard Battle<StartButton moment={gameCornerGuardBattle} />
+
+<Battle data={gameCornerGuardBattle.data} />
+
+{/*## Starter Egg 1 Encounter<StartButton moment={starterEgg1Encounter} />
 
 <Encounter data={starterEgg1Encounter.data}>
   <Row row={["Grass Egg · Level 1"]} />
@@ -20,4 +33,4 @@ import { starterEgg1Encounter, starterEgg2Encounter, } from "@site/src/data/guid
 
 <Encounter data={starterEgg2Encounter.data}>
   <Row row={["Water Egg · Level 1"]} />
-</Encounter>
+</Encounter>*/}

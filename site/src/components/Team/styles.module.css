@@ -104,6 +104,11 @@
   margin-top: 0;
 }
 
+.fieldInfo {
+  background: var(--hl-info-bg);
+  outline: var(--hl-info-outline);
+}
+
 .fieldWarning {
   background: var(--hl-warning-bg);
   outline: var(--hl-warning-outline);
