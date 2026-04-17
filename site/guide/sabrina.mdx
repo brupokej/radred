@@ -11,7 +11,17 @@ import StartButton from "@site/src/components/StartButton";
 import {
   sabrinaBoxChange,
   gameCornerGuardBattle,
+  gameCornerGuardBoxChange,
+  rocketHideoutLeftGuardBattle,
+  rocketHideoutRightGuardBattle,
+  rocketHideoutGiovanniBattle,
   starterEgg1Encounter,
+  starterEgg1BoxChange,
+  pokemonTowerChannelerRuthBattle,
+  pokemonTowerGhostBattle,
+  pokemonTowerGrunt1Battle,
+  pokemonTowerGrunt2Battle,
+  pokemonTowerGrunt3Battle,
   starterEgg2Encounter,
 } from "@site/src/data/guide/sabrina";
 
@@ -23,14 +33,50 @@ import {
 
 <Battle data={gameCornerGuardBattle.data} />
 
-{/*## Starter Egg 1 Encounter<StartButton moment={starterEgg1Encounter} />
+<BoxChange data={gameCornerGuardBoxChange.data} />
+
+## Rocket Hideout Left Guard Battle<StartButton moment={rocketHideoutLeftGuardBattle} />
+
+<Battle data={rocketHideoutLeftGuardBattle.data} />
+
+## Rocket Hideout Right Guard Battle<StartButton moment={rocketHideoutRightGuardBattle} />
+
+<Battle data={rocketHideoutRightGuardBattle.data} />
+
+## Rocket Hideout Giovanni Battle<StartButton moment={rocketHideoutGiovanniBattle} />
+
+<Battle data={rocketHideoutGiovanniBattle.data} />
+
+## Starter Egg 1 Encounter<StartButton moment={starterEgg1Encounter} />
 
 <Encounter data={starterEgg1Encounter.data}>
   <Row row={["Grass Egg · Level 1"]} />
 </Encounter>
 
+<BoxChange data={starterEgg1BoxChange.data} />
+
+## Pokémon Tower Channeler Ruth Battle<StartButton moment={pokemonTowerChannelerRuthBattle} />
+
+<Battle data={pokemonTowerChannelerRuthBattle.data} />
+
+## Pokémon Tower Ghost Battle<StartButton moment={pokemonTowerGhostBattle} />
+
+<Battle data={pokemonTowerGhostBattle.data} />
+
+## Pokémon Tower Grunt 1 Battle<StartButton moment={pokemonTowerGrunt1Battle} />
+
+<Battle data={pokemonTowerGrunt1Battle.data} />
+
+## Pokémon Tower Grunt 2 Battle<StartButton moment={pokemonTowerGrunt2Battle} />
+
+<Battle data={pokemonTowerGrunt2Battle.data} />
+
+## Pokémon Tower Grunt 3 Battle<StartButton moment={pokemonTowerGrunt3Battle} />
+
+<Battle data={pokemonTowerGrunt3Battle.data} />
+
 ## Starter Egg 2 Encounter<StartButton moment={starterEgg2Encounter} />
 
 <Encounter data={starterEgg2Encounter.data}>
   <Row row={["Water Egg · Level 1"]} />
-</Encounter>*/}
+</Encounter>

@@ -19,6 +19,10 @@ export const STORAGE_DEFAULTS: Record<string, string> = {
   "branch-raichu-nasty-plot-pawmot-close-combat-runerigus": "Raichu Nasty Plot",
   "branch-ceruledge-regular-shadow-claw-hawlucha-ceruledge-crit-shadow-claw-hawlucha":
     "Ceruledge regular Shadow Claw Hawlucha",
+  "branch-meowscarada-night-slash-drifblim-meowscarada-night-slash-polteageist":
+    "Meowscarada Night Slash Drifblim",
+  "branch-lanturn-flip-turn-hydreigon-lanturn-flip-turn-golurk-lanturn-flip-turn-magnezone":
+    "Lanturn Flip Turn Hydreigon",
 
   "sequence-wimpod-1": '["Wimpod"]',
   "sequence-frillish-1": '["Frillish"]',
