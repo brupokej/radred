@@ -7,16 +7,17 @@ import BoxChange from "@site/src/components/BoxChange";
 import Card from "@site/src/components/Card";
 import Encounter from "@site/src/components/Encounter";
 import { Row } from "@site/src/components/Row";
+import StartButton from "@site/src/components/StartButton";
 import Switch, { Case } from "@site/src/components/Switch";
 
 import { getLocation } from "@site/src/utils/encounterLog";
 
 import {
-  wimpodEncounter,
-  frillishEncounter,
-  startBoxChange,
-  fishingBoxChange,
+  surgeBoxChange,
   route6CamperJeffBattle,
+  fishing1Encounter,
+  fishing2Encounter,
+  fishing2BoxChange,
   route25LeaderBugsyBattle,
   ssAnneLassAnnGentlemanBrooksBattle,
   ssAnneSailorEdmundSailorTrevorBattle,
@@ -32,15 +33,15 @@ import {
 
 # Surge
 
-<BoxChange data={startBoxChange} />
+<BoxChange data={surgeBoxChange.data} />
 
-## Route 6 Camper Jeff Battle
+## Route 6 Camper Jeff Battle<StartButton moment={route6CamperJeffBattle} />
 
-<Battle data={route6CamperJeffBattle} />
+<Battle data={route6CamperJeffBattle.data} />
 
-## Fishing 1 Encounter
+## Fishing 1 Encounter<StartButton moment={fishing1Encounter} />
 
-<Encounter data={wimpodEncounter}>
+<Encounter data={fishing1Encounter.data}>
   <Switch switch={() => getLocation("Wimpod")}>
     <Case case="S.S. Anne">
       <Row row={["Old Rod · 70% · Level 2-4"]} />
@@ -51,9 +52,9 @@ import {
   </Switch>
 </Encounter>
 
-## Fishing 2 Encounter
+## Fishing 2 Encounter<StartButton moment={fishing1Encounter} />
 
-<Encounter data={frillishEncounter}>
+<Encounter data={fishing2Encounter.data}>
   <Switch switch={() => getLocation("Frillish")}>
     <Case case="Vermillion City">
       <Row row={[{ warning: "Good Rod" }, "· 60%  · Level 27-29"]} />
@@ -75,53 +76,53 @@ import {
   <Row row={["Cheats → {c:Dream Patch} to {c:x6}"]} />
 </Card>
 
-<BoxChange data={fishingBoxChange} />
+<BoxChange data={fishing2BoxChange.data} />
 
-## Route 25 Leader Bugsy Battle
+## Route 25 Leader Bugsy Battle<StartButton moment={route25LeaderBugsyBattle} />
 
-<Battle data={route25LeaderBugsyBattle} />
+<Battle data={route25LeaderBugsyBattle.data} />
 
-## S.S. Anne Lass Ann & Gentleman Brooks Battle
+## S.S. Anne Lass Ann & Gentleman Brooks Battle<StartButton moment={ssAnneLassAnnGentlemanBrooksBattle} />
 
-<Battle data={ssAnneLassAnnGentlemanBrooksBattle} />
+<Battle data={ssAnneLassAnnGentlemanBrooksBattle.data} />
 
 <Card title="Game Setup">
   <Row row={["S.S. Anne → ", { warning: "{c:TM 031 Brick Break} → {c:Bag}" }]} />
   <Row row={["S.S. Anne → ", { warning: "{c:TM 069 Stom. Tantrum} → {c:Bag}" }]} />
 </Card>
 
-## S.S. Anne Sailor Edmund & Sailor Trevor Battle
+## S.S. Anne Sailor Edmund & Sailor Trevor Battle<StartButton moment={ssAnneSailorEdmundSailorTrevorBattle} />
 
-<Battle data={ssAnneSailorEdmundSailorTrevorBattle} />
+<Battle data={ssAnneSailorEdmundSailorTrevorBattle.data} />
 
-## S.S. Anne Brendan Battle
+## S.S. Anne Brendan Battle<StartButton moment={ssAnneBrendanBattle} />
 
-<Battle data={ssAnneBrendanBattle} />
+<Battle data={ssAnneBrendanBattle.data} />
 
-## Route 9 Picnicker Alicia Battle
+## Route 9 Picnicker Alicia Battle<StartButton moment={route9PicnickerAliciaBattle} />
 
-<Battle data={route9PicnickerAliciaBattle} />
+<Battle data={route9PicnickerAliciaBattle.data} />
 
-## Route 9 Picnicker Caitlin Battle
+## Route 9 Picnicker Caitlin Battle<StartButton moment={route9PicnickerCaitlinBattle} />
 
-<Battle data={route9PicnickerCaitlinBattle} />
+<Battle data={route9PicnickerCaitlinBattle.data} />
 
-## Rock Tunnel Picnicker Dana Battle
+## Rock Tunnel Picnicker Dana Battle<StartButton moment={rockTunnelPicnickerDanaBattle} />
 
-<Battle data={rockTunnelPicnickerDanaBattle} />
+<Battle data={rockTunnelPicnickerDanaBattle.data} />
 
-## Route 10 Poké Maniac Herman Battle
+## Route 10 Poké Maniac Herman Battle<StartButton moment={route10PokeManiacHermanBattle} />
 
-<Battle data={route10PokeManiacHermanBattle} />
+<Battle data={route10PokeManiacHermanBattle.data} />
 
-## Route 8 Super Nerd Aidan Battle
+## Route 8 Super Nerd Aidan Battle<StartButton moment={route8SuperNerdAidanBattle} />
 
-<Battle data={route8SuperNerdAidanBattle} />
+<Battle data={route8SuperNerdAidanBattle.data} />
 
-## Vermillion City Gym Gentleman Tucker Battle
+## Vermillion City Gym Gentleman Tucker Battle<StartButton moment={vermillionCityGymGentlemanTuckerBattle} />
 
-<Battle data={vermillionCityGymGentlemanTuckerBattle} />
+<Battle data={vermillionCityGymGentlemanTuckerBattle.data} />
 
-## Vermillion City Leader Lt. Surge Battle
+## Vermillion City Leader Lt. Surge Battle<StartButton moment={vermillionCityLeaderLtSurgeBattle} />
 
-<Battle data={vermillionCityLeaderLtSurgeBattle} />
+<Battle data={vermillionCityLeaderLtSurgeBattle.data} />

@@ -4,19 +4,20 @@ sidebar_position: 5
 
 import Encounter from "@site/src/components/Encounter";
 import { Row } from "@site/src/components/Row";
+import StartButton from "@site/src/components/StartButton";
 
-import { sprigatitoEncounter, mudkipEncounter } from "@site/src/data/guide/sabrina";
+import { starterEgg1Encounter, starterEgg2Encounter, } from "@site/src/data/guide/sabrina";
 
 # Sabrina
 
-## Starter Egg 1 Encounter
+## Starter Egg 1 Encounter<StartButton moment={starterEgg1Encounter} />
 
-<Encounter data={sprigatitoEncounter}>
+<Encounter data={starterEgg1Encounter.data}>
   <Row row={["Grass Egg · Level 1"]} />
 </Encounter>
 
-## Starter Egg 2 Encounter
+## Starter Egg 2 Encounter<StartButton moment={starterEgg2Encounter} />
 
-<Encounter data={mudkipEncounter}>
+<Encounter data={starterEgg2Encounter.data}>
   <Row row={["Water Egg · Level 1"]} />
 </Encounter>

@@ -4,25 +4,26 @@ sidebar_position: 6
 
 import Encounter from "@site/src/components/Encounter";
 import { Row } from "@site/src/components/Row";
+import StartButton from "@site/src/components/StartButton";
 
-import { froakieEncounter, chimcharEncounter, treeckoEncounter } from "@site/src/data/guide/koga";
+import { starterEgg3Encounter, starterEgg4Encounter, starterEgg5Encounter, } from "@site/src/data/guide/koga";
 
 # Koga
 
-## Starter Egg 3 Encounter
+## Starter Egg 3 Encounter<StartButton moment={starterEgg3Encounter} />
 
-<Encounter data={froakieEncounter}>
+<Encounter data={starterEgg3Encounter.data}>
   <Row row={["Water Egg · Level 1"]} />
 </Encounter>
 
-## Starter Egg 4 Encounter
+## Starter Egg 4 Encounter<StartButton moment={starterEgg4Encounter} />
 
-<Encounter data={chimcharEncounter}>
+<Encounter data={starterEgg4Encounter.data}>
   <Row row={["Fire Egg · Level 1"]} />
 </Encounter>
 
-## Starter Egg 5 Encounter
+## Starter Egg 5 Encounter<StartButton moment={starterEgg5Encounter} />
 
-<Encounter data={treeckoEncounter}>
+<Encounter data={starterEgg5Encounter.data}>
   <Row row={["Grass Egg · Level 1"]} />
 </Encounter>

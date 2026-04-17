@@ -4,21 +4,22 @@ sidebar_position: 4
 
 import { Battle } from "@site/src/components/Battle";
 import BoxChange from "@site/src/components/BoxChange";
+import StartButton from "@site/src/components/StartButton";
 
 import {
-  celadonCityBoxChange,
+  erikaBoxChange,
   celadonCityGymAceTrainerMaryBattle,
   celadonCityLeaderErikaBattle,
 } from "@site/src/data/guide/erika";
 
 # Erika
 
-<BoxChange data={celadonCityBoxChange} />
+<BoxChange data={erikaBoxChange.data} />
 
-## Celadon City Gym Ace Trainer Mary Battle
+## Celadon City Gym Ace Trainer Mary Battle<StartButton moment={celadonCityGymAceTrainerMaryBattle} />
 
-<Battle data={celadonCityGymAceTrainerMaryBattle} />
+<Battle data={celadonCityGymAceTrainerMaryBattle.data} />
 
-## Celadon City Leader Erika Battle
+## Celadon City Leader Erika Battle<StartButton moment={celadonCityLeaderErikaBattle} />
 
-<Battle data={celadonCityLeaderErikaBattle} />
+<Battle data={celadonCityLeaderErikaBattle.data} />
