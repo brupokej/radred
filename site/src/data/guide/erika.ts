@@ -7,7 +7,7 @@ import {
   celadonCityLeaderErikaBox,
 } from "@site/src/utils/opponents";
 
-import { box as _box1 } from "@site/src/data/battles/surge";
+import { box as _box1 } from "@site/src/data/guide/surge";
 
 // ─── Box chain (private) ──────────────────────────────────────────────────────
 

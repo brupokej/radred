@@ -1,4 +1,4 @@
-import rawData from "@site/src/data/pokedex.json";
+import rawData from "@site/src/data/utils/pokedex.json";
 import { PokemonData } from "@site/src/utils/pokemon";
 
 export interface PokedexData {

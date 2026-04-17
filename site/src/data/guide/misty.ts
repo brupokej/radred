@@ -15,7 +15,7 @@ import {
   route3LassSallyBox,
 } from "@site/src/utils/opponents";
 
-import { box as _box1 } from "@site/src/data/battles/brock";
+import { box as _box1 } from "@site/src/data/guide/brock";
 
 const _box2 = getBox({
   box: _box1,

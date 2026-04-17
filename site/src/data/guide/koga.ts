@@ -1,7 +1,7 @@
 import { EncounterData } from "@site/src/components/Encounter";
-
-import { box as _box1 } from "@site/src/data/battles/sabrina";
 import { Moment } from "@site/src/utils/moments";
+
+import { box as _box1 } from "@site/src/data/guide/sabrina";
 
 // ─── Encounters ───────────────────────────────────────────────────────────────
 

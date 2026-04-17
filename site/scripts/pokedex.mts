@@ -19,5 +19,4 @@ for (const entry of Object.values(species)) {
   }
 }
 
-mkdirSync("src/data", { recursive: true });
-writeFileSync("src/data/pokedex.json", JSON.stringify(record, null, 2));
+writeFileSync("src/data/utils/pokedex.json", JSON.stringify(record, null, 2));

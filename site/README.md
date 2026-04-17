@@ -14,7 +14,7 @@ npm install
 npm run pokedex
 ```
 
-This command fetches Pokedex data and writes it to `src/data/pokedex.json`.
+This command fetches Pokedex data and writes it to `src/data/utils/pokedex.json`.
 
 ## Local Development
 

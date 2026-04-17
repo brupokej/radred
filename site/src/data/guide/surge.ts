@@ -18,7 +18,7 @@ import {
   vermillionCityLeaderLtSurgeBox,
 } from "@site/src/utils/opponents";
 
-import { box as _box1 } from "@site/src/data/battles/misty";
+import { box as _box1 } from "@site/src/data/guide/misty";
 
 // ─── Encounter pokemon ────────────────────────────────────────────────────────
 
