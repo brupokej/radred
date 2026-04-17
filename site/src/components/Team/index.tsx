@@ -76,6 +76,7 @@ function TeamGrid({ team, extraTeam = [] }: { team: Pokemon[]; extraTeam?: Pokem
   const emptiesToShow = Math.max(0, Math.min(cols, 6) - filled);
   const emptySlots = Array.from({ length: emptiesToShow }, () => null);
   const showIVs = [...team, ...extraTeam].some((p) => resolvePokemon(p).ivs !== undefined);
+  const showFriend = [...team, ...extraTeam].some((p) => resolvePokemon(p).friend === true);
 
   return (
     <div ref={contentRef} className={styles.content}>
@@ -87,13 +88,13 @@ function TeamGrid({ team, extraTeam = [] }: { team: Pokemon[]; extraTeam?: Pokem
         />
         <div ref={scrollRef} className={styles.grid}>
           {team.map((pokemon, i) => (
-            <PokemonCard key={i} pokemon={pokemon} showIVs={showIVs} />
+            <PokemonCard key={i} pokemon={pokemon} showIVs={showIVs} showFriend={showFriend} />
           ))}
           {extraTeam.map((pokemon, i) => (
-            <PokemonCard key={`extra-${i}`} pokemon={pokemon} showIVs={showIVs} />
+            <PokemonCard key={`extra-${i}`} pokemon={pokemon} showIVs={showIVs} showFriend={showFriend} />
           ))}
           {emptySlots.map((_, i) => (
-            <PokemonCard key={`empty-${i}`} pokemon={null} showIVs={showIVs} />
+            <PokemonCard key={`empty-${i}`} pokemon={null} showIVs={showIVs} showFriend={showFriend} />
           ))}
         </div>
       </div>
@@ -120,7 +121,7 @@ function statColor(v: number): string {
   return "var(--ifm-color-danger)";
 }
 
-function PokemonCard({ pokemon, showIVs }: { pokemon: Pokemon | null; showIVs: boolean }) {
+function PokemonCard({ pokemon, showIVs, showFriend }: { pokemon: Pokemon | null; showIVs: boolean; showFriend: boolean }) {
   const isExpanded = useCardDetail();
   const { update, base } = pokemon ?? {};
   const current = pokemon ? resolvePokemon(pokemon) : null;
@@ -146,6 +147,14 @@ function PokemonCard({ pokemon, showIVs }: { pokemon: Pokemon | null; showIVs: b
             <>
               <div className={`${styles.detail} ${current?.ivs ? styles.fieldInfo : ""}`}>
                 {current?.ivs ? formatIVs(current.ivs) : "-"}
+              </div>
+              <div className={styles.divider} />
+            </>
+          )}
+          {showFriend && (
+            <>
+              <div className={`${styles.detail} ${current?.friend ? styles.fieldInfo : ""}`}>
+                {current?.friend ? "Max friendship" : "-"}
               </div>
               <div className={styles.divider} />
             </>

@@ -44,9 +44,12 @@ export default function BoxChange({ data }: { data: BoxChangeData }) {
 
   const ivRows: React.ReactNode[] = [];
   for (const box of boxes) {
-    for (const { name, ivs } of getIVChanges(box)) {
+    for (const { name, ivs, friend } of getIVChanges(box)) {
+      const label = ivs
+        ? `Set to ${formatIVs(ivs)} IVs${friend ? ", max friendship" : ""}`
+        : "Set to max friendship";
       ivRows.push(
-        <Row key={key++} row={[`${name} → `, { warning: `Set to ${formatIVs(ivs)} IVs` }]} />
+        <Row key={key++} row={[`${name} → `, { warning: label }]} />
       );
     }
   }

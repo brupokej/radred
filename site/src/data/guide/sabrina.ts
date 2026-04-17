@@ -10,6 +10,7 @@ import {
   pokemonTowerGrunt1Box,
   pokemonTowerGrunt2Box,
   pokemonTowerGrunt3Box,
+  saffronDojoLeaderChuckBox,
 } from "@site/src/utils/opponents";
 
 import { box as _box1 } from "@site/src/data/guide/erika";
@@ -1193,7 +1194,357 @@ export const starterEgg2Encounter: Moment = {
   data: { pokemon: _mudkip },
 };
 
-export const box = _box13;
+const _box14 = getBox({
+  box: _box13,
+  update: {
+    Azumarill: {
+      friend: true,
+    },
+  },
+});
+
+export const starterEgg2BoxChange: Moment = {
+  label: "Starter Egg 2 Change",
+  kind: "boxChange",
+  data: { playerBox: _box14 },
+};
+
+const _box15 = getBox({
+  box: _box14,
+  update: {
+    Excadrill: {
+      nature: "Jolly",
+      item: "Chople Berry",
+      moves: ["Aerial Ace", "Bulldoze", "Iron Head", "Shadow Claw"],
+    },
+    Ceruledge: {
+      nature: "Timid",
+      item: "Leftovers",
+      moves: ["Bitter Blade", "Shadow Claw", "Shadow Sneak", "Will-O-Wisp"],
+    },
+    Azumarill: {
+      nature: "Brave",
+      item: "Sitrus Berry",
+      moves: ["Aqua Tail", "Knock Off", "Play Rough", "Return"],
+    },
+    Perrserker: {
+      nature: "Brave",
+      moves: ["Fake Out", "Dig", "Shadow Claw", "U-Turn"],
+    },
+    Meowscarada: {
+      nature: "Jolly",
+      item: "Pixie Plate",
+      moves: ["Flower Trick", "Knock Off", "Play Rough", "Shadow Claw"],
+    },
+    Drednaw: {
+      nature: "Impish",
+      ability: "Shell Armor",
+      item: "Chople Berry",
+      moves: ["Bulldoze", "Dig", "Flip Turn", "Liquidation"],
+    },
+  },
+  team: ["Excadrill", "Ceruledge", "Azumarill", "Perrserker", "Meowscarada", "Drednaw"],
+});
+
+export const saffronDojoLeaderChuckBattle: Moment = {
+  label: "Saffron Dojo Leader Chuck Battle",
+  kind: "battle",
+  data: {
+    playerBox: _box15,
+    opponentBox: saffronDojoLeaderChuckBox,
+    lines: [
+      {
+        matchups: [
+          {
+            matchup: ["Iron Crown"],
+            turns: [
+              [
+                { opponent: "{o:Iron Crown} Secret Sword {p:Excadrill} to {+:41}" },
+                { player: "{p:Excadrill} Bulldoze {o:Iron Crown} to {-:86}" },
+              ],
+            ],
+            branches: [
+              {
+                branches: ["Excadrill Bulldoze Zamazenta", "Excadrill Bulldoze Iron Crown"],
+              },
+            ],
+          },
+        ],
+      },
+      {
+        line: "Excadrill Bulldoze Zamazenta",
+        matchups: [
+          {
+            matchup: ["Iron Crown"],
+            turns: [
+              [
+                { opponent: "{o:Iron Crown} switch to {o:Zamazenta-C}" },
+                { player: "{p:Excadrill} Bulldoze {o:Zamazenta-C} to {-:136}" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Zamazenta-C"],
+            turns: [
+              [
+                { player: "{p:Excadrill} switch to {p:Ceruledge}" },
+                { opponent: "{o:Zamazenta-C} Behemoth Bash {p:Ceruledge} to {+:90}" },
+                { player: "{p:Ceruledge} heal to {+:100}" },
+              ],
+              [
+                { player: "{p:Ceruledge} Bitter Blade {o:Zamazenta-C} to {-:94}" },
+                { player: "{p:Ceruledge} heal to {+:146}" },
+                { opponent: "{o:Zamazenta-C} Wild Charge {p:Ceruledge} to {+:53}" },
+                { opponent: "{o:Zamazenta-C} recoil to {-:86}" },
+                { player: "{p:Ceruledge} heal to {+:63}" },
+              ],
+              [
+                { player: "{p:Ceruledge} Bitter Blade {o:Zamazenta-C} to {=:0}" },
+                { opponent: "{o:Zamazenta-C} fainted" },
+                { player: "{p:Ceruledge} heal to {+:85}" },
+              ],
+            ],
+            branches: [{ branches: ["Kommo-o Clangorous Soulblaze Azumarill"] }],
+          },
+        ],
+        frags: { Ceruledge: 1 },
+      },
+      {
+        line: "Excadrill Bulldoze Iron Crown",
+        matchups: [
+          {
+            matchup: ["Iron Crown"],
+            turns: [
+              [
+                { player: "{p:Excadrill} Bulldoze {o:Iron Crown} to {=:0}" },
+                { opponent: "{o:Iron Crown} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Zamazenta-C"],
+            turns: [
+              [
+                { player: "{p:Excadrill} switch to {p:Ceruledge}" },
+                { opponent: "{o:Zamazenta-C} Behemoth Bash {p:Ceruledge} to {+:90}" },
+                { player: "{p:Ceruledge} heal to {+:100}" },
+              ],
+              [
+                { opponent: "{o:Zamazenta-C} Bulk Up" },
+                { player: "{p:Ceruledge} Bitter Blade {o:Zamazenta-C} to {-:118}" },
+                { player: "{p:Ceruledge} heal to {+:144}" },
+              ],
+              [
+                { opponent: "{o:Zamazenta-C} Bulk Up" },
+                { player: "{p:Ceruledge} Will-O-Wisp {o:Zamazenta-C}" },
+                { opponent: "{o:Zamazenta-C} burn to {-:107}" },
+                { player: "{p:Ceruledge} heal to {+:154}" },
+              ],
+              [
+                { opponent: "{o:Zamazenta-C} Bulk Up" },
+                { player: "{p:Ceruledge} Bitter Blade {o:Zamazenta-C} to {-:59}" },
+                { player: "{p:Ceruledge} heal to {=:167}" },
+                { opponent: "{o:Zamazenta-C} burn to {-:48}" },
+              ],
+              [
+                { opponent: "{o:Zamazenta-C} Wild Charge {p:Ceruledge} to {+:53}" },
+                { opponent: "{o:Zamazenta-C} recoil to {-:27}" },
+                { player: "{p:Ceruledge} Bitter Blade {o:Zamazenta-C} to {=:0}" },
+                { player: "{p:Ceruledge} heal to {+:63}" },
+              ],
+            ],
+            branches: [{ branches: ["Kommo-o Clangorous Soulblaze Azumarill"] }],
+          },
+        ],
+        frags: { Excadrill: 1, Ceruledge: 1 },
+      },
+      {
+        line: "Kommo-o Clangorous Soulblaze Azumarill",
+        matchups: [
+          {
+            matchup: ["Kommo-o"],
+            turns: [
+              [
+                { player: "{p:Ceruledge} switch to {p:Azumarill}" },
+                { opponent: "{o:Kommo-o} Clangorous Soulblaze {p:Azumarill}" },
+              ],
+              [
+                { opponent: "{o:Kommo-o} Poison Jab {p:Azumarill} to {+:75}" },
+                { player: "{p:Azumarill} Return {o:Kommo-o} to {-:122}" },
+              ],
+              [
+                { player: "{p:Azumarill} switch to {p:Perrserker}" },
+                { opponent: "{o:Kommo-o} Poison Jab {p:Perrserker}" },
+              ],
+              [
+                { opponent: "{o:Kommo-o} Flamethrower {p:Perrserker} to {+:50}" },
+                { player: "{p:Perrserker} U-Turn {o:Kommo-o} to {-:115}" },
+                { player: "{p:Perrserker} switch to {p:Meowscarada}" },
+              ],
+              [
+                { player: "{p:Meowscarada} Play Rough {o:Kommo-o} to {=:0}" },
+                { opponent: "{o:Kommo-o} fainted" },
+              ],
+            ],
+            branches: [
+              {
+                branches: [
+                  "Annihilape Rage Fist Meowscarada",
+                  "Sneasler Poison Jab Drednaw",
+                ],
+              },
+            ],
+          },
+        ],
+        frags: { Meowscarada: 1 },
+      },
+      {
+        line: "Annihilape Rage Fist Meowscarada",
+        matchups: [
+          {
+            matchup: ["Annihilape"],
+            turns: [
+              [
+                { player: "{p:Meowscarada} Knock Off {o:Annihilape} to {-:128}" },
+                { opponent: "{o:Annihilape} Rage Fist {p:Meowscarada} to {+:126}" },
+              ],
+              [
+                { player: "{p:Meowscarada} Play Rough {o:Annihilape} to {=:0}" },
+                { opponent: "{o:Annihilape} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Sneasler"],
+            turns: [
+              [
+                { player: "{p:Meowscarada} switch to {p:Drednaw}" },
+                { opponent: "{o:Sneasler} Poison Jab {p:Drednaw} to {+:148}" },
+                { opponent: "{p:Drednaw} poison to {+:137}" },
+              ],
+              [
+                { opponent: "{o:Sneasler} Knock Off {p:Drednaw} to {+:78}" },
+                { player: "{p:Drednaw} Flip Turn {o:Sneasler} to {-:109}" },
+                { player: "{p:Drednaw} switch to {p:Meowscarada}" },
+              ],
+              [
+                { player: "{p:Meowscarada} Play Rough {o:Sneasler} to {=:0}" },
+                { opponent: "{o:Sneasler} fainted" },
+              ],
+            ],
+            branches: [
+              {
+                if: ["Excadrill Bulldoze Zamazenta"],
+                branches: ["Meowscarada Knock Off Iron Crown"],
+              },
+              {
+                branches: ["Gallade Psycho Cut Meowscarada"],
+              },
+            ],
+          },
+        ],
+        frags: { Meowscarada: 2 },
+      },
+      {
+        line: "Sneasler Poison Jab Drednaw",
+        matchups: [
+          {
+            matchup: ["Sneasler"],
+            turns: [
+              [
+                { player: "{p:Meowscarada} switch to {p:Drednaw}" },
+                { opponent: "{o:Sneasler} Poison Jab {p:Drednaw} to {+:148}" },
+                { opponent: "{p:Drednaw} poison to {+:137}" },
+              ],
+              [
+                { opponent: "{o:Sneasler} Knock Off {p:Drednaw} to {+:78}" },
+                { player: "{p:Drednaw} Flip Turn {o:Sneasler} to {-:109}" },
+                { player: "{p:Drednaw} switch to {p:Meowscarada}" },
+              ],
+              [
+                { player: "{p:Meowscarada} Play Rough {o:Sneasler} to {=:0}" },
+                { opponent: "{o:Sneasler} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Annihilape"],
+            turns: [
+              [
+                { player: "{p:Meowscarada} Knock Off {o:Annihilape} to {-:128}" },
+                { opponent: "{o:Annihilape} Rage Fist {p:Meowscarada} to {+:126}" },
+              ],
+              [
+                { player: "{p:Meowscarada} Play Rough {o:Annihilape} to {=:0}" },
+                { opponent: "{o:Annihilape} fainted" },
+              ],
+            ],
+            branches: [
+              {
+                if: ["Excadrill Bulldoze Zamazenta"],
+                branches: ["Meowscarada Knock Off Iron Crown"],
+              },
+              {
+                branches: ["Gallade Psycho Cut Meowscarada"],
+              },
+            ],
+          },
+        ],
+        frags: { Meowscarada: 2 },
+      },
+      {
+        line: "Meowscarada Knock Off Iron Crown",
+        matchups: [
+          {
+            matchup: ["Iron Crown"],
+            turns: [
+              [
+                { player: "{p:Meowscarada} Knock Off {o:Iron Crown} to {=:0}" },
+                { opponent: "{o:Iron Crown} fainted" },
+                { player: "{p:Meowscarada} Rocky Helmet to {+:98}" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Gallade-Mega"],
+            turns: [
+              [
+                { player: "{p:Meowscarada} Shadow Claw {o:Gallade-Mega} to {-:45}" },
+                { opponent: "{o:Gallade-Mega} Drain Punch {p:Meowscarada}" },
+              ],
+              [
+                { player: "{p:Meowscarada} Play Rough {o:Gallade-Mega} to {=:0}" },
+                { opponent: "{o:Gallade-Mega} fainted" },
+              ],
+            ],
+          },
+        ],
+        frags: { Meowscarada: 2 },
+      },
+      {
+        line: "Gallade Psycho Cut Meowscarada",
+        matchups: [
+          {
+            matchup: ["Gallade-Mega"],
+            turns: [
+              [
+                { player: "{p:Meowscarada} Knock Off {o:Gallade-Mega} to {-:113}" },
+                { opponent: "{o:Gallade-Mega} Psycho Cut {p:Meowscarada}" },
+              ],
+              [
+                { player: "{p:Meowscarada} Play Rough {o:Gallade-Mega} to {=:0}" },
+                { opponent: "{o:Gallade-Mega} fainted" },
+              ],
+            ],
+          },
+        ],
+        frags: { Meowscarada: 1 },
+      },
+    ],
+  },
+};
+
+export const box = _box15;
 
 export const moments: Moment[] = [
   sabrinaBoxChange,
@@ -1210,4 +1561,6 @@ export const moments: Moment[] = [
   pokemonTowerGrunt2Battle,
   pokemonTowerGrunt3Battle,
   starterEgg2Encounter,
+  starterEgg2BoxChange,
+  saffronDojoLeaderChuckBattle,
 ];

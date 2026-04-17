@@ -232,17 +232,17 @@ export function getChanges(box: Box): Pokemon[] {
   );
 }
 
-// Returns IV changes from an update change in a box.
+// Returns IV/friendship changes from an update change in a box.
 // Used by BoxChange to render IV rows.
-export function getIVChanges(box: Box): { name: string; ivs: IVs }[] {
+export function getIVChanges(box: Box): { name: string; ivs?: IVs; friend?: boolean }[] {
   const change = box.changes[0];
   if (!change || change.type !== "update") return [];
 
   const state = replayBox(box, box.changes.length);
-  const result: { name: string; ivs: IVs }[] = [];
+  const result: { name: string; ivs?: IVs; friend?: boolean }[] = [];
   for (const [name, pokemon] of state) {
-    if (pokemon.update?.ivs) {
-      result.push({ name, ivs: pokemon.update.ivs });
+    if (pokemon.update?.ivs || pokemon.update?.friend) {
+      result.push({ name, ivs: pokemon.update.ivs, friend: pokemon.update.friend });
     }
   }
   return result;

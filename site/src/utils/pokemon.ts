@@ -19,6 +19,7 @@ export interface PokemonData {
   item?: string | null;
   moves?: (string | null)[];
   ivs?: IVs;
+  friend?: boolean;
   boxOrder?: number;
 }
 

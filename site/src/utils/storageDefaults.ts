@@ -23,6 +23,10 @@ export const STORAGE_DEFAULTS: Record<string, string> = {
     "Meowscarada Night Slash Drifblim",
   "branch-lanturn-flip-turn-hydreigon-lanturn-flip-turn-golurk-lanturn-flip-turn-magnezone":
     "Lanturn Flip Turn Hydreigon",
+  "branch-excadrill-bulldoze-zamazenta-excadrill-bulldoze-iron-crown":
+    "Excadrill Bulldoze Zamazenta",
+  "branch-annihilape-rage-fist-meowscarada-sneasler-poison-jab-drednaw":
+    "Annihilape Rage Fist Meowscarada",
 
   "sequence-wimpod-1": '["Wimpod"]',
   "sequence-frillish-1": '["Frillish"]',
