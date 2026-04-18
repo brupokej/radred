@@ -1798,7 +1798,7 @@ export const silphCoArianaArcherBattle: Moment = {
             ],
           },
           {
-            matchup: ["Mawile", "Articuno-G"],
+            matchup: ["Mawile-Mega", "Articuno-G"],
             turns: [],
             branches: [
               {
@@ -1817,7 +1817,7 @@ export const silphCoArianaArcherBattle: Moment = {
         if: ["94% → Sceptile-Mega Mega Drain Primarina"],
         matchups: [
           {
-            matchup: ["Mawile", "Articuno-G"],
+            matchup: ["Mawile-Mega", "Articuno-G"],
             turns: [],
             branches: [
               {
@@ -1834,7 +1834,7 @@ export const silphCoArianaArcherBattle: Moment = {
         line: "94% → Jellicent Water Spout Articuno-G",
         matchups: [
           {
-            matchup: ["Mawile", "Articuno-G"],
+            matchup: ["Mawile-Mega", "Articuno-G"],
             turns: [
               [
                 { opponent: "{o:Articuno-G} Focus Blast {o:Exploud} to {=:0}" },
@@ -1946,7 +1946,7 @@ export const silphCoArianaArcherBattle: Moment = {
         line: "6% → Jellicent Water Spout Articuno-G (crit)",
         matchups: [
           {
-            matchup: ["Mawile", "Articuno-G"],
+            matchup: ["Mawile-Mega", "Articuno-G"],
             turns: [
               [
                 { opponent: "{o:Articuno-G} Focus Blast {o:Exploud} to {=:0}" },
@@ -1969,7 +1969,7 @@ export const silphCoArianaArcherBattle: Moment = {
         if: ["94% → Sceptile-Mega Mega Drain Primarina"],
         matchups: [
           {
-            matchup: ["Mawile", "Articuno-G"],
+            matchup: ["Mawile-Mega", "Articuno-G"],
             turns: [
               [
                 { opponent: "{o:Articuno-G} Focus Blast {o:Exploud} miss" },
@@ -2021,7 +2021,7 @@ export const silphCoArianaArcherBattle: Moment = {
         if: ["94% → Sceptile-Mega Mega Drain Primarina"],
         matchups: [
           {
-            matchup: ["Mawile", "Articuno-G"],
+            matchup: ["Mawile-Mega", "Articuno-G"],
             turns: [
               [
                 { opponent: "{o:Sceptile-Mega} Dragon Breath {o:Articuno-G} to {-:121}" },
@@ -2045,7 +2045,7 @@ export const silphCoArianaArcherBattle: Moment = {
         if: ["94% → Sceptile-Mega Mega Drain Primarina"],
         matchups: [
           {
-            matchup: ["Mawile", "Articuno-G"],
+            matchup: ["Mawile-Mega", "Articuno-G"],
             turns: [
               [
                 { opponent: "{o:Sceptile-Mega} Dragon Breath {o:Articuno-G} to {-:121}" },
@@ -2094,7 +2094,7 @@ export const silphCoArianaArcherBattle: Moment = {
         if: ["6% → Sceptile-Mega Mega Drain Primarina (crit)"],
         matchups: [
           {
-            matchup: ["Mawile", "Articuno-G"],
+            matchup: ["Mawile-Mega", "Articuno-G"],
             turns: [
               [
                 { opponent: "{o:Articuno-G} Focus Blast {o:Exploud} to {=:0}" },
@@ -2117,7 +2117,7 @@ export const silphCoArianaArcherBattle: Moment = {
         if: ["6% → Sceptile-Mega Mega Drain Primarina (crit)"],
         matchups: [
           {
-            matchup: ["Mawile", "Articuno-G"],
+            matchup: ["Mawile-Mega", "Articuno-G"],
             turns: [
               [
                 { opponent: "{o:Articuno-G} Focus Blast {o:Exploud}" },
@@ -2168,7 +2168,7 @@ export const silphCoArianaArcherBattle: Moment = {
         if: ["6% → Sceptile-Mega Mega Drain Primarina (crit)"],
         matchups: [
           {
-            matchup: ["Mawile", "Articuno-G"],
+            matchup: ["Mawile-Mega", "Articuno-G"],
             turns: [
               [
                 { opponent: "{o:Sceptile-Mega} Dragon Breath {o:Articuno-G} to {-:37}" },
@@ -2192,7 +2192,7 @@ export const silphCoArianaArcherBattle: Moment = {
         if: ["6% → Sceptile-Mega Mega Drain Primarina (crit)"],
         matchups: [
           {
-            matchup: ["Mawile", "Articuno-G"],
+            matchup: ["Mawile-Mega", "Articuno-G"],
             turns: [
               [
                 { opponent: "{o:Sceptile-Mega} Dragon Breath {o:Articuno-G} to {-:37}" },
