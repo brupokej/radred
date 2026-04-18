@@ -8,7 +8,7 @@ import { getHp } from "@site/src/utils/pokedex";
 import { PokemonData, resolvePokemon } from "@site/src/utils/pokemon";
 import { slugify } from "@site/src/utils/slugify";
 import { getColouredSpriteUrl } from "@site/src/utils/sprites";
-import { getState, setState } from "@site/src/utils/storage";
+import { getState, removeState, setState } from "@site/src/utils/storage";
 import { parseTokens } from "@site/src/utils/tokens";
 import React, {
   useCallback,
@@ -480,7 +480,6 @@ function Branch({
         const stored = branchKey ? getState(branchKey) : null;
         const found = stored ? branch.find((b) => slugify(b) === stored) : null;
         const childLine = found ?? defaultBranch;
-        if (branchKey && !stored) setState(branchKey, slugify(defaultBranch));
         dispatch({ type: "SELECT_BRANCH", branchId, childLine });
       }
     }
@@ -493,7 +492,10 @@ function Branch({
 
   function handleChange(value: string) {
     if (!dispatch) return;
-    if (branchKey) setState(branchKey, slugify(value));
+    if (branchKey) {
+      if (value === defaultBranch) removeState(branchKey);
+      else setState(branchKey, slugify(value));
+    }
     dispatch({ type: "SELECT_BRANCH", branchId, childLine: value });
   }
 

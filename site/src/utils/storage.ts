@@ -12,6 +12,11 @@ export function setState(key: string, value: string): void {
   window.dispatchEvent(new CustomEvent(STORAGE_EVENT));
 }
 
+export function removeState(key: string): void {
+  localStorage.removeItem(key);
+  window.dispatchEvent(new CustomEvent(STORAGE_EVENT));
+}
+
 export function useStorageState(key: string): { value: string | null; set: (v: string) => void } {
   const [value, setValue] = useState<string | null>(null);
 
