@@ -4,22 +4,26 @@ import { resolvePokemon } from "@site/src/utils/pokemon";
 import { slugify } from "@site/src/utils/slugify";
 import { getState } from "@site/src/utils/storage";
 
-function bid(b: string | [string, string]): string {
-  return Array.isArray(b) ? b[0] : b;
-}
+function getVisibleLines(data: BattleData): Map<string, (typeof data.lines)[0]> {
+  const linesBySlug = new Map<string, typeof data.lines>();
+  for (const line of data.lines) {
+    const slug = line.line ?? "";
+    if (!linesBySlug.has(slug)) linesBySlug.set(slug, []);
+    linesBySlug.get(slug)!.push(line);
+  }
 
-function getVisibleSlugs(data: BattleData): Set<string> {
-  const linesBySlug = new Map(data.lines.map((l) => [l.line ?? "", l]));
-  const visible = new Set<string>();
+  const visible = new Map<string, (typeof data.lines)[0]>();
   const queue: string[] = [data.lines[0]?.line ?? ""];
 
   while (queue.length > 0) {
     const slug = queue.shift()!;
     if (visible.has(slug)) continue;
-    visible.add(slug);
 
-    const line = linesBySlug.get(slug);
+    const candidates = linesBySlug.get(slug) ?? [];
+    const line = candidates.find((l) => !l.if || l.if.every((t) => visible.has(t)));
     if (!line) continue;
+
+    visible.set(slug, line);
 
     for (const matchup of line.matchups) {
       let branchActivated = false;
@@ -32,12 +36,15 @@ function getVisibleSlugs(data: BattleData): Set<string> {
         branchActivated = true;
 
         if (branch.branches.length === 1) {
-          queue.push(bid(branch.branches[0]));
+          queue.push(branch.branches[0]);
         } else {
-          const key = `branch-${slugify(branch.branches.map(bid))}`;
+          const key = `branch-${slugify(branch.branches)}`;
           const stored = getState(key);
-          const found = stored ? branch.branches.find((b) => slugify(bid(b)) === stored) : null;
-          queue.push(found ? bid(found) : bid(branch.branches[0]));
+          const fallback = branch.default
+            ? (branch.branches.find((b) => b === branch.default) ?? branch.branches[0])
+            : branch.branches[0];
+          const found = stored ? branch.branches.find((b) => slugify(b) === stored) : null;
+          queue.push(found ?? fallback);
         }
       }
     }
@@ -122,9 +129,7 @@ export function computePageFragStats(
 
   for (const { label, battles } of pages) {
     for (const battle of battles) {
-      const visible = getVisibleSlugs(battle);
-      for (const line of battle.lines) {
-        if (!visible.has(line.line ?? "")) continue;
+      for (const line of getVisibleLines(battle).values()) {
         for (const [pokemon, count] of Object.entries(line.frags ?? {})) {
           const key = canon(pokemon);
           if (!totals[key]) {
@@ -194,9 +199,7 @@ export function computeStats(battles: BattleData[]): Record<string, PokemonStats
   }
 
   for (const battle of battles) {
-    const visible = getVisibleSlugs(battle);
-    for (const line of battle.lines) {
-      if (!visible.has(line.line ?? "")) continue;
+    for (const line of getVisibleLines(battle).values()) {
       for (const [pokemon, count] of Object.entries(line.frags ?? {})) {
         const key = canon(pokemon);
         const entry = totals[key] ?? {

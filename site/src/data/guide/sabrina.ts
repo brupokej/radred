@@ -992,6 +992,7 @@ const _box13 = getBox({
     },
     Lanturn: {
       nature: "Quiet",
+      moves: ["Flip Turn", "Hydro Pump", "Thunderbolt", "Volt Switch"],
     },
   },
   team: ["Meowscarada", "Tentacruel", "Lanturn"],
@@ -1027,11 +1028,7 @@ export const pokemonTowerGrunt3Battle: Moment = {
             ],
             branches: [
               {
-                branches: [
-                  "Lanturn Flip Turn Hydreigon",
-                  "Lanturn Flip Turn Golurk",
-                  "Lanturn Flip Turn Magnezone",
-                ],
+                branches: ["Lanturn Flip Turn Hydreigon", "Lanturn Flip Turn Magnezone"],
               },
             ],
           },
@@ -1068,67 +1065,9 @@ export const pokemonTowerGrunt3Battle: Moment = {
                 { opponent: "{o:Magnezone} fainted" },
               ],
             ],
-          },
-          {
-            matchup: ["Golurk"],
-            turns: [
-              [
-                { player: "{p:Meowscarada} Knock Off {o:Golurk} to {-:25}" },
-                { opponent: "{o:Golurk} Shadow Punch {p:Meowscarada} to {+:76}" },
-              ],
-              [
-                { player: "{p:Meowscarada} Knock Off {o:Golurk} to {=:0}" },
-                { opponent: "{o:Golurk} fainted" },
-              ],
-            ],
-            branches: [{ branches: ["Meowscarada Flower Trick Primarina"] }],
+            branches: [{ branches: ["Meowscarada Knock Off Golurk"] }],
           },
         ],
-        frags: { Meowscarada: 3 },
-      },
-      {
-        line: "Lanturn Flip Turn Golurk",
-        matchups: [
-          {
-            matchup: ["Magnezone"],
-            turns: [
-              [
-                { opponent: "{o:Magnezone} switch to {o:Golurk}" },
-                { player: "{p:Lanturn} Flip Turn {o:Golurk} to {-:141}" },
-                { player: "{p:Lanturn} switch to {p:Meowscarada}" },
-              ],
-            ],
-          },
-          {
-            matchup: ["Golurk"],
-            turns: [
-              [
-                { player: "{p:Meowscarada} Knock Off {o:Golurk} to {=:0}" },
-                { opponent: "{o:Golurk} fainted" },
-              ],
-            ],
-          },
-          {
-            matchup: ["Magnezone"],
-            turns: [
-              [
-                { player: "{p:Meowscarada} Low Kick {o:Magnezone} to {=:0}" },
-                { opponent: "{o:Magnezone} fainted" },
-              ],
-            ],
-          },
-          {
-            matchup: ["Hydreigon"],
-            turns: [
-              [
-                { player: "{p:Meowscarada} Play Rough {o:Hydreigon} to {=:0}" },
-                { opponent: "{o:Hydreigon} fainted" },
-              ],
-            ],
-            branches: [{ branches: ["Meowscarada Flower Trick Primarina"] }],
-          },
-        ],
-        frags: { Meowscarada: 3 },
       },
       {
         line: "Lanturn Flip Turn Magnezone",
@@ -1155,7 +1094,14 @@ export const pokemonTowerGrunt3Battle: Moment = {
                 { opponent: "{o:Hydreigon} fainted" },
               ],
             ],
+            branches: [{ branches: ["Meowscarada Knock Off Golurk"] }],
           },
+        ],
+        frags: { Meowscarada: 2 },
+      },
+      {
+        line: "Meowscarada Knock Off Golurk",
+        matchups: [
           {
             matchup: ["Golurk"],
             turns: [
@@ -1168,14 +1114,7 @@ export const pokemonTowerGrunt3Battle: Moment = {
                 { opponent: "{o:Golurk} fainted" },
               ],
             ],
-            branches: [{ branches: ["Meowscarada Flower Trick Primarina"] }],
           },
-        ],
-        frags: { Meowscarada: 3 },
-      },
-      {
-        line: "Meowscarada Flower Trick Primarina",
-        matchups: [
           {
             matchup: ["Primarina"],
             turns: [
@@ -1186,7 +1125,7 @@ export const pokemonTowerGrunt3Battle: Moment = {
             ],
           },
         ],
-        frags: { Meowscarada: 1 },
+        frags: { Meowscarada: 2 },
       },
     ],
   },
@@ -1786,9 +1725,10 @@ export const silphCoArianaArcherBattle: Moment = {
             branches: [
               {
                 branches: [
-                  ["noncrit-mega-drain-psychic-frag", "Articuno-G Psychic Sceptile-Mega (to 0)"],
-                  ["noncrit-mega-drain-psychic-nonfrag", "Articuno-G Psychic Sceptile-Mega"],
+                  "Articuno-G Psychic Sceptile-Mega",
+                  "Articuno-G Psychic Sceptile-Mega (to 0)",
                 ],
+                default: "Articuno-G Psychic Sceptile-Mega (to 0)",
               },
             ],
           },
@@ -1803,16 +1743,18 @@ export const silphCoArianaArcherBattle: Moment = {
             branches: [
               {
                 branches: [
-                  ["crit-mega-drain-psychic-frag", "Articuno-G Psychic Sceptile-Mega (to 0)"],
-                  ["crit-mega-drain-psychic-nonfrag", "Articuno-G Psychic Sceptile-Mega"],
+                  "Articuno-G Psychic Sceptile-Mega",
+                  "Articuno-G Psychic Sceptile-Mega (to 0)",
                 ],
+                default: "Articuno-G Psychic Sceptile-Mega (to 0)",
               },
             ],
           },
         ],
       },
       {
-        line: "noncrit-mega-drain-psychic-frag",
+        line: "Articuno-G Psychic Sceptile-Mega (to 0)",
+        if: ["Sceptile-Mega Mega Drain Primarina"],
         matchups: [
           {
             matchup: ["Primarina", "Articuno-G"],
@@ -1832,14 +1774,8 @@ export const silphCoArianaArcherBattle: Moment = {
             branches: [
               {
                 branches: [
-                  [
-                    "noncrit-mega-drain-psychic-frag-focus-blast-nonmiss",
-                    "Articuno-G Focus Blast Exploud",
-                  ],
-                  [
-                    "noncrit-mega-drain-psychic-frag-focus-blast-miss",
-                    "Articuno-G Focus Blast Exploud (miss)",
-                  ],
+                  "Articuno-G Focus Blast Exploud",
+                  "Articuno-G Focus Blast Exploud (miss)",
                 ],
               },
             ],
@@ -1848,7 +1784,8 @@ export const silphCoArianaArcherBattle: Moment = {
         frags: { Jellicent: 1 },
       },
       {
-        line: "noncrit-mega-drain-psychic-frag-focus-blast-nonmiss",
+        line: "Articuno-G Focus Blast Exploud",
+        if: ["Sceptile-Mega Mega Drain Primarina"],
         matchups: [
           {
             matchup: ["Mawile", "Articuno-G"],
@@ -1999,7 +1936,8 @@ export const silphCoArianaArcherBattle: Moment = {
         frags: { Jellicent: 2 },
       },
       {
-        line: "noncrit-mega-drain-psychic-frag-focus-blast-miss",
+        line: "Articuno-G Focus Blast Exploud (miss)",
+        if: ["Sceptile-Mega Mega Drain Primarina"],
         matchups: [
           {
             matchup: ["Mawile", "Articuno-G"],
@@ -2024,7 +1962,8 @@ export const silphCoArianaArcherBattle: Moment = {
         frags: { Jellicent: 2 },
       },
       {
-        line: "noncrit-mega-drain-psychic-nonfrag",
+        line: "Articuno-G Psychic Sceptile-Mega",
+        if: ["Sceptile-Mega Mega Drain Primarina"],
         matchups: [
           {
             matchup: ["Primarina", "Articuno-G"],
@@ -2039,14 +1978,8 @@ export const silphCoArianaArcherBattle: Moment = {
             branches: [
               {
                 branches: [
-                  [
-                    "noncrit-mega-drain-psychic-nonfrag-dragon-breath-nonparalyze",
-                    "Sceptile-Mega Dragon Breath Articuno-G",
-                  ],
-                  [
-                    "noncrit-mega-drain-psychic-nonfrag-dragon-breath-paralyze",
-                    "Sceptile-Mega Dragon Breath Articuno-G (paralyze)",
-                  ],
+                  "Sceptile-Mega Dragon Breath Articuno-G",
+                  "Sceptile-Mega Dragon Breath Articuno-G (paralyze)",
                 ],
               },
             ],
@@ -2055,7 +1988,8 @@ export const silphCoArianaArcherBattle: Moment = {
         frags: { Jellicent: 1 },
       },
       {
-        line: "noncrit-mega-drain-psychic-nonfrag-dragon-breath-nonparalyze",
+        line: "Sceptile-Mega Dragon Breath Articuno-G",
+        if: ["Sceptile-Mega Mega Drain Primarina"],
         matchups: [
           {
             matchup: ["Mawile", "Articuno-G"],
@@ -2078,7 +2012,8 @@ export const silphCoArianaArcherBattle: Moment = {
         frags: { Jellicent: 2 },
       },
       {
-        line: "noncrit-mega-drain-psychic-nonfrag-dragon-breath-paralyze",
+        line: "Sceptile-Mega Dragon Breath Articuno-G (paralyze)",
+        if: ["Sceptile-Mega Mega Drain Primarina"],
         matchups: [
           {
             matchup: ["Mawile", "Articuno-G"],
@@ -2099,7 +2034,8 @@ export const silphCoArianaArcherBattle: Moment = {
         frags: { Jellicent: 2 },
       },
       {
-        line: "crit-mega-drain-psychic-frag",
+        line: "Articuno-G Psychic Sceptile-Mega (to 0)",
+        if: ["Sceptile-Mega Mega Drain Primarina (crit)"],
         matchups: [
           {
             matchup: ["Primarina", "Articuno-G"],
@@ -2115,14 +2051,8 @@ export const silphCoArianaArcherBattle: Moment = {
             branches: [
               {
                 branches: [
-                  [
-                    "crit-mega-drain-psychic-frag-focus-blast-nonmiss",
-                    "Articuno-G Focus Blast Exploud",
-                  ],
-                  [
-                    "crit-mega-drain-psychic-frag-focus-blast-miss",
-                    "Articuno-G Focus Blast Exploud (miss)",
-                  ],
+                  "Articuno-G Focus Blast Exploud",
+                  "Articuno-G Focus Blast Exploud (miss)",
                 ],
               },
             ],
@@ -2131,7 +2061,8 @@ export const silphCoArianaArcherBattle: Moment = {
         frags: { Jellicent: 1 },
       },
       {
-        line: "crit-mega-drain-psychic-frag-focus-blast-nonmiss",
+        line: "Articuno-G Focus Blast Exploud",
+        if: ["Sceptile-Mega Mega Drain Primarina (crit)"],
         matchups: [
           {
             matchup: ["Mawile", "Articuno-G"],
@@ -2153,7 +2084,8 @@ export const silphCoArianaArcherBattle: Moment = {
         frags: { Jellicent: 2 },
       },
       {
-        line: "crit-mega-drain-psychic-frag-focus-blast-miss",
+        line: "Articuno-G Focus Blast Exploud (miss)",
+        if: ["Sceptile-Mega Mega Drain Primarina (crit)"],
         matchups: [
           {
             matchup: ["Mawile", "Articuno-G"],
@@ -2178,7 +2110,8 @@ export const silphCoArianaArcherBattle: Moment = {
         frags: { Jellicent: 2 },
       },
       {
-        line: "crit-mega-drain-psychic-nonfrag",
+        line: "Articuno-G Psychic Sceptile-Mega",
+        if: ["Sceptile-Mega Mega Drain Primarina (crit)"],
         matchups: [
           {
             matchup: ["Primarina", "Articuno-G"],
@@ -2193,14 +2126,8 @@ export const silphCoArianaArcherBattle: Moment = {
             branches: [
               {
                 branches: [
-                  [
-                    "crit-mega-drain-psychic-nonfrag-dragon-breath-nonparalyze",
-                    "Sceptile-Mega Dragon Breath Articuno-G",
-                  ],
-                  [
-                    "crit-mega-drain-psychic-nonfrag-dragon-breath-paralyze",
-                    "Sceptile-Mega Dragon Breath Articuno-G (paralyze)",
-                  ],
+                  "Sceptile-Mega Dragon Breath Articuno-G",
+                  "Sceptile-Mega Dragon Breath Articuno-G (paralyze)",
                 ],
               },
             ],
@@ -2208,7 +2135,8 @@ export const silphCoArianaArcherBattle: Moment = {
         ],
       },
       {
-        line: "crit-mega-drain-psychic-nonfrag-dragon-breath-nonparalyze",
+        line: "Sceptile-Mega Dragon Breath Articuno-G",
+        if: ["Sceptile-Mega Mega Drain Primarina (crit)"],
         matchups: [
           {
             matchup: ["Mawile", "Articuno-G"],
@@ -2231,7 +2159,8 @@ export const silphCoArianaArcherBattle: Moment = {
         frags: { Jellicent: 2 },
       },
       {
-        line: "crit-mega-drain-psychic-nonfrag-dragon-breath-paralyze",
+        line: "Sceptile-Mega Dragon Breath Articuno-G (paralyze)",
+        if: ["Sceptile-Mega Mega Drain Primarina (crit)"],
         matchups: [
           {
             matchup: ["Mawile", "Articuno-G"],

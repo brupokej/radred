@@ -29,7 +29,8 @@ export interface MoveData {
 export interface BranchData {
   if?: string[];
   ifNot?: string[];
-  branches: (string | [string, string])[];
+  branches: string[];
+  default?: string;
 }
 
 export interface MatchupData {
@@ -41,6 +42,7 @@ export interface MatchupData {
 
 export interface LineData {
   line?: string;
+  if?: string[];
   matchups: MatchupData[];
   frags?: Record<string, number>;
 }
@@ -64,12 +66,18 @@ type GraphAction =
 function computeOrder(
   rootLine: string,
   branches: Map<string, string>,
-  registry: Map<string, string>
+  registry: Map<string, string>,
+  lineIfByName: Map<string, (string[] | undefined)[]>
 ): string[] {
   const order: string[] = [];
   const visited = new Set<string>();
   function visit(slug: string) {
     if (visited.has(slug)) return;
+    const versions = lineIfByName.get(slug);
+    if (versions) {
+      const hasMatch = versions.some((conds) => !conds || conds.every((t) => visited.has(t)));
+      if (!hasMatch) return;
+    }
     visited.add(slug);
     order.push(slug);
     for (const [branchId, parentLine] of registry)
@@ -143,7 +151,7 @@ const BattleLineCtx = React.createContext<string | null>(null);
 
 function battleDataToChildren(data: BattleData): React.ReactNode {
   return data.lines.map((lineData, li) => (
-    <BattleLine key={lineData.line ?? `line-${li}`} line={lineData.line}>
+    <BattleLine key={li} line={lineData.line} lineIf={lineData.if}>
       {lineData.matchups.map((matchupData, mi) => (
         <Matchup key={mi} matchup={matchupData.matchup}>
           {matchupData.row && <Row row={matchupData.row} />}
@@ -164,6 +172,7 @@ function battleDataToChildren(data: BattleData): React.ReactNode {
               branch={branchData.branches}
               if={branchData.if}
               ifNot={branchData.ifNot}
+              default={branchData.default}
             />
           ))}
         </Matchup>
@@ -179,11 +188,26 @@ export function Battle({ data }: { data: BattleData }) {
   const opponentResolved = resolveBox(opponentBox);
   const partnerResolved = partnerBox ? resolveBox(partnerBox) : null;
   const lineElements = React.Children.toArray(resolvedChildren).filter(
-    (c): c is React.ReactElement<{ line?: string; children: React.ReactNode }> =>
+    (c): c is React.ReactElement<{ line?: string; lineIf?: string[]; children: React.ReactNode }> =>
       React.isValidElement(c) && c.type === BattleLine
   );
 
-  const lineMap = new Map(lineElements.map((el) => [el.props.line ?? "", el.props.children]));
+  const lineVersionsBySlug = new Map<string, { lineIf?: string[]; children: React.ReactNode }[]>();
+  for (const el of lineElements) {
+    const slug = el.props.line ?? "";
+    if (!lineVersionsBySlug.has(slug)) lineVersionsBySlug.set(slug, []);
+    lineVersionsBySlug.get(slug)!.push({ lineIf: el.props.lineIf, children: el.props.children });
+  }
+
+  const lineIfByName = useMemo(() => {
+    const map = new Map<string, (string[] | undefined)[]>();
+    for (const line of data.lines) {
+      const name = line.line ?? "";
+      if (!map.has(name)) map.set(name, []);
+      map.get(name)!.push(line.if);
+    }
+    return map;
+  }, [data]);
 
   const rootLine = lineElements.length > 0 ? (lineElements[0].props.line ?? "") : "";
 
@@ -192,9 +216,9 @@ export function Battle({ data }: { data: BattleData }) {
   const withBranches = useCallback(
     (branches: Map<string, string>): GraphState => ({
       selectedBranches: branches,
-      visibleOrder: computeOrder(rootLine, branches, branchRegistry.current),
+      visibleOrder: computeOrder(rootLine, branches, branchRegistry.current, lineIfByName),
     }),
-    [rootLine]
+    [rootLine, lineIfByName]
   );
 
   const reducer = useMemo(
@@ -279,10 +303,14 @@ export function Battle({ data }: { data: BattleData }) {
 
   const enrichedLines = new Map<string, React.ReactNode>();
   let prevMatchup: string[] | null = null;
+  const visitedForIf = new Set<string>();
   for (const slug of state.visibleOrder) {
-    const raw = lineMap.get(slug);
-    if (raw !== undefined) {
-      const { enriched, lastMatchup } = enrichMatchups(raw, prevMatchup, state.visibleOrder);
+    const versions = lineVersionsBySlug.get(slug) ?? [];
+    const version =
+      versions.find((v) => !v.lineIf || v.lineIf.every((t) => visitedForIf.has(t))) ?? versions[0];
+    visitedForIf.add(slug);
+    if (version?.children !== undefined) {
+      const { enriched, lastMatchup } = enrichMatchups(version.children, prevMatchup, state.visibleOrder);
       enrichedLines.set(slug, enriched);
       prevMatchup = lastMatchup;
     }
@@ -306,7 +334,15 @@ export function Battle({ data }: { data: BattleData }) {
   );
 }
 
-function BattleLine({ line, children }: { line?: string; children: React.ReactNode }) {
+function BattleLine({
+  line,
+  lineIf,
+  children,
+}: {
+  line?: string;
+  lineIf?: string[];
+  children: React.ReactNode;
+}) {
   return null;
 }
 
@@ -378,24 +414,18 @@ function OpponentMove({ move }: { move: string }) {
   return <Move move={move} side="opponent" className={styles.opponentMove} />;
 }
 
-function bid(b: string | [string, string]): string {
-  return Array.isArray(b) ? b[0] : b;
-}
-
-function blabel(b: string | [string, string]): string {
-  return Array.isArray(b) ? b[1] : b;
-}
-
 function Branch({
   branch,
   if: condition,
   ifNot,
   isActive,
+  default: defaultId,
 }: {
-  branch: (string | [string, string])[];
+  branch: string[];
   if?: string[];
   ifNot?: string[];
   isActive?: boolean;
+  default?: string;
 }) {
   const branchId = useId();
   const parentLine = useContext(BattleLineCtx);
@@ -411,7 +441,8 @@ function Branch({
     return () => unregisterBranch(branchId);
   }, [branchId, parentLine, registerBranch, unregisterBranch]);
 
-  const branchKey = branch.length > 1 ? `branch-${slugify(branch.map(bid))}` : undefined;
+  const branchKey = branch.length > 1 ? `branch-${slugify(branch)}` : undefined;
+  const defaultBranch = defaultId ? (branch.find((b) => b === defaultId) ?? branch[0]) : branch[0];
 
   useEffect(() => {
     if (!dispatch) return;
@@ -419,16 +450,16 @@ function Branch({
       dispatch({ type: "DESELECT_BRANCH", branchId });
     } else if (isActive === true) {
       if (branch.length === 1) {
-        dispatch({ type: "SELECT_BRANCH", branchId, childLine: bid(branch[0]) });
+        dispatch({ type: "SELECT_BRANCH", branchId, childLine: branch[0] });
       } else {
         const stored = branchKey ? getState(branchKey) : null;
-        const found = stored ? branch.find((b) => slugify(bid(b)) === stored) : null;
-        const childLine = found ? bid(found) : bid(branch[0]);
-        if (branchKey && !stored) setState(branchKey, slugify(bid(branch[0])));
+        const found = stored ? branch.find((b) => slugify(b) === stored) : null;
+        const childLine = found ?? defaultBranch;
+        if (branchKey && !stored) setState(branchKey, slugify(defaultBranch));
         dispatch({ type: "SELECT_BRANCH", branchId, childLine });
       }
     }
-  }, [branchId, dispatch, isActive, branchKey, branch]);
+  }, [branchId, dispatch, isActive, branchKey, branch, defaultBranch]);
 
   const selectedChildLine = graphCtx?.state.selectedBranches.get(branchId);
 
@@ -451,12 +482,12 @@ function Branch({
         <span className={styles.branchLabel}>Branch →</span>
         <select
           className={styles.branchSelect}
-          value={selectedChildLine ?? bid(branch[0])}
+          value={selectedChildLine ?? defaultBranch}
           onChange={(e) => handleChange(e.target.value)}
         >
           {branch.map((item) => (
-            <option key={slugify(bid(item))} value={bid(item)}>
-              {blabel(item)}
+            <option key={slugify(item)} value={item}>
+              {item}
             </option>
           ))}
         </select>
