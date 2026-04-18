@@ -1508,6 +1508,7 @@ export const pokemonTowerGhostBox = getOpponentBox([
     ability: "Bone Zone",
     item: "Thick Club",
     moves: ["Bonemerang", "Shadow Bone", "Fire Punch", "Thunder Punch"],
+    evs: { hp: 252 },
   },
 ]);
 

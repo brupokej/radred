@@ -101,10 +101,7 @@ export const gameCornerGuardBattle: Moment = {
               [
                 { player: "{p:Incineroar} switch to {p:Lanturn}" },
                 { opponent: "{o:Inteleon} Snipe Shot {p:Perrserker} to {+:84}" },
-                {
-                  opponent:
-                    "{o:Tinkaton} Gigaton Hammer {p:Perrserker} to {+:21} or Gigaton Hammer {p:Lanturn} to {+:118}",
-                },
+                { opponent: "{o:Tinkaton} Gigaton Hammer {p:Perrserker} to {+:21}" },
                 { player: "{p:Perrserker} U-Turn {o:Tinkaton} to {-:131}" },
                 { player: "{p:Perrserker} switch to {p:Incineroar}" },
               ],
@@ -113,10 +110,7 @@ export const gameCornerGuardBattle: Moment = {
                 { opponent: "{o:Inteleon} flinched" },
                 { player: "{p:Lanturn} Thunderbolt {o:Inteleon} to {=:0}" },
                 { opponent: "{o:Inteleon} fainted" },
-                {
-                  opponent:
-                    "{o:Tinkaton} Play Rough {p:Incineroar} to {+:88} or Play Rough {p:Lanturn} to {+:56}",
-                },
+                { opponent: "{o:Tinkaton} Play Rough {p:Incineroar} to {+:88}" },
               ],
             ],
           },
@@ -125,10 +119,7 @@ export const gameCornerGuardBattle: Moment = {
             turns: [
               [
                 { player: "{p:Lanturn} switch to {p:Tentacruel}" },
-                {
-                  opponent:
-                    "{o:Tinkaton} Play Rough {p:Incineroar} to {+:16} or Play Rough {p:Tentacruel} to {+:103}",
-                },
+                { opponent: "{o:Tinkaton} Play Rough {p:Incineroar} to {+:16}" },
                 { player: "{p:Incineroar} U-Turn {o:Tinkaton} to {-:127}" },
                 { player: "{p:Incineroar} switch to {p:Arcanine-H}" },
               ],
@@ -561,7 +552,7 @@ export const pokemonTowerChannelerRuthBattle: Moment = {
             turns: [
               [
                 { player: "{p:Excadrill} switch to {p:Meowscarada}" },
-                { opponent: "{o:Grimmsnarl} Light Screen or Reflect" },
+                { opponent: "{o:Grimmsnarl} Light Screen" },
                 { opponent: "{o:Cresselia} Calm Mind" },
                 {
                   player:
@@ -588,8 +579,8 @@ export const pokemonTowerChannelerRuthBattle: Moment = {
             branches: [
               {
                 branches: [
-                  "Meowscarada Night Slash Drifblim",
-                  "Meowscarada Night Slash Polteageist",
+                  "50% → Drifblim and Cresselia matchup",
+                  "50% → Polteageist and Cresselia matchup",
                 ],
               },
             ],
@@ -598,7 +589,7 @@ export const pokemonTowerChannelerRuthBattle: Moment = {
         frags: { Excadrill: 1, Meowscarada: 1 },
       },
       {
-        line: "Meowscarada Night Slash Drifblim",
+        line: "50% → Drifblim and Cresselia matchup",
         matchups: [
           {
             matchup: ["Drifblim", "Cresselia"],
@@ -634,7 +625,7 @@ export const pokemonTowerChannelerRuthBattle: Moment = {
         frags: { Meowscarada: 2 },
       },
       {
-        line: "Meowscarada Night Slash Polteageist",
+        line: "50% → Polteageist and Cresselia matchup",
         matchups: [
           {
             matchup: ["Polteageist", "Cresselia"],
@@ -718,6 +709,23 @@ export const pokemonTowerGhostBattle: Moment = {
         matchups: [
           {
             matchup: ["Marowak-A"],
+            turns: [],
+            branches: [
+              {
+                branches: [
+                  "94% → Meowscarada Knock Off Marowak-A",
+                  "6% → Meowscarada Knock Off Marowak-A (crit)",
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      {
+        line: "94% → Meowscarada Knock Off Marowak-A",
+        matchups: [
+          {
+            matchup: ["Marowak-A"],
             turns: [
               [
                 { player: "{p:Meowscarada} Knock Off {o:Marowak-A} to {-:96}" },
@@ -739,6 +747,21 @@ export const pokemonTowerGhostBattle: Moment = {
           },
         ],
         frags: { Golduck: 1 },
+      },
+      {
+        line: "6% → Meowscarada Knock Off Marowak-A (crit)",
+        matchups: [
+          {
+            matchup: ["Marowak-A"],
+            turns: [
+              [
+                { player: "{p:Meowscarada} Knock Off {o:Marowak-A} (crit) to {=:0}" },
+                { opponent: "{o:Marowak-A} fainted" },
+              ],
+            ],
+          },
+        ],
+        frags: { Meowscarada: 1 },
       },
     ],
   },
@@ -1028,7 +1051,10 @@ export const pokemonTowerGrunt3Battle: Moment = {
             ],
             branches: [
               {
-                branches: ["Lanturn Flip Turn Hydreigon", "Lanturn Flip Turn Magnezone"],
+                branches: [
+                  "80% → Magnezone switch to Hydreigon",
+                  "20% → Magnezone HP Fire Lanturn",
+                ],
               },
             ],
           },
@@ -1036,7 +1062,7 @@ export const pokemonTowerGrunt3Battle: Moment = {
         frags: { Tentacruel: 1 },
       },
       {
-        line: "Lanturn Flip Turn Hydreigon",
+        line: "80% → Magnezone switch to Hydreigon",
         matchups: [
           {
             matchup: ["Magnezone"],
@@ -1070,13 +1096,13 @@ export const pokemonTowerGrunt3Battle: Moment = {
         ],
       },
       {
-        line: "Lanturn Flip Turn Magnezone",
+        line: "20% → Magnezone HP Fire Lanturn",
         matchups: [
           {
             matchup: ["Magnezone"],
             turns: [
               [
-                { opponent: "{o:Magnezone} Hidden Power Fire {p:Lanturn} to {+:189}" },
+                { opponent: "{o:Magnezone} HP Fire {p:Lanturn} to {+:189}" },
                 { player: "{p:Lanturn} Flip Turn {o:Magnezone} to {-:112}" },
                 { player: "{p:Lanturn} switch to {p:Meowscarada}" },
               ],
@@ -1214,14 +1240,17 @@ export const saffronDojoLeaderChuckBattle: Moment = {
             ],
             branches: [
               {
-                branches: ["Excadrill Bulldoze Zamazenta", "Excadrill Bulldoze Iron Crown"],
+                branches: [
+                  "80% → Iron Crown switch to Zamazenta-C",
+                  "20% → Excadrill Bulldoze Iron Crown",
+                ],
               },
             ],
           },
         ],
       },
       {
-        line: "Excadrill Bulldoze Zamazenta",
+        line: "80% → Iron Crown switch to Zamazenta-C",
         matchups: [
           {
             matchup: ["Iron Crown"],
@@ -1253,13 +1282,13 @@ export const saffronDojoLeaderChuckBattle: Moment = {
                 { player: "{p:Ceruledge} heal to {+:85}" },
               ],
             ],
-            branches: [{ branches: ["Kommo-o Clangorous Soulblaze Azumarill"] }],
+            branches: [{ branches: ["Ceruledge switch to Azumarill"] }],
           },
         ],
         frags: { Ceruledge: 1 },
       },
       {
-        line: "Excadrill Bulldoze Iron Crown",
+        line: "20% → Excadrill Bulldoze Iron Crown",
         matchups: [
           {
             matchup: ["Iron Crown"],
@@ -1302,13 +1331,13 @@ export const saffronDojoLeaderChuckBattle: Moment = {
                 { player: "{p:Ceruledge} heal to {+:63}" },
               ],
             ],
-            branches: [{ branches: ["Kommo-o Clangorous Soulblaze Azumarill"] }],
+            branches: [{ branches: ["Ceruledge switch to Azumarill"] }],
           },
         ],
         frags: { Excadrill: 1, Ceruledge: 1 },
       },
       {
-        line: "Kommo-o Clangorous Soulblaze Azumarill",
+        line: "Ceruledge switch to Azumarill",
         matchups: [
           {
             matchup: ["Kommo-o"],
@@ -1337,7 +1366,7 @@ export const saffronDojoLeaderChuckBattle: Moment = {
             ],
             branches: [
               {
-                branches: ["Annihilape Rage Fist Meowscarada", "Sneasler Poison Jab Drednaw"],
+                branches: ["50% → Annihilape matchup", "50% → Sneasler matchup"],
               },
             ],
           },
@@ -1345,7 +1374,7 @@ export const saffronDojoLeaderChuckBattle: Moment = {
         frags: { Meowscarada: 1 },
       },
       {
-        line: "Annihilape Rage Fist Meowscarada",
+        line: "50% → Annihilape matchup",
         matchups: [
           {
             matchup: ["Annihilape"],
@@ -1380,11 +1409,11 @@ export const saffronDojoLeaderChuckBattle: Moment = {
             ],
             branches: [
               {
-                if: ["Excadrill Bulldoze Zamazenta"],
+                if: ["80% → Iron Crown switch to Zamazenta-C"],
                 branches: ["Meowscarada Knock Off Iron Crown"],
               },
               {
-                branches: ["Gallade Psycho Cut Meowscarada"],
+                branches: ["Meowscarada Knock Off Gallade-Mega"],
               },
             ],
           },
@@ -1392,7 +1421,7 @@ export const saffronDojoLeaderChuckBattle: Moment = {
         frags: { Meowscarada: 2 },
       },
       {
-        line: "Sneasler Poison Jab Drednaw",
+        line: "50% → Sneasler matchup",
         matchups: [
           {
             matchup: ["Sneasler"],
@@ -1427,11 +1456,11 @@ export const saffronDojoLeaderChuckBattle: Moment = {
             ],
             branches: [
               {
-                if: ["Excadrill Bulldoze Zamazenta"],
+                if: ["80% → Iron Crown switch to Zamazenta-C"],
                 branches: ["Meowscarada Knock Off Iron Crown"],
               },
               {
-                branches: ["Gallade Psycho Cut Meowscarada"],
+                branches: ["Meowscarada Knock Off Gallade-Mega"],
               },
             ],
           },
@@ -1468,7 +1497,7 @@ export const saffronDojoLeaderChuckBattle: Moment = {
         frags: { Meowscarada: 2 },
       },
       {
-        line: "Gallade Psycho Cut Meowscarada",
+        line: "Meowscarada Knock Off Gallade-Mega",
         matchups: [
           {
             matchup: ["Gallade-Mega"],
@@ -1694,13 +1723,13 @@ export const silphCoArianaArcherBattle: Moment = {
                 { opponent: "{o:Incineroar} fainted" },
               ],
             ],
-            branches: [{ branches: ["Matchup Primarina Articuno-G"] }],
+            branches: [{ branches: ["Primarina and Articuno-G matchup"] }],
           },
         ],
         frags: { Jellicent: 1 },
       },
       {
-        line: "Matchup Primarina Articuno-G",
+        line: "Primarina and Articuno-G matchup",
         matchups: [
           {
             matchup: ["Primarina", "Articuno-G"],
@@ -1708,8 +1737,8 @@ export const silphCoArianaArcherBattle: Moment = {
             branches: [
               {
                 branches: [
-                  "Sceptile-Mega Mega Drain Primarina",
-                  "Sceptile-Mega Mega Drain Primarina (crit)",
+                  "94% → Sceptile-Mega Mega Drain Primarina",
+                  "6% → Sceptile-Mega Mega Drain Primarina (crit)",
                 ],
               },
             ],
@@ -1717,7 +1746,7 @@ export const silphCoArianaArcherBattle: Moment = {
         ],
       },
       {
-        line: "Sceptile-Mega Mega Drain Primarina",
+        line: "94% → Sceptile-Mega Mega Drain Primarina",
         matchups: [
           {
             matchup: ["Primarina", "Articuno-G"],
@@ -1725,17 +1754,17 @@ export const silphCoArianaArcherBattle: Moment = {
             branches: [
               {
                 branches: [
-                  "Articuno-G Psychic Sceptile-Mega",
-                  "Articuno-G Psychic Sceptile-Mega (to 0)",
+                  "19% → Articuno-G Psychic Sceptile-Mega",
+                  "81% → Articuno-G Psychic Sceptile-Mega (to 0)",
                 ],
-                default: "Articuno-G Psychic Sceptile-Mega (to 0)",
+                default: "81% → Articuno-G Psychic Sceptile-Mega (to 0)",
               },
             ],
           },
         ],
       },
       {
-        line: "Sceptile-Mega Mega Drain Primarina (crit)",
+        line: "6% → Sceptile-Mega Mega Drain Primarina (crit)",
         matchups: [
           {
             matchup: ["Primarina", "Articuno-G"],
@@ -1743,18 +1772,18 @@ export const silphCoArianaArcherBattle: Moment = {
             branches: [
               {
                 branches: [
-                  "Articuno-G Psychic Sceptile-Mega",
-                  "Articuno-G Psychic Sceptile-Mega (to 0)",
+                  "19% → Articuno-G Psychic Sceptile-Mega",
+                  "81% → Articuno-G Psychic Sceptile-Mega (to 0)",
                 ],
-                default: "Articuno-G Psychic Sceptile-Mega (to 0)",
+                default: "81% → Articuno-G Psychic Sceptile-Mega (to 0)",
               },
             ],
           },
         ],
       },
       {
-        line: "Articuno-G Psychic Sceptile-Mega (to 0)",
-        if: ["Sceptile-Mega Mega Drain Primarina"],
+        line: "81% → Articuno-G Psychic Sceptile-Mega (to 0)",
+        if: ["94% → Sceptile-Mega Mega Drain Primarina"],
         matchups: [
           {
             matchup: ["Primarina", "Articuno-G"],
@@ -1774,8 +1803,8 @@ export const silphCoArianaArcherBattle: Moment = {
             branches: [
               {
                 branches: [
-                  "Articuno-G Focus Blast Exploud",
-                  "Articuno-G Focus Blast Exploud (miss)",
+                  "70% → Articuno-G Focus Blast Exploud",
+                  "30% → Articuno-G Focus Blast Exploud (miss)",
                 ],
               },
             ],
@@ -1784,8 +1813,8 @@ export const silphCoArianaArcherBattle: Moment = {
         frags: { Jellicent: 1 },
       },
       {
-        line: "Articuno-G Focus Blast Exploud",
-        if: ["Sceptile-Mega Mega Drain Primarina"],
+        line: "70% → Articuno-G Focus Blast Exploud",
+        if: ["94% → Sceptile-Mega Mega Drain Primarina"],
         matchups: [
           {
             matchup: ["Mawile", "Articuno-G"],
@@ -1793,8 +1822,8 @@ export const silphCoArianaArcherBattle: Moment = {
             branches: [
               {
                 branches: [
-                  "Jellicent Water Spout Articuno-G",
-                  "Jellicent Water Spout Articuno-G (crit)",
+                  "94% → Jellicent Water Spout Articuno-G",
+                  "6% → Jellicent Water Spout Articuno-G (crit)",
                 ],
               },
             ],
@@ -1802,7 +1831,7 @@ export const silphCoArianaArcherBattle: Moment = {
         ],
       },
       {
-        line: "Jellicent Water Spout Articuno-G",
+        line: "94% → Jellicent Water Spout Articuno-G",
         matchups: [
           {
             matchup: ["Mawile", "Articuno-G"],
@@ -1832,7 +1861,7 @@ export const silphCoArianaArcherBattle: Moment = {
             ],
             branches: [
               {
-                branches: ["Gholdengo Shadow Ball Meowscarada", "Houndoom Fiery Wrath Meowscarada"],
+                branches: ["50% → Gholdengo matchup", "50% → Houndoom-Mega matchup"],
               },
             ],
           },
@@ -1840,7 +1869,7 @@ export const silphCoArianaArcherBattle: Moment = {
         frags: { Jellicent: 1, Meowscarada: 1 },
       },
       {
-        line: "Gholdengo Shadow Ball Meowscarada",
+        line: "50% → Gholdengo matchup",
         matchups: [
           {
             matchup: ["Gholdengo"],
@@ -1876,7 +1905,7 @@ export const silphCoArianaArcherBattle: Moment = {
         frags: { Meowscarada: 2 },
       },
       {
-        line: "Houndoom Fiery Wrath Meowscarada",
+        line: "50% → Houndoom-Mega matchup",
         matchups: [
           {
             matchup: ["Houndoom"],
@@ -1914,7 +1943,7 @@ export const silphCoArianaArcherBattle: Moment = {
         frags: { Meowscarada: 2 },
       },
       {
-        line: "Jellicent Water Spout Articuno-G (crit)",
+        line: "6% → Jellicent Water Spout Articuno-G (crit)",
         matchups: [
           {
             matchup: ["Mawile", "Articuno-G"],
@@ -1930,14 +1959,14 @@ export const silphCoArianaArcherBattle: Moment = {
                 { opponent: "{o:Mawile-Mega} fainted" },
               ],
             ],
-            branches: [{ branches: ["Gholdengo Shadow Ball Tentacruel 1"] }],
+            branches: [{ branches: ["Jellicent switch to Tentacruel"] }],
           },
         ],
         frags: { Jellicent: 2 },
       },
       {
-        line: "Articuno-G Focus Blast Exploud (miss)",
-        if: ["Sceptile-Mega Mega Drain Primarina"],
+        line: "30% → Articuno-G Focus Blast Exploud (miss)",
+        if: ["94% → Sceptile-Mega Mega Drain Primarina"],
         matchups: [
           {
             matchup: ["Mawile", "Articuno-G"],
@@ -1956,14 +1985,14 @@ export const silphCoArianaArcherBattle: Moment = {
                 { opponent: "{o:Mawile-Mega} fainted" },
               ],
             ],
-            branches: [{ branches: ["Gholdengo Shadow Ball Tentacruel 2"] }],
+            branches: [{ branches: ["Jellicent switch to Tentacruel 2"] }],
           },
         ],
         frags: { Jellicent: 2 },
       },
       {
-        line: "Articuno-G Psychic Sceptile-Mega",
-        if: ["Sceptile-Mega Mega Drain Primarina"],
+        line: "19% → Articuno-G Psychic Sceptile-Mega",
+        if: ["94% → Sceptile-Mega Mega Drain Primarina"],
         matchups: [
           {
             matchup: ["Primarina", "Articuno-G"],
@@ -1978,8 +2007,8 @@ export const silphCoArianaArcherBattle: Moment = {
             branches: [
               {
                 branches: [
-                  "Sceptile-Mega Dragon Breath Articuno-G",
-                  "Sceptile-Mega Dragon Breath Articuno-G (paralyze)",
+                  "70% → Sceptile-Mega Dragon Breath Articuno-G",
+                  "30% → Sceptile-Mega Dragon Breath Articuno-G (paralyze)",
                 ],
               },
             ],
@@ -1988,8 +2017,8 @@ export const silphCoArianaArcherBattle: Moment = {
         frags: { Jellicent: 1 },
       },
       {
-        line: "Sceptile-Mega Dragon Breath Articuno-G",
-        if: ["Sceptile-Mega Mega Drain Primarina"],
+        line: "70% → Sceptile-Mega Dragon Breath Articuno-G",
+        if: ["94% → Sceptile-Mega Mega Drain Primarina"],
         matchups: [
           {
             matchup: ["Mawile", "Articuno-G"],
@@ -2006,14 +2035,14 @@ export const silphCoArianaArcherBattle: Moment = {
                 { opponent: "{o:Mawile-Mega} fainted" },
               ],
             ],
-            branches: [{ branches: ["Gholdengo Shadow Ball Tentacruel 2"] }],
+            branches: [{ branches: ["Jellicent switch to Tentacruel 2"] }],
           },
         ],
         frags: { Jellicent: 2 },
       },
       {
-        line: "Sceptile-Mega Dragon Breath Articuno-G (paralyze)",
-        if: ["Sceptile-Mega Mega Drain Primarina"],
+        line: "30% → Sceptile-Mega Dragon Breath Articuno-G (paralyze)",
+        if: ["94% → Sceptile-Mega Mega Drain Primarina"],
         matchups: [
           {
             matchup: ["Mawile", "Articuno-G"],
@@ -2028,14 +2057,14 @@ export const silphCoArianaArcherBattle: Moment = {
                 { opponent: "{o:Mawile-Mega} fainted" },
               ],
             ],
-            branches: [{ branches: ["Gholdengo Make It Rain Tentacruel"] }],
+            branches: [{ branches: ["Jellicent switch to Tentacruel 3"] }],
           },
         ],
         frags: { Jellicent: 2 },
       },
       {
-        line: "Articuno-G Psychic Sceptile-Mega (to 0)",
-        if: ["Sceptile-Mega Mega Drain Primarina (crit)"],
+        line: "81% → Articuno-G Psychic Sceptile-Mega (to 0)",
+        if: ["6% → Sceptile-Mega Mega Drain Primarina (crit)"],
         matchups: [
           {
             matchup: ["Primarina", "Articuno-G"],
@@ -2051,8 +2080,8 @@ export const silphCoArianaArcherBattle: Moment = {
             branches: [
               {
                 branches: [
-                  "Articuno-G Focus Blast Exploud",
-                  "Articuno-G Focus Blast Exploud (miss)",
+                  "70% → Articuno-G Focus Blast Exploud",
+                  "30% → Articuno-G Focus Blast Exploud (miss)",
                 ],
               },
             ],
@@ -2061,8 +2090,8 @@ export const silphCoArianaArcherBattle: Moment = {
         frags: { Jellicent: 1 },
       },
       {
-        line: "Articuno-G Focus Blast Exploud",
-        if: ["Sceptile-Mega Mega Drain Primarina (crit)"],
+        line: "70% → Articuno-G Focus Blast Exploud",
+        if: ["6% → Sceptile-Mega Mega Drain Primarina (crit)"],
         matchups: [
           {
             matchup: ["Mawile", "Articuno-G"],
@@ -2078,14 +2107,14 @@ export const silphCoArianaArcherBattle: Moment = {
                 { opponent: "{o:Mawile-Mega} fainted" },
               ],
             ],
-            branches: [{ branches: ["Gholdengo Shadow Ball Tentacruel 1"] }],
+            branches: [{ branches: ["Jellicent switch to Tentacruel"] }],
           },
         ],
         frags: { Jellicent: 2 },
       },
       {
-        line: "Articuno-G Focus Blast Exploud (miss)",
-        if: ["Sceptile-Mega Mega Drain Primarina (crit)"],
+        line: "30% → Articuno-G Focus Blast Exploud (miss)",
+        if: ["6% → Sceptile-Mega Mega Drain Primarina (crit)"],
         matchups: [
           {
             matchup: ["Mawile", "Articuno-G"],
@@ -2104,14 +2133,14 @@ export const silphCoArianaArcherBattle: Moment = {
                 { opponent: "{o:Mawile-Mega} fainted" },
               ],
             ],
-            branches: [{ branches: ["Gholdengo Shadow Ball Tentacruel 2"] }],
+            branches: [{ branches: ["Jellicent switch to Tentacruel 2"] }],
           },
         ],
         frags: { Jellicent: 2 },
       },
       {
-        line: "Articuno-G Psychic Sceptile-Mega",
-        if: ["Sceptile-Mega Mega Drain Primarina (crit)"],
+        line: "19% → Articuno-G Psychic Sceptile-Mega",
+        if: ["6% → Sceptile-Mega Mega Drain Primarina (crit)"],
         matchups: [
           {
             matchup: ["Primarina", "Articuno-G"],
@@ -2126,8 +2155,8 @@ export const silphCoArianaArcherBattle: Moment = {
             branches: [
               {
                 branches: [
-                  "Sceptile-Mega Dragon Breath Articuno-G",
-                  "Sceptile-Mega Dragon Breath Articuno-G (paralyze)",
+                  "70% → Sceptile-Mega Dragon Breath Articuno-G",
+                  "30% → Sceptile-Mega Dragon Breath Articuno-G (paralyze)",
                 ],
               },
             ],
@@ -2135,8 +2164,8 @@ export const silphCoArianaArcherBattle: Moment = {
         ],
       },
       {
-        line: "Sceptile-Mega Dragon Breath Articuno-G",
-        if: ["Sceptile-Mega Mega Drain Primarina (crit)"],
+        line: "70% → Sceptile-Mega Dragon Breath Articuno-G",
+        if: ["6% → Sceptile-Mega Mega Drain Primarina (crit)"],
         matchups: [
           {
             matchup: ["Mawile", "Articuno-G"],
@@ -2153,14 +2182,14 @@ export const silphCoArianaArcherBattle: Moment = {
                 { opponent: "{o:Mawile-Mega} fainted" },
               ],
             ],
-            branches: [{ branches: ["Gholdengo Shadow Ball Tentacruel 2"] }],
+            branches: [{ branches: ["Jellicent switch to Tentacruel 2"] }],
           },
         ],
         frags: { Jellicent: 2 },
       },
       {
-        line: "Sceptile-Mega Dragon Breath Articuno-G (paralyze)",
-        if: ["Sceptile-Mega Mega Drain Primarina (crit)"],
+        line: "30% → Sceptile-Mega Dragon Breath Articuno-G (paralyze)",
+        if: ["6% → Sceptile-Mega Mega Drain Primarina (crit)"],
         matchups: [
           {
             matchup: ["Mawile", "Articuno-G"],
@@ -2175,13 +2204,13 @@ export const silphCoArianaArcherBattle: Moment = {
                 { opponent: "{o:Mawile-Mega} fainted" },
               ],
             ],
-            branches: [{ branches: ["Gholdengo Make It Rain Tentacruel"] }],
+            branches: [{ branches: ["Jellicent switch to Tentacruel 3"] }],
           },
         ],
         frags: { Jellicent: 2 },
       },
       {
-        line: "Gholdengo Shadow Ball Tentacruel 1",
+        line: "Jellicent switch to Tentacruel",
         matchups: [
           {
             matchup: ["Gholdengo"],
@@ -2223,7 +2252,7 @@ export const silphCoArianaArcherBattle: Moment = {
         frags: { Meowscarada: 2 },
       },
       {
-        line: "Gholdengo Shadow Ball Tentacruel 2",
+        line: "Jellicent switch to Tentacruel 2",
         matchups: [
           {
             matchup: ["Gholdengo"],
@@ -2273,7 +2302,7 @@ export const silphCoArianaArcherBattle: Moment = {
         frags: { Tentacruel: 1, Meowscarada: 1 },
       },
       {
-        line: "Gholdengo Make It Rain Tentacruel",
+        line: "Jellicent switch to Tentacruel 3",
         matchups: [
           {
             matchup: ["Gholdengo"],

@@ -83,10 +83,7 @@ export const route6CamperJeffBattle: Moment = {
               [
                 { player: "{p:Cloyster} switch to {p:Perrserker}" },
                 { opponent: "{o:Ambipom} Fake Out {p:Perrserker} to {+:106}" },
-                {
-                  opponent:
-                    "{o:Mr. Mime-G} Freeze-Dry {p:Perrserker} to {+:83} or Freeze-Dry {p:Houndoom} to {+:84}",
-                },
+                { opponent: "{o:Mr. Mime-G} Freeze-Dry {p:Perrserker} to {+:83}" },
                 {
                   player:
                     "{p:Houndoom} Incinerate {o:Mr. Mime-G} to {-:48} and {o:Ambipom} to {-:71}",
@@ -95,19 +92,14 @@ export const route6CamperJeffBattle: Moment = {
               ],
               [
                 { player: "{p:Perrserker} Fake Out {o:Ambipom} to {-:52}" },
-                {
-                  opponent:
-                    "{o:Mr. Mime-G} HP Fire {p:Perrserker} to {+:52} or Freeze-Dry {p:Houndoom} to {+:57}",
-                },
+                { opponent: "{o:Mr. Mime-G} HP Fire {p:Perrserker} to {+:52}" },
                 { player: "{p:Houndoom} Leer {o:Ambipom} and {o:Mr. Mime-G}" },
-                { opponent: "{p:Houndoom} frostbite to {+:51}" },
               ],
               [
                 { player: "{p:Houndoom} Sucker Punch {o:Ambipom} to {=:0}" },
                 { player: "{p:Perrserker} Bullet Punch {o:Mr. Mime-G} to {=:0}" },
                 { opponent: "{o:Ambipom} fainted" },
                 { opponent: "{o:Mr. Mime-G} fainted" },
-                { opponent: "{p:Houndoom} frostbite to {+:45}" },
                 { opponent: "{p:Perrserker} frostbite to {+:45}" },
               ],
             ],
@@ -118,14 +110,9 @@ export const route6CamperJeffBattle: Moment = {
               [
                 { player: "{p:Houndoom} switch to {p:Excadrill}" },
                 { player: "{p:Perrserker} switch to {p:Golduck}" },
-                {
-                  opponent:
-                    "{o:Perrserker} Fake Out {p:Excadrill} to {+:113} or Fake Out {p:Golduck} to {+:75}",
-                },
-                {
-                  opponent:
-                    "{o:Boltund} Thunder Fang {p:Excadrill} or Fire Fang {p:Golduck} to {+:75}",
-                },
+                { opponent: "{o:Perrserker} Fake Out {p:Golduck} to {+:75}" },
+                { opponent: "{o:Boltund} Fire Fang {p:Golduck} to {+:47}" },
+                { player: "{p:Golduck} heal to {+:75}" },
                 { opponent: "{p:Golduck} burn to {+:68}" },
               ],
               [
@@ -431,10 +418,7 @@ export const ssAnneLassAnnGentlemanBrooksBattle: Moment = {
             turns: [
               [
                 { player: "{p:Golisopod} Sucker Punch {o:Wigglytuff} to {-:136}" },
-                {
-                  opponent:
-                    "{o:Samurott} HP Grass {p:Golisopod} to {+:81} or Water Pledge {p:Perrserker} to {+:37}",
-                },
+                { opponent: "{o:Samurott} Water Pledge {p:Perrserker} to {+:37}" },
                 { player: "{p:Perrserker} Iron Head {o:Wigglytuff} to {=:0}" },
                 { opponent: "{o:Wigglytuff} fainted" },
               ],
@@ -446,10 +430,7 @@ export const ssAnneLassAnnGentlemanBrooksBattle: Moment = {
               [
                 { player: "{p:Golisopod} switch to {p:Arcanine-H}" },
                 { player: "{p:Perrserker} switch to {p:Golduck}" },
-                {
-                  opponent:
-                    "{o:Samurott} HP Grass {p:Arcanine-H} to {+:89} or Water Pledge {p:Golduck} to {+:79}",
-                },
+                { opponent: "{o:Samurott} Water Pledge {p:Golduck} to {+:79}" },
               ],
               [
                 { player: "{p:Golduck} Low Sweep {o:Samurott} to {-:53}" },
@@ -458,6 +439,24 @@ export const ssAnneLassAnnGentlemanBrooksBattle: Moment = {
               ],
             ],
           },
+          {
+            matchup: ["Simisear"],
+            turns: [],
+            branches: [
+              {
+                branches: [
+                  "96% → Golduck Aqua Jet Simisear",
+                  "4% → Golduck Aqua Jet Simisear (crit to 0)",
+                ],
+              },
+            ],
+          },
+        ],
+        frags: { Golisopod: 2, Perrserker: 1, "Arcanine-H": 1 },
+      },
+      {
+        line: "96% → Golduck Aqua Jet Simisear",
+        matchups: [
           {
             matchup: ["Simisear"],
             turns: [
@@ -469,7 +468,22 @@ export const ssAnneLassAnnGentlemanBrooksBattle: Moment = {
             ],
           },
         ],
-        frags: { Golisopod: 2, Perrserker: 1, "Arcanine-H": 2 },
+        frags: { "Arcanine-H": 1 },
+      },
+      {
+        line: "4% → Golduck Aqua Jet Simisear (crit to 0)",
+        matchups: [
+          {
+            matchup: ["Simisear"],
+            turns: [
+              [
+                { player: "{p:Golduck} Aqua Jet {o:Simisear} (crit) to {=:0}" },
+                { opponent: "{o:Simisear} fainted" },
+              ],
+            ],
+          },
+        ],
+        frags: { Golduck: 1 },
       },
     ],
   },
@@ -563,10 +577,7 @@ export const ssAnneSailorEdmundSailorTrevorBattle: Moment = {
                 { player: "{p:Arcanine-H} switch to {p:Tentacruel}" },
                 { player: "{p:Perrserker} U-Turn {o:Cradily} to {-:49}" },
                 { player: "{p:Perrserker} switch to {p:Azumarill}" },
-                {
-                  opponent:
-                    "{o:Cradily} HP Fire {p:Azumarill} to {+:114} or Earth Power {p:Tentacruel} to {+:48}",
-                },
+                { opponent: "{o:Cradily} Earth Power {p:Tentacruel} to {+:48}" },
               ],
               [
                 { player: "{p:Tentacruel} Sludge {o:Cradily} to {-:33}" },
@@ -579,10 +590,7 @@ export const ssAnneSailorEdmundSailorTrevorBattle: Moment = {
             matchup: ["Lumineon"],
             turns: [
               [
-                {
-                  opponent:
-                    "{o:Lumineon} HP Grass {p:Azumarill} to {+:42} or Hydro Pump {p:Tentacruel} to {+:8}",
-                },
+                { opponent: "{o:Lumineon} Hydro Pump {p:Tentacruel} to {+:8}" },
                 { player: "{p:Tentacruel} Sludge {o:Lumineon} to {-:71}" },
                 { player: "{p:Azumarill} Play Rough {o:Lumineon} to {=:0}" },
                 { opponent: "{o:Lumineon} fainted" },
@@ -1156,7 +1164,7 @@ export const route10PokeManiacHermanBattle: Moment = {
             ],
           },
         ],
-        frags: { Golduck: 1, Gyarados: 2, Tentacruel: 1 },
+        frags: { Golduck: 1, Gyarados: 2, Perrserker: 1 },
       },
     ],
   },
@@ -1468,13 +1476,13 @@ export const vermillionCityLeaderLtSurgeBattle: Moment = {
                 { opponent: "{o:Ampharos-Mega} fainted" },
               ],
             ],
-            branches: [{ branches: ["Raichu Nasty Plot", "Pawmot Close Combat Runerigus"] }],
+            branches: [{ branches: ["50% → Raichu matchup", "50% → Pawmot matchup"] }],
           },
         ],
         frags: { Excadrill: 2, Runerigus: 1 },
       },
       {
-        line: "Raichu Nasty Plot",
+        line: "50% → Raichu matchup",
         matchups: [
           {
             matchup: ["Raichu-A"],
@@ -1498,17 +1506,17 @@ export const vermillionCityLeaderLtSurgeBattle: Moment = {
             ],
             branches: [
               {
-                if: ["Pawmot Close Combat Runerigus"],
-                branches: ["Hitmonlee Close Combat Azumarill"],
+                if: ["50% → Pawmot matchup"],
+                branches: ["Houndoom switch to Azumarill"],
               },
-              { branches: ["Pawmot Close Combat Runerigus 2"] },
+              { branches: ["Houndoom switch to Runerigus"] },
             ],
           },
         ],
         frags: { Houndoom: 1 },
       },
       {
-        line: "Pawmot Close Combat Runerigus",
+        line: "50% → Pawmot matchup",
         matchups: [
           {
             matchup: ["Pawmot"],
@@ -1523,7 +1531,7 @@ export const vermillionCityLeaderLtSurgeBattle: Moment = {
         ],
       },
       {
-        line: "Pawmot Close Combat Runerigus 2",
+        line: "Houndoom switch to Runerigus",
         matchups: [
           {
             matchup: ["Pawmot"],
@@ -1563,15 +1571,15 @@ export const vermillionCityLeaderLtSurgeBattle: Moment = {
               ],
             ],
             branches: [
-              { if: ["Pawmot Close Combat Runerigus"], branches: ["Raichu Nasty Plot"] },
-              { branches: ["Hitmonlee Close Combat Azumarill 2"] },
+              { if: ["50% → Pawmot matchup"], branches: ["50% → Raichu matchup"] },
+              { branches: ["Excadrill switch to Azumarill"] },
             ],
           },
         ],
         frags: { Excadrill: 1 },
       },
       {
-        line: "Hitmonlee Close Combat Azumarill",
+        line: "Houndoom switch to Azumarill",
         matchups: [
           {
             matchup: ["Hitmonlee"],
@@ -1586,7 +1594,7 @@ export const vermillionCityLeaderLtSurgeBattle: Moment = {
         ],
       },
       {
-        line: "Hitmonlee Close Combat Azumarill 2",
+        line: "Excadrill switch to Azumarill",
         matchups: [
           {
             matchup: ["Hitmonlee"],

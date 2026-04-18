@@ -2,7 +2,7 @@ import Card from "@site/src/components/Card";
 import { ScrollArrows } from "@site/src/components/ScrollArrows";
 import { Box, resolveBox } from "@site/src/utils/box";
 import { pokedex, type PokedexData } from "@site/src/utils/pokedex";
-import { formatIVs, resolvePokemon, type Pokemon } from "@site/src/utils/pokemon";
+import { formatStats, resolvePokemon, type Pokemon } from "@site/src/utils/pokemon";
 import { getColouredSpriteUrl } from "@site/src/utils/sprites";
 import { createContext, useCallback, useContext, useEffect, useRef, useState } from "react";
 import styles from "./styles.module.css";
@@ -33,19 +33,16 @@ export default function Team({ box, title = "Team" }: { box: Box; title?: string
   const team = (box.team ?? [])
     .map((name) => resolved.get(name))
     .filter((p): p is Pokemon => p !== undefined);
-  const extraTeam = (box.extraTeam ?? [])
-    .map((name) => resolved.get(name))
-    .filter((p): p is Pokemon => p !== undefined);
   return (
     <Card title={title}>
       <CardDetail>
-        <TeamGrid team={team} extraTeam={extraTeam} />
+        <TeamGrid team={team} />
       </CardDetail>
     </Card>
   );
 }
 
-function TeamGrid({ team, extraTeam = [] }: { team: Pokemon[]; extraTeam?: Pokemon[] }) {
+function TeamGrid({ team }: { team: Pokemon[] }) {
   const contentRef = useRef<HTMLDivElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
   const [cols, setCols] = useState(6);
@@ -72,11 +69,11 @@ function TeamGrid({ team, extraTeam = [] }: { team: Pokemon[]; extraTeam?: Pokem
     el.scrollTo({ left: Math.max(0, target), behavior: "smooth" });
   }, []);
 
-  const filled = team.length + extraTeam.length;
-  const emptiesToShow = Math.max(0, Math.min(cols, 6) - filled);
+  const emptiesToShow = Math.max(0, Math.min(cols, 6) - team.length);
   const emptySlots = Array.from({ length: emptiesToShow }, () => null);
-  const showIVs = [...team, ...extraTeam].some((p) => resolvePokemon(p).ivs !== undefined);
-  const showFriend = [...team, ...extraTeam].some((p) => resolvePokemon(p).friend === true);
+  const showIVs = team.some((p) => resolvePokemon(p).ivs !== undefined);
+  const showEVs = team.some((p) => resolvePokemon(p).evs !== undefined);
+  const showFriend = team.some((p) => resolvePokemon(p).friend === true);
 
   return (
     <div ref={contentRef} className={styles.content}>
@@ -88,13 +85,11 @@ function TeamGrid({ team, extraTeam = [] }: { team: Pokemon[]; extraTeam?: Pokem
         />
         <div ref={scrollRef} className={styles.grid}>
           {team.map((pokemon, i) => (
-            <PokemonCard key={i} pokemon={pokemon} showIVs={showIVs} showFriend={showFriend} />
-          ))}
-          {extraTeam.map((pokemon, i) => (
             <PokemonCard
-              key={`extra-${i}`}
+              key={i}
               pokemon={pokemon}
               showIVs={showIVs}
+              showEVs={showEVs}
               showFriend={showFriend}
             />
           ))}
@@ -103,6 +98,7 @@ function TeamGrid({ team, extraTeam = [] }: { team: Pokemon[]; extraTeam?: Pokem
               key={`empty-${i}`}
               pokemon={null}
               showIVs={showIVs}
+              showEVs={showEVs}
               showFriend={showFriend}
             />
           ))}
@@ -134,10 +130,12 @@ function statColor(v: number): string {
 function PokemonCard({
   pokemon,
   showIVs,
+  showEVs,
   showFriend,
 }: {
   pokemon: Pokemon | null;
   showIVs: boolean;
+  showEVs: boolean;
   showFriend: boolean;
 }) {
   const isExpanded = useCardDetail();
@@ -164,7 +162,15 @@ function PokemonCard({
           {showIVs && (
             <>
               <div className={`${styles.detail} ${current?.ivs ? styles.fieldInfo : ""}`}>
-                {current?.ivs ? formatIVs(current.ivs) : "-"}
+                {current?.ivs ? `${formatStats(current.ivs)} IVs` : "-"}
+              </div>
+              <div className={styles.divider} />
+            </>
+          )}
+          {showEVs && (
+            <>
+              <div className={`${styles.detail} ${current?.evs ? styles.fieldInfo : ""}`}>
+                {current?.evs ? `${formatStats(current.evs)} EVs` : "-"}
               </div>
               <div className={styles.divider} />
             </>

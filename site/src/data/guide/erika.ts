@@ -92,13 +92,12 @@ export const celadonCityGymAceTrainerMaryBattle: Moment = {
             turns: [
               [
                 {
-                  opponent:
-                    "{o:Maractus} Sucker Punch {p:Jellicent} to {+:22} or Drain Punch {p:Incineroar} to {+:81}",
+                  opponent: "{o:Maractus} Sucker Punch {p:Jellicent} to {+:22}",
                 },
                 { player: "{p:Incineroar} Flamethrower {o:Copperajah} to {-:85}" },
                 { player: "{p:Jellicent} Brine {o:Copperajah} to {=:0}" },
                 { opponent: "{o:Copperajah} fainted" },
-                { player: "{p:Jellicent} heal to {+:31} or {p:Incineroar} heal to {+:90}" },
+                { player: "{p:Jellicent} terrain to {+:31}" },
               ],
             ],
           },
@@ -109,13 +108,13 @@ export const celadonCityGymAceTrainerMaryBattle: Moment = {
                 { player: "{p:Incineroar} switch to {p:Runerigus}" },
                 { player: "{p:Jellicent} switch to {p:Houndoom}" },
                 { opponent: "{o:Maractus} Grassy Glide {p:Houndoom} to {+:55}" },
-                { player: "{p:Houndoom} heal to {+:63}" },
+                { player: "{p:Houndoom} terrain to {+:63}" },
               ],
               [
                 { opponent: "{o:Maractus} Spiky Shield" },
                 { player: "{p:Houndoom} Flame Burst {o:Maractus}" },
                 { player: "{p:Runerigus} Disable {o:Maractus}" },
-                { player: "{p:Houndoom} heal to {+:71}" },
+                { player: "{p:Houndoom} terrain to {+:71}" },
               ],
               [
                 { opponent: "{o:Maractus} Grassy Glide {p:Runerigus} to {+:86}" },
@@ -270,8 +269,8 @@ export const celadonCityLeaderErikaBattle: Moment = {
             branches: [
               {
                 branches: [
-                  "Ceruledge Shadow Claw Hawlucha",
-                  "Ceruledge Shadow Claw Hawlucha (crit)",
+                  "94% → Ceruledge Shadow Claw Hawlucha",
+                  "6% → Ceruledge Shadow Claw Hawlucha (crit)",
                 ],
               },
             ],
@@ -280,7 +279,7 @@ export const celadonCityLeaderErikaBattle: Moment = {
         frags: { Golisopod: 1, "Arcanine-H": 1, Golduck: 1, Ceruledge: 1 },
       },
       {
-        line: "Ceruledge Shadow Claw Hawlucha",
+        line: "94% → Ceruledge Shadow Claw Hawlucha",
         matchups: [
           {
             matchup: ["Hawlucha"],
@@ -334,7 +333,7 @@ export const celadonCityLeaderErikaBattle: Moment = {
         frags: { Runerigus: 1, Ceruledge: 1 },
       },
       {
-        line: "Ceruledge Shadow Claw Hawlucha (crit)",
+        line: "6% → Ceruledge Shadow Claw Hawlucha (crit)",
         matchups: [
           {
             matchup: ["Hawlucha"],

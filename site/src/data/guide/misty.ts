@@ -204,12 +204,8 @@ const _box5 = getBox({
       nature: "Impish",
       item: "Rawst Berry",
     },
-    "Meowth-G": {
-      nature: "Impish",
-    },
   },
   team: ["Torracat", "Houndour", "Kricketune", "Yamask-G", "Azumarill"],
-  extraTeam: ["Meowth-G"],
 });
 
 export const mtMoonSuperNerdMiguelBattle: Moment = {
@@ -262,20 +258,19 @@ export const mtMoonSuperNerdMiguelBattle: Moment = {
                 { player: "{p:Yamask-G} switch to {p:Azumarill}" },
                 { opponent: "{o:Swoobat} Calm Mind" },
                 { player: "{p:Houndour} Leer {o:Swoobat} and {o:Sableye}" },
-                {
-                  opponent:
-                    "{o:Sableye} Foul Play {p:Azumarill} to {+:71} or Foul Play {p:Houndour} to {+:29}",
-                },
-                { player: "{p:Azumarill} terrain to {+:76} or {p:Houndour} terrain to {+:32}" },
+                { opponent: "{o:Sableye} Foul Play {p:Houndour} to {+:29}" },
+                { player: "{p:Houndour} terrain to {+:32}" },
               ],
             ],
-            branches: [{ branches: ["Azumarill Play Rough Sableye", "Sableye Protect"] }],
+            branches: [
+              { branches: ["50% → Azumarill Play Rough Sableye", "50% → Sableye Protect"] },
+            ],
           },
         ],
         frags: { Kricketune: 1, "Yamask-G": 1 },
       },
       {
-        line: "Azumarill Play Rough Sableye",
+        line: "50% → Azumarill Play Rough Sableye",
         matchups: [
           {
             matchup: ["Swoobat", "Sableye"],
@@ -285,10 +280,28 @@ export const mtMoonSuperNerdMiguelBattle: Moment = {
                 { player: "{p:Azumarill} Play Rough {o:Sableye} to {=:0}" },
                 { opponent: "{o:Swoobat} fainted" },
                 { opponent: "{o:Sableye} fainted" },
-                { player: "{p:Azumarill} terrain to {+:81} or {p:Houndour} terrain to {+:35}" },
+                { player: "{p:Houndour} terrain to {+:35}" },
               ],
             ],
           },
+          {
+            matchup: ["Skiddo"],
+            turns: [],
+            branches: [
+              {
+                branches: [
+                  "94% → Houndour Incinerate Skiddo",
+                  "6% → Houndour Incinerate Skiddo (crit)",
+                ],
+              },
+            ],
+          },
+        ],
+        frags: { Houndour: 1, Azumarill: 1 },
+      },
+      {
+        line: "94% → Houndour Incinerate Skiddo",
+        matchups: [
           {
             matchup: ["Skiddo"],
             turns: [
@@ -300,10 +313,25 @@ export const mtMoonSuperNerdMiguelBattle: Moment = {
             ],
           },
         ],
-        frags: { Houndour: 1, Azumarill: 2 },
+        frags: { Azumarill: 1 },
       },
       {
-        line: "Sableye Protect",
+        line: "6% → Houndour Incinerate Skiddo (crit)",
+        matchups: [
+          {
+            matchup: ["Skiddo"],
+            turns: [
+              [
+                { player: "{p:Houndour} Incinerate {o:Skiddo} (crit) to {=:0}" },
+                { opponent: "{o:Skiddo} fainted" },
+              ],
+            ],
+          },
+        ],
+        frags: { Houndour: 1 },
+      },
+      {
+        line: "50% → Sableye Protect",
         matchups: [
           {
             matchup: ["Swoobat", "Sableye"],
@@ -313,10 +341,28 @@ export const mtMoonSuperNerdMiguelBattle: Moment = {
                 { opponent: "{o:Sableye} Protect" },
                 { player: "{p:Azumarill} Play Rough {o:Sableye}" },
                 { opponent: "{o:Swoobat} fainted" },
-                { player: "{p:Azumarill} terrain to {+:81} or {p:Houndour} terrain to {+:35}" },
+                { player: "{p:Houndour} terrain to {+:35}" },
               ],
             ],
           },
+          {
+            matchup: ["Skiddo", "Sableye"],
+            turns: [],
+            branches: [
+              {
+                branches: [
+                  "94% → Houndour Incinerate Sableye and Skiddo",
+                  "6% → Houndour Incinerate Sableye and Skiddo (crit)",
+                ],
+              },
+            ],
+          },
+        ],
+        frags: { Houndour: 1 },
+      },
+      {
+        line: "94% → Houndour Incinerate Sableye and Skiddo",
+        matchups: [
           {
             matchup: ["Skiddo", "Sableye"],
             turns: [
@@ -325,12 +371,9 @@ export const mtMoonSuperNerdMiguelBattle: Moment = {
                   player: "{p:Houndour} Incinerate {o:Sableye} to {-:41} and {o:Skiddo} to {-:19}",
                 },
                 { player: "{p:Azumarill} Play Rough {o:Skiddo} to {=:0}" },
-                {
-                  opponent:
-                    "{o:Sableye} Foul Play {p:Azumarill} to {+:66} or Foul Play {p:Houndour} to {+:4}",
-                },
-                { player: "{p:Azumarill} terrain to {+:71} or {p:Houndour} terrain to {+:7}" },
-                { player: "{o:Sableye} terrain to {+:47}" },
+                { opponent: "{o:Sableye} Foul Play {p:Houndour} to {+:4}" },
+                { player: "{p:Houndour} terrain to {+:7}" },
+                { player: "{o:Sableye} terrain to {-:44}" },
                 { opponent: "{o:Skiddo} fainted" },
               ],
             ],
@@ -339,14 +382,33 @@ export const mtMoonSuperNerdMiguelBattle: Moment = {
             matchup: ["Sableye"],
             turns: [
               [
-                { player: "{p:Houndour} Incinerate {o:Sableye} to {-:31}" },
+                { player: "{p:Houndour} Leer {o:Sableye}" },
                 { player: "{p:Azumarill} Play Rough {o:Sableye} to {=:0}" },
                 { opponent: "{o:Sableye} fainted" },
               ],
             ],
           },
         ],
-        frags: { Houndour: 1, Azumarill: 2 },
+        frags: { Azumarill: 2 },
+      },
+      {
+        line: "6% → Houndour Incinerate Sableye and Skiddo (crit)",
+        matchups: [
+          {
+            matchup: ["Skiddo", "Sableye"],
+            turns: [
+              [
+                {
+                  player: "{p:Houndour} Incinerate {o:Sableye} to {-:41} and {o:Skiddo} to {=:0}",
+                },
+                { player: "{p:Azumarill} Play Rough {o:Sableye} to {=:0}" },
+                { opponent: "{o:Skiddo} fainted" },
+                { opponent: "{o:Sableye} fainted" },
+              ],
+            ],
+          },
+        ],
+        frags: { Houndour: 1, Azumarill: 1 },
       },
     ],
   },
@@ -384,6 +446,7 @@ const _box7 = getBox({
       item: "Pecha Berry",
     },
     "Meowth-G": {
+      nature: "Impish",
       item: "Chesto Berry",
     },
     Kricketune: {
@@ -604,9 +667,8 @@ export const ceruleanCityRivalBattle: Moment = {
             branches: [
               {
                 branches: [
-                  "Azumarill Covet Wartortle",
-                  "Azumarill Covet Wartortle (crit)",
-                  "Azumarill Covet Hitmonlee",
+                  "80% → Hitmonlee switch to Wartortle",
+                  "20% → Azumarill Covet Hitmonlee",
                 ],
               },
             ],
@@ -614,7 +676,24 @@ export const ceruleanCityRivalBattle: Moment = {
         ],
       },
       {
-        line: "Azumarill Covet Wartortle",
+        line: "80% → Hitmonlee switch to Wartortle",
+        matchups: [
+          {
+            matchup: ["Hitmonlee"],
+            turns: [],
+            branches: [
+              {
+                branches: [
+                  "94% → Azumarill Covet Wartortle",
+                  "6% → Azumarill Covet Wartortle (crit)",
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      {
+        line: "94% → Azumarill Covet Wartortle",
         matchups: [
           {
             matchup: ["Hitmonlee"],
@@ -624,16 +703,29 @@ export const ceruleanCityRivalBattle: Moment = {
                 { player: "{p:Azumarill} Covet {o:Wartortle} to {-:60}" },
               ],
             ],
+            branches: [{ branches: ["Wartortle matchup"] }],
+          },
+        ],
+      },
+      {
+        line: "Wartortle matchup",
+        matchups: [
+          {
+            matchup: ["Wartortle"],
+            turns: [],
             branches: [
               {
-                branches: ["Azumarill Aqua Tail Wartortle", "Azumarill Aqua Tail Wartortle (crit)"],
+                branches: [
+                  "94% → Azumarill Aqua Tail Wartortle",
+                  "6% → Azumarill Aqua Tail Wartortle (crit)",
+                ],
               },
             ],
           },
         ],
       },
       {
-        line: "Azumarill Covet Wartortle (crit)",
+        line: "6% → Azumarill Covet Wartortle (crit)",
         matchups: [
           {
             matchup: ["Hitmonlee"],
@@ -652,12 +744,12 @@ export const ceruleanCityRivalBattle: Moment = {
                 { player: "{p:Azumarill} Aqua Tail {o:Wartortle} to {-:28}" },
               ],
             ],
-            branches: [{ branches: ["Wartortle HP Electric Clodsire"] }],
+            branches: [{ branches: ["Azumarill switch to Clodsire"] }],
           },
         ],
       },
       {
-        line: "Azumarill Aqua Tail Wartortle",
+        line: "94% → Azumarill Aqua Tail Wartortle",
         matchups: [
           {
             matchup: ["Wartortle"],
@@ -667,12 +759,12 @@ export const ceruleanCityRivalBattle: Moment = {
                 { player: "{p:Azumarill} Aqua Tail {o:Wartortle} to {-:39}" },
               ],
             ],
-            branches: [{ branches: ["Wartortle HP Electric Torracat"] }],
+            branches: [{ branches: ["Azumarill switch to Torracat"] }],
           },
         ],
       },
       {
-        line: "Azumarill Aqua Tail Wartortle (crit)",
+        line: "6% → Azumarill Aqua Tail Wartortle (crit)",
         matchups: [
           {
             matchup: ["Wartortle"],
@@ -682,12 +774,12 @@ export const ceruleanCityRivalBattle: Moment = {
                 { player: "{p:Azumarill} Aqua Tail {o:Wartortle} (crit) to {-:27}" },
               ],
             ],
-            branches: [{ branches: ["Wartortle HP Electric Clodsire"] }],
+            branches: [{ branches: ["Azumarill switch to Clodsire"] }],
           },
         ],
       },
       {
-        line: "Azumarill Covet Hitmonlee",
+        line: "20% → Azumarill Covet Hitmonlee",
         matchups: [
           {
             matchup: ["Hitmonlee"],
@@ -701,8 +793,8 @@ export const ceruleanCityRivalBattle: Moment = {
             branches: [
               {
                 branches: [
-                  "Azumarill Play Rough Wartortle",
-                  "Azumarill Play Rough Wartortle (crit)",
+                  "94% → Azumarill Play Rough Wartortle",
+                  "6% → Azumarill Play Rough Wartortle (crit)",
                 ],
               },
             ],
@@ -711,7 +803,7 @@ export const ceruleanCityRivalBattle: Moment = {
         frags: { Azumarill: 1 },
       },
       {
-        line: "Azumarill Play Rough Wartortle",
+        line: "94% → Azumarill Play Rough Wartortle",
         matchups: [
           {
             matchup: ["Wartortle"],
@@ -721,12 +813,12 @@ export const ceruleanCityRivalBattle: Moment = {
                 { player: "{p:Azumarill} Play Rough {o:Wartortle} to {-:36}" },
               ],
             ],
-            branches: [{ branches: ["Wartortle HP Electric Torracat"] }],
+            branches: [{ branches: ["Azumarill switch to Torracat"] }],
           },
         ],
       },
       {
-        line: "Azumarill Play Rough Wartortle (crit)",
+        line: "6% → Azumarill Play Rough Wartortle (crit)",
         matchups: [
           {
             matchup: ["Wartortle"],
@@ -736,12 +828,12 @@ export const ceruleanCityRivalBattle: Moment = {
                 { player: "{p:Azumarill} Play Rough {o:Wartortle} (crit) to {-:13}" },
               ],
             ],
-            branches: [{ branches: ["Wartortle HP Electric Clodsire"] }],
+            branches: [{ branches: ["Azumarill switch to Clodsire"] }],
           },
         ],
       },
       {
-        line: "Wartortle HP Electric Torracat",
+        line: "Azumarill switch to Torracat",
         matchups: [
           {
             matchup: ["Wartortle"],
@@ -759,12 +851,12 @@ export const ceruleanCityRivalBattle: Moment = {
                 { opponent: "{o:Wartortle} Water Pulse {p:Clodsire}" },
               ],
             ],
-            branches: [{ branches: ["Wartortle Icy Wind Perrserker"] }],
+            branches: [{ branches: ["Clodsire switch to Perrserker"] }],
           },
         ],
       },
       {
-        line: "Wartortle HP Electric Clodsire",
+        line: "Azumarill switch to Clodsire",
         matchups: [
           {
             matchup: ["Wartortle"],
@@ -774,12 +866,12 @@ export const ceruleanCityRivalBattle: Moment = {
                 { opponent: "{o:Wartortle} HP Electric {p:Clodsire}" },
               ],
             ],
-            branches: [{ branches: ["Wartortle Icy Wind Perrserker"] }],
+            branches: [{ branches: ["Clodsire switch to Perrserker"] }],
           },
         ],
       },
       {
-        line: "Wartortle Icy Wind Perrserker",
+        line: "Clodsire switch to Perrserker",
         matchups: [
           {
             matchup: ["Wartortle"],
@@ -832,23 +924,23 @@ export const ceruleanCityRivalBattle: Moment = {
                 { opponent: "{o:Arbok} flinched" },
               ],
               [
-                { player: "{p:Perrserker} Bullet Punch {o:Arbok} to {=:0}" },
+                { player: "{p:Perrserker} Iron Head {o:Arbok} to {=:0}" },
                 { opponent: "{o:Arbok} fainted" },
               ],
             ],
             branches: [
               {
-                if: ["Azumarill Covet Hitmonlee"],
-                branches: ["Clefable Mystical Fire Tentacruel"],
+                if: ["20% → Azumarill Covet Hitmonlee"],
+                branches: ["50% → Clefable matchup"],
               },
-              { branches: ["Hitmonlee Low Sweep Azumarill", "Clefable Mystical Fire Tentacruel"] },
+              { branches: ["50% → Hitmonlee matchup", "50% → Clefable matchup"] },
             ],
           },
         ],
         frags: { Perrserker: 2, Drednaw: 1 },
       },
       {
-        line: "Hitmonlee Low Sweep Azumarill",
+        line: "50% → Hitmonlee matchup",
         matchups: [
           {
             matchup: ["Hitmonlee"],
@@ -864,17 +956,17 @@ export const ceruleanCityRivalBattle: Moment = {
             ],
             branches: [
               {
-                if: ["Clefable Mystical Fire Tentacruel"],
-                branches: ["Perrserker Iron Head Eevee"],
+                if: ["50% → Clefable matchup"],
+                branches: ["Azumarill switch to Perrserker"],
               },
-              { branches: ["Clefable Charge Beam Clodsire"] },
+              { branches: ["Azumarill switch to Clodsire 2"] },
             ],
           },
         ],
         frags: { Azumarill: 1 },
       },
       {
-        line: "Clefable Charge Beam Clodsire",
+        line: "Azumarill switch to Clodsire 2",
         matchups: [
           {
             matchup: ["Clefable"],
@@ -883,17 +975,6 @@ export const ceruleanCityRivalBattle: Moment = {
                 { player: "{p:Azumarill} switch to {p:Clodsire}" },
                 { opponent: "{o:Clefable} Charge Beam {p:Clodsire}" },
               ],
-            ],
-            branches: [{ branches: ["Clefable Icy Wind Tentacruel", "Clefable switch to Eevee"] }],
-          },
-        ],
-      },
-      {
-        line: "Clefable Icy Wind Tentacruel",
-        matchups: [
-          {
-            matchup: ["Clefable"],
-            turns: [
               [
                 { player: "{p:Clodsire} switch to {p:Tentacruel}" },
                 { opponent: "{o:Clefable} Icy Wind {p:Tentacruel} to {+:81}" },
@@ -925,48 +1006,7 @@ export const ceruleanCityRivalBattle: Moment = {
         frags: { Tentacruel: 2 },
       },
       {
-        line: "Clefable switch to Eevee",
-        matchups: [
-          {
-            matchup: ["Clefable"],
-            turns: [
-              [
-                { player: "{p:Clodsire} switch to {p:Tentacruel}" },
-                { opponent: "{o:Clefable} switch to {o:Eevee}" },
-              ],
-            ],
-          },
-          {
-            matchup: ["Eevee"],
-            turns: [
-              [
-                { player: "{p:Tentacruel} Acid Spray {o:Eevee} to {-:53}" },
-                { opponent: "{o:Eevee} Round {p:Tentacruel} to {+:67}" },
-              ],
-              [
-                { player: "{p:Tentacruel} Bubble Beam {o:Eevee} to {=:0}" },
-                { opponent: "{o:Eevee} fainted" },
-              ],
-            ],
-          },
-          {
-            matchup: ["Clefable"],
-            turns: [
-              [
-                { player: "{p:Tentacruel} Acid Spray {o:Clefable} to {-:66}" },
-                { opponent: "{o:Clefable} Charge Beam {p:Tentacruel} to {+:28}" },
-              ],
-              [
-                { player: "{p:Tentacruel} Sludge {o:Clefable} to {=:0}" },
-                { opponent: "{o:Clefable} fainted" },
-              ],
-            ],
-          },
-        ],
-        frags: { Tentacruel: 2 },
-      },
-      {
-        line: "Clefable Mystical Fire Tentacruel",
+        line: "50% → Clefable matchup",
         matchups: [
           {
             matchup: ["Clefable"],
@@ -985,15 +1025,15 @@ export const ceruleanCityRivalBattle: Moment = {
               ],
             ],
             branches: [
-              { if: ["Azumarill Covet Hitmonlee"], branches: ["Tentacruel Acid Spray Eevee"] },
-              { branches: ["Tentacruel Acid Spray Eevee", "Hitmonlee Low Sweep Azumarill"] },
+              { if: ["20% → Azumarill Covet Hitmonlee"], branches: ["50% → Eevee matchup"] },
+              { branches: ["50% → Eevee matchup", "50% → Hitmonlee matchup"] },
             ],
           },
         ],
         frags: { Tentacruel: 1 },
       },
       {
-        line: "Tentacruel Acid Spray Eevee",
+        line: "50% → Eevee matchup",
         matchups: [
           {
             matchup: ["Eevee"],
@@ -1009,8 +1049,8 @@ export const ceruleanCityRivalBattle: Moment = {
             ],
             branches: [
               {
-                ifNot: ["Azumarill Covet Hitmonlee", "Hitmonlee Low Sweep Azumarill"],
-                branches: ["Hitmonlee Knock Off Azumarill"],
+                ifNot: ["20% → Azumarill Covet Hitmonlee", "50% → Hitmonlee matchup"],
+                branches: ["Tentacruel switch to Azumarill"],
               },
             ],
           },
@@ -1018,7 +1058,7 @@ export const ceruleanCityRivalBattle: Moment = {
         frags: { Tentacruel: 1 },
       },
       {
-        line: "Hitmonlee Knock Off Azumarill",
+        line: "Tentacruel switch to Azumarill",
         matchups: [
           {
             matchup: ["Hitmonlee"],
@@ -1037,7 +1077,7 @@ export const ceruleanCityRivalBattle: Moment = {
         frags: { Azumarill: 1 },
       },
       {
-        line: "Perrserker Iron Head Eevee",
+        line: "Azumarill switch to Perrserker",
         matchups: [
           {
             matchup: ["Eevee"],
@@ -1086,25 +1126,7 @@ export const ceruleanCityRivalBoxChange: Moment = {
   data: { playerBox: _box10 },
 };
 
-const _box11 = getBox({
-  box: _box10,
-  update: {
-    Drednaw: {
-      moves: ["Aqua Jet", "Ice Fang", "Razor Shell", "Rock Tomb"],
-    },
-    Azumarill: {
-      nature: "Adamant",
-    },
-    Perrserker: {
-      nature: "Adamant",
-    },
-    Magikarp: {
-      nature: "Adamant",
-    },
-  },
-  team: ["Houndoom", "Drednaw"],
-  extraTeam: ["Azumarill", "Perrserker", "Magikarp"],
-});
+const _box11 = getBox({ box: _box10, team: ["Houndoom", "Drednaw"] });
 
 export const nuggetBridgeBugCatcherCaleBattle: Moment = {
   label: "Nugget Bridge Bug Catcher Cale Battle",
@@ -1130,14 +1152,15 @@ export const nuggetBridgeBugCatcherCaleBattle: Moment = {
             matchup: ["Wormadam-Sa"],
             turns: [
               [
-                { player: "{p:Houndoom} Flame Burst {o:Wormadam-Sa} to {-:9}" },
-                { player: "{p:Drednaw} Rock Tomb {o:Wormadam-Sa} to {=:0}" },
+                { player: "{p:Drednaw} Aqua Jet {o:Wormadam-Sa} to {-:33}" },
+                { opponent: "{p:Drednaw} Rocky Helmet to {=:81}" },
+                { player: "{p:Houndoom} Flame Burst {o:Wormadam-Sa} to {=:0}" },
                 { opponent: "{o:Wormadam-Sa} fainted" },
               ],
             ],
           },
         ],
-        frags: { Houndoom: 1, Drednaw: 2 },
+        frags: { Houndoom: 2, Drednaw: 1 },
       },
     ],
   },
@@ -1147,7 +1170,11 @@ const _box12 = getBox({
   box: _box11,
   update: {
     Azumarill: {
+      nature: "Adamant",
       item: "Pixie Plate",
+    },
+    Perrserker: {
+      nature: "Adamant",
     },
   },
   team: ["Azumarill", "Perrserker"],
@@ -1253,6 +1280,7 @@ const _box15 = getBox({
       item: "Cheri Berry",
     },
     Gyarados: {
+      nature: "Adamant",
       item: "Sitrus Berry",
       moves: ["Bite", "Ice Fang", "Leer", "Thrash"],
     },
@@ -1425,6 +1453,9 @@ const _box17 = getBox({
   update: {
     "Yamask-G": {
       moves: ["Disable", "Haze", "Rock Tomb", "Shadow Sneak"],
+    },
+    Drednaw: {
+      moves: ["Aqua Jet", "Ice Fang", "Razor Shell", "Rock Tomb"],
     },
     Perrserker: {
       ability: "Battle Armor",
@@ -1861,14 +1892,19 @@ export const ceruleanCityLeaderMistyBattle: Moment = {
               ],
             ],
             branches: [
-              { branches: ["Golduck Zen Headbutt Starmie", "Golduck Zen Headbutt Toxicroak"] },
+              {
+                branches: [
+                  "80% → Toxicroak switch to Starmie",
+                  "20% → Golduck Zen Headbutt Toxicroak",
+                ],
+              },
             ],
           },
         ],
         frags: { Kricketune: 2, Perrserker: 1 },
       },
       {
-        line: "Golduck Zen Headbutt Starmie",
+        line: "80% → Toxicroak switch to Starmie",
         matchups: [
           {
             matchup: ["Toxicroak"],
@@ -1883,7 +1919,7 @@ export const ceruleanCityLeaderMistyBattle: Moment = {
             matchup: ["Starmie"],
             turns: [
               [
-                { player: "{p:Golduck} Me First {p:Starmie} to {=:0}" },
+                { player: "{p:Golduck} Me First (Thunderbolt) {p:Starmie} to {=:0}" },
                 { opponent: "{o:Starmie} fainted" },
               ],
             ],
@@ -1917,7 +1953,7 @@ export const ceruleanCityLeaderMistyBattle: Moment = {
         frags: { Golduck: 3 },
       },
       {
-        line: "Golduck Zen Headbutt Toxicroak",
+        line: "20% → Golduck Zen Headbutt Toxicroak",
         matchups: [
           {
             matchup: ["Toxicroak"],
@@ -1944,7 +1980,7 @@ export const ceruleanCityLeaderMistyBattle: Moment = {
                 { opponent: "{o:Starmie} Psyshock {p:Golduck} to {+:50}" },
               ],
               [
-                { player: "{p:Golduck} Me First {p:Starmie} to {=:0}" },
+                { player: "{p:Golduck} Me First (Thunderbolt) {p:Starmie} to {=:0}" },
                 { opponent: "{o:Starmie} fainted" },
               ],
             ],

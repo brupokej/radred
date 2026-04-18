@@ -276,10 +276,6 @@ const _box5 = getBox({
   box: _box4,
   add: [_psyduck],
   update: {
-    "Meowth-G": {
-      level: 16,
-      moves: ["Fake Out", "Growl", "Metal Claw", "Scratch"],
-    },
     Marill: {
       level: 16,
       moves: ["Aqua Jet", "Body Slam", "Covet", "Tail Whip"],
@@ -297,10 +293,10 @@ const _box6 = getBox({
   box: _box5,
   update: {
     Marill: { nature: "Impish", item: "Oran Berry" },
-    "Meowth-G": { nature: "Sassy" },
+    Torracat: { nature: "Impish" },
     Kricketune: { nature: "Naughty", item: "Oran Berry" },
   },
-  team: ["Marill", "Meowth-G", "Kricketune"],
+  team: ["Marill", "Wooper-P", "Torracat", "Kricketune"],
 });
 
 export const viridianForestBrendanBattle: Moment = {
@@ -333,15 +329,19 @@ export const viridianForestBrendanBattle: Moment = {
             matchup: ["Corphish"],
             turns: [
               [
-                { player: "{p:Marill} switch to {p:Meowth-G}" },
-                { opponent: "{o:Corphish} Knock Off {p:Meowth-G} to {+:24}" },
+                { player: "{p:Marill} switch to {p:Wooper-P}" },
+                { opponent: "{o:Corphish} Knock Off {p:Wooper-P} to {+:24}" },
               ],
               [
-                { player: "{p:Meowth-G} Fake Out {o:Corphish} to {-:34}" },
+                { player: "{p:Wooper-P} switch to {p:Torracat}" },
+                { opponent: "{o:Corphish} Knock Off {p:Torracat} to {+:29}" },
+              ],
+              [
+                { player: "{p:Torracat} Fake Out {o:Corphish} to {-:34}" },
                 { opponent: "{o:Corphish} flinched" },
               ],
               [
-                { player: "{p:Meowth-G} switch to {p:Kricketune}" },
+                { player: "{p:Torracat} switch to {p:Kricketune}" },
                 { opponent: "{o:Corphish} Aqua Jet {p:Kricketune} to {+:28}" },
               ],
               [
@@ -384,6 +384,10 @@ export const viridianForestBrendanBattle: Moment = {
 const _box7 = getBox({
   box: _box6,
   update: {
+    "Meowth-G": {
+      level: 16,
+      moves: ["Fake Out", "Growl", "Metal Claw", "Scratch"],
+    },
     Houndour: {
       level: 16,
       moves: ["Incinerate", "Leer", "Snarl", "Sucker Punch"],
@@ -400,7 +404,7 @@ export const viridianForestBrendanBoxChange: Moment = {
 const _box8 = getBox({
   box: _box7,
   update: {
-    "Meowth-G": { item: "Occa Berry" },
+    "Meowth-G": { nature: "Sassy", item: "Occa Berry" },
     Houndour: { nature: "Modest", item: "Oran Berry" },
     Marill: { item: "Pixie Plate" },
   },
@@ -460,7 +464,7 @@ export const viridianForestLassAnneBattle: Moment = {
               ],
               [
                 { player: "{p:Marill} switch to {p:Wooper-P}" },
-                { opponent: "{o:Audino} Protect or Wish" },
+                { opponent: "{o:Audino} Protect" },
               ],
               [
                 { opponent: "{o:Audino} Yawn {p:Wooper-P}" },
@@ -468,7 +472,7 @@ export const viridianForestLassAnneBattle: Moment = {
               ],
               [
                 { player: "{p:Wooper-P} switch to {p:Kricketune}" },
-                { opponent: "{o:Audino} Protect or Wish" },
+                { opponent: "{o:Audino} Protect" },
               ],
               [
                 { player: "{p:Kricketune} Bug Bite {o:Audino} to {=:0}" },
@@ -721,13 +725,18 @@ export const pewterCityLeaderBrockBattle: Moment = {
             matchup: ["Hippopotas"],
             turns: [],
             branches: [
-              { branches: ["Kricketune Mega Drain Varoom", "Kricketune Mega Drain Hippopotas"] },
+              {
+                branches: [
+                  "80% → Hippopotas switch to Varoom",
+                  "20% → Kricketune Mega Drain Hippopotas",
+                ],
+              },
             ],
           },
         ],
       },
       {
-        line: "Kricketune Mega Drain Varoom",
+        line: "80% → Hippopotas switch to Varoom",
         matchups: [
           {
             matchup: ["Hippopotas"],
@@ -738,12 +747,12 @@ export const pewterCityLeaderBrockBattle: Moment = {
                 { opponent: "{p:Kricketune} sand to {=:52}" },
               ],
             ],
-            branches: [{ branches: ["Torracat Fire Fang Varoom"] }],
+            branches: [{ branches: ["Kricketune switch to Meowth-G"] }],
           },
         ],
       },
       {
-        line: "Kricketune Mega Drain Hippopotas",
+        line: "20% → Kricketune Mega Drain Hippopotas",
         matchups: [
           {
             matchup: ["Hippopotas"],
@@ -754,13 +763,13 @@ export const pewterCityLeaderBrockBattle: Moment = {
                 { opponent: "{p:Kricketune} sand to {=:52}" },
               ],
             ],
-            branches: [{ branches: ["Torracat Fire Fang Varoom"] }],
+            branches: [{ branches: ["Kricketune switch to Meowth-G"] }],
           },
         ],
         frags: { Kricketune: 1 },
       },
       {
-        line: "Torracat Fire Fang Varoom",
+        line: "Kricketune switch to Meowth-G",
         matchups: [
           {
             matchup: ["Varoom"],
@@ -875,8 +884,8 @@ export const pewterCityLeaderBrockBattle: Moment = {
             ],
             branches: [
               {
-                if: ["Kricketune Mega Drain Varoom"],
-                branches: ["Kricketune Mega Drain Hippopotas 2"],
+                if: ["Hippopotas switch to Varoom"],
+                branches: ["Kricketune Mega Drain Hippopotas"],
               },
               { branches: ["Kricketune Bug Bite Lunatone"] },
             ],
@@ -885,7 +894,7 @@ export const pewterCityLeaderBrockBattle: Moment = {
         frags: { Kricketune: 1 },
       },
       {
-        line: "Kricketune Mega Drain Hippopotas 2",
+        line: "Kricketune Mega Drain Hippopotas",
         matchups: [
           {
             matchup: ["Hippopotas"],

@@ -20,7 +20,11 @@ function getVisibleLines(data: BattleData): Map<string, (typeof data.lines)[0]> 
     if (visible.has(slug)) continue;
 
     const candidates = linesBySlug.get(slug) ?? [];
-    const line = candidates.find((l) => !l.if || l.if.every((t) => visible.has(t)));
+    const line = candidates.find(
+      (l) =>
+        (!l.if || l.if.every((t) => visible.has(t))) &&
+        (!l.ifNot || l.ifNot.every((t) => !visible.has(t)))
+    );
     if (!line) continue;
 
     visible.set(slug, line);

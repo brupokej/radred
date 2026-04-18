@@ -8,7 +8,7 @@ import {
   getRemovals,
   splitChanges,
 } from "@site/src/utils/box";
-import { formatIVs } from "@site/src/utils/pokemon";
+import { formatStats } from "@site/src/utils/pokemon";
 
 export interface BoxChangeData {
   playerBox: Box;
@@ -53,7 +53,7 @@ export default function BoxChange({ data }: { data: BoxChangeData }) {
   for (const box of boxes) {
     for (const { name, ivs, friend } of getIVChanges(box)) {
       const label = ivs
-        ? `Set to ${formatIVs(ivs)} IVs${friend ? ", max friendship" : ""}`
+        ? `Set to ${formatStats(ivs)} IVs${friend ? ", max friendship" : ""}`
         : "Set to max friendship";
       ivRows.push(<Row key={key++} row={[`${name} → `, { warning: label }]} />);
     }

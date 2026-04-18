@@ -10,7 +10,6 @@ export interface Box {
   base: PokemonData[];
   changes: BoxChange[];
   team: string[];
-  extraTeam?: string[];
   renames?: Record<string, string>;
 }
 
@@ -93,7 +92,6 @@ export function getBox({
   cap,
   update = [],
   team,
-  extraTeam,
 }: {
   box?: Box;
   remove?: string[];
@@ -101,7 +99,6 @@ export function getBox({
   cap?: number | { level: number; exclude?: string[] };
   update?: Record<string, Partial<PokemonData>> | Record<string, Partial<PokemonData>>[];
   team?: string[];
-  extraTeam?: string[];
 }): Box {
   const updates = Array.isArray(update) ? update : [update];
 
@@ -180,7 +177,6 @@ export function getBox({
     base: inputBase,
     changes: newChanges,
     team: team ?? box?.team ?? inferredTeam,
-    extraTeam,
     renames: Object.keys(accRenames).length > 0 ? accRenames : undefined,
   };
 }

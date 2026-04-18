@@ -7,8 +7,6 @@ export interface Stats {
   spe: number;
 }
 
-export type IVs = Partial<Stats>;
-
 export interface PokemonData {
   name: string;
   spriteKey?: string;
@@ -18,7 +16,8 @@ export interface PokemonData {
   ability?: string | null;
   item?: string | null;
   moves?: (string | null)[];
-  ivs?: IVs;
+  ivs?: Partial<Stats>;
+  evs?: Partial<Stats>;
   friend?: boolean;
   boxOrder?: number;
 }
@@ -32,11 +31,11 @@ export function resolvePokemon(pokemon: Pokemon): PokemonData {
   return { ...pokemon.base, ...pokemon.update };
 }
 
-export const IV_STAT_ORDER = ["hp", "atk", "def", "spa", "spd", "spe"] as const;
+export const STAT_ORDER = ["hp", "atk", "def", "spa", "spd", "spe"] as const;
 
-export function formatIVs(ivs: IVs): string {
-  const parts = IV_STAT_ORDER.filter((stat) => ivs[stat] !== undefined).map(
-    (stat) => `${ivs[stat]} ${stat.toUpperCase()}`
+export function formatStats(stats: Partial<Stats>): string {
+  const parts = STAT_ORDER.filter((stat) => stats[stat] !== undefined).map(
+    (stat) => `${stats[stat]} ${stat.toUpperCase()}`
   );
-  return parts.length > 0 ? parts.join(", ") : "-";
+  return parts.length > 0 ? `${parts.join(", ")}` : "-";
 }
