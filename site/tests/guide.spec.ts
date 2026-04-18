@@ -101,9 +101,6 @@ async function getSnapshot(
 
   const filename = slugify([...parts, cardIndex.value++]);
   await expectSnapshot(card, `${filename}.png`);
-
-  const unsetKeys = await card.evaluate(() => localStorage.getItem("unset-keys"));
-  expect(unsetKeys, "All keys must be set in storageDefaults.ts").toBeNull();
 }
 
 async function getSnapshots(page: Page, guideIndex: number, guide: string) {

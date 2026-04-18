@@ -1786,14 +1786,8 @@ export const silphCoArianaArcherBattle: Moment = {
             branches: [
               {
                 branches: [
-                  [
-                    "noncrit-mega-drain-psychic-frag",
-                    "Articuno-G Psychic Sceptile-Mega (to 0)",
-                  ],
-                  [
-                    "noncrit-mega-drain-psychic-nonfrag",
-                    "Articuno-G Psychic Sceptile-Mega",
-                  ],
+                  ["noncrit-mega-drain-psychic-frag", "Articuno-G Psychic Sceptile-Mega (to 0)"],
+                  ["noncrit-mega-drain-psychic-nonfrag", "Articuno-G Psychic Sceptile-Mega"],
                 ],
               },
             ],
@@ -1809,14 +1803,8 @@ export const silphCoArianaArcherBattle: Moment = {
             branches: [
               {
                 branches: [
-                  [
-                    "crit-mega-drain-psychic-frag",
-                    "Articuno-G Psychic Sceptile-Mega (to 0)",
-                  ],
-                  [
-                    "crit-mega-drain-psychic-nonfrag",
-                    "Articuno-G Psychic Sceptile-Mega",
-                  ],
+                  ["crit-mega-drain-psychic-frag", "Articuno-G Psychic Sceptile-Mega (to 0)"],
+                  ["crit-mega-drain-psychic-nonfrag", "Articuno-G Psychic Sceptile-Mega"],
                 ],
               },
             ],
@@ -1885,7 +1873,10 @@ export const silphCoArianaArcherBattle: Moment = {
               [
                 { opponent: "{o:Articuno-G} Focus Blast {o:Exploud} to {=:0}" },
                 { opponent: "{o:Exploud} fainted" },
-                { player: "{p:Jellicent} Water Spout {o:Mawile-Mega} to {=:0} and {o:Articuno-G} to {=:9}" },
+                {
+                  player:
+                    "{p:Jellicent} Water Spout {o:Mawile-Mega} to {=:0} and {o:Articuno-G} to {=:9}",
+                },
                 { opponent: "{o:Mawile-Mega} fainted" },
               ],
             ],
@@ -1904,10 +1895,7 @@ export const silphCoArianaArcherBattle: Moment = {
             ],
             branches: [
               {
-                branches: [
-                  "Gholdengo Shadow Ball Meowscarada",
-                  "Houndoom Fiery Wrath Meowscarada",
-                ],
+                branches: ["Gholdengo Shadow Ball Meowscarada", "Houndoom Fiery Wrath Meowscarada"],
               },
             ],
           },
@@ -1946,7 +1934,7 @@ export const silphCoArianaArcherBattle: Moment = {
                 { opponent: "{o:Houndoom-Mega} fainted" },
               ],
             ],
-          }
+          },
         ],
         frags: { Meowscarada: 2 },
       },
@@ -1984,7 +1972,7 @@ export const silphCoArianaArcherBattle: Moment = {
                 { opponent: "{o:Gholdengo} fainted" },
               ],
             ],
-          }
+          },
         ],
         frags: { Meowscarada: 2 },
       },
@@ -1997,7 +1985,10 @@ export const silphCoArianaArcherBattle: Moment = {
               [
                 { opponent: "{o:Articuno-G} Focus Blast {o:Exploud} to {=:0}" },
                 { opponent: "{o:Exploud} fainted" },
-                { player: "{p:Jellicent} crit Water Spout {o:Mawile-Mega} to {=:0} and {o:Articuno-G} to {=:0}" },
+                {
+                  player:
+                    "{p:Jellicent} crit Water Spout {o:Mawile-Mega} to {=:0} and {o:Articuno-G} to {=:0}",
+                },
                 { opponent: "{o:Articuno-G} fainted" },
                 { opponent: "{o:Mawile-Mega} fainted" },
               ],
@@ -2015,8 +2006,14 @@ export const silphCoArianaArcherBattle: Moment = {
             turns: [
               [
                 { opponent: "{o:Articuno-G} Focus Blast {o:Exploud} miss" },
-                { opponent: "{o:Exploud} Hyper Voice {o:Mawile-Mega} to {-:103} and {o:Articuno-G} to {-:109}" },
-                { player: "{p:Jellicent} Water Spout {o:Mawile-Mega} to {=:0} and {o:Articuno-G} to {=:0}" },
+                {
+                  opponent:
+                    "{o:Exploud} Hyper Voice {o:Mawile-Mega} to {-:103} and {o:Articuno-G} to {-:109}",
+                },
+                {
+                  player:
+                    "{p:Jellicent} Water Spout {o:Mawile-Mega} to {=:0} and {o:Articuno-G} to {=:0}",
+                },
                 { opponent: "{o:Articuno-G} fainted" },
                 { opponent: "{o:Mawile-Mega} fainted" },
               ],
@@ -2067,7 +2064,10 @@ export const silphCoArianaArcherBattle: Moment = {
                 { opponent: "{o:Sceptile-Mega} Dragon Breath {o:Articuno-G} to {-:121}" },
                 { opponent: "{o:Articuno-G} Psychic {o:Sceptile-Mega} to {=:0}" },
                 { opponent: "{o:Sceptile-Mega} fainted" },
-                { player: "{p:Jellicent} Water Spout {o:Mawile-Mega} to {=:0} and {o:Articuno-G} to {=:0}" },
+                {
+                  player:
+                    "{p:Jellicent} Water Spout {o:Mawile-Mega} to {=:0} and {o:Articuno-G} to {=:0}",
+                },
                 { opponent: "{o:Articuno-G} fainted" },
                 { opponent: "{o:Mawile-Mega} fainted" },
               ],
@@ -2085,7 +2085,10 @@ export const silphCoArianaArcherBattle: Moment = {
             turns: [
               [
                 { opponent: "{o:Sceptile-Mega} Dragon Breath {o:Articuno-G} to {-:121}" },
-                { player: "{p:Jellicent} Water Spout {o:Mawile-Mega} to {=:0} and {o:Articuno-G} to {=:0}" },
+                {
+                  player:
+                    "{p:Jellicent} Water Spout {o:Mawile-Mega} to {=:0} and {o:Articuno-G} to {=:0}",
+                },
                 { opponent: "{o:Articuno-G} fainted" },
                 { opponent: "{o:Mawile-Mega} fainted" },
               ],
@@ -2136,7 +2139,10 @@ export const silphCoArianaArcherBattle: Moment = {
               [
                 { opponent: "{o:Articuno-G} Focus Blast {o:Exploud} to {=:0}" },
                 { opponent: "{o:Exploud} fainted" },
-                { player: "{p:Jellicent} Water Spout {o:Mawile-Mega} to {=:0} and {o:Articuno-G} to {=:0}" },
+                {
+                  player:
+                    "{p:Jellicent} Water Spout {o:Mawile-Mega} to {=:0} and {o:Articuno-G} to {=:0}",
+                },
                 { opponent: "{o:Articuno-G} fainted" },
                 { opponent: "{o:Mawile-Mega} fainted" },
               ],
@@ -2154,8 +2160,14 @@ export const silphCoArianaArcherBattle: Moment = {
             turns: [
               [
                 { opponent: "{o:Articuno-G} Focus Blast {o:Exploud}" },
-                { opponent: "{o:Exploud} Hyper Voice {o:Mawile-Mega} to {-:103} and {o:Articuno-G} to {-:25}" },
-                { player: "{p:Jellicent} Water Spout {o:Mawile-Mega} to {=:0} and {o:Articuno-G} to {=:0}" },
+                {
+                  opponent:
+                    "{o:Exploud} Hyper Voice {o:Mawile-Mega} to {-:103} and {o:Articuno-G} to {-:25}",
+                },
+                {
+                  player:
+                    "{p:Jellicent} Water Spout {o:Mawile-Mega} to {=:0} and {o:Articuno-G} to {=:0}",
+                },
                 { opponent: "{o:Articuno-G} fainted" },
                 { opponent: "{o:Mawile-Mega} fainted" },
               ],
@@ -2205,7 +2217,10 @@ export const silphCoArianaArcherBattle: Moment = {
                 { opponent: "{o:Sceptile-Mega} Dragon Breath {o:Articuno-G} to {-:37}" },
                 { opponent: "{o:Articuno-G} Psychic {o:Sceptile-Mega} to {=:0}" },
                 { opponent: "{o:Sceptile-Mega} fainted" },
-                { player: "{p:Jellicent} Water Spout {o:Mawile-Mega} to {=:0} and {o:Articuno-G} to {=:0}" },
+                {
+                  player:
+                    "{p:Jellicent} Water Spout {o:Mawile-Mega} to {=:0} and {o:Articuno-G} to {=:0}",
+                },
                 { opponent: "{o:Articuno-G} fainted" },
                 { opponent: "{o:Mawile-Mega} fainted" },
               ],
@@ -2223,7 +2238,10 @@ export const silphCoArianaArcherBattle: Moment = {
             turns: [
               [
                 { opponent: "{o:Sceptile-Mega} Dragon Breath {o:Articuno-G} to {-:37}" },
-                { player: "{p:Jellicent} Water Spout {o:Mawile-Mega} to {=:0} and {o:Articuno-G} to {=:0}" },
+                {
+                  player:
+                    "{p:Jellicent} Water Spout {o:Mawile-Mega} to {=:0} and {o:Articuno-G} to {=:0}",
+                },
                 { opponent: "{o:Articuno-G} fainted" },
                 { opponent: "{o:Mawile-Mega} fainted" },
               ],
@@ -2288,7 +2306,10 @@ export const silphCoArianaArcherBattle: Moment = {
                 { player: "{p:Tentacruel} heal to {+:95}" },
               ],
               [
-                { opponent: "{o:Gholdengo} Make It Rain {p:Tentacruel} to {+:47} and {o:Exploud} to {+:34}" },
+                {
+                  opponent:
+                    "{o:Gholdengo} Make It Rain {p:Tentacruel} to {+:47} and {o:Exploud} to {+:34}",
+                },
                 { player: "{p:Tentacruel} Flip Turn {o:Gholdengo} to {-:74}" },
                 { player: "{p:Tentacruel} switch to {p:Meowscarada}" },
                 { opponent: "{o:Exploud} Flamethrower {o:Gholdengo} to {=:0}" },
@@ -2303,7 +2324,10 @@ export const silphCoArianaArcherBattle: Moment = {
               [
                 { player: "{p:Meowscarada} U-Turn {o:Houndoom-Mega} to {-:116}" },
                 { player: "{p:Meowscarada} switch to {p:Jellicent}" },
-                { opponent: "{o:Houndoom-Mega} Heat Wave {p:Jellicent} to {+:170} and {o:Exploud} to {=:0}" },
+                {
+                  opponent:
+                    "{o:Houndoom-Mega} Heat Wave {p:Jellicent} to {+:170} and {o:Exploud} to {=:0}",
+                },
                 { opponent: "{o:Exploud} fainted" },
               ],
               [
@@ -2328,12 +2352,18 @@ export const silphCoArianaArcherBattle: Moment = {
               [
                 { player: "{p:Jellicent} switch to {p:Tentacruel}" },
                 { opponent: "{o:Sceptile-Mega} HP Dark {o:Gholdengo} to {-:89}" },
-                { opponent: "{o:Gholdengo} Make It Rain {p:Tentacruel} to {+:124} and {o:Sceptile-Mega} to {=:0}" },
+                {
+                  opponent:
+                    "{o:Gholdengo} Make It Rain {p:Tentacruel} to {+:124} and {o:Sceptile-Mega} to {=:0}",
+                },
                 { opponent: "{o:Sceptile-Mega} fainted" },
                 { player: "{p:Tentacruel} heal to {+:134}" },
               ],
               [
-                { opponent: "{o:Gholdengo} Make It Rain {p:Tentacruel} to {+:86} and {o:Exploud} to {+:34}" },
+                {
+                  opponent:
+                    "{o:Gholdengo} Make It Rain {p:Tentacruel} to {+:86} and {o:Exploud} to {+:34}",
+                },
                 { player: "{p:Tentacruel} Flip Turn {o:Gholdengo} to {-:62}" },
                 { player: "{p:Tentacruel} switch to {p:Meowscarada}" },
                 { opponent: "{o:Exploud} Flamethrower {o:Gholdengo} to {=:0}" },
@@ -2347,7 +2377,10 @@ export const silphCoArianaArcherBattle: Moment = {
               [
                 { player: "{p:Meowscarada} U-Turn {o:Houndoom-Mega} to {-:116}" },
                 { player: "{p:Meowscarada} switch to {p:Jellicent}" },
-                { opponent: "{o:Houndoom-Mega} Heat Wave {p:Jellicent} to {+:170} and {o:Exploud} to {=:0}" },
+                {
+                  opponent:
+                    "{o:Houndoom-Mega} Heat Wave {p:Jellicent} to {+:170} and {o:Exploud} to {=:0}",
+                },
                 { opponent: "{o:Exploud} fainted" },
               ],
               [

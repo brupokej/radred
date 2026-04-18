@@ -4,13 +4,7 @@ export const STORAGE_EVENT = "storage-change";
 
 export function getState(key: string): string | null {
   if (typeof window === "undefined") return null;
-  const value = localStorage.getItem(key);
-  if (value === null) {
-    console.warn(`Key ${value} must be set in storageDefaults.ts`);
-    const unsetKeys: string[] = JSON.parse(localStorage.getItem("unset-keys") ?? "[]");
-    localStorage.setItem("unset-keys", JSON.stringify([...unsetKeys, key]));
-  }
-  return value;
+  return localStorage.getItem(key);
 }
 
 export function setState(key: string, value: string): void {

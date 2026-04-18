@@ -8,7 +8,7 @@ import { getHp } from "@site/src/utils/pokedex";
 import { PokemonData, resolvePokemon } from "@site/src/utils/pokemon";
 import { slugify } from "@site/src/utils/slugify";
 import { getColouredSpriteUrl } from "@site/src/utils/sprites";
-import { setState } from "@site/src/utils/storage";
+import { getState, setState } from "@site/src/utils/storage";
 import { parseTokens } from "@site/src/utils/tokens";
 import React, {
   useCallback,
@@ -417,15 +417,14 @@ function Branch({
     if (!dispatch) return;
     if (isActive === false) {
       dispatch({ type: "DESELECT_BRANCH", branchId });
-      if (branchKey) localStorage.removeItem(branchKey);
     } else if (isActive === true) {
       if (branch.length === 1) {
         dispatch({ type: "SELECT_BRANCH", branchId, childLine: bid(branch[0]) });
       } else {
-        const stored = branchKey ? localStorage.getItem(branchKey) : null;
+        const stored = branchKey ? getState(branchKey) : null;
         const found = stored ? branch.find((b) => slugify(bid(b)) === stored) : null;
         const childLine = found ? bid(found) : bid(branch[0]);
-        if (branchKey && !stored) localStorage.setItem(branchKey, slugify(bid(branch[0])));
+        if (branchKey && !stored) setState(branchKey, slugify(bid(branch[0])));
         dispatch({ type: "SELECT_BRANCH", branchId, childLine });
       }
     }

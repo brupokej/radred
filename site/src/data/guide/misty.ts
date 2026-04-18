@@ -601,7 +601,15 @@ export const ceruleanCityRivalBattle: Moment = {
                 { player: "{p:Azumarill} flinched" },
               ],
             ],
-            branches: [{ branches: ["Azumarill Covet Wartortle", "Azumarill Covet Wartortle (crit)", "Azumarill Covet Hitmonlee"] }],
+            branches: [
+              {
+                branches: [
+                  "Azumarill Covet Wartortle",
+                  "Azumarill Covet Wartortle (crit)",
+                  "Azumarill Covet Hitmonlee",
+                ],
+              },
+            ],
           },
         ],
       },
@@ -616,7 +624,11 @@ export const ceruleanCityRivalBattle: Moment = {
                 { player: "{p:Azumarill} Covet {o:Wartortle} to {-:60}" },
               ],
             ],
-            branches: [{ branches: ["Azumarill Aqua Tail Wartortle", "Azumarill Aqua Tail Wartortle (crit)"] }],
+            branches: [
+              {
+                branches: ["Azumarill Aqua Tail Wartortle", "Azumarill Aqua Tail Wartortle (crit)"],
+              },
+            ],
           },
         ],
       },
@@ -686,7 +698,14 @@ export const ceruleanCityRivalBattle: Moment = {
                 { opponent: "{o:Hitmonlee} fainted" },
               ],
             ],
-            branches: [{ branches: ["Azumarill Play Rough Wartortle", "Azumarill Play Rough Wartortle (crit)"] }],
+            branches: [
+              {
+                branches: [
+                  "Azumarill Play Rough Wartortle",
+                  "Azumarill Play Rough Wartortle (crit)",
+                ],
+              },
+            ],
           },
         ],
         frags: { Azumarill: 1 },
