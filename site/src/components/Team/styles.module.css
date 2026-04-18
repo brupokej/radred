@@ -57,13 +57,13 @@
 .detail,
 .move {
   border-radius: 3px;
-  padding: 0.15rem 0.3rem;
+  padding: 2px 0.3rem;
 }
 
 .name,
 .level {
   font-weight: var(--ifm-font-weight-bold);
-  line-height: 1.3;
+  line-height: 22px;
 }
 
 .name {
@@ -78,7 +78,7 @@
 .divider {
   align-self: stretch;
   height: 1px;
-  margin: calc(var(--ifm-spacing-vertical) - 0.15rem) 0;
+  margin: 10px 0;
   position: relative;
 }
 
@@ -95,7 +95,7 @@
 .detail,
 .move {
   font-size: 0.875rem;
-  line-height: 1.6;
+  line-height: 22px;
   margin-top: 0.25rem;
 }
 
@@ -125,9 +125,9 @@
   display: flex;
   font-size: 0.875rem;
   gap: 0.25rem;
-  line-height: 1.6;
+  line-height: 22px;
   margin-top: 0.25rem;
-  padding: 0.15rem 0.3rem;
+  padding: 2px 0.3rem;
 }
 
 .statRow:first-child {
@@ -165,7 +165,8 @@
   border-top: 1px solid var(--ifm-color-emphasis-200);
   cursor: pointer;
   display: block;
-  padding: calc(var(--ifm-spacing-vertical) * 0.6) var(--ifm-spacing-horizontal);
+  line-height: 26px;
+  padding: 7px var(--ifm-spacing-horizontal);
   text-align: center;
   user-select: none;
   width: 100%;

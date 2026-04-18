@@ -20,40 +20,31 @@
 :root {
   --hl-info-bg: var(--ifm-color-info-contrast-background);
   --hl-info-outline: 1px solid var(--ifm-color-info);
-  --hl-info-vpad: 0.15rem;
   --hl-warning-bg: var(--ifm-color-warning-contrast-background);
   --hl-warning-outline: 1px solid var(--ifm-color-warning);
-  --hl-warning-vpad: 0.15rem;
   --hl-danger-bg: var(--ifm-color-danger-contrast-background);
   --hl-danger-outline: 1px solid var(--ifm-color-danger);
-  --hl-danger-vpad: 0.15rem;
 }
 
 html[data-highlight-level="warning"] {
   --hl-info-bg: transparent;
   --hl-info-outline: none;
-  --hl-info-vpad: 0rem;
 }
 
 html[data-highlight-level="danger"] {
   --hl-info-bg: transparent;
   --hl-info-outline: none;
-  --hl-info-vpad: 0rem;
   --hl-warning-bg: transparent;
   --hl-warning-outline: none;
-  --hl-warning-vpad: 0rem;
 }
 
 html[data-highlight-level="off"] {
   --hl-info-bg: transparent;
   --hl-info-outline: none;
-  --hl-info-vpad: 0rem;
   --hl-warning-bg: transparent;
   --hl-warning-outline: none;
-  --hl-warning-vpad: 0rem;
   --hl-danger-bg: transparent;
   --hl-danger-outline: none;
-  --hl-danger-vpad: 0rem;
 }
 
 .table-of-contents__link {

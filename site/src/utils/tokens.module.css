@@ -1,7 +1,7 @@
 .sprite {
-  height: 28px;
+  height: 26px;
   object-fit: contain;
-  width: 28px;
+  width: 26px;
 }
 
 .resultMuted {
@@ -14,8 +14,8 @@
   display: inline-block;
   font-family: var(--ifm-font-family-monospace);
   font-size: inherit;
-  line-height: 1.8;
-  padding: 0.1rem 0.4rem;
+  line-height: 22px;
+  padding: 2px 0.4rem;
   vertical-align: middle;
   white-space: nowrap;
 }

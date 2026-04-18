@@ -6,7 +6,7 @@
   align-items: center;
   display: flex;
   font-size: 0.875rem;
-  line-height: 1.8;
+  line-height: 26px;
   overflow-x: auto;
   overscroll-behavior-x: none;
   padding-block: var(--ifm-spacing-vertical);
@@ -25,17 +25,6 @@
   padding-inline: 0.25rem;
 }
 
-.rowHighlightedInfo {
-  padding-block: calc(var(--ifm-spacing-vertical) - var(--hl-info-vpad));
-}
-
-.rowHighlightedWarning {
-  padding-block: calc(var(--ifm-spacing-vertical) - var(--hl-warning-vpad));
-}
-
-.rowHighlightedDanger {
-  padding-block: calc(var(--ifm-spacing-vertical) - var(--hl-danger-vpad));
-}
 
 .content {
   align-items: center;
@@ -48,19 +37,16 @@
 .contentInfo {
   background: var(--hl-info-bg);
   outline: var(--hl-info-outline);
-  padding-block: var(--hl-info-vpad);
 }
 
 .contentWarning {
   background: var(--hl-warning-bg);
   outline: var(--hl-warning-outline);
-  padding-block: var(--hl-warning-vpad);
 }
 
 .contentDanger {
   background: var(--hl-danger-bg);
   outline: var(--hl-danger-outline);
-  padding-block: var(--hl-danger-vpad);
 }
 
 .select {
@@ -76,10 +62,10 @@
   flex-shrink: 0;
   font: inherit;
   font-size: 0.875rem;
-  line-height: 1.8;
+  line-height: 22px;
   margin-inline-end: calc(var(--ifm-spacing-horizontal) - 0.4rem);
   outline: 1px solid var(--ifm-color-emphasis-400);
-  padding: 0.15rem 1.2rem 0.15rem 0.4rem;
+  padding: 2px 1.2rem 2px 0.4rem;
 }
 
 .select:hover:not(:disabled) {

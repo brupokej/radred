@@ -1,6 +1,7 @@
 .tableContainer {
   overflow: clip;
   position: relative;
+  --ifm-table-border-color: var(--ifm-color-emphasis-200);
   --scroll-arrows-vertical-inset: 1px;
 }
 
@@ -13,7 +14,7 @@
 .table {
   border-width: 0;
   font-size: 0.875rem;
-  line-height: 1.8;
+  line-height: 26px;
   margin: 0;
   min-width: 100%;
   overflow: visible;
@@ -37,15 +38,13 @@
 
 .table th,
 .table td {
+  border-width: 1px;
   padding-block: var(--ifm-table-cell-padding);
   padding-inline: 0;
   text-align: center;
   vertical-align: middle;
 }
 
-.table td:has(.chip) {
-  padding-block: calc(var(--ifm-table-cell-padding) - 0.15rem);
-}
 
 .table thead tr {
   border-bottom-width: 1px;
@@ -131,7 +130,8 @@
   color: var(--ifm-color-primary);
   cursor: pointer;
   display: block;
-  padding: calc(var(--ifm-spacing-vertical) * 0.6) var(--ifm-spacing-horizontal);
+  line-height: 26px;
+  padding: 7px var(--ifm-spacing-horizontal);
   text-align: center;
   user-select: none;
   width: 100%;
@@ -144,7 +144,8 @@
 .chip {
   border-radius: 3px;
   display: inline-block;
+  line-height: 22px;
   min-width: 2em;
-  padding-block: 0.15rem;
+  padding-block: 2px;
   padding-inline: 0.4rem;
 }

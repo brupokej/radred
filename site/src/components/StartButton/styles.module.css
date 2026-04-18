@@ -13,8 +13,8 @@
   cursor: pointer;
   font-family: var(--ifm-font-family-base);
   font-size: 0.875rem;
-  line-height: 1.8;
-  padding: 0.15rem 0.4rem;
+  line-height: 22px;
+  padding: 2px 0.4rem;
   position: absolute;
   right: 0;
   top: 0;

@@ -43,6 +43,7 @@
   flex: 1;
   flex-direction: column;
   font-size: 0.875rem;
+  line-height: 26px;
   min-width: 0;
 }
 
@@ -117,7 +118,7 @@
   gap: 0.4rem;
   overflow-x: auto;
   overscroll-behavior-x: none;
-  padding-block: calc(var(--ifm-spacing-vertical) - 0.15rem);
+  padding-block: var(--ifm-spacing-vertical);
   padding-inline: var(--ifm-spacing-horizontal);
   white-space: nowrap;
 }
@@ -137,9 +138,9 @@
   color: var(--ifm-font-color-base);
   cursor: pointer;
   font: inherit;
-  line-height: 1.8;
+  line-height: 22px;
   outline: 1px solid var(--ifm-color-emphasis-400);
-  padding: 0.15rem 1.2rem 0.15rem 0.4rem;
+  padding: 2px 1.2rem 2px 0.4rem;
 }
 
 .branchSelect:hover {
