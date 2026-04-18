@@ -1,4 +1,4 @@
-import { IVs, Pokemon, PokemonData, resolvePokemon } from "@site/src/utils/pokemon";
+import { Pokemon, PokemonData, Stats, resolvePokemon } from "@site/src/utils/pokemon";
 
 type BoxChange =
   | { type: "remove"; names: string[] }
@@ -232,12 +232,12 @@ export function getChanges(box: Box): Pokemon[] {
 
 // Returns IV/friendship changes from an update change in a box.
 // Used by BoxChange to render IV rows.
-export function getIVChanges(box: Box): { name: string; ivs?: IVs; friend?: boolean }[] {
+export function getIVChanges(box: Box): { name: string; ivs?: Partial<Stats>; friend?: boolean }[] {
   const change = box.changes[0];
   if (!change || change.type !== "update") return [];
 
   const state = replayBox(box, box.changes.length);
-  const result: { name: string; ivs?: IVs; friend?: boolean }[] = [];
+  const result: { name: string; ivs?: Partial<Stats>; friend?: boolean }[] = [];
   for (const [name, pokemon] of state) {
     if (pokemon.update?.ivs || pokemon.update?.friend) {
       result.push({ name, ivs: pokemon.update.ivs, friend: pokemon.update.friend });
