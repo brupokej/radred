@@ -601,7 +601,7 @@ export const ceruleanCityRivalBattle: Moment = {
                 { player: "{p:Azumarill} flinched" },
               ],
             ],
-            branches: [{ branches: ["Azumarill Covet Wartortle", "Azumarill Covet Hitmonlee"] }],
+            branches: [{ branches: ["Azumarill Covet Wartortle", "Azumarill Covet Wartortle (crit)", "Azumarill Covet Hitmonlee"] }],
           },
         ],
       },
@@ -616,7 +616,37 @@ export const ceruleanCityRivalBattle: Moment = {
                 { player: "{p:Azumarill} Covet {o:Wartortle} to {-:60}" },
               ],
             ],
+            branches: [{ branches: ["Azumarill Aqua Tail Wartortle", "Azumarill Aqua Tail Wartortle (crit)"] }],
           },
+        ],
+      },
+      {
+        line: "Azumarill Covet Wartortle (crit)",
+        matchups: [
+          {
+            matchup: ["Hitmonlee"],
+            turns: [
+              [
+                { opponent: "{o:Hitmonlee} switch to {o:Wartortle}" },
+                { player: "{p:Azumarill} Covet {o:Wartortle} (crit) to {-:49}" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Wartortle"],
+            turns: [
+              [
+                { opponent: "{o:Wartortle} Shell Smash" },
+                { player: "{p:Azumarill} Aqua Tail {o:Wartortle} to {-:28}" },
+              ],
+            ],
+            branches: [{ branches: ["Wartortle HP Electric Clodsire"] }],
+          },
+        ],
+      },
+      {
+        line: "Azumarill Aqua Tail Wartortle",
+        matchups: [
           {
             matchup: ["Wartortle"],
             turns: [
@@ -625,7 +655,22 @@ export const ceruleanCityRivalBattle: Moment = {
                 { player: "{p:Azumarill} Aqua Tail {o:Wartortle} to {-:39}" },
               ],
             ],
-            branches: [{ branches: ["Regular damage to Wartortle", "Crit damage to Wartortle"] }],
+            branches: [{ branches: ["Wartortle HP Electric Torracat"] }],
+          },
+        ],
+      },
+      {
+        line: "Azumarill Aqua Tail Wartortle (crit)",
+        matchups: [
+          {
+            matchup: ["Wartortle"],
+            turns: [
+              [
+                { opponent: "{o:Wartortle} Shell Smash" },
+                { player: "{p:Azumarill} Aqua Tail {o:Wartortle} (crit) to {-:27}" },
+              ],
+            ],
+            branches: [{ branches: ["Wartortle HP Electric Clodsire"] }],
           },
         ],
       },
@@ -641,7 +686,14 @@ export const ceruleanCityRivalBattle: Moment = {
                 { opponent: "{o:Hitmonlee} fainted" },
               ],
             ],
+            branches: [{ branches: ["Azumarill Play Rough Wartortle", "Azumarill Play Rough Wartortle (crit)"] }],
           },
+        ],
+        frags: { Azumarill: 1 },
+      },
+      {
+        line: "Azumarill Play Rough Wartortle",
+        matchups: [
           {
             matchup: ["Wartortle"],
             turns: [
@@ -650,13 +702,27 @@ export const ceruleanCityRivalBattle: Moment = {
                 { player: "{p:Azumarill} Play Rough {o:Wartortle} to {-:36}" },
               ],
             ],
-            branches: [{ branches: ["Regular damage to Wartortle", "Crit damage to Wartortle"] }],
+            branches: [{ branches: ["Wartortle HP Electric Torracat"] }],
           },
         ],
-        frags: { Azumarill: 1 },
       },
       {
-        line: "Regular damage to Wartortle",
+        line: "Azumarill Play Rough Wartortle (crit)",
+        matchups: [
+          {
+            matchup: ["Wartortle"],
+            turns: [
+              [
+                { opponent: "{o:Wartortle} Shell Smash" },
+                { player: "{p:Azumarill} Play Rough {o:Wartortle} (crit) to {-:13}" },
+              ],
+            ],
+            branches: [{ branches: ["Wartortle HP Electric Clodsire"] }],
+          },
+        ],
+      },
+      {
+        line: "Wartortle HP Electric Torracat",
         matchups: [
           {
             matchup: ["Wartortle"],
@@ -674,12 +740,12 @@ export const ceruleanCityRivalBattle: Moment = {
                 { opponent: "{o:Wartortle} Water Pulse {p:Clodsire}" },
               ],
             ],
-            branches: [{ branches: ["Perrserker Bullet Punch Wartortle"] }],
+            branches: [{ branches: ["Wartortle Icy Wind Perrserker"] }],
           },
         ],
       },
       {
-        line: "Crit damage to Wartortle",
+        line: "Wartortle HP Electric Clodsire",
         matchups: [
           {
             matchup: ["Wartortle"],
@@ -689,12 +755,12 @@ export const ceruleanCityRivalBattle: Moment = {
                 { opponent: "{o:Wartortle} HP Electric {p:Clodsire}" },
               ],
             ],
-            branches: [{ branches: ["Perrserker Bullet Punch Wartortle"] }],
+            branches: [{ branches: ["Wartortle Icy Wind Perrserker"] }],
           },
         ],
       },
       {
-        line: "Perrserker Bullet Punch Wartortle",
+        line: "Wartortle Icy Wind Perrserker",
         matchups: [
           {
             matchup: ["Wartortle"],

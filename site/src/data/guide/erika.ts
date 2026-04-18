@@ -270,8 +270,8 @@ export const celadonCityLeaderErikaBattle: Moment = {
             branches: [
               {
                 branches: [
-                  "Ceruledge non-crit Shadow Claw Hawlucha",
-                  "Ceruledge crit Shadow Claw Hawlucha",
+                  "Ceruledge Shadow Claw Hawlucha",
+                  "Ceruledge Shadow Claw Hawlucha (crit)",
                 ],
               },
             ],
@@ -280,7 +280,7 @@ export const celadonCityLeaderErikaBattle: Moment = {
         frags: { Golisopod: 1, "Arcanine-H": 1, Golduck: 1, Ceruledge: 1 },
       },
       {
-        line: "Ceruledge non-crit Shadow Claw Hawlucha",
+        line: "Ceruledge Shadow Claw Hawlucha",
         matchups: [
           {
             matchup: ["Hawlucha"],
@@ -334,7 +334,7 @@ export const celadonCityLeaderErikaBattle: Moment = {
         frags: { Runerigus: 1, Ceruledge: 1 },
       },
       {
-        line: "Ceruledge crit Shadow Claw Hawlucha",
+        line: "Ceruledge Shadow Claw Hawlucha (crit)",
         matchups: [
           {
             matchup: ["Hawlucha"],

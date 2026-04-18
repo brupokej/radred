@@ -1741,7 +1741,629 @@ export const silphCoArianaArcherBattle: Moment = {
     playerBox: _box19,
     opponentBox: silphCoArianaArcherBox,
     partnerBox: pokemonTrainerBrendanBox,
-    lines: [],
+    lines: [
+      {
+        matchups: [
+          {
+            matchup: ["Incineroar", "Articuno-G"],
+            turns: [
+              [
+                { opponent: "{o:Incineroar} Fake Out {o:Masquerain} to {-:119}" },
+                { opponent: "{o:Articuno-G} Psychic {o:Masquerain} to {=:0}" },
+                { opponent: "{o:Masquerain} fainted" },
+                { player: "{p:Jellicent} Scald {o:Incineroar} to {=:0}" },
+                { opponent: "{o:Incineroar} fainted" },
+              ],
+            ],
+            branches: [{ branches: ["Matchup Primarina Articuno-G"] }],
+          },
+        ],
+        frags: { Jellicent: 1 },
+      },
+      {
+        line: "Matchup Primarina Articuno-G",
+        matchups: [
+          {
+            matchup: ["Primarina", "Articuno-G"],
+            turns: [],
+            branches: [
+              {
+                branches: [
+                  "Sceptile-Mega Mega Drain Primarina",
+                  "Sceptile-Mega Mega Drain Primarina (crit)",
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      {
+        line: "Sceptile-Mega Mega Drain Primarina",
+        matchups: [
+          {
+            matchup: ["Primarina", "Articuno-G"],
+            turns: [],
+            branches: [
+              {
+                branches: [
+                  [
+                    "noncrit-mega-drain-psychic-frag",
+                    "Articuno-G Psychic Sceptile-Mega (to 0)",
+                  ],
+                  [
+                    "noncrit-mega-drain-psychic-nonfrag",
+                    "Articuno-G Psychic Sceptile-Mega",
+                  ],
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      {
+        line: "Sceptile-Mega Mega Drain Primarina (crit)",
+        matchups: [
+          {
+            matchup: ["Primarina", "Articuno-G"],
+            turns: [],
+            branches: [
+              {
+                branches: [
+                  [
+                    "crit-mega-drain-psychic-frag",
+                    "Articuno-G Psychic Sceptile-Mega (to 0)",
+                  ],
+                  [
+                    "crit-mega-drain-psychic-nonfrag",
+                    "Articuno-G Psychic Sceptile-Mega",
+                  ],
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      {
+        line: "noncrit-mega-drain-psychic-frag",
+        matchups: [
+          {
+            matchup: ["Primarina", "Articuno-G"],
+            turns: [
+              [
+                { opponent: "{o:Sceptile-Mega} Mega Drain {o:Primarina} to {-:52}" },
+                { opponent: "{o:Articuno-G} Psychic {o:Sceptile-Mega} to {=:0}" },
+                { opponent: "{o:Sceptile-Mega} fainted" },
+                { player: "{p:Jellicent} Brine {o:Primarina} to {=:0}" },
+                { opponent: "{o:Primarina} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Mawile", "Articuno-G"],
+            turns: [],
+            branches: [
+              {
+                branches: [
+                  [
+                    "noncrit-mega-drain-psychic-frag-focus-blast-nonmiss",
+                    "Articuno-G Focus Blast Exploud",
+                  ],
+                  [
+                    "noncrit-mega-drain-psychic-frag-focus-blast-miss",
+                    "Articuno-G Focus Blast Exploud (miss)",
+                  ],
+                ],
+              },
+            ],
+          },
+        ],
+        frags: { Jellicent: 1 },
+      },
+      {
+        line: "noncrit-mega-drain-psychic-frag-focus-blast-nonmiss",
+        matchups: [
+          {
+            matchup: ["Mawile", "Articuno-G"],
+            turns: [],
+            branches: [
+              {
+                branches: [
+                  "Jellicent Water Spout Articuno-G",
+                  "Jellicent Water Spout Articuno-G (crit)",
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      {
+        line: "Jellicent Water Spout Articuno-G",
+        matchups: [
+          {
+            matchup: ["Mawile", "Articuno-G"],
+            turns: [
+              [
+                { opponent: "{o:Articuno-G} Focus Blast {o:Exploud} to {=:0}" },
+                { opponent: "{o:Exploud} fainted" },
+                { player: "{p:Jellicent} Water Spout {o:Mawile-Mega} to {=:0} and {o:Articuno-G} to {=:9}" },
+                { opponent: "{o:Mawile-Mega} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Articuno-G"],
+            turns: [
+              [
+                { player: "{p:Jellicent} switch to {p:Meowscarada}" },
+                { opponent: "{o:Articuno-G} Roost to {=:99}" },
+              ],
+              [
+                { player: "{p:Meowscarada} Shadow Claw {o:Articuno-G} to {=:0}" },
+                { opponent: "{o:Articuno-G} fainted" },
+              ],
+            ],
+            branches: [
+              {
+                branches: [
+                  "Gholdengo Shadow Ball Meowscarada",
+                  "Houndoom Fiery Wrath Meowscarada",
+                ],
+              },
+            ],
+          },
+        ],
+        frags: { Jellicent: 1, Meowscarada: 1 },
+      },
+      {
+        line: "Gholdengo Shadow Ball Meowscarada",
+        matchups: [
+          {
+            matchup: ["Gholdengo"],
+            turns: [
+              [
+                { player: "{p:Meowscarada} Quick Attack {o:Gholdengo}" },
+                { opponent: "{o:Gholdengo} Shadow Ball {p:Meowscarada}" },
+              ],
+              [
+                { player: "{p:Meowscarada} Shadow Claw {o:Gholdengo} to {-:38}" },
+                { opponent: "{o:Gholdengo} Focus Blast {p:Meowscarada}" },
+              ],
+              [
+                { player: "{p:Meowscarada} Shadow Claw {o:Gholdengo} to {=:0}" },
+                { opponent: "{o:Gholdengo} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Houndoom"],
+            turns: [
+              [
+                { player: "{p:Meowscarada} Brick Break {o:Houndoom-Mega} to {-:35}" },
+                { opponent: "{o:Houndoom-Mega} Fiery Wrath {p:Meowscarada} to {+:51}" },
+              ],
+              [
+                { player: "{p:Meowscarada} Brick Break {o:Houndoom-Mega} to {=:0}" },
+                { opponent: "{o:Houndoom-Mega} fainted" },
+              ],
+            ],
+          }
+        ],
+        frags: { Meowscarada: 2 },
+      },
+      {
+        line: "Houndoom Fiery Wrath Meowscarada",
+        matchups: [
+          {
+            matchup: ["Houndoom"],
+            turns: [
+              [
+                { player: "{p:Meowscarada} Brick Break {o:Houndoom-Mega} to {-:35}" },
+                { opponent: "{o:Houndoom-Mega} Fiery Wrath {p:Meowscarada} to {+:51}" },
+              ],
+              [
+                { player: "{p:Meowscarada} Brick Break {o:Houndoom-Mega} to {=:0}" },
+                { opponent: "{o:Houndoom-Mega} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Gholdengo"],
+            turns: [
+              [
+                { player: "{p:Meowscarada} U-Turn {o:Gholdengo} to {-:165}" },
+                { opponent: "{o:Gholdengo} Shadow Ball {p:Tentacruel} to {+:85}" },
+                { player: "{p:Tentacruel} heal to {+:95}" },
+              ],
+              [
+                { opponent: "{o:Gholdengo} Shadow Ball {p:Tentacruel} to {+:8}" },
+                { player: "{p:Tentacruel} Flip Turn {o:Gholdengo} to {-:138}" },
+                { player: "{p:Tentacruel} switch to {p:Meowscarada}" },
+              ],
+              [
+                { player: "{p:Meowscarada} Shadow Claw {o:Gholdengo} to {=:0}" },
+                { opponent: "{o:Gholdengo} fainted" },
+              ],
+            ],
+          }
+        ],
+        frags: { Meowscarada: 2 },
+      },
+      {
+        line: "Jellicent Water Spout Articuno-G (crit)",
+        matchups: [
+          {
+            matchup: ["Mawile", "Articuno-G"],
+            turns: [
+              [
+                { opponent: "{o:Articuno-G} Focus Blast {o:Exploud} to {=:0}" },
+                { opponent: "{o:Exploud} fainted" },
+                { player: "{p:Jellicent} crit Water Spout {o:Mawile-Mega} to {=:0} and {o:Articuno-G} to {=:0}" },
+                { opponent: "{o:Articuno-G} fainted" },
+                { opponent: "{o:Mawile-Mega} fainted" },
+              ],
+            ],
+            branches: [{ branches: ["Gholdengo Shadow Ball Tentacruel 1"] }],
+          },
+        ],
+        frags: { Jellicent: 2 },
+      },
+      {
+        line: "noncrit-mega-drain-psychic-frag-focus-blast-miss",
+        matchups: [
+          {
+            matchup: ["Mawile", "Articuno-G"],
+            turns: [
+              [
+                { opponent: "{o:Articuno-G} Focus Blast {o:Exploud} miss" },
+                { opponent: "{o:Exploud} Hyper Voice {o:Mawile-Mega} to {-:103} and {o:Articuno-G} to {-:109}" },
+                { player: "{p:Jellicent} Water Spout {o:Mawile-Mega} to {=:0} and {o:Articuno-G} to {=:0}" },
+                { opponent: "{o:Articuno-G} fainted" },
+                { opponent: "{o:Mawile-Mega} fainted" },
+              ],
+            ],
+            branches: [{ branches: ["Gholdengo Shadow Ball Tentacruel 2"] }],
+          },
+        ],
+        frags: { Jellicent: 2 },
+      },
+      {
+        line: "noncrit-mega-drain-psychic-nonfrag",
+        matchups: [
+          {
+            matchup: ["Primarina", "Articuno-G"],
+            turns: [
+              [
+                { opponent: "{o:Sceptile-Mega} Mega Drain {o:Primarina} to {-:52}" },
+                { opponent: "{o:Articuno-G} Psychic {o:Sceptile-Mega} to {+:1}" },
+                { player: "{p:Jellicent} Brine {o:Primarina} to {=:0}" },
+                { opponent: "{o:Primarina} fainted" },
+              ],
+            ],
+            branches: [
+              {
+                branches: [
+                  [
+                    "noncrit-mega-drain-psychic-nonfrag-dragon-breath-nonparalyze",
+                    "Sceptile-Mega Dragon Breath Articuno-G",
+                  ],
+                  [
+                    "noncrit-mega-drain-psychic-nonfrag-dragon-breath-paralyze",
+                    "Sceptile-Mega Dragon Breath Articuno-G (paralyze)",
+                  ],
+                ],
+              },
+            ],
+          },
+        ],
+        frags: { Jellicent: 1 },
+      },
+      {
+        line: "noncrit-mega-drain-psychic-nonfrag-dragon-breath-nonparalyze",
+        matchups: [
+          {
+            matchup: ["Mawile", "Articuno-G"],
+            turns: [
+              [
+                { opponent: "{o:Sceptile-Mega} Dragon Breath {o:Articuno-G} to {-:121}" },
+                { opponent: "{o:Articuno-G} Psychic {o:Sceptile-Mega} to {=:0}" },
+                { opponent: "{o:Sceptile-Mega} fainted" },
+                { player: "{p:Jellicent} Water Spout {o:Mawile-Mega} to {=:0} and {o:Articuno-G} to {=:0}" },
+                { opponent: "{o:Articuno-G} fainted" },
+                { opponent: "{o:Mawile-Mega} fainted" },
+              ],
+            ],
+            branches: [{ branches: ["Gholdengo Shadow Ball Tentacruel 2"] }],
+          },
+        ],
+        frags: { Jellicent: 2 },
+      },
+      {
+        line: "noncrit-mega-drain-psychic-nonfrag-dragon-breath-paralyze",
+        matchups: [
+          {
+            matchup: ["Mawile", "Articuno-G"],
+            turns: [
+              [
+                { opponent: "{o:Sceptile-Mega} Dragon Breath {o:Articuno-G} to {-:121}" },
+                { player: "{p:Jellicent} Water Spout {o:Mawile-Mega} to {=:0} and {o:Articuno-G} to {=:0}" },
+                { opponent: "{o:Articuno-G} fainted" },
+                { opponent: "{o:Mawile-Mega} fainted" },
+              ],
+            ],
+            branches: [{ branches: ["Gholdengo Make It Rain Tentacruel"] }],
+          },
+        ],
+        frags: { Jellicent: 2 },
+      },
+      {
+        line: "crit-mega-drain-psychic-frag",
+        matchups: [
+          {
+            matchup: ["Primarina", "Articuno-G"],
+            turns: [
+              [
+                { opponent: "{o:Sceptile-Mega} crit Mega Drain {o:Primarina} to {=:0}" },
+                { opponent: "{o:Primarina} fainted" },
+                { opponent: "{o:Articuno-G} Psychic {o:Sceptile-Mega} to {=:0}" },
+                { opponent: "{o:Sceptile-Mega} fainted" },
+                { player: "{p:Jellicent} Brine {o:Articuno-G} to {-:97}" },
+              ],
+            ],
+            branches: [
+              {
+                branches: [
+                  [
+                    "crit-mega-drain-psychic-frag-focus-blast-nonmiss",
+                    "Articuno-G Focus Blast Exploud",
+                  ],
+                  [
+                    "crit-mega-drain-psychic-frag-focus-blast-miss",
+                    "Articuno-G Focus Blast Exploud (miss)",
+                  ],
+                ],
+              },
+            ],
+          },
+        ],
+        frags: { Jellicent: 1 },
+      },
+      {
+        line: "crit-mega-drain-psychic-frag-focus-blast-nonmiss",
+        matchups: [
+          {
+            matchup: ["Mawile", "Articuno-G"],
+            turns: [
+              [
+                { opponent: "{o:Articuno-G} Focus Blast {o:Exploud} to {=:0}" },
+                { opponent: "{o:Exploud} fainted" },
+                { player: "{p:Jellicent} Water Spout {o:Mawile-Mega} to {=:0} and {o:Articuno-G} to {=:0}" },
+                { opponent: "{o:Articuno-G} fainted" },
+                { opponent: "{o:Mawile-Mega} fainted" },
+              ],
+            ],
+            branches: [{ branches: ["Gholdengo Shadow Ball Tentacruel 1"] }],
+          },
+        ],
+        frags: { Jellicent: 2 },
+      },
+      {
+        line: "crit-mega-drain-psychic-frag-focus-blast-miss",
+        matchups: [
+          {
+            matchup: ["Mawile", "Articuno-G"],
+            turns: [
+              [
+                { opponent: "{o:Articuno-G} Focus Blast {o:Exploud}" },
+                { opponent: "{o:Exploud} Hyper Voice {o:Mawile-Mega} to {-:103} and {o:Articuno-G} to {-:25}" },
+                { player: "{p:Jellicent} Water Spout {o:Mawile-Mega} to {=:0} and {o:Articuno-G} to {=:0}" },
+                { opponent: "{o:Articuno-G} fainted" },
+                { opponent: "{o:Mawile-Mega} fainted" },
+              ],
+            ],
+            branches: [{ branches: ["Gholdengo Shadow Ball Tentacruel 2"] }],
+          },
+        ],
+        frags: { Jellicent: 2 },
+      },
+      {
+        line: "crit-mega-drain-psychic-nonfrag",
+        matchups: [
+          {
+            matchup: ["Primarina", "Articuno-G"],
+            turns: [
+              [
+                { opponent: "{o:Sceptile-Mega} crit Mega Drain {o:Primarina} to {=:0}" },
+                { opponent: "{o:Primarina} fainted" },
+                { opponent: "{o:Articuno-G} Psychic {o:Sceptile-Mega} to {+:1}" },
+                { player: "{p:Jellicent} Brine {o:Articuno-G} to {-:97}" },
+              ],
+            ],
+            branches: [
+              {
+                branches: [
+                  [
+                    "crit-mega-drain-psychic-nonfrag-dragon-breath-nonparalyze",
+                    "Sceptile-Mega Dragon Breath Articuno-G",
+                  ],
+                  [
+                    "crit-mega-drain-psychic-nonfrag-dragon-breath-paralyze",
+                    "Sceptile-Mega Dragon Breath Articuno-G (paralyze)",
+                  ],
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      {
+        line: "crit-mega-drain-psychic-nonfrag-dragon-breath-nonparalyze",
+        matchups: [
+          {
+            matchup: ["Mawile", "Articuno-G"],
+            turns: [
+              [
+                { opponent: "{o:Sceptile-Mega} Dragon Breath {o:Articuno-G} to {-:37}" },
+                { opponent: "{o:Articuno-G} Psychic {o:Sceptile-Mega} to {=:0}" },
+                { opponent: "{o:Sceptile-Mega} fainted" },
+                { player: "{p:Jellicent} Water Spout {o:Mawile-Mega} to {=:0} and {o:Articuno-G} to {=:0}" },
+                { opponent: "{o:Articuno-G} fainted" },
+                { opponent: "{o:Mawile-Mega} fainted" },
+              ],
+            ],
+            branches: [{ branches: ["Gholdengo Shadow Ball Tentacruel 2"] }],
+          },
+        ],
+        frags: { Jellicent: 2 },
+      },
+      {
+        line: "crit-mega-drain-psychic-nonfrag-dragon-breath-paralyze",
+        matchups: [
+          {
+            matchup: ["Mawile", "Articuno-G"],
+            turns: [
+              [
+                { opponent: "{o:Sceptile-Mega} Dragon Breath {o:Articuno-G} to {-:37}" },
+                { player: "{p:Jellicent} Water Spout {o:Mawile-Mega} to {=:0} and {o:Articuno-G} to {=:0}" },
+                { opponent: "{o:Articuno-G} fainted" },
+                { opponent: "{o:Mawile-Mega} fainted" },
+              ],
+            ],
+            branches: [{ branches: ["Gholdengo Make It Rain Tentacruel"] }],
+          },
+        ],
+        frags: { Jellicent: 2 },
+      },
+      {
+        line: "Gholdengo Shadow Ball Tentacruel 1",
+        matchups: [
+          {
+            matchup: ["Gholdengo"],
+            turns: [
+              [
+                { player: "{p:Jellicent} switch to {p:Tentacruel}" },
+                { opponent: "{o:Gholdengo} Shadow Ball {p:Tentacruel} to {+:85}" },
+                { player: "{p:Tentacruel} heal to {+:95}" },
+              ],
+              [
+                { opponent: "{o:Gholdengo} Shadow Ball {p:Tentacruel} to {+:8}" },
+                { player: "{p:Tentacruel} Flip Turn {o:Gholdengo} to {-:150}" },
+                { player: "{p:Tentacruel} switch to {p:Meowscarada}" },
+              ],
+              [
+                { player: "{p:Meowscarada} Shadow Claw {o:Gholdengo} to {-:38}" },
+                { opponent: "{o:Gholdengo} Focus Blast {p:Meowscarada}" },
+              ],
+              [
+                { player: "{p:Meowscarada} Shadow Claw {o:Gholdengo} to {=:0}" },
+                { opponent: "{o:Gholdengo} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Houndoom"],
+            turns: [
+              [
+                { player: "{p:Meowscarada} Brick Break {o:Houndoom-Mega} to {-:35}" },
+                { opponent: "{o:Houndoom-Mega} Fiery Wrath {p:Meowscarada} to {+:51}" },
+              ],
+              [
+                { player: "{p:Meowscarada} Brick Break {o:Houndoom-Mega} to {=:0}" },
+                { opponent: "{o:Houndoom-Mega} fainted" },
+              ],
+            ],
+          },
+        ],
+        frags: { Meowscarada: 2 },
+      },
+      {
+        line: "Gholdengo Shadow Ball Tentacruel 2",
+        matchups: [
+          {
+            matchup: ["Gholdengo"],
+            turns: [
+              [
+                { player: "{p:Jellicent} switch to {p:Tentacruel}" },
+                { opponent: "{o:Gholdengo} Shadow Ball {p:Tentacruel} to {+:85}" },
+                { opponent: "{o:Exploud} Flamethrower {o:Gholdengo} to {-:101}" },
+                { player: "{p:Tentacruel} heal to {+:95}" },
+              ],
+              [
+                { opponent: "{o:Gholdengo} Make It Rain {p:Tentacruel} to {+:47} and {o:Exploud} to {+:34}" },
+                { player: "{p:Tentacruel} Flip Turn {o:Gholdengo} to {-:74}" },
+                { player: "{p:Tentacruel} switch to {p:Meowscarada}" },
+                { opponent: "{o:Exploud} Flamethrower {o:Gholdengo} to {=:0}" },
+                { opponent: "{o:Gholdengo} fainted" },
+                { player: "{p:Tentacruel} heal to {+:57}" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Houndoom"],
+            turns: [
+              [
+                { player: "{p:Meowscarada} U-Turn {o:Houndoom-Mega} to {-:116}" },
+                { player: "{p:Meowscarada} switch to {p:Jellicent}" },
+                { opponent: "{o:Houndoom-Mega} Heat Wave {p:Jellicent} to {+:170} and {o:Exploud} to {=:0}" },
+                { opponent: "{o:Exploud} fainted" },
+              ],
+              [
+                { player: "{p:Jellicent} switch to {p:Meowscarada}" },
+                { opponent: "{o:Houndoom-Mega} Fiery Wrath {p:Meowscarada} to {+:51}" },
+              ],
+              [
+                { player: "{p:Meowscarada} Brick Break {o:Houndoom-Mega} to {=:0}" },
+                { opponent: "{o:Houndoom-Mega} fainted" },
+              ],
+            ],
+          },
+        ],
+        frags: { Tentacruel: 1, Meowscarada: 1 },
+      },
+      {
+        line: "Gholdengo Make It Rain Tentacruel",
+        matchups: [
+          {
+            matchup: ["Gholdengo"],
+            turns: [
+              [
+                { player: "{p:Jellicent} switch to {p:Tentacruel}" },
+                { opponent: "{o:Sceptile-Mega} HP Dark {o:Gholdengo} to {-:89}" },
+                { opponent: "{o:Gholdengo} Make It Rain {p:Tentacruel} to {+:124} and {o:Sceptile-Mega} to {=:0}" },
+                { opponent: "{o:Sceptile-Mega} fainted" },
+                { player: "{p:Tentacruel} heal to {+:134}" },
+              ],
+              [
+                { opponent: "{o:Gholdengo} Make It Rain {p:Tentacruel} to {+:86} and {o:Exploud} to {+:34}" },
+                { player: "{p:Tentacruel} Flip Turn {o:Gholdengo} to {-:62}" },
+                { player: "{p:Tentacruel} switch to {p:Meowscarada}" },
+                { opponent: "{o:Exploud} Flamethrower {o:Gholdengo} to {=:0}" },
+                { opponent: "{o:Gholdengo} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Houndoom"],
+            turns: [
+              [
+                { player: "{p:Meowscarada} U-Turn {o:Houndoom-Mega} to {-:116}" },
+                { player: "{p:Meowscarada} switch to {p:Jellicent}" },
+                { opponent: "{o:Houndoom-Mega} Heat Wave {p:Jellicent} to {+:170} and {o:Exploud} to {=:0}" },
+                { opponent: "{o:Exploud} fainted" },
+              ],
+              [
+                { player: "{p:Jellicent} switch to {p:Meowscarada}" },
+                { opponent: "{o:Houndoom-Mega} Fiery Wrath {p:Meowscarada} to {+:51}" },
+              ],
+              [
+                { player: "{p:Meowscarada} Brick Break {o:Houndoom-Mega} to {=:0}" },
+                { opponent: "{o:Houndoom-Mega} fainted" },
+              ],
+            ],
+          },
+        ],
+        frags: { Tentacruel: 1, Meowscarada: 1 },
+      },
+    ],
   },
 };
 

@@ -194,7 +194,7 @@ export const route22RivalBattle: Moment = {
                 { player: "{p:Wooper-P} Tail Whip {o:Snubbull}" },
               ],
               [
-                { opponent: "{o:Snubbull} non-crit Pow-Up Punch {p:Wooper-P} to {+:32}" },
+                { opponent: "{o:Snubbull} Pow-Up Punch {p:Wooper-P} (non-crit) to {+:32}" },
                 { player: "{p:Wooper-P} Tail Whip {o:Snubbull}" },
               ],
             ],
@@ -211,7 +211,7 @@ export const route22RivalBattle: Moment = {
               "Risk →",
               {
                 danger:
-                  "Snubbull double crit Pow-Up Punch Wooper-P into Snubbull Fire Fang Kricketune is {c:0.3%}",
+                  "Snubbull Pow-Up Punch Wooper-P → Snubbull Pow-Up Punch Wooper-P → Snubbull Fire Fang Kricketune is {c:0.3%}",
               },
             ],
             turns: [
@@ -863,7 +863,7 @@ export const pewterCityLeaderBrockBattle: Moment = {
               "Risk →",
               {
                 danger:
-                  "Varoom crit Bulldoze Kricketune into Cacnea crit Pow-Up Punch Kricketune into Lileep double crit Mega Drain Kricketune is {c:0.001%}",
+                  "Varoom Bulldoze Kricketune → Cacnea Pow-Up Punch Kricketune → Lileep Mega Drain Kricketune → Lileep Mega Drain Kricketune (to 0) is {c:0.001%}",
               },
             ],
             turns: [

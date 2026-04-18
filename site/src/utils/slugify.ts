@@ -3,6 +3,6 @@ export function slugify(input: string | number | (string | number)[]): string {
   if (typeof input === "number") return String(input).padStart(2, "0");
   return input
     .toLowerCase()
-    .replace(/[^a-z0-9 ]+/g, "")
+    .replace(/[^a-z0-9 -]+/g, "")
     .replace(/\s+/g, "-");
 }
