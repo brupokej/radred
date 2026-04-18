@@ -29,7 +29,7 @@ export interface MoveData {
 export interface BranchData {
   if?: string[];
   ifNot?: string[];
-  branches: string[];
+  branches: (string | [string, string])[];
 }
 
 export interface MatchupData {
@@ -48,6 +48,7 @@ export interface LineData {
 export interface BattleData {
   opponentBox: Box;
   playerBox: Box;
+  partnerBox?: Box;
   lines: LineData[];
 }
 
@@ -172,10 +173,11 @@ function battleDataToChildren(data: BattleData): React.ReactNode {
 }
 
 export function Battle({ data }: { data: BattleData }) {
-  const { opponentBox, playerBox: resolvedPlayerBox } = data;
+  const { opponentBox, playerBox: resolvedPlayerBox, partnerBox } = data;
   const resolvedChildren = battleDataToChildren(data);
   const playerResolved = resolveBox(resolvedPlayerBox);
   const opponentResolved = resolveBox(opponentBox);
+  const partnerResolved = partnerBox ? resolveBox(partnerBox) : null;
   const lineElements = React.Children.toArray(resolvedChildren).filter(
     (c): c is React.ReactElement<{ line?: string; children: React.ReactNode }> =>
       React.isValidElement(c) && c.type === BattleLine
@@ -238,8 +240,12 @@ export function Battle({ data }: { data: BattleData }) {
           const p = opponentResolved.get(name);
           return p ? [[`o:${name}`, getHp(resolvePokemon(p))]] : [];
         }),
+        ...(partnerBox?.team ?? []).flatMap((name) => {
+          const p = partnerResolved?.get(name);
+          return p ? [[`o:${name}`, getHp(resolvePokemon(p))]] : [];
+        }),
       ]),
-    [resolvedPlayerBox, opponentBox, playerResolved, opponentResolved]
+    [resolvedPlayerBox, opponentBox, partnerBox, playerResolved, opponentResolved, partnerResolved]
   );
 
   const teamMap = useMemo(() => {
@@ -252,8 +258,19 @@ export function Battle({ data }: { data: BattleData }) {
       const p = opponentResolved.get(name);
       if (p) map[`o:${name}`] = resolvePokemon(p);
     }
+    for (const name of partnerBox?.team ?? []) {
+      const p = partnerResolved?.get(name);
+      if (p) map[`o:${name}`] = resolvePokemon(p);
+    }
     return map;
-  }, [resolvedPlayerBox, opponentBox, playerResolved, opponentResolved]);
+  }, [
+    resolvedPlayerBox,
+    opponentBox,
+    partnerBox,
+    playerResolved,
+    opponentResolved,
+    partnerResolved,
+  ]);
 
   const ctx = useMemo(
     () => ({ state, dispatch, registerBranch, unregisterBranch, maxHp, teamMap }),
@@ -274,6 +291,7 @@ export function Battle({ data }: { data: BattleData }) {
   return (
     <>
       <Team title="Opponent Team" box={opponentBox} />
+      {partnerBox && <Team title="Partner Team" box={partnerBox} />}
       <Team title="Player Team" box={resolvedPlayerBox} />
       <BattleGraphCtx.Provider value={ctx}>
         <Card title="Battle Plan">
@@ -360,13 +378,21 @@ function OpponentMove({ move }: { move: string }) {
   return <Move move={move} side="opponent" className={styles.opponentMove} />;
 }
 
+function bid(b: string | [string, string]): string {
+  return Array.isArray(b) ? b[0] : b;
+}
+
+function blabel(b: string | [string, string]): string {
+  return Array.isArray(b) ? b[1] : b;
+}
+
 function Branch({
   branch,
   if: condition,
   ifNot,
   isActive,
 }: {
-  branch: string[];
+  branch: (string | [string, string])[];
   if?: string[];
   ifNot?: string[];
   isActive?: boolean;
@@ -385,7 +411,7 @@ function Branch({
     return () => unregisterBranch(branchId);
   }, [branchId, parentLine, registerBranch, unregisterBranch]);
 
-  const branchKey = branch.length > 1 ? `branch-${slugify(branch)}` : undefined;
+  const branchKey = branch.length > 1 ? `branch-${slugify(branch.map(bid))}` : undefined;
 
   useEffect(() => {
     if (!dispatch) return;
@@ -394,25 +420,26 @@ function Branch({
       if (branchKey) localStorage.removeItem(branchKey);
     } else if (isActive === true) {
       if (branch.length === 1) {
-        dispatch({ type: "SELECT_BRANCH", branchId, childLine: branch[0] });
+        dispatch({ type: "SELECT_BRANCH", branchId, childLine: bid(branch[0]) });
       } else {
         const stored = branchKey ? localStorage.getItem(branchKey) : null;
-        const childLine = stored ?? branch[0];
-        if (branchKey && stored === null) localStorage.setItem(branchKey, childLine);
+        const found = stored ? branch.find((b) => slugify(bid(b)) === stored) : null;
+        const childLine = found ? bid(found) : bid(branch[0]);
+        if (branchKey && !stored) localStorage.setItem(branchKey, slugify(bid(branch[0])));
         dispatch({ type: "SELECT_BRANCH", branchId, childLine });
       }
     }
-  }, [branchId, dispatch, isActive, branchKey]);
+  }, [branchId, dispatch, isActive, branchKey, branch]);
 
   const selectedChildLine = graphCtx?.state.selectedBranches.get(branchId);
 
   if (isActive === false) return null;
   if (graphCtx && branch.length === 1) return null;
 
-  function handleChange(item: string) {
+  function handleChange(value: string) {
     if (!dispatch) return;
-    if (branchKey) setState(branchKey, item);
-    dispatch({ type: "SELECT_BRANCH", branchId, childLine: item });
+    if (branchKey) setState(branchKey, slugify(value));
+    dispatch({ type: "SELECT_BRANCH", branchId, childLine: value });
   }
 
   return (
@@ -425,12 +452,12 @@ function Branch({
         <span className={styles.branchLabel}>Branch →</span>
         <select
           className={styles.branchSelect}
-          value={selectedChildLine ?? branch[0]}
+          value={selectedChildLine ?? bid(branch[0])}
           onChange={(e) => handleChange(e.target.value)}
         >
           {branch.map((item) => (
-            <option key={item} value={item}>
-              {item}
+            <option key={slugify(bid(item))} value={bid(item)}>
+              {blabel(item)}
             </option>
           ))}
         </select>

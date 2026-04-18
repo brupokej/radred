@@ -40,8 +40,4 @@ export const starterEgg5Encounter: Moment = {
 
 export const box = _box1;
 
-export const moments: Moment[] = [
-  starterEgg3Encounter,
-  starterEgg4Encounter,
-  starterEgg5Encounter,
-];
+export const moments: Moment[] = [starterEgg3Encounter, starterEgg4Encounter, starterEgg5Encounter];

@@ -79,7 +79,8 @@ export const celadonCityGymAceTrainerMaryBattle: Moment = {
                 { player: "{p:Incineroar} Fake Out {o:Weavile} to {-:104}" },
                 { opponent: "{o:Weavile} flinched" },
                 {
-                  player: "{p:Jellicent} Water Spout {o:Weavile} to {=:0} and {o:Coalossal} to {=:0}",
+                  player:
+                    "{p:Jellicent} Water Spout {o:Weavile} to {=:0} and {o:Coalossal} to {=:0}",
                 },
                 { opponent: "{o:Weavile} fainted" },
                 { opponent: "{o:Coalossal} fainted" },
@@ -269,7 +270,7 @@ export const celadonCityLeaderErikaBattle: Moment = {
             branches: [
               {
                 branches: [
-                  "Ceruledge regular Shadow Claw Hawlucha",
+                  "Ceruledge non-crit Shadow Claw Hawlucha",
                   "Ceruledge crit Shadow Claw Hawlucha",
                 ],
               },
@@ -279,7 +280,7 @@ export const celadonCityLeaderErikaBattle: Moment = {
         frags: { Golisopod: 1, "Arcanine-H": 1, Golduck: 1, Ceruledge: 1 },
       },
       {
-        line: "Ceruledge regular Shadow Claw Hawlucha",
+        line: "Ceruledge non-crit Shadow Claw Hawlucha",
         matchups: [
           {
             matchup: ["Hawlucha"],

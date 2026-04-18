@@ -849,13 +849,13 @@ export const pewterCityLeaderBrockBattle: Moment = {
                 { opponent: "{p:Kricketune} sand to {+:7}" },
               ],
             ],
-            branches: [{ branches: ["Lileep Bug Bite"] }],
+            branches: [{ branches: ["Kricketune Bug Bite Lileep"] }],
           },
         ],
         frags: { Torracat: 1, Kricketune: 1 },
       },
       {
-        line: "Lileep Bug Bite",
+        line: "Kricketune Bug Bite Lileep",
         matchups: [
           {
             matchup: ["Lileep"],

@@ -35,8 +35,8 @@ export function resolvePokemon(pokemon: Pokemon): PokemonData {
 export const IV_STAT_ORDER = ["hp", "atk", "def", "spa", "spd", "spe"] as const;
 
 export function formatIVs(ivs: IVs): string {
-  const parts = IV_STAT_ORDER
-    .filter((stat) => ivs[stat] !== undefined)
-    .map((stat) => `${ivs[stat]} ${stat.toUpperCase()}`);
+  const parts = IV_STAT_ORDER.filter((stat) => ivs[stat] !== undefined).map(
+    (stat) => `${ivs[stat]} ${stat.toUpperCase()}`
+  );
   return parts.length > 0 ? parts.join(", ") : "-";
 }

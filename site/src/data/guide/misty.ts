@@ -782,14 +782,14 @@ export const ceruleanCityRivalBattle: Moment = {
                 if: ["Clefable Mystical Fire Tentacruel"],
                 branches: ["Perrserker Iron Head Eevee"],
               },
-              { branches: ["Clefable Charge Beam"] },
+              { branches: ["Clefable Charge Beam Clodsire"] },
             ],
           },
         ],
         frags: { Azumarill: 1 },
       },
       {
-        line: "Clefable Charge Beam",
+        line: "Clefable Charge Beam Clodsire",
         matchups: [
           {
             matchup: ["Clefable"],
@@ -925,7 +925,7 @@ export const ceruleanCityRivalBattle: Moment = {
             branches: [
               {
                 ifNot: ["Azumarill Covet Hitmonlee", "Hitmonlee Low Sweep Azumarill"],
-                branches: ["Hitmonlee Knock Off"],
+                branches: ["Hitmonlee Knock Off Azumarill"],
               },
             ],
           },
@@ -933,7 +933,7 @@ export const ceruleanCityRivalBattle: Moment = {
         frags: { Tentacruel: 1 },
       },
       {
-        line: "Hitmonlee Knock Off",
+        line: "Hitmonlee Knock Off Azumarill",
         matchups: [
           {
             matchup: ["Hitmonlee"],

@@ -66,11 +66,16 @@ export function expandPokemon(pokemon: Pokemon): Array<string | { warning: strin
   const cells: Array<string | { warning: string }> = [`${from} →`, { warning: header }];
 
   const baseMoveSet = new Set((base.moves ?? []).filter(Boolean));
-  current.moves?.forEach((move) => {
-    if (!move) return;
-    cells.push(cells.length === 2 ? "→" : "·");
-    cells.push(update && !baseMoveSet.has(move) ? { warning: move } : move);
-  });
+  const isLevelCap = levelChanged && LEVEL_CAP_LEVELS.has(current.level);
+  const hasNewMoves = current.moves?.some((move) => move && !baseMoveSet.has(move)) ?? false;
+
+  if (!isLevelCap || hasNewMoves) {
+    current.moves?.forEach((move) => {
+      if (!move) return;
+      cells.push(cells.length === 2 ? "→" : "·");
+      cells.push(update && !baseMoveSet.has(move) ? { warning: move } : move);
+    });
+  }
 
   return cells;
 }

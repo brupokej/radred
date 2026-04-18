@@ -91,10 +91,20 @@ function TeamGrid({ team, extraTeam = [] }: { team: Pokemon[]; extraTeam?: Pokem
             <PokemonCard key={i} pokemon={pokemon} showIVs={showIVs} showFriend={showFriend} />
           ))}
           {extraTeam.map((pokemon, i) => (
-            <PokemonCard key={`extra-${i}`} pokemon={pokemon} showIVs={showIVs} showFriend={showFriend} />
+            <PokemonCard
+              key={`extra-${i}`}
+              pokemon={pokemon}
+              showIVs={showIVs}
+              showFriend={showFriend}
+            />
           ))}
           {emptySlots.map((_, i) => (
-            <PokemonCard key={`empty-${i}`} pokemon={null} showIVs={showIVs} showFriend={showFriend} />
+            <PokemonCard
+              key={`empty-${i}`}
+              pokemon={null}
+              showIVs={showIVs}
+              showFriend={showFriend}
+            />
           ))}
         </div>
       </div>
@@ -121,7 +131,15 @@ function statColor(v: number): string {
   return "var(--ifm-color-danger)";
 }
 
-function PokemonCard({ pokemon, showIVs, showFriend }: { pokemon: Pokemon | null; showIVs: boolean; showFriend: boolean }) {
+function PokemonCard({
+  pokemon,
+  showIVs,
+  showFriend,
+}: {
+  pokemon: Pokemon | null;
+  showIVs: boolean;
+  showFriend: boolean;
+}) {
   const isExpanded = useCardDetail();
   const { update, base } = pokemon ?? {};
   const current = pokemon ? resolvePokemon(pokemon) : null;

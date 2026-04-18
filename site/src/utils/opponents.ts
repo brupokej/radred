@@ -1809,6 +1809,35 @@ export const silphCoArianaArcherBox = getOpponentBox([
   },
 ]);
 
+export const pokemonTrainerBrendanBox = getOpponentBox([
+  {
+    name: "Masquerain",
+    level: 55,
+    nature: "Modest",
+    ability: "Intimidate",
+    item: "Iapapa Berry",
+    moves: ["Bug Buzz", "Scald", "Giga Drain", "Stun Spore"],
+  },
+  {
+    name: "Exploud",
+    level: 55,
+    nature: "Timid",
+    ability: "Punk Rock",
+    item: "Silk Scarf",
+    moves: ["Flamethrower", "Surf", "Focus Blast", "Hyper Voice"],
+  },
+  {
+    name: "Sceptile-Mega",
+    spriteKey: "sceptile-mega",
+    pokedexKey: "Sceptile-Mega",
+    level: 55,
+    nature: "Timid",
+    ability: "Unburden",
+    item: "Sceptilite",
+    moves: ["Mega Drain", "Dragon Breath", "Focus Blast", "HP Fire"],
+  },
+]);
+
 export const silphCoGiovanniBox = getOpponentBox([
   {
     name: "Mamoswine",

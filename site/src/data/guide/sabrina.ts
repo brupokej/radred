@@ -2,15 +2,18 @@ import { getBox } from "@site/src/utils/box";
 import { Moment } from "@site/src/utils/moments";
 import {
   gameCornerGuardBox,
-  rocketHideoutLeftGuardBox,
-  rocketHideoutRightGuardBox,
-  rocketHideoutGiovanniBox,
   pokemonTowerChannelerRuthBox,
   pokemonTowerGhostBox,
   pokemonTowerGrunt1Box,
   pokemonTowerGrunt2Box,
   pokemonTowerGrunt3Box,
+  pokemonTrainerBrendanBox,
+  rocketHideoutGiovanniBox,
+  rocketHideoutLeftGuardBox,
+  rocketHideoutRightGuardBox,
   saffronDojoLeaderChuckBox,
+  silphCoArianaArcherBox,
+  silphCoRivalBox,
 } from "@site/src/utils/opponents";
 
 import { box as _box1 } from "@site/src/data/guide/erika";
@@ -582,7 +585,14 @@ export const pokemonTowerChannelerRuthBattle: Moment = {
                 { player: "{p:Incineroar} Snarl {o:Cresselia} to {-:134}" },
               ],
             ],
-            branches: [{ branches: ["Meowscarada Night Slash Drifblim", "Meowscarada Night Slash Polteageist"] }],
+            branches: [
+              {
+                branches: [
+                  "Meowscarada Night Slash Drifblim",
+                  "Meowscarada Night Slash Polteageist",
+                ],
+              },
+            ],
           },
         ],
         frags: { Excadrill: 1, Meowscarada: 1 },
@@ -1388,10 +1398,7 @@ export const saffronDojoLeaderChuckBattle: Moment = {
             ],
             branches: [
               {
-                branches: [
-                  "Annihilape Rage Fist Meowscarada",
-                  "Sneasler Poison Jab Drednaw",
-                ],
+                branches: ["Annihilape Rage Fist Meowscarada", "Sneasler Poison Jab Drednaw"],
               },
             ],
           },
@@ -1544,7 +1551,201 @@ export const saffronDojoLeaderChuckBattle: Moment = {
   },
 };
 
-export const box = _box15;
+const _box16 = getBox({
+  box: _box15,
+  update: {
+    Cloyster: {
+      friend: true,
+    },
+  },
+});
+
+export const saffronDojoLeaderChuckBoxChange: Moment = {
+  label: "Saffron Dojo Leader Chuck Box Change",
+  kind: "boxChange",
+  data: { playerBox: _box16 },
+};
+
+const _box17 = getBox({
+  box: _box16,
+  update: {
+    Meowscarada: {
+      nature: "Brave",
+      item: "Expert Belt",
+    },
+    Jellicent: {
+      moves: ["Brine", "Hex", "Ice Beam", "Water Spout"],
+    },
+    Cloyster: {
+      nature: "Impish",
+      ability: "Skill Link",
+      item: "Never-Melt Ice",
+      moves: ["Ice Shard", "Icicle Crash", "Icicle Spear", "Return"],
+    },
+    Drednaw: {
+      item: "Shuca Berry",
+      moves: ["Bulldoze", "Dig", "Flip Turn", "Jaw Lock"],
+    },
+    Runerigus: {
+      nature: "Adamant",
+      moves: ["Earthquake", "Rock Tomb", "Shadow Ball", "Shadow Sneak"],
+    },
+  },
+  team: ["Meowscarada", "Jellicent", "Cloyster", "Drednaw", "Arcanine-H", "Runerigus"],
+});
+
+export const silphCoRivalBattle: Moment = {
+  label: "Silph Co. Rival Battle",
+  kind: "battle",
+  data: {
+    playerBox: _box17,
+    opponentBox: silphCoRivalBox,
+    lines: [
+      {
+        matchups: [
+          {
+            matchup: ["Azelf"],
+            turns: [
+              [
+                { player: "{p:Meowscarada} switch to {p:Jellicent}" },
+                { opponent: "{o:Azelf} Explosion {p:Jellicent}" },
+                { opponent: "{o:Azelf} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Blastoise-Mega"],
+            turns: [
+              [
+                { player: "{p:Jellicent} switch to {p:Meowscarada}" },
+                { opponent: "{o:Blastoise-Mega} Dark Pulse {p:Meowscarada} to {+:85}" },
+              ],
+              [
+                { player: "{p:Meowscarada} Shadow Claw {o:Blastoise-Mega} to {-:120}" },
+                { opponent: "{o:Blastoise-Mega} Aura Sphere {p:Meowscarada}" },
+              ],
+              [
+                { player: "{p:Meowscarada} Flower Trick {o:Blastoise-Mega} to {=:0}" },
+                { opponent: "{o:Blastoise-Mega} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Jumpluff"],
+            turns: [
+              [
+                { player: "{p:Meowscarada} switch to {p:Cloyster}" },
+                { opponent: "{o:Jumpluff} Double-Edge {p:Cloyster} to {+:48}" },
+                { opponent: "{o:Jumpluff} recoil to {-:150}" },
+              ],
+              [
+                { player: "{p:Cloyster} Ice Shard {o:Jumpluff} to {=:0}" },
+                { opponent: "{o:Jumpluff} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Darmanitan"],
+            turns: [
+              [
+                { player: "{p:Cloyster} switch to {p:Drednaw}" },
+                { opponent: "{o:Darmanitan} Rock Slide {p:Drednaw} to {+:101}" },
+              ],
+              [
+                { opponent: "{o:Darmanitan} Earthquake {p:Drednaw} to {+:17}" },
+                { player: "{p:Drednaw} Flip Turn {o:Darmanitan} to {-:66}" },
+                { player: "{p:Drednaw} switch to {p:Arcanine-H}" },
+              ],
+              [
+                { player: "{p:Arcanine-H} Accelerock {o:Darmanitan} to {=:0}" },
+                { opponent: "{o:Darmanitan} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Electivire"],
+            turns: [
+              [
+                { player: "{p:Arcanine-H} switch to {p:Runerigus}" },
+                { opponent: "{o:Electivire} Close Combat {p:Runerigus}" },
+              ],
+              [
+                { opponent: "{o:Electivire} Ice Punch {p:Runerigus} to {+:76}" },
+                { player: "{p:Runerigus} Rock Tomb {o:Electivire} to {-:131}" },
+              ],
+              [
+                { player: "{p:Runerigus} switch to {p:Arcanine-H}" },
+                { opponent: "{o:Electivire} Ice Punch {p:Arcanine-H} to {+:127}" },
+              ],
+              [
+                { player: "{p:Arcanine-H} Flare Blitz {o:Electivire} to {=:0}" },
+                { opponent: "{o:Electivire} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Celesteela"],
+            turns: [
+              [
+                { player: "{p:Arcanine-H} Flare Blitz {o:Celesteela} to {=:0}" },
+                { opponent: "{o:Celesteela} fainted" },
+              ],
+            ],
+          },
+        ],
+        frags: { Jellicent: 1, Meowscarada: 1, Cloyster: 1, "Arcanine-H": 3 },
+      },
+    ],
+  },
+};
+
+const _box18 = getBox({
+  box: _box17,
+  update: {
+    Jellicent: {
+      level: 56,
+    },
+  },
+});
+
+export const silphCoRivalBoxChange: Moment = {
+  label: "Silph Co. Rival Box Change",
+  kind: "boxChange",
+  data: { playerBox: _box18 },
+};
+
+const _box19 = getBox({
+  box: _box18,
+  update: {
+    Jellicent: {
+      nature: "Modest",
+      item: "Mystic Water",
+      moves: ["Brine", "Recover", "Scald", "Water Spout"],
+    },
+    Meowscarada: {
+      nature: "Jolly",
+      moves: ["Brick Break", "Quick Attack", "Shadow Claw", "U-Turn"],
+    },
+    Tentacruel: {
+      nature: "Sassy",
+      item: "Black Sludge",
+    },
+  },
+  team: ["Jellicent", "Meowscarada", "Tentacruel"],
+});
+
+export const silphCoArianaArcherBattle: Moment = {
+  label: "Silph Co. Ariana & Archer Battle",
+  kind: "battle",
+  data: {
+    playerBox: _box19,
+    opponentBox: silphCoArianaArcherBox,
+    partnerBox: pokemonTrainerBrendanBox,
+    lines: [],
+  },
+};
+
+export const box = _box19;
 
 export const moments: Moment[] = [
   sabrinaBoxChange,
@@ -1563,4 +1764,8 @@ export const moments: Moment[] = [
   starterEgg2Encounter,
   starterEgg2BoxChange,
   saffronDojoLeaderChuckBattle,
+  saffronDojoLeaderChuckBoxChange,
+  silphCoRivalBattle,
+  silphCoRivalBoxChange,
+  silphCoArianaArcherBattle,
 ];

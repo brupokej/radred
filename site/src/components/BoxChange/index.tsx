@@ -1,6 +1,13 @@
 import Card from "@site/src/components/Card";
 import { Row } from "@site/src/components/Row";
-import { Box, getChanges, getIVChanges, getLevelCap, getRemovals, splitChanges } from "@site/src/utils/box";
+import {
+  Box,
+  getChanges,
+  getIVChanges,
+  getLevelCap,
+  getRemovals,
+  splitChanges,
+} from "@site/src/utils/box";
 import { formatIVs } from "@site/src/utils/pokemon";
 
 export interface BoxChangeData {
@@ -48,9 +55,7 @@ export default function BoxChange({ data }: { data: BoxChangeData }) {
       const label = ivs
         ? `Set to ${formatIVs(ivs)} IVs${friend ? ", max friendship" : ""}`
         : "Set to max friendship";
-      ivRows.push(
-        <Row key={key++} row={[`${name} → `, { warning: label }]} />
-      );
+      ivRows.push(<Row key={key++} row={[`${name} → `, { warning: label }]} />);
     }
   }
 

@@ -228,7 +228,9 @@ export function getChanges(box: Box): Pokemon[] {
 
   const state = replayBox(box, box.changes.length);
   return [...state.values()].filter(
-    (p) => p.update !== undefined && (Object.keys(p.update) as (keyof PokemonData)[]).some((k) => RENDERED_FIELDS.has(k))
+    (p) =>
+      p.update !== undefined &&
+      (Object.keys(p.update) as (keyof PokemonData)[]).some((k) => RENDERED_FIELDS.has(k))
   );
 }
 

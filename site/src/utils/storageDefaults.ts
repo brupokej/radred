@@ -6,27 +6,28 @@ export const STORAGE_DEFAULTS: Record<string, string> = {
   "stats-filter-end": "",
 
   "branch-kricketune-mega-drain-varoom-kricketune-mega-drain-hippopotas":
-    "Kricketune Mega Drain Varoom",
-  "branch-azumarill-play-rough-sableye-sableye-protect": "Azumarill Play Rough Sableye",
-  "branch-azumarill-covet-wartortle-azumarill-covet-hitmonlee": "Azumarill Covet Wartortle",
-  "branch-regular-damage-to-wartortle-crit-damage-to-wartortle": "Regular damage to Wartortle",
+    "kricketune-mega-drain-varoom",
+  "branch-azumarill-play-rough-sableye-sableye-protect": "azumarill-play-rough-sableye",
+  "branch-azumarill-covet-wartortle-azumarill-covet-hitmonlee": "azumarill-covet-wartortle",
+  "branch-regular-damage-to-wartortle-crit-damage-to-wartortle": "regular-damage-to-wartortle",
   "branch-hitmonlee-low-sweep-azumarill-clefable-mystical-fire-tentacruel":
-    "Hitmonlee Low Sweep Azumarill",
-  "branch-clefable-icy-wind-tentacruel-clefable-switch-to-eevee": "Clefable Icy Wind Tentacruel",
-  "branch-tentacruel-acid-spray-eevee-hitmonlee-low-sweep-azumarill": "Tentacruel Acid Spray Eevee",
+    "hitmonlee-low-sweep-azumarill",
+  "branch-clefable-icy-wind-tentacruel-clefable-switch-to-eevee": "clefable-icy-wind-tentacruel",
+  "branch-tentacruel-acid-spray-eevee-hitmonlee-low-sweep-azumarill": "tentacruel-acid-spray-eevee",
   "branch-golduck-zen-headbutt-starmie-golduck-zen-headbutt-toxicroak":
-    "Golduck Zen Headbutt Starmie",
-  "branch-raichu-nasty-plot-pawmot-close-combat-runerigus": "Raichu Nasty Plot",
-  "branch-ceruledge-regular-shadow-claw-hawlucha-ceruledge-crit-shadow-claw-hawlucha":
-    "Ceruledge regular Shadow Claw Hawlucha",
+    "golduck-zen-headbutt-starmie",
+  "branch-raichu-nasty-plot-pawmot-close-combat-runerigus": "raichu-nasty-plot",
+  "branch-ceruledge-noncrit-shadow-claw-hawlucha-ceruledge-crit-shadow-claw-hawlucha":
+    "ceruledge-noncrit-shadow-claw-hawlucha",
   "branch-meowscarada-night-slash-drifblim-meowscarada-night-slash-polteageist":
-    "Meowscarada Night Slash Drifblim",
+    "meowscarada-night-slash-drifblim",
   "branch-lanturn-flip-turn-hydreigon-lanturn-flip-turn-golurk-lanturn-flip-turn-magnezone":
-    "Lanturn Flip Turn Hydreigon",
+    "lanturn-flip-turn-hydreigon",
   "branch-excadrill-bulldoze-zamazenta-excadrill-bulldoze-iron-crown":
-    "Excadrill Bulldoze Zamazenta",
+    "excadrill-bulldoze-zamazenta",
   "branch-annihilape-rage-fist-meowscarada-sneasler-poison-jab-drednaw":
-    "Annihilape Rage Fist Meowscarada",
+    "annihilape-rage-fist-meowscarada",
+  "branch-tag-gholdengo-jellicent-gholdengo-jellicent-articuno": "tag-gholdengo",
 
   "sequence-wimpod-1": '["Wimpod"]',
   "sequence-frillish-1": '["Frillish"]',

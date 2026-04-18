@@ -1,16 +1,16 @@
 import { getBox } from "@site/src/utils/box";
 import { Moment } from "@site/src/utils/moments";
 import {
-  route6CamperJeffBox,
-  route25LeaderBugsyBox,
-  ssAnneLassAnnGentlemanBrooksBox,
-  ssAnneSailorEdmundSailorTrevorBox,
-  ssAnneBrendanBox,
-  route9PicnickerAliciaBox,
-  route9PicnickerCaitlinBox,
   rockTunnelPicnickerDanaBox,
   route10PokeManiacHermanBox,
+  route25LeaderBugsyBox,
+  route6CamperJeffBox,
   route8SuperNerdAidanBox,
+  route9PicnickerAliciaBox,
+  route9PicnickerCaitlinBox,
+  ssAnneBrendanBox,
+  ssAnneLassAnnGentlemanBrooksBox,
+  ssAnneSailorEdmundSailorTrevorBox,
   vermillionCityGymGentlemanTuckerBox,
   vermillionCityLeaderLtSurgeBox,
 } from "@site/src/utils/opponents";
@@ -637,7 +637,6 @@ const _box8 = getBox({
   team: ["Perrserker", "Runerigus", "Drednaw", "Golisopod", "Golduck", "Tentacruel"],
 });
 
-
 export const ssAnneBrendanBattle: Moment = {
   label: "S.S. Anne Brendan Battle",
   kind: "battle",
@@ -667,7 +666,10 @@ export const ssAnneBrendanBattle: Moment = {
                 { player: "{p:Perrserker} switch to {p:Runerigus}" },
                 { opponent: "{o:Slaking} Body Slam {p:Runerigus}" },
               ],
-              [{ player: "{p:Runerigus} switch to {p:Drednaw}" }, { opponent: "{o:Slaking} Truant" }],
+              [
+                { player: "{p:Runerigus} switch to {p:Drednaw}" },
+                { opponent: "{o:Slaking} Truant" },
+              ],
               [
                 { opponent: "{o:Slaking} Brick Break {p:Drednaw} to {+:31}" },
                 { player: "{p:Drednaw} Counter {o:Slaking} to {-:23}" },
@@ -1639,5 +1641,5 @@ export const moments: Moment[] = [
   route10PokeManiacHermanBattle,
   route8SuperNerdAidanBattle,
   vermillionCityGymGentlemanTuckerBattle,
-  vermillionCityLeaderLtSurgeBattle
+  vermillionCityLeaderLtSurgeBattle,
 ];

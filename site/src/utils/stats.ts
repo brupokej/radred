@@ -4,6 +4,10 @@ import { resolvePokemon } from "@site/src/utils/pokemon";
 import { slugify } from "@site/src/utils/slugify";
 import { getState } from "@site/src/utils/storage";
 
+function bid(b: string | [string, string]): string {
+  return Array.isArray(b) ? b[0] : b;
+}
+
 function getVisibleSlugs(data: BattleData): Set<string> {
   const linesBySlug = new Map(data.lines.map((l) => [l.line ?? "", l]));
   const visible = new Set<string>();
@@ -28,11 +32,12 @@ function getVisibleSlugs(data: BattleData): Set<string> {
         branchActivated = true;
 
         if (branch.branches.length === 1) {
-          queue.push(branch.branches[0]);
+          queue.push(bid(branch.branches[0]));
         } else {
-          const key = `branch-${slugify(branch.branches)}`;
-          const selected = getState(key) ?? branch.branches[0];
-          queue.push(selected);
+          const key = `branch-${slugify(branch.branches.map(bid))}`;
+          const stored = getState(key);
+          const found = stored ? branch.branches.find((b) => slugify(bid(b)) === stored) : null;
+          queue.push(found ? bid(found) : bid(branch.branches[0]));
         }
       }
     }
