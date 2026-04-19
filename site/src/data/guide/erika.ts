@@ -214,6 +214,7 @@ export const celadonCityLeaderErikaBattle: Moment = {
             turns: [
               [
                 { player: "{p:Arcanine-H} switch to {p:Golisopod}" },
+                { opponent: "{o:Sceptile} mega to {o:Sceptile-Mega}" },
                 { opponent: "{o:Sceptile-Mega} High Horsepower {p:Golisopod} to {+:97}" },
                 { player: "{p:Golisopod} heal to {+:105}" },
               ],

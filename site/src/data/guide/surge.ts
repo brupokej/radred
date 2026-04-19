@@ -1465,6 +1465,7 @@ export const vermillionCityLeaderLtSurgeBattle: Moment = {
             turns: [
               [
                 { player: "{p:Runerigus} switch to {p:Azumarill}" },
+                { opponent: "{o:Ampharos} mega to {o:Ampharos-Mega}" },
                 { opponent: "{o:Ampharos-Mega} Dragon Pulse {p:Azumarill}" },
               ],
               [
