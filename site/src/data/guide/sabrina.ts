@@ -509,23 +509,26 @@ export const starterEgg1BoxChange: Moment = {
 const _box9 = getBox({
   box: _box8,
   update: {
-    Incineroar: {
-      nature: "Adamant",
-      ability: "Intimidate",
-      moves: ["Fake Out", "Darkest Lariat", "Snarl", "U-Turn"],
-    },
-    Excadrill: {
-      nature: "Adamant",
+    Perrserker: {
+      moves: ["Fake Out", "Aerial Ace", "Thunderbolt", "U-Turn"],
     },
     Meowscarada: {
       nature: "Adamant",
       ability: "Protean",
       item: "Black Glasses",
-      moves: ["Brick Break", "Night Slash", "Play Rough", "U-Turn"],
+      moves: ["Flower Trick", "Knock Off", "Tail Whip", "U-Turn"],
     },
+    Excadrill: {
+      nature: "Adamant",
+      moves: ["Brick Break", "Iron Head", "Rapid Spin", "Rock Tomb"],
+    },
+    Incineroar: {
+      item: "Black Glasses",
+    }
   },
-  team: ["Incineroar", "Excadrill", "Meowscarada"],
+  team: ["Perrserker", "Meowscarada", "Excadrill", "Incineroar"],
 });
+
 
 export const pokemonTowerChannelerRuthBattle: Moment = {
   label: "Pokémon Tower Channeler Ruth Battle",
@@ -540,101 +543,53 @@ export const pokemonTowerChannelerRuthBattle: Moment = {
             matchup: ["Grimmsnarl", "Pincurchin"],
             turns: [
               [
-                { player: "{p:Incineroar} Fake Out {o:Grimmsnarl} to {-:128}" },
+                { player: "{p:Perrserker} Fake Out {o:Grimmsnarl} to {-:146}" },
                 { opponent: "{o:Grimmsnarl} flinched" },
-                { player: "{p:Excadrill} Drill Run {o:Pincurchin} to {=:0}" },
+                { player: "{p:Meowscarada} Flower Trick {o:Pincurchin} to {=:0}" },
                 { opponent: "{o:Pincurchin} fainted" },
               ],
             ],
           },
           {
-            matchup: ["Grimmsnarl", "Cresselia"],
+            matchup: ["Grimmsnarl", "Polteageist"],
             turns: [
               [
-                { player: "{p:Excadrill} switch to {p:Meowscarada}" },
-                { opponent: "{o:Grimmsnarl} Light Screen" },
-                { opponent: "{o:Cresselia} Calm Mind" },
-                {
-                  player:
-                    "{p:Incineroar} Snarl {o:Cresselia} to {-:160} and {o:Grimmsnarl} to {-:125}",
-                },
-              ],
-              [
-                { opponent: "{o:Grimmsnarl} Light Screen or Reflect" },
-                { player: "{p:Meowscarada} Brick Break {o:Grimmsnarl} to {-:64}" },
-                { opponent: "{o:Cresselia} Calm Mind" },
-                {
-                  player:
-                    "{p:Incineroar} Snarl {o:Cresselia} to {-:147} and {o:Grimmsnarl} to {-:61}",
-                },
-              ],
-              [
-                { opponent: "{o:Grimmsnarl} Light Screen or Reflect" },
-                { player: "{p:Meowscarada} Brick Break {o:Grimmsnarl} to {=:0}" },
-                { opponent: "{o:Grimmsnarl} fainted" },
-                { opponent: "{o:Cresselia} Calm Mind" },
-                { player: "{p:Incineroar} Snarl {o:Cresselia} to {-:134}" },
+                { opponent: "{o:Grimmsnarl} Reflect" },
+                { player: "{p:Meowscarada} Knock Off {o:Polteageist} to {=:0}" },
+                { opponent: "{o:Polteageist} fainted" },
+                { player: "{p:Perrserker} U-Turn {o:Grimmsnarl} to {-:104}" },
+                { player: "{p:Perrserker} switch to {p:Excadrill}" },
               ],
             ],
+          },
+          {
+            matchup: ["Grimmsnarl", "Cresselia"],
+            turns: [],
             branches: [
               {
                 branches: [
-                  "50% → Drifblim and Cresselia matchup",
-                  "50% → Polteageist and Cresselia matchup",
-                ],
-              },
+                  "93% → Meowscarada U-Turn Grimmsnarl",
+                  "7% → Meowscarada U-Turn Grimmsnarl (to 0)",
+                ]
+              }
             ],
-          },
-        ],
-        frags: { Excadrill: 1, Meowscarada: 1 },
-      },
-      {
-        line: "50% → Drifblim and Cresselia matchup",
-        matchups: [
-          {
-            matchup: ["Drifblim", "Cresselia"],
-            turns: [
-              [
-                { opponent: "{o:Drifblim} Calm Mind" },
-                { player: "{p:Meowscarada} Night Slash {o:Drifblim} to {-:77}" },
-                { opponent: "{o:Cresselia} Calm Mind" },
-                { player: "{p:Incineroar} Snarl {o:Cresselia} to {-:121}" },
-              ],
-              [
-                { opponent: "{o:Drifblim} Calm Mind" },
-                { player: "{p:Meowscarada} Night Slash {o:Drifblim} to {=:0}" },
-                { opponent: "{o:Drifblim} fainted" },
-                { opponent: "{o:Cresselia} Calm Mind" },
-                { player: "{p:Incineroar} Snarl {o:Cresselia} to {-:108}" },
-              ],
-            ],
-          },
-          {
-            matchup: ["Polteageist", "Cresselia"],
-            turns: [
-              [
-                { player: "{p:Meowscarada} Night Slash {o:Polteageist} to {=:0}" },
-                { opponent: "{o:Polteageist} fainted" },
-                { opponent: "{o:Cresselia} Calm Mind" },
-                { player: "{p:Incineroar} Snarl {o:Cresselia} to {-:95}" },
-              ],
-            ],
-            branches: [{ branches: ["Meowscarada Night Slash Cresselia"] }],
           },
         ],
         frags: { Meowscarada: 2 },
       },
       {
-        line: "50% → Polteageist and Cresselia matchup",
+        line: "93% → Meowscarada U-Turn Grimmsnarl",
         matchups: [
           {
-            matchup: ["Polteageist", "Cresselia"],
+            matchup: ["Grimmsnarl", "Cresselia"],
             turns: [
               [
-                { player: "{p:Meowscarada} Night Slash {o:Polteageist} to {=:0}" },
-                { opponent: "{o:Polteageist} fainted" },
+                { opponent: "{o:Grimmsnarl} Light Screen" },
+                { player: "{p:Meowscarada} U-Turn {o:Grimmsnarl} to {-:55}" },
+                { player: "{p:Meowscarada} switch to {p:Incineroar}" },
                 { opponent: "{o:Cresselia} Calm Mind" },
-                { player: "{p:Incineroar} Snarl {o:Cresselia} to {-:121}" },
+                { player: "{p:Excadrill} Brick Break {o:Grimmsnarl} to {=:0}" },
+                { opponent: "{o:Grimmsnarl} fainted" },
               ],
             ],
           },
@@ -643,42 +598,72 @@ export const pokemonTowerChannelerRuthBattle: Moment = {
             turns: [
               [
                 { opponent: "{o:Drifblim} Calm Mind" },
-                { player: "{p:Meowscarada} Night Slash {o:Drifblim} to {-:77}" },
-                { opponent: "{o:Cresselia} Calm Mind" },
-                { player: "{p:Incineroar} Snarl {o:Cresselia} to {-:108}" },
-              ],
-              [
-                { opponent: "{o:Drifblim} Calm Mind" },
-                { player: "{p:Meowscarada} Night Slash {o:Drifblim} to {=:0}" },
+                { opponent: "{o:Cresselia} Moonblast {p:Incineroar} to {+:99}" },
+                { player: "{p:Excadrill} Iron Head {o:Cresselia} to {-:175}" },
+                { player: "{p:Incineroar} Darkest Lariat {o:Drifblim} to {=:0}" },
                 { opponent: "{o:Drifblim} fainted" },
-                { opponent: "{o:Cresselia} Calm Mind" },
-                { player: "{p:Incineroar} Snarl {o:Cresselia} to {-:95}" },
               ],
             ],
-            branches: [{ branches: ["Meowscarada Night Slash Cresselia"] }],
           },
-        ],
-        frags: { Meowscarada: 2 },
-      },
-      {
-        line: "Meowscarada Night Slash Cresselia",
-        matchups: [
           {
             matchup: ["Cresselia"],
             turns: [
               [
-                { player: "{p:Meowscarada} Night Slash {o:Cresselia} to {-:52}" },
-                { opponent: "{o:Cresselia} Calm Mind" },
-                { player: "{p:Incineroar} Snarl {o:Cresselia} to {-:39}" },
-              ],
-              [
-                { player: "{p:Meowscarada} Night Slash {o:Cresselia} to {=:0}" },
+                { opponent: "{o:Cresselia} Moonblast {p:Incineroar} to {+:9}" },
+                { player: "{p:Excadrill} Iron Head {o:Cresselia} to {-:134}" },
+                { player: "{p:Incineroar} Darkest Lariat {o:Cresselia} to {=:0}" },
                 { opponent: "{o:Cresselia} fainted" },
               ],
             ],
           },
         ],
-        frags: { Meowscarada: 1 },
+        frags: { Excadrill: 1, Incineroar: 2 },
+      },
+      {
+        line: "7% → Meowscarada U-Turn Grimmsnarl (to 0)",
+        matchups: [
+          {
+            matchup: ["Grimmsnarl", "Cresselia"],
+            turns: [
+              [
+                { opponent: "{o:Grimmsnarl} Light Screen" },
+                { player: "{p:Meowscarada} U-Turn {o:Grimmsnarl} to {=:0}" },
+                { opponent: "{o:Grimmsnarl} fainted" },
+                { player: "{p:Meowscarada} switch to {p:Incineroar}" },
+                { opponent: "{o:Cresselia} Calm Mind" },
+                { player: "{p:Excadrill} Brick Break {o:Cresselia} to {-:204}" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Drifblim", "Cresselia"],
+            turns: [
+              [
+                { player: "{p:Excadrill} switch to {p:Perrserker}" },
+                { opponent: "{o:Drifblim} Calm Mind" },
+                { opponent: "{o:Cresselia} Moonblast {p:Incineroar} to {+:99}" },
+                { player: "{p:Incineroar} Darkest Lariat {o:Drifblim} to {=:0}" },
+                { opponent: "{o:Drifblim} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Cresselia"],
+            turns: [
+              [
+                { player: "{p:Perrserker} Fake Out {o:Cresselia} to {-:186}" },
+                { opponent: "{o:Cresselia} flinched" },
+                { player: "{p:Incineroar} Darkest Lariat {o:Cresselia} to {-:52}" },
+              ],
+              [
+                { opponent: "{o:Cresselia} Moonblast {p:Incineroar} to {+:9}" },
+                { player: "{p:Incineroar} Darkest Lariat {o:Cresselia} to {=:0}" },
+                { opponent: "{o:Cresselia} fainted" },
+              ],
+            ],
+          },
+        ],
+        frags: { Meowscarada: 1, Incineroar: 2 },
       },
     ],
   },
@@ -689,7 +674,6 @@ const _box10 = getBox({
   update: {
     Meowscarada: {
       nature: "Impish",
-      moves: ["Brick Break", "Knock Off", "Play Rough", "U-Turn"],
     },
     Golduck: {
       item: "Kasib Berry",
