@@ -2,17 +2,70 @@
 sidebar_position: 6
 ---
 
+import { Battle } from "@site/src/components/Battle";
+import BoxChange from "@site/src/components/BoxChange";
 import Encounter from "@site/src/components/Encounter";
 import { Row } from "@site/src/components/Row";
 import StartButton from "@site/src/components/StartButton";
 
 import {
+  celadonCityEncounter,
+  celadonCityBoxChange,
+  route16BikerLaoBattle,
+  route16CueBallKojiBattle,
+  route16CueBallLukeBattle,
+  route16BikerRubenBattle,
+  route16BikerRubenBoxChange,
+  route16CueBallCamronBattle,
+  route16CueBallCamronBoxChange,
+  route16RiderHideoBattle,
+  route18BikerWilliamBattle,
   starterEgg3Encounter,
   starterEgg4Encounter,
   starterEgg5Encounter,
 } from "@site/src/data/guide/koga";
 
 # Koga
+
+## Celadon City Encounter<StartButton moment={celadonCityEncounter} />
+
+<Encounter data={celadonCityEncounter.data}>
+  <Row row={["Level 30"]} />
+</Encounter>
+
+<BoxChange data={celadonCityBoxChange.data} />
+
+## Route 16 Biker Lao Battle<StartButton moment={route16BikerLaoBattle} />
+
+<Battle data={route16BikerLaoBattle.data} />
+
+## Route 16 Cue Ball Koji Battle<StartButton moment={route16CueBallKojiBattle} />
+
+<Battle data={route16CueBallKojiBattle.data} />
+
+## Route 16 Cue Ball Luke Battle<StartButton moment={route16CueBallLukeBattle} />
+
+<Battle data={route16CueBallLukeBattle.data} />
+
+## Route 16 Biker Ruben Battle<StartButton moment={route16BikerRubenBattle} />
+
+<Battle data={route16BikerRubenBattle.data} />
+
+<BoxChange data={route16BikerRubenBoxChange.data} />
+
+## Route 16 Cue Ball Camron Battle<StartButton moment={route16CueBallCamronBattle} />
+
+<Battle data={route16CueBallCamronBattle.data} />
+
+<BoxChange data={route16CueBallCamronBoxChange.data} />
+
+## Route 16 Rider Hideo Battle<StartButton moment={route16RiderHideoBattle} />
+
+<Battle data={route16RiderHideoBattle.data} />
+
+## Route 18 Biker William Battle<StartButton moment={route18BikerWilliamBattle} />
+
+<Battle data={route18BikerWilliamBattle.data} />
 
 ## Starter Egg 3 Encounter<StartButton moment={starterEgg3Encounter} />
 
