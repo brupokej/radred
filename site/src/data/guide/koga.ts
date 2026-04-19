@@ -8,6 +8,8 @@ import {
   route16CueBallLukeBox,
   route16RiderHideoBox,
   route18BikerWilliamBox,
+  route18BirdKeeperJacobBox,
+  route18AceTrainerWiltonBox,
 } from "@site/src/utils/opponents";
 
 import { box as _box1 } from "@site/src/data/guide/sabrina";
@@ -74,7 +76,8 @@ const _box3 = getBox({
       moves: ["Acrobatics", "Flower Trick", "Knock Off", "Play Rough"],
     },
   },
-  team: ["Excadrill", "Dragapult", "Gyarados", "Runerigus", "Clodsire", "Meowscarada"],
+  team: ["Excadrill", "Dragapult", "Gyarados", "Runerigus", "Clodsire"],
+  extraTeam: ["Meowscarada"],
 });
 
 export const route16BikerLaoBattle: Moment = {
@@ -155,7 +158,7 @@ export const route16BikerLaoBattle: Moment = {
   },
 };
 
-const _box4 = getBox({ box: _box3 });
+const _box4 = getBox({ box: _box3, team: ["Excadrill"], });
 
 export const route16CueBallKojiBattle: Moment = {
   label: "Route 16 Cue Ball Koji Battle",
@@ -191,11 +194,13 @@ export const route16CueBallKojiBattle: Moment = {
   },
 };
 
+const _box5 = getBox({ box: _box4, team: ["Excadrill", "Meowscarada"], });
+
 export const route16CueBallLukeBattle: Moment = {
   label: "Route 16 Cue Ball Luke Battle",
   kind: "battle",
   data: {
-    playerBox: _box4,
+    playerBox: _box5,
     opponentBox: route16CueBallLukeBox,
     lines: [
       {
@@ -240,8 +245,8 @@ export const route16CueBallLukeBattle: Moment = {
   },
 };
 
-const _box5 = getBox({
-  box: _box4,
+const _box6 = getBox({
+  box: _box5,
   update: {
     "Arcanine-H": {
       nature: "Adamant",
@@ -265,7 +270,7 @@ export const route16BikerRubenBattle: Moment = {
   label: "Route 16 Biker Ruben Battle",
   kind: "battle",
   data: {
-    playerBox: _box5,
+    playerBox: _box6,
     opponentBox: route16BikerRubenBox,
     lines: [
       {
@@ -311,7 +316,7 @@ export const route16BikerRubenBattle: Moment = {
                 { player: "{p:Drednaw} switch to {p:Meowscarada}" },
                 { opponent: "{o:Roserade} Giga Drain {p:Meowscarada} to {+:127}" },
                 { opponent: "{o:Roserade} heal to {-:175}" },
-                { oppponent: "{p:Meowscarada} sand to {+:115}" },
+                { opponent: "{p:Meowscarada} sand to {+:115}" },
                 { opponent: "{o:Roserade} sand to {-:165}" },
               ],
               [
@@ -355,8 +360,8 @@ export const route16BikerRubenBattle: Moment = {
   },
 };
 
-const _box6 = getBox({
-  box: _box5,
+const _box7 = getBox({
+  box: _box6,
   update: {
     Perrserker: {
       hp: "Fire",
@@ -374,8 +379,8 @@ export const route16BikerRubenBoxChange: Moment = {
   data: { playerBox: _box6 },
 };
 
-const _box7 = getBox({
-  box: _box6,
+const _box8 = getBox({
+  box: _box7,
   update: {
     Meowscarada: {
       nature: "Adamant",
@@ -412,7 +417,7 @@ export const route16CueBallCamronBattle: Moment = {
   label: "Route 16 Cue Ball Camron Battle",
   kind: "battle",
   data: {
-    playerBox: _box7,
+    playerBox: _box8,
     opponentBox: route16CueBallCamronBox,
     lines: [
       {
@@ -515,8 +520,8 @@ export const route16CueBallCamronBattle: Moment = {
   },
 };
 
-const _box8 = getBox({
-  box: _box7,
+const _box9 = getBox({
+  box: _box8,
   remove: ["Azumarill"],
   update: {
     Perrserker: {
@@ -531,8 +536,8 @@ export const route16CueBallCamronBoxChange: Moment = {
   data: { playerBox: _box8 },
 };
 
-const _box9 = getBox({
-  box: _box8,
+const _box10 = getBox({
+  box: _box9,
   update: {
     Meowscarada: {
       nature: "Jolly",
@@ -567,7 +572,7 @@ export const route16RiderHideoBattle: Moment = {
   label: "Route 16 Rider Hideo Battle",
   kind: "battle",
   data: {
-    playerBox: _box9,
+    playerBox: _box10,
     opponentBox: route16RiderHideoBox,
     lines: [
       {
@@ -764,8 +769,8 @@ export const route16RiderHideoBattle: Moment = {
   },
 };
 
-const _box10 = getBox({
-  box: _box9,
+const _box11 = getBox({
+  box: _box10,
   update: {
     Excadrill: {
       nature: "Adamant",
@@ -786,17 +791,629 @@ const _box10 = getBox({
       nature: "Jolly",
     },
   },
-  team: ["Excadrill", "Clodsire", "Meowscarada", "Dragapult"],
+  team: ["Excadrill", "Clodsire", "Meowscarada"],
+  extraTeam: ["Dragapult"],
 });
 
 export const route18BikerWilliamBattle: Moment = {
   label: "Route 18 Biker William Battle",
   kind: "battle",
   data: {
-    playerBox: _box10,
+    playerBox: _box11,
     opponentBox: route18BikerWilliamBox,
-    lines: [],
+    lines: [
+      {
+        matchups: [
+          {
+            matchup: ["Magnezone"],
+            turns: [
+              [
+                { player: "{p:Excadrill} Earthquake {o:Magnezone}" },
+                { opponent: "{o:Magnezone} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Salamence"],
+            turns: [
+              [
+                { player: "{p:Excadrill} switch to {p:Clodsire}" },
+                { opponent: "{o:Salamence} Hydro Pump {p:Clodsire}" },
+              ],
+              [
+                { player: "{p:Clodsire} switch to {p:Meowscarada}" },
+                { opponent: "{o:Salamence} Earthquake {p:Meowscarada} to {+:131}" },
+              ],
+              [
+                { player: "{p:Meowscarada} Play Rough {o:Salamence} to {=:0}" },
+                { opponent: "{o:Salamence} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Starmie"],
+            turns: [
+              [
+                { player: "{p:Meowscarada} switch to {p:Clodsire}" },
+                { opponent: "{o:Starmie} Hydro Pump {p:Clodsire}" },
+              ],
+              [
+                { opponent: "{o:Starmie} Psychic {p:Clodsire} to {+:7}" },
+                { opponent: "{o:Starmie} recoil to {=:158}" },
+                { opponent: "{p:Clodsire} heal to {+:75}" },
+                { player: "{p:Clodsire} Rock Tomb {o:Starmie} to {-:130}" },
+              ],
+              [
+                { player: "{p:Clodsire} switch to {p:Meowscarada}" },
+                { opponent: "{o:Starmie} Psychic {p:Meowscarada}" },
+              ],
+              [
+                { player: "{p:Meowscarada} Flower Trick {o:Starmie} to {=:0}" },
+                { opponent: "{o:Starmie} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Bisharp"],
+            turns: [
+              [
+                { player: "{p:Meowscarada} Brick Break {o:Bisharp} to {=:0}" },
+                { opponent: "{o:Bisharp} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Whiscash"],
+            turns: [
+              [
+                { player: "{p:Meowscarada} Flower Trick {o:Whiscash} to {=:0}" },
+                { opponent: "{o:Whiscash} fainted" },
+              ],
+            ],
+          },
+        ],
+      },
+    ],
   },
+};
+
+const _box12 = getBox({
+  box: _box11,
+  update: {
+    Drednaw: {
+      ivs: { hp: 0, spd: 0 },
+    },
+    Swampert: {
+      ivs: undefined,
+    }
+  },
+});
+
+export const route18BikerWilliamBoxChange: Moment = {
+  label: "Route 18 Biker William Box Change",
+  kind: "boxChange",
+  data: { playerBox: _box12 },
+};
+
+const _box13 = getBox({
+  box: _box12,
+  update: {
+    Lanturn: {
+      item: "Persim Berry",
+      moves: ["Flip Turn", "Signal Beam", "Thunderbolt", "Volt Switch"],
+    },
+    Drednaw: {
+      nature: "Naughty",
+      ability: "Swift Swim",
+      item: "Hard Stone",
+      moves: ["Bulldoze", "Dig", "Flip Turn", "Rock Slide"],
+    },
+    "Swampert": {
+      name: "Swampert-Mega",
+      nature: "Jolly",
+      item: "Swampertite",
+      moves: ["Earthquake", "Hammer Arm", "Knock Off", "Rock Slide"],
+    },
+    Meowscarada: {
+      item: undefined,
+      moves: ["Acrobatics", "Flower Trick", "Knock Off", "Thunder Punch"],
+    },
+    Tentacruel: {
+      nature: "Modest",
+      moves: ["Dazzling Gleam", "Flip Turn", "Hydro Pump", "Sludge Wave"],
+    }
+  },
+  team: ["Lanturn", "Drednaw", "Swampert-Mega", "Meowscarada", "Tentacruel", "Gyarados"],
+});
+
+export const route18BirdKeeperJacobBattle: Moment = {
+  label: "Route 18 Bird Keeper Jacob Battle",
+  kind: "battle",
+  data: {
+    playerBox: _box13,
+    opponentBox: route18BirdKeeperJacobBox,
+    lines: [
+      {
+        matchups: [
+          {
+            matchup: ["Cramorant-Gorg"],
+            turns: [],
+            branches: [
+              {
+                branches: [
+                  "80% → Cramorant-Gorg switch to Porygon2",
+                  "20% → Lanturn Volt Switch Cramorant-Gorg",
+                ],
+              },
+            ],
+          }
+        ]
+      },
+      {
+        line: "80% → Cramorant-Gorg switch to Porygon2",
+        ifNot: ["20% → Lanturn Volt Switch Cramorant-Gorg"],
+        matchups: [
+          {
+            matchup: ["Cramorant-Gorg"],
+            turns: [
+              [
+                { opponent: "{o:Cramorant-Gorg} switch to {o:Porygon2}" },
+                { player: "{p:Lanturn} Volt Switch {o:Porygon2} to {-:175}" },
+                { player: "{p:Lanturn} switch to {p:Swampert-Mega}" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Porygon2"],
+            turns: [
+              [
+                { player: "{p:Swampert-Mega} Knock Off {o:Porygon2} to {-:128}" },
+                { opponent: "{o:Porygon2} Foul Play {p:Swampert-Mega} to {+:118}" },
+              ],
+              [
+                { player: "{p:Swampert-Mega} Hammer Arm {o:Porygon2} to {=:0}" },
+                { opponent: "{o:Porygon2} fainted" },
+              ]
+            ],
+            branches: [{ branches: ["Swampert-Mega switch to Meowscarada"] }],
+          }
+        ],
+        frags: { "Swampert-Mega": 1 },
+      },
+      {
+        line: "20% → Lanturn Volt Switch Cramorant-Gorg",
+        ifNot: ["Swampert-Mega switch to Lanturn"],
+        matchups: [
+          {
+            matchup: ["Cramorant-Gorg"],
+            turns: [
+              [
+                { opponent: "{o:Cramorant-Gorg} Hurricane {p:Lanturn} to {+:177}" },
+                { player: "{p:Lanturn} Volt Switch {o:Cramorant-Gorg} to {-:22}" },
+                { opponent: "{o:Cramorant-Gorg} Gulp Missile {p:Lanturn} to {+:110}" },
+                { player: "{p:Lanturn} switch to {p:Drednaw}" },
+              ],
+            ],
+            branches: [
+              {
+                branches: [
+                  "80% → Cramorant-Gorg switch to Porygon2",
+                  "20% → Drednaw Rock Slide Cramorant-Gorg",
+                ],
+              },
+            ],
+          }
+        ],
+      },
+      {
+        line: "80% → Cramorant-Gorg switch to Porygon2",
+        if: ["20% → Lanturn Volt Switch Cramorant-Gorg"],
+        matchups: [
+          {
+            matchup: ["Cramorant-Gorg"],
+            turns: [
+              [
+                { opponent: "{o:Cramorant-Gorg} switch to {o:Porygon2}" },
+                { player: "{p:Drednaw} Rock Slide {o:Porygon2} to {-:150}" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Porygon2"],
+            turns: [
+              [
+                { player: "{p:Drednaw} Flip Turn {o:Porygon2} to {-:92}" },
+                { player: "{p:Drednaw} switch to {p:Swampert-Mega}" },
+                { opponent: "{o:Porygon2} Thunder {p:Swampert-Mega}" },
+              ],
+              [
+                { player: "{p:Swampert-Mega} Knock Off {o:Porygon2} to {-:45}" },
+                { opponent: "{o:Porygon2} Foul Play {p:Swampert-Mega} to {+:118}" },
+              ],
+              [
+                { player: "{p:Swampert-Mega} Hammer Arm {o:Porygon2} to {=:0}" },
+                { opponent: "{o:Porygon2} fainted" },
+              ],
+            ],
+            branches: [{ branches: ["Swampert-Mega switch to Meowscarada"] }],
+          }
+        ],
+        frags: { "Swampert-Mega": 1 },
+      },
+      {
+        line: "20% → Drednaw Rock Slide Cramorant-Gorg",
+        matchups: [
+          {
+            matchup: ["Cramorant-Gorg"],
+            turns: [
+              [
+                { player: "{p:Drednaw} Rock Slide {o:Cramorant-Gorg} to {=:0}" },
+                { opponent: "{o:Cramorant-Gorg} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Porygon2"],
+            turns: [
+              [
+                { player: "{p:Drednaw} Flip Turn {o:Porygon2} to {-:150}" },
+                { player: "{p:Drednaw} switch to {p:Swampert-Mega}" },
+                { opponent: "{o:Porygon2} Thunder {p:Swampert-Mega}" },
+              ],
+              [
+                { player: "{p:Swampert-Mega} Knock Off {o:Porygon2} to {-:103}" },
+                { opponent: "{o:Porygon2} Foul Play {p:Swampert-Mega} to {+:118}" },
+              ],
+              [
+                { player: "{p:Swampert-Mega} Hammer Arm {o:Porygon2} to {=:0}" },
+                { opponent: "{o:Porygon2} fainted" },
+              ],
+            ],
+            branches: [{ branches: ["Swampert-Mega switch to Meowscarada"] }],
+          },
+        ],
+        frags: { Drednaw: 1, "Swampert-Mega": 1 },
+      },
+      {
+        line: "Swampert-Mega switch to Meowscarada",
+        matchups: [
+          {
+            matchup: ["Ogerpon-W"],
+            turns: [
+              [
+                { player: "{p:Swampert-Mega} switch to {p:Meowscarada}" },
+                { opponent: "{o:Ogerpon-W} Ivy Cudgel {p:Meowscarada} to {+:29}" },
+              ],
+              [
+                { player: "{p:Meowscarada} Acrobatics {o:Ogerpon-W} to {=:0}" },
+                { opponent: "{o:Ogerpon-W} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Raikou"],
+            turns: [
+              [
+                { player: "{p:Meowscarada} switch to {p:Tentacruel}" },
+                { opponent: "{o:Raikou} Shadow Ball {p:Tentacruel} to {+:143}" },
+                { opponent: "{o:Tentacruel} heal to {+:155}" },
+              ],
+              [
+                { opponent: "{o:Raikou} Shadow Ball {p:Tentacruel} to {+:91}" },
+                { player: "{p:Tentacruel} Flip Turn {o:Raikou} to {-:161}" },
+                { player: "{p:Tentacruel} switch to {p:Swampert-Mega}" },
+              ],
+              [
+                { player: "{p:Swampert-Mega} Earthquake {o:Raikou} to {=:0}" },
+                { opponent: "{o:Raikou} fainted" },
+              ],
+            ],
+            branches: [
+              {
+                if: ["80% → Cramorant-Gorg switch to Porygon2", "20% → Lanturn Volt Switch Cramorant-Gorg"],
+                ifNot: ["Swampert-Mega switch to Lanturn"],
+                branches: ["Swampert-Mega Rock Slide Cramorant-Gorg"],
+              },
+              {
+                if: ["80% → Cramorant-Gorg switch to Porygon2"],
+                branches: ["Swampert-Mega switch to Lanturn"],
+              },
+              {
+                branches: ["Swampert-Mega Earthquake Nidoqueen"],
+              },
+            ]
+          },
+        ],
+        frags: { Meowscarada: 1, "Swampert-Mega": 1 },
+      },
+      {
+        line: "Swampert-Mega Rock Slide Cramorant-Gorg",
+        matchups: [
+          {
+            matchup: ["Cramorant-Gorg"],
+            turns: [
+              [
+                { player: "{p:Swampert-Mega} Rock Slide {o:Cramorant-Gorg} to {=:0}" },
+                { opponent: "{o:Cramorant-Gorg} fainted" },
+              ]
+            ]
+          },
+          {
+            matchup: ["Nidoqueen"],
+            turns: [
+              [
+                { player: "{p:Swampert-Mega} Earthquake {o:Nidoqueen} to {=:0}" },
+                { opponent: "{o:Nidoqueen} fainted" },
+              ]
+            ]
+          },
+        ],
+        frags: { "Swampert-Mega": 2 },
+      },
+      {
+        line: "Swampert-Mega switch to Lanturn",
+        matchups: [
+          {
+            matchup: ["Cramorant-Gorg"],
+            turns: [
+              [
+                { player: "{p:Swampert-Mega} switch to {p:Lanturn}" },
+                { opponent: "{o:Cramorant-Gorg} Surf {p:Lanturn}" },
+              ],
+            ],
+            branches: [
+              {
+                branches: [
+                  "80% → Cramorant-Gorg switch to Nidoqueen",
+                  "20% → Lanturn Volt Switch Cramorant-Gorg",
+                ]
+              }
+            ]
+          }
+        ],
+      },
+      {
+        line: "80% → Cramorant-Gorg switch to Nidoqueen",
+        matchups: [
+          {
+            matchup: ["Cramorant-Gorg"],
+            turns: [
+              [
+                { opponent: "{o:Cramorant-Gorg} switch to {o:Nidoqueen}" },
+                { player: "{p:Lanturn} Volt Switch {o:Nidoqueen}" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Nidoqueen"],
+            turns: [
+              [
+                { player: "{p:Lanturn} switch to {p:Gyarados}" },
+                { opponent: "{o:Nidoqueen} Earth Power {p:Gyarados}" },
+              ],
+              [
+                { player: "{p:Gyarados} switch to {p:Swampert-Mega}" },
+                { opponent: "{o:Nidoqueen} Thunder {p:Swampert-Mega}" },
+              ],
+              [
+                { player: "{p:Swampert-Mega} Earthquake {o:Nidoqueen} to {=:0}" },
+                { opponent: "{o:Nidoqueen} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Cramorant-Gorg"],
+            turns: [
+              [
+                { player: "{p:Swampert-Mega} switch to {p:Lanturn}" },
+                { opponent: "{o:Cramorant-Gorg} Surf {p:Lanturn}" },
+              ],
+              [
+                { opponent: "{o:Cramorant-Gorg} Hurricane {p:Lanturn} to {+:177}" },
+                { player: "{p:Lanturn} Volt Switch {o:Cramorant-Gorg} to {-:22}" },
+                { opponent: "{o:Cramorant-Gorg} Gulp Missile {p:Lanturn} to {+:110}" },
+                { player: "{p:Lanturn} switch to {p:Swampert-Mega}" },
+              ],
+              [
+                { player: "{p:Swampert-Mega} Rock Slide {o:Cramorant} to {=:0}" },
+                { opponent: "{o:Cramorant} fainted" },
+              ],
+            ],
+          },
+        ],
+        frags: { "Swampert-Mega": 2 },
+      },
+      {
+        line: "20% → Lanturn Volt Switch Cramorant-Gorg",
+        if: ["Swampert-Mega switch to Lanturn"],
+        matchups: [
+          {
+            matchup: ["Cramorant-Gorg"],
+            turns: [
+              [
+                { opponent: "{o:Cramorant-Gorg} Hurricane {p:Lanturn} to {+:177}" },
+                { player: "{p:Lanturn} Volt Switch {o:Cramorant-Gorg} to {-:22}" },
+                { opponent: "{o:Cramorant-Gorg} Gulp Missile {p:Lanturn} to {+:110}" },
+                { player: "{p:Lanturn} switch to {p:Swampert-Mega}" },
+              ],
+              [
+                { player: "{p:Swampert-Mega} Rock Slide {o:Cramorant} to {=:0}" },
+                { opponent: "{o:Cramorant} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Nidoqueen"],
+            turns: [
+              [
+                { player: "{p:Swampert-Mega} Earthquake {o:Nidoqueen} to {=:0}" },
+                { opponent: "{o:Nidoqueen} fainted" },
+              ],
+            ],
+          },
+        ],
+        frags: { "Swampert-Mega": 2 },
+      },
+      {
+        line: "Swampert-Mega Earthquake Nidoqueen",
+        matchups: [
+          {
+            matchup: ["Nidoqueen"],
+            turns: [
+              [
+                { player: "{p:Swampert-Mega} Earthquake {o:Nidoqueen} to {=:0}" },
+                { opponent: "{o:Nidoqueen} fainted" },
+              ],
+            ],
+          },
+        ],
+        frags: { "Swampert-Mega": 1 },
+      },
+    ],
+  },
+};
+
+const _box14 = getBox({
+  box: _box13,
+  update: {
+    "Swampert-Mega": {
+      moves: ["Earthquake", "Hammer Arm", "Ice Punch", "Rock Slide"],
+    },
+    Clodsire: {
+      item: "Persim Berry",
+    },
+    Perrserker: {
+      item: "Aspear Berry",
+      moves: ["Fake Out", "Bullet Punch", "Thrash", "U-Turn"],
+    },
+    "Arcanine-H": {
+      item: "Persim Berry",
+    },
+  },
+  team: ["Dragapult", "Swampert-Mega", "Clodsire", "Perrserker", "Arcanine-H"],
+});
+
+export const route18AceTrainerWiltonBattle: Moment = {
+  label: "Route 18 Ace Trainer Wilton Battle",
+  kind: "battle",
+  data: {
+    playerBox: _box14,
+    opponentBox: route18AceTrainerWiltonBox,
+    lines: [
+      {
+        matchups: [
+          {
+            matchup: ["Dragapult"],
+            turns: [
+              [
+                { player: "{p:Dragapult} Dragon Darts {o:Dragapult} to {=:0}" },
+                { opponent: "{o:Dragapult} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Kabutops"],
+            turns: [
+              [
+                { opponent: "{o:Kabutops} Stone Axe {p:Dragapult} to {+:91}" },
+                { player: "{p:Dragapult} U-Turn {o:Kabutops} to {-:130}" },
+                { player: "{p:Dragapult} switch to {p:Swampert-Mega}" },
+                { opponent: "{p:Swampert-Mega} Stealth Rock to {=:221}" },
+              ],
+              [
+                { player: "{p:Swampert-Mega} Earthquake {o:Kabutops} to {=:0}" },
+                { opponent: "{o:Kabutops} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Pinsir-Mega"],
+            turns: [
+              [
+                { player: "{p:Swampert-Mega} Rock Slide {o:Pinsir-Mega} to {=:0}" },
+                { opponent: "{o:Pinsir-Mega} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Omastar"],
+            turns: [
+              [
+                { player: "{p:Swampert-Mega} Earthquake {o:Omastar} to {=:1}" },
+                { opponent: "{o:Omastar} Shell Smash" },
+              ],
+              [
+                { player: "{p:Swampert-Mega} switch to {p:Clodsire}" },
+                { opponent: "{p:Clodsire} Stealth Rock to {=:258}" },
+                { opponent: "{o:Omastar} Hydro Pump {p:Clodsire} to {+:258}" },
+              ],
+              [
+                { player: "{p:Clodsire} switch to {p:Perrserker}" },
+                { opponent: "{p:Perrserker} Stealth Rock to {=:208}" },
+                { opponent: "{o:Omastar} Ice Beam {p:Perrserker} to {+:129}" },
+              ],
+              [
+                { player: "{p:Perrserker} Bullet Punch {o:Omastar} to {=:0}" },
+                { opponent: "{o:Omastar} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Kilowattrel"],
+            turns: [
+              [
+                { player: "{p:Perrserker} switch to {p:Clodsire}" },
+                { opponent: "{p:Clodsire} Stealth Rock to {=:241}" },
+                { opponent: "{o:Kilowattrel} Thunder {p:Clodsire}" },
+              ],
+              [
+                { opponent: "{o:Kilowattrel} Hurricane {p:Clodsire} to {+:27}" },
+                { player: "{p:Clodsire} Rock Tomb {o:Kilowattrel} to {-:114}" },
+              ],
+              [
+                { player: "{p:Clodsire} switch to {p:Arcanine-H}" },
+                { opponent: "{p:Arcanine-H} Stealth Rock to {=:171}" },
+                { opponent: "{o:Kilowattrel} Hurricane {p:Arcanine-H} to {+:42}" },
+              ],
+              [
+                { player: "{p:Arcanine-H} Rock Slide {o:Kilowattrel} to {=:0}" },
+                { opponent: "{o:Kilowattrel} fainted" },
+              ],
+            ],
+          },
+        ],
+        frags: { Dragapult: 1, "Swampert-Mega": 2, Perrserker: 1, "Arcanine-H": 1 },
+      },
+    ],
+  },
+};
+
+const _screamTail = {
+  name: "Scream Tail",
+  spriteKey: "scream-tail",
+  pokedexKey: "Screamtail",
+  moves: ["Body Slam", "Hyper Voice", "Play Rough", "Rest"],
+};
+
+const _box15 = getBox({
+  box: _box14,
+  update: {
+    Incineroar: {
+      moves: ["Fake Out", "Darkest Lariat", "Flamethrower", "U-Turn"],
+    },
+    Excadrill: {
+      nature: "Jolly",
+      item: "Expert Belt",
+      moves: ["Brick Break", "Drill Run", "Iron Head", "Shadow Claw"],
+    },
+  },
+  team: ["Incineroar", "Excadrill"],
+});
+
+export const safariZoneEncounter: Moment = {
+  label: "Safari Zone Encounter",
+  kind: "encounter",
+  data: { pokemon: _screamTail, playerBox: _box15 },
 };
 
 const _froakie = {
@@ -835,7 +1452,57 @@ export const starterEgg5Encounter: Moment = {
   data: { pokemon: _treecko },
 };
 
-export const box = _box10;
+const _box16 = getBox({
+  box: _box15,
+  add: [_screamTail, _froakie, _chimchar, _treecko],
+  cap: 68,
+  update: [
+    {
+      Drednaw: {
+        ivs: { hp: 31, spd: 31 },
+      },
+      Froakie: {
+        name: "Frogadier",
+      },
+    },
+    {
+      Frogadier: {
+        name: "Greninja",
+        moves: ["Growl", "Pound", "Water Shuriken"],
+      },
+    },
+    {
+      Chimchar: {
+        name: "Monferno",
+      },
+    },
+    {
+      Monferno: {
+        name: "Infernape",
+        moves: ["Close Combat", "Leer", "Mach Punch", "Scratch"],
+      },
+    },
+    {
+      Treecko: {
+        name: "Grovyle",
+      },
+    },
+    {
+      Grovyle: {
+        name: "Sceptile",
+        moves: ["Dual Chop", "Fury Cutter", "Leer", "Pound"],
+      },
+    },
+  ],
+});
+
+export const starterEgg5BoxChange: Moment = {
+  label: "Starter Egg 5 Box Change",
+  kind: "boxChange",
+  data: { playerBox: _box16 },
+}
+
+export const box = _box16;
 
 export const moments: Moment[] = [
   celadonCityEncounter,
@@ -849,7 +1516,12 @@ export const moments: Moment[] = [
   route16CueBallCamronBoxChange,
   route16RiderHideoBattle,
   route18BikerWilliamBattle,
+  route18BikerWilliamBoxChange,
+  route18BirdKeeperJacobBattle,
+  route18AceTrainerWiltonBattle,
+  safariZoneEncounter,
   starterEgg3Encounter,
   starterEgg4Encounter,
   starterEgg5Encounter,
+  starterEgg5BoxChange,
 ];

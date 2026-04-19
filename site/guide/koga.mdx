@@ -20,9 +20,14 @@ import {
   route16CueBallCamronBoxChange,
   route16RiderHideoBattle,
   route18BikerWilliamBattle,
+  route18BikerWilliamBoxChange,
+  route18BirdKeeperJacobBattle,
+  route18AceTrainerWiltonBattle,
+  safariZoneEncounter,
   starterEgg3Encounter,
   starterEgg4Encounter,
   starterEgg5Encounter,
+  starterEgg5BoxChange,
 } from "@site/src/data/guide/koga";
 
 # Koga
@@ -67,6 +72,22 @@ import {
 
 <Battle data={route18BikerWilliamBattle.data} />
 
+<BoxChange data={route18BikerWilliamBoxChange.data} />
+
+## Route 18 Bird Keeper Jacob Battle<StartButton moment={route18BirdKeeperJacobBattle} />
+
+<Battle data={route18BirdKeeperJacobBattle.data} />
+
+## Route 18 Ace Trainer Wilton Battle<StartButton moment={route18AceTrainerWiltonBattle} />
+
+<Battle data={route18AceTrainerWiltonBattle.data} />
+
+## Safari Zone Encounter<StartButton moment={safariZoneEncounter} />
+
+<Encounter data={safariZoneEncounter.data}>
+  <Row row={["North (Zone 3) ·", { warning: "Day" }, "· 20% · Level 50-52"]} />
+</Encounter>
+
 ## Starter Egg 3 Encounter<StartButton moment={starterEgg3Encounter} />
 
 <Encounter data={starterEgg3Encounter.data}>
@@ -84,3 +105,5 @@ import {
 <Encounter data={starterEgg5Encounter.data}>
   <Row row={["Grass Egg · Level 1"]} />
 </Encounter>
+
+<BoxChange data={starterEgg5BoxChange.data} />
