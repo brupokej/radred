@@ -11,8 +11,11 @@ import {
   rocketHideoutGiovanniBox,
   rocketHideoutLeftGuardBox,
   rocketHideoutRightGuardBox,
+  saffronCityDumassKidBox,
+  saffronCityLeaderSabrinaBox,
   saffronDojoLeaderChuckBox,
   silphCoArianaArcherBox,
+  silphCoGiovanniBox,
   silphCoRivalBox,
 } from "@site/src/utils/opponents";
 
@@ -631,7 +634,7 @@ export const pokemonTowerChannelerRuthBattle: Moment = {
                 { opponent: "{o:Grimmsnarl} fainted" },
                 { player: "{p:Meowscarada} switch to {p:Incineroar}" },
                 { opponent: "{o:Cresselia} Calm Mind" },
-                { player: "{p:Excadrill} Brick Break {o:Cresselia} to {-:204}" },
+                { player: "{p:Excadrill} Brick Break {o:Grimmsnarl} → {o:Cresselia} to {-:204}" },
               ],
             ],
           },
@@ -1078,6 +1081,7 @@ export const pokemonTowerGrunt3Battle: Moment = {
             branches: [{ branches: ["Meowscarada Knock Off Golurk"] }],
           },
         ],
+        frags: { Meowscarada: 2 },
       },
       {
         line: "20% → Magnezone HP Fire Lanturn",
@@ -1155,6 +1159,7 @@ export const starterEgg2Encounter: Moment = {
 
 const _box14 = getBox({
   box: _box13,
+  add: [_mudkip],
   update: {
     Azumarill: {
       friend: true,
@@ -2133,7 +2138,7 @@ export const silphCoArianaArcherBattle: Moment = {
                 { opponent: "{o:Sceptile-Mega} crit Mega Drain {o:Primarina} to {=:0}" },
                 { opponent: "{o:Primarina} fainted" },
                 { opponent: "{o:Articuno-G} Psychic {o:Sceptile-Mega} to {+:1}" },
-                { player: "{p:Jellicent} Brine {o:Articuno-G} to {-:97}" },
+                { player: "{p:Jellicent} Brine {o:Primarina} → {o:Articuno-G} to {-:97}" },
               ],
             ],
             branches: [
@@ -2342,7 +2347,679 @@ export const silphCoArianaArcherBattle: Moment = {
   },
 };
 
-export const box = _box19;
+const _box20 = getBox({
+  box: _box19,
+  cap: { level: 57, exclude: ["Golisopod"] },
+});
+
+export const silphCoArianaArcherBoxChange: Moment = {
+  label: "Silph Co. Ariana & Archer Box Change",
+  kind: "boxChange",
+  data: { playerBox: _box20 },
+};
+
+const _box21 = getBox({
+  box: _box20,
+  update: {
+    Meowscarada: {
+      nature: "Adamant",
+      item: "Safety Goggles",
+      moves: ["Flower Trick", "Play Rough", "Thunder Punch", "U-Turn"],
+    },
+    Golduck: {
+      nature: "Rash",
+      ability: "Cloud Nine",
+      item: "Leftovers",
+      moves: ["Flash", "Flip Turn", "Psychic", "Scald"],
+    },
+    Clodsire: {
+      item: "Sitrus Berry",
+    },
+    Gyarados: {
+      item: "Charti Berry",
+      moves: ["Leer", "Reflect", "Rest", "Scary Face"],
+    },
+  },
+  team: ["Meowscarada", "Golduck", "Golisopod", "Clodsire", "Gyarados"],
+});
+
+export const silphCoGiovanniBattle: Moment = {
+  label: "Silph Co. Giovanni Battle",
+  kind: "battle",
+  data: {
+    playerBox: _box21,
+    opponentBox: silphCoGiovanniBox,
+    lines: [
+      {
+        matchups: [
+          {
+            matchup: ["Mamoswine"],
+            turns: [
+              [
+                { player: "{p:Meowscarada} U-Turn {o:Mamoswine} to {-:147}" },
+                { player: "{p:Meowscarada} switch to {p:Golduck}" },
+                { opponent: "{o:Mamoswine} Icicle Crash {p:Golduck} to {+:103}" },
+                { player: "{p:Golduck} heal to {+:113}" },
+              ],
+              [
+                { player: "{p:Golduck} Scald {o:Mamoswine} to {=:0}" },
+                { opponent: "{o:Mamoswine} fainted" },
+                { player: "{p:Golduck} heal to {+:123}" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Garchomp-Mega"],
+            turns: [
+              [
+                { player: "{p:Golduck} switch to {p:Golisopod}" },
+                { opponent: "{o:Garchomp-Mega} Earthquake {p:Golisopod} to {+:7}" },
+                { player: "{p:Golisopod} Emergency Exit to {p:Meowscarada}" },
+              ],
+              [
+                { player: "{p:Meowscarada} Play Rough {o:Garchomp-Mega} to {-:79}" },
+                { opponent: "{o:Garchomp-Mega} Scale Shot {p:Meowscarada}" },
+              ],
+              [
+                { player: "{p:Meowscarada} Play Rough {o:Garchomp-Mega} to {=:0}" },
+                { opponent: "{o:Garchomp-Mega} fainted" },
+              ],
+            ],
+            branches: [
+              {
+                branches: ["50% → Dracovish matchup", "50% → Excadrill matchup"],
+              },
+            ],
+          },
+        ],
+        frags: { Golduck: 1, Meowscarada: 1 },
+      },
+      {
+        line: "50% → Dracovish matchup",
+        matchups: [
+          {
+            matchup: ["Dracovish"],
+            turns: [
+              [
+                { player: "{p:Meowscarada} switch to {p:Clodsire}" },
+                { opponent: "{o:Dracovish} Fishious Rend {p:Clodsire}" },
+              ],
+              [
+                { opponent: "{o:Dracovish} Psychic Fangs {p:Clodsire} to {+:118}" },
+                { player: "{p:Clodsire} Bulldoze {o:Dracovish} to {-:157}" },
+              ],
+              [
+                { player: "{p:Clodsire} switch to {p:Meowscarada}" },
+                { opponent: "{o:Dracovish} Psychic Fangs {p:Meowscarada}" },
+              ],
+              [
+                { player: "{p:Meowscarada} Play Rough {o:Dracovish} to {-:23}" },
+                { opponent: "{o:Dracovish} Dragon Claw {p:Meowscarada}" },
+              ],
+              [
+                { player: "{p:Meowscarada} Play Rough {o:Dracovish} to {=:0}" },
+                { opponent: "{o:Dracovish} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Excadrill"],
+            turns: [
+              [
+                { player: "{p:Meowscarada} switch to {p:Golduck}" },
+                { opponent: "{o:Excadrill} Iron Head {p:Golduck} to {+:54}" },
+                { player: "{p:Golduck} heal to {+:64}" },
+              ],
+              [
+                { player: "{p:Golduck} Flip Turn {o:Excadrill} to {-:114}" },
+                { player: "{p:Golduck} switch to {p:Gyarados}" },
+                { opponent: "{o:Excadrill} Earthquake {p:Gyarados}" },
+                { player: "{p:Gyarados} sand to {+:180}" },
+              ],
+              [
+                { opponent: "{o:Excadrill} Swords Dance" },
+                { player: "{p:Gyarados} Leer {o:Excadrill}" },
+                { player: "{p:Gyarados} sand to {+:168}" },
+              ],
+              [
+                { player: "{p:Gyarados} switch to {p:Golduck}" },
+                { opponent: "{o:Excadrill} Swords Dance" },
+                { player: "{p:Golduck} heal to {+:74}" },
+              ],
+              [
+                { player: "{p:Golduck} Flip Turn {o:Excadrill} to {=:0}" },
+                { opponent: "{o:Excadrill} fainted" },
+                { player: "{p:Golduck} switch to {p:Meowscarada}" },
+              ],
+            ],
+            branches: [{ branches: ["Meowscarada Flower Trick Garganacl"] }],
+          },
+        ],
+        frags: { Meowscarada: 1, Golduck: 1 },
+      },
+      {
+        line: "50% → Excadrill matchup",
+        matchups: [
+          {
+            matchup: ["Excadrill"],
+            turns: [
+              [
+                { player: "{p:Meowscarada} switch to {p:Golduck}" },
+                { opponent: "{o:Excadrill} Iron Head {p:Golduck} to {+:54}" },
+                { player: "{p:Golduck} heal to {+:64}" },
+              ],
+              [
+                { player: "{p:Golduck} Flip Turn {o:Excadrill} to {-:114}" },
+                { player: "{p:Golduck} switch to {p:Gyarados}" },
+                { opponent: "{o:Excadrill} Earthquake {p:Gyarados}" },
+                { player: "{p:Gyarados} sand to {+:180}" },
+              ],
+              [
+                { opponent: "{o:Excadrill} Swords Dance" },
+                { player: "{p:Gyarados} Leer {o:Excadrill}" },
+                { player: "{p:Gyarados} sand to {+:168}" },
+              ],
+              [
+                { player: "{p:Gyarados} switch to {p:Golduck}" },
+                { opponent: "{o:Excadrill} Swords Dance" },
+                { player: "{p:Golduck} heal to {+:74}" },
+              ],
+              [
+                { player: "{p:Golduck} Flip Turn {o:Excadrill} to {=:0}" },
+                { opponent: "{o:Excadrill} fainted" },
+                { player: "{p:Golduck} switch to {p:Meowscarada}" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Dracovish"],
+            turns: [
+              [
+                { player: "{p:Meowscarada} switch to {p:Clodsire}" },
+                { opponent: "{o:Dracovish} Fishious Rend {p:Clodsire}" },
+              ],
+              [
+                { opponent: "{o:Dracovish} Psychic Fangs {p:Clodsire} to {+:118}" },
+                { player: "{p:Clodsire} Bulldoze {o:Dracovish} to {-:157}" },
+              ],
+              [
+                { player: "{p:Clodsire} switch to {p:Meowscarada}" },
+                { opponent: "{o:Dracovish} Psychic Fangs {p:Meowscarada}" },
+              ],
+              [
+                { player: "{p:Meowscarada} Play Rough {o:Dracovish} to {-:23}" },
+                { opponent: "{o:Dracovish} Dragon Claw {p:Meowscarada}" },
+              ],
+              [
+                { player: "{p:Meowscarada} Play Rough {o:Dracovish} to {=:0}" },
+                { opponent: "{o:Dracovish} fainted" },
+              ],
+            ],
+            branches: [{ branches: ["Meowscarada Flower Trick Garganacl"] }],
+          },
+        ],
+        frags: { Golduck: 1, Meowscarada: 1 },
+      },
+      {
+        line: "Meowscarada Flower Trick Garganacl",
+        matchups: [
+          {
+            matchup: ["Garganacl"],
+            turns: [
+              [
+                { player: "{p:Meowscarada} Flower Trick {o:Garganacl} to {-:82}" },
+                { opponent: "{o:Garganacl} Salt Cure {p:Meowscarada} to {+:111}" },
+                { opponent: "{p:Meowscarada} cure to {+:90}" },
+              ],
+              [
+                { player: "{p:Meowscarada} Flower Trick {o:Garganacl} to {=:0}" },
+                { opponent: "{o:Garganacl} fainted" },
+                { player: "{p:Meowscarada} cure to {+:69}" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Gyarados"],
+            turns: [
+              [
+                { player: "{p:Meowscarada} Thunder Punch {o:Gyarados} to {=:0}" },
+                { opponent: "{o:Gyarados} fainted" },
+              ],
+            ],
+          },
+        ],
+        frags: { Meowscarada: 2 },
+      },
+    ],
+  },
+};
+
+const _box22 = getBox({
+  box: _box21,
+  cap: 59,
+  update: [
+    {
+      Mudkip: {
+        name: "Marshtomp",
+        moves: ["Bulldoze", "Growl", "Tackle"],
+      },
+    },
+    {
+      "Arcanine-H": {
+        hp: "Grass",
+      },
+      Marshtomp: {
+        name: "Swampert",
+      },
+    },
+  ],
+});
+
+export const silphCoGiovanniBoxChange: Moment = {
+  label: "Silph Co. Giovanni Box Change",
+  kind: "boxChange",
+  data: { playerBox: _box22 },
+};
+
+const _box23 = getBox({
+  box: _box22,
+  update: {
+    Golisopod: {
+      nature: "Adamant",
+      moves: ["First Impression", "Pounce", "Rock Tomb", "Sucker Punch"],
+      ivs: undefined,
+    },
+    Meowscarada: {
+      nature: "Brave",
+      item: "Expert Belt",
+      moves: ["Cut", "Flower Trick", "Knock Off", "Play Rough"],
+    },
+    Swampert: {
+      nature: "Brave",
+      item: "Focus Sash",
+      moves: ["Earthquake", "Flip Turn", "Ice Punch", "Tackle"],
+    },
+    "Arcanine-H": {
+      nature: "Brave",
+      item: "Cheri Berry",
+      moves: ["Accelerock", "Flare Blitz", "HP Grass", "Play Rough"],
+    },
+    Cloyster: {
+      ability: "Shell Armor",
+      moves: ["Ice Shard", "Icicle Crash", "Icicle Spear", "Liquidation"],
+      friend: undefined,
+    },
+    Gyarados: {
+      nature: "Impish",
+      item: "Leftovers",
+      moves: ["Aqua Tail", "Bulldoze", "Rest", "Scary Face"],
+    },
+  },
+  team: ["Golisopod", "Meowscarada", "Swampert", "Arcanine-H", "Cloyster", "Gyarados"],
+});
+
+export const saffronCityDumassKidBattle: Moment = {
+  label: "Saffron City Dumass Kid Battle",
+  kind: "battle",
+  data: {
+    playerBox: _box23,
+    opponentBox: saffronCityDumassKidBox,
+    lines: [
+      {
+        matchups: [
+          {
+            matchup: ["Beartic"],
+            turns: [
+              [
+                { opponent: "{o:Beartic} Swords Dance" },
+                { player: "{p:Golisopod} Rock Tomb {o:Beartic} to {-:158}" },
+              ],
+              [
+                { player: "{p:Golisopod} switch to {p:Meowscarada}" },
+                { opponent: "{o:Beartic} Swords Dance" },
+              ],
+              [
+                { player: "{p:Meowscarada} Cut {o:Beartic} to {=:0}" },
+                { opponent: "{o:Beartic} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Zapdos"],
+            turns: [
+              [
+                { player: "{p:Meowscarada} switch to {p:Swampert}" },
+                { opponent: "{o:Zapdos} Thunder {p:Swampert}" },
+              ],
+              [
+                { opponent: "{o:Zapdos} Supersonic Skystrike {p:Swampert} to {+:1}" },
+                { player: "{p:Swampert} Flip Turn {o:Zapdos} to {-:75}" },
+                { player: "{p:Swampert} switch to {p:Arcanine-H}" },
+              ],
+              [
+                { player: "{p:Arcanine-H} Accelerock {o:Zapdos} to {=:0}" },
+                { opponent: "{o:Zapdos} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Goodra"],
+            turns: [
+              [
+                { player: "{p:Arcanine-H} switch to {p:Meowscarada}" },
+                { opponent: "{o:Goodra} Earthquake {p:Meowscarada} to {+:125}" },
+              ],
+              [
+                { player: "{p:Meowscarada} Play Rough {o:Goodra} to {=:0}" },
+                { opponent: "{o:Goodra} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Scizor"],
+            turns: [
+              [
+                { player: "{p:Meowscarada} switch to {p:Arcanine-H}" },
+                { opponent: "{o:Scizor} Bullet Punch {p:Arcanine-H} to {+:85}" },
+              ],
+              [
+                { player: "{p:Arcanine-H} Flare Blitz {o:Scizor} to {=:0}" },
+                { opponent: "{o:Scizor} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Swampert-Mega"],
+            turns: [
+              [
+                { player: "{p:Arcanine-H} switch to {p:Cloyster}" },
+                { opponent: "{o:Swampert-Mega} Earthquake {p:Cloyster} to {+:80}" },
+              ],
+              [
+                { player: "{p:Cloyster} switch to {p:Gyarados}" },
+                { opponent: "{o:Swampert-Mega} Pow-Up Punch {p:Gyarados} to {+:172}" },
+                { player: "{p:Gyarados} heal to {+:184}" },
+              ],
+              [
+                { opponent: "{o:Swampert-Mega} Pow-Up Punch {p:Gyarados} to {+:157}" },
+                { player: "{p:Gyarados} Bulldoze {o:Swampert-Mega} to {-:176}" },
+                { player: "{p:Gyarados} heal to {+:169}" },
+              ],
+              [
+                { opponent: "{o:Swampert-Mega} Pow-Up Punch {p:Gyarados} to {+:130}" },
+                { player: "{p:Gyarados} Bulldoze {o:Swampert-Mega} to {-:147}" },
+                { player: "{p:Gyarados} heal to {+:142}" },
+              ],
+              [
+                { player: "{p:Gyarados} switch to {p:Golisopod}" },
+                { opponent: "{o:Swampert-Mega} Waterfall {p:Golisopod} to {+:16}" },
+                { player: "{p:Golisopod} Emergency Exit to {p:Meowscarada}" },
+              ],
+              [
+                { player: "{p:Meowscarada} Flower Trick {o:Swampert-Mega} to {=:0}" },
+                { opponent: "{o:Swampert-Mega} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Frosmoth"],
+            turns: [
+              [
+                { player: "{p:Meowscarada} Cut {o:Frosmoth} to {=:0}" },
+                { opponent: "{o:Frosmoth} fainted" },
+              ],
+            ],
+          },
+        ],
+        frags: { Meowscarada: 4, "Arcanine-H": 2 },
+      },
+    ],
+  },
+};
+
+const _box24 = getBox({
+  box: _box23,
+  remove: ["Cloyster"],
+  update: {
+    Perrserker: {
+      ivs: { spe: 0 },
+    },
+    Azumarill: {
+      ivs: { spe: 0 },
+      friend: undefined,
+    },
+    "Arcanine-H": {
+      hp: "Dark",
+    },
+    Golisopod: {
+      ivs: { spe: 0 },
+    },
+    Jellicent: {
+      hp: "Fire",
+      ivs: { spe: 0 },
+    },
+    Swampert: {
+      ivs: { spe: 0 },
+    },
+  }
+});
+
+export const saffronCityDumassKidBoxChange: Moment = {
+  label: "Saffron City Dumass Kid Box Change",
+  kind: "boxChange",
+  data: { playerBox: _box24 },
+};
+
+const _box25 = getBox({
+  box: _box24,
+  update: {
+    Lanturn: {
+      ability: "Water Absorb",
+      item: "Wise Glasses",
+    },
+    Golisopod: {
+      nature: "Brave",
+      item: "Iron Ball",
+      moves: ["Drill Run", "Liquidation", "Poison Jab", "Rock Tomb"],
+    },
+    Swampert: {
+      nature: "Adamant",
+      ability: "Damp",
+      moves: ["Earthquake", "Flip Turn", "Ice Punch", "Rock Slide"],
+    },
+    Perrserker: {
+      nature: "Relaxed",
+      ability: "Tough Claws",
+      item: undefined,
+      moves: ["Fake Out", "Bullet Punch", "Shadow Claw", "U-Turn"],
+    },
+    Azumarill: {
+      item: "Iron Ball",
+      moves: ["Aqua Tail", "Helping Hand", "Play Rough", "Superpower"],
+    },
+    Jellicent: {
+      nature: "Quiet",
+      ability: "Water Bubble",
+      item: "Iron Ball",
+      moves: ["Brine", "Hidden Power Fire", "Scald", "Water Spout"],
+    },
+  },
+  team: ["Lanturn", "Golisopod", "Swampert", "Perrserker", "Azumarill", "Jellicent"],
+});
+
+export const saffronCityLeaderSabrinaBattle: Moment = {
+  label: "Saffron City Leader Sabrina Battle",
+  kind: "battle",
+  data: {
+    playerBox: _box25,
+    opponentBox: saffronCityLeaderSabrinaBox,
+    lines: [
+      {
+        matchups: [
+          {
+            matchup: ["Camerupt-Mega", "Tapu Fini"],
+            turns: [
+              [
+                { player: "{p:Golisopod} Liquidation {o:Camerupt-Mega} to {=:0}" },
+                { opponent: "{o:Camerupt-Mega} fainted" },
+                { player: "{p:Lanturn} Volt Switch {o:Tapu Fini} to {-:101}" },
+                { player: "{p:Lanturn} switch to {p:Swampert}" },
+                { opponent: "{o:Tapu Fini} Misty Explosion" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Jellicent", "Tapu Fini"],
+            turns: [],
+            branches: [
+              {
+                branches: [
+                  "61% → Golisopod Poison Jab Tapu Fini",
+                  "39% → Golisopod Poison Jab Tapu Fini (to 0)",
+                ],
+              },
+            ],
+          },
+        ],
+        frags: { Golisopod: 1 },
+      },
+      {
+        line: "61% → Golisopod Poison Jab Tapu Fini",
+        matchups: [
+          {
+            matchup: ["Jellicent", "Tapu Fini"],
+            turns: [
+              [
+                { player: "{p:Golisopod} Poison Jab {o:Tapu Fini} to {-:19}" },
+                {
+                  opponent:
+                    "{o:Jellicent} Water Spout {p:Golisopod} to {+:31} and {p:Swampert} to {+:1}",
+                },
+                { player: "{p:Swampert} Flip Turn {o:Tapu Fini} to {=:0}" },
+                { opponent: "{o:Tapu Fini} fainted" },
+                { player: "{p:Swampert} switch to {p:Lanturn}" },
+                { player: "{p:Golisopod} Emergency Exit to {p:Perrserker}" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Jellicent", "Magearna"],
+            turns: [
+              [
+                { player: "{p:Perrserker} U-Turn {o:Jellicent} to {-:180}" },
+                { player: "{p:Perrserker} switch to {p:Jellicent}" },
+                { opponent: "{o:Jellicent} Shadow Ball {p:Lanturn} to {+:134}" },
+                { opponent: "{o:Magearna} Focus Blast {p:Jellicent}" },
+                { player: "{p:Lanturn} Volt Switch {o:Jellicent} to {-:96}" },
+                { player: "{p:Lanturn} switch to {p:Azumarill}" },
+              ],
+            ],
+            branches: [{ branches: ["Azumarill Helping Hand"] }],
+          },
+        ],
+        frags: { Swampert: 1 },
+      },
+      {
+        line: "39% → Golisopod Poison Jab Tapu Fini (to 0)",
+        matchups: [
+          {
+            matchup: ["Jellicent", "Tapu Fini"],
+            turns: [
+              [
+                { player: "{p:Golisopod} Poison Jab {o:Tapu Fini} to {=:0}" },
+                { opponent: "{o:Tapu Fini} fainted" },
+                {
+                  opponent:
+                    "{o:Jellicent} Water Spout {p:Golisopod} to {+:31} and {p:Swampert} to {+:1}",
+                },
+                { player: "{p:Swampert} Flip Turn {o:Tapu Fini} → {o:Jellicent} to {-:177}" },
+                { player: "{p:Swampert} switch to {p:Lanturn}" },
+                { player: "{p:Golisopod} Emergency Exit to {p:Perrserker}" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Jellicent", "Magearna"],
+            turns: [
+              [
+                { player: "{p:Perrserker} switch to {p:Jellicent}" },
+                { opponent: "{o:Jellicent} Shadow Ball {p:Lanturn} to {+:134}" },
+                { opponent: "{o:Magearna} Focus Blast {p:Jellicent}" },
+                { player: "{p:Lanturn} Volt Switch {o:Jellicent} to {-:93}" },
+                { player: "{p:Lanturn} switch to {p:Azumarill}" },
+              ],
+            ],
+            branches: [{ branches: ["Azumarill Helping Hand"] }],
+          },
+        ],
+        frags: { Golisopod: 1 },
+      },
+      {
+        line: "Azumarill Helping Hand",
+        matchups: [
+          {
+            matchup: ["Jellicent", "Magearna"],
+            turns: [
+              [
+                { player: "{p:Azumarill} Helping Hand {p:Jellicent}" },
+                { player: "{p:Jellicent} Water Spout {o:Jellicent} to {=:0} and {o:Magearna} to {=:0}" },
+                { opponent: "{o:Jellicent} fainted" },
+                { opponent: "{o:Magearna} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Glastrier", "Iron Hands"],
+            turns: [
+              [
+                { player: "{p:Azumarill} Helping Hand {p:Jellicent}" },
+                { player: "{p:Jellicent} Water Spout {o:Glastrier} to {-:1} and {o:Magearna} to {=:0}" },
+                { opponent: "{o:Glastrier} heal to {-:69}" },
+                { opponent: "{o:Iron Hands} fainted" },
+              ],
+              [
+                { player: "{p:Azumarill} Helping Hand {p:Jellicent}" },
+                { player: "{p:Jellicent} Brine {o:Glastrier} to {=:0}" },
+                { opponent: "{o:Glastrier} fainted" },
+              ],
+            ],
+          },
+        ],
+        frags: { Jellicent: 4 },
+      },
+    ],
+  },
+};
+
+const _box26 = getBox({
+  box: _box25,
+  update: {
+    Perrserker: {
+      ivs: { spe: 31 },
+    },
+    Azumarill: {
+      ivs: { spe: 31 },
+    },
+    Golisopod: {
+      ivs: { spe: 31 },
+    },
+    Jellicent: {
+      hp: "Dark",
+      ivs: { spe: 31 },
+    },
+    Swampert: {
+      ivs: { spe: 31 },
+    },
+  }
+});
+
+export const saffronCityLeaderSabrinaBoxChange: Moment = {
+  label: "Saffron City Leader Sabrina Box Change",
+  kind: "boxChange",
+  data: { playerBox: _box26 },
+};
+
+export const box = _box26;
 
 export const moments: Moment[] = [
   sabrinaBoxChange,
@@ -2365,4 +3042,11 @@ export const moments: Moment[] = [
   silphCoRivalBattle,
   silphCoRivalBoxChange,
   silphCoArianaArcherBattle,
+  silphCoArianaArcherBoxChange,
+  silphCoGiovanniBattle,
+  silphCoGiovanniBoxChange,
+  saffronCityDumassKidBattle,
+  saffronCityDumassKidBoxChange,
+  saffronCityLeaderSabrinaBattle,
+  saffronCityLeaderSabrinaBoxChange,
 ];

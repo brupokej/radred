@@ -401,7 +401,7 @@ export const mtMoonSuperNerdMiguelBattle: Moment = {
                 {
                   player: "{p:Houndour} Incinerate {o:Sableye} to {-:41} and {o:Skiddo} to {=:0}",
                 },
-                { player: "{p:Azumarill} Play Rough {o:Sableye} to {=:0}" },
+                { player: "{p:Azumarill} Play Rough {o:Skiddo} → {o:Sableye} to {=:0}" },
                 { opponent: "{o:Skiddo} fainted" },
                 { opponent: "{o:Sableye} fainted" },
               ],
@@ -420,8 +420,8 @@ const _box6 = getBox({
     {
       "Wooper-P": {
         name: "Clodsire",
-        spriteKey: null,
-        pokedexKey: null,
+        spriteKey: undefined,
+        pokedexKey: undefined,
         level: 20,
       },
     },
@@ -592,8 +592,8 @@ const _box8 = getBox({
   update: {
     "Meowth-G": {
       name: "Perrserker",
-      spriteKey: null,
-      pokedexKey: null,
+      spriteKey: undefined,
+      pokedexKey: undefined,
       moves: ["Fake Out", "Bullet Punch", "Iron Head", "Scratch"],
     },
     Chewtle: {
@@ -1262,6 +1262,7 @@ const _box14 = getBox({
   update: {
     Magikarp: {
       name: "Gyarados",
+      ability: "Intimidate",
       moves: ["Bite", "Splash"],
     },
   },

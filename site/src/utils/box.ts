@@ -230,6 +230,22 @@ export function getChanges(box: Box): Pokemon[] {
   );
 }
 
+// Returns Hidden Power type changes from an update change in a box.
+// Used by BoxChange to render HP rows.
+export function getHpChanges(box: Box): { name: string; hp: string }[] {
+  const change = box.changes[0];
+  if (!change || change.type !== "update") return [];
+
+  const state = replayBox(box, box.changes.length);
+  const result: { name: string; hp: string }[] = [];
+  for (const [name, pokemon] of state) {
+    if (pokemon.update?.hp) {
+      result.push({ name, hp: pokemon.update.hp });
+    }
+  }
+  return result;
+}
+
 // Returns IV/friendship changes from an update change in a box.
 // Used by BoxChange to render IV rows.
 export function getIVChanges(box: Box): { name: string; ivs?: Partial<Stats>; friend?: boolean }[] {

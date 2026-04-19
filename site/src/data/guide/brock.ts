@@ -495,7 +495,7 @@ export const viridianForestLassAnneBattle: Moment = {
         matchups: [
           {
             matchup: ["Clefairy"],
-            row: ["Risk →", { danger: "Clefairy Metronome Meowth-G to {c:0} is {c:0.2%}" }],
+            row: ["Risk →", { danger: "Clefairy Metronome Meowth-G (to 0) is {c:0.2%}" }],
             turns: [
               [
                 { player: "{p:Meowth-G} Fake Out {o:Clefairy} to {-:34}" },
@@ -881,7 +881,7 @@ export const pewterCityLeaderBrockBattle: Moment = {
             ],
             branches: [
               {
-                if: ["Hippopotas switch to Varoom"],
+                if: ["80% → Hippopotas switch to Varoom"],
                 branches: ["Kricketune Mega Drain Hippopotas"],
               },
               { branches: ["Kricketune Bug Bite Lunatone"] },

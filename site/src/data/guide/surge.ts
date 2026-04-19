@@ -194,8 +194,8 @@ const _box4 = getBox({
       },
       "Yamask-G": {
         name: "Runerigus",
-        spriteKey: null,
-        pokedexKey: null,
+        spriteKey: undefined,
+        pokedexKey: undefined,
         moves: ["Disable", "Rock Tomb", "Shadow Claw", "Shadow Sneak"],
       },
       "Growlithe-H": {
@@ -627,7 +627,7 @@ const _box8 = getBox({
     },
     Drednaw: {
       nature: "Lonely",
-      item: null,
+      item: undefined,
       moves: ["Aqua Jet", "Counter", "Razor Shell", "Rock Tomb"],
     },
     Golisopod: {
@@ -1295,7 +1295,7 @@ const _box14 = getBox({
     },
     Lanturn: {
       ability: "Water Absorb",
-      item: null,
+      item: undefined,
     },
     Cloyster: {
       item: "Charti Berry",

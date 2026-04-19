@@ -16,6 +16,7 @@ export interface PokemonData {
   ability?: string | null;
   item?: string | null;
   moves?: (string | null)[];
+  hp?: string;
   ivs?: Partial<Stats>;
   evs?: Partial<Stats>;
   friend?: boolean;

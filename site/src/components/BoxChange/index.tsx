@@ -3,6 +3,7 @@ import { Row } from "@site/src/components/Row";
 import {
   Box,
   getChanges,
+  getHpChanges,
   getIVChanges,
   getLevelCap,
   getRemovals,
@@ -59,7 +60,14 @@ export default function BoxChange({ data }: { data: BoxChangeData }) {
     }
   }
 
-  const rows = [...removalRows, ...capRows, ...updateRows, ...ivRows];
+  const hpRows: React.ReactNode[] = [];
+  for (const box of boxes) {
+    for (const { name, hp } of getHpChanges(box)) {
+      hpRows.push(<Row key={key++} row={[`${name} → `, { warning: `Set to HP ${hp}` }]} />);
+    }
+  }
+
+  const rows = [...removalRows, ...capRows, ...updateRows, ...hpRows, ...ivRows];
   if (rows.length === 0) return null;
 
   return <Card title="Box Change">{rows}</Card>;
