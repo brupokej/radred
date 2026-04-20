@@ -97,7 +97,7 @@ export const celadonCityGymAceTrainerMaryBattle: Moment = {
                 { player: "{p:Incineroar} Flamethrower {o:Copperajah} to {-:85}" },
                 { player: "{p:Jellicent} Brine {o:Copperajah} to {=:0}" },
                 { opponent: "{o:Copperajah} fainted" },
-                { player: "{p:Jellicent} terrain to {+:31}" },
+                { opponent: "{p:Jellicent} grassy terrain to {+:31}" },
               ],
             ],
           },
@@ -108,13 +108,13 @@ export const celadonCityGymAceTrainerMaryBattle: Moment = {
                 { player: "{p:Incineroar} switch to {p:Runerigus}" },
                 { player: "{p:Jellicent} switch to {p:Houndoom}" },
                 { opponent: "{o:Maractus} Grassy Glide {p:Houndoom} to {+:55}" },
-                { player: "{p:Houndoom} terrain to {+:63}" },
+                { opponent: "{p:Houndoom} grassy terrain to {+:63}" },
               ],
               [
                 { opponent: "{o:Maractus} Spiky Shield" },
                 { player: "{p:Houndoom} Flame Burst {o:Maractus}" },
                 { player: "{p:Runerigus} Disable {o:Maractus}" },
-                { player: "{p:Houndoom} terrain to {+:71}" },
+                { opponent: "{p:Houndoom} grassy terrain to {+:71}" },
               ],
               [
                 { opponent: "{o:Maractus} Grassy Glide {p:Runerigus} to {+:86}" },
@@ -182,7 +182,7 @@ export const celadonCityLeaderErikaBattle: Moment = {
                 { opponent: "{o:Ogerpon-C} Knock Off {p:Incineroar} to {+:111}" },
                 { player: "{p:Incineroar} U-Turn {o:Ogerpon-C} to {-:78}" },
                 { player: "{p:Incineroar} switch to {p:Golisopod}" },
-                { opponent: "{o:Ogerpon-C} heal to {-:86}" },
+                { opponent: "{o:Ogerpon-C} grassy terrain to {-:86}" },
               ],
               [
                 { player: "{p:Golisopod} First Impression {o:Ogerpon-C} to {=:0}" },
@@ -200,12 +200,12 @@ export const celadonCityLeaderErikaBattle: Moment = {
               [
                 { player: "{p:Runerigus} switch to {p:Arcanine-H}" },
                 { opponent: "{o:Toxtricity} HP Grass {p:Arcanine-H} to {+:72}" },
-                { player: "{p:Arcanine-H} heal to {+:81}" },
+                { opponent: "{p:Arcanine-H} grassy terrain to {+:81}" },
               ],
               [
                 { player: "{p:Arcanine-H} Stom. Tantrum {o:Toxtricity} to {=:0}" },
                 { opponent: "{o:Toxtricity} fainted" },
-                { opponent: "{p:Arcanine-H} heal to {+:90}" },
+                { opponent: "{p:Arcanine-H} grassy terrain to {+:90}" },
               ],
             ],
           },
@@ -216,7 +216,7 @@ export const celadonCityLeaderErikaBattle: Moment = {
                 { player: "{p:Arcanine-H} switch to {p:Golisopod}" },
                 { opponent: "{o:Sceptile} mega to {o:Sceptile-Mega}" },
                 { opponent: "{o:Sceptile-Mega} High Horsepower {p:Golisopod} to {+:97}" },
-                { player: "{p:Golisopod} heal to {+:105}" },
+                { opponent: "{p:Golisopod} grassy terrain to {+:105}" },
               ],
               [
                 { opponent: "{o:Sceptile-Mega} Draco Barrage {p:Golisopod} to {+:5}" },
@@ -235,14 +235,14 @@ export const celadonCityLeaderErikaBattle: Moment = {
               [
                 { player: "{p:Golduck} switch to {p:Incineroar}" },
                 { opponent: "{o:Kartana} Grassy Glide {p:Incineroar} to {+:43}" },
-                { opponent: "{o:Kartana} recoil to {=:108}" },
-                { player: "{p:Incineroar} heal to {+:52}" },
-                { opponent: "{o:Kartana} heal to {=:115}" },
+                { opponent: "{o:Kartana} Life Orb to {=:108}" },
+                { opponent: "{p:Incineroar} grassy terrain to {+:52}" },
+                { opponent: "{o:Kartana} grassy terrain to {=:115}" },
               ],
               [
                 { player: "{p:Incineroar} switch to {p:Runerigus}" },
                 { opponent: "{o:Kartana} Sacred Sword {p:Runerigus}" },
-                { opponent: "{o:Kartana} heal to {=:119}" },
+                { opponent: "{o:Kartana} grassy terrain to {=:119}" },
               ],
               [
                 { opponent: "{o:Kartana} Swords Dance" },
@@ -264,7 +264,7 @@ export const celadonCityLeaderErikaBattle: Moment = {
               [
                 { opponent: "{o:Hawlucha} Swords Dance" },
                 { player: "{p:Ceruledge} Will-O-Wisp {o:Hawlucha}" },
-                { player: "{o:Hawlucha} burn to {=:128}" },
+                { opponent: "{o:Hawlucha} burn to {=:128}" },
               ],
             ],
             branches: [
@@ -288,24 +288,24 @@ export const celadonCityLeaderErikaBattle: Moment = {
               [
                 { opponent: "{o:Hawlucha} Swords Dance" },
                 { player: "{p:Ceruledge} Shadow Claw {o:Hawlucha} to {-:68}" },
-                { player: "{o:Hawlucha} burn to {-:60}" },
+                { opponent: "{o:Hawlucha} burn to {-:60}" },
               ],
               [
                 { player: "{p:Ceruledge} switch to {p:Runerigus}" },
                 { opponent: "{o:Hawlucha} Stone Edge {p:Runerigus} to {+:104}" },
-                { player: "{p:Runerigus} heal to {+:111}" },
-                { player: "{o:Hawlucha} burn to {-:52}" },
+                { opponent: "{p:Runerigus} grassy terrain to {+:111}" },
+                { opponent: "{o:Hawlucha} burn to {-:52}" },
               ],
               [
                 { opponent: "{o:Hawlucha} Acrobatics {p:Runerigus} to {+:15}" },
                 { player: "{p:Runerigus} Shadow Ball {o:Hawlucha} to {-:19}" },
-                { player: "{p:Runerigus} heal to {+:22}" },
-                { player: "{o:Hawlucha} burn to {-:11}" },
+                { opponent: "{p:Runerigus} grassy terrain to {+:22}" },
+                { opponent: "{o:Hawlucha} burn to {-:11}" },
               ],
               [
                 { player: "{p:Runerigus} Shadow Sneak {o:Hawlucha} to {=:0}" },
                 { opponent: "{o:Hawlucha} fainted" },
-                { player: "{p:Runerigus} heal to {+:22}" },
+                { opponent: "{p:Runerigus} grassy terrain to {+:22}" },
               ],
             ],
           },
@@ -315,13 +315,13 @@ export const celadonCityLeaderErikaBattle: Moment = {
               [
                 { player: "{p:Runerigus} switch to {p:Ceruledge}" },
                 { opponent: "{o:Slowbro-G} Flamethrower {p:Ceruledge} to {+:103}" },
-                { player: "{p:Ceruledge} heal to {+:111}" },
+                { opponent: "{p:Ceruledge} grassy terrain to {+:111}" },
               ],
               [
                 { player: "{p:Ceruledge} Shadow Claw {o:Slowbro-G} to {-:29}" },
                 { opponent: "{o:Slowbro-G} Sludge Bomb {p:Ceruledge} to {+:66}" },
-                { player: "{p:Ceruledge} heal to {+:74}" },
-                { opponent: "{o:Slowbro-G} heal to {-:47}" },
+                { opponent: "{p:Ceruledge} grassy terrain to {+:74}" },
+                { opponent: "{o:Slowbro-G} grassy terrain to {-:47}" },
                 { opponent: "{p:Ceruledge} poison to {+:66}" },
               ],
               [
@@ -341,7 +341,7 @@ export const celadonCityLeaderErikaBattle: Moment = {
             turns: [
               [
                 { opponent: "{o:Hawlucha} Swords Dance" },
-                { player: "{p:Ceruledge} crit Shadow Claw {o:Hawlucha} to {=:0}" },
+                { player: "{p:Ceruledge} Shadow Claw {o:Hawlucha} (crit) to {=:0}" },
               ],
             ],
           },
@@ -351,8 +351,8 @@ export const celadonCityLeaderErikaBattle: Moment = {
               [
                 { player: "{p:Ceruledge} Shadow Claw {o:Slowbro-G} to {-:29}" },
                 { opponent: "{o:Slowbro-G} Sludge Bomb {p:Ceruledge} to {+:66}" },
-                { player: "{p:Ceruledge} heal to {+:74}" },
-                { opponent: "{o:Slowbro-G} heal to {-:47}" },
+                { opponent: "{p:Ceruledge} grassy terrain to {+:74}" },
+                { opponent: "{o:Slowbro-G} grassy terrain to {-:47}" },
                 { opponent: "{p:Ceruledge} poison to {+:66}" },
               ],
               [

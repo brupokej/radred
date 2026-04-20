@@ -234,7 +234,7 @@ export const rocketHideoutLeftGuardBattle: Moment = {
             turns: [
               [
                 { player: "{p:Perrserker} Fake Out {o:Slaking} to {-:122}" },
-                { player: "{o:Slaking} flinched" },
+                { opponent: "{o:Slaking} flinched" },
                 { player: "{p:Excadrill} Drill Run {o:Slaking} to {-:58}" },
               ],
               [
@@ -384,7 +384,7 @@ export const rocketHideoutGiovanniBattle: Moment = {
                 { opponent: "{o:Kangaskhan-Mega} Power-Up Punch {p:Golduck} to {+:119}" },
                 { player: "{p:Golduck} Flip Turn {o:Kangaskhan-Mega} to {-:137}" },
                 { player: "{p:Golduck} switch to {p:Drednaw}" },
-                { player: "{p:Drednaw} Stealth Rock to {=:137}" },
+                { opponent: "{p:Drednaw} Stealth Rock to {=:137}" },
               ],
               [
                 { opponent: "{o:Kangaskhan-Mega} Power-Up Punch {p:Drednaw} to {+:6}" },
@@ -401,19 +401,19 @@ export const rocketHideoutGiovanniBattle: Moment = {
             turns: [
               [
                 { player: "{p:Drednaw} switch to {p:Cloyster}" },
-                { player: "{p:Cloyster} Stealth Rock to {=:89}" },
+                { opponent: "{p:Cloyster} Stealth Rock to {=:89}" },
                 { opponent: "{o:Gyarados} Earthquake {p:Cloyster} to {+:59}" },
               ],
               [
                 { player: "{p:Cloyster} switch to {p:Lanturn}" },
-                { player: "{p:Lanturn} Stealth Rock to {=:166}" },
+                { opponent: "{p:Lanturn} Stealth Rock to {=:166}" },
                 { opponent: "{o:Gyarados} Dragon Dance" },
               ],
               [
                 { opponent: "{o:Gyarados} Dragon Dance" },
                 { player: "{p:Lanturn} Volt Switch {o:Gyarados} to {-:28}" },
                 { player: "{p:Lanturn} switch to {p:Arcanine-H}" },
-                { player: "{p:Arcanine-H} Stealth Rock to {=:120}" },
+                { opponent: "{p:Arcanine-H} Stealth Rock to {=:120}" },
               ],
               [
                 { player: "{p:Arcanine-H} Accelerock {o:Gyarados} to {=:0}" },
@@ -426,25 +426,25 @@ export const rocketHideoutGiovanniBattle: Moment = {
             turns: [
               [
                 { player: "{p:Arcanine-H} switch to {p:Gyarados}" },
-                { player: "{p:Gyarados} Stealth Rock to {=:120}" },
+                { opponent: "{p:Gyarados} Stealth Rock to {=:120}" },
                 { opponent: "{o:Nidoking} Earth Power {p:Gyarados}" },
               ],
               [
                 { player: "{p:Gyarados} switch to {p:Lanturn}" },
-                { player: "{p:Lanturn} Stealth Rock to {=:143}" },
+                { opponent: "{p:Lanturn} Stealth Rock to {=:143}" },
                 { opponent: "{o:Nidoking} Thunderbolt {p:Lanturn} to {=:189}" },
               ],
               [
                 { opponent: "{o:Nidoking} Sludge Wave {p:Lanturn} to {+:29}" },
                 { player: "{p:Lanturn} Flip Turn {o:Nidoking} to {-:99}" },
                 { player: "{p:Lanturn} switch to {p:Golduck}" },
-                { player: "{p:Golduck} Stealth Rock to {+:101}" },
+                { opponent: "{p:Golduck} Stealth Rock to {+:101}" },
               ],
               [
                 { player: "{p:Golduck} Flip Turn {o:Nidoking} to {=:0}" },
                 { opponent: "{o:Nidoking} fainted" },
                 { player: "{p:Golduck} switch to {p:Arcanine-H}" },
-                { player: "{p:Arcanine-H} Stealth Rock to {=:80}" },
+                { opponent: "{p:Arcanine-H} Stealth Rock to {=:80}" },
               ],
             ],
           },
@@ -809,13 +809,13 @@ export const pokemonTowerGrunt1Battle: Moment = {
               ],
               [
                 { opponent: "{o:Overqwil} Throat Chop {p:Clodsire} to {+:33}" },
-                { opponent: "{o:Overqwil} recoil to {-:171}" },
+                { opponent: "{o:Overqwil} Life Orb to {=:171}" },
                 { player: "{p:Clodsire} Rock Tomb {o:Overqwil} to {-:147}" },
               ],
               [
                 { player: "{p:Clodsire} switch to {p:Meowscarada}" },
                 { opponent: "{o:Overqwil} Throat Chop {p:Meowscarada} to {+:74}" },
-                { opponent: "{o:Overqwil} recoil to {-:129}" },
+                { opponent: "{o:Overqwil} Life Orb to {-:129}" },
               ],
               [
                 { player: "{p:Meowscarada} Cut {o:Overqwil} to {-:62}" },
@@ -951,12 +951,12 @@ export const pokemonTowerGrunt2Battle: Moment = {
               [
                 { player: "{p:Meowscarada} Cut {o:Dragalge} to {-:84}" },
                 { opponent: "{o:Dragalge} Sludge Wave {p:Meowscarada}" },
-                { opponent: "{o:Dragalge} heal to {-:93}" },
+                { opponent: "{o:Dragalge} Black Sludge to {-:93}" },
               ],
               [
                 { player: "{p:Meowscarada} Play Rough {o:Dragalge} to {-:21}" },
                 { opponent: "{o:Dragalge} Dragon Pulse {p:Meowscarada}" },
-                { opponent: "{o:Dragalge} heal to {-:30}" },
+                { opponent: "{o:Dragalge} Black Sludge to {-:30}" },
               ],
               [
                 { player: "{p:Meowscarada} Play Rough {o:Dragalge} to {=:0}" },
@@ -1257,19 +1257,19 @@ export const saffronDojoLeaderChuckBattle: Moment = {
               [
                 { player: "{p:Excadrill} switch to {p:Ceruledge}" },
                 { opponent: "{o:Zamazenta-C} Behemoth Bash {p:Ceruledge} to {+:90}" },
-                { player: "{p:Ceruledge} heal to {+:100}" },
+                { opponent: "{p:Ceruledge} Leftovers to {+:100}" },
               ],
               [
                 { player: "{p:Ceruledge} Bitter Blade {o:Zamazenta-C} to {-:94}" },
-                { player: "{p:Ceruledge} heal to {+:146}" },
+                { opponent: "{p:Ceruledge} recover to {+:146}" },
                 { opponent: "{o:Zamazenta-C} Wild Charge {p:Ceruledge} to {+:53}" },
                 { opponent: "{o:Zamazenta-C} recoil to {-:86}" },
-                { player: "{p:Ceruledge} heal to {+:63}" },
+                { opponent: "{p:Ceruledge} Leftovers to {+:63}" },
               ],
               [
                 { player: "{p:Ceruledge} Bitter Blade {o:Zamazenta-C} to {=:0}" },
                 { opponent: "{o:Zamazenta-C} fainted" },
-                { player: "{p:Ceruledge} heal to {+:85}" },
+                { opponent: "{p:Ceruledge} recover to {+:85}" },
               ],
             ],
             branches: [{ branches: ["Ceruledge switch to Azumarill"] }],
@@ -1295,30 +1295,30 @@ export const saffronDojoLeaderChuckBattle: Moment = {
               [
                 { player: "{p:Excadrill} switch to {p:Ceruledge}" },
                 { opponent: "{o:Zamazenta-C} Behemoth Bash {p:Ceruledge} to {+:90}" },
-                { player: "{p:Ceruledge} heal to {+:100}" },
+                { opponent: "{p:Ceruledge} Leftovers to {+:100}" },
               ],
               [
                 { opponent: "{o:Zamazenta-C} Bulk Up" },
                 { player: "{p:Ceruledge} Bitter Blade {o:Zamazenta-C} to {-:118}" },
-                { player: "{p:Ceruledge} heal to {+:144}" },
+                { opponent: "{p:Ceruledge} recover to {+:144}" },
               ],
               [
                 { opponent: "{o:Zamazenta-C} Bulk Up" },
                 { player: "{p:Ceruledge} Will-O-Wisp {o:Zamazenta-C}" },
                 { opponent: "{o:Zamazenta-C} burn to {-:107}" },
-                { player: "{p:Ceruledge} heal to {+:154}" },
+                { opponent: "{p:Ceruledge} Leftovers to {+:154}" },
               ],
               [
                 { opponent: "{o:Zamazenta-C} Bulk Up" },
                 { player: "{p:Ceruledge} Bitter Blade {o:Zamazenta-C} to {-:59}" },
-                { player: "{p:Ceruledge} heal to {=:167}" },
+                { opponent: "{p:Ceruledge} recover to {=:167}" },
                 { opponent: "{o:Zamazenta-C} burn to {-:48}" },
               ],
               [
                 { opponent: "{o:Zamazenta-C} Wild Charge {p:Ceruledge} to {+:53}" },
                 { opponent: "{o:Zamazenta-C} recoil to {-:27}" },
                 { player: "{p:Ceruledge} Bitter Blade {o:Zamazenta-C} to {=:0}" },
-                { player: "{p:Ceruledge} heal to {+:63}" },
+                { opponent: "{p:Ceruledge} recover to {+:63}" },
               ],
             ],
             branches: [{ branches: ["Ceruledge switch to Azumarill"] }],
@@ -1466,7 +1466,7 @@ export const saffronDojoLeaderChuckBattle: Moment = {
               [
                 { player: "{p:Meowscarada} Knock Off {o:Iron Crown} to {=:0}" },
                 { opponent: "{o:Iron Crown} fainted" },
-                { player: "{p:Meowscarada} Rocky Helmet to {+:98}" },
+                { opponent: "{p:Meowscarada} Rocky Helmet to {+:98}" },
               ],
             ],
           },
@@ -1884,7 +1884,7 @@ export const silphCoArianaArcherBattle: Moment = {
             ],
           },
           {
-            matchup: ["Houndoom"],
+            matchup: ["Houndoom-Mega"],
             turns: [
               [
                 { opponent: "{o:Houndoom} mega to {o:Houndoom-Mega}" },
@@ -1904,7 +1904,7 @@ export const silphCoArianaArcherBattle: Moment = {
         line: "50% → Houndoom-Mega matchup",
         matchups: [
           {
-            matchup: ["Houndoom"],
+            matchup: ["Houndoom-Mega"],
             turns: [
               [
                 { opponent: "{o:Houndoom} mega to {o:Houndoom-Mega}" },
@@ -1923,7 +1923,7 @@ export const silphCoArianaArcherBattle: Moment = {
               [
                 { player: "{p:Meowscarada} U-Turn {o:Gholdengo} to {-:165}" },
                 { opponent: "{o:Gholdengo} Shadow Ball {p:Tentacruel} to {+:85}" },
-                { player: "{p:Tentacruel} heal to {+:95}" },
+                { opponent: "{p:Tentacruel} Black Sludge to {+:95}" },
               ],
               [
                 { opponent: "{o:Gholdengo} Shadow Ball {p:Tentacruel} to {+:8}" },
@@ -1951,7 +1951,7 @@ export const silphCoArianaArcherBattle: Moment = {
                 { opponent: "{o:Exploud} fainted" },
                 {
                   player:
-                    "{p:Jellicent} crit Water Spout {o:Mawile-Mega} to {=:0} and {o:Articuno-G} to {=:0}",
+                    "{p:Jellicent} Water Spout {o:Mawile-Mega} to {=:0} and {o:Articuno-G} (crit) to {=:0}",
                 },
                 { opponent: "{o:Articuno-G} fainted" },
                 { opponent: "{o:Mawile-Mega} fainted" },
@@ -2073,7 +2073,7 @@ export const silphCoArianaArcherBattle: Moment = {
             turns: [
               [
                 { opponent: "{o:Sceptile} mega to {o:Sceptile-Mega}" },
-                { opponent: "{o:Sceptile-Mega} crit Mega Drain {o:Primarina} to {=:0}" },
+                { opponent: "{o:Sceptile-Mega} Mega Drain {o:Primarina} (crit) to {=:0}" },
                 { opponent: "{o:Primarina} fainted" },
                 { opponent: "{o:Articuno-G} Psychic {o:Sceptile-Mega} to {=:0}" },
                 { opponent: "{o:Sceptile-Mega} fainted" },
@@ -2152,7 +2152,7 @@ export const silphCoArianaArcherBattle: Moment = {
             turns: [
               [
                 { opponent: "{o:Sceptile} mega to {o:Sceptile-Mega}" },
-                { opponent: "{o:Sceptile-Mega} crit Mega Drain {o:Primarina} to {=:0}" },
+                { opponent: "{o:Sceptile-Mega} Mega Drain {o:Primarina} (crit) to {=:0}" },
                 { opponent: "{o:Primarina} fainted" },
                 { opponent: "{o:Articuno-G} Psychic {o:Sceptile-Mega} to {+:1}" },
                 { player: "{p:Jellicent} Brine {o:Primarina} → {o:Articuno-G} to {-:97}" },
@@ -2226,7 +2226,7 @@ export const silphCoArianaArcherBattle: Moment = {
               [
                 { player: "{p:Jellicent} switch to {p:Tentacruel}" },
                 { opponent: "{o:Gholdengo} Shadow Ball {p:Tentacruel} to {+:85}" },
-                { player: "{p:Tentacruel} heal to {+:95}" },
+                { opponent: "{p:Tentacruel} Black Sludge to {+:95}" },
               ],
               [
                 { opponent: "{o:Gholdengo} Shadow Ball {p:Tentacruel} to {+:8}" },
@@ -2244,7 +2244,7 @@ export const silphCoArianaArcherBattle: Moment = {
             ],
           },
           {
-            matchup: ["Houndoom"],
+            matchup: ["Houndoom-Mega"],
             turns: [
               [
                 { opponent: "{o:Houndoom} mega to {o:Houndoom-Mega}" },
@@ -2270,7 +2270,7 @@ export const silphCoArianaArcherBattle: Moment = {
                 { player: "{p:Jellicent} switch to {p:Tentacruel}" },
                 { opponent: "{o:Gholdengo} Shadow Ball {p:Tentacruel} to {+:85}" },
                 { opponent: "{o:Exploud} Flamethrower {o:Gholdengo} to {-:101}" },
-                { player: "{p:Tentacruel} heal to {+:95}" },
+                { opponent: "{p:Tentacruel} Black Sludge to {+:95}" },
               ],
               [
                 {
@@ -2281,12 +2281,12 @@ export const silphCoArianaArcherBattle: Moment = {
                 { player: "{p:Tentacruel} switch to {p:Meowscarada}" },
                 { opponent: "{o:Exploud} Flamethrower {o:Gholdengo} to {=:0}" },
                 { opponent: "{o:Gholdengo} fainted" },
-                { player: "{p:Tentacruel} heal to {+:57}" },
+                { opponent: "{p:Tentacruel} Black Sludge to {+:57}" },
               ],
             ],
           },
           {
-            matchup: ["Houndoom"],
+            matchup: ["Houndoom-Mega"],
             turns: [
               [
                 { opponent: "{o:Houndoom} mega to {o:Houndoom-Mega}" },
@@ -2325,7 +2325,7 @@ export const silphCoArianaArcherBattle: Moment = {
                     "{o:Gholdengo} Make It Rain {p:Tentacruel} to {+:124} and {o:Sceptile-Mega} to {=:0}",
                 },
                 { opponent: "{o:Sceptile-Mega} fainted" },
-                { player: "{p:Tentacruel} heal to {+:134}" },
+                { opponent: "{p:Tentacruel} Black Sludge to {+:134}" },
               ],
               [
                 {
@@ -2340,7 +2340,7 @@ export const silphCoArianaArcherBattle: Moment = {
             ],
           },
           {
-            matchup: ["Houndoom"],
+            matchup: ["Houndoom-Mega"],
             turns: [
               [
                 { opponent: "{o:Houndoom} mega to {o:Houndoom-Mega}" },
@@ -2421,12 +2421,12 @@ export const silphCoGiovanniBattle: Moment = {
                 { player: "{p:Meowscarada} U-Turn {o:Mamoswine} to {-:147}" },
                 { player: "{p:Meowscarada} switch to {p:Golduck}" },
                 { opponent: "{o:Mamoswine} Icicle Crash {p:Golduck} to {+:103}" },
-                { player: "{p:Golduck} heal to {+:113}" },
+                { opponent: "{p:Golduck} Leftovers to {+:113}" },
               ],
               [
                 { player: "{p:Golduck} Scald {o:Mamoswine} to {=:0}" },
                 { opponent: "{o:Mamoswine} fainted" },
-                { player: "{p:Golduck} heal to {+:123}" },
+                { opponent: "{p:Golduck} Leftovers to {+:123}" },
               ],
             ],
           },
@@ -2491,23 +2491,23 @@ export const silphCoGiovanniBattle: Moment = {
               [
                 { player: "{p:Meowscarada} switch to {p:Golduck}" },
                 { opponent: "{o:Excadrill} Iron Head {p:Golduck} to {+:54}" },
-                { player: "{p:Golduck} heal to {+:64}" },
+                { opponent: "{p:Golduck} Leftovers to {+:64}" },
               ],
               [
                 { player: "{p:Golduck} Flip Turn {o:Excadrill} to {-:114}" },
                 { player: "{p:Golduck} switch to {p:Gyarados}" },
                 { opponent: "{o:Excadrill} Earthquake {p:Gyarados}" },
-                { player: "{p:Gyarados} sand to {+:180}" },
+                { opponent: "{p:Gyarados} sandstorm to {+:180}" },
               ],
               [
                 { opponent: "{o:Excadrill} Swords Dance" },
                 { player: "{p:Gyarados} Leer {o:Excadrill}" },
-                { player: "{p:Gyarados} sand to {+:168}" },
+                { opponent: "{p:Gyarados} sandstorm to {+:168}" },
               ],
               [
                 { player: "{p:Gyarados} switch to {p:Golduck}" },
                 { opponent: "{o:Excadrill} Swords Dance" },
-                { player: "{p:Golduck} heal to {+:74}" },
+                { opponent: "{p:Golduck} Leftovers to {+:74}" },
               ],
               [
                 { player: "{p:Golduck} Flip Turn {o:Excadrill} to {=:0}" },
@@ -2529,23 +2529,23 @@ export const silphCoGiovanniBattle: Moment = {
               [
                 { player: "{p:Meowscarada} switch to {p:Golduck}" },
                 { opponent: "{o:Excadrill} Iron Head {p:Golduck} to {+:54}" },
-                { player: "{p:Golduck} heal to {+:64}" },
+                { opponent: "{p:Golduck} Leftovers to {+:64}" },
               ],
               [
                 { player: "{p:Golduck} Flip Turn {o:Excadrill} to {-:114}" },
                 { player: "{p:Golduck} switch to {p:Gyarados}" },
                 { opponent: "{o:Excadrill} Earthquake {p:Gyarados}" },
-                { player: "{p:Gyarados} sand to {+:180}" },
+                { opponent: "{p:Gyarados} sandstorm to {+:180}" },
               ],
               [
                 { opponent: "{o:Excadrill} Swords Dance" },
                 { player: "{p:Gyarados} Leer {o:Excadrill}" },
-                { player: "{p:Gyarados} sand to {+:168}" },
+                { opponent: "{p:Gyarados} sandstorm to {+:168}" },
               ],
               [
                 { player: "{p:Gyarados} switch to {p:Golduck}" },
                 { opponent: "{o:Excadrill} Swords Dance" },
-                { player: "{p:Golduck} heal to {+:74}" },
+                { opponent: "{p:Golduck} Leftovers to {+:74}" },
               ],
               [
                 { player: "{p:Golduck} Flip Turn {o:Excadrill} to {=:0}" },
@@ -2597,7 +2597,7 @@ export const silphCoGiovanniBattle: Moment = {
               [
                 { player: "{p:Meowscarada} Flower Trick {o:Garganacl} to {=:0}" },
                 { opponent: "{o:Garganacl} fainted" },
-                { player: "{p:Meowscarada} cure to {+:69}" },
+                { opponent: "{p:Meowscarada} cure to {+:69}" },
               ],
             ],
           },
@@ -2762,17 +2762,17 @@ export const saffronCityDumassKidBattle: Moment = {
               [
                 { player: "{p:Cloyster} switch to {p:Gyarados}" },
                 { opponent: "{o:Swampert-Mega} Pow-Up Punch {p:Gyarados} to {+:172}" },
-                { player: "{p:Gyarados} heal to {+:184}" },
+                { opponent: "{p:Gyarados} Leftovers to {+:184}" },
               ],
               [
                 { opponent: "{o:Swampert-Mega} Pow-Up Punch {p:Gyarados} to {+:157}" },
                 { player: "{p:Gyarados} Bulldoze {o:Swampert-Mega} to {-:176}" },
-                { player: "{p:Gyarados} heal to {+:169}" },
+                { opponent: "{p:Gyarados} Leftovers to {+:169}" },
               ],
               [
                 { opponent: "{o:Swampert-Mega} Pow-Up Punch {p:Gyarados} to {+:130}" },
                 { player: "{p:Gyarados} Bulldoze {o:Swampert-Mega} to {-:147}" },
-                { player: "{p:Gyarados} heal to {+:142}" },
+                { opponent: "{p:Gyarados} Leftovers to {+:142}" },
               ],
               [
                 { player: "{p:Gyarados} switch to {p:Golisopod}" },
@@ -2999,7 +2999,7 @@ export const saffronCityLeaderSabrinaBattle: Moment = {
               [
                 { player: "{p:Azumarill} Helping Hand {p:Jellicent}" },
                 { player: "{p:Jellicent} Water Spout {o:Glastrier} to {-:1} and {o:Magearna} to {=:0}" },
-                { opponent: "{o:Glastrier} heal to {-:69}" },
+                { opponent: "{o:Glastrier} Iapapa Berry to {-:69}" },
                 { opponent: "{o:Iron Hands} fainted" },
               ],
               [

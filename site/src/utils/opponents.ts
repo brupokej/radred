@@ -2359,7 +2359,7 @@ export const route18AceTrainerWiltonBox = getOpponentBox([
   },
 ]);
 
-export const fuschaCityBrendanBox = getOpponentBox([
+export const fuschiaCityBrendanBox = getOpponentBox([
   {
     name: "Gengar",
     level: 68,

@@ -112,7 +112,7 @@ export const route6CamperJeffBattle: Moment = {
                 { player: "{p:Perrserker} switch to {p:Golduck}" },
                 { opponent: "{o:Perrserker} Fake Out {p:Golduck} to {+:75}" },
                 { opponent: "{o:Boltund} Fire Fang {p:Golduck} to {+:47}" },
-                { player: "{p:Golduck} heal to {+:75}" },
+                { opponent: "{p:Golduck} Sitrus Berry to {+:75}" },
                 { opponent: "{p:Golduck} burn to {+:68}" },
               ],
               [
@@ -127,8 +127,8 @@ export const route6CamperJeffBattle: Moment = {
                   player:
                     "{p:Excadrill} Earthquake {o:Boltund} to {=:0} and {o:Perrserker} to {=:0} and {p:Cloyster} to {+:38}",
                 },
-                { opponent: "{p:Boltund} fainted" },
-                { opponent: "{p:Perrserker} fainted" },
+                { opponent: "{o:Boltund} fainted" },
+                { opponent: "{o:Perrserker} fainted" },
               ],
             ],
           },
@@ -294,7 +294,7 @@ export const route25LeaderBugsyBattle: Moment = {
             matchup: ["Araquanid"],
             turns: [
               [
-                { player: "{p:Golisopod} switch to {o:Clodsire}" },
+                { player: "{p:Golisopod} switch to {p:Clodsire}" },
                 { opponent: "{o:Araquanid} Toxic {p:Clodsire}" },
               ],
               [
@@ -743,7 +743,7 @@ export const ssAnneBrendanBattle: Moment = {
               [
                 { player: "{p:Tentacruel} Poison Jab {o:Gardevoir} to {-:50}" },
                 { opponent: "{o:Gardevoir} Psychic {p:Tentacruel} to {+:9}" },
-                { opponent: "{o:Gardevoir} heal to {-:56}" },
+                { opponent: "{o:Gardevoir} Leftovers to {-:56}" },
               ],
               [
                 { player: "{p:Tentacruel} Poison Jab {o:Gardevoir} to {=:0}" },

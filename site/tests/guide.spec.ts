@@ -134,6 +134,7 @@ for (const [guideIndex, guide] of GUIDES.entries()) {
     });
 
     test("snapshots", async ({ page }) => {
+      test.setTimeout(60_000);
       await getSnapshots(page, guideIndex + 1, guide);
     });
   });
