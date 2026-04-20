@@ -63,11 +63,12 @@
 .name,
 .level {
   font-weight: var(--ifm-font-weight-bold);
+  font-size: 0.875rem;
   line-height: 22px;
 }
 
 .name {
-  font-size: var(--ifm-h4-font-size);
+  font-size: 0.9rem;
   margin-top: var(--ifm-spacing-vertical);
 }
 

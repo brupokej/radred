@@ -47,6 +47,10 @@ html[data-highlight-level="off"] {
   --hl-danger-outline: none;
 }
 
+.theme-doc-markdown {
+  container-type: inline-size;
+}
+
 .table-of-contents__link {
   display: block;
   overflow: hidden;

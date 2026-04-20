@@ -197,6 +197,10 @@ export const route22RivalBattle: Moment = {
                 { opponent: "{o:Snubbull} Pow-Up Punch {p:Wooper-P} (non-crit) to {+:32}" },
                 { player: "{p:Wooper-P} Tail Whip {o:Snubbull}" },
               ],
+              [
+                { player: "{p:Wooper-P} switch to {p:Kricketune}" },
+                { opponent: "{o:Snubbull} Pow-Up Punch {p:Kricketune} to {+:43}" },
+              ],
             ],
             branches: [{ branches: ["Snubbull Pow-Up Punch Kricketune"] }],
           },
@@ -215,10 +219,6 @@ export const route22RivalBattle: Moment = {
               },
             ],
             turns: [
-              [
-                { player: "{p:Wooper-P} switch to {p:Kricketune}" },
-                { opponent: "{o:Snubbull} Pow-Up Punch {p:Kricketune} to {+:43}" },
-              ],
               [
                 { player: "{p:Kricketune} Rock Tomb {o:Snubbull} to {=:0}" },
                 { opponent: "{o:Snubbull} fainted" },
