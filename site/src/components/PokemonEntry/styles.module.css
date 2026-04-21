@@ -8,7 +8,7 @@
   display: flex;
   flex-shrink: 0;
   justify-content: center;
-  padding-block: var(--ifm-spacing-horizontal);
+  padding-block: 14px;
   padding-inline-end: 0.375rem;
   padding-inline-start: var(--ifm-spacing-horizontal);
   position: relative;

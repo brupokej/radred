@@ -45,7 +45,7 @@ export function shadeCell(
   };
 }
 
-const TABLE_ROWS = 8;
+const TABLE_ROWS = 6;
 const SPRITE_COL_OFFSET = 52;
 
 // Generic rendering base — shared by all three stats table variants.
@@ -147,7 +147,7 @@ export function StatsTable<TRow extends object>({
               {Array.from({ length: emptyCount }, (_, i) => (
                 <tr key={`empty-${i}`} className={styles.emptyRow}>
                   {Array.from({ length: colCount }, (__, j) => (
-                    <td key={j}>{j === 0 ? "✕" : "—"}</td>
+                    <td key={j}>{i < emptyCount - 1 ? (j === 0 ? "✕" : "-") : null}</td>
                   ))}
                 </tr>
               ))}

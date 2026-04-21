@@ -53,7 +53,7 @@ export default function BoxRoster({
 
   return (
     <Card title={title}>
-      <ScrollFade axis="y" arrows scrollRef={scrollRef}>
+      <ScrollFade axis="y" scrollRef={scrollRef}>
         <div ref={scrollRef} className={styles.scrollInner}>
           {entries.map((pokemon, i) => {
             const canon = renames[pokemon.name] ?? pokemon.name;

@@ -3,7 +3,7 @@
 }
 
 .scrollInner {
-  max-height: calc(3 * (108px + 2 * var(--ifm-spacing-horizontal)) + 2px);
+  max-height: 484px;
   overflow-y: auto;
   overscroll-behavior: none;
 }

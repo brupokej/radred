@@ -44,7 +44,7 @@
   display: flex;
   flex-shrink: 0;
   justify-content: center;
-  padding-block: var(--ifm-spacing-vertical);
+  padding-block: 13px;
   width: 52px;
 }
 
@@ -61,7 +61,7 @@
   flex-shrink: 0;
   font-size: 0.875rem;
   overflow: hidden;
-  padding-block: var(--ifm-spacing-vertical);
+  padding-block: 13px;
   padding-inline: var(--ifm-table-cell-padding);
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -86,7 +86,7 @@
   background: transparent;
   display: flex;
   flex: 1;
-  padding-block: var(--ifm-spacing-vertical);
+  padding-block: 13px;
   padding-inline: var(--ifm-table-cell-padding);
 }
 

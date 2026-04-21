@@ -185,7 +185,7 @@ export default function BarRace({
   const maxValue =
     scaleStart + (scaleEnd - scaleStart) * (frameIdx / Math.max(1, frames.length - 1));
 
-  const visibleHeight = `calc(${TOP_N + 1} * (26px + 2 * var(--ifm-spacing-vertical)) + ${TOP_N - 1}px)`;
+  const visibleHeight = `346px`;
   const emptyCount = Math.max(0, TOP_N - chartData.length);
   const currentLabel = frames[frameIdx]?.label;
   const total = frames.length - 1;
@@ -201,7 +201,7 @@ export default function BarRace({
   return (
     <Card title={"Pokémon Data"}>
       <div className={styles.container}>
-        <ScrollFade axis="y" arrows scrollRef={barsRef} insetBlock="calc(26px + 2 * var(--ifm-spacing-vertical))">
+        <ScrollFade axis="y" scrollRef={barsRef} insetBlock="52px">
           <div ref={barsRef} className={styles.bars} style={{ maxHeight: visibleHeight }}>
           <div className={styles.header}>
             <div className={styles.spriteCell} />
@@ -250,8 +250,8 @@ export default function BarRace({
           {Array.from({ length: emptyCount }, (_, i) => (
             <div key={`empty-${i}`} className={styles.row}>
               <div className={`${styles.spriteCell} ${styles.emptyCell}`}>✕</div>
-              <span className={`${styles.name} ${styles.emptyCell}`}>—</span>
-              <span className={`${styles.value} ${styles.emptyCell}`}>—</span>
+              <span className={`${styles.name} ${styles.emptyCell}`}>-</span>
+              <span className={`${styles.value} ${styles.emptyCell}`}>-</span>
               <div className={styles.track}><div className={styles.trackInner} /></div>
             </div>
           ))}
@@ -266,8 +266,8 @@ export default function BarRace({
                 onClick={() => { setIsPlaying(false); setFrameIdx(0); }}
                 title="Reset"
               >
-                ⏮
-              </button>
+                {"⏮\uFE0E"}
+</button>
               <button className={styles.btn} onClick={() => step(-1)} title="Previous">←</button>
               <button
                 className={`${styles.btn} ${styles.btnPlay}`}
@@ -281,7 +281,7 @@ export default function BarRace({
                   }
                 }}
               >
-                {isPlaying ? "⏸" : "▶"}
+                {isPlaying ? "⏸\uFE0E" : "▶\uFE0E"}
               </button>
               <button className={styles.btn} onClick={() => step(1)} title="Next">→</button>
             </div>

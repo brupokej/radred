@@ -6,7 +6,7 @@
 }
 
 .scrollInner {
-  max-height: calc(9 * (26px + 2 * var(--ifm-spacing-vertical)) + 8px);
+  max-height: 346px;
   max-width: 100%;
   overflow: auto;
   overscroll-behavior: none;
@@ -44,7 +44,7 @@
 .table th,
 .table td {
   border-width: 1px;
-  padding-block: var(--ifm-spacing-vertical);
+  padding-block: 13px;
   padding-inline: 0;
   text-align: center;
   vertical-align: middle;
@@ -137,6 +137,11 @@
 
 .emptyRow td {
   color: var(--ifm-color-emphasis-400);
+}
+
+.emptyRow:last-child td {
+  height: 27px;
+  padding-block: 0;
 }
 
 .chip {
