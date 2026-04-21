@@ -33,10 +33,123 @@
   right: 0;
 }
 
-.fadeLeft::before {
+.fadeLeft::before,
+.fadeTop::before {
   opacity: 1;
 }
 
-.fadeRight::after {
+.fadeRight::after,
+.fadeBottom::after {
   opacity: 1;
+}
+
+/* ── arrows ───────────────────────────────────────── */
+
+.arrow {
+  background: var(--ifm-color-emphasis-200);
+  border: none;
+  border-radius: 50%;
+  box-shadow: var(--ifm-global-shadow-lw);
+  cursor: pointer;
+  height: 2rem;
+  opacity: 0;
+  padding: 0;
+  pointer-events: none;
+  position: absolute;
+  transition: opacity var(--ifm-transition-fast) var(--ifm-transition-timing-default),
+              transform var(--ifm-transition-fast) var(--ifm-transition-timing-default),
+              background var(--ifm-transition-fast) var(--ifm-transition-timing-default);
+  width: 2rem;
+  z-index: 5;
+}
+
+.arrowVisible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.arrow::after {
+  background-color: var(--ifm-color-emphasis-1000);
+  content: "";
+  display: block;
+  height: 100%;
+  mask: var(--ifm-menu-link-sublist-icon) 50% / 1.25rem 1.25rem no-repeat;
+  width: 100%;
+}
+
+.arrow:hover {
+  background: var(--ifm-color-emphasis-300);
+}
+
+/* y-axis arrows */
+
+.arrowY {
+  left: 50%;
+  transform: translateX(-50%) scale(0);
+}
+
+.arrowY.arrowVisible {
+  transform: translateX(-50%) scale(1);
+}
+
+.arrowY.arrowStart {
+  top: calc(var(--scroll-fade-inset, 0px) + var(--ifm-spacing-horizontal) / 4);
+}
+
+.arrowY.arrowEnd {
+  bottom: calc(var(--ifm-spacing-horizontal) / 4);
+}
+
+.arrowY.arrowEnd::after {
+  transform: rotate(180deg);
+}
+
+/* x-axis arrows */
+
+.arrowX {
+  top: 50%;
+  transform: translateY(-50%) scale(0);
+}
+
+.arrowX.arrowVisible {
+  transform: translateY(-50%) scale(1);
+}
+
+.arrowX.arrowStart {
+  left: calc(var(--ifm-spacing-horizontal) / 4);
+}
+
+.arrowX.arrowStart::after {
+  transform: rotate(-90deg);
+}
+
+.arrowX.arrowEnd {
+  right: calc(var(--ifm-spacing-horizontal) / 4);
+}
+
+.arrowX.arrowEnd::after {
+  transform: rotate(90deg);
+}
+
+/* ── vertical ─────────────────────────────────────── */
+
+.vertical::before,
+.vertical::after {
+  height: 2rem;
+  left: 0;
+  right: 0;
+  top: auto;
+  width: auto;
+}
+
+.vertical::before {
+  background: linear-gradient(to bottom, var(--scroll-fade-color, var(--ifm-card-background-color)), transparent);
+  bottom: auto;
+  top: var(--scroll-fade-inset, 0px);
+}
+
+.vertical::after {
+  background: linear-gradient(to top, var(--scroll-fade-color, var(--ifm-card-background-color)), transparent);
+  bottom: 0;
+  right: 0;
 }

@@ -1,0 +1,9 @@
+.bordered {
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.scrollInner {
+  max-height: calc(3 * (108px + 2 * var(--ifm-spacing-horizontal)) + 2px);
+  overflow-y: auto;
+  overscroll-behavior: none;
+}

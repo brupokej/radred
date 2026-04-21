@@ -1,11 +1,11 @@
 import Card from "@site/src/components/Card";
+import { PokemonEntry } from "@site/src/components/PokemonEntry";
 import { Row } from "@site/src/components/Row";
 import Team from "@site/src/components/Team";
 import { Box } from "@site/src/utils/box";
 import { readAllSelections, writeAll } from "@site/src/utils/encounterLog";
 import { encounterSequences, locations } from "@site/src/utils/encounterPools";
 import { PokemonData } from "@site/src/utils/pokemon";
-import { getColouredSpriteUrl } from "@site/src/utils/sprites";
 import { STORAGE_EVENT } from "@site/src/utils/storage";
 import { ReactNode, useEffect, useState } from "react";
 import styles from "./styles.module.css";
@@ -143,19 +143,12 @@ export default function Encounter({
       )}
       <Card title="Encounter Plan">
         {isSequence && <Sequence target={resolvedEncounter.name} />}
-        <div className={`${styles.content}${isSequence ? ` ${styles.contentSequence}` : ""}`}>
-          <div className={styles.spritePanel}>
-            <img
-              src={getColouredSpriteUrl(resolvedEncounter)}
-              alt={resolvedEncounter.name}
-              className={styles.sprite}
-            />
-          </div>
-          <div className={styles.info}>
-            <div className={styles.name}>{resolvedEncounter.name}</div>
-            {children}
-          </div>
-        </div>
+        <PokemonEntry
+          pokemon={resolvedEncounter}
+          className={isSequence ? styles.contentSequence : undefined}
+        >
+          {children}
+        </PokemonEntry>
       </Card>
     </>
   );

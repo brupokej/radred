@@ -1,5 +1,6 @@
 import Card from "@site/src/components/Card";
 import { ScrollArrows } from "@site/src/components/ScrollArrows";
+import { ScrollFade } from "@site/src/components/ScrollFade";
 import { Moment } from "@site/src/utils/moments";
 import { getColouredSpriteUrl } from "@site/src/utils/sprites";
 import {
@@ -44,7 +45,7 @@ export function shadeCell(
   };
 }
 
-const COLLAPSED_ROWS = 3;
+const TABLE_ROWS = 8;
 const SPRITE_COL_OFFSET = 52;
 
 // Generic rendering base — shared by all three stats table variants.
@@ -59,7 +60,6 @@ export function StatsTable<TRow extends object>({
   initialSort: SortingState;
 }) {
   const [sorting, setSorting] = useState<SortingState>(initialSort);
-  const [isExpanded, setIsExpanded] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const theadRef = useRef<HTMLTableSectionElement>(null);
 
@@ -89,11 +89,12 @@ export function StatsTable<TRow extends object>({
   }, []);
 
   const allRows = table.getRowModel().rows;
-  const visibleRows = isExpanded ? allRows : allRows.slice(0, COLLAPSED_ROWS);
+  const emptyCount = Math.max(0, TABLE_ROWS - allRows.length);
+  const colCount = table.getAllColumns().length;
 
   return (
-    <Card title="Table Stats">
-      <div className={styles.tableContainer}>
+    <Card title="Pokémon Data">
+      <ScrollFade axis="y" scrollRef={scrollRef} className={styles.tableContainer} insetBlock="calc(26px + 2 * var(--ifm-spacing-vertical))">
         <ScrollArrows
           scrollRef={scrollRef}
           onLeft={(el) => scrollSnap(el, "left")}
@@ -134,7 +135,7 @@ export function StatsTable<TRow extends object>({
               ))}
             </thead>
             <tbody>
-              {visibleRows.map((row) => (
+              {allRows.map((row) => (
                 <tr key={row.id}>
                   {row.getVisibleCells().map((cell) => (
                     <td key={cell.id}>
@@ -143,15 +144,17 @@ export function StatsTable<TRow extends object>({
                   ))}
                 </tr>
               ))}
+              {Array.from({ length: emptyCount }, (_, i) => (
+                <tr key={`empty-${i}`} className={styles.emptyRow}>
+                  {Array.from({ length: colCount }, (__, j) => (
+                    <td key={j}>{j === 0 ? "✕" : "—"}</td>
+                  ))}
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
-      </div>
-      {allRows.length > COLLAPSED_ROWS && (
-        <button className={styles.detailToggle} onClick={() => setIsExpanded(!isExpanded)}>
-          {isExpanded ? "−" : "+"}
-        </button>
-      )}
+      </ScrollFade>
     </Card>
   );
 }
@@ -254,7 +257,7 @@ export function PageStatsTable({
           />
         ),
       }),
-      pageColumnHelper.accessor("pokemon", { header: "Pokemon", size: POKEMON_COL_SIZE }),
+      pageColumnHelper.accessor("pokemon", { header: "Pokémon", size: POKEMON_COL_SIZE }),
       pageColumnHelper.accessor("total", {
         header: "Total",
         size: DATA_COL_SIZE,
@@ -320,7 +323,7 @@ const percentsColumns = [
       />
     ),
   }),
-  pctColumnHelper.accessor("pokemon", { header: "Pokemon", size: 144 }),
+  pctColumnHelper.accessor("pokemon", { header: "Pokémon", size: 144 }),
   pctColumnHelper.accessor("battles", {
     header: "Battles",
     size: 92,

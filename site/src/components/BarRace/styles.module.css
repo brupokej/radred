@@ -1,0 +1,179 @@
+.container {
+  padding: 0;
+}
+
+/* ── bars ─────────────────────────────────────────── */
+
+.bars {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overscroll-behavior: none;
+  position: relative;
+}
+
+.header {
+  align-items: stretch;
+  background-color: var(--ifm-color-emphasis-100);
+  box-shadow: inset 0 -1px 0 0 var(--ifm-color-emphasis-300);
+  display: flex;
+  font-size: 0.875rem;
+  font-weight: bold;
+  line-height: 26px;
+  position: sticky;
+  top: 0;
+  user-select: none;
+  white-space: nowrap;
+  z-index: 2;
+}
+
+.row + .row {
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.row {
+  align-items: stretch;
+  display: flex;
+  font-size: 0.875rem;
+  line-height: 26px;
+}
+
+.spriteCell {
+  align-items: center;
+  border-right: 1px solid var(--ifm-color-emphasis-200);
+  display: flex;
+  flex-shrink: 0;
+  justify-content: center;
+  padding-block: var(--ifm-spacing-vertical);
+  width: 52px;
+}
+
+.sprite {
+  height: 26px;
+  object-fit: contain;
+  width: 26px;
+}
+
+.name {
+  align-items: center;
+  border-right: 1px solid var(--ifm-color-emphasis-200);
+  display: flex;
+  flex-shrink: 0;
+  font-size: 0.875rem;
+  overflow: hidden;
+  padding-block: var(--ifm-spacing-vertical);
+  padding-inline: var(--ifm-table-cell-padding);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 144px;
+}
+
+.value {
+  align-items: center;
+  border-right: 1px solid var(--ifm-color-emphasis-200);
+  color: var(--ifm-color-emphasis-700);
+  display: flex;
+  flex-shrink: 0;
+  font-size: 0.875rem;
+  font-variant-numeric: tabular-nums;
+  justify-content: center;
+  padding-inline: 0.4rem;
+  width: 67px;
+}
+
+.track {
+  align-items: center;
+  background: transparent;
+  display: flex;
+  flex: 1;
+  padding-block: var(--ifm-spacing-vertical);
+  padding-inline: var(--ifm-table-cell-padding);
+}
+
+.trackInner {
+  background: var(--ifm-color-emphasis-200);
+  border-radius: 4px;
+  flex: 1;
+  height: 18px;
+  overflow: hidden;
+}
+
+.fill {
+  border-radius: 4px;
+  height: 100%;
+}
+
+.emptyCell {
+  color: var(--ifm-color-emphasis-400);
+}
+
+/* ── controls ─────────────────────────────────────── */
+
+.controls {
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: var(--ifm-table-cell-padding) var(--ifm-spacing-horizontal);
+}
+
+.controlRow {
+  align-items: center;
+  display: flex;
+  gap: 0.75rem;
+}
+
+.btnGroup {
+  display: flex;
+  flex-shrink: 0;
+  gap: 0.25rem;
+}
+
+.btn {
+  background: none;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: var(--ifm-global-radius);
+  color: var(--ifm-color-content);
+  cursor: pointer;
+  font-size: 0.8rem;
+  line-height: 1;
+  padding: 0.3rem 0.65rem;
+  transition: background 0.1s;
+  user-select: none;
+}
+
+.btn:hover {
+  background: var(--ifm-color-emphasis-100);
+}
+
+.btnPlay {
+  min-width: 2.5rem;
+  padding-top: 0.4rem;
+}
+
+.scrubRow {
+  align-items: center;
+  display: flex;
+  gap: 0.75rem;
+}
+
+.scrubber {
+  accent-color: var(--ifm-color-primary);
+  flex: 1;
+}
+
+.counter {
+  color: var(--ifm-color-emphasis-500);
+  font-size: 0.8rem;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.label {
+  color: var(--ifm-color-emphasis-600);
+  flex: 1;
+  font-size: 0.8rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

@@ -53,20 +53,16 @@ export function ScrollArrows({
 
   return (
     <div className={overlayClass} style={Object.keys(cssVars).length ? cssVars : undefined}>
-      {canScrollLeft && (
-        <button
-          className={`${styles.arrow} ${styles.arrowLeft}`}
-          onClick={() => scrollRef.current && onLeft(scrollRef.current)}
-          aria-label="Scroll left"
-        />
-      )}
-      {canScrollRight && (
-        <button
-          className={`${styles.arrow} ${styles.arrowRight}`}
-          onClick={() => scrollRef.current && onRight(scrollRef.current)}
-          aria-label="Scroll right"
-        />
-      )}
+      <button
+        className={`${styles.arrow} ${styles.arrowLeft} ${canScrollLeft ? styles.arrowVisible : ""}`}
+        onClick={() => scrollRef.current && onLeft(scrollRef.current)}
+        aria-label="Scroll left"
+      />
+      <button
+        className={`${styles.arrow} ${styles.arrowRight} ${canScrollRight ? styles.arrowVisible : ""}`}
+        onClick={() => scrollRef.current && onRight(scrollRef.current)}
+        aria-label="Scroll right"
+      />
     </div>
   );
 }

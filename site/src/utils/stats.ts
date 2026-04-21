@@ -57,6 +57,16 @@ function getVisibleLines(data: BattleData): Map<string, (typeof data.lines)[0]> 
   return visible;
 }
 
+export function computeBattleFrags(battle: BattleData): Record<string, number> {
+  const frags: Record<string, number> = {};
+  for (const line of getVisibleLines(battle).values()) {
+    for (const [pokemon, count] of Object.entries(line.frags ?? {})) {
+      frags[pokemon] = (frags[pokemon] ?? 0) + count;
+    }
+  }
+  return frags;
+}
+
 export type PageStats = {
   total: number;
   byPage: Record<string, number>;

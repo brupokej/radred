@@ -12,6 +12,7 @@ export interface Box {
   team: string[];
   extraTeam?: string[];
   renames?: Record<string, string>;
+  removed?: string[];
 }
 
 // Replays changes on top of base, returning the live state as a Map.
@@ -34,7 +35,7 @@ function replayBox(box: Box, version: number): Map<string, Pokemon> {
         state.set(name, pokemon);
       }
     } else if (change.type === "cap") {
-      const excludeSet = new Set(change.exclude ?? []);
+      const excludeSet = new Set([...(change.exclude ?? []), ...(box.removed ?? [])]);
       const touched = new Set<string>();
       for (const [name, current] of state) {
         if (!excludeSet.has(name) && resolvePokemon(current).level !== change.level) {
@@ -176,12 +177,20 @@ export function getBox({
     }
   }
 
+  const accRemoved: string[] = [...(box?.removed ?? [])];
+  for (const change of newChanges) {
+    if (change.type === "remove") {
+      accRemoved.push(...change.names);
+    }
+  }
+
   return {
     base: inputBase,
     changes: newChanges,
     team: team ?? box?.team ?? inferredTeam,
     extraTeam: extraTeam,
     renames: Object.keys(accRenames).length > 0 ? accRenames : undefined,
+    removed: accRemoved.length > 0 ? accRemoved : undefined,
   };
 }
 

@@ -103,7 +103,7 @@ async function getSnapshot(
   await expectSnapshot(card, `${filename}.png`);
 }
 
-async function getSnapshots(page: Page, guideIndex: number, guide: string) {
+async function getSnapshots(page: Page, pathIndex: number, path: string) {
   let headingIndex = 1;
   let heading = "";
   let cardIndex = { value: 1 };
@@ -118,24 +118,33 @@ async function getSnapshots(page: Page, guideIndex: number, guide: string) {
     }
 
     await expandAll(loc);
-    await getSnapshot(loc, [guideIndex, guide, headingIndex, heading], cardIndex);
+    await getSnapshot(loc, [pathIndex, path, headingIndex, heading], cardIndex);
   }
 }
 
-const GUIDES = ["brock", "misty", "surge", "erika", "sabrina", "koga", "stats"];
+const PATHS = [
+  ["guide", "brock"],
+  ["guide", "misty"],
+  ["guide", "surge"],
+  ["guide", "erika"],
+  ["guide", "sabrina"],
+  ["guide", "koga"],
+  ["team", "box"],
+  ["team", "stats"],
+  ["team", "timeline"],
+];
 
-for (const [guideIndex, guide] of GUIDES.entries()) {
-  test.describe(guide, () => {
+for (const [pathIndex, path] of PATHS.entries()) {
+  test.describe(path[1], () => {
     test.beforeEach(async ({ page }) => {
-      const dir = guide === "stats" ? "box" : "guide";
-      await page.goto(`/radred/${dir}/${guide}`);
+      await page.goto(`/radred/${path[0]}/${path[1]}`);
       await page.waitForLoadState("networkidle");
       await page.addStyleTag({ content: "nav.navbar { visibility: hidden !important; }" });
     });
 
     test("snapshots", async ({ page }) => {
       test.setTimeout(60_000);
-      await getSnapshots(page, guideIndex + 1, guide);
+      await getSnapshots(page, pathIndex + 1, path[1]);
     });
   });
 }

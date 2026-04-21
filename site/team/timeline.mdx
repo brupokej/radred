@@ -1,0 +1,30 @@
+---
+sidebar_position: 3
+---
+
+import BarRace from "@site/src/components/BarRace";
+import { moments as brockMoments } from "@site/src/data/guide/brock";
+import { moments as mistyMoments } from "@site/src/data/guide/misty";
+import { moments as surgeMoments } from "@site/src/data/guide/surge";
+import { moments as erikaMoments } from "@site/src/data/guide/erika";
+import { moments as sabrinaMoments } from "@site/src/data/guide/sabrina";
+import { moments as kogaMoments } from "@site/src/data/guide/koga";
+
+# Timeline
+
+export const allMoments = [
+  ...brockMoments,
+  ...mistyMoments,
+  ...surgeMoments,
+  ...erikaMoments,
+  ...sabrinaMoments,
+  ...kogaMoments,
+];
+
+## Battles Table
+
+<BarRace moments={allMoments} metric="battles" />
+
+## Frags Table
+
+<BarRace moments={allMoments} metric="frags" />

@@ -904,6 +904,16 @@ export const route18BikerWilliamBoxChange: Moment = {
 const _box13 = getBox({
   box: _box12,
   update: {
+    Swampert: {
+      name: "Swampert-Mega",
+      ability: "Swift Swim",
+    }
+  },
+});
+
+const _box14 = getBox({
+  box: _box13,
+  update: {
     Lanturn: {
       item: "Persim Berry",
       moves: ["Flip Turn", "Signal Beam", "Thunderbolt", "Volt Switch"],
@@ -914,8 +924,7 @@ const _box13 = getBox({
       item: "Hard Stone",
       moves: ["Bulldoze", "Dig", "Flip Turn", "Rock Slide"],
     },
-    "Swampert": {
-      name: "Swampert-Mega",
+    "Swampert-Mega": {
       nature: "Jolly",
       item: "Swampertite",
       moves: ["Earthquake", "Hammer Arm", "Knock Off", "Rock Slide"],
@@ -936,7 +945,7 @@ export const route18BirdKeeperJacobBattle: Moment = {
   label: "Route 18 Bird Keeper Jacob Battle",
   kind: "battle",
   data: {
-    playerBox: _box13,
+    playerBox: _box14,
     opponentBox: route18BirdKeeperJacobBox,
     lines: [
       {
@@ -1282,8 +1291,8 @@ export const route18BirdKeeperJacobBattle: Moment = {
   },
 };
 
-const _box14 = getBox({
-  box: _box13,
+const _box15 = getBox({
+  box: _box14,
   update: {
     "Swampert-Mega": {
       moves: ["Earthquake", "Hammer Arm", "Ice Punch", "Rock Slide"],
@@ -1306,7 +1315,7 @@ export const route18AceTrainerWiltonBattle: Moment = {
   label: "Route 18 Ace Trainer Wilton Battle",
   kind: "battle",
   data: {
-    playerBox: _box14,
+    playerBox: _box15,
     opponentBox: route18AceTrainerWiltonBox,
     lines: [
       {
@@ -1399,8 +1408,8 @@ export const route18AceTrainerWiltonBattle: Moment = {
   },
 };
 
-const _box15 = getBox({
-  box: _box14,
+const _box16 = getBox({
+  box: _box15,
   update: {
     Meowscarada: {
       item: "Expert Belt",
@@ -1422,7 +1431,7 @@ export const fuschiaCityBrendanBattle: Moment = {
   label: "Fuschia City Brendan Battle",
   kind: "battle",
   data: {
-    playerBox: _box15,
+    playerBox: _box16,
     opponentBox: fuschiaCityBrendanBox,
     lines: [
       {
@@ -1538,8 +1547,8 @@ const _screamTail = {
   moves: ["Body Slam", "Hyper Voice", "Play Rough", "Rest"],
 };
 
-const _box16 = getBox({
-  box: _box15,
+const _box17 = getBox({
+  box: _box16,
   update: {
     Incineroar: {
       moves: ["Fake Out", "Darkest Lariat", "Flamethrower", "U-Turn"],
@@ -1556,7 +1565,7 @@ const _box16 = getBox({
 export const safariZoneEncounter: Moment = {
   label: "Safari Zone Encounter",
   kind: "encounter",
-  data: { pokemon: _screamTail, playerBox: _box16 },
+  data: { pokemon: _screamTail, playerBox: _box17 },
 };
 
 const _froakie = {
@@ -1595,8 +1604,8 @@ export const starterEgg5Encounter: Moment = {
   data: { pokemon: _treecko },
 };
 
-const _box17 = getBox({
-  box: _box16,
+const _box18 = getBox({
+  box: _box17,
   add: [_screamTail, _froakie, _chimchar, _treecko],
   cap: 68,
   update: [
@@ -1642,10 +1651,10 @@ const _box17 = getBox({
 export const starterEgg5BoxChange: Moment = {
   label: "Starter Egg 5 Box Change",
   kind: "boxChange",
-  data: { playerBox: _box17 },
+  data: { playerBox: _box18 },
 }
 
-export const box = _box17;
+export const box = _box18;
 
 export const moments: Moment[] = [
   celadonCityEncounter,

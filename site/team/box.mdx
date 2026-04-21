@@ -1,0 +1,20 @@
+---
+sidebar_position: 1
+---
+
+import BoxRoster from "@site/src/components/BoxRoster";
+import { box } from "@site/src/data/guide/koga";
+import { moments as brockMoments } from "@site/src/data/guide/brock";
+import { moments as mistyMoments } from "@site/src/data/guide/misty";
+import { moments as surgeMoments } from "@site/src/data/guide/surge";
+import { moments as erikaMoments } from "@site/src/data/guide/erika";
+import { moments as sabrinaMoments } from "@site/src/data/guide/sabrina";
+import { moments as kogaMoments } from "@site/src/data/guide/koga";
+
+# Box
+
+## Team Table
+
+export const allMoments = [...brockMoments, ...mistyMoments, ...surgeMoments, ...erikaMoments, ...sabrinaMoments, ...kogaMoments];
+
+<BoxRoster box={box} moments={allMoments} title="Player Box" />
