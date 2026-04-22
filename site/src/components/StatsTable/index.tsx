@@ -212,17 +212,10 @@ export function PageStatsTable({
 
   useEffect(() => {
     const update = () => {
-      const startLabel = getState("stats-filter-start");
-      const endLabel = getState("stats-filter-end");
-      const startIdx = startLabel
-        ? Math.max(
-            0,
-            allBattleMoments.findIndex((m) => m.label === startLabel)
-          )
-        : 0;
+      const endLabel = getState("stats-moment");
       const rawEnd = endLabel ? allBattleMoments.findIndex((m) => m.label === endLabel) : -1;
       const endIdx = rawEnd >= 0 ? rawEnd : allBattleMoments.length - 1;
-      const filtered = allBattleMoments.slice(startIdx, endIdx + 1);
+      const filtered = allBattleMoments.slice(0, endIdx + 1);
 
       const pageGroups = pages.map((p) => ({
         label: p.label,
@@ -507,17 +500,10 @@ export function PercentsTable({ moments }: { moments: Moment[] }) {
 
   useEffect(() => {
     const update = () => {
-      const startLabel = getState("stats-filter-start");
-      const endLabel = getState("stats-filter-end");
-      const startIdx = startLabel
-        ? Math.max(
-            0,
-            battleMoments.findIndex((m) => m.label === startLabel)
-          )
-        : 0;
+      const endLabel = getState("stats-moment");
       const rawEnd = endLabel ? battleMoments.findIndex((m) => m.label === endLabel) : -1;
       const endIdx = rawEnd >= 0 ? rawEnd : battleMoments.length - 1;
-      const filtered = battleMoments.slice(startIdx, endIdx + 1).map((m) => m.data);
+      const filtered = battleMoments.slice(0, endIdx + 1).map((m) => m.data);
       setStats(computeStats(filtered));
     };
     update();

@@ -9,9 +9,9 @@ const SNAPSHOT_DIR = path.join(__dirname, "snapshots/guide.spec.ts-snapshots");
 const SNAPSHOT_SUFFIX = `desktop-${process.platform}`;
 const seenSnapshots = new Set<string>();
 
-async function expectSnapshot(loc: Locator, filename: string) {
+async function expectSnapshot(target: Locator | Page, filename: string, options?: Object) {
   seenSnapshots.add(filename.replace(/\.png$/, `-${SNAPSHOT_SUFFIX}.png`));
-  await expect.soft(loc).toHaveScreenshot([filename]);
+  await expect.soft(target).toHaveScreenshot([filename], { ...options });
 }
 
 async function waitForRender(loc: Locator) {
@@ -51,7 +51,7 @@ async function getValues(select: Locator): Promise<string[]> {
     .evaluateAll((options) => options.map((o) => (o as HTMLOptionElement).value));
 }
 
-async function getSnapshot(
+async function getCardSnapshot(
   loc: Locator,
   parts: (string | number)[],
   locIndex: { value: number },
@@ -72,7 +72,7 @@ async function getSnapshot(
       if (defaultValue === value) continue;
       await select.selectOption(value);
       await waitForRender(loc);
-      await getSnapshot(loc, parts, locIndex, visited);
+      await getCardSnapshot(loc, parts, locIndex, visited);
       break;
     }
 
@@ -91,7 +91,7 @@ async function getSnapshot(
     for (const value of values) {
       await select.selectOption(value);
       await waitForRender(loc);
-      await getSnapshot(loc, parts, locIndex, visited);
+      await getCardSnapshot(loc, parts, locIndex, visited);
     }
 
     await select.selectOption(defaultValue);
@@ -103,9 +103,62 @@ async function getSnapshot(
   await expectSnapshot(loc, `${filename}.png`);
 }
 
+const STATIC_IMG_DIR = path.join(__dirname, "../static/img");
+
+async function getFeatureSnapshot(
+  loc: Locator,
+  parts: (string | number)[],
+  featureIndex: { value: number },
+  name: string
+): Promise<void> {
+  const page = loc.page();
+  await loc.evaluate((el) => el.scrollIntoView({ block: "start" }));
+  const box = await loc.boundingBox();
+
+  await page.evaluate(() => {
+    localStorage.setItem("stats-moment", "Saffron City Leader Sabrina Battle");
+    window.dispatchEvent(new CustomEvent("storage-change"));
+  });
+  await loc.evaluate((el) => el.setAttribute("data-feature", ""));
+  const styleTag = await page.addStyleTag({
+    content: `[data-feature] div { flex-wrap: nowrap !important; }`,
+  });
+  await waitForRender(loc);
+
+  for (const theme of ["dark", "light"] as const) {
+    await page.evaluate((t) => document.documentElement.setAttribute("data-theme", t), theme);
+    await page.waitForTimeout(1000);
+
+    const filename = slugify([...parts, featureIndex.value++]).replace(/battle|table/g, "feature");
+    await expectSnapshot(page, `${filename}.png`, {
+      clip: { x: box.x + 4, y: box.y + 62, width: 468, height: 310 },
+    });
+
+    if (["all", "changed"].includes(test.info().config.updateSnapshots)) {
+      const src = path.join(SNAPSHOT_DIR, `${filename}-${SNAPSHOT_SUFFIX}.png`);
+      const dest = path.join(STATIC_IMG_DIR, `feature-${name}-${theme}.png`);
+      fs.copyFileSync(src, dest);
+    }
+  }
+
+  await styleTag.evaluate((el) => el.remove());
+  await loc.evaluate((el) => el.removeAttribute("data-feature"));
+  await page.evaluate(() => {
+    localStorage.removeItem("stats-moment");
+    window.dispatchEvent(new CustomEvent("storage-change"));
+  });
+}
+
+const FEATURES: { heading: string; summary: string; imgName: string }[] = [
+  { heading: "Celadon City Leader Erika Battle", summary: "Player Team", name: "team" },
+  { heading: "Silph Co. Ariana & Archer Battle", summary: "Battle Plan", name: "battle" },
+  { heading: "Percents Table", summary: "Pokémon Data", name: "stats" },
+];
+
 async function getSnapshots(page: Page, pathIndex: number, path: string) {
   let headingIndex = 1;
   let heading = "";
+  let featureIndex = { value: 1 };
   let locIndex = { value: 1 };
 
   for (const loc of await page
@@ -121,7 +174,17 @@ async function getSnapshots(page: Page, pathIndex: number, path: string) {
     }
 
     await expandAll(loc);
-    await getSnapshot(loc, [pathIndex, path, headingIndex, heading], locIndex);
+    const parts = [pathIndex, path, headingIndex, heading];
+
+    const headingFeature = FEATURES.find((f) => heading.includes(f.heading));
+    if (headingFeature) {
+      const summary = await loc.locator("summary").first().textContent();
+      if (summary?.includes(headingFeature.summary)) {
+        await getFeatureSnapshot(loc, parts, featureIndex, headingFeature.name);
+      }
+    }
+
+    await getCardSnapshot(loc, parts, locIndex);
   }
 }
 
@@ -141,7 +204,8 @@ const PATHS = [
   ["overlay", "four"],
   ["overlay", "five"],
   ["overlay", "six"],
-  ["overlay", "controls"],
+  ["overlay", "seven"],
+  ["overlay", "admin"],
 ];
 
 for (const [pathIndex, path] of PATHS.entries()) {
@@ -164,6 +228,7 @@ for (const [pathIndex, path] of PATHS.entries()) {
 }
 
 test.afterAll(() => {
+  if (!["all", "changed"].includes(test.info().config.updateSnapshots)) return;
   if (!fs.existsSync(SNAPSHOT_DIR)) return;
   const staleSnapshots = fs
     .readdirSync(SNAPSHOT_DIR)

@@ -2,18 +2,52 @@
 sidebar_position: 2
 ---
 
+import Card from "@site/src/components/Card";
+import { Row } from "@site/src/components/Row";
 import { PageStatsTable, PercentsTable } from "@site/src/components/StatsTable";
-import StatsFilter from "@site/src/components/StatsFilter";
 import { moments as brockMoments } from "@site/src/data/guide/brock";
 import { moments as mistyMoments } from "@site/src/data/guide/misty";
 import { moments as surgeMoments } from "@site/src/data/guide/surge";
 import { moments as erikaMoments } from "@site/src/data/guide/erika";
 import { moments as sabrinaMoments } from "@site/src/data/guide/sabrina";
 import { moments as kogaMoments } from "@site/src/data/guide/koga";
+import { useStorageState } from "@site/src/utils/storage";
 
 # Stats
 
-<StatsFilter moments={allMoments} />
+export const allMoments = [
+  ...brockMoments,
+  ...mistyMoments,
+  ...surgeMoments,
+  ...erikaMoments,
+  ...sabrinaMoments,
+  ...kogaMoments,
+];
+
+export const battleMoments = allMoments.filter((m) => m.kind === "battle");
+
+export function StatsMoment() {
+  const { value: storedLabel, set: setStoredLabel } = useStorageState("stats-moment");
+  const currentLabel = storedLabel ?? battleMoments[battleMoments.length - 1]?.label ?? "";
+  return (
+    <Card title="Stats Setup">
+      <Row
+        row={[
+          "Moment:",
+          {
+            dropdown: {
+              value: currentLabel,
+              options: battleMoments.map((m) => m.label),
+              onChange: setStoredLabel,
+            },
+          },
+        ]}
+      />
+    </Card>
+  );
+}
+
+<StatsMoment />
 
 ## Battles Table
 
@@ -54,12 +88,3 @@ import { moments as kogaMoments } from "@site/src/data/guide/koga";
 ## Percents Table
 
 <PercentsTable moments={allMoments} />
-
-export const allMoments = [
-  ...brockMoments,
-  ...mistyMoments,
-  ...surgeMoments,
-  ...erikaMoments,
-  ...sabrinaMoments,
-  ...kogaMoments,
-];

@@ -5,16 +5,21 @@
   width: 100%;
 }
 
-.featureSvg {
-  height: 200px;
-  width: 200px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto;
+.featureContent {
+  max-width: 472px;
+  margin: 0 auto 2rem;
 }
 
-.featureSvg svg {
-  height: 100%;
+.featureImgWrapper {
+  margin-bottom: 1rem;
+  overflow: hidden;
+  border-radius: 8px;
+  border: 1px solid rgba(128, 128, 128, 0.25);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+}
+
+.featureImg {
+  display: block;
   width: 100%;
+  height: auto;
 }
