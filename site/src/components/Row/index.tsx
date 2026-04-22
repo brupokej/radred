@@ -10,18 +10,26 @@ export type DropdownConfig = {
   onChange?: (value: string) => void;
 };
 
+export type InputConfig = {
+  value: string;
+  validate?: (value: string) => boolean;
+  onChange?: (value: string) => void;
+};
+
 export type RowCell =
   | string
   | Pokemon
   | { info: string }
   | { warning: string }
   | { danger: string }
-  | { dropdown: DropdownConfig };
+  | { dropdown: DropdownConfig }
+  | { input: InputConfig };
 
 type NormalizedCell =
   | { sep: string }
   | { value: string; variant?: "info" | "warning" | "danger" }
-  | { dropdown: DropdownConfig };
+  | { dropdown: DropdownConfig }
+  | { input: InputConfig };
 
 const SEPARATORS = ["·", "→"] as const;
 
@@ -98,7 +106,7 @@ function normalizeCell(c: RowCell): NormalizedCell[] {
   if ("info" in c) return [{ value: c.info, variant: "info" as const }];
   if ("warning" in c) return [{ value: c.warning, variant: "warning" as const }];
   if ("danger" in c) return [{ value: c.danger, variant: "danger" as const }];
-  return [c];
+  return [c as NormalizedCell];
 }
 
 export function Row({ row }: { row: RowCell[] }) {
@@ -129,6 +137,22 @@ export function Row({ row }: { row: RowCell[] }) {
                 </option>
               ))}
             </select>
+          );
+        }
+        if ("input" in cell) {
+          return (
+            <input
+              key={i}
+              type="text"
+              className={styles.input}
+              value={cell.input.value}
+              onChange={(e) => {
+                const v = e.target.value;
+                if (!cell.input.validate || cell.input.validate(v)) {
+                  cell.input.onChange?.(v);
+                }
+              }}
+            />
           );
         }
         if ("sep" in cell) {

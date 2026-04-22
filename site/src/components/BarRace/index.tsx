@@ -1,12 +1,12 @@
 import Card from "@site/src/components/Card";
 import { ScrollFade } from "@site/src/components/ScrollFade";
 import { SPRITE_COLORS } from "@site/src/data/spriteColors";
-import { Moment } from "@site/src/utils/moments";
 import { resolveBox } from "@site/src/utils/box";
+import { Moment } from "@site/src/utils/moments";
 import { resolvePokemon } from "@site/src/utils/pokemon";
 import { computeBattleFrags } from "@site/src/utils/stats";
 import { AnimatePresence, motion } from "framer-motion";
-import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import styles from "./styles.module.css";
 
 const TOP_N = 8;
@@ -14,9 +14,16 @@ const SPEED = 400;
 
 // Fallback palette used before sprite colors load
 const COLORS = [
-  "#4e79a7", "#f28e2b", "#e15759", "#76b7b2",
-  "#59a14f", "#edc948", "#b07aa1", "#ff9da7",
-  "#9c755f", "#bab0ac",
+  "#4e79a7",
+  "#f28e2b",
+  "#e15759",
+  "#76b7b2",
+  "#59a14f",
+  "#edc948",
+  "#b07aa1",
+  "#ff9da7",
+  "#9c755f",
+  "#bab0ac",
 ];
 
 export type Metric = "battles" | "frags";
@@ -24,8 +31,8 @@ export type Metric = "battles" | "frags";
 type FrameEntry = { name: string; spriteKey?: string };
 type Frame = {
   label: string;
-  values: Record<string, number>;      // canonicalName → count
-  active: string[];                     // canonical names in box, stable boxOrder sort
+  values: Record<string, number>; // canonicalName → count
+  active: string[]; // canonical names in box, stable boxOrder sort
   display: Record<string, FrameEntry>; // canonicalName → current display name + spriteKey
 };
 
@@ -67,7 +74,9 @@ export default function BarRace({
 
     const running: Record<string, number> = {};
 
-    const snapshotBox = (playerBox: typeof battleMoments[0]["data"]["playerBox"]): {
+    const snapshotBox = (
+      playerBox: (typeof battleMoments)[0]["data"]["playerBox"]
+    ): {
       active: string[];
       display: Record<string, FrameEntry>;
     } => {
@@ -126,10 +135,9 @@ export default function BarRace({
     const allNames = new Set<string>();
     for (const f of frames) f.active.forEach((n) => allNames.add(n));
     return Object.fromEntries(
-      [...allNames].sort().map((name, i) => [
-        name,
-        SPRITE_COLORS[name] ?? COLORS[i % COLORS.length],
-      ])
+      [...allNames]
+        .sort()
+        .map((name, i) => [name, SPRITE_COLORS[name] ?? COLORS[i % COLORS.length]])
     );
   }, [frames]);
 
@@ -139,14 +147,20 @@ export default function BarRace({
   const playDelayRef = useRef<ReturnType<typeof setTimeout>>(undefined);
   const barsRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => { setFrameIdx(frames.length - 1); setIsPlaying(false); }, [frames]);
+  useEffect(() => {
+    setFrameIdx(frames.length - 1);
+    setIsPlaying(false);
+  }, [frames]);
 
   useEffect(() => {
     clearInterval(intervalRef.current);
     if (!isPlaying) return;
     intervalRef.current = setInterval(() => {
       setFrameIdx((prev) => {
-        if (prev >= frames.length - 1) { setIsPlaying(false); return prev; }
+        if (prev >= frames.length - 1) {
+          setIsPlaying(false);
+          return prev;
+        }
         return prev + 1;
       });
     }, SPEED);
@@ -203,58 +217,60 @@ export default function BarRace({
       <div className={styles.container}>
         <ScrollFade axis="y" scrollRef={barsRef} insetBlock="52px">
           <div ref={barsRef} className={styles.bars} style={{ maxHeight: visibleHeight }}>
-          <div className={styles.header}>
-            <div className={styles.spriteCell} />
-            <span className={styles.name}>Pokémon</span>
-            <span className={styles.value}>Total</span>
-            <div className={styles.track} />
-          </div>
-          <AnimatePresence initial={false}>
-            {chartData.map((entry) => (
-              <motion.div
-                key={entry.canonName}
-                layout="position"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{
-                  layout: { type: "spring", stiffness: 300, damping: 30 },
-                  opacity: { duration: 0.2 },
-                }}
-                className={styles.row}
-              >
-                <div className={styles.spriteCell}>
-                  <img
-                    src={spriteUrl(entry.displayName, entry.spriteKey)}
-                    alt={entry.displayName}
-                    className={styles.sprite}
-                  />
-                </div>
-                <span className={styles.name}>{entry.displayName}</span>
-                <span className={styles.value}>{entry.value}</span>
-                <div className={styles.track}>
-                  <div className={styles.trackInner}>
-                    <div
-                      className={styles.fill}
-                      style={{
-                        width: `${(entry.value / maxValue) * 100}%`,
-                        background: colorMap[entry.canonName],
-                        transition: `width ${Math.round(SPEED * 0.75)}ms ease-out`,
-                      }}
+            <div className={styles.header}>
+              <div className={styles.spriteCell} />
+              <span className={styles.name}>Pokémon</span>
+              <span className={styles.value}>Total</span>
+              <div className={styles.track} />
+            </div>
+            <AnimatePresence initial={false}>
+              {chartData.map((entry) => (
+                <motion.div
+                  key={entry.canonName}
+                  layout="position"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{
+                    layout: { type: "spring", stiffness: 300, damping: 30 },
+                    opacity: { duration: 0.2 },
+                  }}
+                  className={styles.row}
+                >
+                  <div className={styles.spriteCell}>
+                    <img
+                      src={spriteUrl(entry.displayName, entry.spriteKey)}
+                      alt={entry.displayName}
+                      className={styles.sprite}
                     />
                   </div>
+                  <span className={styles.name}>{entry.displayName}</span>
+                  <span className={styles.value}>{entry.value}</span>
+                  <div className={styles.track}>
+                    <div className={styles.trackInner}>
+                      <div
+                        className={styles.fill}
+                        style={{
+                          width: `${(entry.value / maxValue) * 100}%`,
+                          background: colorMap[entry.canonName],
+                          transition: `width ${Math.round(SPEED * 0.75)}ms ease-out`,
+                        }}
+                      />
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </AnimatePresence>
+            {Array.from({ length: emptyCount }, (_, i) => (
+              <div key={`empty-${i}`} className={styles.row}>
+                <div className={`${styles.spriteCell} ${styles.emptyCell}`}>✕</div>
+                <span className={`${styles.name} ${styles.emptyCell}`}>-</span>
+                <span className={`${styles.value} ${styles.emptyCell}`}>-</span>
+                <div className={styles.track}>
+                  <div className={styles.trackInner} />
                 </div>
-              </motion.div>
+              </div>
             ))}
-          </AnimatePresence>
-          {Array.from({ length: emptyCount }, (_, i) => (
-            <div key={`empty-${i}`} className={styles.row}>
-              <div className={`${styles.spriteCell} ${styles.emptyCell}`}>✕</div>
-              <span className={`${styles.name} ${styles.emptyCell}`}>-</span>
-              <span className={`${styles.value} ${styles.emptyCell}`}>-</span>
-              <div className={styles.track}><div className={styles.trackInner} /></div>
-            </div>
-          ))}
           </div>
         </ScrollFade>
 
@@ -263,12 +279,17 @@ export default function BarRace({
             <div className={styles.btnGroup}>
               <button
                 className={styles.btn}
-                onClick={() => { setIsPlaying(false); setFrameIdx(0); }}
+                onClick={() => {
+                  setIsPlaying(false);
+                  setFrameIdx(0);
+                }}
                 title="Reset"
               >
                 {"⏮\uFE0E"}
-</button>
-              <button className={styles.btn} onClick={() => step(-1)} title="Previous">←</button>
+              </button>
+              <button className={styles.btn} onClick={() => step(-1)} title="Previous">
+                ←
+              </button>
               <button
                 className={`${styles.btn} ${styles.btnPlay}`}
                 onClick={() => {
@@ -283,7 +304,9 @@ export default function BarRace({
               >
                 {isPlaying ? "⏸\uFE0E" : "▶\uFE0E"}
               </button>
-              <button className={styles.btn} onClick={() => step(1)} title="Next">→</button>
+              <button className={styles.btn} onClick={() => step(1)} title="Next">
+                →
+              </button>
             </div>
             {currentLabel && <span className={styles.label}>{currentLabel}</span>}
           </div>
@@ -294,10 +317,15 @@ export default function BarRace({
               min={0}
               max={frames.length - 1}
               value={frameIdx}
-              onChange={(e) => { setIsPlaying(false); setFrameIdx(Number(e.target.value)); }}
+              onChange={(e) => {
+                setIsPlaying(false);
+                setFrameIdx(Number(e.target.value));
+              }}
               className={styles.scrubber}
             />
-            <span className={styles.counter}>{frameIdx} / {total}</span>
+            <span className={styles.counter}>
+              {frameIdx} / {total}
+            </span>
           </div>
         </div>
       </div>

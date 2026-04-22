@@ -1,10 +1,7 @@
 export const STORAGE_DEFAULTS: Record<string, string> = {
+  "overlay-attempt": "12",
   "navbar-item-highlight-level": "info",
   "navbar-item-hp-display": "percent",
-
-  "stats-filter-start": "",
-  "stats-filter-end": "",
-
   "sequence-wimpod-1": '["Wimpod"]',
   "sequence-frillish-1": '["Frillish"]',
   "sequence-grass-1": '["Sprigatito"]',

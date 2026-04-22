@@ -75,3 +75,24 @@
   cursor: default;
   opacity: 0.55;
 }
+
+.input {
+  background-color: var(--ifm-color-emphasis-200);
+  border: none;
+  border-radius: 3px;
+  color: var(--ifm-font-color-base);
+  flex-shrink: 0;
+  font: inherit;
+  font-size: 0.875rem;
+  line-height: 22px;
+  margin-inline-end: calc(var(--ifm-spacing-horizontal) - 0.4rem);
+  outline: 1px solid var(--ifm-color-emphasis-400);
+  padding: 2px 0.4rem;
+  width: 4rem;
+}
+
+.input:hover,
+.input:focus {
+  outline-color: var(--ifm-color-primary);
+  outline-width: 1px;
+}

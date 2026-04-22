@@ -1,0 +1,491 @@
+@font-face {
+  font-family: "Hind Bold";
+  src: url("/fonts/Hind-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Hind";
+  font-weight: bold;
+  src: url("/fonts/Hind-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Hind";
+  font-weight: normal;
+  src: url("/fonts/Hind-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Open Sans Bold";
+  src: url("/fonts/OpenSans-Bold.ttf") format("truetype");
+}
+
+:root {
+  --overlay-white: #fffffd;
+  --overlay-dark-gray: #424242;
+  --overlay-orange: #f89549;
+}
+
+.overlay {
+  position: relative;
+  width: 1920px;
+  height: 1080px;
+  overflow: hidden;
+  background: #cad6d6;
+  font-family: "Open Sans Bold", sans-serif;
+  color: var(--overlay-white);
+}
+
+.shadow {
+  filter: drop-shadow(1px 1px 0px var(--overlay-dark-gray))
+    drop-shadow(-1px -1px 0px var(--overlay-dark-gray))
+    drop-shadow(1px -1px 0px var(--overlay-dark-gray))
+    drop-shadow(-1px 1px 0px var(--overlay-dark-gray));
+}
+
+.bannerStrip {
+  position: absolute;
+  left: 0;
+  top: 920px;
+  width: 1920px;
+  height: 160px;
+}
+
+.logo {
+  position: absolute;
+  left: 24px;
+  top: 920px;
+}
+
+.title {
+  font-size: 33px;
+  position: absolute;
+  left: 140px;
+  top: 942px;
+  height: 138px;
+  display: flex;
+  align-items: center;
+}
+
+.runner {
+  position: absolute;
+  left: 666px;
+  top: 966px;
+}
+
+.banner {
+  font-size: 33px;
+  position: absolute;
+  left: 741px;
+  top: 942px;
+  width: 1140px;
+  height: 138px;
+  display: flex;
+  align-items: center;
+}
+
+.bannerSection {
+  display: flex;
+  align-items: center;
+}
+
+.banner1 {
+  justify-content: flex-end;
+  width: 414px;
+}
+
+.banner2 {
+  justify-content: flex-start;
+}
+
+.banner3 {
+  justify-content: flex-end;
+  width: 245px;
+}
+
+.banner4 {
+  justify-content: flex-end;
+  width: 280px;
+}
+
+.banner4Single {
+  width: 261px;
+}
+
+.accent {
+  color: var(--overlay-orange);
+}
+
+.rightPanel {
+  position: absolute;
+  left: 1416px;
+  top: 360px;
+  width: 486px;
+  height: 406px;
+  border: 4px solid var(--overlay-white);
+  display: flex;
+  flex-direction: column;
+}
+
+.badgesRow {
+  width: 100%;
+  height: 84px;
+  display: flex;
+  align-items: center;
+  padding-left: 12px;
+  padding-right: 13px;
+  gap: 3px;
+  border-bottom: 4px solid var(--overlay-white);
+}
+
+.panel {
+  background: var(--overlay-dark-gray);
+  color: var(--overlay-white);
+  font-family: "Hind", sans-serif;
+  font-weight: bold;
+  flex: 1;
+  min-height: 0;
+  height: 100%;
+  overflow: hidden;
+  padding: 5px;
+  box-sizing: border-box;
+}
+
+.panelTitle {
+  color: var(--overlay-white);
+  font-size: 19px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+}
+
+.panelTitleLine {
+  height: 1px;
+  background: var(--overlay-white);
+}
+
+.badge {
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+}
+
+.badgeVisible {
+  opacity: 1;
+}
+
+.dynamic {
+  transition: opacity 0.8s ease-in-out;
+}
+
+.dynamicHidden {
+  opacity: 0;
+}
+
+.gameFrame {
+  position: absolute;
+  left: 18px;
+  top: 18px;
+  width: 1380px;
+  height: 920px;
+  background: var(--overlay-dark-gray);
+  border: 4px solid var(--overlay-white);
+}
+
+.gameFrame::after,
+.cameraFrame::after,
+.rightPanel::after,
+.statsFrame::after {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: -8px;
+  right: -4px;
+  bottom: -8px;
+  border-left: 4px solid #68ad9a;
+  border-bottom: 4px solid #41848a;
+  pointer-events: none;
+}
+
+.cameraFrame {
+  position: absolute;
+  left: 1416px;
+  top: 18px;
+  width: 486px;
+  height: 324px;
+  border: 4px solid var(--overlay-white);
+}
+
+.statsFrame {
+  position: absolute;
+  left: 1416px;
+  top: 784px;
+  width: 486px;
+  height: 154px;
+  border: 4px solid var(--overlay-white);
+}
+
+.statsFrameInner {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.cameraInner {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.cameraImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ---- Panel large size overrides ---- */
+
+.panelLarge {
+  padding: 13px;
+}
+
+.panelLarge .panelTitle {
+  font-size: 57px;
+  height: 84px;
+}
+
+.panelLarge .panelTitleLine {
+  height: 3px;
+}
+
+/* ---- Card grid ---- */
+
+.grid {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  padding: 0;
+}
+
+.card {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  position: relative;
+  text-align: center;
+}
+
+.cardEmpty .emptySprite,
+.cardEmpty .name,
+.cardEmpty .level,
+.cardEmpty .detail,
+.cardEmpty .move {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.sprite {
+  object-fit: contain;
+}
+
+.emptySprite {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.name,
+.level,
+.detail,
+.move {
+  border-radius: 3px;
+}
+
+.divider {
+  display: none;
+}
+
+.stats {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+}
+
+.statRow {
+  align-items: center;
+  display: flex;
+  margin-top: 0;
+}
+
+.statBarTrack {
+  background: transparent;
+  border-radius: 2px;
+  flex: 1;
+  overflow: hidden;
+}
+
+.statBar {
+  border-radius: 2px;
+  height: 100%;
+}
+
+.fieldInfo {
+  background: var(--hl-info-bg);
+  outline: var(--hl-info-outline);
+}
+
+/* Small grid */
+
+.gridSmall {
+  justify-content: space-between;
+}
+
+.gridSmall .card {
+  width: 73px;
+}
+
+.gridSmall .sprite,
+.gridSmall .emptySprite {
+  height: 68px;
+  margin-top: 5px;
+  width: 68px;
+}
+
+.gridSmall .emptySprite {
+  font-size: 1.25rem;
+}
+
+.gridSmall .name {
+  font-size: 10px;
+  line-height: 12px;
+  margin-top: 5px;
+  padding: 0 2px;
+}
+
+.gridSmall .level {
+  font-size: 10px;
+  line-height: 12px;
+  margin-top: 0;
+  padding: 0 2px;
+}
+
+.gridSmall .level + .divider + .detail {
+  margin-top: 5px;
+}
+
+.gridSmall .divider + .move {
+  margin-top: 5px;
+}
+
+.gridSmall .divider + .stats {
+  margin-top: 5px;
+}
+
+.gridSmall .detail,
+.gridSmall .move {
+  font-size: 9px;
+  font-weight: normal;
+  line-height: 12px;
+  margin-top: 0;
+  padding: 0 2px;
+}
+
+.gridSmall .statRow {
+  font-size: 9px;
+  gap: 2px;
+  line-height: 12px;
+  padding: 0 2px;
+}
+
+.gridSmall .statRow .statLabel {
+  flex: 1;
+  text-align: right;
+}
+
+.gridSmall .statRow .statValue {
+  text-align: center;
+  width: 16px;
+}
+
+.gridSmall .statBarTrack {
+  height: 7px;
+}
+
+/* Large grid */
+
+.gridLarge {
+  justify-content: space-between;
+}
+
+.gridLarge .card {
+  width: 219px;
+}
+
+.gridLarge .sprite,
+.gridLarge .emptySprite {
+  height: 204px;
+  margin-top: 11px;
+  width: 204px;
+}
+
+.gridLarge .emptySprite {
+  font-size: 3.75rem;
+}
+
+.gridLarge .name {
+  font-size: 30px;
+  line-height: 36px;
+  margin-top: 11px;
+  padding: 0 6px;
+}
+
+.gridLarge .level {
+  font-size: 30px;
+  line-height: 36px;
+  margin-top: 0;
+  padding: 0 6px;
+}
+
+.gridLarge .level + .divider + .detail {
+  margin-top: 11px;
+}
+
+.gridLarge .divider + .move {
+  margin-top: 11px;
+}
+
+.gridLarge .divider + .stats {
+  margin-top: 11px;
+}
+
+.gridLarge .detail,
+.gridLarge .move {
+  font-size: 27px;
+  font-weight: normal;
+  line-height: 36px;
+  margin-top: 0;
+  padding: 0 6px;
+}
+
+.gridLarge .statRow {
+  font-size: 27px;
+  gap: 6px;
+  line-height: 36px;
+  padding: 0 6px;
+}
+
+.gridLarge .statRow .statLabel {
+  flex: 1;
+  text-align: right;
+}
+
+.gridLarge .statRow .statValue {
+  text-align: center;
+  width: 48px;
+}
+
+.gridLarge .statBarTrack {
+  height: 21px;
+}

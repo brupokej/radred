@@ -56,9 +56,10 @@
   padding: 0;
   pointer-events: none;
   position: absolute;
-  transition: opacity var(--ifm-transition-fast) var(--ifm-transition-timing-default),
-              transform var(--ifm-transition-fast) var(--ifm-transition-timing-default),
-              background var(--ifm-transition-fast) var(--ifm-transition-timing-default);
+  transition:
+    opacity var(--ifm-transition-fast) var(--ifm-transition-timing-default),
+    transform var(--ifm-transition-fast) var(--ifm-transition-timing-default),
+    background var(--ifm-transition-fast) var(--ifm-transition-timing-default);
   width: 2rem;
   z-index: 5;
 }
@@ -143,13 +144,21 @@
 }
 
 .vertical::before {
-  background: linear-gradient(to bottom, var(--scroll-fade-color, var(--ifm-card-background-color)), transparent);
+  background: linear-gradient(
+    to bottom,
+    var(--scroll-fade-color, var(--ifm-card-background-color)),
+    transparent
+  );
   bottom: auto;
   top: var(--scroll-fade-inset, 0px);
 }
 
 .vertical::after {
-  background: linear-gradient(to top, var(--scroll-fade-color, var(--ifm-card-background-color)), transparent);
+  background: linear-gradient(
+    to top,
+    var(--scroll-fade-color, var(--ifm-card-background-color)),
+    transparent
+  );
   bottom: 0;
   right: 0;
 }

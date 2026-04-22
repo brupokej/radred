@@ -9,9 +9,9 @@ const SNAPSHOT_DIR = path.join(__dirname, "snapshots/guide.spec.ts-snapshots");
 const SNAPSHOT_SUFFIX = `desktop-${process.platform}`;
 const seenSnapshots = new Set<string>();
 
-async function expectSnapshot(card: Locator, filename: string) {
+async function expectSnapshot(loc: Locator, filename: string) {
   seenSnapshots.add(filename.replace(/\.png$/, `-${SNAPSHOT_SUFFIX}.png`));
-  await expect.soft(card).toHaveScreenshot([filename]);
+  await expect.soft(loc).toHaveScreenshot([filename]);
 }
 
 async function waitForRender(loc: Locator) {
@@ -52,18 +52,18 @@ async function getValues(select: Locator): Promise<string[]> {
 }
 
 async function getSnapshot(
-  card: Locator,
+  loc: Locator,
   parts: (string | number)[],
-  cardIndex: { value: number },
+  locIndex: { value: number },
   visited = new Set<string>()
 ): Promise<void> {
-  for (const sequence of await card.locator("[data-sequence]").all()) {
+  for (const sequence of await loc.locator("[data-sequence]").all()) {
     const key = await sequence.getAttribute("data-sequence");
     if (visited.has(key)) continue;
     visited.add(key);
 
-    const filename = slugify([...parts, cardIndex.value++]);
-    await expectSnapshot(card, `${filename}.png`);
+    const filename = slugify([...parts, locIndex.value++]);
+    await expectSnapshot(loc, `${filename}.png`);
 
     const select = sequence.locator("select");
     const values = await getValues(select);
@@ -71,8 +71,8 @@ async function getSnapshot(
     for (const value of values) {
       if (defaultValue === value) continue;
       await select.selectOption(value);
-      await waitForRender(card);
-      await getSnapshot(card, parts, cardIndex, visited);
+      await waitForRender(loc);
+      await getSnapshot(loc, parts, locIndex, visited);
       break;
     }
 
@@ -80,7 +80,7 @@ async function getSnapshot(
     return;
   }
 
-  for (const branch of await card.locator("[data-branch]").all()) {
+  for (const branch of await loc.locator("[data-branch]").all()) {
     const key = await branch.getAttribute("data-branch");
     if (visited.has(key)) continue;
     visited.add(key);
@@ -90,8 +90,8 @@ async function getSnapshot(
     const defaultValue = values[0];
     for (const value of values) {
       await select.selectOption(value);
-      await waitForRender(card);
-      await getSnapshot(card, parts, cardIndex, visited);
+      await waitForRender(loc);
+      await getSnapshot(loc, parts, locIndex, visited);
     }
 
     await select.selectOption(defaultValue);
@@ -99,26 +99,29 @@ async function getSnapshot(
     return;
   }
 
-  const filename = slugify([...parts, cardIndex.value++]);
-  await expectSnapshot(card, `${filename}.png`);
+  const filename = slugify([...parts, locIndex.value++]);
+  await expectSnapshot(loc, `${filename}.png`);
 }
 
 async function getSnapshots(page: Page, pathIndex: number, path: string) {
   let headingIndex = 1;
   let heading = "";
-  let cardIndex = { value: 1 };
+  let locIndex = { value: 1 };
 
-  for (const loc of await page.locator("article").locator("h1, h2, details").all()) {
+  for (const loc of await page
+    .locator("article")
+    .locator("h1, h2, details, a[href*='/overlay']")
+    .all()) {
     const [tag, text] = await loc.evaluate((e) => [e.tagName, e.textContent]);
     if (tag === "H1" || tag === "H2") {
-      headingIndex += cardIndex.value > 1 ? 1 : 0;
+      headingIndex += locIndex.value > 1 ? 1 : 0;
       heading = text?.trim() ?? "";
-      cardIndex.value = 1;
+      locIndex.value = 1;
       continue;
     }
 
     await expandAll(loc);
-    await getSnapshot(loc, [pathIndex, path, headingIndex, heading], cardIndex);
+    await getSnapshot(loc, [pathIndex, path, headingIndex, heading], locIndex);
   }
 }
 
@@ -132,14 +135,25 @@ const PATHS = [
   ["team", "box"],
   ["team", "stats"],
   ["team", "timeline"],
+  ["overlay", "one"],
+  ["overlay", "two"],
+  ["overlay", "three"],
+  ["overlay", "four"],
+  ["overlay", "five"],
+  ["overlay", "six"],
+  ["overlay", "controls"],
 ];
 
 for (const [pathIndex, path] of PATHS.entries()) {
-  test.describe(path[1], () => {
+  test.describe(`${path[0]}/${path[1]}`, () => {
     test.beforeEach(async ({ page }) => {
       await page.goto(`/radred/${path[0]}/${path[1]}`);
       await page.waitForLoadState("networkidle");
-      await page.addStyleTag({ content: "nav.navbar { visibility: hidden !important; }" });
+      await page.addStyleTag({
+        content:
+          "nav.navbar { visibility: hidden !important; } [class*='skipToContent'] { display: none !important; }",
+      });
+      await page.waitForTimeout(1000);
     });
 
     test("snapshots", async ({ page }) => {

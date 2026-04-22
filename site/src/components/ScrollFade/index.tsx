@@ -52,32 +52,42 @@ export function ScrollFade({
     };
   }, [axis, scrollRef]);
 
-  const scroll = useCallback((dir: "start" | "end") => {
-    const el = scrollRef.current;
-    if (!el) return;
-    if (axis === "y") {
-      const step = (el.firstElementChild as HTMLElement)?.offsetHeight ?? el.clientHeight;
-      const current = el.scrollTop;
-      const target = dir === "end"
-        ? Math.ceil((current + 1) / step) * step
-        : Math.floor((current - 1) / step) * step;
-      el.scrollTo({ top: Math.max(0, target), behavior: "smooth" });
-    } else {
-      const step = (el.firstElementChild as HTMLElement)?.offsetWidth ?? el.clientWidth;
-      const current = el.scrollLeft;
-      const target = dir === "end"
-        ? Math.ceil((current + 1) / step) * step
-        : Math.floor((current - 1) / step) * step;
-      el.scrollTo({ left: Math.max(0, target), behavior: "smooth" });
-    }
-  }, [axis, scrollRef]);
+  const scroll = useCallback(
+    (dir: "start" | "end") => {
+      const el = scrollRef.current;
+      if (!el) return;
+      if (axis === "y") {
+        const step = (el.firstElementChild as HTMLElement)?.offsetHeight ?? el.clientHeight;
+        const current = el.scrollTop;
+        const target =
+          dir === "end"
+            ? Math.ceil((current + 1) / step) * step
+            : Math.floor((current - 1) / step) * step;
+        el.scrollTo({ top: Math.max(0, target), behavior: "smooth" });
+      } else {
+        const step = (el.firstElementChild as HTMLElement)?.offsetWidth ?? el.clientWidth;
+        const current = el.scrollLeft;
+        const target =
+          dir === "end"
+            ? Math.ceil((current + 1) / step) * step
+            : Math.floor((current - 1) / step) * step;
+        el.scrollTo({ left: Math.max(0, target), behavior: "smooth" });
+      }
+    },
+    [axis, scrollRef]
+  );
 
   const startClass = axis === "y" ? styles.fadeTop : styles.fadeLeft;
   const endClass = axis === "y" ? styles.fadeBottom : styles.fadeRight;
 
-  const cssVars = insetBlock != null || restOpacity != null || fadeColor != null
-    ? ({ "--scroll-fade-inset": insetBlock, "--scroll-fade-rest-opacity": restOpacity, "--scroll-fade-color": fadeColor } as React.CSSProperties)
-    : undefined;
+  const cssVars =
+    insetBlock != null || restOpacity != null || fadeColor != null
+      ? ({
+          "--scroll-fade-inset": insetBlock,
+          "--scroll-fade-rest-opacity": restOpacity,
+          "--scroll-fade-color": fadeColor,
+        } as React.CSSProperties)
+      : undefined;
 
   return (
     <div
@@ -98,7 +108,9 @@ export function ScrollFade({
           />
         </>
       )}
-      {externalRef ? children : (
+      {externalRef ? (
+        children
+      ) : (
         <div ref={internalRef} className={innerClassName} data-scroll>
           {children}
         </div>

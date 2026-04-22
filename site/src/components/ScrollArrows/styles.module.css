@@ -6,7 +6,6 @@
   z-index: 4;
 }
 
-
 /* Fade pseudo-elements */
 .overlay::before,
 .overlay::after {
@@ -60,9 +59,10 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%) scale(0);
-  transition: opacity var(--ifm-transition-fast) var(--ifm-transition-timing-default),
-              transform var(--ifm-transition-fast) var(--ifm-transition-timing-default),
-              background var(--ifm-transition-fast) var(--ifm-transition-timing-default);
+  transition:
+    opacity var(--ifm-transition-fast) var(--ifm-transition-timing-default),
+    transform var(--ifm-transition-fast) var(--ifm-transition-timing-default),
+    background var(--ifm-transition-fast) var(--ifm-transition-timing-default);
   width: 2rem;
   z-index: 5;
 }

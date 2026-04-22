@@ -45,7 +45,11 @@ export default function BoxRoster({
     });
 
   const renames = moments
-    ? (moments.filter((m) => m.kind === "battle").at(-1) as Extract<Moment, { kind: "battle" }> | undefined)?.data.playerBox.renames ?? {}
+    ? ((
+        moments.filter((m) => m.kind === "battle").at(-1) as
+          | Extract<Moment, { kind: "battle" }>
+          | undefined
+      )?.data.playerBox.renames ?? {})
     : {};
   const totals = moments ? computeTotals(moments, renames) : null;
 
@@ -59,11 +63,15 @@ export default function BoxRoster({
             const canon = renames[pokemon.name] ?? pokemon.name;
             const detail = [
               pokemon.level != null && `Level ${pokemon.level}`,
-              `${(totals && totals.battles[canon] != null) ? totals.battles[canon] : 0} Battles`,
-              `${(totals && totals.frags[canon] != null) ? totals.frags[canon] : 0} Frags`,
+              `${totals && totals.battles[canon] != null ? totals.battles[canon] : 0} Battles`,
+              `${totals && totals.frags[canon] != null ? totals.frags[canon] : 0} Frags`,
             ].join(" · ");
             return (
-              <PokemonEntry key={i} pokemon={pokemon} className={i > 0 ? styles.bordered : undefined}>
+              <PokemonEntry
+                key={i}
+                pokemon={pokemon}
+                className={i > 0 ? styles.bordered : undefined}
+              >
                 {detail && <Row row={[detail]} />}
               </PokemonEntry>
             );

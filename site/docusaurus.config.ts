@@ -19,6 +19,15 @@ const config: Config = {
         sidebarPath: "./sidebars.ts",
       },
     ],
+    [
+      "@docusaurus/plugin-content-docs",
+      {
+        id: "overlay",
+        path: "overlay",
+        routeBasePath: "overlay",
+        sidebarPath: "./sidebars.ts",
+      },
+    ],
   ],
   title: "Radical Red Handbook",
   tagline: "How to nuzlocke Radical Red 4.1 on hardcore mode.",
@@ -77,9 +86,11 @@ const config: Config = {
           label: "Team",
         },
         {
-          to: "/overlays/1",
+          type: "docSidebar",
+          sidebarId: "overlaySidebar",
+          docsPluginId: "overlay",
           position: "left",
-          label: "Overlays",
+          label: "Overlay",
         },
         {
           href: "https://github.com/brupokej/radred",
@@ -121,8 +132,8 @@ const config: Config = {
           title: "More",
           items: [
             {
-              label: "Overlays",
-              href: "/overlays/1",
+              label: "Overlay",
+              href: "/overlay/one",
             },
             {
               label: "GitHub",

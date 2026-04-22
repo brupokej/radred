@@ -4,12 +4,14 @@ import { box } from "../src/data/guide/koga";
 import { resolveBox } from "../src/utils/box";
 import { resolvePokemon } from "../src/utils/pokemon";
 
-const SPRITE_BASE =
-  "https://raw.githubusercontent.com/Autumnchi/coloured-home-sprites/main/";
+const SPRITE_BASE = "https://raw.githubusercontent.com/Autumnchi/coloured-home-sprites/main/";
 
 function rgbToHsl(r: number, g: number, b: number): [number, number, number] {
-  r /= 255; g /= 255; b /= 255;
-  const max = Math.max(r, g, b), min = Math.min(r, g, b);
+  r /= 255;
+  g /= 255;
+  b /= 255;
+  const max = Math.max(r, g, b),
+    min = Math.min(r, g, b);
   const l = (max + min) / 2;
   if (max === min) return [0, 0, l];
   const d = max - min;
@@ -22,11 +24,15 @@ function rgbToHsl(r: number, g: number, b: number): [number, number, number] {
 }
 
 function hslToRgb(h: number, s: number, l: number): [number, number, number] {
-  if (s === 0) { const v = Math.round(l * 255); return [v, v, v]; }
+  if (s === 0) {
+    const v = Math.round(l * 255);
+    return [v, v, v];
+  }
   const q = l < 0.5 ? l * (1 + s) : l + s - l * s;
   const p = 2 * l - q;
   const hue2rgb = (t: number) => {
-    if (t < 0) t += 1; if (t > 1) t -= 1;
+    if (t < 0) t += 1;
+    if (t > 1) t -= 1;
     if (t < 1 / 6) return p + (q - p) * 6 * t;
     if (t < 1 / 2) return q;
     if (t < 2 / 3) return p + (q - p) * (2 / 3 - t) * 6;
@@ -44,7 +50,10 @@ const TARGET_L = 0.45;
 function dominantColor(pixels: Buffer): string {
   const buckets: Record<string, { r: number; g: number; b: number; score: number }> = {};
   for (let i = 0; i < pixels.length; i += 4) {
-    const r = pixels[i], g = pixels[i + 1], b = pixels[i + 2], a = pixels[i + 3];
+    const r = pixels[i],
+      g = pixels[i + 1],
+      b = pixels[i + 2],
+      a = pixels[i + 3];
     if (a < 128) continue;
     const brightness = (r + g + b) / 3;
     if (brightness > 230 || brightness < 40) continue;

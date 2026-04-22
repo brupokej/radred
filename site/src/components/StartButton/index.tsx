@@ -3,12 +3,12 @@ import { postRelayState } from "@site/src/utils/overlayRelay";
 import { setState } from "@site/src/utils/storage";
 import styles from "./styles.module.css";
 
-export default function StartButton({ moment }: { moment: Moment }) {
+export default function StartButton({ moment, attempt }: { moment: Moment; attempt?: number }) {
   if (process.env.NODE_ENV !== "development" || navigator.webdriver) return null;
 
   async function handleStart() {
-    setState("stats-filter-end", moment.label);
-    await postRelayState({ moment }).catch(() => {});
+    setState("overlay-moment", moment.label);
+    await postRelayState({ moment, ...(attempt !== undefined && { attempt }) }).catch(() => {});
   }
 
   return (

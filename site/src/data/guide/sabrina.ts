@@ -528,11 +528,10 @@ const _box9 = getBox({
     },
     Incineroar: {
       item: "Black Glasses",
-    }
+    },
   },
   team: ["Perrserker", "Meowscarada", "Excadrill", "Incineroar"],
 });
-
 
 export const pokemonTowerChannelerRuthBattle: Moment = {
   label: "Pokémon Tower Channeler Ruth Battle",
@@ -574,8 +573,8 @@ export const pokemonTowerChannelerRuthBattle: Moment = {
                 branches: [
                   "93% → Meowscarada U-Turn Grimmsnarl",
                   "7% → Meowscarada U-Turn Grimmsnarl (to 0)",
-                ]
-              }
+                ],
+              },
             ],
           },
         ],
@@ -2825,7 +2824,7 @@ const _box24 = getBox({
     Swampert: {
       ivs: { spe: 0 },
     },
-  }
+  },
 });
 
 export const saffronCityDumassKidBoxChange: Moment = {
@@ -2987,7 +2986,10 @@ export const saffronCityLeaderSabrinaBattle: Moment = {
             turns: [
               [
                 { player: "{p:Azumarill} Helping Hand {p:Jellicent}" },
-                { player: "{p:Jellicent} Water Spout {o:Jellicent} to {=:0} and {o:Magearna} to {=:0}" },
+                {
+                  player:
+                    "{p:Jellicent} Water Spout {o:Jellicent} to {=:0} and {o:Magearna} to {=:0}",
+                },
                 { opponent: "{o:Jellicent} fainted" },
                 { opponent: "{o:Magearna} fainted" },
               ],
@@ -2998,7 +3000,10 @@ export const saffronCityLeaderSabrinaBattle: Moment = {
             turns: [
               [
                 { player: "{p:Azumarill} Helping Hand {p:Jellicent}" },
-                { player: "{p:Jellicent} Water Spout {o:Glastrier} to {-:1} and {o:Magearna} to {=:0}" },
+                {
+                  player:
+                    "{p:Jellicent} Water Spout {o:Glastrier} to {-:1} and {o:Magearna} to {=:0}",
+                },
                 { opponent: "{o:Glastrier} Iapapa Berry to {-:69}" },
                 { opponent: "{o:Iron Hands} fainted" },
               ],
@@ -3035,7 +3040,7 @@ const _box26 = getBox({
     Swampert: {
       ivs: { spe: 31 },
     },
-  }
+  },
 });
 
 export const saffronCityLeaderSabrinaBoxChange: Moment = {

@@ -15,11 +15,7 @@ export function PokemonEntry({
   return (
     <div className={`${styles.entry} ${className ?? ""}`}>
       <div className={styles.spritePanel}>
-        <img
-          src={getColouredSpriteUrl(pokemon)}
-          alt={pokemon.name}
-          className={styles.sprite}
-        />
+        <img src={getColouredSpriteUrl(pokemon)} alt={pokemon.name} className={styles.sprite} />
       </div>
       <div className={styles.info}>
         <div className={styles.name}>{pokemon.name}</div>

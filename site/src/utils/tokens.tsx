@@ -55,8 +55,7 @@ export function parseTokens(
       } else if (hasHp) {
         const round = type === "-" ? Math.ceil : Math.floor;
         const pct = round((num / maxHp!) * 100);
-        const clampedPct =
-          pct === 0 && num > 0 ? 1 : pct === 100 && num < maxHp! ? 99 : pct;
+        const clampedPct = pct === 0 && num > 0 ? 1 : pct === 100 && num < maxHp! ? 99 : pct;
         resultContent = (
           <>
             {clampedPct}

@@ -1,0 +1,73 @@
+---
+sidebar_position: 7
+title: Controls
+---
+
+import Card from "@site/src/components/Card";
+import { Row } from "@site/src/components/Row";
+import StartButton from "@site/src/components/StartButton";
+import { moments as brockMoments } from "@site/src/data/guide/brock";
+import { moments as mistyMoments } from "@site/src/data/guide/misty";
+import { moments as surgeMoments } from "@site/src/data/guide/surge";
+import { moments as erikaMoments } from "@site/src/data/guide/erika";
+import { moments as sabrinaMoments } from "@site/src/data/guide/sabrina";
+import { moments as kogaMoments } from "@site/src/data/guide/koga";
+import { useStorageState } from "@site/src/utils/storage";
+
+export const allMoments = [
+  ...brockMoments,
+  ...mistyMoments,
+  ...surgeMoments,
+  ...erikaMoments,
+  ...sabrinaMoments,
+  ...kogaMoments,
+].filter((m) => m.kind !== "boxChange");
+
+export const defaultMoment = (() => {
+  for (let i = allMoments.length - 1; i >= 0; i--) {
+    if (allMoments[i].kind === "battle") return allMoments[i];
+  }
+  return brock.newGameMoment;
+})();
+
+export function findMoment(label) {
+  if (!label) return defaultMoment;
+  return allMoments.find((m) => m.label === label) ?? defaultMoment;
+}
+
+export function OverlayControls() {
+  const { value: storedAttempt, set: setStoredAttempt } = useStorageState("overlay-attempt");
+  const { value: storedMomentLabel, set: setStoredMomentLabel } = useStorageState("overlay-moment");
+
+const attempt = storedAttempt !== null ? Number(storedAttempt) : 1;
+const moment = findMoment(storedMomentLabel);
+
+function handleAttemptChange(v) {
+setStoredAttempt(v || "1");
+}
+
+function handleMomentChange(v) {
+setStoredMomentLabel(v);
+}
+
+return (
+
+<>
+<h2>Controls <StartButton moment={moment} attempt={attempt} /></h2>
+<Card title="Overlay Setup">
+<Row row={["Attempt:", { input: {
+value: String(attempt),
+validate: (v) => v === "" || (/^\d+$/.test(v) && Number(v) >= 1 && Number(v) <= 99),
+onChange: handleAttemptChange,
+}}]} />
+<Row row={["Moment:", { dropdown: {
+value: moment.label,
+options: allMoments.map((m) => m.label),
+onChange: handleMomentChange,
+}}]} />
+</Card>
+</>
+);
+}
+
+<OverlayControls />

@@ -1,16 +1,16 @@
 import { getBox } from "@site/src/utils/box";
 import { Moment } from "@site/src/utils/moments";
 import {
+  fuschiaCityBrendanBox,
   route16BikerLaoBox,
   route16BikerRubenBox,
   route16CueBallCamronBox,
   route16CueBallKojiBox,
   route16CueBallLukeBox,
   route16RiderHideoBox,
+  route18AceTrainerWiltonBox,
   route18BikerWilliamBox,
   route18BirdKeeperJacobBox,
-  route18AceTrainerWiltonBox,
-  fuschiaCityBrendanBox,
 } from "@site/src/utils/opponents";
 
 import { box as _box1 } from "@site/src/data/guide/sabrina";
@@ -159,7 +159,7 @@ export const route16BikerLaoBattle: Moment = {
   },
 };
 
-const _box4 = getBox({ box: _box3, team: ["Excadrill"], });
+const _box4 = getBox({ box: _box3, team: ["Excadrill"] });
 
 export const route16CueBallKojiBattle: Moment = {
   label: "Route 16 Cue Ball Koji Battle",
@@ -196,7 +196,7 @@ export const route16CueBallKojiBattle: Moment = {
   },
 };
 
-const _box5 = getBox({ box: _box4, team: ["Excadrill", "Meowscarada"], });
+const _box5 = getBox({ box: _box4, team: ["Excadrill", "Meowscarada"] });
 
 export const route16CueBallLukeBattle: Moment = {
   label: "Route 16 Cue Ball Luke Battle",
@@ -891,7 +891,7 @@ const _box12 = getBox({
     },
     Swampert: {
       ivs: undefined,
-    }
+    },
   },
 });
 
@@ -907,7 +907,7 @@ const _box13 = getBox({
     Swampert: {
       name: "Swampert-Mega",
       ability: "Swift Swim",
-    }
+    },
   },
 });
 
@@ -936,7 +936,7 @@ const _box14 = getBox({
     Tentacruel: {
       nature: "Modest",
       moves: ["Dazzling Gleam", "Flip Turn", "Hydro Pump", "Sludge Wave"],
-    }
+    },
   },
   team: ["Lanturn", "Drednaw", "Swampert-Mega", "Meowscarada", "Tentacruel", "Gyarados"],
 });
@@ -961,8 +961,8 @@ export const route18BirdKeeperJacobBattle: Moment = {
                 ],
               },
             ],
-          }
-        ]
+          },
+        ],
       },
       {
         line: "80% → Cramorant-Gorg switch to Porygon2",
@@ -989,10 +989,10 @@ export const route18BirdKeeperJacobBattle: Moment = {
               [
                 { player: "{p:Swampert-Mega} Hammer Arm {o:Porygon2} to {=:0}" },
                 { opponent: "{o:Porygon2} fainted" },
-              ]
+              ],
             ],
             branches: [{ branches: ["Swampert-Mega switch to Meowscarada"] }],
-          }
+          },
         ],
         frags: { "Swampert-Mega": 1 },
       },
@@ -1018,7 +1018,7 @@ export const route18BirdKeeperJacobBattle: Moment = {
                 ],
               },
             ],
-          }
+          },
         ],
       },
       {
@@ -1053,7 +1053,7 @@ export const route18BirdKeeperJacobBattle: Moment = {
               ],
             ],
             branches: [{ branches: ["Swampert-Mega switch to Meowscarada"] }],
-          }
+          },
         ],
         frags: { "Swampert-Mega": 1 },
       },
@@ -1128,7 +1128,10 @@ export const route18BirdKeeperJacobBattle: Moment = {
             ],
             branches: [
               {
-                if: ["80% → Cramorant-Gorg switch to Porygon2", "20% → Lanturn Volt Switch Cramorant-Gorg"],
+                if: [
+                  "80% → Cramorant-Gorg switch to Porygon2",
+                  "20% → Lanturn Volt Switch Cramorant-Gorg",
+                ],
                 ifNot: ["Swampert-Mega switch to Lanturn"],
                 branches: ["Swampert-Mega Rock Slide Cramorant-Gorg"],
               },
@@ -1139,7 +1142,7 @@ export const route18BirdKeeperJacobBattle: Moment = {
               {
                 branches: ["Swampert-Mega Earthquake Nidoqueen"],
               },
-            ]
+            ],
           },
         ],
         frags: { Meowscarada: 1, "Swampert-Mega": 1 },
@@ -1153,8 +1156,8 @@ export const route18BirdKeeperJacobBattle: Moment = {
               [
                 { player: "{p:Swampert-Mega} Rock Slide {o:Cramorant-Gorg} to {=:0}" },
                 { opponent: "{o:Cramorant-Gorg} fainted" },
-              ]
-            ]
+              ],
+            ],
           },
           {
             matchup: ["Nidoqueen"],
@@ -1162,8 +1165,8 @@ export const route18BirdKeeperJacobBattle: Moment = {
               [
                 { player: "{p:Swampert-Mega} Earthquake {o:Nidoqueen} to {=:0}" },
                 { opponent: "{o:Nidoqueen} fainted" },
-              ]
-            ]
+              ],
+            ],
           },
         ],
         frags: { "Swampert-Mega": 2 },
@@ -1184,10 +1187,10 @@ export const route18BirdKeeperJacobBattle: Moment = {
                 branches: [
                   "80% → Cramorant-Gorg switch to Nidoqueen",
                   "20% → Lanturn Volt Switch Cramorant-Gorg",
-                ]
-              }
-            ]
-          }
+                ],
+              },
+            ],
+          },
         ],
       },
       {
@@ -1447,7 +1450,7 @@ export const fuschiaCityBrendanBattle: Moment = {
                 { player: "{p:Meowscarada} Cut {o:Gengar} to {=:0}" },
                 { opponent: "{o:Gengar} fainted" },
               ],
-            ]
+            ],
           },
           {
             matchup: ["Tapu Koko"],
@@ -1652,7 +1655,7 @@ export const starterEgg5BoxChange: Moment = {
   label: "Starter Egg 5 Box Change",
   kind: "boxChange",
   data: { playerBox: _box18 },
-}
+};
 
 export const box = _box18;
 
