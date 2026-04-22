@@ -160,10 +160,12 @@ const _wimpod = {
   moves: ["Struggle Bug"],
 };
 
+const _box4 = getBox({ box: _box3, add: [_wimpod] });
+
 export const fishing1Encounter: Moment = {
   label: "Fishing 1 Encounter",
   kind: "encounter",
-  data: { pokemon: _wimpod },
+  data: { pokemon: _wimpod, playerBox: _box4 },
 };
 
 const _frillish = {
@@ -172,16 +174,17 @@ const _frillish = {
   moves: ["Bubble Beam", "Ominous Wind", "Recover", "Water Pulse"],
 };
 
+const _box5 = getBox({ box: _box4, add: [_frillish] });
+
 export const fishing2Encounter: Moment = {
   label: "Fishing 2 Encounter",
   kind: "encounter",
-  data: { pokemon: _frillish },
+  data: { pokemon: _frillish, playerBox: _box5 },
 };
 
-const _box4 = getBox({
-  box: _box3,
+const _box6 = getBox({
+  box: _box5,
   cap: 36,
-  add: [_wimpod, _frillish],
   update: [
     {
       "Growlithe-H": {
@@ -216,11 +219,11 @@ const _box4 = getBox({
 export const fishing2BoxChange: Moment = {
   label: "Fishing 2 Box Change",
   kind: "boxChange",
-  data: { playerBox: _box4 },
+  data: { playerBox: _box6 },
 };
 
-const _box5 = getBox({
-  box: _box4,
+const _box7 = getBox({
+  box: _box6,
   update: {
     Golduck: {
       nature: "Naughty",
@@ -258,7 +261,7 @@ export const route25LeaderBugsyBattle: Moment = {
   label: "Route 25 Leader Bugsy Battle",
   kind: "battle",
   data: {
-    playerBox: _box5,
+    playerBox: _box7,
     opponentBox: route25LeaderBugsyBox,
     lines: [
       {
@@ -349,8 +352,8 @@ export const route25LeaderBugsyBattle: Moment = {
   },
 };
 
-const _box6 = getBox({
-  box: _box5,
+const _box8 = getBox({
+  box: _box7,
   update: {
     Golisopod: {
       nature: "Careful",
@@ -373,7 +376,7 @@ export const ssAnneLassAnnGentlemanBrooksBattle: Moment = {
   label: "S.S. Anne Lass Ann & Gentleman Brooks Battle",
   kind: "battle",
   data: {
-    playerBox: _box6,
+    playerBox: _box8,
     opponentBox: ssAnneLassAnnGentlemanBrooksBox,
     lines: [
       {
@@ -489,8 +492,8 @@ export const ssAnneLassAnnGentlemanBrooksBattle: Moment = {
   },
 };
 
-const _box7 = getBox({
-  box: _box6,
+const _box9 = getBox({
+  box: _box8,
   update: {
     Perrserker: {
       item: "Shuca Berry",
@@ -516,7 +519,7 @@ export const ssAnneSailorEdmundSailorTrevorBattle: Moment = {
   label: "S.S. Anne Sailor Edmund & Sailor Trevor Battle",
   kind: "battle",
   data: {
-    playerBox: _box7,
+    playerBox: _box9,
     opponentBox: ssAnneSailorEdmundSailorTrevorBox,
     lines: [
       {
@@ -614,8 +617,8 @@ export const ssAnneSailorEdmundSailorTrevorBattle: Moment = {
   },
 };
 
-const _box8 = getBox({
-  box: _box7,
+const _box10 = getBox({
+  box: _box9,
   update: {
     Perrserker: {
       item: "Sitrus Berry",
@@ -649,7 +652,7 @@ export const ssAnneBrendanBattle: Moment = {
   label: "S.S. Anne Brendan Battle",
   kind: "battle",
   data: {
-    playerBox: _box8,
+    playerBox: _box10,
     opponentBox: ssAnneBrendanBox,
     lines: [
       {
@@ -758,8 +761,8 @@ export const ssAnneBrendanBattle: Moment = {
   },
 };
 
-const _box9 = getBox({
-  box: _box8,
+const _box11 = getBox({
+  box: _box10,
   update: {
     "Arcanine-H": {
       nature: "Adamant",
@@ -786,7 +789,7 @@ export const route9PicnickerAliciaBattle: Moment = {
   label: "Route 9 Picnicker Alicia Battle",
   kind: "battle",
   data: {
-    playerBox: _box9,
+    playerBox: _box11,
     opponentBox: route9PicnickerAliciaBox,
     lines: [
       {
@@ -858,8 +861,8 @@ export const route9PicnickerAliciaBattle: Moment = {
   },
 };
 
-const _box10 = getBox({
-  box: _box9,
+const _box12 = getBox({
+  box: _box11,
   update: {
     Golduck: {
       moves: ["Aqua Jet", "Aqua Tail", "Flip Turn", "Zen Headbutt"],
@@ -881,7 +884,7 @@ export const route9PicnickerCaitlinBattle: Moment = {
   label: "Route 9 Picnicker Caitlin Battle",
   kind: "battle",
   data: {
-    playerBox: _box10,
+    playerBox: _box12,
     opponentBox: route9PicnickerCaitlinBox,
     lines: [
       {
@@ -972,8 +975,8 @@ export const route9PicnickerCaitlinBattle: Moment = {
   },
 };
 
-const _box11 = getBox({
-  box: _box10,
+const _box13 = getBox({
+  box: _box12,
   update: {
     Excadrill: {
       nature: "Adamant",
@@ -1009,7 +1012,7 @@ export const rockTunnelPicnickerDanaBattle: Moment = {
   label: "Rock Tunnel Picnicker Data Battle",
   kind: "battle",
   data: {
-    playerBox: _box11,
+    playerBox: _box13,
     opponentBox: rockTunnelPicnickerDanaBox,
     lines: [
       {
@@ -1097,8 +1100,8 @@ export const rockTunnelPicnickerDanaBattle: Moment = {
   },
 };
 
-const _box12 = getBox({
-  box: _box11,
+const _box14 = getBox({
+  box: _box13,
   update: {
     Golduck: {
       nature: "Modest",
@@ -1118,7 +1121,7 @@ export const route10PokeManiacHermanBattle: Moment = {
   label: "Route 10 Poké Maniac Herman Battle",
   kind: "battle",
   data: {
-    playerBox: _box12,
+    playerBox: _box14,
     opponentBox: route10PokeManiacHermanBox,
     lines: [
       {
@@ -1170,8 +1173,8 @@ export const route10PokeManiacHermanBattle: Moment = {
   },
 };
 
-const _box13 = getBox({
-  box: _box12,
+const _box15 = getBox({
+  box: _box14,
   update: {
     Golduck: {
       nature: "Quiet",
@@ -1202,7 +1205,7 @@ export const route8SuperNerdAidanBattle: Moment = {
   label: "Route 8 Super Nerd Aidan Battle",
   kind: "battle",
   data: {
-    playerBox: _box13,
+    playerBox: _box15,
     opponentBox: route8SuperNerdAidanBox,
     lines: [
       {
@@ -1271,8 +1274,8 @@ export const route8SuperNerdAidanBattle: Moment = {
   },
 };
 
-const _box14 = getBox({
-  box: _box13,
+const _box16 = getBox({
+  box: _box15,
   update: {
     Perrserker: {
       item: "Pixie Plate",
@@ -1308,7 +1311,7 @@ export const vermillionCityGymGentlemanTuckerBattle: Moment = {
   label: "Vermillion City Gym Gentleman Tucker Battle",
   kind: "battle",
   data: {
-    playerBox: _box14,
+    playerBox: _box16,
     opponentBox: vermillionCityGymGentlemanTuckerBox,
     lines: [
       {
@@ -1404,8 +1407,8 @@ export const vermillionCityGymGentlemanTuckerBattle: Moment = {
   },
 };
 
-const _box15 = getBox({
-  box: _box14,
+const _box17 = getBox({
+  box: _box16,
   update: {
     Houndoom: {
       nature: "Modest",
@@ -1433,7 +1436,7 @@ export const vermillionCityLeaderLtSurgeBattle: Moment = {
   label: "Vermillion City Leader Lt. Surge Battle",
   kind: "battle",
   data: {
-    playerBox: _box15,
+    playerBox: _box17,
     opponentBox: vermillionCityLeaderLtSurgeBox,
     lines: [
       {
@@ -1632,7 +1635,7 @@ export const vermillionCityLeaderLtSurgeBattle: Moment = {
   },
 };
 
-export const box = _box15;
+export const box = _box17;
 
 export const moments: Moment[] = [
   surgeBoxChange,

@@ -6,29 +6,58 @@ import { resolvePokemon } from "@site/src/utils/pokemon";
 import { FADE_MS } from "@site/src/utils/useFadedValue";
 import { useEffect, useMemo, useRef, useState } from "react";
 
+function readLocalState(): RelayState {
+  return {
+    moment: findMomentByLabel(localStorage.getItem("overlay-moment")),
+    attempt: Number(localStorage.getItem("overlay-attempt") ?? "1") || 1,
+  };
+}
+
+function withLocalAttempt(data: RelayState): RelayState {
+  return data.attempt ? data : { ...data, attempt: readLocalState().attempt };
+}
+
 export function useRelayState(): RelayState | null {
-  const [state, setState] = useState<RelayState | null>(null);
+  const [state, setState] = useState<RelayState | null>(() =>
+    typeof window !== "undefined" ? readLocalState() : null
+  );
   useEffect(() => {
-    const localState = (): RelayState => ({
-      moment: findMomentByLabel(localStorage.getItem("overlay-moment")),
-      attempt: Number(localStorage.getItem("overlay-attempt") ?? "1") || 1,
-    });
-    fetch(`${RELAY_HTTP}/state`)
-      .then((r) => r.json())
-      .then((data) => {
-        setState(data || localState());
-      })
-      .catch(() => {
-        setState(localState());
-      });
-    const ws = new WebSocket(RELAY_WS);
-    ws.onmessage = (e) => {
-      try {
-        setState(JSON.parse(e.data));
-      } catch {}
+    const localState = readLocalState;
+    if (process.env.NODE_ENV !== "development") {
+      setState(localState());
+      return;
+    }
+
+    let stopped = false;
+    let retryTimer: ReturnType<typeof setTimeout> | null = null;
+
+    function connect() {
+      fetch(`${RELAY_HTTP}/state`)
+        .then((r) => r.json())
+        .then((data) => {
+          if (!stopped) setState(data?.moment ? withLocalAttempt(data) : localState());
+        })
+        .catch(() => {
+          if (!stopped) setState(localState());
+        });
+
+      const ws = new WebSocket(RELAY_WS);
+      ws.onmessage = (e) => {
+        try {
+          setState(withLocalAttempt(JSON.parse(e.data)));
+        } catch {}
+      };
+      ws.onerror = () => {};
+      ws.onclose = () => {
+        if (!stopped) retryTimer = setTimeout(connect, 3000);
+      };
+    }
+
+    connect();
+    return () => {
+      stopped = true;
+      if (retryTimer) clearTimeout(retryTimer);
     };
-    ws.onerror = () => {};
-    return () => ws.close();
   }, []);
   return state;
 }

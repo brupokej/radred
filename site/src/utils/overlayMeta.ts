@@ -77,6 +77,14 @@ export function findMomentByLabel(label: string | null): Moment {
   return allMoments.find((m) => m.label === label) ?? newGameMoment;
 }
 
+const CYCLE_START_INDEX = allMoments.findIndex((m) => m.label === "Mt. Moon Encounter");
+
+export function hasCyclingStarted(moment: Moment): boolean {
+  if (moment.label === "New Game") return false;
+  const idx = allMoments.findIndex((m) => m.label === moment.label);
+  return CYCLE_START_INDEX !== -1 && idx >= CYCLE_START_INDEX;
+}
+
 export function derivePlayerBox(moment: Moment): Box | null {
   if (moment.label === "New Game") return null;
   const currentIndex = allMoments.findIndex((m) => m.label === moment.label);
@@ -140,7 +148,7 @@ export function deriveTopStats(
   if (moment.label === "New Game") return [];
   const currentIndex = allMoments.findIndex((m) => m.label === moment.label);
   const battleMoments = allMoments
-    .slice(0, currentIndex === -1 ? 0 : currentIndex + 1)
+    .slice(0, currentIndex === -1 ? 0 : currentIndex)
     .filter((m): m is Extract<Moment, { kind: "battle" }> => m.kind === "battle")
     .map((m) => m.data);
 

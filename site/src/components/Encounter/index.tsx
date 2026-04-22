@@ -123,7 +123,8 @@ function Sequence({ target }: { target: string }) {
 
 export interface EncounterData {
   pokemon: PokemonData;
-  playerBox?: Box;
+  playerBox: Box;
+  showPlayerTeam?: boolean;
 }
 
 export default function Encounter({
@@ -138,7 +139,7 @@ export default function Encounter({
   const isSequence = resolvedEncounter.name in encounterSequences;
   return (
     <>
-      {resolvedPlayerBox && (resolvedPlayerBox.team ?? []).length > 0 && (
+      {data.showPlayerTeam && resolvedPlayerBox && (
         <Team title="Player Team" box={resolvedPlayerBox} />
       )}
       <Card title="Encounter Plan">

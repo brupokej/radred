@@ -17,14 +17,16 @@ const _litten = {
   moves: ["Ember", "Growl", "Scratch"],
 };
 
+const _box1 = getBox({ add: [_litten] });
+
 export const oaksLabEncounter: Moment = {
   label: "Oak's Lab Encounter",
   kind: "encounter",
-  data: { pokemon: _litten },
+  data: { pokemon: _litten, playerBox: _box1 },
 };
 
-export const _box1 = getBox({
-  add: [_litten],
+const _box2 = getBox({
+  box: _box1,
   update: {
     Litten: {
       name: "Torracat",
@@ -37,7 +39,7 @@ export const _box1 = getBox({
 export const oaksLabBoxChange: Moment = {
   label: "Oak's Lab Box Change",
   kind: "boxChange",
-  data: { playerBox: _box1 },
+  data: { playerBox: _box2 },
 };
 
 const _tentacool = {
@@ -46,15 +48,16 @@ const _tentacool = {
   moves: ["Rapid Spin", "Water Gun"],
 };
 
+const _box3 = getBox({ box: _box2, add: [_tentacool] });
+
 export const palletTownEncounter: Moment = {
   label: "Pallet Town Encounter",
   kind: "encounter",
-  data: { pokemon: _tentacool },
+  data: { pokemon: _tentacool, playerBox: _box3 },
 };
 
-export const _box2 = getBox({
-  box: _box1,
-  add: [_tentacool],
+export const _box4 = getBox({
+  box: _box3,
   update: {
     Tentacool: {
       level: 16,
@@ -66,7 +69,7 @@ export const _box2 = getBox({
 export const palletTownBoxChange: Moment = {
   label: "Pallet Town Box Change",
   kind: "boxChange",
-  data: { playerBox: _box2 },
+  data: { playerBox: _box4 },
 };
 
 const _wooperP = {
@@ -77,10 +80,12 @@ const _wooperP = {
   moves: ["Mud Shot", "Tackle", "Tail Whip"],
 };
 
+const _box5 = getBox({ box: _box4, add: [_wooperP] });
+
 export const route21Encounter: Moment = {
   label: "Route 21 Encounter",
   kind: "encounter",
-  data: { pokemon: _wooperP },
+  data: { pokemon: _wooperP, playerBox: _box5 },
 };
 
 const _meowthG = {
@@ -91,10 +96,12 @@ const _meowthG = {
   moves: ["Fake Out", "Growl"],
 };
 
+const _box6 = getBox({ box: _box5, add: [_meowthG] });
+
 export const route1Encounter: Moment = {
   label: "Route 1 Encounter",
   kind: "encounter",
-  data: { pokemon: _meowthG },
+  data: { pokemon: _meowthG, playerBox: _box6 },
 };
 
 const _marill = {
@@ -103,10 +110,12 @@ const _marill = {
   moves: ["Aqua Jet", "Tackle", "Tail Whip"],
 };
 
+const _box7 = getBox({ box: _box6, add: [_marill] });
+
 export const viridianCityEncounter: Moment = {
   label: "Viridian City Encounter",
   kind: "encounter",
-  data: { pokemon: _marill },
+  data: { pokemon: _marill, playerBox: _box7 },
 };
 
 const _houndour = {
@@ -115,10 +124,12 @@ const _houndour = {
   moves: ["Incinerate", "Leer"],
 };
 
+const _box8 = getBox({ box: _box7, add: [_houndour] });
+
 export const route2Encounter: Moment = {
   label: "Route 2 Encounter",
   kind: "encounter",
-  data: { pokemon: _houndour },
+  data: { pokemon: _houndour, playerBox: _box8 },
 };
 
 const _kricketot = {
@@ -127,15 +138,16 @@ const _kricketot = {
   moves: ["Bide", "Growl", "Tackle"],
 };
 
+const _box9 = getBox({ box: _box8, add: [_kricketot] });
+
 export const viridianForestEncounter: Moment = {
   label: "Viridian Forest Encounter",
   kind: "encounter",
-  data: { pokemon: _kricketot },
+  data: { pokemon: _kricketot, playerBox: _box9 },
 };
 
-const _box3 = getBox({
-  box: _box2,
-  add: [_wooperP, _meowthG, _marill, _houndour, _kricketot],
+const _box10 = getBox({
+  box: _box9,
   update: [
     {
       "Wooper-P": {
@@ -160,11 +172,11 @@ const _box3 = getBox({
 export const viridianForestBoxChange: Moment = {
   label: "Viridian Forest Box Change",
   kind: "boxChange",
-  data: { playerBox: _box3 },
+  data: { playerBox: _box10 },
 };
 
-const _box4 = getBox({
-  box: _box3,
+const _box11 = getBox({
+  box: _box10,
   update: {
     "Wooper-P": { nature: "Bold" },
     Kricketune: {
@@ -181,7 +193,7 @@ export const route22RivalBattle: Moment = {
   label: "Route 22 Rival Battle",
   kind: "battle",
   data: {
-    playerBox: _box4,
+    playerBox: _box11,
     opponentBox: route22RivalBox,
     lines: [
       {
@@ -266,15 +278,16 @@ export const route22RivalBattle: Moment = {
 
 const _psyduck = { name: "Psyduck", moves: ["Scratch", "Water Sport"] };
 
+const _box12 = getBox({ box: _box11, add: [_psyduck] });
+
 export const route22Encounter: Moment = {
   label: "Route 22 Encounter",
   kind: "encounter",
-  data: { pokemon: _psyduck },
+  data: { pokemon: _psyduck, playerBox: _box12 },
 };
 
-const _box5 = getBox({
-  box: _box4,
-  add: [_psyduck],
+const _box13 = getBox({
+  box: _box12,
   update: {
     Marill: {
       level: 16,
@@ -286,11 +299,11 @@ const _box5 = getBox({
 export const route22BoxChange: Moment = {
   label: "Route 22 Box Change",
   kind: "boxChange",
-  data: { playerBox: _box5 },
+  data: { playerBox: _box13 },
 };
 
-const _box6 = getBox({
-  box: _box5,
+const _box14 = getBox({
+  box: _box13,
   update: {
     Marill: { nature: "Impish", item: "Oran Berry" },
     Torracat: { nature: "Impish" },
@@ -303,7 +316,7 @@ export const viridianForestBrendanBattle: Moment = {
   label: "Viridian Forest Brendan Battle",
   kind: "battle",
   data: {
-    playerBox: _box6,
+    playerBox: _box14,
     opponentBox: viridianForestBrendanBox,
     lines: [
       {
@@ -381,8 +394,8 @@ export const viridianForestBrendanBattle: Moment = {
   },
 };
 
-const _box7 = getBox({
-  box: _box6,
+const _box15 = getBox({
+  box: _box14,
   update: {
     "Meowth-G": {
       level: 16,
@@ -398,11 +411,11 @@ const _box7 = getBox({
 export const viridianForestBrendanBoxChange: Moment = {
   label: "Viridian Forest Brendan Box Change",
   kind: "boxChange",
-  data: { playerBox: _box7 },
+  data: { playerBox: _box15 },
 };
 
-const _box8 = getBox({
-  box: _box7,
+const _box16 = getBox({
+  box: _box15,
   update: {
     "Meowth-G": { nature: "Sassy", item: "Occa Berry" },
     Houndour: { nature: "Modest", item: "Oran Berry" },
@@ -415,7 +428,7 @@ export const viridianForestLassAnneBattle: Moment = {
   label: "Viridian Forest Lass Anne Battle",
   kind: "battle",
   data: {
-    playerBox: _box8,
+    playerBox: _box16,
     opponentBox: viridianForestLassAnneBox,
     lines: [
       {
@@ -514,8 +527,8 @@ export const viridianForestLassAnneBattle: Moment = {
   },
 };
 
-const _box9 = getBox({
-  box: _box8,
+const _box17 = getBox({
+  box: _box16,
   update: {
     Kricketune: { item: "Hard Stone" },
   },
@@ -527,7 +540,7 @@ export const viridianForestBugCatcherSammyBattle: Moment = {
   kind: "battle",
   data: {
     opponentBox: viridianForestBugCatcherSammyBox,
-    playerBox: _box9,
+    playerBox: _box17,
     lines: [
       {
         matchups: [
@@ -584,15 +597,16 @@ const _yamaskG = {
   moves: ["Haze", "Magnitude", "Shadow Sneak"],
 };
 
+const _box18 = getBox({ box: _box17, add: [_yamaskG] });
+
 export const diglettCaveEncounter: Moment = {
   label: "Diglett Cave Encounter",
   kind: "encounter",
-  data: { pokemon: _yamaskG },
+  data: { pokemon: _yamaskG, playerBox: _box18 },
 };
 
-const _box10 = getBox({
-  box: _box9,
-  add: [_yamaskG],
+const _box19 = getBox({
+  box: _box18,
   update: {
     Kricketune: { nature: "Naive" },
     Marill: { nature: "Adamant", item: "Oran Berry" },
@@ -604,7 +618,7 @@ export const pewterMuseumLeaderFalknerBattle: Moment = {
   label: "Pewter Museum Leader Falkner Battle",
   kind: "battle",
   data: {
-    playerBox: _box10,
+    playerBox: _box19,
     opponentBox: pewterMuseumLeaderFalknerBox,
     lines: [
       {
@@ -681,8 +695,8 @@ export const pewterMuseumLeaderFalknerBattle: Moment = {
   },
 };
 
-const _box11 = getBox({
-  box: _box10,
+const _box20 = getBox({
+  box: _box19,
   update: {
     "Yamask-G": {
       level: 16,
@@ -694,11 +708,11 @@ const _box11 = getBox({
 export const pewterMuseumLeaderFalknerBoxChange: Moment = {
   label: "Pewter Museum Leader Falkner Box Change",
   kind: "boxChange",
-  data: { playerBox: _box11 },
+  data: { playerBox: _box20 },
 };
 
-const _box12 = getBox({
-  box: _box11,
+const _box21 = getBox({
+  box: _box20,
   update: {
     Kricketune: { nature: "Rash", item: "Miracle Seed" },
     "Meowth-G": { nature: "Lonely" },
@@ -713,7 +727,7 @@ export const pewterCityLeaderBrockBattle: Moment = {
   label: "Pewter City Leader Brock Battle",
   kind: "battle",
   data: {
-    playerBox: _box12,
+    playerBox: _box21,
     opponentBox: pewterCityLeaderBrockBox,
     lines: [
       {
@@ -958,7 +972,7 @@ export const pewterCityLeaderBrockBattle: Moment = {
   },
 };
 
-export const box = _box12;
+export const box = _box21;
 
 export const moments: Moment[] = [
   newGameMoment,

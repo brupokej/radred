@@ -6,6 +6,7 @@ import {
   deriveOverlayMeta,
   derivePlayerBox,
   deriveTopStats,
+  hasCyclingStarted,
   StatViewType,
   TopBattler,
 } from "@site/src/utils/overlayMeta";
@@ -421,17 +422,21 @@ export function OverlayThree() {
   const liveState = useRelayState();
   const [cycleView, setCycleView] = useState(0);
 
+  const livePlayerBox = liveState?.moment ? derivePlayerBox(liveState.moment) : null;
+  const shouldCycle = liveState?.moment ? hasCyclingStarted(liveState.moment) : false;
+
   useEffect(() => {
+    if (!shouldCycle) return;
+    setCycleView(0);
     const id = setInterval(() => setCycleView((v) => (v + 1) % 4), CYCLE_MS);
     return () => clearInterval(id);
-  }, []);
-
-  const livePlayerBox = liveState?.moment ? derivePlayerBox(liveState.moment) : null;
+  }, [shouldCycle]);
+  const view = shouldCycle ? cycleView : 0;
   const liveTopStats = liveState?.moment
-    ? deriveTopStats(liveState.moment, livePlayerBox, STAT_VIEWS[cycleView])
+    ? deriveTopStats(liveState.moment, livePlayerBox, STAT_VIEWS[view])
     : [];
-  const liveStatsTitle = STAT_TITLES[cycleView];
-  const statsContentKey = `${cycleView}:${liveTopStats.map((b) => `${b.pokemon.name}:${b.subtitle}`).join(",")}`;
+  const liveStatsTitle = STAT_TITLES[view];
+  const statsContentKey = `${view}:${liveTopStats.map((b) => `${b.pokemon.name}:${b.subtitle}`).join(",")}`;
 
   const { displayed: statsTitle, visible: statsTitleVisible } = useFadedValue(liveStatsTitle);
   const { displayed: topStats, visible: statsContentVisible } = useFadedKey(

@@ -20,15 +20,16 @@ const _dreepy = {
   moves: ["Astonish", "Bite", "Infestation", "Quick Attack"],
 };
 
+const _box2 = getBox({ box: _box1, add: [_dreepy] });
+
 export const celadonCityEncounter: Moment = {
   label: "Celadon City Encounter",
   kind: "encounter",
-  data: { pokemon: _dreepy },
+  data: { pokemon: _dreepy, playerBox: _box2 },
 };
 
-const _box2 = getBox({
-  box: _box1,
-  add: [_dreepy],
+const _box3 = getBox({
+  box: _box2,
   cap: 68,
   update: [
     {
@@ -48,11 +49,11 @@ const _box2 = getBox({
 export const celadonCityBoxChange: Moment = {
   label: "Koga Box Change",
   kind: "boxChange",
-  data: { playerBox: _box2 },
+  data: { playerBox: _box3 },
 };
 
-const _box3 = getBox({
-  box: _box2,
+const _box4 = getBox({
+  box: _box3,
   update: {
     Dragapult: {
       nature: "Adamant",
@@ -85,7 +86,7 @@ export const route16BikerLaoBattle: Moment = {
   label: "Route 16 Biker Lao Battle",
   kind: "battle",
   data: {
-    playerBox: _box3,
+    playerBox: _box4,
     opponentBox: route16BikerLaoBox,
     lines: [
       {
@@ -159,13 +160,13 @@ export const route16BikerLaoBattle: Moment = {
   },
 };
 
-const _box4 = getBox({ box: _box3, team: ["Excadrill"] });
+const _box5 = getBox({ box: _box4, team: ["Excadrill"] });
 
 export const route16CueBallKojiBattle: Moment = {
   label: "Route 16 Cue Ball Koji Battle",
   kind: "battle",
   data: {
-    playerBox: _box4,
+    playerBox: _box5,
     opponentBox: route16CueBallKojiBox,
     lines: [
       {
@@ -196,13 +197,13 @@ export const route16CueBallKojiBattle: Moment = {
   },
 };
 
-const _box5 = getBox({ box: _box4, team: ["Excadrill", "Meowscarada"] });
+const _box6 = getBox({ box: _box5, team: ["Excadrill", "Meowscarada"] });
 
 export const route16CueBallLukeBattle: Moment = {
   label: "Route 16 Cue Ball Luke Battle",
   kind: "battle",
   data: {
-    playerBox: _box5,
+    playerBox: _box6,
     opponentBox: route16CueBallLukeBox,
     lines: [
       {
@@ -247,8 +248,8 @@ export const route16CueBallLukeBattle: Moment = {
   },
 };
 
-const _box6 = getBox({
-  box: _box5,
+const _box7 = getBox({
+  box: _box6,
   update: {
     "Arcanine-H": {
       nature: "Adamant",
@@ -272,7 +273,7 @@ export const route16BikerRubenBattle: Moment = {
   label: "Route 16 Biker Ruben Battle",
   kind: "battle",
   data: {
-    playerBox: _box6,
+    playerBox: _box7,
     opponentBox: route16BikerRubenBox,
     lines: [
       {
@@ -363,8 +364,8 @@ export const route16BikerRubenBattle: Moment = {
   },
 };
 
-const _box7 = getBox({
-  box: _box6,
+const _box8 = getBox({
+  box: _box7,
   update: {
     Perrserker: {
       hp: "Fire",
@@ -379,11 +380,11 @@ const _box7 = getBox({
 export const route16BikerRubenBoxChange: Moment = {
   label: "Route 16 Biker Ruben Box Change",
   kind: "boxChange",
-  data: { playerBox: _box6 },
+  data: { playerBox: _box7 },
 };
 
-const _box8 = getBox({
-  box: _box7,
+const _box9 = getBox({
+  box: _box8,
   update: {
     Meowscarada: {
       nature: "Adamant",
@@ -420,7 +421,7 @@ export const route16CueBallCamronBattle: Moment = {
   label: "Route 16 Cue Ball Camron Battle",
   kind: "battle",
   data: {
-    playerBox: _box8,
+    playerBox: _box9,
     opponentBox: route16CueBallCamronBox,
     lines: [
       {
@@ -524,8 +525,8 @@ export const route16CueBallCamronBattle: Moment = {
   },
 };
 
-const _box9 = getBox({
-  box: _box8,
+const _box10 = getBox({
+  box: _box9,
   remove: ["Azumarill"],
   update: {
     Perrserker: {
@@ -537,11 +538,11 @@ const _box9 = getBox({
 export const route16CueBallCamronBoxChange: Moment = {
   label: "Route 16 Cue Ball Camron Box Change",
   kind: "boxChange",
-  data: { playerBox: _box8 },
+  data: { playerBox: _box9 },
 };
 
-const _box10 = getBox({
-  box: _box9,
+const _box11 = getBox({
+  box: _box10,
   update: {
     Meowscarada: {
       nature: "Jolly",
@@ -576,7 +577,7 @@ export const route16RiderHideoBattle: Moment = {
   label: "Route 16 Rider Hideo Battle",
   kind: "battle",
   data: {
-    playerBox: _box10,
+    playerBox: _box11,
     opponentBox: route16RiderHideoBox,
     lines: [
       {
@@ -774,8 +775,8 @@ export const route16RiderHideoBattle: Moment = {
   },
 };
 
-const _box11 = getBox({
-  box: _box10,
+const _box12 = getBox({
+  box: _box11,
   update: {
     Excadrill: {
       nature: "Adamant",
@@ -804,7 +805,7 @@ export const route18BikerWilliamBattle: Moment = {
   label: "Route 18 Biker William Battle",
   kind: "battle",
   data: {
-    playerBox: _box11,
+    playerBox: _box12,
     opponentBox: route18BikerWilliamBox,
     lines: [
       {
@@ -883,8 +884,8 @@ export const route18BikerWilliamBattle: Moment = {
   },
 };
 
-const _box12 = getBox({
-  box: _box11,
+const _box13 = getBox({
+  box: _box12,
   update: {
     Drednaw: {
       ivs: { hp: 0, spd: 0 },
@@ -898,11 +899,11 @@ const _box12 = getBox({
 export const route18BikerWilliamBoxChange: Moment = {
   label: "Route 18 Biker William Box Change",
   kind: "boxChange",
-  data: { playerBox: _box12 },
+  data: { playerBox: _box13 },
 };
 
-const _box13 = getBox({
-  box: _box12,
+const _box14 = getBox({
+  box: _box13,
   update: {
     Swampert: {
       name: "Swampert-Mega",
@@ -911,8 +912,8 @@ const _box13 = getBox({
   },
 });
 
-const _box14 = getBox({
-  box: _box13,
+const _box15 = getBox({
+  box: _box14,
   update: {
     Lanturn: {
       item: "Persim Berry",
@@ -945,7 +946,7 @@ export const route18BirdKeeperJacobBattle: Moment = {
   label: "Route 18 Bird Keeper Jacob Battle",
   kind: "battle",
   data: {
-    playerBox: _box14,
+    playerBox: _box15,
     opponentBox: route18BirdKeeperJacobBox,
     lines: [
       {
@@ -1294,8 +1295,8 @@ export const route18BirdKeeperJacobBattle: Moment = {
   },
 };
 
-const _box15 = getBox({
-  box: _box14,
+const _box16 = getBox({
+  box: _box15,
   update: {
     "Swampert-Mega": {
       moves: ["Earthquake", "Hammer Arm", "Ice Punch", "Rock Slide"],
@@ -1318,7 +1319,7 @@ export const route18AceTrainerWiltonBattle: Moment = {
   label: "Route 18 Ace Trainer Wilton Battle",
   kind: "battle",
   data: {
-    playerBox: _box15,
+    playerBox: _box16,
     opponentBox: route18AceTrainerWiltonBox,
     lines: [
       {
@@ -1411,8 +1412,8 @@ export const route18AceTrainerWiltonBattle: Moment = {
   },
 };
 
-const _box16 = getBox({
-  box: _box15,
+const _box17 = getBox({
+  box: _box16,
   update: {
     Meowscarada: {
       item: "Expert Belt",
@@ -1434,7 +1435,7 @@ export const fuschiaCityBrendanBattle: Moment = {
   label: "Fuschia City Brendan Battle",
   kind: "battle",
   data: {
-    playerBox: _box16,
+    playerBox: _box17,
     opponentBox: fuschiaCityBrendanBox,
     lines: [
       {
@@ -1550,8 +1551,8 @@ const _screamTail = {
   moves: ["Body Slam", "Hyper Voice", "Play Rough", "Rest"],
 };
 
-const _box17 = getBox({
-  box: _box16,
+const _box18 = getBox({
+  box: _box17,
   update: {
     Incineroar: {
       moves: ["Fake Out", "Darkest Lariat", "Flamethrower", "U-Turn"],
@@ -1565,10 +1566,12 @@ const _box17 = getBox({
   team: ["Incineroar", "Excadrill"],
 });
 
+const _box19 = getBox({ box: _box18, add: [_screamTail] });
+
 export const safariZoneEncounter: Moment = {
   label: "Safari Zone Encounter",
   kind: "encounter",
-  data: { pokemon: _screamTail, playerBox: _box17 },
+  data: { pokemon: _screamTail, playerBox: _box19, showPlayerTeam: true },
 };
 
 const _froakie = {
@@ -1577,10 +1580,12 @@ const _froakie = {
   moves: ["Growl", "Pound"],
 };
 
+const _box20 = getBox({ box: _box19, add: [_froakie] });
+
 export const starterEgg3Encounter: Moment = {
   label: "Starter Egg 3 Encounter",
   kind: "encounter",
-  data: { pokemon: _froakie },
+  data: { pokemon: _froakie, playerBox: _box20 },
 };
 
 const _chimchar = {
@@ -1589,10 +1594,12 @@ const _chimchar = {
   moves: ["Leer", "Scratch"],
 };
 
+const _box21 = getBox({ box: _box20, add: [_chimchar] });
+
 export const starterEgg4Encounter: Moment = {
   label: "Starter Egg 4 Encounter",
   kind: "encounter",
-  data: { pokemon: _chimchar },
+  data: { pokemon: _chimchar, playerBox: _box21 },
 };
 
 const _treecko = {
@@ -1601,15 +1608,16 @@ const _treecko = {
   moves: ["Leer", "Pound"],
 };
 
+const _box22 = getBox({ box: _box21, add: [_treecko] });
+
 export const starterEgg5Encounter: Moment = {
   label: "Starter Egg 5 Encounter",
   kind: "encounter",
-  data: { pokemon: _treecko },
+  data: { pokemon: _treecko, playerBox: _box22 },
 };
 
-const _box18 = getBox({
-  box: _box17,
-  add: [_screamTail, _froakie, _chimchar, _treecko],
+const _box23 = getBox({
+  box: _box22,
   cap: 68,
   update: [
     {
@@ -1654,10 +1662,10 @@ const _box18 = getBox({
 export const starterEgg5BoxChange: Moment = {
   label: "Starter Egg 5 Box Change",
   kind: "boxChange",
-  data: { playerBox: _box18 },
+  data: { playerBox: _box23 },
 };
 
-export const box = _box18;
+export const box = _box23;
 
 export const moments: Moment[] = [
   celadonCityEncounter,

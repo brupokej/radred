@@ -25,20 +25,71 @@
 
 .button {
   background: color-mix(in srgb, var(--ifm-color-primary) 10%, transparent);
-  border: 1px solid color-mix(in srgb, var(--ifm-color-primary) 35%, transparent);
+  border: none;
   border-radius: 3px;
   color: var(--ifm-color-primary);
   cursor: pointer;
   font-family: var(--ifm-font-family-base);
   font-size: 0.875rem;
   line-height: 22px;
+  outline: 1px solid color-mix(in srgb, var(--ifm-color-primary) 35%, transparent);
   padding: 2px 0.4rem;
   position: absolute;
   right: 0;
   top: 0;
+  transition:
+    background 0.5s,
+    outline-color 0.5s,
+    color 0.5s;
+  width: 5.5rem;
 }
 
-.button:hover {
+.button:hover:not(:disabled) {
   background: color-mix(in srgb, var(--ifm-color-primary) 20%, transparent);
-  border-color: var(--ifm-color-primary);
+  outline-color: var(--ifm-color-primary);
+}
+
+.button.live {
+  background: color-mix(in srgb, var(--ifm-color-emphasis-400) 10%, transparent);
+  color: var(--ifm-color-emphasis-600);
+  cursor: default;
+  outline-color: color-mix(in srgb, var(--ifm-color-emphasis-400) 35%, transparent);
+}
+
+.button.pending {
+  cursor: default;
+}
+
+.icon {
+  animation: fadeIn 0.3s ease;
+  display: inline-block;
+  text-align: center;
+  width: 1em;
+}
+
+.spinner {
+  animation: spin 0.7s linear infinite;
+  border: 2px solid color-mix(in srgb, currentColor 30%, transparent);
+  border-radius: 50%;
+  border-top-color: currentColor;
+  display: inline-block;
+  margin-bottom: 3px;
+  height: 0.85em;
+  vertical-align: middle;
+  width: 0.85em;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }

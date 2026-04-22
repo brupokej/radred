@@ -146,10 +146,12 @@ const _drilbur = {
   moves: ["Fury Swipes", "Mud-Slap", "Rapid Spin", "Scratch"],
 };
 
+const _box4 = getBox({ box: _box3, add: [_drilbur] });
+
 export const mtMoonEncounter: Moment = {
   label: "Mt. Moon Encounter",
   kind: "encounter",
-  data: { pokemon: _drilbur },
+  data: { pokemon: _drilbur, playerBox: _box4 },
 };
 
 const _magikarp = {
@@ -158,15 +160,16 @@ const _magikarp = {
   moves: ["Splash"],
 };
 
+const _box5 = getBox({ box: _box4, add: [_magikarp] });
+
 export const route4Encounter: Moment = {
   label: "Route 4 Encounter",
   kind: "encounter",
-  data: { pokemon: _magikarp },
+  data: { pokemon: _magikarp, playerBox: _box5 },
 };
 
-const _box4 = getBox({
-  box: _box3,
-  add: [_drilbur, _magikarp],
+const _box6 = getBox({
+  box: _box5,
   update: {
     Torracat: {
       level: 23,
@@ -184,11 +187,11 @@ const _box4 = getBox({
 export const route4BoxChange: Moment = {
   label: "Route 4 Box Change",
   kind: "boxChange",
-  data: { playerBox: _box4 },
+  data: { playerBox: _box6 },
 };
 
-const _box5 = getBox({
-  box: _box4,
+const _box7 = getBox({
+  box: _box6,
   update: {
     Houndour: {
       item: "Black Glasses",
@@ -212,7 +215,7 @@ export const mtMoonSuperNerdMiguelBattle: Moment = {
   label: "Mt. Moon Super Nerd Miguel Battle",
   kind: "battle",
   data: {
-    playerBox: _box5,
+    playerBox: _box7,
     opponentBox: mtMoonSuperNerdMiguelBox,
     lines: [
       {
@@ -414,8 +417,8 @@ export const mtMoonSuperNerdMiguelBattle: Moment = {
   },
 };
 
-const _box6 = getBox({
-  box: _box5,
+const _box8 = getBox({
+  box: _box7,
   update: [
     {
       "Wooper-P": {
@@ -436,11 +439,11 @@ const _box6 = getBox({
 export const mtMoonSuperNerdMiguelBoxChange: Moment = {
   label: "Mt. Moon Super Nerd Miguel Box Change",
   kind: "boxChange",
-  data: { playerBox: _box6 },
+  data: { playerBox: _box8 },
 };
 
-const _box7 = getBox({
-  box: _box6,
+const _box9 = getBox({
+  box: _box8,
   update: {
     Azumarill: {
       item: "Pecha Berry",
@@ -467,7 +470,7 @@ export const mtMoonArcherBattle: Moment = {
   label: "Mt. Moon Archer Battle",
   kind: "battle",
   data: {
-    playerBox: _box7,
+    playerBox: _box9,
     opponentBox: mtMoonArcherBox,
     lines: [
       {
@@ -579,15 +582,16 @@ const _chewtle = {
   moves: ["Aqua Jet", "Bite"],
 };
 
+const _box10 = getBox({ box: _box9, add: [_chewtle] });
+
 export const ceruleanCityEncounter: Moment = {
   label: "Cerulean City Encounter",
   kind: "encounter",
-  data: { pokemon: _chewtle },
+  data: { pokemon: _chewtle, playerBox: _box10 },
 };
 
-const _box8 = getBox({
-  box: _box7,
-  add: [_chewtle],
+const _box11 = getBox({
+  box: _box10,
   cap: 28,
   update: {
     "Meowth-G": {
@@ -609,11 +613,11 @@ const _box8 = getBox({
 export const ceruleanCityBoxChange: Moment = {
   label: "Cerulean City Box Change",
   kind: "boxChange",
-  data: { playerBox: _box8 },
+  data: { playerBox: _box11 },
 };
 
-const _box9 = getBox({
-  box: _box8,
+const _box12 = getBox({
+  box: _box11,
   update: {
     Azumarill: {
       item: "Sitrus Berry",
@@ -651,7 +655,7 @@ export const ceruleanCityRivalBattle: Moment = {
   label: "Cerulean City Rival Battle",
   kind: "battle",
   data: {
-    playerBox: _box9,
+    playerBox: _box12,
     opponentBox: ceruleanCityRivalBox,
     lines: [
       {
@@ -1103,8 +1107,8 @@ export const ceruleanCityRivalBattle: Moment = {
   },
 };
 
-const _box10 = getBox({
-  box: _box9,
+const _box13 = getBox({
+  box: _box12,
   update: [
     {
       Houndour: {
@@ -1123,16 +1127,16 @@ const _box10 = getBox({
 export const ceruleanCityRivalBoxChange: Moment = {
   label: "Cerulean City Rival Box Change",
   kind: "boxChange",
-  data: { playerBox: _box10 },
+  data: { playerBox: _box13 },
 };
 
-const _box11 = getBox({ box: _box10, team: ["Houndoom", "Drednaw"] });
+const _box14 = getBox({ box: _box13, team: ["Houndoom", "Drednaw"] });
 
 export const nuggetBridgeBugCatcherCaleBattle: Moment = {
   label: "Nugget Bridge Bug Catcher Cale Battle",
   kind: "battle",
   data: {
-    playerBox: _box11,
+    playerBox: _box14,
     opponentBox: nuggetBridgeBugCatcherCaleBox,
     lines: [
       {
@@ -1166,8 +1170,8 @@ export const nuggetBridgeBugCatcherCaleBattle: Moment = {
   },
 };
 
-const _box12 = getBox({
-  box: _box11,
+const _box15 = getBox({
+  box: _box14,
   update: {
     Azumarill: {
       nature: "Adamant",
@@ -1184,7 +1188,7 @@ export const nuggetBridgeLassAliBattle: Moment = {
   label: "Nugget Bridge Lass Ali Battle",
   kind: "battle",
   data: {
-    playerBox: _box12,
+    playerBox: _box15,
     opponentBox: nuggetBridgeLassAliBox,
     lines: [
       {
@@ -1217,13 +1221,13 @@ export const nuggetBridgeLassAliBattle: Moment = {
   },
 };
 
-const _box13 = getBox({ box: _box12, team: ["Houndoom", "Perrserker"] });
+const _box16 = getBox({ box: _box15, team: ["Houndoom", "Perrserker"] });
 
 export const nuggetBridgeYoungsterTimmyBattle: Moment = {
   label: "Nugget Bridge Youngster Timmy Battle",
   kind: "battle",
   data: {
-    playerBox: _box13,
+    playerBox: _box16,
     opponentBox: nuggetBridgeYoungsterTimmyBox,
     lines: [
       {
@@ -1257,8 +1261,8 @@ export const nuggetBridgeYoungsterTimmyBattle: Moment = {
   },
 };
 
-const _box14 = getBox({
-  box: _box13,
+const _box17 = getBox({
+  box: _box16,
   update: {
     Magikarp: {
       name: "Gyarados",
@@ -1271,11 +1275,11 @@ const _box14 = getBox({
 export const nuggetBridgeYoungsterTimmyBoxChange: Moment = {
   label: "Nugget Bridge Youngster Timmy Box Change",
   kind: "boxChange",
-  data: { playerBox: _box14 },
+  data: { playerBox: _box17 },
 };
 
-const _box15 = getBox({
-  box: _box14,
+const _box18 = getBox({
+  box: _box17,
   update: {
     Perrserker: {
       item: "Cheri Berry",
@@ -1299,7 +1303,7 @@ export const nuggetBridgeLassReliBattle: Moment = {
   label: "Nugget Bridge Lass Reli Battle",
   kind: "battle",
   data: {
-    playerBox: _box15,
+    playerBox: _box18,
     opponentBox: nuggetBridgeLassReliBox,
     lines: [
       {
@@ -1374,8 +1378,8 @@ export const nuggetBridgeLassReliBattle: Moment = {
   },
 };
 
-const _box16 = getBox({
-  box: _box15,
+const _box19 = getBox({
+  box: _box18,
   update: {
     Houndoom: {
       item: "Wise Glasses",
@@ -1388,7 +1392,7 @@ export const nuggetBridgeCamperEthanBattle: Moment = {
   label: "Nugget Bridge Camper Ethan Battle",
   kind: "battle",
   data: {
-    playerBox: _box16,
+    playerBox: _box19,
     opponentBox: nuggetBridgeCamperEthanBox,
     lines: [
       {
@@ -1449,8 +1453,8 @@ export const nuggetBridgeCamperEthanBattle: Moment = {
   },
 };
 
-const _box17 = getBox({
-  box: _box16,
+const _box20 = getBox({
+  box: _box19,
   update: {
     "Yamask-G": {
       moves: ["Disable", "Haze", "Rock Tomb", "Shadow Sneak"],
@@ -1474,7 +1478,7 @@ export const nuggetBridgeGruntBattle: Moment = {
   label: "Nugget Bridge Grunt Battle",
   kind: "battle",
   data: {
-    playerBox: _box17,
+    playerBox: _box20,
     opponentBox: nuggetBridgeGruntBox,
     lines: [
       {
@@ -1591,12 +1595,14 @@ const _charcadet = {
   moves: ["Clear Smog", "Ember", "Fire Spin", "Leer"],
 };
 
-const _box18 = getBox({ box: _box17, team: ["Houndoom"] });
+const _box21 = getBox({ box: _box20, team: ["Houndoom"] });
+
+const _box22 = getBox({ box: _box21, add: [_charcadet] });
 
 export const route24Encounter: Moment = {
   label: "Route 24 Encounter",
   kind: "encounter",
-  data: { pokemon: _charcadet, playerBox: _box18 },
+  data: { pokemon: _charcadet, playerBox: _box22, showPlayerTeam: true },
 };
 
 const _chinchou = {
@@ -1604,15 +1610,16 @@ const _chinchou = {
   moves: ["Bubble", "Supersonic"],
 };
 
+const _box23 = getBox({ box: _box22, add: [_chinchou] });
+
 export const route25Encounter: Moment = {
   label: "Route 25 Encounter",
   kind: "encounter",
-  data: { pokemon: _chinchou },
+  data: { pokemon: _chinchou, playerBox: _box23 },
 };
 
-const _box19 = getBox({
-  box: _box18,
-  add: [_charcadet, _chinchou],
+const _box24 = getBox({
+  box: _box23,
   update: {
     Azumarill: {
       item: "Pixie Plate",
@@ -1640,7 +1647,7 @@ export const digHouseGruntBattle: Moment = {
   label: "Dig House Grunt Battle",
   kind: "battle",
   data: {
-    playerBox: _box19,
+    playerBox: _box24,
     opponentBox: digHouseGruntBox,
     lines: [
       {
@@ -1734,12 +1741,14 @@ const _growlitheH = {
   moves: ["Flame Wheel", "Helping Hand", "Leer", "Odor Sleuth"],
 };
 
-const _box20 = getBox({ box: _box19, team: ["Houndoom"] });
+const _box25 = getBox({ box: _box24, team: ["Houndoom"] });
+
+const _box26 = getBox({ box: _box25, add: [_growlitheH] });
 
 export const route5Encounter: Moment = {
   label: "Route 5 Encounter",
   kind: "encounter",
-  data: { pokemon: _growlitheH, playerBox: _box20 },
+  data: { pokemon: _growlitheH, playerBox: _box26, showPlayerTeam: true },
 };
 
 const _shellder = {
@@ -1747,15 +1756,16 @@ const _shellder = {
   moves: ["Tackle", "Water Gun"],
 };
 
+const _box27 = getBox({ box: _box26, add: [_shellder] });
+
 export const route6Encounter: Moment = {
   label: "Route 6 Encounter",
   kind: "encounter",
-  data: { pokemon: _shellder },
+  data: { pokemon: _shellder, playerBox: _box27 },
 };
 
-const _box21 = getBox({
-  box: _box20,
-  add: [_growlitheH, _shellder],
+const _box28 = getBox({
+  box: _box27,
   cap: 28,
   update: {
     Chinchou: {
@@ -1771,11 +1781,11 @@ const _box21 = getBox({
 export const route6BoxChange: Moment = {
   label: "Route 6 Box Change",
   kind: "boxChange",
-  data: { playerBox: _box21 },
+  data: { playerBox: _box28 },
 };
 
-const _box22 = getBox({
-  box: _box21,
+const _box29 = getBox({
+  box: _box28,
   update: {
     Kricketune: {
       nature: "Adamant",
@@ -1815,7 +1825,7 @@ export const ceruleanCityLeaderMistyBattle: Moment = {
   label: "Cerulean City Leader Misty Battle",
   kind: "battle",
   data: {
-    playerBox: _box22,
+    playerBox: _box29,
     opponentBox: ceruleanCityLeaderMistyBox,
     lines: [
       {
@@ -2008,18 +2018,18 @@ export const ceruleanCityLeaderMistyBattle: Moment = {
   },
 };
 
-const _box23 = getBox({
-  box: _box22,
+const _box30 = getBox({
+  box: _box29,
   remove: ["Kricketune"],
 });
 
 export const ceruleanCityLeaderMistyBoxChange: Moment = {
   label: "Cerulean City Leader Misty Box Change",
   kind: "boxChange",
-  data: { playerBox: _box23 },
+  data: { playerBox: _box30 },
 };
 
-export const box = _box23;
+export const box = _box30;
 
 export const moments: Moment[] = [
   mistyBoxChange,

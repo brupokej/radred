@@ -479,15 +479,16 @@ const _sprigatito = {
   moves: ["Scratch", "Tail Whip"],
 };
 
+const _box8 = getBox({ box: _box7, add: [_sprigatito] });
+
 export const starterEgg1Encounter: Moment = {
   label: "Starter Egg 1 Encounter",
   kind: "encounter",
-  data: { pokemon: _sprigatito },
+  data: { pokemon: _sprigatito, playerBox: _box8 },
 };
 
-const _box8 = getBox({
-  box: _box7,
-  add: [_sprigatito],
+const _box9 = getBox({
+  box: _box8,
   cap: { level: 56, exclude: ["Golisopod", "Jellicent"] },
   update: [
     {
@@ -507,11 +508,11 @@ const _box8 = getBox({
 export const starterEgg1BoxChange: Moment = {
   label: "Starter Egg 1 Box Change",
   kind: "boxChange",
-  data: { playerBox: _box8 },
+  data: { playerBox: _box9 },
 };
 
-const _box9 = getBox({
-  box: _box8,
+const _box10 = getBox({
+  box: _box9,
   update: {
     Perrserker: {
       moves: ["Fake Out", "Aerial Ace", "Thunderbolt", "U-Turn"],
@@ -537,7 +538,7 @@ export const pokemonTowerChannelerRuthBattle: Moment = {
   label: "Pokémon Tower Channeler Ruth Battle",
   kind: "battle",
   data: {
-    playerBox: _box9,
+    playerBox: _box10,
     opponentBox: pokemonTowerChannelerRuthBox,
     lines: [
       {
@@ -672,8 +673,8 @@ export const pokemonTowerChannelerRuthBattle: Moment = {
   },
 };
 
-const _box10 = getBox({
-  box: _box9,
+const _box11 = getBox({
+  box: _box10,
   update: {
     Meowscarada: {
       nature: "Impish",
@@ -689,7 +690,7 @@ export const pokemonTowerGhostBattle: Moment = {
   label: "Pokémon Tower Ghost Battle",
   kind: "battle",
   data: {
-    playerBox: _box10,
+    playerBox: _box11,
     opponentBox: pokemonTowerGhostBox,
     lines: [
       {
@@ -754,8 +755,8 @@ export const pokemonTowerGhostBattle: Moment = {
   },
 };
 
-const _box11 = getBox({
-  box: _box10,
+const _box12 = getBox({
+  box: _box11,
   update: {
     "Arcanine-H": {
       nature: "Adamant",
@@ -785,7 +786,7 @@ export const pokemonTowerGrunt1Battle: Moment = {
   label: "Pokémon Tower Grunt 1 Battle",
   kind: "battle",
   data: {
-    playerBox: _box11,
+    playerBox: _box12,
     opponentBox: pokemonTowerGrunt1Box,
     lines: [
       {
@@ -869,8 +870,8 @@ export const pokemonTowerGrunt1Battle: Moment = {
   },
 };
 
-const _box12 = getBox({
-  box: _box11,
+const _box13 = getBox({
+  box: _box12,
   update: {
     Excadrill: {
       nature: "Adamant",
@@ -898,7 +899,7 @@ export const pokemonTowerGrunt2Battle: Moment = {
   label: "Pokémon Tower Grunt 2 Battle",
   kind: "battle",
   data: {
-    playerBox: _box12,
+    playerBox: _box13,
     opponentBox: pokemonTowerGrunt2Box,
     lines: [
       {
@@ -988,8 +989,8 @@ export const pokemonTowerGrunt2Battle: Moment = {
   },
 };
 
-const _box13 = getBox({
-  box: _box12,
+const _box14 = getBox({
+  box: _box13,
   update: {
     Meowscarada: {
       item: "Muscle Band",
@@ -1012,7 +1013,7 @@ export const pokemonTowerGrunt3Battle: Moment = {
   label: "Pokémon Tower Grunt 3 Battle",
   kind: "battle",
   data: {
-    playerBox: _box13,
+    playerBox: _box14,
     opponentBox: pokemonTowerGrunt3Box,
     lines: [
       {
@@ -1151,14 +1152,16 @@ const _mudkip = {
   moves: ["Growl", "Tackle"],
 };
 
+const _box15 = getBox({ box: _box14, add: [_mudkip] });
+
 export const starterEgg2Encounter: Moment = {
   label: "Starter Egg 2 Encounter",
   kind: "encounter",
-  data: { pokemon: _mudkip },
+  data: { pokemon: _mudkip, playerBox: _box15 },
 };
 
-const _box14 = getBox({
-  box: _box13,
+const _box16 = getBox({
+  box: _box15,
   add: [_mudkip],
   update: {
     Azumarill: {
@@ -1170,11 +1173,11 @@ const _box14 = getBox({
 export const starterEgg2BoxChange: Moment = {
   label: "Starter Egg 2 Change",
   kind: "boxChange",
-  data: { playerBox: _box14 },
+  data: { playerBox: _box16 },
 };
 
-const _box15 = getBox({
-  box: _box14,
+const _box17 = getBox({
+  box: _box16,
   update: {
     Excadrill: {
       nature: "Jolly",
@@ -1214,7 +1217,7 @@ export const saffronDojoLeaderChuckBattle: Moment = {
   label: "Saffron Dojo Leader Chuck Battle",
   kind: "battle",
   data: {
-    playerBox: _box15,
+    playerBox: _box17,
     opponentBox: saffronDojoLeaderChuckBox,
     lines: [
       {
@@ -1510,8 +1513,8 @@ export const saffronDojoLeaderChuckBattle: Moment = {
   },
 };
 
-const _box16 = getBox({
-  box: _box15,
+const _box18 = getBox({
+  box: _box17,
   update: {
     Cloyster: {
       friend: true,
@@ -1522,11 +1525,11 @@ const _box16 = getBox({
 export const saffronDojoLeaderChuckBoxChange: Moment = {
   label: "Saffron Dojo Leader Chuck Box Change",
   kind: "boxChange",
-  data: { playerBox: _box16 },
+  data: { playerBox: _box18 },
 };
 
-const _box17 = getBox({
-  box: _box16,
+const _box19 = getBox({
+  box: _box18,
   update: {
     Meowscarada: {
       nature: "Brave",
@@ -1557,7 +1560,7 @@ export const silphCoRivalBattle: Moment = {
   label: "Silph Co. Rival Battle",
   kind: "battle",
   data: {
-    playerBox: _box17,
+    playerBox: _box19,
     opponentBox: silphCoRivalBox,
     lines: [
       {
@@ -1659,8 +1662,8 @@ export const silphCoRivalBattle: Moment = {
   },
 };
 
-const _box18 = getBox({
-  box: _box17,
+const _box20 = getBox({
+  box: _box19,
   update: {
     Jellicent: {
       level: 56,
@@ -1671,11 +1674,11 @@ const _box18 = getBox({
 export const silphCoRivalBoxChange: Moment = {
   label: "Silph Co. Rival Box Change",
   kind: "boxChange",
-  data: { playerBox: _box18 },
+  data: { playerBox: _box20 },
 };
 
-const _box19 = getBox({
-  box: _box18,
+const _box21 = getBox({
+  box: _box20,
   update: {
     Jellicent: {
       nature: "Modest",
@@ -1698,7 +1701,7 @@ export const silphCoArianaArcherBattle: Moment = {
   label: "Silph Co. Ariana & Archer Battle",
   kind: "battle",
   data: {
-    playerBox: _box19,
+    playerBox: _box21,
     opponentBox: silphCoArianaArcherBox,
     partnerBox: pokemonTrainerBrendanBox,
     lines: [
@@ -2368,19 +2371,19 @@ export const silphCoArianaArcherBattle: Moment = {
   },
 };
 
-const _box20 = getBox({
-  box: _box19,
+const _box22 = getBox({
+  box: _box21,
   cap: { level: 57, exclude: ["Golisopod"] },
 });
 
 export const silphCoArianaArcherBoxChange: Moment = {
   label: "Silph Co. Ariana & Archer Box Change",
   kind: "boxChange",
-  data: { playerBox: _box20 },
+  data: { playerBox: _box22 },
 };
 
-const _box21 = getBox({
-  box: _box20,
+const _box23 = getBox({
+  box: _box22,
   update: {
     Meowscarada: {
       nature: "Adamant",
@@ -2408,7 +2411,7 @@ export const silphCoGiovanniBattle: Moment = {
   label: "Silph Co. Giovanni Battle",
   kind: "battle",
   data: {
-    playerBox: _box21,
+    playerBox: _box23,
     opponentBox: silphCoGiovanniBox,
     lines: [
       {
@@ -2616,8 +2619,8 @@ export const silphCoGiovanniBattle: Moment = {
   },
 };
 
-const _box22 = getBox({
-  box: _box21,
+const _box24 = getBox({
+  box: _box23,
   cap: 59,
   update: [
     {
@@ -2640,11 +2643,11 @@ const _box22 = getBox({
 export const silphCoGiovanniBoxChange: Moment = {
   label: "Silph Co. Giovanni Box Change",
   kind: "boxChange",
-  data: { playerBox: _box22 },
+  data: { playerBox: _box24 },
 };
 
-const _box23 = getBox({
-  box: _box22,
+const _box25 = getBox({
+  box: _box24,
   update: {
     Golisopod: {
       nature: "Adamant",
@@ -2684,7 +2687,7 @@ export const saffronCityDumassKidBattle: Moment = {
   label: "Saffron City Dumass Kid Battle",
   kind: "battle",
   data: {
-    playerBox: _box23,
+    playerBox: _box25,
     opponentBox: saffronCityDumassKidBox,
     lines: [
       {
@@ -2800,8 +2803,8 @@ export const saffronCityDumassKidBattle: Moment = {
   },
 };
 
-const _box24 = getBox({
-  box: _box23,
+const _box26 = getBox({
+  box: _box25,
   remove: ["Cloyster"],
   update: {
     Perrserker: {
@@ -2830,11 +2833,11 @@ const _box24 = getBox({
 export const saffronCityDumassKidBoxChange: Moment = {
   label: "Saffron City Dumass Kid Box Change",
   kind: "boxChange",
-  data: { playerBox: _box24 },
+  data: { playerBox: _box26 },
 };
 
-const _box25 = getBox({
-  box: _box24,
+const _box27 = getBox({
+  box: _box26,
   update: {
     Lanturn: {
       ability: "Water Absorb",
@@ -2874,7 +2877,7 @@ export const saffronCityLeaderSabrinaBattle: Moment = {
   label: "Saffron City Leader Sabrina Battle",
   kind: "battle",
   data: {
-    playerBox: _box25,
+    playerBox: _box27,
     opponentBox: saffronCityLeaderSabrinaBox,
     lines: [
       {
@@ -3021,8 +3024,8 @@ export const saffronCityLeaderSabrinaBattle: Moment = {
   },
 };
 
-const _box26 = getBox({
-  box: _box25,
+const _box28 = getBox({
+  box: _box27,
   update: {
     Perrserker: {
       ivs: { spe: 31 },
@@ -3046,10 +3049,10 @@ const _box26 = getBox({
 export const saffronCityLeaderSabrinaBoxChange: Moment = {
   label: "Saffron City Leader Sabrina Box Change",
   kind: "boxChange",
-  data: { playerBox: _box26 },
+  data: { playerBox: _box28 },
 };
 
-export const box = _box26;
+export const box = _box28;
 
 export const moments: Moment[] = [
   sabrinaBoxChange,
