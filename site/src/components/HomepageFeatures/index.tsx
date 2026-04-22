@@ -12,12 +12,12 @@ type FeatureItem = {
 
 const FeatureList: FeatureItem[] = [
   {
-    title: "Turn-by-Turn Walkthrough",
+    title: "Step-by-Step Walkthrough",
     img: "feature-team",
     description: (
       <>
-        Catches, box changes, and exact movesets for every fight from Brock to the Elite Four. Each
-        section covers the full route to the next badge with nothing left to improvise.
+        Encounters, teams, and movesets for each important moment in the game. Highlighted
+        areas show exactly what to update before moving on.
       </>
     ),
   },
@@ -26,8 +26,8 @@ const FeatureList: FeatureItem[] = [
     img: "feature-battle",
     description: (
       <>
-        All battle plans are built for 1DR: one death equals reset. Every line is built to minimize
-        branching and keep risk as low as possible, even in the Elite Four.
+        All battle plans are structured for 1DR: one death equals reset. Lines minimize
+        branching and risk as much as possible, even in the Elite Four.
       </>
     ),
   },
@@ -36,8 +36,8 @@ const FeatureList: FeatureItem[] = [
     img: "feature-stats",
     description: (
       <>
-        Battle appearances and frags are automatically tracked throughout the guide. Browse the full
-        stats in the Team page or on the Twitch stream overlays.
+        Battle appearances and frags are automatically tracked throughout the guide. Browse full
+        stats on the Team page or the Twitch stream overlays.
       </>
     ),
   },
@@ -49,7 +49,11 @@ function Feature({ title, img, description }: FeatureItem) {
     <div className={clsx("col col--4")}>
       <div className={styles.featureContent}>
         <div className={styles.featureImgWrapper}>
-          <img src={`/radred/img/${img}-${colorMode}.png`} alt={title} className={styles.featureImg} />
+          <img
+            src={`/radred/img/${img}-${colorMode}.png`}
+            alt={title}
+            className={styles.featureImg}
+          />
         </div>
         <div className="text--center padding-horiz--md">
           <Heading as="h3">{title}</Heading>

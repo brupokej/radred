@@ -9,7 +9,11 @@ const SNAPSHOT_DIR = path.join(__dirname, "snapshots/guide.spec.ts-snapshots");
 const SNAPSHOT_SUFFIX = `desktop-${process.platform}`;
 const seenSnapshots = new Set<string>();
 
-async function expectSnapshot(target: Locator | Page, filename: string, options?: Object) {
+async function expectSnapshot(
+  target: Locator | Page,
+  filename: string,
+  options?: Record<string, unknown>
+) {
   seenSnapshots.add(filename.replace(/\.png$/, `-${SNAPSHOT_SUFFIX}.png`));
   await expect.soft(target).toHaveScreenshot([filename], { ...options });
 }
@@ -131,7 +135,7 @@ async function getFeatureSnapshot(
 
     const filename = slugify([...parts, featureIndex.value++]).replace(/battle|table/g, "feature");
     await expectSnapshot(page, `${filename}.png`, {
-      clip: { x: box.x + 4, y: box.y + 62, width: 468, height: 310 },
+      clip: { x: box.x + 4, y: box.y + 61, width: 468, height: 314 },
     });
 
     if (["all", "changed"].includes(test.info().config.updateSnapshots)) {
@@ -141,7 +145,7 @@ async function getFeatureSnapshot(
     }
   }
 
-  await styleTag.evaluate((el) => el.remove());
+  await styleTag.evaluate((el) => (el as HTMLElement).remove());
   await loc.evaluate((el) => el.removeAttribute("data-feature"));
   await page.evaluate(() => {
     localStorage.removeItem("stats-moment");
@@ -149,8 +153,8 @@ async function getFeatureSnapshot(
   });
 }
 
-const FEATURES: { heading: string; summary: string; imgName: string }[] = [
-  { heading: "Celadon City Leader Erika Battle", summary: "Player Team", name: "team" },
+const FEATURES: { heading: string; summary: string; name: string }[] = [
+  { heading: "Rocket Hideout Right Guard Battle", summary: "Player Team", name: "team" },
   { heading: "Silph Co. Ariana & Archer Battle", summary: "Battle Plan", name: "battle" },
   { heading: "Percents Table", summary: "Pokémon Data", name: "stats" },
 ];
