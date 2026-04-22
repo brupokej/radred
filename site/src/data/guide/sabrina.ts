@@ -1162,7 +1162,6 @@ export const starterEgg2Encounter: Moment = {
 
 const _box16 = getBox({
   box: _box15,
-  add: [_mudkip],
   update: {
     Azumarill: {
       friend: true,

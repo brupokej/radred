@@ -18,9 +18,7 @@ function withLocalAttempt(data: RelayState): RelayState {
 }
 
 export function useRelayState(): RelayState | null {
-  const [state, setState] = useState<RelayState | null>(() =>
-    typeof window !== "undefined" ? readLocalState() : null
-  );
+  const [state, setState] = useState<RelayState | null>(null);
   useEffect(() => {
     const localState = readLocalState;
     if (process.env.NODE_ENV !== "development") {

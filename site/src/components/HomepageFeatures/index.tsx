@@ -24,7 +24,7 @@ const FeatureList: FeatureItem[] = [
     title: "Live Stats & Overlays",
     description: (
       <>
-        Frags and battle appearances are automatically tracked throughout the guide. Browse the full
+        Battle appearances and frags are automatically tracked throughout the guide. Browse the full
         stats in the Team sheet or on the Twitch stream overlays.
       </>
     ),

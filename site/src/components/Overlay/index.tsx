@@ -39,6 +39,8 @@ function OverlayCanvas({ children }: { children: ReactNode }) {
         height: 1080,
         overflow: "hidden",
         background: "transparent",
+        fontFamily: '"Open Sans Bold", sans-serif',
+        color: "var(--overlay-white)",
       }}
     >
       {children}
@@ -312,8 +314,6 @@ function useFadedBadges(liveBadges: Partial<Record<BadgeName, true>>) {
 
 export default function OverlayOne() {
   const liveState = useRelayState();
-  const logoSrc = useBaseUrl("/img/logo.png");
-  const runningSrc = useBaseUrl("/img/running.gif");
   const barSrc = useBaseUrl("/img/bar.png");
   const imgBase = useBaseUrl("/img/");
   const badgesBgSrc = useBaseUrl("/img/badges.png");
@@ -333,9 +333,6 @@ export default function OverlayOne() {
       <div className={styles.gameFrame} />
       <div className={styles.cameraFrame} style={{ background: "var(--overlay-dark-gray)" }} />
       <div className={styles.bannerStrip} />
-      <img className={`${styles.logo} ${styles.shadow}`} width={92} src={logoSrc} alt="" />
-      <div className={`${styles.title} ${styles.shadow}`}>Radical Red 4.1 Hardcore Mode</div>
-      <img className={`${styles.runner} ${styles.shadow}`} width={84} src={runningSrc} alt="" />
       <div className={styles.statsFrame} style={{ background: "var(--overlay-dark-gray)" }} />
       <div className={styles.rightPanel}>
         <div
@@ -389,9 +386,22 @@ export default function OverlayOne() {
   );
 }
 
-// ---- Overlays Two–Six ----
-
 export function OverlayTwo() {
+  const logoSrc = useBaseUrl("/img/logo.png");
+  const runningSrc = useBaseUrl("/img/running.gif");
+
+  return (
+    <OverlayCanvas>
+      <img className={`${styles.logo} ${styles.shadow}`} width={92} src={logoSrc} alt="" />
+      <div className={`${styles.title} ${styles.shadow}`}>Radical Red 4.1 Hardcore Mode</div>
+      <img className={`${styles.runner} ${styles.shadow}`} width={84} src={runningSrc} alt="" />
+    </OverlayCanvas>
+  );
+}
+
+// ---- Overlays Three-Seven ----
+
+export function OverlayThree() {
   const cameraSrc = useBaseUrl("/img/brupokej-overlay.png");
   return (
     <OverlayCanvas>
@@ -418,7 +428,7 @@ function topBattlersToSlots(battlers: TopBattler[]): OverlayPanelSlot[] {
   return [...entries, ...Array(Math.max(0, 6 - entries.length)).fill(null)].slice(0, 6);
 }
 
-export function OverlayThree() {
+export function OverlayFour() {
   const liveState = useRelayState();
   const [cycleView, setCycleView] = useState(0);
 
@@ -460,7 +470,7 @@ export function OverlayThree() {
   );
 }
 
-export function OverlayFour() {
+export function OverlayFive() {
   const liveState = useRelayState();
   const { title, slots, visible } = useOpponent(liveState);
   return (
@@ -478,7 +488,7 @@ export function OverlayFour() {
   );
 }
 
-export function OverlayFive() {
+export function OverlaySix() {
   const liveState = useRelayState();
   const { title, slots, visible } = useOpponent(liveState);
   return (
@@ -497,7 +507,7 @@ export function OverlayFive() {
   );
 }
 
-export function OverlaySix() {
+export function OverlaySeven() {
   const liveState = useRelayState();
   const { title, slots, visible } = useOpponent(liveState);
   return (
