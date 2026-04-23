@@ -226,8 +226,7 @@ for (const [pathIndex, path] of PATHS.entries()) {
 test.afterAll(() => {
   if (!["all", "changed"].includes(test.info().config.updateSnapshots)) return;
   if (!fs.existsSync(SNAPSHOT_DIR)) return;
-  const staleSnapshots = fs
-    .readdirSync(SNAPSHOT_DIR)
-    .filter((f) => f.endsWith(".png") && !seenSnapshots.has(f));
-  expect(staleSnapshots, "Snapshots must not be stale").toEqual([]);
+  fs.readdirSync(SNAPSHOT_DIR)
+    .filter((f) => f.endsWith(".png") && !seenSnapshots.has(f))
+    .forEach((f) => fs.unlinkSync(path.join(SNAPSHOT_DIR, f)));
 });

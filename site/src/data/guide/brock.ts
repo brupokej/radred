@@ -227,7 +227,7 @@ export const route22RivalBattle: Moment = {
               "Risk →",
               {
                 danger:
-                  "Snubbull Pow-Up Punch Wooper-P → Snubbull Pow-Up Punch Wooper-P → Snubbull Fire Fang Kricketune is {c:0.3%}",
+                  "Snubbull Pow-Up Punch Wooper-P → Snubbull Pow-Up Punch Wooper-P → Snubbull Fire Fang Kricketune → {c:0.3%}",
               },
             ],
             turns: [
@@ -508,7 +508,7 @@ export const viridianForestLassAnneBattle: Moment = {
         matchups: [
           {
             matchup: ["Clefairy"],
-            row: ["Risk →", { danger: "Clefairy Metronome Meowth-G (to 0) is {c:0.2%}" }],
+            row: ["Risk →", { danger: "Clefairy Metronome Meowth-G (to 0) → {c:0.2%}" }],
             turns: [
               [
                 { player: "{p:Meowth-G} Fake Out {o:Clefairy} to {-:34}" },
@@ -886,7 +886,7 @@ export const pewterCityLeaderBrockBattle: Moment = {
               "Risk →",
               {
                 danger:
-                  "Varoom Bulldoze Kricketune → Cacnea Pow-Up Punch Kricketune → Lileep Mega Drain Kricketune → Lileep Mega Drain Kricketune (to 0) is {c:0.001%}",
+                  "Varoom Bulldoze Kricketune → Cacnea Pow-Up Punch Kricketune → Lileep Mega Drain Kricketune → Lileep Mega Drain Kricketune (to 0) → {c:0.001%}",
               },
             ],
             turns: [
