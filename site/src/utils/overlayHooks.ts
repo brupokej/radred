@@ -1,5 +1,5 @@
 import { OverlayPanelSlot } from "@site/src/components/Overlay";
-import { resolveBox } from "@site/src/utils/box";
+import { findPokemon, resolveBox } from "@site/src/utils/box";
 import { deriveOpponentInfo, findMomentByLabel } from "@site/src/utils/overlayMeta";
 import { RELAY_HTTP, RELAY_WS, RelayState } from "@site/src/utils/overlayRelay";
 import { resolvePokemon } from "@site/src/utils/pokemon";
@@ -95,7 +95,7 @@ export function useOpponent(liveState: RelayState | null): {
     const info = displayed.info;
     if (!info) return Array(6).fill(null) as OverlayPanelSlot[];
     const resolved = resolveBox(info.box);
-    const team = (info.box.team ?? []).map((name) => resolved.get(name) ?? null);
+    const team = (resolved.team ?? []).map((name) => findPokemon(resolved, name) ?? null);
     const entries: OverlayPanelSlot[] = team.map((p) =>
       p ? { pokemon: resolvePokemon(p) } : null
     );

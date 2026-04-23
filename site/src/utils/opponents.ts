@@ -1,7 +1,8 @@
 import { getBox } from "@site/src/utils/box";
 import { PokemonData } from "@site/src/utils/pokemon";
 
-const getOpponentBox = (add: PokemonData[], team?: string[]) => getBox({ add, team });
+const getOpponentBox = (add: PokemonData[], team?: string[]) =>
+  getBox({ add, team: team ?? add.map((p) => p.name) });
 
 export const route22RivalBox = getOpponentBox([
   {

@@ -1,14 +1,14 @@
 import Card from "@site/src/components/Card";
 import { ScrollFade } from "@site/src/components/ScrollFade";
 import { SPRITE_COLORS } from "@site/src/data/spriteColors";
-import { resolveBox } from "@site/src/utils/box";
+import { getCanon, resolveBox } from "@site/src/utils/box";
 import { Moment } from "@site/src/utils/moments";
 import { resolvePokemon } from "@site/src/utils/pokemon";
 import { computeBattleFrags } from "@site/src/utils/stats";
 import { useStorageState } from "@site/src/utils/storage";
 import { LIVE_MOMENT_DEFAULT } from "@site/src/utils/storageDefaults";
 import { AnimatePresence, motion } from "framer-motion";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import styles from "./styles.module.css";
 
 const TOP_N = 8;
@@ -49,25 +49,33 @@ export default function BarRace({
 }) {
   const { value: liveMomentLabel } = useStorageState("live-moment");
   const effectiveLabel = liveMomentLabel ?? LIVE_MOMENT_DEFAULT;
-  const idx = moments.findIndex((m) => m.label === effectiveLabel);
-  if (idx >= 0) moments = moments.slice(0, idx + 1);
+
+  const slicedMoments = useMemo(() => {
+    const idx = moments.findIndex((m) => m.label === effectiveLabel);
+    return idx >= 0 ? moments.slice(0, idx + 1) : moments;
+  }, [moments, effectiveLabel]);
+
   const battleMoments = useMemo(
-    () => moments.filter((m): m is Extract<Moment, { kind: "battle" }> => m.kind === "battle"),
-    [moments]
+    () =>
+      slicedMoments.filter((m): m is Extract<Moment, { kind: "battle" }> => m.kind === "battle"),
+    [slicedMoments]
   );
 
-  const renames = useMemo(() => {
-    const last = battleMoments[battleMoments.length - 1];
-    return last?.data.playerBox.renames ?? {};
-  }, [battleMoments]);
-
-  const canon = useCallback((name: string) => renames[name] ?? name, [renames]);
+  const canon = useMemo(() => {
+    for (let i = moments.length - 1; i >= 0; i--) {
+      const m = moments[i];
+      if (m.kind === "battle" || m.kind === "encounter") {
+        return getCanon(resolveBox(m.data.playerBox));
+      }
+    }
+    return getCanon(null);
+  }, [moments]);
 
   const boxOrderMap = useMemo(() => {
     const map: Record<string, number> = {};
     const last = battleMoments[battleMoments.length - 1];
     if (!last) return map;
-    for (const [, pokemon] of resolveBox(last.data.playerBox)) {
+    for (const pokemon of resolveBox(last.data.playerBox).pokemon) {
       const p = resolvePokemon(pokemon);
       const key = canon(p.name);
       if (p.boxOrder !== undefined) map[key] = p.boxOrder;
@@ -80,18 +88,17 @@ export default function BarRace({
 
     const running: Record<string, number> = {};
 
-    const snapshotBox = (
-      playerBox: (typeof battleMoments)[0]["data"]["playerBox"]
+    const snapshotResolved = (
+      resolved: ReturnType<typeof resolveBox>
     ): {
       active: string[];
       display: Record<string, FrameEntry>;
     } => {
-      const resolved = resolveBox(playerBox);
       const display: Record<string, FrameEntry> = {};
-      for (const [name, pokemon] of resolved) {
-        const key = canon(name);
+      for (const pokemon of resolved.pokemon) {
         const p = resolvePokemon(pokemon);
-        display[key] = { name, spriteKey: p.spriteKey };
+        const key = canon(p.name);
+        display[key] = { name: p.name, spriteKey: p.spriteKey };
       }
       const active = Object.keys(display).sort(
         (a, b) => (boxOrderMap[a] ?? Infinity) - (boxOrderMap[b] ?? Infinity)
@@ -100,8 +107,8 @@ export default function BarRace({
     };
 
     // Frame 0: box state at the first battle, all values 0
-    const { active: initialActive, display: initialDisplay } = snapshotBox(
-      battleMoments[0].data.playerBox
+    const { active: initialActive, display: initialDisplay } = snapshotResolved(
+      resolveBox(battleMoments[0].data.playerBox)
     );
     const result: Frame[] = [
       {
@@ -113,19 +120,21 @@ export default function BarRace({
     ];
 
     for (const m of battleMoments) {
+      const resolved = resolveBox(m.data.playerBox);
+
       if (metric === "frags") {
         for (const [p, c] of Object.entries(computeBattleFrags(m.data))) {
           const key = canon(p);
           running[key] = (running[key] ?? 0) + c;
         }
       } else {
-        for (const name of m.data.playerBox.team) {
+        for (const name of resolved.team ?? []) {
           const key = canon(name);
           running[key] = (running[key] ?? 0) + 1;
         }
       }
 
-      const { active, display } = snapshotBox(m.data.playerBox);
+      const { active, display } = snapshotResolved(resolved);
       result.push({
         label: m.label,
         values: Object.fromEntries(active.map((n) => [n, running[n] ?? 0])),

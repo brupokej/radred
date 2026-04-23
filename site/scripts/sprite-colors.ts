@@ -1,7 +1,7 @@
 import { writeFileSync } from "fs";
 import { Jimp } from "jimp";
 import { box } from "../src/data/guide/koga";
-import { resolveBox } from "../src/utils/box";
+import { getCanon, resolveBox } from "../src/utils/box";
 import { resolvePokemon } from "../src/utils/pokemon";
 
 const SPRITE_BASE = "https://raw.githubusercontent.com/Autumnchi/coloured-home-sprites/main/";
@@ -76,16 +76,16 @@ function dominantColor(pixels: Buffer): string {
   return `rgb(${r},${g},${b})`;
 }
 
-const renames = box.renames ?? {};
-const canon = (name: string) => renames[name] ?? name;
+const resolvedBox = resolveBox(box);
+const canon = getCanon(resolvedBox);
 
 const entries: { canonName: string; spriteKey?: string }[] = [];
 const seen = new Set<string>();
-for (const [name, pokemon] of resolveBox(box)) {
-  const canonName = canon(name);
+for (const pokemon of resolvedBox.pokemon) {
+  const p = resolvePokemon(pokemon);
+  const canonName = canon(p.name);
   if (seen.has(canonName)) continue;
   seen.add(canonName);
-  const p = resolvePokemon(pokemon);
   entries.push({ canonName, spriteKey: p.spriteKey });
 }
 entries.sort((a, b) => a.canonName.localeCompare(b.canonName));

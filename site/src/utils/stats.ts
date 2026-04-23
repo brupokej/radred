@@ -1,5 +1,5 @@
 import { BattleData } from "@site/src/components/Battle";
-import { resolveBox } from "@site/src/utils/box";
+import { getCanon, resolveBox } from "@site/src/utils/box";
 import { resolvePokemon } from "@site/src/utils/pokemon";
 import { slugify } from "@site/src/utils/slugify";
 import { getState } from "@site/src/utils/storage";
@@ -81,12 +81,12 @@ function resolvePageMeta(pages: { label: string; battles: BattleData[] }[]): {
 } {
   const allBattles = pages.flatMap((p) => p.battles);
   const lastBattle = allBattles[allBattles.length - 1];
-  const renames = lastBattle.playerBox.renames ?? {};
-  const canon = (name: string) => renames[name] ?? name;
+  const resolvedLast = resolveBox(lastBattle.playerBox);
+  const canon = getCanon(resolvedLast);
 
   const spriteKeyMap: Record<string, string> = {};
   const boxOrderMap: Record<string, number> = {};
-  for (const [, pokemon] of resolveBox(lastBattle.playerBox)) {
+  for (const pokemon of resolvedLast.pokemon) {
     const p = resolvePokemon(pokemon);
     const key = canon(p.name);
     if (p.spriteKey) spriteKeyMap[key] = p.spriteKey;
@@ -117,7 +117,7 @@ export function computePageStats(
 
   for (const { label, battles } of pages) {
     for (const battle of battles) {
-      for (const name of battle.playerBox.team) {
+      for (const name of resolveBox(battle.playerBox).team ?? []) {
         const key = canon(name);
         if (!totals[key]) {
           totals[key] = { total: 0, byPage: {}, boxOrder: boxOrderMap[key] ?? Infinity };
@@ -171,27 +171,22 @@ export type PokemonStats = {
 
 export function computeStats(battles: BattleData[]): Record<string, PokemonStats> {
   const lastBattle = battles[battles.length - 1];
-  const renames = lastBattle?.playerBox.renames ?? {};
-  const canon = (name: string) => renames[name] ?? name;
+  const resolvedLast = lastBattle ? resolveBox(lastBattle.playerBox) : { pokemon: [] };
+  const canon = getCanon(resolvedLast);
 
   const spriteKeyMap: Record<string, string> = {};
   const boxOrderMap: Record<string, number> = {};
-  for (const [, pokemon] of resolveBox(
-    lastBattle?.playerBox ?? { base: [], changes: [], team: [] }
-  )) {
+  for (const pokemon of resolvedLast.pokemon) {
     const p = resolvePokemon(pokemon);
     const key = canon(p.name);
     if (p.spriteKey) spriteKeyMap[key] = p.spriteKey;
     if (p.boxOrder !== undefined) boxOrderMap[key] = p.boxOrder;
   }
 
-  // Find the first battle index where each canonical pokemon appeared in the player box.
-  // Use resolveBox (base + changes) so pokemon added via BoxChange.add are detected in
-  // the same battle they were added, not deferred to the next box snapshot.
   const firstAppearance: Record<string, number> = {};
   for (let i = 0; i < battles.length; i++) {
-    for (const name of resolveBox(battles[i].playerBox).keys()) {
-      const key = canon(name);
+    for (const pokemon of resolveBox(battles[i].playerBox).pokemon) {
+      const key = canon(resolvePokemon(pokemon).name);
       if (!(key in firstAppearance)) firstAppearance[key] = i;
     }
   }
@@ -199,7 +194,7 @@ export function computeStats(battles: BattleData[]): Record<string, PokemonStats
   const totals: Record<string, PokemonStats> = {};
 
   for (const battle of battles) {
-    for (const name of battle.playerBox.team) {
+    for (const name of resolveBox(battle.playerBox).team ?? []) {
       const key = canon(name);
       const entry = totals[key] ?? {
         battles: 0,
@@ -231,7 +226,7 @@ export function computeStats(battles: BattleData[]): Record<string, PokemonStats
   // Compute possible battles/frags: for each battle, credit every pokemon whose
   // first appearance was at or before this battle index.
   for (let i = 0; i < battles.length; i++) {
-    const opponentCount = battles[i].opponentBox.team.length;
+    const opponentCount = resolveBox(battles[i].opponentBox).team?.length ?? 0;
     for (const [key, firstIdx] of Object.entries(firstAppearance)) {
       if (i < firstIdx) continue;
       const entry = totals[key] ?? {

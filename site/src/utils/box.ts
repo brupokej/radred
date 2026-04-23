@@ -1,90 +1,92 @@
-import { Pokemon, PokemonData, Stats, resolvePokemon } from "@site/src/utils/pokemon";
+import { Pokemon, PokemonData, resolvePokemon } from "@site/src/utils/pokemon";
 
-type BoxChange =
-  | { type: "remove"; names: string[] }
-  | { type: "add"; pokemon: Record<string, Pokemon> }
-  | { type: "cap"; level: number; exclude?: string[] }
-  | { type: "update"; changes: Record<string, Partial<PokemonData>> };
+export type PartialPokemonData = { name: string } & Partial<Omit<PokemonData, "name">>;
 
-export interface Box {
-  base: PokemonData[];
-  changes: BoxChange[];
-  team: string[];
+export interface BoxData {
+  pokemon: Pokemon[];
+  team?: string[];
   extraTeam?: string[];
   renames?: Record<string, string>;
   removed?: string[];
 }
 
-// Replays changes on top of base, returning the live state as a Map.
-// Handles renames: delete old name, set new name.
-// Clears `update` for pokemon not touched in a change, so stale highlights don't carry forward.
-function replayBox(box: Box, version: number): Map<string, Pokemon> {
-  const state = new Map<string, Pokemon>();
+export interface PartialBoxData {
+  pokemon?: PartialPokemonData[];
+  cap?: { level: number; exclude?: string[] };
+  renames?: Record<string, string>;
+  removed?: string[];
+}
 
-  for (const data of box.base) {
-    state.set(data.name, { base: data });
+export interface Box {
+  base: BoxData;
+  updates?: PartialBoxData[];
+}
+
+export function findPokemon(boxData: BoxData, name: string): Pokemon | undefined {
+  return boxData.pokemon.find((p) => resolvePokemon(p).name === name);
+}
+
+export function getCanon(boxData: BoxData): (name: string) => string {
+  const renames = boxData.renames ?? {};
+  const canon = (name: string): string => (renames[name] ? canon(renames[name]) : name);
+  return canon;
+}
+
+function applyStep(working: BoxData, step: PartialBoxData): BoxData {
+  let pokemon = [...working.pokemon];
+  const renames = { ...(working.renames ?? {}) };
+  const removed = [...(working.removed ?? [])];
+
+  if (step.removed?.length) {
+    removed.push(...step.removed);
   }
 
-  for (let i = 0; i < version; i++) {
-    const change = box.changes[i];
-    if (change.type === "remove") {
-      // removal is preserved in `changes` for BoxChange rendering but not applied
-      // to state, so removed pokemon retain their boxOrder and stay in the resolved map
-    } else if (change.type === "add") {
-      for (const [name, pokemon] of Object.entries(change.pokemon)) {
-        state.set(name, pokemon);
-      }
-    } else if (change.type === "cap") {
-      const excludeSet = new Set([...(change.exclude ?? []), ...(box.removed ?? [])]);
-      const touched = new Set<string>();
-      for (const [name, current] of state) {
-        if (!excludeSet.has(name) && resolvePokemon(current).level !== change.level) {
-          state.set(name, {
-            base: resolvePokemon(current),
-            update: { level: change.level },
-          });
-          touched.add(name);
-        }
-      }
-      for (const [name, current] of state) {
-        if (!touched.has(name) && current.update !== undefined) {
-          state.set(name, {
-            base: { ...current.base, ...current.update },
-            update: undefined,
-          });
-        }
-      }
-    } else if (change.type === "update") {
-      const touched = new Set<string>();
-      for (const [name, changes] of Object.entries(change.changes)) {
-        const current = state.get(name);
-        if (current) {
-          const updated: Pokemon = {
-            base: resolvePokemon(current),
-            update: changes,
-          };
-          const updatedName = resolvePokemon(updated).name;
-          state.delete(name);
-          state.set(updatedName, updated);
-          touched.add(updatedName);
-        }
-      }
-      for (const [name, current] of state) {
-        if (!touched.has(name) && current.update !== undefined) {
-          state.set(name, {
-            base: { ...current.base, ...current.update },
-            update: undefined,
-          });
-        }
-      }
+  if (step.renames) {
+    pokemon = pokemon.map((p) => {
+      const currentName = resolvePokemon(p).name;
+      const newName = step.renames![currentName];
+      return newName ? { ...p, update: { ...p.update, name: newName } } : p;
+    });
+    for (const [old, newName] of Object.entries(step.renames)) {
+      renames[old] = newName;
     }
   }
 
-  return state;
+  if (step.cap) {
+    const excludeSet = new Set([...(step.cap.exclude ?? []), ...removed]);
+    pokemon = pokemon.map((p) => {
+      const current = resolvePokemon(p);
+      return !excludeSet.has(current.name) && current.level !== step.cap!.level
+        ? { ...p, update: { ...p.update, level: step.cap!.level } }
+        : p;
+    });
+  }
+
+  if (step.pokemon?.length) {
+    const nameIndex = new Map(pokemon.map((p, i) => [resolvePokemon(p).name, i]));
+    const result = [...pokemon];
+    for (const { name, ...partial } of step.pokemon) {
+      const idx = nameIndex.get(name);
+      if (idx !== undefined) {
+        const existing = result[idx];
+        result[idx] = { ...existing, update: { ...existing.update, ...partial } };
+      } else {
+        result.push({ base: { name, ...partial } as PokemonData });
+      }
+    }
+    pokemon = result;
+  }
+
+  return {
+    ...working,
+    pokemon,
+    renames: Object.keys(renames).length ? renames : undefined,
+    removed: removed.length ? removed : undefined,
+  };
 }
 
-function stateToBase(state: Map<string, Pokemon>): PokemonData[] {
-  return [...state.values()].map(resolvePokemon);
+export function resolveBox(box: Box): BoxData {
+  return (box.updates ?? []).reduce(applyStep, box.base);
 }
 
 export function getBox({
@@ -104,184 +106,85 @@ export function getBox({
   team?: string[];
   extraTeam?: string[];
 }): Box {
-  const updates = Array.isArray(update) ? update : [update];
+  const updateSteps = Array.isArray(update) ? update : [update];
+  const rawResolved: BoxData = box ? resolveBox(box) : { pokemon: [] };
+  const resolvedBase: BoxData = {
+    ...rawResolved,
+    pokemon: rawResolved.pokemon.map((p) => ({ base: resolvePokemon(p) })),
+  };
+  const steps: PartialBoxData[] = [];
 
-  // Resolve the full current state from the input box without mutating it.
-  const inputResolved = box ?? { base: [], changes: [], team: [] };
-  const inputBase = stateToBase(replayBox(inputResolved, inputResolved.changes.length));
+  {
+    const step: PartialBoxData = {};
 
-  // Build changes on a local working state — never touches the input box.
-  const newChanges: BoxChange[] = [];
-  const working: Box = { base: inputBase, changes: newChanges, team: [] };
-
-  if (remove.length > 0) {
-    const state = replayBox(working, working.changes.length);
-    const validNames = remove.filter((name) => {
-      if (!state.has(name)) {
-        console.error(`getBox: "${name}" not found — skipping remove.`);
-        return false;
-      }
-      return true;
-    });
-    if (validNames.length > 0) {
-      newChanges.push({ type: "remove", names: validNames });
-    }
-  }
-
-  for (const data of add) {
-    const { name } = data;
-    const currentState = replayBox(working, working.changes.length);
-    if (currentState.has(name)) {
-      console.error(`getBox: "${name}" already exists — skipping add.`);
-      continue;
-    }
-    newChanges.push({
-      type: "add",
-      pokemon: { [name]: { base: { ...data, boxOrder: currentState.size } } },
-    });
-  }
-
-  if (cap !== undefined) {
-    const level = typeof cap === "number" ? cap : cap.level;
-    const exclude = typeof cap === "number" ? undefined : cap.exclude;
-    newChanges.push({ type: "cap", level, exclude });
-  }
-
-  for (const u of updates) {
-    const state = replayBox(working, working.changes.length);
-    const validChanges = Object.fromEntries(
-      Object.entries(u).filter(([name]) => {
-        if (!state.has(name)) {
-          console.error(`getBox: "${name}" not found — skipping.`);
+    if (remove.length) {
+      const valid = remove.filter((name) => {
+        if (!resolvedBase.pokemon.some((p) => resolvePokemon(p).name === name)) {
+          console.error(`getBox: "${name}" not found — skipping remove.`);
           return false;
         }
         return true;
-      })
-    );
-    newChanges.push({ type: "update", changes: validChanges });
+      });
+      if (valid.length) step.removed = valid;
+    }
+
+    if (add.length) {
+      const entries: PartialPokemonData[] = [];
+      let size = resolvedBase.pokemon.length;
+      for (const data of add) {
+        if (resolvedBase.pokemon.some((p) => resolvePokemon(p).name === data.name)) {
+          console.error(`getBox: "${data.name}" already exists — skipping add.`);
+          continue;
+        }
+        entries.push({ ...data, boxOrder: size++ });
+      }
+      if (entries.length) step.pokemon = entries;
+    }
+
+    if (cap !== undefined) {
+      const level = typeof cap === "number" ? cap : cap.level;
+      const exclude = typeof cap === "number" ? undefined : cap.exclude;
+      step.cap = exclude ? { level, exclude } : { level };
+    }
+
+    if (Object.keys(step).length) steps.push(step);
   }
 
-  const inferredTeam = [...replayBox(working, working.changes.length).keys()];
+  let working = steps.length ? applyStep(resolvedBase, steps[0]) : resolvedBase;
+  for (const u of updateSteps) {
+    if (!Object.keys(u).length) continue;
+    const stepRenames: Record<string, string> = {};
+    const stepPokemon: PartialPokemonData[] = [];
 
-  const accRenames: Record<string, string> = { ...(box?.renames ?? {}) };
-  for (const change of newChanges) {
-    if (change.type === "update") {
-      for (const [oldName, upd] of Object.entries(change.changes)) {
-        if (upd.name && upd.name !== oldName) {
-          for (const k of Object.keys(accRenames)) {
-            if (accRenames[k] === oldName) accRenames[k] = upd.name;
-          }
-          accRenames[oldName] = upd.name;
-        }
+    for (const [key, partial] of Object.entries(u)) {
+      if (!working.pokemon.some((p) => resolvePokemon(p).name === key)) {
+        console.error(`getBox: "${key}" not found — skipping update.`);
+        continue;
+      }
+      const { name: newName, ...rest } = partial;
+      if (newName && newName !== key) {
+        stepRenames[key] = newName;
+        stepPokemon.push({ name: newName, ...rest } as PartialPokemonData);
+      } else {
+        stepPokemon.push({ name: key, ...rest } as PartialPokemonData);
       }
     }
-  }
 
-  const accRemoved: string[] = [...(box?.removed ?? [])];
-  for (const change of newChanges) {
-    if (change.type === "remove") {
-      accRemoved.push(...change.names);
+    const step: PartialBoxData = {};
+    if (Object.keys(stepRenames).length) step.renames = stepRenames;
+    if (stepPokemon.length) step.pokemon = stepPokemon;
+    if (Object.keys(step).length) {
+      steps.push(step);
+      working = applyStep(working, step);
     }
   }
 
   return {
-    base: inputBase,
-    changes: newChanges,
-    team: team ?? box?.team ?? inferredTeam,
-    extraTeam: extraTeam,
-    renames: Object.keys(accRenames).length > 0 ? accRenames : undefined,
-    removed: accRemoved.length > 0 ? accRemoved : undefined,
+    base: {
+      ...resolvedBase,
+      team: team ?? resolvedBase.team,
+      extraTeam: extraTeam,
+    },
+    updates: steps.length ? steps : undefined,
   };
-}
-
-// Returns the fully resolved state of the box including all changes applied.
-// Used by components to resolve team names to Pokemon objects.
-export function resolveBox(box: Box): Map<string, Pokemon> {
-  return replayBox(box, box.changes.length);
-}
-
-// Returns rendering info for a cap change in a box, or null if not a cap.
-// `box.base` is the state before the cap, so pre-cap levels are read directly from it.
-// Used by BoxChange to render the summary rows.
-export function getLevelCap(
-  box: Box
-): { level: number; excluded: Array<{ name: string; level: number }> } | null {
-  const change = box.changes[0];
-  if (!change || change.type !== "cap") return null;
-
-  const excluded = (change.exclude ?? [])
-    .map((name) => box.base.find((p) => p.name === name))
-    .filter((p): p is PokemonData => p !== undefined)
-    .map((p) => ({ name: p.name, level: p.level ?? 0 }));
-
-  return { level: change.level, excluded };
-}
-
-// Returns the display names of pokemon removed in a box.
-// Used by BoxChange.
-export function getRemovals(box: Box): string[] {
-  const change = box.changes[0];
-  if (!change || change.type !== "remove") return [];
-  return change.names;
-}
-
-// Fields that expandPokemon actually renders — only include a row if at least one is present.
-const RENDERED_FIELDS = new Set<keyof PokemonData>(["name", "level", "moves"]);
-
-// Returns the pokemon that visibly changed (with `update` populated) in a box.
-// Filters to only pokemon whose update contains a field that expandPokemon renders.
-// Used by BoxChange.
-export function getChanges(box: Box): Pokemon[] {
-  const change = box.changes[0];
-  if (!change || change.type !== "update") return [];
-
-  const state = replayBox(box, box.changes.length);
-  return [...state.values()].filter(
-    (p) =>
-      p.update !== undefined &&
-      (Object.keys(p.update) as (keyof PokemonData)[]).some((k) => RENDERED_FIELDS.has(k))
-  );
-}
-
-// Returns Hidden Power type changes from an update change in a box.
-// Used by BoxChange to render HP rows.
-export function getHpChanges(box: Box): { name: string; hp: string }[] {
-  const change = box.changes[0];
-  if (!change || change.type !== "update") return [];
-
-  const state = replayBox(box, box.changes.length);
-  const result: { name: string; hp: string }[] = [];
-  for (const [name, pokemon] of state) {
-    if (pokemon.update?.hp) {
-      result.push({ name, hp: pokemon.update.hp });
-    }
-  }
-  return result;
-}
-
-// Returns IV/friendship changes from an update change in a box.
-// Used by BoxChange to render IV rows.
-export function getIVChanges(box: Box): { name: string; ivs?: Partial<Stats>; friend?: boolean }[] {
-  const change = box.changes[0];
-  if (!change || change.type !== "update") return [];
-
-  const state = replayBox(box, box.changes.length);
-  const result: { name: string; ivs?: Partial<Stats>; friend?: boolean }[] = [];
-  for (const [name, pokemon] of state) {
-    if (pokemon.update?.ivs || pokemon.update?.friend) {
-      result.push({ name, ivs: pokemon.update.ivs, friend: pokemon.update.friend });
-    }
-  }
-  return result;
-}
-
-// Splits a multi-change box into multiple single-change boxes for the display helpers.
-// Used by BoxChange to iterate changes when update was passed as an array.
-export function splitChanges(box: Box): Box[] {
-  const result: Box[] = [];
-  for (let i = 0; i < box.changes.length; i++) {
-    const base = i === 0 ? box.base : stateToBase(replayBox(box, i));
-    result.push({ base, changes: [box.changes[i]], team: [] });
-  }
-  return result;
 }

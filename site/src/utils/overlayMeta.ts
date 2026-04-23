@@ -4,7 +4,7 @@ import { moments as kogaMoments } from "@site/src/data/guide/koga";
 import { moments as mistyMoments } from "@site/src/data/guide/misty";
 import { moments as sabrinaMoments } from "@site/src/data/guide/sabrina";
 import { moments as surgeMoments } from "@site/src/data/guide/surge";
-import { Box, resolveBox } from "@site/src/utils/box";
+import { Box, findPokemon, resolveBox } from "@site/src/utils/box";
 import { Moment } from "@site/src/utils/moments";
 import { PokemonData, resolvePokemon } from "@site/src/utils/pokemon";
 import { PokemonStats, computeStats } from "@site/src/utils/stats";
@@ -152,14 +152,14 @@ export function deriveTopStats(
     .filter((m): m is Extract<Moment, { kind: "battle" }> => m.kind === "battle")
     .map((m) => m.data);
 
-  const resolvedBox = playerBox ? resolveBox(playerBox) : new Map();
-  if (resolvedBox.size === 0 && battleMoments.length === 0) return [];
+  const resolvedBox = playerBox ? resolveBox(playerBox) : { pokemon: [] };
+  if (resolvedBox.pokemon.length === 0 && battleMoments.length === 0) return [];
 
   const stats = battleMoments.length > 0 ? computeStats(battleMoments) : {};
 
   const allEntries: [string, PokemonStats][] = Object.entries(stats);
   const seen = new Set(allEntries.map(([name]) => name));
-  for (const [, p] of resolvedBox) {
+  for (const p of resolvedBox.pokemon) {
     const pData = resolvePokemon(p);
     if (!seen.has(pData.name)) {
       allEntries.push([
@@ -181,7 +181,7 @@ export function deriveTopStats(
     .sort((a, b) => statScore(b[1], view) - statScore(a[1], view) || a[1].boxOrder - b[1].boxOrder)
     .slice(0, 6)
     .map(([name, s]) => {
-      const p = resolvedBox.get(name);
+      const p = findPokemon(resolvedBox, name);
       const pokemon: PokemonData = p ? resolvePokemon(p) : { name, spriteKey: s.spriteKey };
       return { pokemon, subtitle: statSubtitle(s, view) };
     });

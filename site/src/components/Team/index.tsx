@@ -1,6 +1,7 @@
 import Card from "@site/src/components/Card";
 import { ScrollArrows } from "@site/src/components/ScrollArrows";
-import { Box, resolveBox } from "@site/src/utils/box";
+import type { Box } from "@site/src/utils/box";
+import { resolveBox } from "@site/src/utils/box";
 import { pokedex, type PokedexData } from "@site/src/utils/pokedex";
 import { formatStats, resolvePokemon, type Pokemon } from "@site/src/utils/pokemon";
 import { getColouredSpriteUrl } from "@site/src/utils/sprites";
@@ -30,11 +31,12 @@ function CardDetail({ children }: { children: React.ReactNode }) {
 
 export default function Team({ box, title = "Team" }: { box: Box; title?: string }) {
   const resolved = resolveBox(box);
-  const team = (box.team ?? [])
-    .map((name) => resolved.get(name))
+  const pokemonMap = new Map(resolved.pokemon.map((p) => [resolvePokemon(p).name, p]));
+  const team = (resolved.team ?? [])
+    .map((name) => pokemonMap.get(name))
     .filter((p): p is Pokemon => p !== undefined);
-  const extraTeam = (box.extraTeam ?? [])
-    .map((name) => resolved.get(name))
+  const extraTeam = (resolved.extraTeam ?? [])
+    .map((name) => pokemonMap.get(name))
     .filter((p): p is Pokemon => p !== undefined);
   return (
     <Card title={title}>

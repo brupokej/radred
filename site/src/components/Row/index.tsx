@@ -56,7 +56,7 @@ export function expandPokemon(pokemon: Pokemon): Array<string | { warning: strin
 
   let header: string;
   if (levelChanged) {
-    const levelPart = LEVEL_CAP_LEVELS.has(current.level)
+    const levelPart = LEVEL_CAP_LEVELS.has(Number(current.level))
       ? `Set to Level ${current.level} Cap`
       : `Rare Candy to Level ${current.level}`;
     header = toName ? `${levelPart} → ${toName}` : levelPart;
@@ -74,7 +74,7 @@ export function expandPokemon(pokemon: Pokemon): Array<string | { warning: strin
   const cells: Array<string | { warning: string }> = [`${from} →`, { warning: header }];
 
   const baseMoveSet = new Set((base.moves ?? []).filter(Boolean));
-  const isLevelCap = levelChanged && LEVEL_CAP_LEVELS.has(current.level);
+  const isLevelCap = levelChanged && LEVEL_CAP_LEVELS.has(Number(current.level));
   const hasNewMoves = current.moves?.some((move) => move && !baseMoveSet.has(move)) ?? false;
 
   if (!isLevelCap || hasNewMoves) {

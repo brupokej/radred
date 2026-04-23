@@ -2,7 +2,7 @@ import Card from "@site/src/components/Card";
 import { Row, RowCell } from "@site/src/components/Row";
 import { ScrollFade } from "@site/src/components/ScrollFade";
 import Team from "@site/src/components/Team";
-import { Box, resolveBox } from "@site/src/utils/box";
+import { Box, findPokemon, resolveBox } from "@site/src/utils/box";
 import { useHpDisplay } from "@site/src/utils/hpDisplay";
 import { getHp } from "@site/src/utils/pokedex";
 import { PokemonData, resolvePokemon } from "@site/src/utils/pokemon";
@@ -276,16 +276,16 @@ export function Battle({ data }: { data: BattleData }) {
   const maxHp = useMemo(
     () =>
       Object.fromEntries([
-        ...(resolvedPlayerBox.team ?? []).flatMap((name) => {
-          const p = playerResolved.get(name);
+        ...(playerResolved.team ?? []).flatMap((name) => {
+          const p = findPokemon(playerResolved, name);
           return p ? [[`p:${name}`, getHp(resolvePokemon(p))]] : [];
         }),
-        ...(opponentBox.team ?? []).flatMap((name) => {
-          const p = opponentResolved.get(name);
+        ...(opponentResolved.team ?? []).flatMap((name) => {
+          const p = findPokemon(opponentResolved, name);
           return p ? [[`o:${name}`, getHp(resolvePokemon(p))]] : [];
         }),
-        ...(partnerBox?.team ?? []).flatMap((name) => {
-          const p = partnerResolved?.get(name);
+        ...(partnerResolved?.team ?? []).flatMap((name) => {
+          const p = partnerResolved ? findPokemon(partnerResolved, name) : undefined;
           return p ? [[`o:${name}`, getHp(resolvePokemon(p))]] : [];
         }),
       ]),
@@ -294,16 +294,16 @@ export function Battle({ data }: { data: BattleData }) {
 
   const teamMap = useMemo(() => {
     const map: Record<string, PokemonData> = {};
-    for (const name of resolvedPlayerBox.team ?? []) {
-      const p = playerResolved.get(name);
+    for (const name of playerResolved.team ?? []) {
+      const p = findPokemon(playerResolved, name);
       if (p) map[`p:${name}`] = resolvePokemon(p);
     }
-    for (const name of opponentBox.team ?? []) {
-      const p = opponentResolved.get(name);
+    for (const name of opponentResolved.team ?? []) {
+      const p = findPokemon(opponentResolved, name);
       if (p) map[`o:${name}`] = resolvePokemon(p);
     }
-    for (const name of partnerBox?.team ?? []) {
-      const p = partnerResolved?.get(name);
+    for (const name of partnerResolved?.team ?? []) {
+      const p = partnerResolved ? findPokemon(partnerResolved, name) : undefined;
       if (p) map[`o:${name}`] = resolvePokemon(p);
     }
     return map;

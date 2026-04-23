@@ -2,7 +2,7 @@ import Card from "@site/src/components/Card";
 import { PokemonEntry } from "@site/src/components/PokemonEntry";
 import { Row } from "@site/src/components/Row";
 import { ScrollFade } from "@site/src/components/ScrollFade";
-import { Box, resolveBox } from "@site/src/utils/box";
+import { getCanon, resolveBox } from "@site/src/utils/box";
 import { Moment } from "@site/src/utils/moments";
 import { resolvePokemon } from "@site/src/utils/pokemon";
 import { computeBattleFrags } from "@site/src/utils/stats";
@@ -11,13 +11,12 @@ import { LIVE_MOMENT_DEFAULT } from "@site/src/utils/storageDefaults";
 import { useRef } from "react";
 import styles from "./styles.module.css";
 
-function computeTotals(moments: Moment[], renames: Record<string, string>) {
+function computeTotals(moments: Moment[], canon: (name: string) => string) {
   const battles: Record<string, number> = {};
   const frags: Record<string, number> = {};
-  const canon = (name: string) => renames[name] ?? name;
   for (const m of moments) {
     if (m.kind !== "battle") continue;
-    for (const name of m.data.playerBox.team) {
+    for (const name of resolveBox(m.data.playerBox).team ?? []) {
       const key = canon(name);
       battles[key] = (battles[key] ?? 0) + 1;
     }
@@ -30,30 +29,30 @@ function computeTotals(moments: Moment[], renames: Record<string, string>) {
 }
 
 export default function BoxRoster({
-  box,
   moments,
   title = "Box",
 }: {
-  box?: Box;
-  moments?: Moment[];
+  moments: Moment[];
   title?: string;
 }) {
   const { value: liveMomentLabel } = useStorageState("live-moment");
-  if (moments) {
-    const effectiveLabel = liveMomentLabel ?? LIVE_MOMENT_DEFAULT;
-    const idx = moments.findIndex((m) => m.label === effectiveLabel);
-    if (idx >= 0) moments = moments.slice(0, idx + 1);
+  const effectiveLabel = liveMomentLabel ?? LIVE_MOMENT_DEFAULT;
+  const idx = moments.findIndex((m) => m.label === effectiveLabel);
+  const sliced = idx >= 0 ? moments.slice(0, idx + 1) : moments;
+
+  let resolvedActive = null;
+  for (let i = sliced.length - 1; i >= 0; i--) {
+    const m = sliced[i];
+    if (m.kind === "battle" || m.kind === "encounter") {
+      resolvedActive = resolveBox(m.data.playerBox);
+      break;
+    }
   }
 
-  const lastBattleMoment = moments
-    ?.filter((m): m is Extract<Moment, { kind: "battle" }> => m.kind === "battle")
-    .at(-1);
+  const canon = getCanon(resolvedActive);
 
-  const activeBox = lastBattleMoment?.data.playerBox ?? box;
-  const renames = activeBox?.renames ?? {};
-
-  const entries = activeBox
-    ? [...resolveBox(activeBox).values()]
+  const entries = resolvedActive
+    ? resolvedActive.pokemon
         .map((p) => resolvePokemon(p))
         .sort((a, b) => {
           const toNum = (l: number | string | undefined) =>
@@ -64,7 +63,7 @@ export default function BoxRoster({
         })
     : [];
 
-  const totals = moments ? computeTotals(moments, renames) : null;
+  const totals = computeTotals(sliced, canon);
 
   const scrollRef = useRef<HTMLDivElement>(null);
 
@@ -73,12 +72,12 @@ export default function BoxRoster({
       <ScrollFade axis="y" scrollRef={scrollRef}>
         <div ref={scrollRef} className={styles.scrollInner}>
           {entries.map((pokemon, i) => {
-            const canon = renames[pokemon.name] ?? pokemon.name;
+            const canonName = canon(pokemon.name);
             const levelLabel = pokemon.level != null ? `Level ${pokemon.level}` : null;
             const detail = [
               levelLabel,
-              `${totals && totals.battles[canon] != null ? totals.battles[canon] : 0} Battles`,
-              `${totals && totals.frags[canon] != null ? totals.frags[canon] : 0} Frags`,
+              `${totals.battles[canonName] ?? 0} Battles`,
+              `${totals.frags[canonName] ?? 0} Frags`,
             ]
               .filter(Boolean)
               .join(" · ");
