@@ -119,10 +119,6 @@ async function getFeatureSnapshot(
   await loc.evaluate((el) => el.scrollIntoView({ block: "start" }));
   const box = await loc.boundingBox();
 
-  await page.evaluate(() => {
-    localStorage.setItem("stats-moment", "Saffron City Leader Sabrina Battle");
-    window.dispatchEvent(new CustomEvent("storage-change"));
-  });
   await loc.evaluate((el) => el.setAttribute("data-feature", ""));
   const styleTag = await page.addStyleTag({
     content: `[data-feature] div { flex-wrap: nowrap !important; }`,
@@ -131,7 +127,7 @@ async function getFeatureSnapshot(
 
   for (const theme of ["dark", "light"] as const) {
     await page.evaluate((t) => document.documentElement.setAttribute("data-theme", t), theme);
-    await page.waitForTimeout(1000);
+    await page.waitForTimeout(100);
 
     const filename = slugify([...parts, featureIndex.value++]).replace(/battle|table/g, "feature");
     await expectSnapshot(page, `${filename}.png`, {
@@ -147,15 +143,11 @@ async function getFeatureSnapshot(
 
   await styleTag.evaluate((el) => (el as HTMLElement).remove());
   await loc.evaluate((el) => el.removeAttribute("data-feature"));
-  await page.evaluate(() => {
-    localStorage.removeItem("stats-moment");
-    window.dispatchEvent(new CustomEvent("storage-change"));
-  });
 }
 
 const FEATURES: { heading: string; summary: string; name: string }[] = [
-  { heading: "Rocket Hideout Right Guard Battle", summary: "Player Team", name: "team" },
-  { heading: "Silph Co. Ariana & Archer Battle", summary: "Battle Plan", name: "battle" },
+  { heading: "Saffron City Leader Sabrina Battle", summary: "Player Team", name: "team" },
+  { heading: "Saffron City Leader Sabrina Battle", summary: "Battle Plan", name: "battle" },
   { heading: "Percents Table", summary: "Pokémon Data", name: "stats" },
 ];
 
@@ -173,6 +165,7 @@ async function getSnapshots(page: Page, pathIndex: number, path: string) {
     if (tag === "H1" || tag === "H2") {
       headingIndex += locIndex.value > 1 ? 1 : 0;
       heading = text?.trim() ?? "";
+      featureIndex.value = 1;
       locIndex.value = 1;
       continue;
     }
@@ -180,11 +173,10 @@ async function getSnapshots(page: Page, pathIndex: number, path: string) {
     await expandAll(loc);
     const parts = [pathIndex, path, headingIndex, heading];
 
-    const headingFeature = FEATURES.find((f) => heading.includes(f.heading));
-    if (headingFeature) {
+    for (const feature of FEATURES.filter((f) => heading.includes(f.heading))) {
       const summary = await loc.locator("summary").first().textContent();
-      if (summary?.includes(headingFeature.summary)) {
-        await getFeatureSnapshot(loc, parts, featureIndex, headingFeature.name);
+      if (summary?.includes(feature.summary)) {
+        await getFeatureSnapshot(loc, parts, featureIndex, feature.name);
       }
     }
 

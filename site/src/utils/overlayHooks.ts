@@ -3,13 +3,14 @@ import { resolveBox } from "@site/src/utils/box";
 import { deriveOpponentInfo, findMomentByLabel } from "@site/src/utils/overlayMeta";
 import { RELAY_HTTP, RELAY_WS, RelayState } from "@site/src/utils/overlayRelay";
 import { resolvePokemon } from "@site/src/utils/pokemon";
+import { LIVE_ATTEMPT_DEFAULT, LIVE_MOMENT_DEFAULT } from "@site/src/utils/storageDefaults";
 import { FADE_MS } from "@site/src/utils/useFadedValue";
 import { useEffect, useMemo, useRef, useState } from "react";
 
 function readLocalState(): RelayState {
   return {
-    moment: findMomentByLabel(localStorage.getItem("overlay-moment")),
-    attempt: Number(localStorage.getItem("overlay-attempt") ?? "1") || 1,
+    moment: findMomentByLabel(localStorage.getItem("live-moment") ?? LIVE_MOMENT_DEFAULT),
+    attempt: Number(localStorage.getItem("live-attempt")) || LIVE_ATTEMPT_DEFAULT,
   };
 }
 

@@ -1,5 +1,7 @@
+export const LIVE_MOMENT_DEFAULT = "Saffron City Leader Sabrina Battle";
+export const LIVE_ATTEMPT_DEFAULT = 11;
+
 export const STORAGE_DEFAULTS: Record<string, string> = {
-  "overlay-attempt": "11",
   "navbar-item-highlight-level": "info",
   "navbar-item-hp-display": "percent",
   "sequence-wimpod-1": '["Wimpod"]',

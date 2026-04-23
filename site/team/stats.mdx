@@ -11,7 +11,8 @@ import { moments as surgeMoments } from "@site/src/data/guide/surge";
 import { moments as erikaMoments } from "@site/src/data/guide/erika";
 import { moments as sabrinaMoments } from "@site/src/data/guide/sabrina";
 import { moments as kogaMoments } from "@site/src/data/guide/koga";
-import { useStorageState } from "@site/src/utils/storage";
+import { removeState, useStorageState } from "@site/src/utils/storage";
+import { LIVE_MOMENT_DEFAULT } from "@site/src/utils/storageDefaults";
 
 # Stats
 
@@ -27,8 +28,8 @@ export const allMoments = [
 export const battleMoments = allMoments.filter((m) => m.kind === "battle");
 
 export function StatsMoment() {
-  const { value: storedLabel, set: setStoredLabel } = useStorageState("stats-moment");
-  const currentLabel = storedLabel ?? battleMoments[battleMoments.length - 1]?.label ?? "";
+  const { value: storedLabel, set: setStoredLabel } = useStorageState("live-moment");
+  const currentLabel = storedLabel ?? LIVE_MOMENT_DEFAULT;
   return (
     <Card title="Stats Setup">
       <Row
@@ -38,7 +39,10 @@ export function StatsMoment() {
             dropdown: {
               value: currentLabel,
               options: battleMoments.map((m) => m.label),
-              onChange: setStoredLabel,
+              onChange: (v) => {
+                if (v === LIVE_MOMENT_DEFAULT) removeState("live-moment");
+                else setStoredLabel(v);
+              },
             },
           },
         ]}

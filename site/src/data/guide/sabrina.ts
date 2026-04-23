@@ -380,7 +380,7 @@ export const rocketHideoutGiovanniBattle: Moment = {
             matchup: ["Kangaskhan-Mega"],
             turns: [
               [
-                { opponent: "{o:Kangaskhan} mega to {o:Kangaskhan-Mega}" },
+                { opponent: "{o:Kangaskhan-Mega} mega evolve" },
                 { opponent: "{o:Kangaskhan-Mega} Power-Up Punch {p:Golduck} to {+:119}" },
                 { player: "{p:Golduck} Flip Turn {o:Kangaskhan-Mega} to {-:137}" },
                 { player: "{p:Golduck} switch to {p:Drednaw}" },
@@ -1475,7 +1475,7 @@ export const saffronDojoLeaderChuckBattle: Moment = {
             matchup: ["Gallade-Mega"],
             turns: [
               [
-                { opponent: "{o:Gallade} mega to {o:Gallade-Mega}" },
+                { opponent: "{o:Gallade-Mega} mega evolve" },
                 { player: "{p:Meowscarada} Shadow Claw {o:Gallade-Mega} to {-:45}" },
                 { opponent: "{o:Gallade-Mega} Drain Punch {p:Meowscarada}" },
               ],
@@ -1495,7 +1495,7 @@ export const saffronDojoLeaderChuckBattle: Moment = {
             matchup: ["Gallade-Mega"],
             turns: [
               [
-                { opponent: "{o:Gallade} mega to {o:Gallade-Mega}" },
+                { opponent: "{o:Gallade-Mega} mega evolve" },
                 { player: "{p:Meowscarada} Knock Off {o:Gallade-Mega} to {-:113}" },
                 { opponent: "{o:Gallade-Mega} Psycho Cut {p:Meowscarada}" },
               ],
@@ -1579,7 +1579,7 @@ export const silphCoRivalBattle: Moment = {
             turns: [
               [
                 { player: "{p:Jellicent} switch to {p:Meowscarada}" },
-                { opponent: "{o:Blastoise} mega to {o:Blastoise-Mega}" },
+                { opponent: "{o:Blastoise-Mega} mega evolve" },
                 { opponent: "{o:Blastoise-Mega} Dark Pulse {p:Meowscarada} to {+:85}" },
               ],
               [
@@ -1783,7 +1783,7 @@ export const silphCoArianaArcherBattle: Moment = {
             matchup: ["Primarina", "Articuno-G"],
             turns: [
               [
-                { opponent: "{o:Sceptile} mega to {o:Sceptile-Mega}" },
+                { opponent: "{o:Sceptile-Mega} mega evolve" },
                 { opponent: "{o:Sceptile-Mega} Mega Drain {o:Primarina} to {-:52}" },
                 { opponent: "{o:Articuno-G} Psychic {o:Sceptile-Mega} to {=:0}" },
                 { opponent: "{o:Sceptile-Mega} fainted" },
@@ -1832,7 +1832,7 @@ export const silphCoArianaArcherBattle: Moment = {
             matchup: ["Mawile-Mega", "Articuno-G"],
             turns: [
               [
-                { opponent: "{o:Mawile} mega to {o:Mawile-Mega}" },
+                { opponent: "{o:Mawile-Mega} mega evolve" },
                 { opponent: "{o:Articuno-G} Focus Blast {o:Exploud} to {=:0}" },
                 { opponent: "{o:Exploud} fainted" },
                 {
@@ -1888,7 +1888,7 @@ export const silphCoArianaArcherBattle: Moment = {
             matchup: ["Houndoom-Mega"],
             turns: [
               [
-                { opponent: "{o:Houndoom} mega to {o:Houndoom-Mega}" },
+                { opponent: "{o:Houndoom-Mega} mega evolve" },
                 { player: "{p:Meowscarada} Brick Break {o:Houndoom-Mega} to {-:35}" },
                 { opponent: "{o:Houndoom-Mega} Fiery Wrath {p:Meowscarada} to {+:51}" },
               ],
@@ -1908,7 +1908,7 @@ export const silphCoArianaArcherBattle: Moment = {
             matchup: ["Houndoom-Mega"],
             turns: [
               [
-                { opponent: "{o:Houndoom} mega to {o:Houndoom-Mega}" },
+                { opponent: "{o:Houndoom-Mega} mega evolve" },
                 { player: "{p:Meowscarada} Brick Break {o:Houndoom-Mega} to {-:35}" },
                 { opponent: "{o:Houndoom-Mega} Fiery Wrath {p:Meowscarada} to {+:51}" },
               ],
@@ -1947,7 +1947,7 @@ export const silphCoArianaArcherBattle: Moment = {
             matchup: ["Mawile-Mega", "Articuno-G"],
             turns: [
               [
-                { opponent: "{o:Mawile} mega to {o:Mawile-Mega}" },
+                { opponent: "{o:Mawile-Mega} mega evolve" },
                 { opponent: "{o:Articuno-G} Focus Blast {o:Exploud} to {=:0}" },
                 { opponent: "{o:Exploud} fainted" },
                 {
@@ -1971,7 +1971,7 @@ export const silphCoArianaArcherBattle: Moment = {
             matchup: ["Mawile-Mega", "Articuno-G"],
             turns: [
               [
-                { opponent: "{o:Mawile} mega to {o:Mawile-Mega}" },
+                { opponent: "{o:Mawile-Mega} mega evolve" },
                 { opponent: "{o:Articuno-G} Focus Blast {o:Exploud} miss" },
                 {
                   opponent:
@@ -1998,7 +1998,7 @@ export const silphCoArianaArcherBattle: Moment = {
             matchup: ["Primarina", "Articuno-G"],
             turns: [
               [
-                { opponent: "{o:Sceptile} mega to {o:Sceptile-Mega}" },
+                { opponent: "{o:Sceptile-Mega} mega evolve" },
                 { opponent: "{o:Sceptile-Mega} Mega Drain {o:Primarina} to {-:52}" },
                 { opponent: "{o:Articuno-G} Psychic {o:Sceptile-Mega} to {+:1}" },
                 { player: "{p:Jellicent} Brine {o:Primarina} to {=:0}" },
@@ -2025,7 +2025,7 @@ export const silphCoArianaArcherBattle: Moment = {
             matchup: ["Mawile-Mega", "Articuno-G"],
             turns: [
               [
-                { opponent: "{o:Mawile} mega to {o:Mawile-Mega}" },
+                { opponent: "{o:Mawile-Mega} mega evolve" },
                 { opponent: "{o:Sceptile-Mega} Dragon Breath {o:Articuno-G} to {-:121}" },
                 { opponent: "{o:Articuno-G} Psychic {o:Sceptile-Mega} to {=:0}" },
                 { opponent: "{o:Sceptile-Mega} fainted" },
@@ -2050,7 +2050,7 @@ export const silphCoArianaArcherBattle: Moment = {
             matchup: ["Mawile-Mega", "Articuno-G"],
             turns: [
               [
-                { opponent: "{o:Mawile} mega to {o:Mawile-Mega}" },
+                { opponent: "{o:Mawile-Mega} mega evolve" },
                 { opponent: "{o:Sceptile-Mega} Dragon Breath {o:Articuno-G} to {-:121}" },
                 {
                   player:
@@ -2073,7 +2073,7 @@ export const silphCoArianaArcherBattle: Moment = {
             matchup: ["Primarina", "Articuno-G"],
             turns: [
               [
-                { opponent: "{o:Sceptile} mega to {o:Sceptile-Mega}" },
+                { opponent: "{o:Sceptile-Mega} mega evolve" },
                 { opponent: "{o:Sceptile-Mega} Mega Drain {o:Primarina} (crit) to {=:0}" },
                 { opponent: "{o:Primarina} fainted" },
                 { opponent: "{o:Articuno-G} Psychic {o:Sceptile-Mega} to {=:0}" },
@@ -2101,7 +2101,7 @@ export const silphCoArianaArcherBattle: Moment = {
             matchup: ["Mawile-Mega", "Articuno-G"],
             turns: [
               [
-                { opponent: "{o:Mawile} mega to {o:Mawile-Mega}" },
+                { opponent: "{o:Mawile-Mega} mega evolve" },
                 { opponent: "{o:Articuno-G} Focus Blast {o:Exploud} to {=:0}" },
                 { opponent: "{o:Exploud} fainted" },
                 {
@@ -2125,7 +2125,7 @@ export const silphCoArianaArcherBattle: Moment = {
             matchup: ["Mawile-Mega", "Articuno-G"],
             turns: [
               [
-                { opponent: "{o:Mawile} mega to {o:Mawile-Mega}" },
+                { opponent: "{o:Mawile-Mega} mega evolve" },
                 { opponent: "{o:Articuno-G} Focus Blast {o:Exploud}" },
                 {
                   opponent:
@@ -2152,7 +2152,7 @@ export const silphCoArianaArcherBattle: Moment = {
             matchup: ["Primarina", "Articuno-G"],
             turns: [
               [
-                { opponent: "{o:Sceptile} mega to {o:Sceptile-Mega}" },
+                { opponent: "{o:Sceptile-Mega} mega evolve" },
                 { opponent: "{o:Sceptile-Mega} Mega Drain {o:Primarina} (crit) to {=:0}" },
                 { opponent: "{o:Primarina} fainted" },
                 { opponent: "{o:Articuno-G} Psychic {o:Sceptile-Mega} to {+:1}" },
@@ -2178,7 +2178,7 @@ export const silphCoArianaArcherBattle: Moment = {
             matchup: ["Mawile-Mega", "Articuno-G"],
             turns: [
               [
-                { opponent: "{o:Mawile} mega to {o:Mawile-Mega}" },
+                { opponent: "{o:Mawile-Mega} mega evolve" },
                 { opponent: "{o:Sceptile-Mega} Dragon Breath {o:Articuno-G} to {-:37}" },
                 { opponent: "{o:Articuno-G} Psychic {o:Sceptile-Mega} to {=:0}" },
                 { opponent: "{o:Sceptile-Mega} fainted" },
@@ -2203,7 +2203,7 @@ export const silphCoArianaArcherBattle: Moment = {
             matchup: ["Mawile-Mega", "Articuno-G"],
             turns: [
               [
-                { opponent: "{o:Mawile} mega to {o:Mawile-Mega}" },
+                { opponent: "{o:Mawile-Mega} mega evolve" },
                 { opponent: "{o:Sceptile-Mega} Dragon Breath {o:Articuno-G} to {-:37}" },
                 {
                   player:
@@ -2248,7 +2248,7 @@ export const silphCoArianaArcherBattle: Moment = {
             matchup: ["Houndoom-Mega"],
             turns: [
               [
-                { opponent: "{o:Houndoom} mega to {o:Houndoom-Mega}" },
+                { opponent: "{o:Houndoom-Mega} mega evolve" },
                 { player: "{p:Meowscarada} Brick Break {o:Houndoom-Mega} to {-:35}" },
                 { opponent: "{o:Houndoom-Mega} Fiery Wrath {p:Meowscarada} to {+:51}" },
               ],
@@ -2290,7 +2290,7 @@ export const silphCoArianaArcherBattle: Moment = {
             matchup: ["Houndoom-Mega"],
             turns: [
               [
-                { opponent: "{o:Houndoom} mega to {o:Houndoom-Mega}" },
+                { opponent: "{o:Houndoom-Mega} mega evolve" },
                 { player: "{p:Meowscarada} U-Turn {o:Houndoom-Mega} to {-:116}" },
                 { player: "{p:Meowscarada} switch to {p:Jellicent}" },
                 {
@@ -2344,7 +2344,7 @@ export const silphCoArianaArcherBattle: Moment = {
             matchup: ["Houndoom-Mega"],
             turns: [
               [
-                { opponent: "{o:Houndoom} mega to {o:Houndoom-Mega}" },
+                { opponent: "{o:Houndoom-Mega} mega evolve" },
                 { player: "{p:Meowscarada} U-Turn {o:Houndoom-Mega} to {-:116}" },
                 { player: "{p:Meowscarada} switch to {p:Jellicent}" },
                 {
@@ -2436,7 +2436,7 @@ export const silphCoGiovanniBattle: Moment = {
             turns: [
               [
                 { player: "{p:Golduck} switch to {p:Golisopod}" },
-                { opponent: "{o:Garchomp} mega to {o:Garchomp-Mega}" },
+                { opponent: "{o:Garchomp-Mega} mega evolve" },
                 { opponent: "{o:Garchomp-Mega} Earthquake {p:Golisopod} to {+:7}" },
                 { player: "{p:Golisopod} Emergency Exit to {p:Meowscarada}" },
               ],
@@ -2757,7 +2757,7 @@ export const saffronCityDumassKidBattle: Moment = {
             turns: [
               [
                 { player: "{p:Arcanine-H} switch to {p:Cloyster}" },
-                { opponent: "{o:Swampert} mega to {o:Swampert-Mega}" },
+                { opponent: "{o:Swampert-Mega} mega evolve" },
                 { opponent: "{o:Swampert-Mega} Earthquake {p:Cloyster} to {+:80}" },
               ],
               [
@@ -2885,7 +2885,7 @@ export const saffronCityLeaderSabrinaBattle: Moment = {
             matchup: ["Camerupt-Mega", "Tapu Fini"],
             turns: [
               [
-                { opponent: "{o:Camerupt} mega to {o:Camerupt-Mega}" },
+                { opponent: "{o:Camerupt-Mega} mega evolve" },
                 { player: "{p:Golisopod} Liquidation {o:Camerupt-Mega} to {=:0}" },
                 { opponent: "{o:Camerupt-Mega} fainted" },
                 { player: "{p:Lanturn} Volt Switch {o:Tapu Fini} to {-:101}" },

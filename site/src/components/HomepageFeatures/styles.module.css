@@ -5,6 +5,14 @@
   width: 100%;
 }
 
+@media screen and (max-width: 1056px) {
+  .features :global(.col--4) {
+    flex-basis: 100%;
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
 .featureContent {
   max-width: 472px;
   margin: 0 auto 40px;

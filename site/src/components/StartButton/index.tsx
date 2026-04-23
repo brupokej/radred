@@ -1,7 +1,8 @@
 import { Moment } from "@site/src/utils/moments";
 import { useRelayState } from "@site/src/utils/overlayHooks";
 import { postRelayState } from "@site/src/utils/overlayRelay";
-import { setState } from "@site/src/utils/storage";
+import { removeState, setState } from "@site/src/utils/storage";
+import { LIVE_MOMENT_DEFAULT } from "@site/src/utils/storageDefaults";
 import { useState } from "react";
 import styles from "./styles.module.css";
 
@@ -21,7 +22,8 @@ function StartButtonInner({ moment, attempt }: { moment: Moment; attempt?: numbe
   async function handleStart() {
     if (isLive || pending) return;
     setPending(true);
-    setState("overlay-moment", moment.label);
+    if (moment.label === LIVE_MOMENT_DEFAULT) removeState("live-moment");
+    else setState("live-moment", moment.label);
     await Promise.all([
       postRelayState({
         moment,

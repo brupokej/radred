@@ -11,6 +11,7 @@ import {
   PokemonStats,
 } from "@site/src/utils/stats";
 import { getState, STORAGE_EVENT } from "@site/src/utils/storage";
+import { LIVE_MOMENT_DEFAULT } from "@site/src/utils/storageDefaults";
 import {
   ColumnDef,
   createColumnHelper,
@@ -212,8 +213,8 @@ export function PageStatsTable({
 
   useEffect(() => {
     const update = () => {
-      const endLabel = getState("stats-moment");
-      const rawEnd = endLabel ? allBattleMoments.findIndex((m) => m.label === endLabel) : -1;
+      const endLabel = getState("live-moment") ?? LIVE_MOMENT_DEFAULT;
+      const rawEnd = allBattleMoments.findIndex((m) => m.label === endLabel);
       const endIdx = rawEnd >= 0 ? rawEnd : allBattleMoments.length - 1;
       const filtered = allBattleMoments.slice(0, endIdx + 1);
 
@@ -500,8 +501,8 @@ export function PercentsTable({ moments }: { moments: Moment[] }) {
 
   useEffect(() => {
     const update = () => {
-      const endLabel = getState("stats-moment");
-      const rawEnd = endLabel ? battleMoments.findIndex((m) => m.label === endLabel) : -1;
+      const endLabel = getState("live-moment") ?? LIVE_MOMENT_DEFAULT;
+      const rawEnd = battleMoments.findIndex((m) => m.label === endLabel);
       const endIdx = rawEnd >= 0 ? rawEnd : battleMoments.length - 1;
       const filtered = battleMoments.slice(0, endIdx + 1).map((m) => m.data);
       setStats(computeStats(filtered));

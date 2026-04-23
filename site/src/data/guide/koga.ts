@@ -175,7 +175,7 @@ export const route16CueBallKojiBattle: Moment = {
             matchup: ["Kingler"],
             turns: [
               [
-                { opponent: "{o:Kingler} mega to {o:Kingler}" },
+                { opponent: "{o:Kingler} mega evolve" },
                 { player: "{p:Excadrill} Earthquake {o:Kingler} to {=:0}" },
                 { opponent: "{o:Kingler} fainted" },
               ],
@@ -292,7 +292,7 @@ export const route16BikerRubenBattle: Moment = {
             turns: [
               [
                 { player: "{p:Arcanine-H} switch to {p:Azumarill}" },
-                { opponent: "{o:Lopunny} mega to {o:Lopunny-Mega}" },
+                { opponent: "{o:Lopunny-Mega} mega evolve" },
                 { opponent: "{o:Lopunny-Mega} Close Combat {p:Azumarill} to {+:118}" },
                 { opponent: "{p:Azumarill} sandstorm to {+:104}" },
                 { opponent: "{o:Lopunny-Mega} sandstorm to {-:171}" },
@@ -467,7 +467,7 @@ export const route16CueBallCamronBattle: Moment = {
             turns: [
               [
                 { player: "{p:Azumarill} switch to {p:Drednaw}" },
-                { opponent: "{o:Scizor} mega to {o:Scizor-Mega}" },
+                { opponent: "{o:Scizor-Mega} mega evolve" },
                 { opponent: "{o:Scizor-Mega} Knock Off {p:Drednaw} to {+:164}" },
               ],
               [
@@ -762,7 +762,7 @@ export const route16RiderHideoBattle: Moment = {
             matchup: ["Beedrill-Mega"],
             turns: [
               [
-                { opponent: "{o:Beedrill} mega to {o:Beedrill-Mega}" },
+                { opponent: "{o:Beedrill-Mega} mega evolve" },
                 { player: "{p:Excadrill} Rock Slide {o:Beedrill-Mega} to {=:0}" },
                 { opponent: "{o:Beedrill-Mega} fainted" },
               ],
@@ -975,7 +975,7 @@ export const route18BirdKeeperJacobBattle: Moment = {
               [
                 { opponent: "{o:Cramorant-Gorg} switch to {o:Porygon2}" },
                 { player: "{p:Lanturn} Volt Switch {o:Porygon2} to {-:175}" },
-                { player: "{p:Lanturn} switch to {p:Swampert}" },
+                { player: "{p:Lanturn} switch to {p:Swampert-Mega}" },
               ],
             ],
           },
@@ -983,7 +983,7 @@ export const route18BirdKeeperJacobBattle: Moment = {
             matchup: ["Porygon2"],
             turns: [
               [
-                { player: "{p:Swampert} mega to {p:Swampert-Mega}" },
+                { player: "{p:Swampert-Mega} mega evolve" },
                 { player: "{p:Swampert-Mega} Knock Off {o:Porygon2} to {-:128}" },
                 { opponent: "{o:Porygon2} Foul Play {p:Swampert-Mega} to {+:118}" },
               ],
@@ -1040,11 +1040,11 @@ export const route18BirdKeeperJacobBattle: Moment = {
             turns: [
               [
                 { player: "{p:Drednaw} Flip Turn {o:Porygon2} to {-:92}" },
-                { player: "{p:Drednaw} switch to {p:Swampert}" },
-                { opponent: "{o:Porygon2} Thunder {p:Swampert}" },
+                { player: "{p:Drednaw} switch to {p:Swampert-Mega}" },
+                { opponent: "{o:Porygon2} Thunder {p:Swampert-Mega}" },
               ],
               [
-                { player: "{p:Swampert} mega to {p:Swampert-Mega}" },
+                { player: "{p:Swampert-Mega} mega evolve" },
                 { player: "{p:Swampert-Mega} Knock Off {o:Porygon2} to {-:45}" },
                 { opponent: "{o:Porygon2} Foul Play {p:Swampert-Mega} to {+:118}" },
               ],
@@ -1075,11 +1075,11 @@ export const route18BirdKeeperJacobBattle: Moment = {
             turns: [
               [
                 { player: "{p:Drednaw} Flip Turn {o:Porygon2} to {-:150}" },
-                { player: "{p:Drednaw} switch to {p:Swampert}" },
-                { opponent: "{o:Porygon2} Thunder {p:Swampert}" },
+                { player: "{p:Drednaw} switch to {p:Swampert-Mega}" },
+                { opponent: "{o:Porygon2} Thunder {p:Swampert-Mega}" },
               ],
               [
-                { player: "{p:Swampert} mega to {p:Swampert-Mega}" },
+                { player: "{p:Swampert-Mega} mega evolve" },
                 { player: "{p:Swampert-Mega} Knock Off {o:Porygon2} to {-:103}" },
                 { opponent: "{o:Porygon2} Foul Play {p:Swampert-Mega} to {+:118}" },
               ],
@@ -1339,11 +1339,11 @@ export const route18AceTrainerWiltonBattle: Moment = {
               [
                 { opponent: "{o:Kabutops} Stone Axe {p:Dragapult} to {+:91}" },
                 { player: "{p:Dragapult} U-Turn {o:Kabutops} to {-:130}" },
-                { player: "{p:Dragapult} switch to {p:Swampert}" },
-                { opponent: "{p:Swampert} Stealth Rock to {=:221}" },
+                { player: "{p:Dragapult} switch to {p:Swampert-Mega}" },
+                { opponent: "{p:Swampert-Mega} Stealth Rock to {=:221}" },
               ],
               [
-                { player: "{p:Swampert} mega to {p:Swampert-Mega}" },
+                { player: "{p:Swampert-Mega} mega evolve" },
                 { player: "{p:Swampert-Mega} Earthquake {o:Kabutops} to {=:0}" },
                 { opponent: "{o:Kabutops} fainted" },
               ],
@@ -1353,7 +1353,7 @@ export const route18AceTrainerWiltonBattle: Moment = {
             matchup: ["Pinsir-Mega"],
             turns: [
               [
-                { opponent: "{o:Pinsir} mega to {o:Pinsir-Mega}" },
+                { opponent: "{o:Pinsir-Mega} mega evolve" },
                 { player: "{p:Swampert-Mega} Rock Slide {o:Pinsir-Mega} to {=:0}" },
                 { opponent: "{o:Pinsir-Mega} fainted" },
               ],
@@ -1480,11 +1480,11 @@ export const fuschiaCityBrendanBattle: Moment = {
             matchup: ["Nihilego"],
             turns: [
               [
-                { player: "{p:Tentacruel} switch to {p:Swampert}" },
-                { opponent: "{o:Nihilego} Thunderbolt {p:Swampert}" },
+                { player: "{p:Tentacruel} switch to {p:Swampert-Mega}" },
+                { opponent: "{o:Nihilego} Thunderbolt {p:Swampert-Mega}" },
               ],
               [
-                { player: "{p:Swampert} switch to {p:Meowscarada}" },
+                { player: "{p:Swampert-Mega} switch to {p:Meowscarada}" },
                 { opponent: "{o:Nihilego} Grass Knot {p:Meowscarada} to {+:159}" },
               ],
               [
@@ -1498,7 +1498,7 @@ export const fuschiaCityBrendanBattle: Moment = {
             turns: [
               [
                 { player: "{p:Meowscarada} switch to {p:Gyarados}" },
-                { opponent: "{o:Sceptile} mega to {o:Sceptile-Mega}" },
+                { opponent: "{o:Sceptile-Mega} mega evolve" },
                 { opponent: "{o:Sceptile-Mega} Earthquake {p:Gyarados}" },
               ],
               [

@@ -119,7 +119,6 @@ export function Row({ row }: { row: RowCell[] }) {
     <ScrollFade
       className={styles.rowWrapper}
       innerClassName={`${styles.row} ${rowHighlightClasses}`}
-      insetBlock="var(--ifm-spacing-vertical)"
     >
       {cells.map((cell, i) => {
         if ("dropdown" in cell) {

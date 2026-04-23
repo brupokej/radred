@@ -172,6 +172,18 @@ function PokemonCard({
       {isExpanded && (
         <>
           <div className={styles.divider} />
+          <div className={`${styles.detail} ${wc("nature")}`}>{current?.nature ?? "-"}</div>
+          <div className={`${styles.detail} ${wc("ability")}`}>{current?.ability ?? "-"}</div>
+          <div className={`${styles.detail} ${wc("item")}`}>
+            {current == null ? "-" : (current.item ?? "None")}
+          </div>
+          <div className={styles.divider} />
+          {[0, 1, 2, 3].map((i) => (
+            <div key={i} className={`${styles.move} ${mwc(current?.moves?.[i])}`}>
+              {current?.moves?.[i] ?? "-"}
+            </div>
+          ))}
+          <div className={styles.divider} />
           {showIVs && (
             <>
               <div className={`${styles.detail} ${current?.ivs ? styles.fieldInfo : ""}`}>
@@ -196,18 +208,6 @@ function PokemonCard({
               <div className={styles.divider} />
             </>
           )}
-          <div className={`${styles.detail} ${wc("nature")}`}>{current?.nature ?? "-"}</div>
-          <div className={`${styles.detail} ${wc("ability")}`}>{current?.ability ?? "-"}</div>
-          <div className={`${styles.detail} ${wc("item")}`}>
-            {current == null ? "-" : (current.item ?? "None")}
-          </div>
-          <div className={styles.divider} />
-          {[0, 1, 2, 3].map((i) => (
-            <div key={i} className={`${styles.move} ${mwc(current?.moves?.[i])}`}>
-              {current?.moves?.[i] ?? "-"}
-            </div>
-          ))}
-          <div className={styles.divider} />
           <div className={styles.stats}>
             {STAT_KEYS.map(({ label, key }) => {
               const v = stats ? stats[key] : null;

@@ -16,8 +16,8 @@ const FeatureList: FeatureItem[] = [
     img: "feature-team",
     description: (
       <>
-        Encounters, teams, and movesets for each important moment in the game. Highlighted
-        areas show exactly what to update before moving on.
+        Encounters, teams, and movesets for each important moment in the game. Highlighted&nbsp;text
+        shows exactly what to update&nbsp;before&nbsp;moving&nbsp;on.
       </>
     ),
   },
@@ -26,8 +26,8 @@ const FeatureList: FeatureItem[] = [
     img: "feature-battle",
     description: (
       <>
-        All battle plans are structured for 1DR: one death equals reset. Lines minimize
-        branching and risk as much as possible, even in the Elite Four.
+        All battle plans are structured for 1DR: one death equals reset. Lines minimize branching
+        and risk as much as possible, even during&nbsp;the&nbsp;Elite&nbsp;Four.
       </>
     ),
   },
@@ -36,8 +36,8 @@ const FeatureList: FeatureItem[] = [
     img: "feature-stats",
     description: (
       <>
-        Battle appearances and frags are automatically tracked throughout the guide. Browse full
-        stats on the Team page or the Twitch stream overlays.
+        Battle appearances and frag counts are tracked automatically throughout the guide. Browse
+        full stats on the Team page or&nbsp;the&nbsp;Twitch&nbsp;overlays.
       </>
     ),
   },
