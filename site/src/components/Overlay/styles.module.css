@@ -116,7 +116,7 @@
   color: var(--overlay-orange);
 }
 
-.rightPanel {
+.badgesAndMediumFrame {
   position: absolute;
   left: 1416px;
   top: 360px;
@@ -135,7 +135,6 @@
   padding-left: 12px;
   padding-right: 13px;
   gap: 3px;
-  border-bottom: 4px solid var(--overlay-white);
 }
 
 .panel {
@@ -183,7 +182,7 @@
   opacity: 0;
 }
 
-.gameFrame {
+.largeFrame {
   position: absolute;
   left: 18px;
   top: 18px;
@@ -193,10 +192,10 @@
   border: 4px solid var(--overlay-white);
 }
 
-.gameFrame::after,
+.largeFrame::after,
 .cameraFrame::after,
-.rightPanel::after,
-.statsFrame::after {
+.badgesAndMediumFrame::after,
+.smallFrame::after {
   content: "";
   position: absolute;
   top: -4px;
@@ -217,7 +216,7 @@
   border: 4px solid var(--overlay-white);
 }
 
-.statsFrame {
+.smallFrame {
   position: absolute;
   left: 1416px;
   top: 784px;
@@ -226,7 +225,7 @@
   border: 4px solid var(--overlay-white);
 }
 
-.statsFrameInner {
+.smallFrameInner {
   width: 100%;
   height: 100%;
   overflow: hidden;

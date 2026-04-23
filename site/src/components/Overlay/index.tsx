@@ -24,10 +24,11 @@ export type OverlayPanelSlot = { pokemon: PokemonData; subtitle?: string } | nul
 // ---- Shared layout ----
 
 const FRAMES = {
-  game: { left: 22, top: 22, width: 1372, height: 912 },
+  large: { left: 22, top: 22, width: 1372, height: 912 },
   camera: { left: 1420, top: 22, width: 478, height: 316 },
-  right: { left: 1420, top: 448, width: 478, height: 314 },
-  stats: { left: 1420, top: 788, width: 478, height: 146 },
+  medium: { left: 1420, top: 448, width: 478, height: 314 },
+  small: { left: 1420, top: 788, width: 478, height: 146 },
+  badges: { left: 1416, top: 360, width: 486, height: 84 },
 } as const;
 
 function OverlayCanvas({ children }: { children: ReactNode }) {
@@ -272,7 +273,7 @@ function OverlayPanel({
   );
 }
 
-// ---- Overlay One ----
+// ---- OverlayBackground / OverlayBanner helpers ----
 
 function fv(visible: boolean) {
   return `${styles.dynamic} ${visible ? "" : styles.dynamicHidden}`;
@@ -312,11 +313,37 @@ function useFadedBadges(liveBadges: Partial<Record<BadgeName, true>>) {
   return displayed;
 }
 
-export default function OverlayOne() {
+// ---- OverlayBackground ----
+
+export function OverlayBackground() {
+  const badgesBgSrc = useBaseUrl("/img/badges.png");
+  return (
+    <div className={styles.overlay}>
+      <div className={styles.largeFrame} />
+      <div className={styles.cameraFrame} style={{ background: "var(--overlay-dark-gray)" }} />
+      <div className={styles.bannerStrip} />
+      <div className={styles.smallFrame} style={{ background: "var(--overlay-dark-gray)" }} />
+      <div className={styles.badgesAndMediumFrame}>
+        <div
+          className={styles.badgesRow}
+          style={{
+            backgroundImage: `url(${badgesBgSrc})`,
+            backgroundSize: "100% 100%",
+            borderBottom: "4px solid var(--overlay-white)",
+          }}
+        />
+        <div style={{ flex: 1, background: "var(--overlay-dark-gray)" }} />
+      </div>
+    </div>
+  );
+}
+
+// ---- OverlayBanner ----
+
+export function OverlayBanner() {
   const liveState = useRelayState();
   const barSrc = useBaseUrl("/img/bar.png");
   const imgBase = useBaseUrl("/img/");
-  const badgesBgSrc = useBaseUrl("/img/badges.png");
 
   const liveMeta = liveState?.moment
     ? deriveOverlayMeta(liveState.moment)
@@ -329,16 +356,9 @@ export default function OverlayOne() {
   const displayedBadges = useFadedBadges(liveMeta.badges);
 
   return (
-    <div className={styles.overlay}>
-      <div className={styles.gameFrame} />
-      <div className={styles.cameraFrame} style={{ background: "var(--overlay-dark-gray)" }} />
-      <div className={styles.bannerStrip} />
-      <div className={styles.statsFrame} style={{ background: "var(--overlay-dark-gray)" }} />
-      <div className={styles.rightPanel}>
-        <div
-          className={styles.badgesRow}
-          style={{ backgroundImage: `url(${badgesBgSrc})`, backgroundSize: "100% 100%" }}
-        >
+    <div className={styles.overlay} style={{ background: "transparent" }}>
+      <OverlayFrame frame={FRAMES.badges}>
+        <div className={styles.badgesRow}>
           {BADGE_NAMES.map((name) => (
             <img
               key={name}
@@ -349,8 +369,7 @@ export default function OverlayOne() {
             />
           ))}
         </div>
-        <div style={{ flex: 1, background: "var(--overlay-dark-gray)" }} />
-      </div>
+      </OverlayFrame>
       <div className={styles.banner}>
         <div className={`${styles.bannerSection} ${styles.banner1}`}>
           <span className={`${styles.shadow} ${fv(splitVisible)}`}>Split:</span>&nbsp;
@@ -386,7 +405,9 @@ export default function OverlayOne() {
   );
 }
 
-export function OverlayTwo() {
+// ---- OverlayTitle ----
+
+export function OverlayTitle() {
   const logoSrc = useBaseUrl("/img/logo.png");
   const runningSrc = useBaseUrl("/img/running.gif");
 
@@ -399,9 +420,9 @@ export function OverlayTwo() {
   );
 }
 
-// ---- Overlays Three-Seven ----
+// ---- OverlayCamera ----
 
-export function OverlayThree() {
+export function OverlayCamera() {
   const cameraSrc = useBaseUrl("/img/brupokej-overlay.png");
   return (
     <OverlayCanvas>
@@ -416,6 +437,8 @@ export function OverlayThree() {
   );
 }
 
+// ---- OverlayStatsSmall ----
+
 const STAT_VIEWS: StatViewType[] = ["battlesRaw", "battlesPercent", "fragsRaw", "fragsPercent"];
 const STAT_TITLES = ["Most Battles", "Most Battles", "Most Frags", "Most Frags"];
 const CYCLE_MS = 20000;
@@ -428,7 +451,7 @@ function topBattlersToSlots(battlers: TopBattler[]): OverlayPanelSlot[] {
   return [...entries, ...Array(Math.max(0, 6 - entries.length)).fill(null)].slice(0, 6);
 }
 
-export function OverlayFour() {
+export function OverlayStatsSmall() {
   const liveState = useRelayState();
   const [cycleView, setCycleView] = useState(0);
 
@@ -457,7 +480,7 @@ export function OverlayFour() {
 
   return (
     <OverlayCanvas>
-      <OverlayFrame frame={FRAMES.stats}>
+      <OverlayFrame frame={FRAMES.small}>
         <OverlayPanel
           title={statsTitle}
           slots={battlerSlots}
@@ -470,12 +493,14 @@ export function OverlayFour() {
   );
 }
 
-export function OverlayFive() {
+// ---- OverlayOpponentMedium ----
+
+export function OverlayOpponentMedium() {
   const liveState = useRelayState();
   const { title, slots, visible } = useOpponent(liveState);
   return (
     <OverlayCanvas>
-      <OverlayFrame frame={FRAMES.right}>
+      <OverlayFrame frame={FRAMES.medium}>
         <OverlayPanel
           title={title}
           slots={slots}
@@ -488,12 +513,14 @@ export function OverlayFive() {
   );
 }
 
-export function OverlaySix() {
+// ---- OverlayOpponentLarge ----
+
+export function OverlayOpponentLarge() {
   const liveState = useRelayState();
   const { title, slots, visible } = useOpponent(liveState);
   return (
     <OverlayCanvas>
-      <OverlayFrame frame={FRAMES.game}>
+      <OverlayFrame frame={FRAMES.large}>
         <OverlayPanel
           title={title}
           slots={slots}
@@ -507,12 +534,14 @@ export function OverlaySix() {
   );
 }
 
-export function OverlaySeven() {
+// ---- OverlayOpponentSmall ----
+
+export function OverlayOpponentSmall() {
   const liveState = useRelayState();
   const { title, slots, visible } = useOpponent(liveState);
   return (
     <OverlayCanvas>
-      <OverlayFrame frame={FRAMES.stats}>
+      <OverlayFrame frame={FRAMES.small}>
         <OverlayPanel title={title} slots={slots} titleVisible={visible} contentVisible={visible} />
       </OverlayFrame>
     </OverlayCanvas>

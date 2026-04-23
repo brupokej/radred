@@ -1,4 +1,4 @@
-import { moments as brockMoments, newGameMoment } from "@site/src/data/guide/brock";
+import { moments as brockMoments } from "@site/src/data/guide/brock";
 import { moments as erikaMoments } from "@site/src/data/guide/erika";
 import { moments as kogaMoments } from "@site/src/data/guide/koga";
 import { moments as mistyMoments } from "@site/src/data/guide/misty";
@@ -72,9 +72,9 @@ export function findMomentByLabel(label: string | null): Moment {
     for (let i = allMoments.length - 1; i >= 0; i--) {
       if (allMoments[i].kind === "battle") return allMoments[i];
     }
-    return newGameMoment;
+    return brockMoments[0];
   }
-  return allMoments.find((m) => m.label === label) ?? newGameMoment;
+  return allMoments.find((m) => m.label === label) ?? brockMoments[0];
 }
 
 const CYCLE_START_INDEX = allMoments.findIndex((m) => m.label === "Mt. Moon Encounter");

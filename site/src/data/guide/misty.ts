@@ -143,6 +143,7 @@ export const route3LassSallyBattle: Moment = {
 
 const _drilbur = {
   name: "Drilbur",
+  level: "12-14",
   moves: ["Fury Swipes", "Mud-Slap", "Rapid Spin", "Scratch"],
 };
 
@@ -156,6 +157,7 @@ export const mtMoonEncounter: Moment = {
 
 const _magikarp = {
   name: "Magikarp",
+  level: "5",
   ability: "Swift Swim",
   moves: ["Splash"],
 };
@@ -579,6 +581,7 @@ export const mtMoonArcherBattle: Moment = {
 
 const _chewtle = {
   name: "Chewtle",
+  level: "2-4",
   moves: ["Aqua Jet", "Bite"],
 };
 
@@ -1592,6 +1595,7 @@ export const nuggetBridgeGruntBattle: Moment = {
 
 const _charcadet = {
   name: "Charcadet",
+  level: "14-16",
   moves: ["Clear Smog", "Ember", "Fire Spin", "Leer"],
 };
 
@@ -1607,6 +1611,7 @@ export const route24Encounter: Moment = {
 
 const _chinchou = {
   name: "Chinchou",
+  level: "2-4",
   moves: ["Bubble", "Supersonic"],
 };
 
@@ -1738,6 +1743,7 @@ const _growlitheH = {
   name: "Growlithe-H",
   spriteKey: "growlithe-hisui",
   pokedexKey: "Growlithe-Hisui",
+  level: "18-20",
   moves: ["Flame Wheel", "Helping Hand", "Leer", "Odor Sleuth"],
 };
 
@@ -1753,6 +1759,7 @@ export const route5Encounter: Moment = {
 
 const _shellder = {
   name: "Shellder",
+  level: "2-4",
   moves: ["Tackle", "Water Gun"],
 };
 

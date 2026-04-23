@@ -1,19 +1,16 @@
 ---
-sidebar_position: 8
-title: Controls
+sidebar_position: 9
 ---
 
-import Card from "@site/src/components/Card";
-import { Row } from "@site/src/components/Row";
-import StartButton from "@site/src/components/StartButton";
+import LiveSetup from "@site/src/components/LiveSetup";
 import { moments as brockMoments } from "@site/src/data/guide/brock";
 import { moments as mistyMoments } from "@site/src/data/guide/misty";
 import { moments as surgeMoments } from "@site/src/data/guide/surge";
 import { moments as erikaMoments } from "@site/src/data/guide/erika";
 import { moments as sabrinaMoments } from "@site/src/data/guide/sabrina";
 import { moments as kogaMoments } from "@site/src/data/guide/koga";
-import { removeState, useStorageState } from "@site/src/utils/storage";
-import { LIVE_ATTEMPT_DEFAULT, LIVE_MOMENT_DEFAULT } from "@site/src/utils/storageDefaults";
+
+# Controls
 
 export const allMoments = [
   ...brockMoments,
@@ -24,48 +21,4 @@ export const allMoments = [
   ...kogaMoments,
 ].filter((m) => m.kind !== "boxChange");
 
-export const defaultMoment = allMoments.find((m) => m.label === LIVE_MOMENT_DEFAULT);
-
-export function findMoment(label) {
-  return allMoments.find((m) => m.label === label) ?? defaultMoment;
-}
-
-export function OverlayControls() {
-  const { value: storedAttempt, set: setStoredAttempt } = useStorageState("live-attempt");
-  const { value: storedMomentLabel, set: setStoredMomentLabel } = useStorageState("live-moment");
-
-const attempt = storedAttempt !== null ? Number(storedAttempt) : LIVE_ATTEMPT_DEFAULT;
-const moment = findMoment(storedMomentLabel);
-
-function handleAttemptChange(v) {
-const n = Number(v) || LIVE_ATTEMPT_DEFAULT;
-if (n === LIVE_ATTEMPT_DEFAULT) removeState("live-attempt");
-else setStoredAttempt(String(n));
-}
-
-function handleMomentChange(v) {
-if (v === LIVE_MOMENT_DEFAULT) removeState("live-moment");
-else setStoredMomentLabel(v);
-}
-
-return (
-
-<>
-<h2>Controls <StartButton moment={moment} attempt={attempt} /></h2>
-<Card title="Overlay Setup">
-<Row row={["Attempt:", { input: {
-value: String(attempt),
-validate: (v) => v === "" || (/^\d+$/.test(v) && Number(v) >= 1 && Number(v) <= 99),
-onChange: handleAttemptChange,
-}}]} />
-<Row row={["Moment:", { dropdown: {
-value: moment.label,
-options: allMoments.map((m) => m.label),
-onChange: handleMomentChange,
-}}]} />
-</Card>
-</>
-);
-}
-
-<OverlayControls />
+<LiveSetup moments={allMoments} attempt />

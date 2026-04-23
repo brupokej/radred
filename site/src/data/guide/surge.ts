@@ -156,6 +156,7 @@ export const route6CamperJeffBattle: Moment = {
 
 const _wimpod = {
   name: "Wimpod",
+  level: "2-4",
   ability: "Wimp Out",
   moves: ["Struggle Bug"],
 };
@@ -171,6 +172,7 @@ export const fishing1Encounter: Moment = {
 const _frillish = {
   name: "Frillish",
   spriteKey: "frillish-f",
+  level: "27-29",
   moves: ["Bubble Beam", "Ominous Wind", "Recover", "Water Pulse"],
 };
 

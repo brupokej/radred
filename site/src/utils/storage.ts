@@ -18,7 +18,7 @@ export function removeState(key: string): void {
 }
 
 export function useStorageState(key: string): { value: string | null; set: (v: string) => void } {
-  const [value, setValue] = useState<string | null>(null);
+  const [value, setValue] = useState<string | null>(() => getState(key));
 
   useEffect(() => {
     setValue(getState(key));

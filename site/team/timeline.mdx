@@ -3,6 +3,7 @@ sidebar_position: 3
 ---
 
 import BarRace from "@site/src/components/BarRace";
+import LiveSetup from "@site/src/components/LiveSetup";
 import { moments as brockMoments } from "@site/src/data/guide/brock";
 import { moments as mistyMoments } from "@site/src/data/guide/misty";
 import { moments as surgeMoments } from "@site/src/data/guide/surge";
@@ -20,6 +21,8 @@ export const allMoments = [
   ...sabrinaMoments,
   ...kogaMoments,
 ];
+
+<LiveSetup moments={allMoments} />
 
 ## Battles Table
 

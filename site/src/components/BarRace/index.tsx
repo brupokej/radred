@@ -5,6 +5,8 @@ import { resolveBox } from "@site/src/utils/box";
 import { Moment } from "@site/src/utils/moments";
 import { resolvePokemon } from "@site/src/utils/pokemon";
 import { computeBattleFrags } from "@site/src/utils/stats";
+import { useStorageState } from "@site/src/utils/storage";
+import { LIVE_MOMENT_DEFAULT } from "@site/src/utils/storageDefaults";
 import { AnimatePresence, motion } from "framer-motion";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import styles from "./styles.module.css";
@@ -45,6 +47,10 @@ export default function BarRace({
   metric: Metric;
   title: string;
 }) {
+  const { value: liveMomentLabel } = useStorageState("live-moment");
+  const effectiveLabel = liveMomentLabel ?? LIVE_MOMENT_DEFAULT;
+  const idx = moments.findIndex((m) => m.label === effectiveLabel);
+  if (idx >= 0) moments = moments.slice(0, idx + 1);
   const battleMoments = useMemo(
     () => moments.filter((m): m is Extract<Moment, { kind: "battle" }> => m.kind === "battle"),
     [moments]

@@ -7,7 +7,7 @@ import BoxChange from "@site/src/components/BoxChange";
 import Card from "@site/src/components/Card";
 import Encounter from "@site/src/components/Encounter";
 import { Row } from "@site/src/components/Row";
-import StartButton from "@site/src/components/StartButton";
+import GoLiveButton from "@site/src/components/GoLiveButton";
 import Switch, { Case } from "@site/src/components/Switch";
 
 import { getLocation } from "@site/src/utils/encounterLog";
@@ -35,11 +35,15 @@ import {
 
 <BoxChange data={surgeBoxChange.data} />
 
-## Route 6 Camper Jeff Battle<StartButton moment={route6CamperJeffBattle} />
+## Route 6 Camper Jeff Battle
+
+<GoLiveButton moment={route6CamperJeffBattle} />
 
 <Battle data={route6CamperJeffBattle.data} />
 
-## Fishing 1 Encounter<StartButton moment={fishing1Encounter} />
+## Fishing 1 Encounter
+
+<GoLiveButton moment={fishing1Encounter} />
 
 <Encounter data={fishing1Encounter.data}>
   <Switch switch={() => getLocation("Wimpod")}>
@@ -52,7 +56,9 @@ import {
   </Switch>
 </Encounter>
 
-## Fishing 2 Encounter<StartButton moment={fishing1Encounter} />
+## Fishing 2 Encounter
+
+<GoLiveButton moment={fishing1Encounter} />
 
 <Encounter data={fishing2Encounter.data}>
   <Switch switch={() => getLocation("Frillish")}>
@@ -74,11 +80,15 @@ import {
 
 <BoxChange data={fishing2BoxChange.data} />
 
-## Route 25 Leader Bugsy Battle<StartButton moment={route25LeaderBugsyBattle} />
+## Route 25 Leader Bugsy Battle
+
+<GoLiveButton moment={route25LeaderBugsyBattle} />
 
 <Battle data={route25LeaderBugsyBattle.data} />
 
-## S.S. Anne Lass Ann & Gentleman Brooks Battle<StartButton moment={ssAnneLassAnnGentlemanBrooksBattle} />
+## S.S. Anne Lass Ann & Gentleman Brooks Battle
+
+<GoLiveButton moment={ssAnneLassAnnGentlemanBrooksBattle} />
 
 <Battle data={ssAnneLassAnnGentlemanBrooksBattle.data} />
 
@@ -87,38 +97,56 @@ import {
   <Row row={["S.S. Anne → ", { warning: "TM 069 Stom. Tantrum → Bag" }]} />
 </Card>
 
-## S.S. Anne Sailor Edmund & Sailor Trevor Battle<StartButton moment={ssAnneSailorEdmundSailorTrevorBattle} />
+## S.S. Anne Sailor Edmund & Sailor Trevor Battle
+
+<GoLiveButton moment={ssAnneSailorEdmundSailorTrevorBattle} />
 
 <Battle data={ssAnneSailorEdmundSailorTrevorBattle.data} />
 
-## S.S. Anne Brendan Battle<StartButton moment={ssAnneBrendanBattle} />
+## S.S. Anne Brendan Battle
+
+<GoLiveButton moment={ssAnneBrendanBattle} />
 
 <Battle data={ssAnneBrendanBattle.data} />
 
-## Route 9 Picnicker Alicia Battle<StartButton moment={route9PicnickerAliciaBattle} />
+## Route 9 Picnicker Alicia Battle
+
+<GoLiveButton moment={route9PicnickerAliciaBattle} />
 
 <Battle data={route9PicnickerAliciaBattle.data} />
 
-## Route 9 Picnicker Caitlin Battle<StartButton moment={route9PicnickerCaitlinBattle} />
+## Route 9 Picnicker Caitlin Battle
+
+<GoLiveButton moment={route9PicnickerCaitlinBattle} />
 
 <Battle data={route9PicnickerCaitlinBattle.data} />
 
-## Rock Tunnel Picnicker Dana Battle<StartButton moment={rockTunnelPicnickerDanaBattle} />
+## Rock Tunnel Picnicker Dana Battle
+
+<GoLiveButton moment={rockTunnelPicnickerDanaBattle} />
 
 <Battle data={rockTunnelPicnickerDanaBattle.data} />
 
-## Route 10 Poké Maniac Herman Battle<StartButton moment={route10PokeManiacHermanBattle} />
+## Route 10 Poké Maniac Herman Battle
+
+<GoLiveButton moment={route10PokeManiacHermanBattle} />
 
 <Battle data={route10PokeManiacHermanBattle.data} />
 
-## Route 8 Super Nerd Aidan Battle<StartButton moment={route8SuperNerdAidanBattle} />
+## Route 8 Super Nerd Aidan Battle
+
+<GoLiveButton moment={route8SuperNerdAidanBattle} />
 
 <Battle data={route8SuperNerdAidanBattle.data} />
 
-## Vermillion City Gym Gentleman Tucker Battle<StartButton moment={vermillionCityGymGentlemanTuckerBattle} />
+## Vermillion City Gym Gentleman Tucker Battle
+
+<GoLiveButton moment={vermillionCityGymGentlemanTuckerBattle} />
 
 <Battle data={vermillionCityGymGentlemanTuckerBattle.data} />
 
-## Vermillion City Leader Lt. Surge Battle<StartButton moment={vermillionCityLeaderLtSurgeBattle} />
+## Vermillion City Leader Lt. Surge Battle
+
+<GoLiveButton moment={vermillionCityLeaderLtSurgeBattle} />
 
 <Battle data={vermillionCityLeaderLtSurgeBattle.data} />

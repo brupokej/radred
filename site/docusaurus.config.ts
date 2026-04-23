@@ -133,7 +133,7 @@ const config: Config = {
           items: [
             {
               label: "Overlay",
-              href: "/overlay/one",
+              href: "/overlay/background",
             },
             {
               label: "GitHub",

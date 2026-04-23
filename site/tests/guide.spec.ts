@@ -194,14 +194,15 @@ const PATHS = [
   ["team", "box"],
   ["team", "stats"],
   ["team", "timeline"],
-  ["overlay", "one"],
-  ["overlay", "two"],
-  ["overlay", "three"],
-  ["overlay", "four"],
-  ["overlay", "five"],
-  ["overlay", "six"],
-  ["overlay", "seven"],
-  ["overlay", "admin"],
+  ["overlay", "background"],
+  ["overlay", "banner"],
+  ["overlay", "camera"],
+  ["overlay", "opponent-small"],
+  ["overlay", "opponent-medium"],
+  ["overlay", "opponent-large"],
+  ["overlay", "stats"],
+  ["overlay", "title"],
+  ["overlay", "controls"],
 ];
 
 for (const [pathIndex, path] of PATHS.entries()) {

@@ -17,6 +17,7 @@ import { box as _box1 } from "@site/src/data/guide/sabrina";
 
 const _dreepy = {
   name: "Dreepy",
+  level: "30",
   moves: ["Astonish", "Bite", "Infestation", "Quick Attack"],
 };
 
@@ -1548,6 +1549,7 @@ const _screamTail = {
   name: "Scream Tail",
   spriteKey: "scream-tail",
   pokedexKey: "Screamtail",
+  level: "50-52",
   moves: ["Body Slam", "Hyper Voice", "Play Rough", "Rest"],
 };
 
@@ -1576,6 +1578,7 @@ export const safariZoneEncounter: Moment = {
 
 const _froakie = {
   name: "Froakie",
+  level: "1",
   ability: "Torrent",
   moves: ["Growl", "Pound"],
 };
@@ -1590,6 +1593,7 @@ export const starterEgg3Encounter: Moment = {
 
 const _chimchar = {
   name: "Chimchar",
+  level: "1",
   ability: "Blaze",
   moves: ["Leer", "Scratch"],
 };
@@ -1604,6 +1608,7 @@ export const starterEgg4Encounter: Moment = {
 
 const _treecko = {
   name: "Treecko",
+  level: "1",
   ability: "Overgrow",
   moves: ["Leer", "Pound"],
 };

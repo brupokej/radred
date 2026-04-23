@@ -9,10 +9,11 @@ import {
   viridianForestLassAnneBox,
 } from "@site/src/utils/opponents";
 
-export const newGameMoment: Moment = { label: "New Game", kind: "other" };
+export const brockMoment: Moment = { label: "Brock", kind: "other" };
 
 const _litten = {
   name: "Litten",
+  level: "5",
   ability: "Blaze",
   moves: ["Ember", "Growl", "Scratch"],
 };
@@ -44,6 +45,7 @@ export const oaksLabBoxChange: Moment = {
 
 const _tentacool = {
   name: "Tentacool",
+  level: "2-4",
   ability: "Clear Body",
   moves: ["Rapid Spin", "Water Gun"],
 };
@@ -76,6 +78,7 @@ const _wooperP = {
   name: "Wooper-P",
   spriteKey: "wooper-paldea",
   pokedexKey: "Wooper-Paldea",
+  level: "4-6",
   ability: "Water Absorb",
   moves: ["Mud Shot", "Tackle", "Tail Whip"],
 };
@@ -92,6 +95,7 @@ const _meowthG = {
   name: "Meowth-G",
   spriteKey: "meowth-galar",
   pokedexKey: "Meowth-Galar",
+  level: "2-4",
   ability: "Tough Claws",
   moves: ["Fake Out", "Growl"],
 };
@@ -106,6 +110,7 @@ export const route1Encounter: Moment = {
 
 const _marill = {
   name: "Marill",
+  level: "3-4",
   ability: "Huge Power",
   moves: ["Aqua Jet", "Tackle", "Tail Whip"],
 };
@@ -120,6 +125,7 @@ export const viridianCityEncounter: Moment = {
 
 const _houndour = {
   name: "Houndour",
+  level: "4-6",
   ability: "Flash Fire",
   moves: ["Incinerate", "Leer"],
 };
@@ -134,6 +140,7 @@ export const route2Encounter: Moment = {
 
 const _kricketot = {
   name: "Kricketot",
+  level: "4-6",
   ability: "Technician",
   moves: ["Bide", "Growl", "Tackle"],
 };
@@ -276,7 +283,7 @@ export const route22RivalBattle: Moment = {
   },
 };
 
-const _psyduck = { name: "Psyduck", moves: ["Scratch", "Water Sport"] };
+const _psyduck = { name: "Psyduck", level: "2-4", moves: ["Scratch", "Water Sport"] };
 
 const _box12 = getBox({ box: _box11, add: [_psyduck] });
 
@@ -593,6 +600,7 @@ const _yamaskG = {
   name: "Yamask-G",
   spriteKey: "yamask-galar",
   pokedexKey: "Yamask-Galar",
+  level: "7-9",
   ability: "Wandering Soul",
   moves: ["Haze", "Magnitude", "Shadow Sneak"],
 };
@@ -975,7 +983,7 @@ export const pewterCityLeaderBrockBattle: Moment = {
 export const box = _box21;
 
 export const moments: Moment[] = [
-  newGameMoment,
+  brockMoment,
   oaksLabEncounter,
   oaksLabBoxChange,
   palletTownEncounter,

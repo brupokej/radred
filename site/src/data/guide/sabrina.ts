@@ -475,6 +475,7 @@ export const rocketHideoutGiovanniBattle: Moment = {
 
 const _sprigatito = {
   name: "Sprigatito",
+  level: "1",
   ability: "Overgrow",
   moves: ["Scratch", "Tail Whip"],
 };
@@ -1148,6 +1149,7 @@ export const pokemonTowerGrunt3Battle: Moment = {
 
 const _mudkip = {
   name: "Mudkip",
+  level: "1",
   ability: "Torrent",
   moves: ["Growl", "Tackle"],
 };

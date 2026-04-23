@@ -6,6 +6,8 @@ import { Box, resolveBox } from "@site/src/utils/box";
 import { Moment } from "@site/src/utils/moments";
 import { resolvePokemon } from "@site/src/utils/pokemon";
 import { computeBattleFrags } from "@site/src/utils/stats";
+import { useStorageState } from "@site/src/utils/storage";
+import { LIVE_MOMENT_DEFAULT } from "@site/src/utils/storageDefaults";
 import { useRef } from "react";
 import styles from "./styles.module.css";
 
@@ -32,25 +34,36 @@ export default function BoxRoster({
   moments,
   title = "Box",
 }: {
-  box: Box;
+  box?: Box;
   moments?: Moment[];
   title?: string;
 }) {
-  const entries = [...resolveBox(box).values()]
-    .map((p) => resolvePokemon(p))
-    .sort((a, b) => {
-      const levelDiff = (b.level ?? 0) - (a.level ?? 0);
-      if (levelDiff !== 0) return levelDiff;
-      return (a.boxOrder ?? Infinity) - (b.boxOrder ?? Infinity);
-    });
+  const { value: liveMomentLabel } = useStorageState("live-moment");
+  if (moments) {
+    const effectiveLabel = liveMomentLabel ?? LIVE_MOMENT_DEFAULT;
+    const idx = moments.findIndex((m) => m.label === effectiveLabel);
+    if (idx >= 0) moments = moments.slice(0, idx + 1);
+  }
 
-  const renames = moments
-    ? ((
-        moments.filter((m) => m.kind === "battle").at(-1) as
-          | Extract<Moment, { kind: "battle" }>
-          | undefined
-      )?.data.playerBox.renames ?? {})
-    : {};
+  const lastBattleMoment = moments
+    ?.filter((m): m is Extract<Moment, { kind: "battle" }> => m.kind === "battle")
+    .at(-1);
+
+  const activeBox = lastBattleMoment?.data.playerBox ?? box;
+  const renames = activeBox?.renames ?? {};
+
+  const entries = activeBox
+    ? [...resolveBox(activeBox).values()]
+        .map((p) => resolvePokemon(p))
+        .sort((a, b) => {
+          const toNum = (l: number | string | undefined) =>
+            l == null ? 0 : typeof l === "number" ? l : parseInt(l, 10);
+          const levelDiff = toNum(b.level) - toNum(a.level);
+          if (levelDiff !== 0) return levelDiff;
+          return (a.boxOrder ?? Infinity) - (b.boxOrder ?? Infinity);
+        })
+    : [];
+
   const totals = moments ? computeTotals(moments, renames) : null;
 
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -61,11 +74,14 @@ export default function BoxRoster({
         <div ref={scrollRef} className={styles.scrollInner}>
           {entries.map((pokemon, i) => {
             const canon = renames[pokemon.name] ?? pokemon.name;
+            const levelLabel = pokemon.level != null ? `Level ${pokemon.level}` : null;
             const detail = [
-              pokemon.level != null && `Level ${pokemon.level}`,
+              levelLabel,
               `${totals && totals.battles[canon] != null ? totals.battles[canon] : 0} Battles`,
               `${totals && totals.frags[canon] != null ? totals.frags[canon] : 0} Frags`,
-            ].join(" · ");
+            ]
+              .filter(Boolean)
+              .join(" · ");
             return (
               <PokemonEntry
                 key={i}

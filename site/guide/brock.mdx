@@ -7,10 +7,10 @@ import BoxChange from "@site/src/components/BoxChange";
 import Card from "@site/src/components/Card";
 import Encounter from "@site/src/components/Encounter";
 import { Row } from "@site/src/components/Row";
-import StartButton from "@site/src/components/StartButton";
+import GoLiveButton from "@site/src/components/GoLiveButton";
 
 import {
-  newGameMoment,
+  brockMoment,
   oaksLabEncounter,
   oaksLabBoxChange,
   palletTownEncounter,
@@ -36,7 +36,7 @@ import {
 
 # Brock
 
-## New Game<StartButton moment={newGameMoment} />
+<GoLiveButton moment={brockMoment} />
 
 <Card title="Game Setup">
   <Row row={["Setup Menu →", { info: "Difficulty Options → Hardcore Mode" }]} />
@@ -44,7 +44,9 @@ import {
   <Row row={["Talk to Mom →", { info: "Starter Region → Alola" }]} />
 </Card>
 
-## Oak's Lab Encounter<StartButton moment={oaksLabEncounter} />
+## Oak's Lab Encounter
+
+<GoLiveButton moment={oaksLabEncounter} />
 
 <Encounter data={oaksLabEncounter.data}>
   <Row row={["Level 5"]} />
@@ -52,7 +54,9 @@ import {
 
 <BoxChange data={oaksLabBoxChange.data} />
 
-## Pallet Town Encounter<StartButton moment={palletTownEncounter} />
+## Pallet Town Encounter
+
+<GoLiveButton moment={palletTownEncounter} />
 
 <Encounter data={palletTownEncounter.data}>
   <Row row={["Old Rod · 70% · Level 2-4 ·", { info: "Clear Body" }]} />
@@ -64,31 +68,41 @@ import {
   <Row row={["Option →", { info: "Wild Double Battle → On" }]} />
 </Card>
 
-## Route 21 Encounter<StartButton moment={route21Encounter} />
+## Route 21 Encounter
+
+<GoLiveButton moment={route21Encounter} />
 
 <Encounter data={route21Encounter.data}>
   <Row row={["Grass ·", { warning: "Night" }, "· 20% · Level 4-6 ·", { info: "Water Absorb" }]} />
 </Encounter>
 
-## Route 1 Encounter<StartButton moment={route1Encounter} />
+## Route 1 Encounter
+
+<GoLiveButton moment={route1Encounter} />
 
 <Encounter data={route1Encounter.data}>
   <Row row={["Grass · Night · 10% · Level 2-4 ·", { info: "Tough Claws" }]} />
 </Encounter>
 
-## Viridian City Encounter<StartButton moment={viridianCityEncounter} />
+## Viridian City Encounter
+
+<GoLiveButton moment={viridianCityEncounter} />
 
 <Encounter data={viridianCityEncounter.data}>
   <Row row={["Old Rod · 70% · Level 3-4 ·", { info: "Huge Power" }]} />
 </Encounter>
 
-## Route 2 Encounter<StartButton moment={route2Encounter} />
+## Route 2 Encounter
+
+<GoLiveButton moment={route2Encounter} />
 
 <Encounter data={route2Encounter.data}>
   <Row row={["Grass · Night · 5% · Level 4-6 ·", { info: "Flash Fire" }]} />
 </Encounter>
 
-## Viridian Forest Encounter<StartButton moment={viridianForestEncounter} />
+## Viridian Forest Encounter
+
+<GoLiveButton moment={viridianForestEncounter} />
 
 <Encounter data={viridianForestEncounter.data}>
   <Row row={["Grass · Night · 10% · Level 4-6"]} />
@@ -96,11 +110,15 @@ import {
 
 <BoxChange data={viridianForestBoxChange.data} />
 
-## Route 22 Rival Battle<StartButton moment={route22RivalBattle} />
+## Route 22 Rival Battle
+
+<GoLiveButton moment={route22RivalBattle} />
 
 <Battle data={route22RivalBattle.data} />
 
-## Route 22 Encounter<StartButton moment={route22Encounter} />
+## Route 22 Encounter
+
+<GoLiveButton moment={route22Encounter} />
 
 <Encounter data={route22Encounter.data}>
   <Row row={["Old Rod · 70% · Level 2-4"]} />
@@ -108,7 +126,9 @@ import {
 
 <BoxChange data={route22BoxChange.data} />
 
-## Viridian Forest Brendan Battle<StartButton moment={viridianForestBrendanBattle} />
+## Viridian Forest Brendan Battle
+
+<GoLiveButton moment={viridianForestBrendanBattle} />
 
 <Battle data={viridianForestBrendanBattle.data} />
 
@@ -118,26 +138,36 @@ import {
 
 <BoxChange data={viridianForestBrendanBoxChange.data} />
 
-## Viridian Forest Lass Anne Battle<StartButton moment={viridianForestLassAnneBattle} />
+## Viridian Forest Lass Anne Battle
+
+<GoLiveButton moment={viridianForestLassAnneBattle} />
 
 <Battle data={viridianForestLassAnneBattle.data} />
 
-## Viridian Forest Bug Catcher Sammy Battle<StartButton moment={viridianForestBugCatcherSammyBattle} />
+## Viridian Forest Bug Catcher Sammy Battle
+
+<GoLiveButton moment={viridianForestBugCatcherSammyBattle} />
 
 <Battle data={viridianForestBugCatcherSammyBattle.data} />
 
-## Diglett Cave Encounter<StartButton moment={diglettCaveEncounter} />
+## Diglett Cave Encounter
+
+<GoLiveButton moment={diglettCaveEncounter} />
 
 <Encounter data={diglettCaveEncounter.data}>
   <Row row={["Night · 10% · Level 7-9"]} />
 </Encounter>
 
-## Pewter Museum Leader Falkner Battle<StartButton moment={pewterMuseumLeaderFalknerBattle} />
+## Pewter Museum Leader Falkner Battle
+
+<GoLiveButton moment={pewterMuseumLeaderFalknerBattle} />
 
 <Battle data={pewterMuseumLeaderFalknerBattle.data} />
 
 <BoxChange data={pewterMuseumLeaderFalknerBoxChange.data} />
 
-## Pewter City Leader Brock Battle<StartButton moment={pewterCityLeaderBrockBattle} />
+## Pewter City Leader Brock Battle
+
+<GoLiveButton moment={pewterCityLeaderBrockBattle} />
 
 <Battle data={pewterCityLeaderBrockBattle.data} />
