@@ -4,6 +4,4 @@
 
 .scrollInner {
   max-height: 484px;
-  overflow-y: auto;
-  overscroll-behavior: none;
 }

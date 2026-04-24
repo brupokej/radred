@@ -8,7 +8,6 @@ import { resolvePokemon } from "@site/src/utils/pokemon";
 import { computeBattleFrags } from "@site/src/utils/stats";
 import { useStorageState } from "@site/src/utils/storage";
 import { LIVE_MOMENT_DEFAULT } from "@site/src/utils/storageDefaults";
-import { useRef } from "react";
 import styles from "./styles.module.css";
 
 function computeTotals(moments: Moment[], canon: (name: string) => string) {
@@ -65,33 +64,29 @@ export default function BoxRoster({
 
   const totals = computeTotals(sliced, canon);
 
-  const scrollRef = useRef<HTMLDivElement>(null);
-
   return (
     <Card title={title}>
-      <ScrollFade axis="y" scrollRef={scrollRef}>
-        <div ref={scrollRef} className={styles.scrollInner}>
-          {entries.map((pokemon, i) => {
-            const canonName = canon(pokemon.name);
-            const levelLabel = pokemon.level != null ? `Level ${pokemon.level}` : null;
-            const detail = [
-              levelLabel,
-              `${totals.battles[canonName] ?? 0} Battles`,
-              `${totals.frags[canonName] ?? 0} Frags`,
-            ]
-              .filter(Boolean)
-              .join(" · ");
-            return (
-              <PokemonEntry
-                key={i}
-                pokemon={pokemon}
-                className={i > 0 ? styles.bordered : undefined}
-              >
-                {detail && <Row row={[detail]} />}
-              </PokemonEntry>
-            );
-          })}
-        </div>
+      <ScrollFade axis="y" className={styles.scrollInner}>
+        {entries.map((pokemon, i) => {
+          const canonName = canon(pokemon.name);
+          const levelLabel = pokemon.level != null ? `Level ${pokemon.level}` : null;
+          const detail = [
+            levelLabel,
+            `${totals.battles[canonName] ?? 0} Battles`,
+            `${totals.frags[canonName] ?? 0} Frags`,
+          ]
+            .filter(Boolean)
+            .join(" · ");
+          return (
+            <PokemonEntry
+              key={i}
+              pokemon={pokemon}
+              className={i > 0 ? styles.bordered : undefined}
+            >
+              {detail && <Row row={[detail]} />}
+            </PokemonEntry>
+          );
+        })}
       </ScrollFade>
     </Card>
   );

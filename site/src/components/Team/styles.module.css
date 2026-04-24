@@ -7,12 +7,10 @@
   position: relative;
 }
 
-.grid {
+.gridInner {
   display: flex;
   flex-wrap: nowrap;
   gap: 0.75rem;
-  overflow-x: auto;
-  overscroll-behavior-x: none;
   padding-inline: var(--ifm-spacing-horizontal);
 }
 

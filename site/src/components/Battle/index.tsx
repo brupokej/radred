@@ -429,7 +429,9 @@ function Move({
   const hpDisplay = useHpDisplay();
   const parts = parseTokens(move, side, graphCtx, hpDisplay);
   return (
-    <ScrollFade innerClassName={`${styles.turnAction} ${className ?? ""}`}>{parts}</ScrollFade>
+    <ScrollFade className={`${styles.turnAction}${className ? ` ${className}` : ""}`}>
+      <div className={styles.turnActionInner}>{parts}</div>
+    </ScrollFade>
   );
 }
 
@@ -501,23 +503,21 @@ function Branch({
 
   return (
     <div className={styles.branchWrapper} data-branch={branchKey}>
-      <ScrollFade
-        className={styles.branchScrollFade}
-        innerClassName={styles.branchRow}
-        insetBlock="var(--ifm-spacing-vertical)"
-      >
-        <span className={styles.branchLabel}>Branch →</span>
-        <select
-          className={styles.branchSelect}
-          value={selectedChildLine ?? defaultBranch}
-          onChange={(e) => handleChange(e.target.value)}
-        >
-          {branch.map((item) => (
-            <option key={slugify(item)} value={item}>
-              {item}
-            </option>
-          ))}
-        </select>
+      <ScrollFade className={`${styles.branchScrollFade} ${styles.branchRow}`}>
+        <div className={styles.branchRowInner}>
+          <span className={styles.branchLabel}>Branch →</span>
+          <select
+            className={styles.branchSelect}
+            value={selectedChildLine ?? defaultBranch}
+            onChange={(e) => handleChange(e.target.value)}
+          >
+            {branch.map((item) => (
+              <option key={slugify(item)} value={item}>
+                {item}
+              </option>
+            ))}
+          </select>
+        </div>
       </ScrollFade>
     </div>
   );

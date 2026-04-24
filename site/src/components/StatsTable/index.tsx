@@ -95,19 +95,20 @@ export function StatsTable<TRow extends object>({
 
   return (
     <Card title="Pokémon Data">
-      <ScrollFade
-        axis="y"
-        scrollRef={scrollRef}
-        className={styles.tableContainer}
-        insetBlock="calc(26px + 2 * var(--ifm-spacing-vertical))"
-      >
+      <div className={styles.tableContainer}>
         <ScrollArrows
           scrollRef={scrollRef}
           onLeft={(el) => scrollSnap(el, "left")}
           onRight={(el) => scrollSnap(el, "right")}
           leftOffset={SPRITE_COL_OFFSET}
         />
-        <div ref={scrollRef} className={styles.scrollInner}>
+        <ScrollFade
+          ref={scrollRef}
+          axis="both"
+          className={styles.scrollInner}
+          topOffset="52px"
+          leftOffset="52px"
+        >
           <table className={styles.table}>
             <thead ref={theadRef}>
               {table.getHeaderGroups().map((headerGroup) => (
@@ -159,8 +160,8 @@ export function StatsTable<TRow extends object>({
               ))}
             </tbody>
           </table>
-        </div>
-      </ScrollFade>
+        </ScrollFade>
+      </div>
     </Card>
   );
 }

@@ -5,13 +5,11 @@ export function ScrollArrows({
   scrollRef,
   onLeft,
   onRight,
-  fadeColor,
   leftOffset,
 }: {
   scrollRef: React.RefObject<HTMLDivElement>;
   onLeft: (el: HTMLDivElement) => void;
   onRight: (el: HTMLDivElement) => void;
-  fadeColor?: string;
   leftOffset?: number;
 }) {
   const [canScrollLeft, setCanScrollLeft] = useState(false);
@@ -38,21 +36,12 @@ export function ScrollArrows({
     };
   }, [updateScrollState]);
 
-  const overlayClass = [
-    styles.overlay,
-    canScrollLeft ? styles.fadeLeft : "",
-    canScrollRight ? styles.fadeRight : "",
-  ]
-    .filter(Boolean)
-    .join(" ");
-
-  const cssVars = {
-    ...(fadeColor ? { "--scroll-arrows-fade-color": fadeColor } : {}),
-    ...(leftOffset ? { "--scroll-arrows-left-offset": `${leftOffset}px` } : {}),
-  } as React.CSSProperties;
+  const cssVars = leftOffset
+    ? ({ "--scroll-arrows-left-offset": `${leftOffset}px` } as React.CSSProperties)
+    : undefined;
 
   return (
-    <div className={overlayClass} style={Object.keys(cssVars).length ? cssVars : undefined}>
+    <div className={styles.overlay} style={cssVars}>
       <button
         className={`${styles.arrow} ${styles.arrowLeft} ${canScrollLeft ? styles.arrowVisible : ""}`}
         onClick={() => scrollRef.current && onLeft(scrollRef.current)}

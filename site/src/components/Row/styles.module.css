@@ -1,17 +1,18 @@
-.rowWrapper + .rowWrapper {
+.row + .row {
   border-top: 1px solid var(--ifm-color-emphasis-200);
 }
 
 .row {
-  align-items: center;
-  display: flex;
   font-size: 0.875rem;
   line-height: 26px;
-  overflow-x: auto;
-  overscroll-behavior-x: none;
+  white-space: nowrap;
+}
+
+.rowInner {
+  align-items: center;
+  display: flex;
   padding-block: 13px;
   padding-inline: calc(var(--ifm-spacing-horizontal) - 0.4rem);
-  white-space: nowrap;
 }
 
 .plainCell {

@@ -116,10 +116,8 @@ export function Row({ row }: { row: RowCell[] }) {
   const rowHighlightClasses = [...variants].map((v) => ROW_HIGHLIGHT_CLASS[v]).join(" ");
 
   return (
-    <ScrollFade
-      className={styles.rowWrapper}
-      innerClassName={`${styles.row} ${rowHighlightClasses}`}
-    >
+    <ScrollFade className={`${styles.row}${rowHighlightClasses ? ` ${rowHighlightClasses}` : ""}`}>
+      <div className={styles.rowInner}>
       {cells.map((cell, i) => {
         if ("dropdown" in cell) {
           return (
@@ -179,6 +177,7 @@ export function Row({ row }: { row: RowCell[] }) {
           </span>
         );
       })}
+      </div>
     </ScrollFade>
   );
 }

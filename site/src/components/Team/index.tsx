@@ -1,5 +1,6 @@
 import Card from "@site/src/components/Card";
 import { ScrollArrows } from "@site/src/components/ScrollArrows";
+import { ScrollFade } from "@site/src/components/ScrollFade";
 import type { Box } from "@site/src/utils/box";
 import { resolveBox } from "@site/src/utils/box";
 import { pokedex, type PokedexData } from "@site/src/utils/pokedex";
@@ -89,35 +90,37 @@ function TeamGrid({ team, extraTeam = [] }: { team: Pokemon[]; extraTeam?: Pokem
           onLeft={(el) => scroll(el, "left")}
           onRight={(el) => scroll(el, "right")}
         />
-        <div ref={scrollRef} className={styles.grid}>
-          {team.map((pokemon, i) => (
-            <PokemonCard
-              key={i}
-              pokemon={pokemon}
-              showIVs={showIVs}
-              showEVs={showEVs}
-              showFriend={showFriend}
-            />
-          ))}
-          {extraTeam.map((pokemon, i) => (
-            <PokemonCard
-              key={i}
-              pokemon={pokemon}
-              showIVs={showIVs}
-              showEVs={showEVs}
-              showFriend={showFriend}
-            />
-          ))}
-          {emptySlots.map((_, i) => (
-            <PokemonCard
-              key={`empty-${i}`}
-              pokemon={null}
-              showIVs={showIVs}
-              showEVs={showEVs}
-              showFriend={showFriend}
-            />
-          ))}
-        </div>
+        <ScrollFade ref={scrollRef} axis="x" className={styles.grid}>
+          <div className={styles.gridInner}>
+            {team.map((pokemon, i) => (
+              <PokemonCard
+                key={i}
+                pokemon={pokemon}
+                showIVs={showIVs}
+                showEVs={showEVs}
+                showFriend={showFriend}
+              />
+            ))}
+            {extraTeam.map((pokemon, i) => (
+              <PokemonCard
+                key={i}
+                pokemon={pokemon}
+                showIVs={showIVs}
+                showEVs={showEVs}
+                showFriend={showFriend}
+              />
+            ))}
+            {emptySlots.map((_, i) => (
+              <PokemonCard
+                key={`empty-${i}`}
+                pokemon={null}
+                showIVs={showIVs}
+                showEVs={showEVs}
+                showFriend={showFriend}
+              />
+            ))}
+          </div>
+        </ScrollFade>
       </div>
     </div>
   );

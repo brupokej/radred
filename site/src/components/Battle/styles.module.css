@@ -77,17 +77,18 @@
 }
 
 .turnAction {
-  align-items: center;
-  display: flex;
-  gap: 0.4rem;
-  overflow-x: auto;
-  overscroll-behavior-x: none;
   padding-block-end: 13px;
-  padding-inline-start: var(--ifm-spacing-horizontal);
   white-space: nowrap;
 }
 
-.cell .turnAction:last-child {
+.turnActionInner {
+  align-items: center;
+  display: flex;
+  gap: 0.4rem;
+  padding-inline-start: var(--ifm-spacing-horizontal);
+}
+
+.cell .turnAction:last-child .turnActionInner {
   padding-inline-end: var(--ifm-spacing-horizontal);
 }
 
@@ -112,14 +113,15 @@
 }
 
 .branchRow {
+  padding-block: 13px;
+  white-space: nowrap;
+}
+
+.branchRowInner {
   align-items: center;
   display: flex;
   gap: 0.25rem;
-  overflow-x: auto;
-  overscroll-behavior-x: none;
-  padding-block: 13px;
   padding-inline: var(--ifm-spacing-horizontal);
-  white-space: nowrap;
 }
 
 .branchLabel {

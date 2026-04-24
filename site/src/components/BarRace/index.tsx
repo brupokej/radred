@@ -160,7 +160,6 @@ export default function BarRace({
   const [isPlaying, setIsPlaying] = useState(false);
   const intervalRef = useRef<ReturnType<typeof setInterval>>(undefined);
   const playDelayRef = useRef<ReturnType<typeof setTimeout>>(undefined);
-  const barsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setFrameIdx(frames.length - 1);
@@ -230,8 +229,8 @@ export default function BarRace({
   return (
     <Card title={"Pokémon Data"}>
       <div className={styles.container}>
-        <ScrollFade axis="y" scrollRef={barsRef} insetBlock="52px">
-          <div ref={barsRef} className={styles.bars} style={{ maxHeight: visibleHeight }}>
+        <ScrollFade axis="y" topOffset="52px" style={{ maxHeight: visibleHeight }}>
+          <div className={styles.bars}>
             <div className={styles.header}>
               <div className={styles.spriteCell} />
               <span className={styles.name}>Pokémon</span>
