@@ -12,7 +12,6 @@
   top: var(--scroll-fade-inset, 0px);
   transition: opacity 0.15s;
   width: 2rem;
-  z-index: 1;
 }
 
 .wrapper::before {

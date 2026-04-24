@@ -156,6 +156,8 @@ function PokemonCard({
   const isExpanded = useCardDetail();
   const { update, base } = pokemon ?? {};
   const current = pokemon ? resolvePokemon(pokemon) : null;
+  const [imgError, setImgError] = useState(false);
+  useEffect(() => setImgError(false), [current?.spriteKey ?? current?.name]);
   const wc = (field: string) => (update && field in update ? styles.fieldWarning : "");
   const baseMoveSet = base?.moves ? new Set(base.moves.filter(Boolean)) : null;
   const mwc = (move: string | null | undefined) =>
@@ -164,8 +166,13 @@ function PokemonCard({
 
   return (
     <div className={`${styles.card} ${!pokemon ? styles.cardEmpty : ""}`}>
-      {current ? (
-        <img src={getColouredSpriteUrl(current)} alt={current.name} className={styles.sprite} />
+      {current && !imgError ? (
+        <img
+          src={getColouredSpriteUrl(current)}
+          alt={current.name}
+          className={styles.sprite}
+          onError={() => setImgError(true)}
+        />
       ) : (
         <div className={styles.emptySprite}>✕</div>
       )}
