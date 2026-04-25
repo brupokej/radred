@@ -94,6 +94,61 @@ function computeOrder(
   return order;
 }
 
+function resolveChildLine(branches: string[], defaultId?: string): string {
+  const defaultBranch = defaultId
+    ? (branches.find((b) => b === defaultId) ?? branches[0])
+    : branches[0];
+  if (branches.length === 1) return defaultBranch;
+  const stored = getState(`branch-${slugify(branches)}`);
+  const found = stored ? branches.find((b) => slugify(b) === stored) : null;
+  return found ?? defaultBranch;
+}
+
+function computeInitialOrder(
+  data: BattleData,
+  rootLine: string,
+  lineCondsByName: Map<string, LineConditions[]>
+): string[] {
+  const linesByName = new Map<string, LineData[]>();
+  for (const line of data.lines) {
+    const name = line.line ?? "";
+    if (!linesByName.has(name)) linesByName.set(name, []);
+    linesByName.get(name)!.push(line);
+  }
+
+  const order: string[] = [];
+  const visited = new Set<string>();
+
+  function visit(slug: string) {
+    if (visited.has(slug)) return;
+    const versions = lineCondsByName.get(slug);
+    if (versions && !versions.some((c) => conditionsMatch(c, visited))) return;
+    visited.add(slug);
+    order.push(slug);
+
+    const lineVersions = linesByName.get(slug) ?? [];
+    const lineData =
+      lineVersions.find((v) => conditionsMatch({ if: v.if, ifNot: v.ifNot }, visited)) ??
+      lineVersions[0];
+    if (!lineData) return;
+
+    for (const matchupData of lineData.matchups) {
+      if (!matchupData.branches) continue;
+      let activeFound = false;
+      for (const branchData of matchupData.branches) {
+        if (activeFound) break;
+        if (!conditionsMatch({ if: branchData.if, ifNot: branchData.ifNot }, visited)) continue;
+        activeFound = true;
+
+        visit(resolveChildLine(branchData.branches, branchData.default));
+      }
+    }
+  }
+
+  visit(rootLine);
+  return order;
+}
+
 function enrichBranchConditions(
   children: React.ReactNode,
   visibleOrder: string[]
@@ -261,7 +316,7 @@ export function Battle({ data }: { data: BattleData }) {
   );
 
   const [state, dispatch] = useReducer(reducer, {
-    visibleOrder: [rootLine],
+    visibleOrder: computeInitialOrder(data, rootLine, lineCondsByName),
     selectedBranches: new Map(),
   });
 
@@ -474,19 +529,10 @@ function Branch({
 
   useEffect(() => {
     if (!dispatch) return;
-    if (isActive === false) {
-      dispatch({ type: "DESELECT_BRANCH", branchId });
-    } else if (isActive === true) {
-      if (branch.length === 1) {
-        dispatch({ type: "SELECT_BRANCH", branchId, childLine: branch[0] });
-      } else {
-        const stored = branchKey ? getState(branchKey) : null;
-        const found = stored ? branch.find((b) => slugify(b) === stored) : null;
-        const childLine = found ?? defaultBranch;
-        dispatch({ type: "SELECT_BRANCH", branchId, childLine });
-      }
-    }
-  }, [branchId, dispatch, isActive, branchKey, branch, defaultBranch]);
+    if (isActive === false) dispatch({ type: "DESELECT_BRANCH", branchId });
+    else if (isActive === true)
+      dispatch({ type: "SELECT_BRANCH", branchId, childLine: resolveChildLine(branch, defaultId) });
+  }, [branchId, dispatch, isActive, branch, defaultId]);
 
   const selectedChildLine = graphCtx?.state.selectedBranches.get(branchId);
 
