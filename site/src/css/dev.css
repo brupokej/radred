@@ -1,0 +1,23 @@
+:is(h1, h2, h3, h4, h5, h6) {
+  min-height: 2rem;
+  padding-right: 104px;
+  position: relative;
+}
+
+@container (min-width: 630px) {
+  :is(h1, h2, h3, h4, h5, h6) {
+    max-width: calc(4 * 140px + 3 * 0.75rem + 2 * var(--ifm-spacing-horizontal) + 2px);
+  }
+}
+
+@container (min-width: 782px) {
+  :is(h1, h2, h3, h4, h5, h6) {
+    max-width: calc(5 * 140px + 4 * 0.75rem + 2 * var(--ifm-spacing-horizontal) + 2px);
+  }
+}
+
+@container (min-width: 934px) {
+  :is(h1, h2, h3, h4, h5, h6) {
+    max-width: calc(6 * 140px + 5 * 0.75rem + 2 * var(--ifm-spacing-horizontal) + 2px);
+  }
+}

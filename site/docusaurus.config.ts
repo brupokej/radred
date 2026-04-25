@@ -55,7 +55,10 @@ const config: Config = {
           sidebarPath: "./sidebars.ts",
         },
         theme: {
-          customCss: "./src/css/custom.css",
+          customCss:
+            process.env.NODE_ENV === "development"
+              ? ["./src/css/custom.css", "./src/css/dev.css"]
+              : "./src/css/custom.css",
         },
       } satisfies Preset.Options,
     ],
