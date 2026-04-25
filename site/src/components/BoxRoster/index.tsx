@@ -1,7 +1,6 @@
 import Card from "@site/src/components/Card";
 import { PokemonEntry } from "@site/src/components/PokemonEntry";
 import { Row } from "@site/src/components/Row";
-import { ScrollFade } from "@site/src/components/ScrollFade";
 import { getCanon, resolveBox } from "@site/src/utils/box";
 import { Moment } from "@site/src/utils/moments";
 import { resolvePokemon } from "@site/src/utils/pokemon";
@@ -66,24 +65,22 @@ export default function BoxRoster({
 
   return (
     <Card title={title}>
-      <ScrollFade axis="y" className={styles.scrollInner}>
-        {entries.map((pokemon, i) => {
-          const canonName = canon(pokemon.name);
-          const levelLabel = pokemon.level != null ? `Level ${pokemon.level}` : null;
-          const detail = [
-            levelLabel,
-            `${totals.battles[canonName] ?? 0} Battles`,
-            `${totals.frags[canonName] ?? 0} Frags`,
-          ]
-            .filter(Boolean)
-            .join(" · ");
-          return (
-            <PokemonEntry key={i} pokemon={pokemon} className={i > 0 ? styles.bordered : undefined}>
-              {detail && <Row row={[detail]} />}
-            </PokemonEntry>
-          );
-        })}
-      </ScrollFade>
+      {entries.map((pokemon, i) => {
+        const canonName = canon(pokemon.name);
+        const levelLabel = pokemon.level != null ? `Level ${pokemon.level}` : null;
+        const detail = [
+          levelLabel,
+          `${totals.battles[canonName] ?? 0} Battles`,
+          `${totals.frags[canonName] ?? 0} Frags`,
+        ]
+          .filter(Boolean)
+          .join(" · ");
+        return (
+          <PokemonEntry key={i} pokemon={pokemon} className={i > 0 ? styles.bordered : undefined}>
+            {detail && <Row row={[detail]} />}
+          </PokemonEntry>
+        );
+      })}
     </Card>
   );
 }

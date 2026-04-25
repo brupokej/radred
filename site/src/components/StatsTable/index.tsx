@@ -105,7 +105,7 @@ export function StatsTable<TRow extends object>({
         <ScrollFade
           ref={scrollRef}
           axis="both"
-          className={styles.scrollInner}
+          style={{ maxHeight: 346, maxWidth: "100%" }}
           topOffset="52px"
           leftOffset="52px"
         >

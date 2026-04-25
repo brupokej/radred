@@ -578,23 +578,19 @@ function Branch({
   }
 
   return (
-    <div className={styles.branchWrapper} data-branch={branchKey}>
-      <ScrollFade className={`${styles.branchScrollFade} ${styles.branchRow}`}>
-        <div className={styles.branchRowInner}>
-          <span className={styles.branchLabel}>Branch →</span>
-          <select
-            className={styles.branchSelect}
-            value={selectedChildLine ?? defaultBranch}
-            onChange={(e) => handleChange(e.target.value)}
-          >
-            {branch.map((item) => (
-              <option key={slugify(item)} value={item}>
-                {item}
-              </option>
-            ))}
-          </select>
-        </div>
-      </ScrollFade>
+    <div data-branch={branchKey}>
+      <Row
+        row={[
+          "Branch →",
+          {
+            dropdown: {
+              value: selectedChildLine ?? defaultBranch,
+              options: branch,
+              onChange: handleChange,
+            },
+          },
+        ]}
+      />
     </div>
   );
 }

@@ -1,4 +1,10 @@
-/* ── Container ───────────────────────────────────────── */
+/* ── Wrapper ─────────────────────────────────────────── */
+
+.wrapper {
+  position: relative;
+}
+
+/* ── Scroll containers ───────────────────────────────── */
 
 .axisX {
   display: flex;
@@ -16,58 +22,49 @@
   overscroll-behavior: none;
 }
 
-/* Inner flex wrapper for axis="both": enables sticky left/right fades */
-.bothInner {
-  display: flex;
-}
-
-/* ── Fade elements ───────────────────────────────────── */
+/* ── Fade overlays ───────────────────────────────────── */
 
 .fadeTop,
-.fadeBottom {
-  height: 2rem;
-  left: 0;
+.fadeBottom,
+.fadeLeft,
+.fadeRight {
   opacity: 0;
   pointer-events: none;
-  position: sticky;
+  position: absolute;
   transition: opacity 0.15s;
   z-index: 2;
 }
 
 .fadeTop {
   background: linear-gradient(to bottom, var(--ifm-card-background-color), transparent);
-  margin-bottom: -2rem;
-  top: var(--scroll-fade-top-offset, 0px);
+  height: 2rem;
+  left: 0;
+  right: 0;
+  top: 0;
 }
 
 .fadeBottom {
   background: linear-gradient(to top, var(--ifm-card-background-color), transparent);
   bottom: 0;
-  margin-top: -2rem;
-}
-
-.fadeLeft,
-.fadeRight {
-  align-self: stretch;
-  flex-shrink: 0;
-  opacity: 0;
-  pointer-events: none;
-  position: sticky;
-  transition: opacity 0.15s;
-  width: 2rem;
-  z-index: 2;
+  height: 2rem;
+  left: 0;
+  right: 0;
 }
 
 .fadeLeft {
   background: linear-gradient(to right, var(--ifm-card-background-color), transparent);
-  left: var(--scroll-fade-left-offset, 0px);
-  margin-right: -2rem;
+  bottom: 0;
+  left: 0;
+  top: 0;
+  width: 2rem;
 }
 
 .fadeRight {
   background: linear-gradient(to left, var(--ifm-card-background-color), transparent);
-  margin-left: -2rem;
+  bottom: 0;
   right: 0;
+  top: 0;
+  width: 2rem;
 }
 
 .fadeVisible {

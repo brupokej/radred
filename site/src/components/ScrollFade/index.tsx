@@ -43,61 +43,41 @@ export const ScrollFade = forwardRef<
     };
   }, [axis]);
 
-  const cssVars = {
-    ...(topOffset != null ? { "--scroll-fade-top-offset": topOffset } : {}),
-    ...(leftOffset != null ? { "--scroll-fade-left-offset": leftOffset } : {}),
-  } as React.CSSProperties;
-
-  const containerClass = [
-    axis === "x" ? styles.axisX : axis === "y" ? styles.axisY : styles.axisBoth,
-    className,
-  ]
-    .filter(Boolean)
-    .join(" ");
-
-  const mergedStyle = Object.keys(cssVars).length || style ? { ...cssVars, ...style } : undefined;
-
+  const axisClass = axis === "x" ? styles.axisX : axis === "y" ? styles.axisY : styles.axisBoth;
   const yFades = axis === "y" || axis === "both";
   const xFades = axis === "x" || axis === "both";
 
-  const topFade = yFades && (
-    <div className={`${styles.fadeTop}${showTop ? ` ${styles.fadeVisible}` : ""}`} aria-hidden />
-  );
-  const bottomFade = yFades && (
-    <div
-      className={`${styles.fadeBottom}${showBottom ? ` ${styles.fadeVisible}` : ""}`}
-      aria-hidden
-    />
-  );
-  const leftFade = xFades && (
-    <div className={`${styles.fadeLeft}${showLeft ? ` ${styles.fadeVisible}` : ""}`} aria-hidden />
-  );
-  const rightFade = xFades && (
-    <div
-      className={`${styles.fadeRight}${showRight ? ` ${styles.fadeVisible}` : ""}`}
-      aria-hidden
-    />
-  );
-
   return (
-    <div ref={innerRef} className={containerClass} style={mergedStyle}>
-      {topFade}
-      {axis === "both" ? (
-        <div className={styles.bothInner}>
-          {leftFade}
-          {children}
-          {rightFade}
-        </div>
-      ) : axis === "x" ? (
-        <>
-          {leftFade}
-          {children}
-          {rightFade}
-        </>
-      ) : (
-        children
+    <div className={[styles.wrapper, className].filter(Boolean).join(" ")}>
+      <div ref={innerRef} className={axisClass} style={style}>
+        {children}
+      </div>
+      {yFades && (
+        <div
+          className={`${styles.fadeTop}${showTop ? ` ${styles.fadeVisible}` : ""}`}
+          style={topOffset ? { top: topOffset } : undefined}
+          aria-hidden
+        />
       )}
-      {bottomFade}
+      {yFades && (
+        <div
+          className={`${styles.fadeBottom}${showBottom ? ` ${styles.fadeVisible}` : ""}`}
+          aria-hidden
+        />
+      )}
+      {xFades && (
+        <div
+          className={`${styles.fadeLeft}${showLeft ? ` ${styles.fadeVisible}` : ""}`}
+          style={leftOffset ? { left: leftOffset } : undefined}
+          aria-hidden
+        />
+      )}
+      {xFades && (
+        <div
+          className={`${styles.fadeRight}${showRight ? ` ${styles.fadeVisible}` : ""}`}
+          aria-hidden
+        />
+      )}
     </div>
   );
 });

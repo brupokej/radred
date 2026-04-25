@@ -77,6 +77,11 @@
   opacity: 0.55;
 }
 
+.select:last-child,
+.input:last-child {
+  margin-inline-end: 0;
+}
+
 .input {
   background-color: var(--ifm-color-emphasis-200);
   border: none;
