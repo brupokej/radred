@@ -3,7 +3,7 @@ import { useRelayState } from "@site/src/utils/overlayHooks";
 import { postRelayState } from "@site/src/utils/overlayRelay";
 import { removeState, setState } from "@site/src/utils/storage";
 import { LIVE_MOMENT_DEFAULT } from "@site/src/utils/storageDefaults";
-import { useEffect, useRef, useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import styles from "./styles.module.css";
 
@@ -23,7 +23,7 @@ function GoLiveButtonInner({ moment, attempt }: { moment: Moment; attempt?: numb
     relayState?.moment?.label === moment.label &&
     (attempt === undefined || (relayState.attempt ?? 1) === resolvedAttempt);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!sentinelRef.current) return;
     const sentinel = sentinelRef.current;
     const headings = Array.from(document.querySelectorAll("h1, h2, h3, h4, h5, h6"));

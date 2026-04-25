@@ -121,7 +121,7 @@ async function getFeatureSnapshot(
     content: `[data-turn] { min-width: 9999px !important; }`,
   });
   await waitForRender(loc);
-  
+
   await loc.evaluate((el) => el.scrollIntoView({ block: "start" }));
   const box = await loc.boundingBox();
 

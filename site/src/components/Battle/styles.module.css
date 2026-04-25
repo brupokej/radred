@@ -52,44 +52,28 @@
 }
 
 .turn {
+  column-gap: 1px;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   padding-block-start: 13px;
 }
 
-.turnMeasure {
-  display: flex;
-  flex-wrap: nowrap;
-  height: 0;
-  overflow: hidden;
-  pointer-events: none;
-  visibility: hidden;
+.cell {
+  max-width: 100%;
+  position: relative;
 }
 
-.turnMeasureCell {
-  flex-shrink: 0;
-}
-
-.turnRow {
-  align-items: center;
-  display: flex;
-}
-
-.turnDivider {
-  align-self: stretch;
+.cell::before {
   background: var(--ifm-color-emphasis-200);
-  margin-block: 2px 15px;
+  bottom: 15px;
+  content: "";
+  left: -1px;
+  position: absolute;
+  top: 2px;
   width: 1px;
 }
 
-.cell {
-  display: flex;
-  flex-direction: column;
-  flex-shrink: 0;
-  padding-block-end: 13px;
-}
-
-.turnLineFade {
+.turnAction {
   padding-block-end: 13px;
   white-space: nowrap;
 }
@@ -97,6 +81,7 @@
 .turnActionInner {
   align-items: center;
   display: flex;
+  flex-shrink: 0;
   gap: 0.4rem;
   padding-inline: var(--ifm-spacing-horizontal);
   white-space: nowrap;
