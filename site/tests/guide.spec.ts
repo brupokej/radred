@@ -116,14 +116,14 @@ async function getFeatureSnapshot(
   name: string
 ): Promise<void> {
   const page = loc.page();
-  await loc.evaluate((el) => el.scrollIntoView({ block: "start" }));
-  const box = await loc.boundingBox();
 
-  await loc.evaluate((el) => el.setAttribute("data-feature", ""));
   const styleTag = await page.addStyleTag({
-    content: `[data-feature] div { flex-wrap: nowrap !important; }`,
+    content: `[data-turn] { min-width: 9999px !important; }`,
   });
   await waitForRender(loc);
+  
+  await loc.evaluate((el) => el.scrollIntoView({ block: "start" }));
+  const box = await loc.boundingBox();
 
   for (const theme of ["dark", "light"] as const) {
     await page.evaluate((t) => document.documentElement.setAttribute("data-theme", t), theme);
@@ -142,7 +142,6 @@ async function getFeatureSnapshot(
   }
 
   await styleTag.evaluate((el) => (el as HTMLElement).remove());
-  await loc.evaluate((el) => el.removeAttribute("data-feature"));
 }
 
 const FEATURES: { heading: string; summary: string; name: string }[] = [
