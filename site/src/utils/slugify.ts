@@ -4,5 +4,5 @@ export function slugify(input: string | number | (string | number)[]): string {
   return input
     .toLowerCase()
     .replace(/\s/g, "-")
-    .replace(/[^\w-]/g, "");
+    .replace(/[^\p{L}\p{N}_-]/gu, "");
 }
