@@ -78,11 +78,7 @@ export default function BoxRoster({
             .filter(Boolean)
             .join(" · ");
           return (
-            <PokemonEntry
-              key={i}
-              pokemon={pokemon}
-              className={i > 0 ? styles.bordered : undefined}
-            >
+            <PokemonEntry key={i} pokemon={pokemon} className={i > 0 ? styles.bordered : undefined}>
               {detail && <Row row={[detail]} />}
             </PokemonEntry>
           );

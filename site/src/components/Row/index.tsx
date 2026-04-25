@@ -118,65 +118,65 @@ export function Row({ row }: { row: RowCell[] }) {
   return (
     <ScrollFade className={`${styles.row}${rowHighlightClasses ? ` ${rowHighlightClasses}` : ""}`}>
       <div className={styles.rowInner}>
-      {cells.map((cell, i) => {
-        if ("dropdown" in cell) {
-          return (
-            <select
-              key={i}
-              className={styles.select}
-              value={cell.dropdown.value}
-              disabled={cell.dropdown.disabled}
-              onChange={(e) => cell.dropdown.onChange?.(e.target.value)}
-            >
-              {cell.dropdown.options.map((o) => (
-                <option key={o} value={o}>
-                  {o}
-                </option>
-              ))}
-            </select>
-          );
-        }
-        if ("input" in cell) {
-          return (
-            <input
-              key={i}
-              type="text"
-              className={styles.input}
-              value={cell.input.value}
-              onChange={(e) => {
-                const v = e.target.value;
-                if (!cell.input.validate || cell.input.validate(v)) {
-                  cell.input.onChange?.(v);
-                }
-              }}
-            />
-          );
-        }
-        if ("sep" in cell) {
-          return (
-            <span key={i} className={styles.sepCell}>
-              {cell.sep}
+        {cells.map((cell, i) => {
+          if ("dropdown" in cell) {
+            return (
+              <select
+                key={i}
+                className={styles.select}
+                value={cell.dropdown.value}
+                disabled={cell.dropdown.disabled}
+                onChange={(e) => cell.dropdown.onChange?.(e.target.value)}
+              >
+                {cell.dropdown.options.map((o) => (
+                  <option key={o} value={o}>
+                    {o}
+                  </option>
+                ))}
+              </select>
+            );
+          }
+          if ("input" in cell) {
+            return (
+              <input
+                key={i}
+                type="text"
+                className={styles.input}
+                value={cell.input.value}
+                onChange={(e) => {
+                  const v = e.target.value;
+                  if (!cell.input.validate || cell.input.validate(v)) {
+                    cell.input.onChange?.(v);
+                  }
+                }}
+              />
+            );
+          }
+          if ("sep" in cell) {
+            return (
+              <span key={i} className={styles.sepCell}>
+                {cell.sep}
+              </span>
+            );
+          }
+          return cell.variant ? (
+            <span key={i} className={`${styles.content} ${VARIANT_CLASS[cell.variant]}`}>
+              {expandString(cell.value).map((sub, j) =>
+                "sep" in sub ? (
+                  <span key={j} className={styles.sepCell}>
+                    {sub.sep}
+                  </span>
+                ) : "value" in sub ? (
+                  parseTokens(sub.value)
+                ) : null
+              )}
+            </span>
+          ) : (
+            <span key={i} className={styles.plainCell}>
+              {parseTokens(cell.value)}
             </span>
           );
-        }
-        return cell.variant ? (
-          <span key={i} className={`${styles.content} ${VARIANT_CLASS[cell.variant]}`}>
-            {expandString(cell.value).map((sub, j) =>
-              "sep" in sub ? (
-                <span key={j} className={styles.sepCell}>
-                  {sub.sep}
-                </span>
-              ) : "value" in sub ? (
-                parseTokens(sub.value)
-              ) : null
-            )}
-          </span>
-        ) : (
-          <span key={i} className={styles.plainCell}>
-            {parseTokens(cell.value)}
-          </span>
-        );
-      })}
+        })}
       </div>
     </ScrollFade>
   );

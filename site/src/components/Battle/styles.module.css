@@ -52,31 +52,44 @@
 }
 
 .turn {
+  display: flex;
+  flex-direction: column;
+  padding-block-start: 13px;
+}
+
+.turnMeasure {
+  display: flex;
+  flex-wrap: nowrap;
+  height: 0;
+  overflow: hidden;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.turnMeasureCell {
+  flex-shrink: 0;
+}
+
+.turnRow {
   align-items: center;
   display: flex;
-  flex-wrap: wrap;
-  padding-block-start: 13px;
+}
+
+.turnDivider {
+  align-self: stretch;
+  background: var(--ifm-color-emphasis-200);
+  margin-block: 2px 15px;
+  width: 1px;
 }
 
 .cell {
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
-  max-width: 100%;
-  position: relative;
+  padding-block-end: 13px;
 }
 
-.turn > .cell::before {
-  background: var(--ifm-color-emphasis-200);
-  bottom: 15px;
-  content: "";
-  left: -1px;
-  position: absolute;
-  top: 2px;
-  width: 1px;
-}
-
-.turnAction {
+.turnLineFade {
   padding-block-end: 13px;
   white-space: nowrap;
 }
@@ -85,11 +98,8 @@
   align-items: center;
   display: flex;
   gap: 0.4rem;
-  padding-inline-start: var(--ifm-spacing-horizontal);
-}
-
-.cell .turnAction:last-child .turnActionInner {
-  padding-inline-end: var(--ifm-spacing-horizontal);
+  padding-inline: var(--ifm-spacing-horizontal);
+  white-space: nowrap;
 }
 
 .opponentMove {
@@ -113,7 +123,6 @@
 }
 
 .branchRow {
-  padding-block: 13px;
   white-space: nowrap;
 }
 
@@ -121,6 +130,7 @@
   align-items: center;
   display: flex;
   gap: 0.25rem;
+  padding-block: 13px;
   padding-inline: var(--ifm-spacing-horizontal);
 }
 

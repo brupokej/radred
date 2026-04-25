@@ -55,17 +55,13 @@ export const ScrollFade = forwardRef<
     .filter(Boolean)
     .join(" ");
 
-  const mergedStyle =
-    Object.keys(cssVars).length || style ? { ...cssVars, ...style } : undefined;
+  const mergedStyle = Object.keys(cssVars).length || style ? { ...cssVars, ...style } : undefined;
 
   const yFades = axis === "y" || axis === "both";
   const xFades = axis === "x" || axis === "both";
 
   const topFade = yFades && (
-    <div
-      className={`${styles.fadeTop}${showTop ? ` ${styles.fadeVisible}` : ""}`}
-      aria-hidden
-    />
+    <div className={`${styles.fadeTop}${showTop ? ` ${styles.fadeVisible}` : ""}`} aria-hidden />
   );
   const bottomFade = yFades && (
     <div
@@ -74,10 +70,7 @@ export const ScrollFade = forwardRef<
     />
   );
   const leftFade = xFades && (
-    <div
-      className={`${styles.fadeLeft}${showLeft ? ` ${styles.fadeVisible}` : ""}`}
-      aria-hidden
-    />
+    <div className={`${styles.fadeLeft}${showLeft ? ` ${styles.fadeVisible}` : ""}`} aria-hidden />
   );
   const rightFade = xFades && (
     <div

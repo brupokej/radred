@@ -15,9 +15,11 @@ import React, {
   useContext,
   useEffect,
   useId,
+  useLayoutEffect,
   useMemo,
   useReducer,
   useRef,
+  useState,
 } from "react";
 import styles from "./styles.module.css";
 
@@ -404,15 +406,91 @@ function Matchup({
   );
 }
 
+const DIVIDER_WIDTH = 1;
+
+function packLines(widths: number[], containerWidth: number): number[][] {
+  const result: number[][] = [];
+  let i = 0;
+  while (i < widths.length) {
+    let lineWidth = widths[i];
+    const line = [i++];
+    while (i < widths.length && lineWidth + DIVIDER_WIDTH + widths[i] <= containerWidth) {
+      lineWidth += DIVIDER_WIDTH + widths[i];
+      line.push(i++);
+    }
+    result.push(line);
+  }
+  return result;
+}
+
 function Turn({ children }: { children: React.ReactNode }) {
+  const childArray = React.Children.toArray(children) as React.ReactElement[];
+  const containerRef = useRef<HTMLDivElement>(null);
+  const measureRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const cachedWidths = useRef<number[]>([]);
+  const [lines, setLines] = useState<number[][] | null>(null);
+
+  useLayoutEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+    cachedWidths.current = measureRefs.current.map((el) => el?.scrollWidth ?? 0);
+    const update = () => setLines(packLines(cachedWidths.current, container.clientWidth));
+    update();
+    const obs = new ResizeObserver(update);
+    obs.observe(container);
+    return () => obs.disconnect();
+  }, []);
+
   return (
-    <div className={styles.turn}>
-      {React.Children.map(children, (item, i) => (
-        <div key={i} className={styles.cell}>
-          {item}
+    <div ref={containerRef} className={styles.turn}>
+      {lines === null && (
+        <div className={styles.turnMeasure} aria-hidden>
+          {childArray.map((child, i) => (
+            <div
+              key={i}
+              ref={(el) => {
+                measureRefs.current[i] = el;
+              }}
+              className={styles.turnMeasureCell}
+            >
+              {child}
+            </div>
+          ))}
         </div>
-      ))}
+      )}
+      {lines?.map((line, lineIdx) =>
+        line.length === 1 ? (
+          <TurnLine key={lineIdx} contentWidth={cachedWidths.current[line[0]]}>
+            {childArray[line[0]]}
+          </TurnLine>
+        ) : (
+          <div key={lineIdx} className={styles.turnRow}>
+            {line.map((cellIdx, i) => (
+              <React.Fragment key={cellIdx}>
+                {i > 0 && <div className={styles.turnDivider} />}
+                <div className={styles.cell}>{childArray[cellIdx]}</div>
+              </React.Fragment>
+            ))}
+          </div>
+        )
+      )}
     </div>
+  );
+}
+
+function TurnLine({
+  children,
+  contentWidth,
+}: {
+  children: React.ReactNode;
+  contentWidth?: number;
+}) {
+  return (
+    <ScrollFade className={styles.turnLineFade}>
+      <div style={contentWidth != null ? { width: contentWidth, flexShrink: 0 } : undefined}>
+        {children}
+      </div>
+    </ScrollFade>
   );
 }
 
@@ -429,9 +507,7 @@ function Move({
   const hpDisplay = useHpDisplay();
   const parts = parseTokens(move, side, graphCtx, hpDisplay);
   return (
-    <ScrollFade className={`${styles.turnAction}${className ? ` ${className}` : ""}`}>
-      <div className={styles.turnActionInner}>{parts}</div>
-    </ScrollFade>
+    <div className={`${styles.turnActionInner}${className ? ` ${className}` : ""}`}>{parts}</div>
   );
 }
 
