@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-import LiveSetup from "@site/src/components/LiveSetup";
+import GameState from "@site/src/components/GameState";
 import { PageStatsTable, PercentsTable } from "@site/src/components/StatsTable";
 import { moments as brockMoments } from "@site/src/data/guide/brock";
 import { moments as mistyMoments } from "@site/src/data/guide/misty";
@@ -20,9 +20,9 @@ export const allMoments = [
   ...erikaMoments,
   ...sabrinaMoments,
   ...kogaMoments,
-].filter((m) => m.kind !== "boxChange");
+];
 
-<LiveSetup moments={allMoments} />
+<GameState moments={allMoments} />
 
 ## Battles Table
 

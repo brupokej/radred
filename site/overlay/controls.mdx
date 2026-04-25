@@ -2,7 +2,7 @@
 sidebar_position: 9
 ---
 
-import LiveSetup from "@site/src/components/LiveSetup";
+import GameState from "@site/src/components/GameState";
 import { moments as brockMoments } from "@site/src/data/guide/brock";
 import { moments as mistyMoments } from "@site/src/data/guide/misty";
 import { moments as surgeMoments } from "@site/src/data/guide/surge";
@@ -19,6 +19,6 @@ export const allMoments = [
   ...erikaMoments,
   ...sabrinaMoments,
   ...kogaMoments,
-].filter((m) => m.kind !== "boxChange");
+];
 
-<LiveSetup moments={allMoments} attempt />
+<GameState attempt moments={allMoments} />

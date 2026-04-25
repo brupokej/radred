@@ -26,8 +26,8 @@ export function findPokemon(boxData: BoxData, name: string): Pokemon | undefined
   return boxData.pokemon.find((p) => resolvePokemon(p).name === name);
 }
 
-export function getCanon(boxData: BoxData): (name: string) => string {
-  const renames = boxData.renames ?? {};
+export function getCanon(boxData: BoxData | null): (name: string) => string {
+  const renames = boxData?.renames ?? {};
   const canon = (name: string): string => (renames[name] ? canon(renames[name]) : name);
   return canon;
 }

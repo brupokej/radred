@@ -31,6 +31,7 @@ const _box2 = getBox({
 });
 
 export const surgeBoxChange: Moment = {
+  split: "Surge",
   label: "Surge Box Change",
   kind: "boxChange",
   data: { playerBox: _box2 },
@@ -69,6 +70,7 @@ const _box3 = getBox({
 });
 
 export const route6CamperJeffBattle: Moment = {
+  split: "Surge",
   label: "Route 6 Camper Jeff Battle",
   kind: "battle",
   data: {
@@ -164,6 +166,7 @@ const _wimpod = {
 const _box4 = getBox({ box: _box3, add: [_wimpod] });
 
 export const fishing1Encounter: Moment = {
+  split: "Surge",
   label: "Fishing 1 Encounter",
   kind: "encounter",
   data: { pokemon: _wimpod, playerBox: _box4 },
@@ -179,6 +182,7 @@ const _frillish = {
 const _box5 = getBox({ box: _box4, add: [_frillish] });
 
 export const fishing2Encounter: Moment = {
+  split: "Surge",
   label: "Fishing 2 Encounter",
   kind: "encounter",
   data: { pokemon: _frillish, playerBox: _box5 },
@@ -219,6 +223,7 @@ const _box6 = getBox({
 });
 
 export const fishing2BoxChange: Moment = {
+  split: "Surge",
   label: "Fishing 2 Box Change",
   kind: "boxChange",
   data: { playerBox: _box6 },
@@ -260,6 +265,7 @@ const _box7 = getBox({
 });
 
 export const route25LeaderBugsyBattle: Moment = {
+  split: "Surge",
   label: "Route 25 Leader Bugsy Battle",
   kind: "battle",
   data: {
@@ -375,6 +381,7 @@ const _box8 = getBox({
 });
 
 export const ssAnneLassAnnGentlemanBrooksBattle: Moment = {
+  split: "Surge",
   label: "S.S. Anne Lass Ann & Gentleman Brooks Battle",
   kind: "battle",
   data: {
@@ -518,6 +525,7 @@ const _box9 = getBox({
 });
 
 export const ssAnneSailorEdmundSailorTrevorBattle: Moment = {
+  split: "Surge",
   label: "S.S. Anne Sailor Edmund & Sailor Trevor Battle",
   kind: "battle",
   data: {
@@ -651,6 +659,7 @@ const _box10 = getBox({
 });
 
 export const ssAnneBrendanBattle: Moment = {
+  split: "Surge",
   label: "S.S. Anne Brendan Battle",
   kind: "battle",
   data: {
@@ -788,6 +797,7 @@ const _box11 = getBox({
 });
 
 export const route9PicnickerAliciaBattle: Moment = {
+  split: "Surge",
   label: "Route 9 Picnicker Alicia Battle",
   kind: "battle",
   data: {
@@ -883,6 +893,7 @@ const _box12 = getBox({
 });
 
 export const route9PicnickerCaitlinBattle: Moment = {
+  split: "Surge",
   label: "Route 9 Picnicker Caitlin Battle",
   kind: "battle",
   data: {
@@ -1011,6 +1022,7 @@ const _box13 = getBox({
 });
 
 export const rockTunnelPicnickerDanaBattle: Moment = {
+  split: "Surge",
   label: "Rock Tunnel Picnicker Data Battle",
   kind: "battle",
   data: {
@@ -1120,6 +1132,7 @@ const _box14 = getBox({
 });
 
 export const route10PokeManiacHermanBattle: Moment = {
+  split: "Surge",
   label: "Route 10 Poké Maniac Herman Battle",
   kind: "battle",
   data: {
@@ -1204,6 +1217,7 @@ const _box15 = getBox({
 });
 
 export const route8SuperNerdAidanBattle: Moment = {
+  split: "Surge",
   label: "Route 8 Super Nerd Aidan Battle",
   kind: "battle",
   data: {
@@ -1310,6 +1324,7 @@ const _box16 = getBox({
 });
 
 export const vermillionCityGymGentlemanTuckerBattle: Moment = {
+  split: "Surge",
   label: "Vermillion City Gym Gentleman Tucker Battle",
   kind: "battle",
   data: {
@@ -1435,6 +1450,7 @@ const _box17 = getBox({
 });
 
 export const vermillionCityLeaderLtSurgeBattle: Moment = {
+  split: "Surge",
   label: "Vermillion City Leader Lt. Surge Battle",
   kind: "battle",
   data: {

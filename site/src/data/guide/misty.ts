@@ -44,6 +44,7 @@ const _box2 = getBox({
 });
 
 export const mistyBoxChange: Moment = {
+  split: "Misty",
   label: "Misty Box Change",
   kind: "boxChange",
   data: { playerBox: _box2 },
@@ -63,6 +64,7 @@ const _box3 = getBox({
 });
 
 export const route3LassSallyBattle: Moment = {
+  split: "Misty",
   label: "Route 3 Lass Sally Battle",
   kind: "battle",
   data: {
@@ -150,6 +152,7 @@ const _drilbur = {
 const _box4 = getBox({ box: _box3, add: [_drilbur] });
 
 export const mtMoonEncounter: Moment = {
+  split: "Misty",
   label: "Mt. Moon Encounter",
   kind: "encounter",
   data: { pokemon: _drilbur, playerBox: _box4 },
@@ -165,6 +168,7 @@ const _magikarp = {
 const _box5 = getBox({ box: _box4, add: [_magikarp] });
 
 export const route4Encounter: Moment = {
+  split: "Misty",
   label: "Route 4 Encounter",
   kind: "encounter",
   data: { pokemon: _magikarp, playerBox: _box5 },
@@ -187,6 +191,7 @@ const _box6 = getBox({
 });
 
 export const route4BoxChange: Moment = {
+  split: "Misty",
   label: "Route 4 Box Change",
   kind: "boxChange",
   data: { playerBox: _box6 },
@@ -214,6 +219,7 @@ const _box7 = getBox({
 });
 
 export const mtMoonSuperNerdMiguelBattle: Moment = {
+  split: "Misty",
   label: "Mt. Moon Super Nerd Miguel Battle",
   kind: "battle",
   data: {
@@ -439,6 +445,7 @@ const _box8 = getBox({
 });
 
 export const mtMoonSuperNerdMiguelBoxChange: Moment = {
+  split: "Misty",
   label: "Mt. Moon Super Nerd Miguel Box Change",
   kind: "boxChange",
   data: { playerBox: _box8 },
@@ -469,6 +476,7 @@ const _box9 = getBox({
 });
 
 export const mtMoonArcherBattle: Moment = {
+  split: "Misty",
   label: "Mt. Moon Archer Battle",
   kind: "battle",
   data: {
@@ -588,6 +596,7 @@ const _chewtle = {
 const _box10 = getBox({ box: _box9, add: [_chewtle] });
 
 export const ceruleanCityEncounter: Moment = {
+  split: "Misty",
   label: "Cerulean City Encounter",
   kind: "encounter",
   data: { pokemon: _chewtle, playerBox: _box10 },
@@ -614,6 +623,7 @@ const _box11 = getBox({
 });
 
 export const ceruleanCityBoxChange: Moment = {
+  split: "Misty",
   label: "Cerulean City Box Change",
   kind: "boxChange",
   data: { playerBox: _box11 },
@@ -655,6 +665,7 @@ const _box12 = getBox({
 });
 
 export const ceruleanCityRivalBattle: Moment = {
+  split: "Misty",
   label: "Cerulean City Rival Battle",
   kind: "battle",
   data: {
@@ -1128,6 +1139,7 @@ const _box13 = getBox({
 });
 
 export const ceruleanCityRivalBoxChange: Moment = {
+  split: "Misty",
   label: "Cerulean City Rival Box Change",
   kind: "boxChange",
   data: { playerBox: _box13 },
@@ -1136,6 +1148,7 @@ export const ceruleanCityRivalBoxChange: Moment = {
 const _box14 = getBox({ box: _box13, team: ["Houndoom", "Drednaw"] });
 
 export const nuggetBridgeBugCatcherCaleBattle: Moment = {
+  split: "Misty",
   label: "Nugget Bridge Bug Catcher Cale Battle",
   kind: "battle",
   data: {
@@ -1188,6 +1201,7 @@ const _box15 = getBox({
 });
 
 export const nuggetBridgeLassAliBattle: Moment = {
+  split: "Misty",
   label: "Nugget Bridge Lass Ali Battle",
   kind: "battle",
   data: {
@@ -1227,6 +1241,7 @@ export const nuggetBridgeLassAliBattle: Moment = {
 const _box16 = getBox({ box: _box15, team: ["Houndoom", "Perrserker"] });
 
 export const nuggetBridgeYoungsterTimmyBattle: Moment = {
+  split: "Misty",
   label: "Nugget Bridge Youngster Timmy Battle",
   kind: "battle",
   data: {
@@ -1276,6 +1291,7 @@ const _box17 = getBox({
 });
 
 export const nuggetBridgeYoungsterTimmyBoxChange: Moment = {
+  split: "Misty",
   label: "Nugget Bridge Youngster Timmy Box Change",
   kind: "boxChange",
   data: { playerBox: _box17 },
@@ -1303,6 +1319,7 @@ const _box18 = getBox({
 });
 
 export const nuggetBridgeLassReliBattle: Moment = {
+  split: "Misty",
   label: "Nugget Bridge Lass Reli Battle",
   kind: "battle",
   data: {
@@ -1392,6 +1409,7 @@ const _box19 = getBox({
 });
 
 export const nuggetBridgeCamperEthanBattle: Moment = {
+  split: "Misty",
   label: "Nugget Bridge Camper Ethan Battle",
   kind: "battle",
   data: {
@@ -1478,6 +1496,7 @@ const _box20 = getBox({
 });
 
 export const nuggetBridgeGruntBattle: Moment = {
+  split: "Misty",
   label: "Nugget Bridge Grunt Battle",
   kind: "battle",
   data: {
@@ -1604,6 +1623,7 @@ const _box21 = getBox({ box: _box20, team: ["Houndoom"] });
 const _box22 = getBox({ box: _box21, add: [_charcadet] });
 
 export const route24Encounter: Moment = {
+  split: "Misty",
   label: "Route 24 Encounter",
   kind: "encounter",
   data: { pokemon: _charcadet, playerBox: _box22, showPlayerTeam: true },
@@ -1618,6 +1638,7 @@ const _chinchou = {
 const _box23 = getBox({ box: _box22, add: [_chinchou] });
 
 export const route25Encounter: Moment = {
+  split: "Misty",
   label: "Route 25 Encounter",
   kind: "encounter",
   data: { pokemon: _chinchou, playerBox: _box23 },
@@ -1649,6 +1670,7 @@ const _box24 = getBox({
 });
 
 export const digHouseGruntBattle: Moment = {
+  split: "Misty",
   label: "Dig House Grunt Battle",
   kind: "battle",
   data: {
@@ -1752,6 +1774,7 @@ const _box25 = getBox({ box: _box24, team: ["Houndoom"] });
 const _box26 = getBox({ box: _box25, add: [_growlitheH] });
 
 export const route5Encounter: Moment = {
+  split: "Misty",
   label: "Route 5 Encounter",
   kind: "encounter",
   data: { pokemon: _growlitheH, playerBox: _box26, showPlayerTeam: true },
@@ -1766,6 +1789,7 @@ const _shellder = {
 const _box27 = getBox({ box: _box26, add: [_shellder] });
 
 export const route6Encounter: Moment = {
+  split: "Misty",
   label: "Route 6 Encounter",
   kind: "encounter",
   data: { pokemon: _shellder, playerBox: _box27 },
@@ -1786,6 +1810,7 @@ const _box28 = getBox({
 });
 
 export const route6BoxChange: Moment = {
+  split: "Misty",
   label: "Route 6 Box Change",
   kind: "boxChange",
   data: { playerBox: _box28 },
@@ -1829,6 +1854,7 @@ const _box29 = getBox({
 });
 
 export const ceruleanCityLeaderMistyBattle: Moment = {
+  split: "Misty",
   label: "Cerulean City Leader Misty Battle",
   kind: "battle",
   data: {
@@ -2031,6 +2057,7 @@ const _box30 = getBox({
 });
 
 export const ceruleanCityLeaderMistyBoxChange: Moment = {
+  split: "Misty",
   label: "Cerulean City Leader Misty Box Change",
   kind: "boxChange",
   data: { playerBox: _box30 },

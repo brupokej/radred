@@ -33,6 +33,7 @@ const _box2 = getBox({
 });
 
 export const erikaBoxChange: Moment = {
+  split: "Erika",
   label: "Erika Box Change",
   kind: "boxChange",
   data: { playerBox: _box2 },
@@ -64,6 +65,7 @@ const _box3 = getBox({
 });
 
 export const celadonCityGymAceTrainerMaryBattle: Moment = {
+  split: "Erika",
   label: "Celadon City Gym Ace Trainer Mary Battle",
   kind: "battle",
   data: {
@@ -167,6 +169,7 @@ const _box4 = getBox({
 });
 
 export const celadonCityLeaderErikaBattle: Moment = {
+  split: "Erika",
   label: "Celadon City Leader Erika Battle",
   kind: "battle",
   data: {

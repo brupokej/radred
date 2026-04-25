@@ -24,6 +24,7 @@ const _dreepy = {
 const _box2 = getBox({ box: _box1, add: [_dreepy] });
 
 export const celadonCityEncounter: Moment = {
+  split: "Koga",
   label: "Celadon City Encounter",
   kind: "encounter",
   data: { pokemon: _dreepy, playerBox: _box2 },
@@ -48,6 +49,7 @@ const _box3 = getBox({
 });
 
 export const celadonCityBoxChange: Moment = {
+  split: "Koga",
   label: "Koga Box Change",
   kind: "boxChange",
   data: { playerBox: _box3 },
@@ -84,6 +86,7 @@ const _box4 = getBox({
 });
 
 export const route16BikerLaoBattle: Moment = {
+  split: "Koga",
   label: "Route 16 Biker Lao Battle",
   kind: "battle",
   data: {
@@ -164,6 +167,7 @@ export const route16BikerLaoBattle: Moment = {
 const _box5 = getBox({ box: _box4, team: ["Excadrill"] });
 
 export const route16CueBallKojiBattle: Moment = {
+  split: "Koga",
   label: "Route 16 Cue Ball Koji Battle",
   kind: "battle",
   data: {
@@ -201,6 +205,7 @@ export const route16CueBallKojiBattle: Moment = {
 const _box6 = getBox({ box: _box5, team: ["Excadrill", "Meowscarada"] });
 
 export const route16CueBallLukeBattle: Moment = {
+  split: "Koga",
   label: "Route 16 Cue Ball Luke Battle",
   kind: "battle",
   data: {
@@ -271,6 +276,7 @@ const _box7 = getBox({
 });
 
 export const route16BikerRubenBattle: Moment = {
+  split: "Koga",
   label: "Route 16 Biker Ruben Battle",
   kind: "battle",
   data: {
@@ -379,6 +385,7 @@ const _box8 = getBox({
 });
 
 export const route16BikerRubenBoxChange: Moment = {
+  split: "Koga",
   label: "Route 16 Biker Ruben Box Change",
   kind: "boxChange",
   data: { playerBox: _box7 },
@@ -419,6 +426,7 @@ const _box9 = getBox({
 });
 
 export const route16CueBallCamronBattle: Moment = {
+  split: "Koga",
   label: "Route 16 Cue Ball Camron Battle",
   kind: "battle",
   data: {
@@ -537,6 +545,7 @@ const _box10 = getBox({
 });
 
 export const route16CueBallCamronBoxChange: Moment = {
+  split: "Koga",
   label: "Route 16 Cue Ball Camron Box Change",
   kind: "boxChange",
   data: { playerBox: _box9 },
@@ -575,6 +584,7 @@ const _box11 = getBox({
 });
 
 export const route16RiderHideoBattle: Moment = {
+  split: "Koga",
   label: "Route 16 Rider Hideo Battle",
   kind: "battle",
   data: {
@@ -803,6 +813,7 @@ const _box12 = getBox({
 });
 
 export const route18BikerWilliamBattle: Moment = {
+  split: "Koga",
   label: "Route 18 Biker William Battle",
   kind: "battle",
   data: {
@@ -898,6 +909,7 @@ const _box13 = getBox({
 });
 
 export const route18BikerWilliamBoxChange: Moment = {
+  split: "Koga",
   label: "Route 18 Biker William Box Change",
   kind: "boxChange",
   data: { playerBox: _box13 },
@@ -944,6 +956,7 @@ const _box15 = getBox({
 });
 
 export const route18BirdKeeperJacobBattle: Moment = {
+  split: "Koga",
   label: "Route 18 Bird Keeper Jacob Battle",
   kind: "battle",
   data: {
@@ -1317,6 +1330,7 @@ const _box16 = getBox({
 });
 
 export const route18AceTrainerWiltonBattle: Moment = {
+  split: "Koga",
   label: "Route 18 Ace Trainer Wilton Battle",
   kind: "battle",
   data: {
@@ -1433,6 +1447,7 @@ const _box17 = getBox({
 });
 
 export const fuschiaCityBrendanBattle: Moment = {
+  split: "Koga",
   label: "Fuschia City Brendan Battle",
   kind: "battle",
   data: {
@@ -1571,6 +1586,7 @@ const _box18 = getBox({
 const _box19 = getBox({ box: _box18, add: [_screamTail] });
 
 export const safariZoneEncounter: Moment = {
+  split: "Koga",
   label: "Safari Zone Encounter",
   kind: "encounter",
   data: { pokemon: _screamTail, playerBox: _box19, showPlayerTeam: true },
@@ -1586,6 +1602,7 @@ const _froakie = {
 const _box20 = getBox({ box: _box19, add: [_froakie] });
 
 export const starterEgg3Encounter: Moment = {
+  split: "Koga",
   label: "Starter Egg 3 Encounter",
   kind: "encounter",
   data: { pokemon: _froakie, playerBox: _box20 },
@@ -1601,6 +1618,7 @@ const _chimchar = {
 const _box21 = getBox({ box: _box20, add: [_chimchar] });
 
 export const starterEgg4Encounter: Moment = {
+  split: "Koga",
   label: "Starter Egg 4 Encounter",
   kind: "encounter",
   data: { pokemon: _chimchar, playerBox: _box21 },
@@ -1616,6 +1634,7 @@ const _treecko = {
 const _box22 = getBox({ box: _box21, add: [_treecko] });
 
 export const starterEgg5Encounter: Moment = {
+  split: "Koga",
   label: "Starter Egg 5 Encounter",
   kind: "encounter",
   data: { pokemon: _treecko, playerBox: _box22 },
@@ -1665,6 +1684,7 @@ const _box23 = getBox({
 });
 
 export const starterEgg5BoxChange: Moment = {
+  split: "Koga",
   label: "Starter Egg 5 Box Change",
   kind: "boxChange",
   data: { playerBox: _box23 },

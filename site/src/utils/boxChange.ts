@@ -3,7 +3,7 @@ import { Pokemon, PokemonData, Stats, resolvePokemon } from "@site/src/utils/pok
 
 export function getLevelCap(
   box: Box
-): { level: number; excluded: Array<{ name: string; level: number }> } | null {
+): { level: number; excluded: Array<{ name: string; level: string | number }> } | null {
   const step = box.updates?.find((s) => s.cap);
   if (!step?.cap) return null;
 
@@ -12,7 +12,7 @@ export function getLevelCap(
     .filter((p): p is Pokemon => p !== undefined)
     .map((p) => {
       const data = resolvePokemon(p);
-      return { name: data.name, level: Number(data.level ?? 0) };
+      return { name: data.name, level: data.level };
     });
 
   return { level: step.cap.level, excluded };

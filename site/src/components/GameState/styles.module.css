@@ -1,0 +1,17 @@
+.guideLink {
+  background: none;
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+  color: var(--ifm-color-primary) !important;
+  cursor: pointer;
+  display: block;
+  font-size: 0.875rem;
+  line-height: 26px;
+  padding: 7px var(--ifm-spacing-horizontal);
+  text-align: left;
+  text-decoration: none !important;
+  user-select: none;
+}
+
+.guideLink:hover {
+  background: var(--ifm-color-emphasis-100);
+}

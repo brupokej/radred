@@ -3,7 +3,7 @@ import { BoxChangeData } from "@site/src/components/BoxChange";
 import { EncounterData } from "@site/src/components/Encounter";
 
 export type Moment =
-  | { label: string; kind: "battle"; data: BattleData }
-  | { label: string; kind: "encounter"; data: EncounterData }
-  | { label: string; kind: "boxChange"; data: BoxChangeData }
-  | { label: string; kind: "other" };
+  | { split: string; label: string; kind: "battle"; data: BattleData }
+  | { split: string; label: string; kind: "encounter"; data: EncounterData }
+  | { split: string; label: string; kind: "boxChange"; data: BoxChangeData }
+  | { split: string; label: string; kind: "other" };

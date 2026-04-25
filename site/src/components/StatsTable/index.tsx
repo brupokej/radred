@@ -200,6 +200,8 @@ export function PageStatsTable({
 }) {
   const { computeFn, bgVar, outlineVar } = PAGE_METRIC_CONFIG[metric];
 
+  const allMomentsFlat = useMemo(() => pages.flatMap((p) => p.moments), [pages]);
+
   const allBattleMoments = useMemo(
     () =>
       pages.flatMap((p) =>
@@ -210,14 +212,24 @@ export function PageStatsTable({
     [pages]
   );
 
+  const flatIdxMap = useMemo(
+    () => new Map(allMomentsFlat.map((m, i) => [m.label, i])),
+    [allMomentsFlat]
+  );
+
   const [stats, setStats] = useState<Record<string, PageStats>>({});
 
   useEffect(() => {
     const update = () => {
       const endLabel = getState("live-moment") ?? LIVE_MOMENT_DEFAULT;
-      const rawEnd = allBattleMoments.findIndex((m) => m.label === endLabel);
-      const endIdx = rawEnd >= 0 ? rawEnd : allBattleMoments.length - 1;
-      const filtered = allBattleMoments.slice(0, endIdx + 1);
+      const rawEnd = allMomentsFlat.findIndex((m) => m.label === endLabel);
+      if (rawEnd < 0) {
+        setStats({});
+        return;
+      }
+      const filtered = allBattleMoments.filter(
+        (m) => (flatIdxMap.get(m.label) ?? Infinity) <= rawEnd
+      );
 
       const pageGroups = pages.map((p) => ({
         label: p.label,
@@ -229,7 +241,7 @@ export function PageStatsTable({
     update();
     window.addEventListener(STORAGE_EVENT, update);
     return () => window.removeEventListener(STORAGE_EVENT, update);
-  }, [allBattleMoments, computeFn, pages]);
+  }, [allBattleMoments, allMomentsFlat, flatIdxMap, computeFn, pages]);
 
   const data = useMemo<PageRow[]>(
     () =>
@@ -493,25 +505,26 @@ const percentsColumns = [
 ];
 
 export function PercentsTable({ moments }: { moments: Moment[] }) {
-  const battleMoments = useMemo(
-    () => moments.filter((m): m is Extract<Moment, { kind: "battle" }> => m.kind === "battle"),
-    [moments]
-  );
-
   const [stats, setStats] = useState<Record<string, PokemonStats>>({});
 
   useEffect(() => {
     const update = () => {
       const endLabel = getState("live-moment") ?? LIVE_MOMENT_DEFAULT;
-      const rawEnd = battleMoments.findIndex((m) => m.label === endLabel);
-      const endIdx = rawEnd >= 0 ? rawEnd : battleMoments.length - 1;
-      const filtered = battleMoments.slice(0, endIdx + 1).map((m) => m.data);
+      const rawEnd = moments.findIndex((m) => m.label === endLabel);
+      if (rawEnd < 0) {
+        setStats({});
+        return;
+      }
+      const filtered = moments
+        .slice(0, rawEnd + 1)
+        .filter((m): m is Extract<Moment, { kind: "battle" }> => m.kind === "battle")
+        .map((m) => m.data);
       setStats(computeStats(filtered));
     };
     update();
     window.addEventListener(STORAGE_EVENT, update);
     return () => window.removeEventListener(STORAGE_EVENT, update);
-  }, [battleMoments]);
+  }, [moments]);
 
   const data = useMemo<PercentsRow[]>(
     () =>

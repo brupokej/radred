@@ -32,6 +32,7 @@ const _box2 = getBox({
 });
 
 export const sabrinaBoxChange: Moment = {
+  split: "Sabrina",
   label: "Sabrina Box Change",
   kind: "boxChange",
   data: { playerBox: _box2 },
@@ -64,6 +65,7 @@ const _box3 = getBox({
 });
 
 export const gameCornerGuardBattle: Moment = {
+  split: "Sabrina",
   label: "Game Corner Guard Battle",
   kind: "battle",
   data: {
@@ -150,6 +152,7 @@ const _box4 = getBox({
 });
 
 export const gameCornerGuardBoxChange: Moment = {
+  split: "Sabrina",
   label: "Game Corner Guard Box Change",
   kind: "boxChange",
   data: { playerBox: _box4 },
@@ -180,6 +183,7 @@ const _box5 = getBox({
 });
 
 export const rocketHideoutLeftGuardBattle: Moment = {
+  split: "Sabrina",
   label: "Rocket Hideout Left Guard Battle",
   kind: "battle",
   data: {
@@ -269,6 +273,7 @@ const _box6 = getBox({
 });
 
 export const rocketHideoutRightGuardBattle: Moment = {
+  split: "Sabrina",
   label: "Rocket Hideout Right Guard Battle",
   kind: "battle",
   data: {
@@ -355,6 +360,7 @@ const _box7 = getBox({
 });
 
 export const rocketHideoutGiovanniBattle: Moment = {
+  split: "Sabrina",
   label: "Rocket Hideout Giovanni Battle",
   kind: "battle",
   data: {
@@ -483,6 +489,7 @@ const _sprigatito = {
 const _box8 = getBox({ box: _box7, add: [_sprigatito] });
 
 export const starterEgg1Encounter: Moment = {
+  split: "Sabrina",
   label: "Starter Egg 1 Encounter",
   kind: "encounter",
   data: { pokemon: _sprigatito, playerBox: _box8 },
@@ -507,6 +514,7 @@ const _box9 = getBox({
 });
 
 export const starterEgg1BoxChange: Moment = {
+  split: "Sabrina",
   label: "Starter Egg 1 Box Change",
   kind: "boxChange",
   data: { playerBox: _box9 },
@@ -536,6 +544,7 @@ const _box10 = getBox({
 });
 
 export const pokemonTowerChannelerRuthBattle: Moment = {
+  split: "Sabrina",
   label: "Pokémon Tower Channeler Ruth Battle",
   kind: "battle",
   data: {
@@ -688,6 +697,7 @@ const _box11 = getBox({
 });
 
 export const pokemonTowerGhostBattle: Moment = {
+  split: "Sabrina",
   label: "Pokémon Tower Ghost Battle",
   kind: "battle",
   data: {
@@ -784,6 +794,7 @@ const _box12 = getBox({
 });
 
 export const pokemonTowerGrunt1Battle: Moment = {
+  split: "Sabrina",
   label: "Pokémon Tower Grunt 1 Battle",
   kind: "battle",
   data: {
@@ -897,6 +908,7 @@ const _box13 = getBox({
 });
 
 export const pokemonTowerGrunt2Battle: Moment = {
+  split: "Sabrina",
   label: "Pokémon Tower Grunt 2 Battle",
   kind: "battle",
   data: {
@@ -1011,6 +1023,7 @@ const _box14 = getBox({
 });
 
 export const pokemonTowerGrunt3Battle: Moment = {
+  split: "Sabrina",
   label: "Pokémon Tower Grunt 3 Battle",
   kind: "battle",
   data: {
@@ -1157,6 +1170,7 @@ const _mudkip = {
 const _box15 = getBox({ box: _box14, add: [_mudkip] });
 
 export const starterEgg2Encounter: Moment = {
+  split: "Sabrina",
   label: "Starter Egg 2 Encounter",
   kind: "encounter",
   data: { pokemon: _mudkip, playerBox: _box15 },
@@ -1172,6 +1186,7 @@ const _box16 = getBox({
 });
 
 export const starterEgg2BoxChange: Moment = {
+  split: "Sabrina",
   label: "Starter Egg 2 Change",
   kind: "boxChange",
   data: { playerBox: _box16 },
@@ -1215,6 +1230,7 @@ const _box17 = getBox({
 });
 
 export const saffronDojoLeaderChuckBattle: Moment = {
+  split: "Sabrina",
   label: "Saffron Dojo Leader Chuck Battle",
   kind: "battle",
   data: {
@@ -1524,6 +1540,7 @@ const _box18 = getBox({
 });
 
 export const saffronDojoLeaderChuckBoxChange: Moment = {
+  split: "Sabrina",
   label: "Saffron Dojo Leader Chuck Box Change",
   kind: "boxChange",
   data: { playerBox: _box18 },
@@ -1558,6 +1575,7 @@ const _box19 = getBox({
 });
 
 export const silphCoRivalBattle: Moment = {
+  split: "Sabrina",
   label: "Silph Co. Rival Battle",
   kind: "battle",
   data: {
@@ -1673,6 +1691,7 @@ const _box20 = getBox({
 });
 
 export const silphCoRivalBoxChange: Moment = {
+  split: "Sabrina",
   label: "Silph Co. Rival Box Change",
   kind: "boxChange",
   data: { playerBox: _box20 },
@@ -1699,6 +1718,7 @@ const _box21 = getBox({
 });
 
 export const silphCoArianaArcherBattle: Moment = {
+  split: "Sabrina",
   label: "Silph Co. Ariana & Archer Battle",
   kind: "battle",
   data: {
@@ -2378,6 +2398,7 @@ const _box22 = getBox({
 });
 
 export const silphCoArianaArcherBoxChange: Moment = {
+  split: "Sabrina",
   label: "Silph Co. Ariana & Archer Box Change",
   kind: "boxChange",
   data: { playerBox: _box22 },
@@ -2409,6 +2430,7 @@ const _box23 = getBox({
 });
 
 export const silphCoGiovanniBattle: Moment = {
+  split: "Sabrina",
   label: "Silph Co. Giovanni Battle",
   kind: "battle",
   data: {
@@ -2642,6 +2664,7 @@ const _box24 = getBox({
 });
 
 export const silphCoGiovanniBoxChange: Moment = {
+  split: "Sabrina",
   label: "Silph Co. Giovanni Box Change",
   kind: "boxChange",
   data: { playerBox: _box24 },
@@ -2685,6 +2708,7 @@ const _box25 = getBox({
 });
 
 export const saffronCityDumassKidBattle: Moment = {
+  split: "Sabrina",
   label: "Saffron City Dumass Kid Battle",
   kind: "battle",
   data: {
@@ -2832,6 +2856,7 @@ const _box26 = getBox({
 });
 
 export const saffronCityDumassKidBoxChange: Moment = {
+  split: "Sabrina",
   label: "Saffron City Dumass Kid Box Change",
   kind: "boxChange",
   data: { playerBox: _box26 },
@@ -2875,6 +2900,7 @@ const _box27 = getBox({
 });
 
 export const saffronCityLeaderSabrinaBattle: Moment = {
+  split: "Sabrina",
   label: "Saffron City Leader Sabrina Battle",
   kind: "battle",
   data: {
@@ -3048,6 +3074,7 @@ const _box28 = getBox({
 });
 
 export const saffronCityLeaderSabrinaBoxChange: Moment = {
+  split: "Sabrina",
   label: "Saffron City Leader Sabrina Box Change",
   kind: "boxChange",
   data: { playerBox: _box28 },

@@ -29,9 +29,11 @@ function computeTotals(moments: Moment[], canon: (name: string) => string) {
 export default function BoxRoster({
   moments,
   title = "Box",
+  filter,
 }: {
   moments: Moment[];
   title?: string;
+  filter?: "team" | "box1" | "box2";
 }) {
   const { value: liveMomentLabel } = useStorageState("live-moment");
   const effectiveLabel = liveMomentLabel ?? LIVE_MOMENT_DEFAULT;
@@ -49,17 +51,46 @@ export default function BoxRoster({
 
   const canon = getCanon(resolvedActive);
 
+  const teamOrder = new Map<string, number>(
+    (resolvedActive?.team ?? []).map((name, i) => [name, i] as [string, number])
+  );
+  const extraTeamOrder = new Map<string, number>(
+    (resolvedActive?.extraTeam ?? []).map((name, i) => [name, i] as [string, number])
+  );
+  const removedSet = new Set(resolvedActive?.removed ?? []);
+
+  const toNum = (l: number | string | undefined) =>
+    l == null ? 0 : typeof l === "number" ? l : parseInt(l, 10);
+
   const entries = resolvedActive
     ? resolvedActive.pokemon
         .map((p) => resolvePokemon(p))
+        .filter((p) => {
+          if (filter === undefined) return true;
+          if (teamOrder.has(p.name) || extraTeamOrder.has(p.name)) return filter === "team";
+          if (removedSet.has(p.name)) return filter === "box2";
+          return filter === "box1";
+        })
         .sort((a, b) => {
-          const toNum = (l: number | string | undefined) =>
-            l == null ? 0 : typeof l === "number" ? l : parseInt(l, 10);
+          const aTeam = teamOrder.get(a.name);
+          const bTeam = teamOrder.get(b.name);
+          if (aTeam !== undefined && bTeam !== undefined) return aTeam - bTeam;
+          if (aTeam !== undefined) return -1;
+          if (bTeam !== undefined) return 1;
+
+          const aExtra = extraTeamOrder.get(a.name);
+          const bExtra = extraTeamOrder.get(b.name);
+          if (aExtra !== undefined && bExtra !== undefined) return aExtra - bExtra;
+          if (aExtra !== undefined) return -1;
+          if (bExtra !== undefined) return 1;
+
           const levelDiff = toNum(b.level) - toNum(a.level);
           if (levelDiff !== 0) return levelDiff;
           return (a.boxOrder ?? Infinity) - (b.boxOrder ?? Infinity);
         })
     : [];
+
+  if (entries.length === 0) return null;
 
   const totals = computeTotals(sliced, canon);
 

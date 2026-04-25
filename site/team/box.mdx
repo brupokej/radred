@@ -3,7 +3,7 @@ sidebar_position: 1
 ---
 
 import BoxRoster from "@site/src/components/BoxRoster";
-import LiveSetup from "@site/src/components/LiveSetup";
+import GameState from "@site/src/components/GameState";
 import { moments as brockMoments } from "@site/src/data/guide/brock";
 import { moments as mistyMoments } from "@site/src/data/guide/misty";
 import { moments as surgeMoments } from "@site/src/data/guide/surge";
@@ -22,8 +22,16 @@ export const allMoments = [
   ...kogaMoments,
 ];
 
-<LiveSetup moments={allMoments} />
+<GameState moments={allMoments} />
 
-## Team Table
+## Active Team
 
-<BoxRoster moments={allMoments} title="Player Box" />
+<BoxRoster moments={allMoments} title="Player Box" filter="team" />
+
+## Box 1 Pokémon
+
+<BoxRoster moments={allMoments} title="Player Box" filter="box1" />
+
+## Box 2 Pokémon
+
+<BoxRoster moments={allMoments} title="Player Box" filter="box2" />

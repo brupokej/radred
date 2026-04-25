@@ -52,7 +52,7 @@ export default function BarRace({
 
   const slicedMoments = useMemo(() => {
     const idx = moments.findIndex((m) => m.label === effectiveLabel);
-    return idx >= 0 ? moments.slice(0, idx + 1) : moments;
+    return idx >= 0 ? moments.slice(0, idx + 1) : [];
   }, [moments, effectiveLabel]);
 
   const battleMoments = useMemo(
