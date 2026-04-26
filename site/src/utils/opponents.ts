@@ -2594,7 +2594,7 @@ export const vermillionCityLeaderLtSurgeRematchBox = getOpponentBox([
   },
 ]);
 
-export const fuschaCityGymJugglerKaydenBox = getOpponentBox([
+export const fuschiaCityGymJugglerKaydenBox = getOpponentBox([
   {
     name: "Mr. Mime",
     spriteKey: "mr-mime",
@@ -2646,7 +2646,7 @@ export const fuschaCityGymJugglerKaydenBox = getOpponentBox([
   },
 ]);
 
-export const fuschaCityLeaderKogaBox = getOpponentBox([
+export const fuschiaCityLeaderKogaBox = getOpponentBox([
   {
     name: "Tapu Lele",
     spriteKey: "tapu-lele",

@@ -1599,6 +1599,12 @@ export const {
   starterEgg5Encounter,
   starterEgg5BoxChange,
   pewterCityLeaderBrockRematchBattle,
+  ceruleanCityLeaderMistyRematchBattle,
+  vermillionCityLeaderLtSurgeRematchBattle,
+  fuschiaCityGymJugglerKaydenBattle,
+  fuschiaCityGymJugglerKaydenBoxChange,
+  fuschiaCityLeaderKogaBattle,
+  fuschiaCityLeaderKogaBoxChange,
   box,
 } = getKogaSecrets(_box19);
 
@@ -1624,4 +1630,10 @@ export const moments: Moment[] = [
   starterEgg5Encounter,
   starterEgg5BoxChange,
   pewterCityLeaderBrockRematchBattle,
+  ceruleanCityLeaderMistyRematchBattle,
+  vermillionCityLeaderLtSurgeRematchBattle,
+  fuschiaCityGymJugglerKaydenBattle,
+  fuschiaCityGymJugglerKaydenBoxChange,
+  fuschiaCityLeaderKogaBattle,
+  fuschiaCityLeaderKogaBoxChange,
 ];

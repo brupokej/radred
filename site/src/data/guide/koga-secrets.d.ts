@@ -7,5 +7,11 @@ export declare function getKogaSecrets(_box1: Box): {
   starterEgg5Encounter: Moment;
   starterEgg5BoxChange: Moment;
   pewterCityLeaderBrockRematchBattle: Moment;
+  ceruleanCityLeaderMistyRematchBattle: Moment;
+  vermillionCityLeaderLtSurgeRematchBattle: Moment;
+  fuschiaCityGymJugglerKaydenBattle: Moment;
+  fuschiaCityGymJugglerKaydenBoxChange: Moment;
+  fuschiaCityLeaderKogaBattle: Moment;
+  fuschiaCityLeaderKogaBoxChange: Moment;
   box: Box;
 };

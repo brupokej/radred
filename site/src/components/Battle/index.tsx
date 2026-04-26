@@ -258,13 +258,14 @@ export function Battle({ data, secret }: { data: BattleData; secret?: boolean })
         ? {
             ...data,
             lines: [
-              {
+              ({
                 matchups: (() => {
                   const leadName = playerResolved.team[0];
                   const leadP = findPokemon(playerResolved, leadName);
                   const leadResolved = leadP ? resolvePokemon(leadP) : null;
-                  const leadMove = leadResolved?.moves?.[0] ?? "Move";
-                  return (opponentResolved.team ?? []).map((name) => {
+                  const leadMoves = leadResolved?.moves ?? [];
+                  return (opponentResolved.team ?? []).map((name, i) => {
+                    const leadMove = leadMoves[i % Math.max(leadMoves.length, 1)] ?? "Move";
                     const p = findPokemon(opponentResolved, name);
                     const resolved = p ? resolvePokemon(p) : null;
                     const opponentMove1 = resolved?.moves?.[0] ?? "Move";
@@ -278,14 +279,14 @@ export function Battle({ data, secret }: { data: BattleData; secret?: boolean })
                     return {
                       matchup: [name],
                       turns: [
-                        pokedex[resolved.pokedexKey ?? resolved.name].spe >= 75
+                        pokedex[resolved.pokedexKey ?? resolved.name].spe >= 100
                           ? [opponentMove, playerMove, ellipsis]
                           : [playerMove, opponentMove, ellipsis],
                       ],
                     };
                   });
                 })(),
-              },
+              }) as LineData,
             ],
           }
         : data,

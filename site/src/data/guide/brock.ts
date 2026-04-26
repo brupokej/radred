@@ -915,7 +915,7 @@ export const pewterCityLeaderBrockBattle: Moment = {
               "Risk →",
               {
                 danger:
-                  "Varoom Bulldoze Kricketune → Cacnea Pow-Up Punch Kricketune → Lileep Mega Drain Kricketune → Lileep Mega Drain Kricketune (to 0) → {c:0.001%}",
+                  "Varoom Bulldoze Kricketune → Cacnea Pow-Up Punch Kricketune → Lileep Mega Drain Kricketune → Lileep Mega Drain Kricketune (to 0) → {c:0.00001%}",
               },
             ],
             turns: [

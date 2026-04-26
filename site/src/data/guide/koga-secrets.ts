@@ -1,6 +1,12 @@
 import { getBox, type Box } from "@site/src/utils/box";
 import type { Moment } from "@site/src/utils/moments";
-import { pewterCityLeaderBrockRematchBox } from "@site/src/utils/opponents";
+import {
+  ceruleanCityLeaderMistyRematchBox,
+  fuschiaCityGymJugglerKaydenBox,
+  fuschiaCityLeaderKogaBox,
+  pewterCityLeaderBrockRematchBox,
+  vermillionCityLeaderLtSurgeRematchBox,
+} from "@site/src/utils/opponents";
 
 export function getKogaSecrets(_box1: Box) {
   const _starter = { name: "Starter", moves: ["Tackle", "Tail Whip"] };
@@ -29,26 +35,14 @@ export function getKogaSecrets(_box1: Box) {
     data: { pokemon: _starter, playerBox: _box1 },
   };
 
-  const _box2 = getBox({
-    box: _box1,
-    cap: 68,
-    update: [
-      {
-        Drednaw: {
-          ivs: { hp: 31, spd: 31 },
-        },
-      },
-    ],
-  });
-
   const starterEgg5BoxChange: Moment = {
     split: "Koga",
     label: "Starter Egg 5 Box Change",
     kind: "boxChange",
   };
 
-  const _box3 = getBox({
-    box: _box2,
+  const _box2 = getBox({
+    box: _box1,
     update: { Incineroar: { spriteKey: "secret" } },
     team: ["Incineroar", "Incineroar", "Incineroar", "Incineroar", "Incineroar"],
   });
@@ -58,7 +52,67 @@ export function getKogaSecrets(_box1: Box) {
     label: "Pewter City Leader Brock Rematch Battle",
     kind: "battle",
     secret: true,
-    data: { playerBox: _box3, opponentBox: pewterCityLeaderBrockRematchBox, lines: [] },
+    data: { playerBox: _box2, opponentBox: pewterCityLeaderBrockRematchBox, lines: [] },
+  };
+
+  const _box3 = getBox({
+    box: _box2,
+    team: ["Incineroar", "Incineroar", "Incineroar", "Incineroar", "Incineroar", "Incineroar"],
+  });
+
+  const ceruleanCityLeaderMistyRematchBattle: Moment = {
+    split: "Koga",
+    label: "Cerulean City Leader Misty Rematch Battle",
+    kind: "battle",
+    secret: true,
+    data: { playerBox: _box3, opponentBox: ceruleanCityLeaderMistyRematchBox, lines: [] },
+  };
+
+  const vermillionCityLeaderLtSurgeRematchBattle: Moment = {
+    split: "Koga",
+    label: "Vermillion City Leader Lt. Surge Rematch Battle",
+    kind: "battle",
+    secret: true,
+    data: { playerBox: _box3, opponentBox: vermillionCityLeaderLtSurgeRematchBox, lines: [] },
+  };
+
+  const _box4 = getBox({
+    box: _box3,
+    team: ["Incineroar", "Incineroar", "Incineroar", "Incineroar"],
+  });
+
+  const fuschiaCityGymJugglerKaydenBattle: Moment = {
+    split: "Koga",
+    label: "Fuschia City Gym Juggler Kayden Battle",
+    kind: "battle",
+    secret: true,
+    data: { playerBox: _box4, opponentBox: fuschiaCityGymJugglerKaydenBox, lines: [] },
+  };
+
+  const fuschiaCityGymJugglerKaydenBoxChange: Moment = {
+    split: "Koga",
+    label: "Fuschia City Gym Juggler Kayden Box Change",
+    kind: "boxChange",
+  };
+
+  const _box5 = getBox({
+    box: _box4,
+    update: { Incineroar: { spriteKey: "secret" } },
+    team: ["Incineroar", "Incineroar", "Incineroar", "Incineroar"],
+  });
+
+  const fuschiaCityLeaderKogaBattle: Moment = {
+    split: "Koga",
+    label: "Fuschia City Leader Koga Battle",
+    kind: "battle",
+    secret: true,
+    data: { playerBox: _box5, opponentBox: fuschiaCityLeaderKogaBox, lines: [] },
+  };
+
+  const fuschiaCityLeaderKogaBoxChange: Moment = {
+    split: "Koga",
+    label: "Fuschia City Leader Koga Box Change",
+    kind: "boxChange",
   };
 
   return {
@@ -67,6 +121,12 @@ export function getKogaSecrets(_box1: Box) {
     starterEgg5Encounter,
     starterEgg5BoxChange,
     pewterCityLeaderBrockRematchBattle,
-    box: _box3,
+    ceruleanCityLeaderMistyRematchBattle,
+    vermillionCityLeaderLtSurgeRematchBattle,
+    fuschiaCityGymJugglerKaydenBattle,
+    fuschiaCityGymJugglerKaydenBoxChange,
+    fuschiaCityLeaderKogaBattle,
+    fuschiaCityLeaderKogaBoxChange,
+    box: _box5,
   };
 }
