@@ -127,14 +127,17 @@
 }
 
 .btn {
+  align-items: center;
   background: none;
   border: 1px solid var(--ifm-color-emphasis-300);
   border-radius: var(--ifm-global-radius);
   color: var(--ifm-color-content);
   cursor: pointer;
+  display: inline-flex;
   font-size: 0.8rem;
-  line-height: 1;
-  padding: 0.3rem 0.65rem;
+  height: 28px;
+  justify-content: center;
+  padding-inline: 0.65rem;
   transition: background 0.1s;
   user-select: none;
 }
@@ -145,7 +148,6 @@
 
 .btnPlay {
   min-width: 2.5rem;
-  padding-top: 0.4rem;
 }
 
 .scrubRow {
