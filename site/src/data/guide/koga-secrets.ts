@@ -9,7 +9,7 @@ import {
 } from "@site/src/utils/opponents";
 
 export function getKogaSecrets(_box1: Box) {
-  const _starter = { name: "Starter", moves: ["Tackle", "Tail Whip"] };
+  const _starter = { name: "Starter", spriteKey: "secret", moves: ["Tackle", "Tail Whip"] };
 
   const starterEgg3Encounter: Moment = {
     split: "Koga",

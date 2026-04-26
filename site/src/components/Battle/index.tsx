@@ -258,7 +258,7 @@ export function Battle({ data, secret }: { data: BattleData; secret?: boolean })
         ? {
             ...data,
             lines: [
-              ({
+              {
                 matchups: (() => {
                   const leadName = playerResolved.team[0];
                   const leadP = findPokemon(playerResolved, leadName);
@@ -286,7 +286,7 @@ export function Battle({ data, secret }: { data: BattleData; secret?: boolean })
                     };
                   });
                 })(),
-              }) as LineData,
+              } as LineData,
             ],
           }
         : data,
@@ -404,7 +404,7 @@ export function Battle({ data, secret }: { data: BattleData; secret?: boolean })
       const p = findPokemon(opponentResolved, name);
       if (p) {
         const resolved = resolvePokemon(p);
-        map[`o:${name}`] = blur && i > 0 ? { ...resolved, spriteKey: "?" } : resolved;
+        map[`o:${name}`] = blur && i > 0 ? { ...resolved, spriteKey: "secret" } : resolved;
       }
     }
     for (const name of partnerResolved?.team ?? []) {
@@ -493,16 +493,27 @@ function BattleLine({
 
 function MatchupSprite({ pokemon }: { pokemon: PokemonData }) {
   const key = pokemon.spriteKey ?? pokemon.name;
-  const [imgError, setImgError] = useState(key === "?");
-  useEffect(() => setImgError(key === "?"), [key]);
+  const [loadError, setLoadError] = useState(false);
+  const [trackedKey, setTrackedKey] = useState(key);
+  if (key !== trackedKey) {
+    setLoadError(false);
+    setTrackedKey(key);
+  }
+  const imgError = key === "secret" || loadError;
+  const imgRef = useRef<HTMLImageElement>(null);
+  useEffect(() => {
+    const img = imgRef.current;
+    if (img?.complete && img.naturalWidth === 0) setLoadError(true);
+  }, [key]);
   return imgError ? (
     <div className={styles.emptySprite}>?</div>
   ) : (
     <img
+      ref={imgRef}
       src={getColouredSpriteUrl(pokemon)}
       alt={pokemon.name}
       className={styles.sprite}
-      onError={() => setImgError(true)}
+      onError={() => setLoadError(true)}
     />
   );
 }

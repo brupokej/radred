@@ -1,6 +1,6 @@
 import { PokemonData } from "@site/src/utils/pokemon";
 import { getColouredSpriteUrl } from "@site/src/utils/sprites";
-import { ReactNode, useEffect, useState } from "react";
+import { ReactNode, useEffect, useRef, useState } from "react";
 import styles from "./styles.module.css";
 
 export function PokemonEntry({
@@ -12,18 +12,30 @@ export function PokemonEntry({
   children?: ReactNode;
   className?: string;
 }) {
-  const [imgError, setImgError] = useState(false);
-  useEffect(() => setImgError(false), [pokemon.spriteKey ?? pokemon.name]);
+  const spriteKey = pokemon.spriteKey ?? pokemon.name;
+  const [loadError, setLoadError] = useState(false);
+  const [trackedKey, setTrackedKey] = useState(spriteKey);
+  if (spriteKey !== trackedKey) {
+    setLoadError(false);
+    setTrackedKey(spriteKey);
+  }
+  const imgError = spriteKey === "secret" || loadError;
+  const imgRef = useRef<HTMLImageElement>(null);
+  useEffect(() => {
+    const img = imgRef.current;
+    if (img?.complete && img.naturalWidth === 0) setLoadError(true);
+  }, [spriteKey]);
 
   return (
     <div className={`${styles.entry} ${className ?? ""}`}>
       <div className={styles.spritePanel}>
         {!imgError ? (
           <img
+            ref={imgRef}
             src={getColouredSpriteUrl(pokemon)}
             alt={pokemon.name}
             className={styles.sprite}
-            onError={() => setImgError(true)}
+            onError={() => setLoadError(true)}
           />
         ) : (
           <div className={styles.emptySprite}>?</div>

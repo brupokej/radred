@@ -159,8 +159,19 @@ function PokemonCard({
   const isExpanded = useCardDetail();
   const { update, base } = pokemon ?? {};
   const current = pokemon ? resolvePokemon(pokemon) : null;
-  const [imgError, setImgError] = useState(false);
-  useEffect(() => setImgError(false), [current?.spriteKey ?? current?.name]);
+  const spriteKey = current?.spriteKey ?? current?.name;
+  const [loadError, setLoadError] = useState(false);
+  const [trackedKey, setTrackedKey] = useState(spriteKey);
+  if (spriteKey !== trackedKey) {
+    setLoadError(false);
+    setTrackedKey(spriteKey);
+  }
+  const imgError = spriteKey === "secret" || loadError;
+  const imgRef = useRef<HTMLImageElement>(null);
+  useEffect(() => {
+    const img = imgRef.current;
+    if (img?.complete && img.naturalWidth === 0) setLoadError(true);
+  }, [spriteKey]);
   const wc = (field: string) => (update && field in update ? styles.fieldWarning : "");
   const baseMoveSet = base?.moves ? new Set(base.moves.filter(Boolean)) : null;
   const mwc = (move: string | null | undefined) =>
@@ -171,10 +182,11 @@ function PokemonCard({
     <div className={`${styles.card} ${!pokemon ? styles.cardEmpty : ""}`}>
       {current && !imgError ? (
         <img
+          ref={imgRef}
           src={getColouredSpriteUrl(current)}
           alt={current.name}
           className={styles.sprite}
-          onError={() => setImgError(true)}
+          onError={() => setLoadError(true)}
         />
       ) : (
         <div className={styles.emptySprite}>{current ? "?" : "✕"}</div>

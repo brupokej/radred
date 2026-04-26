@@ -111,8 +111,19 @@ function OverlayCard({
   size: "small" | "large";
 }) {
   const pokemon = slot?.pokemon ?? null;
-  const [imgError, setImgError] = useState(false);
-  useEffect(() => setImgError(false), [pokemon?.spriteKey ?? pokemon?.name]);
+  const spriteKey = pokemon?.spriteKey ?? pokemon?.name;
+  const [loadError, setLoadError] = useState(false);
+  const [trackedKey, setTrackedKey] = useState(spriteKey);
+  if (spriteKey !== trackedKey) {
+    setLoadError(false);
+    setTrackedKey(spriteKey);
+  }
+  const imgError = spriteKey === "secret" || loadError;
+  const imgRef = useRef<HTMLImageElement>(null);
+  useEffect(() => {
+    const img = imgRef.current;
+    if (img?.complete && img.naturalWidth === 0) setLoadError(true);
+  }, [spriteKey]);
   const pokedexEntry = pokemon ? (pokedex[pokemon.pokedexKey ?? pokemon.name] ?? null) : null;
   const subtitle = slot
     ? (slot.subtitle ?? (pokemon?.level != null ? String(pokemon.level) : "-"))
@@ -140,10 +151,11 @@ function OverlayCard({
     <div className={`${styles.card} ${!slot ? styles.cardEmpty : ""}`}>
       {pokemon && !imgError ? (
         <img
+          ref={imgRef}
           src={getColouredSpriteUrl(pokemon)}
           alt={pokemon.name}
           className={styles.sprite}
-          onError={() => setImgError(true)}
+          onError={() => setLoadError(true)}
         />
       ) : (
         <div className={styles.emptySprite}>✕</div>

@@ -1,20 +1,31 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { PokemonData } from "./pokemon";
 import { getColouredSpriteUrl, getMonotoneSpriteUrl } from "./sprites";
 import styles from "./tokens.module.css";
 
 function TokenSprite({ pokemon, monotone }: { pokemon: PokemonData; monotone: boolean }) {
   const key = pokemon.spriteKey ?? pokemon.name;
-  const [imgError, setImgError] = useState(key === "?");
-  useEffect(() => setImgError(key === "?"), [key]);
+  const [loadError, setLoadError] = useState(false);
+  const [trackedKey, setTrackedKey] = useState(key);
+  if (key !== trackedKey) {
+    setLoadError(false);
+    setTrackedKey(key);
+  }
+  const imgError = key === "secret" || loadError;
+  const imgRef = useRef<HTMLImageElement>(null);
+  useEffect(() => {
+    const img = imgRef.current;
+    if (img?.complete && img.naturalWidth === 0) setLoadError(true);
+  }, [key]);
   return imgError ? (
     <span className={styles.emptySprite}>?</span>
   ) : (
     <img
+      ref={imgRef}
       src={monotone ? getMonotoneSpriteUrl(pokemon) : getColouredSpriteUrl(pokemon)}
       alt={pokemon.name}
       className={styles.sprite}
-      onError={() => setImgError(true)}
+      onError={() => setLoadError(true)}
     />
   );
 }
