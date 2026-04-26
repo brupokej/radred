@@ -12,6 +12,7 @@ import {
   route18BikerWilliamBox,
   route18BirdKeeperJacobBox,
 } from "@site/src/utils/opponents";
+import { getKogaSecrets } from "./koga-secrets";
 
 import { box as _box1 } from "@site/src/data/guide/sabrina";
 
@@ -1592,105 +1593,14 @@ export const safariZoneEncounter: Moment = {
   data: { pokemon: _screamTail, playerBox: _box19, showPlayerTeam: true },
 };
 
-const _froakie = {
-  name: "Froakie",
-  level: "1",
-  ability: "Torrent",
-  moves: ["Growl", "Pound"],
-};
-
-const _box20 = getBox({ box: _box19, add: [_froakie] });
-
-export const starterEgg3Encounter: Moment = {
-  split: "Koga",
-  label: "Starter Egg 3 Encounter",
-  kind: "encounter",
-  data: { pokemon: _froakie, playerBox: _box20 },
-};
-
-const _chimchar = {
-  name: "Chimchar",
-  level: "1",
-  ability: "Blaze",
-  moves: ["Leer", "Scratch"],
-};
-
-const _box21 = getBox({ box: _box20, add: [_chimchar] });
-
-export const starterEgg4Encounter: Moment = {
-  split: "Koga",
-  label: "Starter Egg 4 Encounter",
-  kind: "encounter",
-  data: { pokemon: _chimchar, playerBox: _box21 },
-};
-
-const _treecko = {
-  name: "Treecko",
-  level: "1",
-  ability: "Overgrow",
-  moves: ["Leer", "Pound"],
-};
-
-const _box22 = getBox({ box: _box21, add: [_treecko] });
-
-export const starterEgg5Encounter: Moment = {
-  split: "Koga",
-  label: "Starter Egg 5 Encounter",
-  kind: "encounter",
-  data: { pokemon: _treecko, playerBox: _box22 },
-};
-
-const _box23 = getBox({
-  box: _box22,
-  cap: 68,
-  update: [
-    {
-      Drednaw: {
-        ivs: { hp: 31, spd: 31 },
-      },
-      Froakie: {
-        name: "Frogadier",
-      },
-    },
-    {
-      Frogadier: {
-        name: "Greninja",
-        moves: ["Growl", "Pound", "Water Shuriken"],
-      },
-    },
-    {
-      Chimchar: {
-        name: "Monferno",
-      },
-    },
-    {
-      Monferno: {
-        name: "Infernape",
-        moves: ["Close Combat", "Leer", "Mach Punch", "Scratch"],
-      },
-    },
-    {
-      Treecko: {
-        name: "Grovyle",
-      },
-    },
-    {
-      Grovyle: {
-        name: "Sceptile",
-        moves: ["Dual Chop", "Fury Cutter", "Leer", "Pound"],
-      },
-    },
-  ],
-});
-
-export const starterEgg5BoxChange: Moment = {
-  split: "Koga",
-  label: "Starter Egg 5 Box Change",
-  kind: "boxChange",
-  data: { playerBox: _box23 },
-};
-
-export const box = _box23;
+export const {
+  starterEgg3Encounter,
+  starterEgg4Encounter,
+  starterEgg5Encounter,
+  starterEgg5BoxChange,
+  pewterCityLeaderBrockRematchBattle,
+  box,
+} = getKogaSecrets(_box19);
 
 export const moments: Moment[] = [
   celadonCityEncounter,
@@ -1713,4 +1623,5 @@ export const moments: Moment[] = [
   starterEgg4Encounter,
   starterEgg5Encounter,
   starterEgg5BoxChange,
+  pewterCityLeaderBrockRematchBattle,
 ];

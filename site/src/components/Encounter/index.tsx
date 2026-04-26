@@ -2,6 +2,7 @@ import Card from "@site/src/components/Card";
 import { PokemonEntry } from "@site/src/components/PokemonEntry";
 import { Row } from "@site/src/components/Row";
 import Team from "@site/src/components/Team";
+import { secretMode } from "@site/src/data/secretMode";
 import { Box } from "@site/src/utils/box";
 import { readAllSelections, writeAll } from "@site/src/utils/encounterLog";
 import { encounterSequences, locations } from "@site/src/utils/encounterPools";
@@ -129,20 +130,31 @@ export interface EncounterData {
 
 export default function Encounter({
   data,
+  secret,
   children,
 }: {
   data: EncounterData;
+  secret?: boolean;
   children?: ReactNode;
 }) {
   const resolvedEncounter = data.pokemon;
   const resolvedPlayerBox = data.playerBox;
   const isSequence = resolvedEncounter.name in encounterSequences;
-  return (
+
+  const blur = !!secret && !secretMode;
+
+  const revealableContent = (
     <>
-      {data.showPlayerTeam && resolvedPlayerBox && (
-        <Team title="Player Team" box={resolvedPlayerBox} />
-      )}
-      <Card title="Encounter Plan">
+      {data.showPlayerTeam &&
+        resolvedPlayerBox &&
+        (blur ? (
+          <div className={styles.blurContent}>
+            <Team title="Player Team" box={resolvedPlayerBox} />
+          </div>
+        ) : (
+          <Team title="Player Team" box={resolvedPlayerBox} />
+        ))}
+      <Card title="Encounter Plan" className={blur ? styles.blurContent : undefined}>
         {isSequence && <Sequence target={resolvedEncounter.name} />}
         <PokemonEntry
           pokemon={resolvedEncounter}
@@ -153,4 +165,7 @@ export default function Encounter({
       </Card>
     </>
   );
+
+  if (secret && secretMode) return <div data-secret="true">{revealableContent}</div>;
+  return revealableContent;
 }

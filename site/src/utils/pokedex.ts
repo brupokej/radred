@@ -6,7 +6,8 @@ export type PokedexData = Stats;
 export const pokedex = rawData as Record<string, PokedexData>;
 
 export function getHp(pokemon: PokemonData): number {
-  const base = pokedex[pokemon.pokedexKey ?? pokemon.name].hp;
+  const stats = pokedex[pokemon.pokedexHpKey ?? pokemon.pokedexKey ?? pokemon.name];
+  const base = stats?.hp ?? 0;
   const iv = pokemon.ivs?.hp ?? 31;
   const ev = pokemon.evs?.hp ?? 0;
   const level = parseInt(String(pokemon.level ?? 0), 10);

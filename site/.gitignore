@@ -22,3 +22,7 @@ yarn-error.log*
 # Playwright
 /test-results/
 /playwright-report/
+
+# Secret guides
+src/data/guide/*-secrets.enabled.ts
+tests/snapshots/**/secrets--*.png

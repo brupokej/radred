@@ -2,9 +2,10 @@ import Card from "@site/src/components/Card";
 import { Row, RowCell } from "@site/src/components/Row";
 import { ScrollFade } from "@site/src/components/ScrollFade";
 import Team from "@site/src/components/Team";
+import { secretMode } from "@site/src/data/secretMode";
 import { Box, findPokemon, resolveBox } from "@site/src/utils/box";
 import { useHpDisplay } from "@site/src/utils/hpDisplay";
-import { getHp } from "@site/src/utils/pokedex";
+import { getHp, pokedex } from "@site/src/utils/pokedex";
 import { PokemonData, resolvePokemon } from "@site/src/utils/pokemon";
 import { slugify } from "@site/src/utils/slugify";
 import { getColouredSpriteUrl } from "@site/src/utils/sprites";
@@ -18,6 +19,7 @@ import React, {
   useMemo,
   useReducer,
   useRef,
+  useState,
 } from "react";
 import styles from "./styles.module.css";
 
@@ -243,12 +245,54 @@ function battleDataToChildren(data: BattleData): React.ReactNode {
   ));
 }
 
-export function Battle({ data }: { data: BattleData }) {
+export function Battle({ data, secret }: { data: BattleData; secret?: boolean }) {
   const { opponentBox, playerBox: resolvedPlayerBox, partnerBox } = data;
-  const resolvedChildren = battleDataToChildren(data);
   const playerResolved = resolveBox(resolvedPlayerBox);
   const opponentResolved = resolveBox(opponentBox);
   const partnerResolved = partnerBox ? resolveBox(partnerBox) : null;
+
+  const blur = !!secret && !secretMode;
+  const effectiveData = useMemo(
+    () =>
+      blur
+        ? {
+            ...data,
+            lines: [
+              {
+                matchups: (() => {
+                  const leadName = playerResolved.team[0];
+                  const leadP = findPokemon(playerResolved, leadName);
+                  const leadResolved = leadP ? resolvePokemon(leadP) : null;
+                  const leadMove = leadResolved?.moves?.[0] ?? "Move";
+                  return (opponentResolved.team ?? []).map((name) => {
+                    const p = findPokemon(opponentResolved, name);
+                    const resolved = p ? resolvePokemon(p) : null;
+                    const opponentMove1 = resolved?.moves?.[0] ?? "Move";
+                    const playerMove: MoveData = {
+                      player: `{p:${leadName}} ${leadMove} {o:${name}} to {-:${getHp(resolved) - 1}}`,
+                    };
+                    const opponentMove: MoveData = {
+                      opponent: `{o:${name}} ${opponentMove1} {p:${leadName}} to {+:1}`,
+                    };
+                    const ellipsis: MoveData = { opponent: "..." };
+                    return {
+                      matchup: [name],
+                      turns: [
+                        pokedex[resolved.pokedexKey ?? resolved.name].spe >= 75
+                          ? [opponentMove, playerMove, ellipsis]
+                          : [playerMove, opponentMove, ellipsis],
+                      ],
+                    };
+                  });
+                })(),
+              },
+            ],
+          }
+        : data,
+    [blur, data, playerResolved, opponentResolved]
+  );
+
+  const resolvedChildren = battleDataToChildren(effectiveData);
   const lineElements = React.Children.toArray(resolvedChildren).filter(
     (
       c
@@ -276,13 +320,13 @@ export function Battle({ data }: { data: BattleData }) {
 
   const lineCondsByName = useMemo(() => {
     const map = new Map<string, LineConditions[]>();
-    for (const line of data.lines) {
+    for (const line of effectiveData.lines) {
       const name = line.line ?? "";
       if (!map.has(name)) map.set(name, []);
       map.get(name)!.push({ if: line.if, ifNot: line.ifNot });
     }
     return map;
-  }, [data]);
+  }, [effectiveData]);
 
   const rootLine = lineElements.length > 0 ? (lineElements[0].props.line ?? "") : "";
 
@@ -316,7 +360,7 @@ export function Battle({ data }: { data: BattleData }) {
   );
 
   const [state, dispatch] = useReducer(reducer, {
-    visibleOrder: computeInitialOrder(data, rootLine, lineCondsByName),
+    visibleOrder: computeInitialOrder(effectiveData, rootLine, lineCondsByName),
     selectedBranches: new Map(),
   });
 
@@ -353,9 +397,14 @@ export function Battle({ data }: { data: BattleData }) {
       const p = findPokemon(playerResolved, name);
       if (p) map[`p:${name}`] = resolvePokemon(p);
     }
-    for (const name of opponentResolved.team ?? []) {
+    const opponentTeam = opponentResolved.team ?? [];
+    for (let i = 0; i < opponentTeam.length; i++) {
+      const name = opponentTeam[i];
       const p = findPokemon(opponentResolved, name);
-      if (p) map[`o:${name}`] = resolvePokemon(p);
+      if (p) {
+        const resolved = resolvePokemon(p);
+        map[`o:${name}`] = blur && i > 0 ? { ...resolved, spriteKey: "?" } : resolved;
+      }
     }
     for (const name of partnerResolved?.team ?? []) {
       const p = partnerResolved ? findPokemon(partnerResolved, name) : undefined;
@@ -369,6 +418,7 @@ export function Battle({ data }: { data: BattleData }) {
     playerResolved,
     opponentResolved,
     partnerResolved,
+    blur,
   ]);
 
   const ctx = useMemo(
@@ -396,13 +446,17 @@ export function Battle({ data }: { data: BattleData }) {
     }
   }
 
-  return (
+  const revealableContent = (
     <>
-      <Team title="Opponent Team" box={opponentBox} />
-      {partnerBox && <Team title="Partner Team" box={partnerBox} />}
-      <Team title="Player Team" box={resolvedPlayerBox} />
+      {blur ? (
+        <div className={styles.blurContent}>
+          <Team title="Player Team" box={resolvedPlayerBox} />
+        </div>
+      ) : (
+        <Team title="Player Team" box={resolvedPlayerBox} />
+      )}
       <BattleGraphCtx.Provider value={ctx}>
-        <Card title="Battle Plan">
+        <Card title="Battle Plan" className={blur ? styles.blurBattlePlan : undefined}>
           {state.visibleOrder.map((slug) => (
             <BattleLineCtx.Provider key={slug} value={slug}>
               {enrichedLines.get(slug)}
@@ -410,6 +464,14 @@ export function Battle({ data }: { data: BattleData }) {
           ))}
         </Card>
       </BattleGraphCtx.Provider>
+    </>
+  );
+
+  return (
+    <>
+      <Team title="Opponent Team" box={opponentBox} />
+      {partnerBox && <Team title="Partner Team" box={partnerBox} />}
+      {secret && secretMode ? <div data-secret="true">{revealableContent}</div> : revealableContent}
     </>
   );
 }
@@ -428,6 +490,22 @@ function BattleLine({
   return null;
 }
 
+function MatchupSprite({ pokemon }: { pokemon: PokemonData }) {
+  const key = pokemon.spriteKey ?? pokemon.name;
+  const [imgError, setImgError] = useState(key === "?");
+  useEffect(() => setImgError(key === "?"), [key]);
+  return imgError ? (
+    <div className={styles.emptySprite}>?</div>
+  ) : (
+    <img
+      src={getColouredSpriteUrl(pokemon)}
+      alt={pokemon.name}
+      className={styles.sprite}
+      onError={() => setImgError(true)}
+    />
+  );
+}
+
 function Matchup({
   matchup,
   isContinued = false,
@@ -444,14 +522,7 @@ function Matchup({
         {!isContinued &&
           matchup.map((name, i) => {
             const pokemon: PokemonData = graphCtx?.teamMap[`o:${name}`] ?? { name };
-            return (
-              <img
-                key={i}
-                src={getColouredSpriteUrl(pokemon)}
-                alt={name}
-                className={styles.sprite}
-              />
-            );
+            return <MatchupSprite key={i} pokemon={pokemon} />;
           })}
       </div>
       <div className={styles.turns}>{children}</div>

@@ -1,7 +1,23 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { PokemonData } from "./pokemon";
 import { getColouredSpriteUrl, getMonotoneSpriteUrl } from "./sprites";
 import styles from "./tokens.module.css";
+
+function TokenSprite({ pokemon, monotone }: { pokemon: PokemonData; monotone: boolean }) {
+  const key = pokemon.spriteKey ?? pokemon.name;
+  const [imgError, setImgError] = useState(key === "?");
+  useEffect(() => setImgError(key === "?"), [key]);
+  return imgError ? (
+    <span className={styles.emptySprite}>?</span>
+  ) : (
+    <img
+      src={monotone ? getMonotoneSpriteUrl(pokemon) : getColouredSpriteUrl(pokemon)}
+      alt={pokemon.name}
+      className={styles.sprite}
+      onError={() => setImgError(true)}
+    />
+  );
+}
 
 export const TOKEN_RE = /\{([a-z+\-=]):([^}]+)\}/g;
 
@@ -22,15 +38,18 @@ export function parseTokens(
   let lastSpriteKey: string | null = null;
   for (const match of text.matchAll(TOKEN_RE)) {
     const segment = text.slice(last, match.index!).trim();
-    if (segment) parts.push(<React.Fragment key={i++}>{segment}</React.Fragment>);
+    if (segment)
+      parts.push(
+        <span key={i++} data-token="text">
+          {segment}
+        </span>
+      );
     const [, type, value] = match;
     if (type === "p" || type === "o") {
       const name = value;
       const pokemon: PokemonData = hpCtx?.teamMap?.[`${type}:${name}`] ?? { name };
-      const spriteUrl =
-        side === "opponent" ? getMonotoneSpriteUrl(pokemon) : getColouredSpriteUrl(pokemon);
       lastSpriteKey = `${type}:${name}`;
-      parts.push(<img key={i++} src={spriteUrl} alt={name} className={styles.sprite} />);
+      parts.push(<TokenSprite key={i++} pokemon={pokemon} monotone={side === "opponent"} />);
     } else if (type === "+" || type === "-" || type === "=") {
       const num = parseInt(value, 10);
       let maxHp: number | undefined;
@@ -67,13 +86,13 @@ export function parseTokens(
         resultContent = value;
       }
       parts.push(
-        <span key={i++} className={styles.result}>
+        <span key={i++} className={styles.result} data-token="result">
           {resultContent}
         </span>
       );
     } else if (type === "c") {
       parts.push(
-        <span key={i++} className={styles.result}>
+        <span key={i++} className={styles.result} data-token="result">
           {value}
         </span>
       );
@@ -81,6 +100,16 @@ export function parseTokens(
     last = match.index! + match[0].length;
   }
   const trailing = text.slice(last).trim();
-  if (trailing) parts.push(<React.Fragment key={i++}>{trailing}</React.Fragment>);
+  if (trailing) {
+    parts.push(
+      trailing === "..." ? (
+        <React.Fragment key={i++}>{trailing}</React.Fragment>
+      ) : (
+        <span key={i++} data-token="text">
+          {trailing}
+        </span>
+      )
+    );
+  }
   return parts;
 }

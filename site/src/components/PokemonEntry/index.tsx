@@ -1,6 +1,6 @@
 import { PokemonData } from "@site/src/utils/pokemon";
 import { getColouredSpriteUrl } from "@site/src/utils/sprites";
-import { ReactNode } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import styles from "./styles.module.css";
 
 export function PokemonEntry({
@@ -12,13 +12,25 @@ export function PokemonEntry({
   children?: ReactNode;
   className?: string;
 }) {
+  const [imgError, setImgError] = useState(false);
+  useEffect(() => setImgError(false), [pokemon.spriteKey ?? pokemon.name]);
+
   return (
     <div className={`${styles.entry} ${className ?? ""}`}>
       <div className={styles.spritePanel}>
-        <img src={getColouredSpriteUrl(pokemon)} alt={pokemon.name} className={styles.sprite} />
+        {!imgError ? (
+          <img
+            src={getColouredSpriteUrl(pokemon)}
+            alt={pokemon.name}
+            className={styles.sprite}
+            onError={() => setImgError(true)}
+          />
+        ) : (
+          <div className={styles.emptySprite}>?</div>
+        )}
       </div>
       <div className={styles.info}>
-        <div className={styles.name}>{pokemon.name}</div>
+        <span className={styles.name}>{pokemon.name}</span>
         {children}
       </div>
     </div>

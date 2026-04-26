@@ -1,5 +1,7 @@
 import { defineConfig, devices } from "@playwright/test";
 
+const secretMode = process.env.SECRET_MODE === "true";
+
 export default defineConfig({
   testDir: "./tests",
   testMatch: "**/*.spec.ts",
@@ -14,9 +16,9 @@ export default defineConfig({
     colorScheme: "light",
   },
   webServer: {
-    command: "npm run start",
+    command: secretMode ? "npm run start:secret" : "npm run start",
     url: "http://localhost:3000/radred/",
-    reuseExistingServer: true,
+    reuseExistingServer: false,
     timeout: 120_000,
   },
   projects: [

@@ -46,12 +46,16 @@ export function ScrollArrows({
         className={`${styles.arrow} ${styles.arrowLeft} ${canScrollLeft ? styles.arrowVisible : ""}`}
         onClick={() => scrollRef.current && onLeft(scrollRef.current)}
         aria-label="Scroll left"
-      />
+      >
+        <span className={styles.arrowInner} />
+      </button>
       <button
         className={`${styles.arrow} ${styles.arrowRight} ${canScrollRight ? styles.arrowVisible : ""}`}
         onClick={() => scrollRef.current && onRight(scrollRef.current)}
         aria-label="Scroll right"
-      />
+      >
+        <span className={styles.arrowInner} />
+      </button>
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import Card from "@site/src/components/Card";
 import { Row } from "@site/src/components/Row";
+import { secretMode } from "@site/src/data/secretMode";
 import { Box } from "@site/src/utils/box";
 import {
   getChanges,
@@ -14,7 +15,8 @@ export interface BoxChangeData {
   playerBox: Box;
 }
 
-export default function BoxChange({ data }: { data: BoxChangeData }) {
+export default function BoxChange({ data, secret }: { data?: BoxChangeData; secret?: boolean }) {
+  if (!data) return null;
   const box = data.playerBox;
   const removalRows: React.ReactNode[] = [];
   const capRows: React.ReactNode[] = [];
@@ -56,5 +58,8 @@ export default function BoxChange({ data }: { data: BoxChangeData }) {
   const rows = [...removalRows, ...capRows, ...updateRows, ...hpRows, ...ivRows];
   if (rows.length === 0) return null;
 
-  return <Card title="Box Change">{rows}</Card>;
+  const card = <Card title="Box Change">{rows}</Card>;
+
+  if (secret && secretMode) return <div data-secret="true">{card}</div>;
+  return card;
 }

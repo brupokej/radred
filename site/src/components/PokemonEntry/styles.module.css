@@ -48,3 +48,12 @@
   padding-block-start: var(--ifm-spacing-vertical);
   padding-inline-start: var(--ifm-spacing-horizontal);
 }
+
+.emptySprite {
+  align-items: center;
+  display: flex;
+  font-size: 1.25rem;
+  height: 108px;
+  justify-content: center;
+  width: 108px;
+}

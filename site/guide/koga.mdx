@@ -29,6 +29,7 @@ import {
   starterEgg4Encounter,
   starterEgg5Encounter,
   starterEgg5BoxChange,
+  pewterCityLeaderBrockRematchBattle,
 } from "@site/src/data/guide/koga";
 
 # Koga
@@ -119,26 +120,32 @@ import {
 
 ## Starter Egg 3 Encounter
 
-<GoLiveButton moment={starterEgg3Encounter} />
+<GoLiveButton moment={starterEgg3Encounter} secret />
 
-<Encounter data={starterEgg3Encounter.data}>
+<Encounter data={starterEgg3Encounter.data} secret>
   <Row row={["Water Egg · Level 1"]} />
 </Encounter>
 
 ## Starter Egg 4 Encounter
 
-<GoLiveButton moment={starterEgg4Encounter} />
+<GoLiveButton moment={starterEgg4Encounter} secret />
 
-<Encounter data={starterEgg4Encounter.data}>
+<Encounter data={starterEgg4Encounter.data} secret>
   <Row row={["Fire Egg · Level 1"]} />
 </Encounter>
 
 ## Starter Egg 5 Encounter
 
-<GoLiveButton moment={starterEgg5Encounter} />
+<GoLiveButton moment={starterEgg5Encounter} secret />
 
-<Encounter data={starterEgg5Encounter.data}>
+<Encounter data={starterEgg5Encounter.data} secret>
   <Row row={["Grass Egg · Level 1"]} />
 </Encounter>
 
-<BoxChange data={starterEgg5BoxChange.data} />
+<BoxChange data={starterEgg5BoxChange.data} secret />
+
+## Pewter City Leader Brock Rematch Battle
+
+<GoLiveButton moment={pewterCityLeaderBrockRematchBattle} secret />
+
+<Battle data={pewterCityLeaderBrockRematchBattle.data} secret />

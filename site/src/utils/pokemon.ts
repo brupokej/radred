@@ -11,6 +11,7 @@ export interface PokemonData {
   name: string;
   spriteKey?: string;
   pokedexKey?: string;
+  pokedexHpKey?: string;
   level?: number | string;
   nature?: string | null;
   ability?: string | null;

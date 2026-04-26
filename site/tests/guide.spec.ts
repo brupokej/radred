@@ -7,6 +7,7 @@ test.describe.configure({ mode: "serial" });
 
 const SNAPSHOT_DIR = path.join(__dirname, "snapshots/guide.spec.ts-snapshots");
 const SNAPSHOT_SUFFIX = `desktop-${process.platform}`;
+const secretMode = process.env.SECRET_MODE === "true";
 const seenSnapshots = new Set<string>();
 
 async function expectSnapshot(
@@ -43,9 +44,20 @@ async function waitForRender(loc: Locator) {
 
 async function expandAll(loc: Locator) {
   const buttons = loc.getByRole("button", { name: "+" });
-  while ((await buttons.count()) > 0) {
-    await buttons.first().click();
-    await waitForRender(loc);
+  while (true) {
+    let clicked = false;
+    for (const btn of await buttons.all()) {
+      const clickable = await btn.evaluate(
+        (el) => window.getComputedStyle(el).pointerEvents !== "none"
+      );
+      if (clickable) {
+        await btn.click();
+        await waitForRender(loc);
+        clicked = true;
+        break;
+      }
+    }
+    if (!clicked) break;
   }
 }
 
@@ -156,9 +168,10 @@ async function getSnapshots(page: Page, pathIndex: number, path: string) {
   let featureIndex = { value: 1 };
   let locIndex = { value: 1 };
 
+  const detailsSelector = secretMode ? "[data-secret] details" : "details";
   for (const loc of await page
     .locator("article")
-    .locator("h1, h2, details, a[href*='/overlay']")
+    .locator(`h1, h2, ${detailsSelector}, a[href*='/overlay']`)
     .all()) {
     const [tag, text] = await loc.evaluate((e) => [e.tagName, e.textContent]);
     if (tag === "H1" || tag === "H2") {
@@ -171,6 +184,7 @@ async function getSnapshots(page: Page, pathIndex: number, path: string) {
 
     await expandAll(loc);
     const parts = [pathIndex, path, headingIndex, heading];
+    if (secretMode) parts.splice(0, 0, "secrets-");
 
     for (const feature of FEATURES.filter((f) => heading.includes(f.heading))) {
       const summary = await loc.locator("summary").first().textContent();
@@ -183,26 +197,28 @@ async function getSnapshots(page: Page, pathIndex: number, path: string) {
   }
 }
 
-const PATHS = [
-  ["guide", "brock"],
-  ["guide", "misty"],
-  ["guide", "surge"],
-  ["guide", "erika"],
-  ["guide", "sabrina"],
-  ["guide", "koga"],
-  ["team", "box"],
-  ["team", "stats"],
-  ["team", "timeline"],
-  ["overlay", "background"],
-  ["overlay", "banner"],
-  ["overlay", "camera"],
-  ["overlay", "opponent-small"],
-  ["overlay", "opponent-medium"],
-  ["overlay", "opponent-large"],
-  ["overlay", "stats"],
-  ["overlay", "title"],
-  ["overlay", "controls"],
-];
+const PATHS = secretMode
+  ? [["guide", "koga"]]
+  : [
+      ["guide", "brock"],
+      ["guide", "misty"],
+      ["guide", "surge"],
+      ["guide", "erika"],
+      ["guide", "sabrina"],
+      ["guide", "koga"],
+      ["team", "box"],
+      ["team", "stats"],
+      ["team", "timeline"],
+      ["overlay", "background"],
+      ["overlay", "banner"],
+      ["overlay", "camera"],
+      ["overlay", "opponent-small"],
+      ["overlay", "opponent-medium"],
+      ["overlay", "opponent-large"],
+      ["overlay", "stats"],
+      ["overlay", "title"],
+      ["overlay", "controls"],
+    ];
 
 for (const [pathIndex, path] of PATHS.entries()) {
   test.describe(`${path[0]}/${path[1]}`, () => {
@@ -228,5 +244,9 @@ test.afterAll(() => {
   if (!fs.existsSync(SNAPSHOT_DIR)) return;
   fs.readdirSync(SNAPSHOT_DIR)
     .filter((f) => f.endsWith(".png") && !seenSnapshots.has(f))
+    .filter(
+      (f) =>
+        (secretMode && f.startsWith("secrets--")) || (!secretMode && !f.startsWith("secrets--"))
+    )
     .forEach((f) => fs.unlinkSync(path.join(SNAPSHOT_DIR, f)));
 });

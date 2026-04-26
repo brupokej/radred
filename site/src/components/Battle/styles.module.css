@@ -38,6 +38,15 @@
   width: 26px;
 }
 
+.emptySprite {
+  align-items: center;
+  display: flex;
+  font-size: 0.875rem;
+  height: 26px;
+  justify-content: center;
+  width: 26px;
+}
+
 .turns {
   display: flex;
   flex: 1;
@@ -55,7 +64,8 @@
   column-gap: 1px;
   display: flex;
   flex-wrap: wrap;
-  padding-block-start: 13px;
+  padding-block-end: 7px;
+  padding-block-start: 6px;
   row-gap: 1px;
 }
 
@@ -66,11 +76,11 @@
 
 .cell::before {
   background: var(--ifm-color-emphasis-200);
-  bottom: 13px;
+  bottom: 6px;
   content: "";
   left: -1px;
   position: absolute;
-  top: 0;
+  top: 7px;
   width: 1px;
 }
 
@@ -83,7 +93,8 @@
   display: flex;
   flex-shrink: 0;
   gap: 0.4rem;
-  padding-block-end: 13px;
+  padding-block-end: 6px;
+  padding-block-start: 7px;
   padding-inline: var(--ifm-spacing-horizontal);
   white-space: nowrap;
 }
@@ -94,4 +105,29 @@
 
 [data-theme="dark"] .opponentMove {
   color: #707070;
+}
+
+.blurContent details > :not(summary) span {
+  filter: blur(4px);
+  pointer-events: none;
+  user-select: none;
+}
+
+.blurContent details button {
+  pointer-events: none;
+}
+
+.blurContent details > :not(summary) div {
+  pointer-events: none;
+}
+
+.blurBattlePlan details > :not(summary) {
+  pointer-events: none;
+  user-select: none;
+}
+
+.blurBattlePlan details > :not(summary) [data-token="text"],
+.blurBattlePlan details > :not(summary) [data-token="result"] {
+  display: inline-block;
+  filter: blur(4px);
 }

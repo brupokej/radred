@@ -1,3 +1,4 @@
+import { secretMode } from "@site/src/data/secretMode";
 import { Moment } from "@site/src/utils/moments";
 import { useRelayState } from "@site/src/utils/overlayHooks";
 import { postRelayState } from "@site/src/utils/overlayRelay";
@@ -7,8 +8,17 @@ import { useLayoutEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import styles from "./styles.module.css";
 
-export default function GoLiveButton({ moment, attempt }: { moment: Moment; attempt?: number }) {
+export default function GoLiveButton({
+  moment,
+  attempt,
+  secret,
+}: {
+  moment: Moment;
+  attempt?: number;
+  secret?: boolean;
+}) {
   if (process.env.NODE_ENV !== "development" || navigator.webdriver) return null;
+  if (!!secret && !secretMode) return null;
   return <GoLiveButtonInner moment={moment} attempt={attempt} />;
 }
 

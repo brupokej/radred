@@ -5,6 +5,7 @@
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
+    "start:secret": "SECRET_MODE=true docusaurus start",
     "build": "docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
@@ -16,9 +17,10 @@
     "format": "prettier --write \"**/*.{mdx,jsx,tsx,ts,js,css}\"",
     "pokedex": "tsx scripts/pokedex.mts",
     "postinstall": "npx playwright install chromium",
-    "playwright": "playwright test",
+    "playwright": "tsx scripts/playwright.mts",
     "playwright:ui": "playwright test --ui",
-    "playwright:update": "playwright test --update-snapshots",
+    "playwright:ui:secret": "SECRET_MODE=true playwright test --ui",
+    "playwright:update": "tsx scripts/playwright.mts --update-snapshots",
     "vitest": "vitest run",
     "overlay-server": "node overlay-server.js",
     "sprite-colors": "tsx scripts/sprite-colors.ts"

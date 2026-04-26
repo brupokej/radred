@@ -24,7 +24,7 @@ function CardDetail({ children }: { children: React.ReactNode }) {
     <CardDetailCtx.Provider value={isOpen}>
       {children}
       <button className={styles.detailToggle} onClick={() => setIsOpen(!isOpen)}>
-        {isOpen ? "−" : "+"}
+        <span>{isOpen ? "−" : "+"}</span>
       </button>
     </CardDetailCtx.Provider>
   );
@@ -177,29 +177,39 @@ function PokemonCard({
           onError={() => setImgError(true)}
         />
       ) : (
-        <div className={styles.emptySprite}>✕</div>
+        <div className={styles.emptySprite}>{current ? "?" : "✕"}</div>
       )}
-      <div className={`${styles.name}`}>{current?.name ?? "-"}</div>
-      <div className={`${styles.level} ${wc("level")}`}>{current?.level ?? "-"}</div>
+      <div className={`${styles.name}`}>{current == null ? "-" : <span>{current.name}</span>}</div>
+      <div className={`${styles.level} ${wc("level")}`}>
+        {current == null ? "-" : <span>{current?.level ?? "-"}</span>}
+      </div>
       {isExpanded && (
         <>
           <div className={styles.divider} />
-          <div className={`${styles.detail} ${wc("nature")}`}>{current?.nature ?? "-"}</div>
-          <div className={`${styles.detail} ${wc("ability")}`}>{current?.ability ?? "-"}</div>
+          <div className={`${styles.detail} ${wc("nature")}`}>
+            {current == null ? "-" : <span>{current?.nature ?? "-"}</span>}
+          </div>
+          <div className={`${styles.detail} ${wc("ability")}`}>
+            {current == null ? "-" : <span>{current?.ability ?? "-"}</span>}
+          </div>
           <div className={`${styles.detail} ${wc("item")}`}>
-            {current == null ? "-" : (current.item ?? "None")}
+            {current == null ? "-" : <span>{current.item ?? "None"}</span>}
           </div>
           <div className={styles.divider} />
           {[0, 1, 2, 3].map((i) => (
             <div key={i} className={`${styles.move} ${mwc(current?.moves?.[i])}`}>
-              {current?.moves?.[i] ?? "-"}
+              {current == null ? "-" : <span>{current?.moves?.[i] ?? "-"}</span>}
             </div>
           ))}
           <div className={styles.divider} />
           {showIVs && (
             <>
               <div className={`${styles.detail} ${current?.ivs ? styles.fieldInfo : ""}`}>
-                {current?.ivs ? `${formatStats(current.ivs)} IVs` : "-"}
+                {current == null ? (
+                  "-"
+                ) : (
+                  <span>{current?.ivs ? `${formatStats(current.ivs)} IVs` : "-"}</span>
+                )}
               </div>
               <div className={styles.divider} />
             </>
@@ -207,7 +217,11 @@ function PokemonCard({
           {showEVs && (
             <>
               <div className={`${styles.detail} ${current?.evs ? styles.fieldInfo : ""}`}>
-                {current?.evs ? `${formatStats(current.evs)} EVs` : "-"}
+                {current == null ? (
+                  "-"
+                ) : (
+                  <span>{current?.evs ? `${formatStats(current.evs)} EVs` : "-"}</span>
+                )}
               </div>
               <div className={styles.divider} />
             </>
@@ -215,7 +229,7 @@ function PokemonCard({
           {showFriend && (
             <>
               <div className={`${styles.detail} ${current?.friend ? styles.fieldInfo : ""}`}>
-                {current?.friend ? "Max friendship" : "-"}
+                {current == null ? "-" : <span>{current?.friend ? "Max friendship" : "-"}</span>}
               </div>
               <div className={styles.divider} />
             </>

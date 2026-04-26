@@ -2442,6 +2442,7 @@ export const pewterCityLeaderBrockRematchBox = getOpponentBox([
     name: "Zygarde-C",
     spriteKey: "zygarde-complete",
     pokedexKey: "Zygarde-Complete",
+    pokedexHpKey: "Zygarde",
     level: 68,
     nature: "Careful",
     ability: "Power Construct",
