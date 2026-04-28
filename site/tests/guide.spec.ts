@@ -8,6 +8,7 @@ test.describe.configure({ mode: "serial" });
 const SNAPSHOT_DIR = path.join(__dirname, "snapshots/guide.spec.ts-snapshots");
 const SNAPSHOT_SUFFIX = `desktop-${process.platform}`;
 const secretMode = process.env.SECRET_MODE === "true";
+const detailsSelector = secretMode ? "[data-secret] details" : "details";
 const seenSnapshots = new Set<string>();
 
 async function expectSnapshot(
@@ -73,6 +74,36 @@ async function getCardSnapshot(
   locIndex: { value: number },
   visited = new Set<string>()
 ): Promise<void> {
+  const page = loc.page();
+
+  const switchBattleKey = await loc.evaluate((e) => {
+    const switchBattle = e.closest("[data-switch-battle]");
+    return switchBattle?.getAttribute("data-switch-battle") ?? null;
+  });
+  if (switchBattleKey && !visited.has(switchBattleKey)) {
+    visited.add(switchBattleKey);
+
+    const summary = await loc.locator("summary").first().textContent();
+    const switchBattle = page.locator(`[data-switch-battle="${switchBattleKey}"]`);
+    const select = switchBattle.locator("select").first();
+    const values = await getValues(select);
+    const defaultValue = values[0];
+    for (const value of values) {
+      await select.selectOption(value);
+      await waitForRender(switchBattle);
+
+      const reLoc = switchBattle.locator(detailsSelector).filter({
+        has: page.locator("summary", { hasText: summary }),
+      });
+      await expandAll(reLoc);
+      await getCardSnapshot(reLoc, parts, locIndex, visited);
+    }
+
+    await select.selectOption(defaultValue);
+    visited.delete(switchBattleKey);
+    return;
+  }
+
   for (const sequence of await loc.locator("[data-sequence]").all()) {
     const key = await sequence.getAttribute("data-sequence");
     if (visited.has(key)) continue;
@@ -168,7 +199,6 @@ async function getSnapshots(page: Page, pathIndex: number, path: string) {
   let featureIndex = { value: 1 };
   let locIndex = { value: 1 };
 
-  const detailsSelector = secretMode ? "[data-secret] details" : "details";
   for (const loc of await page
     .locator("article")
     .locator(`h1, h2, ${detailsSelector}, a[href*='/overlay']`)
@@ -198,7 +228,10 @@ async function getSnapshots(page: Page, pathIndex: number, path: string) {
 }
 
 const PATHS = secretMode
-  ? [["guide", "koga"]]
+  ? [
+      ["guide", "koga"],
+      ["guide", "blaine"],
+    ]
   : [
       ["guide", "brock"],
       ["guide", "misty"],
@@ -206,6 +239,7 @@ const PATHS = secretMode
       ["guide", "erika"],
       ["guide", "sabrina"],
       ["guide", "koga"],
+      ["guide", "blaine"],
       ["team", "box"],
       ["team", "stats"],
       ["team", "timeline"],

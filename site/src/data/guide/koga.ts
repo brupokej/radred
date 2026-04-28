@@ -1571,6 +1571,7 @@ const _screamTail = {
 
 const _box18 = getBox({
   box: _box17,
+  add: [_screamTail],
   update: {
     Incineroar: {
       moves: ["Fake Out", "Darkest Lariat", "Flamethrower", "U-Turn"],
@@ -1584,13 +1585,11 @@ const _box18 = getBox({
   team: ["Incineroar", "Excadrill"],
 });
 
-const _box19 = getBox({ box: _box18, add: [_screamTail] });
-
 export const safariZoneEncounter: Moment = {
   split: "Koga",
   label: "Safari Zone Encounter",
   kind: "encounter",
-  data: { pokemon: _screamTail, playerBox: _box19, showPlayerTeam: true },
+  data: { pokemon: _screamTail, playerBox: _box18, showPlayerTeam: true },
 };
 
 export const {
@@ -1606,7 +1605,7 @@ export const {
   fuschiaCityLeaderKogaBattle,
   fuschiaCityLeaderKogaBoxChange,
   box,
-} = getKogaSecrets(_box19);
+} = getKogaSecrets(_box18);
 
 export const moments: Moment[] = [
   celadonCityEncounter,

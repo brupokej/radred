@@ -2811,7 +2811,7 @@ export const seafoamIslandsLeaderPryceJynxBox = getOpponentBox([
   },
 ]);
 
-export const seafoamIslandsLeaderPryceSandslashBox = getOpponentBox([
+export const seafoamIslandsLeaderPryceSandslashABox = getOpponentBox([
   {
     name: "Sandslash-A",
     spriteKey: "sandslash-alola",

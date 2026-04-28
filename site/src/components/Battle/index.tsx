@@ -245,7 +245,15 @@ function battleDataToChildren(data: BattleData): React.ReactNode {
   ));
 }
 
-export function Battle({ data, secret }: { data: BattleData; secret?: boolean }) {
+export function Battle({
+  data,
+  secret,
+  opponentTeamHeader,
+}: {
+  data: BattleData;
+  secret?: boolean;
+  opponentTeamHeader?: React.ReactNode;
+}) {
   const { opponentBox, playerBox: resolvedPlayerBox, partnerBox } = data;
   const playerResolved = resolveBox(resolvedPlayerBox);
   const opponentResolved = resolveBox(opponentBox);
@@ -470,7 +478,7 @@ export function Battle({ data, secret }: { data: BattleData; secret?: boolean })
 
   return (
     <>
-      <Team title="Opponent Team" box={opponentBox} />
+      <Team title="Opponent Team" box={opponentBox} header={opponentTeamHeader} />
       {partnerBox && <Team title="Partner Team" box={partnerBox} />}
       {secret && secretMode ? <div data-secret="true">{revealableContent}</div> : revealableContent}
     </>

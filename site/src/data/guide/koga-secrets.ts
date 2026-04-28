@@ -9,14 +9,14 @@ import {
 } from "@site/src/utils/opponents";
 
 export function getKogaSecrets(_box1: Box) {
-  const _starter = { name: "Starter", spriteKey: "secret", moves: ["Tackle", "Tail Whip"] };
+  const _encounter = { name: "Encounter", spriteKey: "secret" };
 
   const starterEgg3Encounter: Moment = {
     split: "Koga",
     label: "Starter Egg 3 Encounter",
     kind: "encounter",
     secret: true,
-    data: { pokemon: _starter, playerBox: _box1 },
+    data: { pokemon: _encounter, playerBox: _box1 },
   };
 
   const starterEgg4Encounter: Moment = {
@@ -24,7 +24,7 @@ export function getKogaSecrets(_box1: Box) {
     label: "Starter Egg 4 Encounter",
     kind: "encounter",
     secret: true,
-    data: { pokemon: _starter, playerBox: _box1 },
+    data: { pokemon: _encounter, playerBox: _box1 },
   };
 
   const starterEgg5Encounter: Moment = {
@@ -32,7 +32,7 @@ export function getKogaSecrets(_box1: Box) {
     label: "Starter Egg 5 Encounter",
     kind: "encounter",
     secret: true,
-    data: { pokemon: _starter, playerBox: _box1 },
+    data: { pokemon: _encounter, playerBox: _box1 },
   };
 
   const starterEgg5BoxChange: Moment = {

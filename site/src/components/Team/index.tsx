@@ -6,7 +6,15 @@ import { resolveBox } from "@site/src/utils/box";
 import { pokedex, type PokedexData } from "@site/src/utils/pokedex";
 import { formatStats, resolvePokemon, type Pokemon } from "@site/src/utils/pokemon";
 import { getColouredSpriteUrl } from "@site/src/utils/sprites";
-import { createContext, useCallback, useContext, useEffect, useRef, useState } from "react";
+import {
+  ReactNode,
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import styles from "./styles.module.css";
 export type { Pokemon };
 
@@ -30,7 +38,15 @@ function CardDetail({ children }: { children: React.ReactNode }) {
   );
 }
 
-export default function Team({ box, title = "Team" }: { box: Box; title?: string }) {
+export default function Team({
+  box,
+  title = "Team",
+  header,
+}: {
+  box: Box;
+  title?: string;
+  header?: ReactNode;
+}) {
   const resolved = resolveBox(box);
   const pokemonMap = new Map(resolved.pokemon.map((p) => [resolvePokemon(p).name, p]));
   const team = (resolved.team ?? [])
@@ -41,14 +57,23 @@ export default function Team({ box, title = "Team" }: { box: Box; title?: string
     .filter((p): p is Pokemon => p !== undefined);
   return (
     <Card title={title}>
+      {header}
       <CardDetail>
-        <TeamGrid team={team} extraTeam={extraTeam} />
+        <TeamGrid team={team} extraTeam={extraTeam} hasHeader={!!header} />
       </CardDetail>
     </Card>
   );
 }
 
-function TeamGrid({ team, extraTeam = [] }: { team: Pokemon[]; extraTeam?: Pokemon[] }) {
+function TeamGrid({
+  team,
+  extraTeam = [],
+  hasHeader = false,
+}: {
+  team: Pokemon[];
+  extraTeam?: Pokemon[];
+  hasHeader?: boolean;
+}) {
   const contentRef = useRef<HTMLDivElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
   const [cols, setCols] = useState(6);
@@ -83,7 +108,10 @@ function TeamGrid({ team, extraTeam = [] }: { team: Pokemon[]; extraTeam?: Pokem
   const showFriend = [...team, ...extraTeam].some((p) => resolvePokemon(p).friend === true);
 
   return (
-    <div ref={contentRef} className={styles.content}>
+    <div
+      ref={contentRef}
+      className={`${styles.content}${hasHeader ? ` ${styles.contentWithHeader}` : ""}`}
+    >
       <div className={styles.scrollArea}>
         <ScrollArrows
           scrollRef={scrollRef}

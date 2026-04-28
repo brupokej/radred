@@ -1,6 +1,7 @@
 import Card from "@site/src/components/Card";
 import { ScrollArrows } from "@site/src/components/ScrollArrows";
 import { ScrollFade } from "@site/src/components/ScrollFade";
+import { getSwitchBattleCaseData } from "@site/src/components/SwitchBattle";
 import { Moment } from "@site/src/utils/moments";
 import { getColouredSpriteUrl } from "@site/src/utils/sprites";
 import {
@@ -206,7 +207,10 @@ export function PageStatsTable({
     () =>
       pages.flatMap((p) =>
         p.moments
-          .filter((m): m is Extract<Moment, { kind: "battle" }> => m.kind === "battle")
+          .filter(
+            (m): m is Extract<Moment, { kind: "battle" | "switchBattle" }> =>
+              m.kind === "battle" || m.kind === "switchBattle"
+          )
           .map((m) => ({ ...m, pageLabel: p.label }))
       ),
     [pages]
@@ -233,7 +237,9 @@ export function PageStatsTable({
 
       const pageGroups = pages.map((p) => ({
         label: p.label,
-        battles: filtered.filter((m) => m.pageLabel === p.label).map((m) => m.data),
+        battles: filtered
+          .filter((m) => m.pageLabel === p.label)
+          .map((m) => (m.kind === "battle" ? m.data : getSwitchBattleCaseData(m.data))),
       }));
 
       setStats(computeFn(pageGroups));
@@ -517,8 +523,11 @@ export function PercentsTable({ moments }: { moments: Moment[] }) {
       }
       const filtered = moments
         .slice(0, rawEnd + 1)
-        .filter((m): m is Extract<Moment, { kind: "battle" }> => m.kind === "battle")
-        .map((m) => m.data);
+        .filter(
+          (m): m is Extract<Moment, { kind: "battle" | "switchBattle" }> =>
+            m.kind === "battle" || m.kind === "switchBattle"
+        )
+        .map((m) => (m.kind === "battle" ? m.data : getSwitchBattleCaseData(m.data)));
       setStats(computeStats(filtered));
     };
     update();

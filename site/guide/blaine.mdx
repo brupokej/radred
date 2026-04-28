@@ -1,0 +1,50 @@
+---
+sidebar_position: 7
+---
+
+import { Battle } from "@site/src/components/Battle";
+import BoxChange from "@site/src/components/BoxChange";
+import Encounter from "@site/src/components/Encounter";
+import { Row } from "@site/src/components/Row";
+import GoLiveButton from "@site/src/components/GoLiveButton";
+import { SwitchBattle } from "@site/src/components/SwitchBattle";
+
+import {
+  blaineBoxChange,
+  seafoamIslandsEncounter,
+  powerPlantEncounter,
+  lavenderTownLeaderMortyBattle,
+  seafoamIslandsLeaderPryceBattle,
+} from "@site/src/data/guide/blaine";
+
+# Blaine
+
+<BoxChange data={blaineBoxChange.data} secret />
+
+## Seafoam Islands Encounter
+
+<GoLiveButton moment={seafoamIslandsEncounter} secret />
+
+<Encounter data={seafoamIslandsEncounter.data} secret>
+  <Row row={["Floor B1F ·", { warning: "Night" }, "· 20% · Level 62-64"]} />
+</Encounter>
+
+## Power Plant Encounter
+
+<GoLiveButton moment={powerPlantEncounter} secret />
+
+<Encounter data={powerPlantEncounter.data} secret>
+  <Row row={["Level 70"]} />
+</Encounter>
+
+## Lavender Town Leader Morty Battle
+
+<GoLiveButton moment={lavenderTownLeaderMortyBattle} secret />
+
+<Battle data={lavenderTownLeaderMortyBattle.data} secret />
+
+## Seafoam Islands Leader Pryce Battle
+
+<GoLiveButton moment={seafoamIslandsLeaderPryceBattle} secret />
+
+<SwitchBattle data={seafoamIslandsLeaderPryceBattle.data} secret />

@@ -1618,15 +1618,13 @@ const _charcadet = {
   moves: ["Clear Smog", "Ember", "Fire Spin", "Leer"],
 };
 
-const _box21 = getBox({ box: _box20, team: ["Houndoom"] });
-
-const _box22 = getBox({ box: _box21, add: [_charcadet] });
+const _box21 = getBox({ box: _box20, add: [_charcadet], team: ["Houndoom"] });
 
 export const route24Encounter: Moment = {
   split: "Misty",
   label: "Route 24 Encounter",
   kind: "encounter",
-  data: { pokemon: _charcadet, playerBox: _box22, showPlayerTeam: true },
+  data: { pokemon: _charcadet, playerBox: _box21, showPlayerTeam: true },
 };
 
 const _chinchou = {
@@ -1635,17 +1633,17 @@ const _chinchou = {
   moves: ["Bubble", "Supersonic"],
 };
 
-const _box23 = getBox({ box: _box22, add: [_chinchou] });
+const _box22 = getBox({ box: _box21, add: [_chinchou] });
 
 export const route25Encounter: Moment = {
   split: "Misty",
   label: "Route 25 Encounter",
   kind: "encounter",
-  data: { pokemon: _chinchou, playerBox: _box23 },
+  data: { pokemon: _chinchou, playerBox: _box22 },
 };
 
-const _box24 = getBox({
-  box: _box23,
+const _box23 = getBox({
+  box: _box22,
   update: {
     Azumarill: {
       item: "Pixie Plate",
@@ -1674,7 +1672,7 @@ export const digHouseGruntBattle: Moment = {
   label: "Dig House Grunt Battle",
   kind: "battle",
   data: {
-    playerBox: _box24,
+    playerBox: _box23,
     opponentBox: digHouseGruntBox,
     lines: [
       {
@@ -1769,15 +1767,13 @@ const _growlitheH = {
   moves: ["Flame Wheel", "Helping Hand", "Leer", "Odor Sleuth"],
 };
 
-const _box25 = getBox({ box: _box24, team: ["Houndoom"] });
-
-const _box26 = getBox({ box: _box25, add: [_growlitheH] });
+const _box24 = getBox({ box: _box23, add: [_growlitheH], team: ["Houndoom"] });
 
 export const route5Encounter: Moment = {
   split: "Misty",
   label: "Route 5 Encounter",
   kind: "encounter",
-  data: { pokemon: _growlitheH, playerBox: _box26, showPlayerTeam: true },
+  data: { pokemon: _growlitheH, playerBox: _box24, showPlayerTeam: true },
 };
 
 const _shellder = {
@@ -1786,17 +1782,17 @@ const _shellder = {
   moves: ["Tackle", "Water Gun"],
 };
 
-const _box27 = getBox({ box: _box26, add: [_shellder] });
+const _box25 = getBox({ box: _box24, add: [_shellder] });
 
 export const route6Encounter: Moment = {
   split: "Misty",
   label: "Route 6 Encounter",
   kind: "encounter",
-  data: { pokemon: _shellder, playerBox: _box27 },
+  data: { pokemon: _shellder, playerBox: _box25 },
 };
 
-const _box28 = getBox({
-  box: _box27,
+const _box26 = getBox({
+  box: _box25,
   cap: 28,
   update: {
     Chinchou: {
@@ -1813,11 +1809,11 @@ export const route6BoxChange: Moment = {
   split: "Misty",
   label: "Route 6 Box Change",
   kind: "boxChange",
-  data: { playerBox: _box28 },
+  data: { playerBox: _box26 },
 };
 
-const _box29 = getBox({
-  box: _box28,
+const _box27 = getBox({
+  box: _box26,
   update: {
     Kricketune: {
       nature: "Adamant",
@@ -1858,7 +1854,7 @@ export const ceruleanCityLeaderMistyBattle: Moment = {
   label: "Cerulean City Leader Misty Battle",
   kind: "battle",
   data: {
-    playerBox: _box29,
+    playerBox: _box27,
     opponentBox: ceruleanCityLeaderMistyBox,
     lines: [
       {
@@ -2051,8 +2047,8 @@ export const ceruleanCityLeaderMistyBattle: Moment = {
   },
 };
 
-const _box30 = getBox({
-  box: _box29,
+const _box28 = getBox({
+  box: _box27,
   remove: ["Kricketune"],
 });
 
@@ -2060,10 +2056,10 @@ export const ceruleanCityLeaderMistyBoxChange: Moment = {
   split: "Misty",
   label: "Cerulean City Leader Misty Box Change",
   kind: "boxChange",
-  data: { playerBox: _box30 },
+  data: { playerBox: _box28 },
 };
 
-export const box = _box30;
+export const box = _box28;
 
 export const moments: Moment[] = [
   mistyBoxChange,

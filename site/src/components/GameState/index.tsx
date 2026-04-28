@@ -27,7 +27,12 @@ export default function GameState({
   const dropdownOptions = moments
     .filter((m) => {
       if ("secret" in m && m.secret && !secretMode) return false;
-      return m.kind === "encounter" || m.kind === "battle" || m.label === moment.label;
+      return (
+        m.kind === "encounter" ||
+        m.kind === "battle" ||
+        m.kind === "switchBattle" ||
+        m.label === moment.label
+      );
     })
     .map((m) => m.label);
 

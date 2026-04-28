@@ -12,6 +12,10 @@ export default function secretsPlugin(context: { siteDir: string }) {
                 context.siteDir,
                 "src/data/guide/koga-secrets.enabled"
               ),
+              [path.join(context.siteDir, "src/data/guide/blaine-secrets") + "$"]: path.join(
+                context.siteDir,
+                "src/data/guide/blaine-secrets.enabled"
+              ),
               [path.join(context.siteDir, "src/data/secretMode") + "$"]: path.join(
                 context.siteDir,
                 "src/data/secretMode.enabled"

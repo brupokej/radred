@@ -2,6 +2,10 @@
   padding-block-start: 17px;
 }
 
+.contentWithHeader {
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+}
+
 .scrollArea {
   overflow: clip;
   position: relative;

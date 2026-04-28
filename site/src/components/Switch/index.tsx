@@ -13,7 +13,7 @@ export default function Switch({
   const fnRef = useRef(fn);
   fnRef.current = fn;
 
-  const [value, setValue] = useState<string | undefined>(undefined);
+  const [value, setValue] = useState<string | undefined>(() => fn());
 
   useEffect(() => {
     const sync = () => setValue(fnRef.current());

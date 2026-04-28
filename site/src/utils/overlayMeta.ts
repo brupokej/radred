@@ -1,3 +1,5 @@
+import { getSwitchBattleCaseData } from "@site/src/components/SwitchBattle";
+import { moments as blaineMoments } from "@site/src/data/guide/blaine";
 import { moments as brockMoments } from "@site/src/data/guide/brock";
 import { moments as erikaMoments } from "@site/src/data/guide/erika";
 import { moments as kogaMoments } from "@site/src/data/guide/koga";
@@ -7,7 +9,7 @@ import { moments as surgeMoments } from "@site/src/data/guide/surge";
 import { Box, findPokemon, resolveBox } from "@site/src/utils/box";
 import { Moment } from "@site/src/utils/moments";
 import { PokemonData, resolvePokemon } from "@site/src/utils/pokemon";
-import { PokemonStats, computeStats } from "@site/src/utils/stats";
+import { computeStats, PokemonStats } from "@site/src/utils/stats";
 
 export const allMoments = [
   ...brockMoments,
@@ -16,6 +18,7 @@ export const allMoments = [
   ...erikaMoments,
   ...sabrinaMoments,
   ...kogaMoments,
+  ...blaineMoments,
 ].filter((m) => m.kind !== "boxChange");
 
 export type BadgeName =
@@ -70,7 +73,8 @@ export type OpponentInfo = { box: Box; label: string };
 export function findMomentByLabel(label: string | null): Moment {
   if (!label) {
     for (let i = allMoments.length - 1; i >= 0; i--) {
-      if (allMoments[i].kind === "battle") return allMoments[i];
+      if (allMoments[i].kind === "battle" || allMoments[i].kind === "switchBattle")
+        return allMoments[i];
     }
     return brockMoments[0];
   }
@@ -92,6 +96,7 @@ export function derivePlayerBox(moment: Moment): Box | null {
   for (let i = currentIndex; i >= 0; i--) {
     const m = allMoments[i];
     if (m.kind === "battle") return m.data.playerBox;
+    if (m.kind === "switchBattle") return getSwitchBattleCaseData(m.data).playerBox;
     if (m.kind === "encounter" && m.data.playerBox) return m.data.playerBox;
   }
   return null;
@@ -103,9 +108,13 @@ export function deriveOpponentInfo(moment: Moment): OpponentInfo | null {
   if (currentIndex === -1) return null;
   const current = allMoments[currentIndex];
   if (current.kind === "battle") return { box: current.data.opponentBox, label: current.label };
+  if (current.kind === "switchBattle")
+    return { box: getSwitchBattleCaseData(current.data).opponentBox, label: current.label };
   for (let i = currentIndex + 1; i < allMoments.length; i++) {
     const m = allMoments[i];
     if (m.kind === "battle") return { box: m.data.opponentBox, label: m.label };
+    if (m.kind === "switchBattle")
+      return { box: getSwitchBattleCaseData(m.data).opponentBox, label: m.label };
   }
   return null;
 }
@@ -149,8 +158,11 @@ export function deriveTopStats(
   const currentIndex = allMoments.findIndex((m) => m.label === moment.label);
   const battleMoments = allMoments
     .slice(0, currentIndex === -1 ? 0 : currentIndex)
-    .filter((m): m is Extract<Moment, { kind: "battle" }> => m.kind === "battle")
-    .map((m) => m.data);
+    .filter(
+      (m): m is Extract<Moment, { kind: "battle" | "switchBattle" }> =>
+        m.kind === "battle" || m.kind === "switchBattle"
+    )
+    .map((m) => (m.kind === "battle" ? m.data : getSwitchBattleCaseData(m.data)));
 
   const resolvedBox = playerBox ? resolveBox(playerBox) : { pokemon: [] };
   if (resolvedBox.pokemon.length === 0 && battleMoments.length === 0) return [];

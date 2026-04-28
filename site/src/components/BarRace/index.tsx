@@ -1,5 +1,6 @@
 import Card from "@site/src/components/Card";
 import { ScrollFade } from "@site/src/components/ScrollFade";
+import { getSwitchBattleCaseData } from "@site/src/components/SwitchBattle";
 import { SPRITE_COLORS } from "@site/src/data/spriteColors";
 import { getCanon, resolveBox } from "@site/src/utils/box";
 import { Moment } from "@site/src/utils/moments";
@@ -57,13 +58,19 @@ export default function BarRace({
 
   const battleMoments = useMemo(
     () =>
-      slicedMoments.filter((m): m is Extract<Moment, { kind: "battle" }> => m.kind === "battle"),
+      slicedMoments.filter(
+        (m): m is Extract<Moment, { kind: "battle" | "switchBattle" }> =>
+          m.kind === "battle" || m.kind === "switchBattle"
+      ),
     [slicedMoments]
   );
 
   const canon = useMemo(() => {
     for (let i = moments.length - 1; i >= 0; i--) {
       const m = moments[i];
+      if (m.kind === "switchBattle") {
+        return getCanon(resolveBox(m.data.cases[0].data.playerBox));
+      }
       if (m.kind === "battle" || m.kind === "encounter") {
         return getCanon(resolveBox(m.data.playerBox));
       }
@@ -75,7 +82,9 @@ export default function BarRace({
     const map: Record<string, number> = {};
     const last = battleMoments[battleMoments.length - 1];
     if (!last) return map;
-    for (const pokemon of resolveBox(last.data.playerBox).pokemon) {
+    for (const pokemon of resolveBox(
+      (last.kind === "battle" ? last.data : getSwitchBattleCaseData(last.data)).playerBox
+    ).pokemon) {
       const p = resolvePokemon(pokemon);
       const key = canon(p.name);
       if (p.boxOrder !== undefined) map[key] = p.boxOrder;
@@ -108,7 +117,12 @@ export default function BarRace({
 
     // Frame 0: box state at the first battle, all values 0
     const { active: initialActive, display: initialDisplay } = snapshotResolved(
-      resolveBox(battleMoments[0].data.playerBox)
+      resolveBox(
+        (battleMoments[0].kind === "battle"
+          ? battleMoments[0].data
+          : getSwitchBattleCaseData(battleMoments[0].data)
+        ).playerBox
+      )
     );
     const result: Frame[] = [
       {
@@ -120,10 +134,11 @@ export default function BarRace({
     ];
 
     for (const m of battleMoments) {
-      const resolved = resolveBox(m.data.playerBox);
+      const activeData = m.kind === "battle" ? m.data : getSwitchBattleCaseData(m.data);
+      const resolved = resolveBox(activeData.playerBox);
 
       if (metric === "frags") {
-        for (const [p, c] of Object.entries(computeBattleFrags(m.data))) {
+        for (const [p, c] of Object.entries(computeBattleFrags(activeData))) {
           const key = canon(p);
           running[key] = (running[key] ?? 0) + c;
         }
