@@ -107,6 +107,19 @@
   color: #707070;
 }
 
+.expandButton {
+  background: none;
+  border: none;
+  color: var(--ifm-color-emphasis-400);
+  cursor: default;
+  display: block;
+  line-height: 26px;
+  padding: 7px var(--ifm-spacing-horizontal);
+  text-align: center;
+  user-select: none;
+  width: 100%;
+}
+
 .blurContent details > :not(summary) span {
   filter: blur(4px);
   pointer-events: none;

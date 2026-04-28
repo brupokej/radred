@@ -5,7 +5,7 @@ import Team from "@site/src/components/Team";
 import { secretMode } from "@site/src/data/secretMode";
 import { Box, findPokemon, resolveBox } from "@site/src/utils/box";
 import { useHpDisplay } from "@site/src/utils/hpDisplay";
-import { getHp, pokedex } from "@site/src/utils/pokedex";
+import { getHp } from "@site/src/utils/pokedex";
 import { PokemonData, resolvePokemon } from "@site/src/utils/pokemon";
 import { slugify } from "@site/src/utils/slugify";
 import { getColouredSpriteUrl } from "@site/src/utils/sprites";
@@ -260,48 +260,8 @@ export function Battle({
   const partnerResolved = partnerBox ? resolveBox(partnerBox) : null;
 
   const blur = !!secret && !secretMode;
-  const effectiveData = useMemo(
-    () =>
-      blur
-        ? {
-            ...data,
-            lines: [
-              {
-                matchups: (() => {
-                  const leadName = playerResolved.team[0];
-                  const leadP = findPokemon(playerResolved, leadName);
-                  const leadResolved = leadP ? resolvePokemon(leadP) : null;
-                  const leadMoves = leadResolved?.moves ?? [];
-                  return (opponentResolved.team ?? []).map((name, i) => {
-                    const leadMove = leadMoves[i % Math.max(leadMoves.length, 1)] ?? "Move";
-                    const p = findPokemon(opponentResolved, name);
-                    const resolved = p ? resolvePokemon(p) : null;
-                    const opponentMove1 = resolved?.moves?.[0] ?? "Move";
-                    const playerMove: MoveData = {
-                      player: `{p:${leadName}} ${leadMove} {o:${name}} to {-:${getHp(resolved) - 1}}`,
-                    };
-                    const opponentMove: MoveData = {
-                      opponent: `{o:${name}} ${opponentMove1} {p:${leadName}} to {+:1}`,
-                    };
-                    const ellipsis: MoveData = { opponent: "..." };
-                    return {
-                      matchup: [name],
-                      turns: [
-                        pokedex[resolved.pokedexKey ?? resolved.name].spe >= 100
-                          ? [opponentMove, playerMove, ellipsis]
-                          : [playerMove, opponentMove, ellipsis],
-                      ],
-                    };
-                  });
-                })(),
-              } as LineData,
-            ],
-          }
-        : data,
-    [blur, data, playerResolved, opponentResolved]
-  );
 
-  const resolvedChildren = battleDataToChildren(effectiveData);
+  const resolvedChildren = battleDataToChildren(data);
   const lineElements = React.Children.toArray(resolvedChildren).filter(
     (
       c
@@ -329,13 +289,13 @@ export function Battle({
 
   const lineCondsByName = useMemo(() => {
     const map = new Map<string, LineConditions[]>();
-    for (const line of effectiveData.lines) {
+    for (const line of data.lines) {
       const name = line.line ?? "";
       if (!map.has(name)) map.set(name, []);
       map.get(name)!.push({ if: line.if, ifNot: line.ifNot });
     }
     return map;
-  }, [effectiveData]);
+  }, [data]);
 
   const rootLine = lineElements.length > 0 ? (lineElements[0].props.line ?? "") : "";
 
@@ -369,7 +329,7 @@ export function Battle({
   );
 
   const [state, dispatch] = useReducer(reducer, {
-    visibleOrder: computeInitialOrder(effectiveData, rootLine, lineCondsByName),
+    visibleOrder: computeInitialOrder(data, rootLine, lineCondsByName),
     selectedBranches: new Map(),
   });
 
@@ -471,6 +431,7 @@ export function Battle({
               {enrichedLines.get(slug)}
             </BattleLineCtx.Provider>
           ))}
+          {blur && <button className={styles.expandButton}>···</button>}
         </Card>
       </BattleGraphCtx.Provider>
     </>

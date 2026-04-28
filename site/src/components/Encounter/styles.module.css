@@ -6,6 +6,15 @@
   border-top: 1px solid var(--ifm-color-emphasis-200);
 }
 
+.blurContent {
+  --hl-info-bg: transparent;
+  --hl-info-outline: none;
+  --hl-warning-bg: transparent;
+  --hl-warning-outline: none;
+  --hl-danger-bg: transparent;
+  --hl-danger-outline: none;
+}
+
 .blurContent details > :not(summary) span {
   filter: blur(4px);
   pointer-events: none;

@@ -7,7 +7,8 @@ import {
 } from "@site/src/utils/opponents";
 
 export function getBlaineSecrets(_box1: Box) {
-  const _encounter = { name: "Encounter", spriteKey: "secret" };
+  const _secret = { name: "Secret", spriteKey: "secret" };
+  const _box2 = getBox({ box: _box1, cap: 73 });
 
   const blaineBoxChange: Moment = {
     split: "Blaine",
@@ -20,7 +21,7 @@ export function getBlaineSecrets(_box1: Box) {
     label: "Seafoam Islands Encounter",
     kind: "encounter",
     secret: true,
-    data: { pokemon: _encounter, playerBox: _box1 },
+    data: { pokemon: _secret, playerBox: _box2 },
   };
 
   const powerPlantEncounter: Moment = {
@@ -28,12 +29,12 @@ export function getBlaineSecrets(_box1: Box) {
     label: "Power Plant Encounter",
     kind: "encounter",
     secret: true,
-    data: { pokemon: _encounter, playerBox: _box1 },
+    data: { pokemon: _secret, playerBox: _box2 },
   };
 
-  const _box2 = getBox({
-    box: _box1,
-    team: ["Incineroar", "Incineroar", "Incineroar"],
+  const _box3 = getBox({
+    box: _box2,
+    team: ["Secret", "Secret", "Secret"],
   });
 
   const lavenderTownLeaderMortyBattle: Moment = {
@@ -41,12 +42,32 @@ export function getBlaineSecrets(_box1: Box) {
     label: "Lavender Town Leader Morty Battle",
     kind: "battle",
     secret: true,
-    data: { playerBox: _box2, opponentBox: lavenderTownLeaderMortyBox, lines: [] },
+    data: {
+      playerBox: _box3,
+      opponentBox: lavenderTownLeaderMortyBox,
+      lines: [
+        {
+          matchups: [
+            {
+              matchup: ["Krookodile"],
+              turns: [
+                [
+                  { opponent: "{o:Krookodile} Stealth Rock" },
+                  { player: "{p:Secret} U-Turn {o:Krookodile} to {-:243}" },
+                  { player: "{p:Secret} switch to {p:Secret}" },
+                  { opponent: "{p:Secret} Stealth Rock to {=:92}" },
+                ],
+              ],
+            },
+          ],
+        },
+      ],
+    },
   };
 
-  const _box3 = getBox({
-    box: _box2,
-    team: ["Incineroar", "Incineroar", "Incineroar", "Incineroar", "Incineroar", "Incineroar"],
+  const _box4 = getBox({
+    box: _box3,
+    team: ["Secret", "Secret", "Secret", "Secret", "Secret", "Secret"],
   });
 
   const seafoamIslandsLeaderPryceBattle: Moment = {
@@ -58,14 +79,46 @@ export function getBlaineSecrets(_box1: Box) {
       cases: [
         {
           label: "50% → Jynx matchup",
-          data: { playerBox: _box3, opponentBox: seafoamIslandsLeaderPryceJynxBox, lines: [] },
+          data: {
+            playerBox: _box4,
+            opponentBox: seafoamIslandsLeaderPryceJynxBox,
+            lines: [
+              {
+                matchups: [
+                  {
+                    matchup: ["Jynx"],
+                    turns: [
+                      [
+                        { player: "{p:Secret} Fake Out {o:Jynx} to {-:199}" },
+                        { opponent: "{o:Jynx} flinched" },
+                      ],
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
         },
         {
           label: "50% → Sandslash-A matchup",
           data: {
-            playerBox: _box3,
+            playerBox: _box4,
             opponentBox: seafoamIslandsLeaderPryceSandslashABox,
-            lines: [],
+            lines: [
+              {
+                matchups: [
+                  {
+                    matchup: ["Sandslash-A"],
+                    turns: [
+                      [
+                        { player: "{p:Secret} Fake Out {o:Sandslash-A} to {-:214}" },
+                        { opponent: "{o:Sandslash-A} flinched" },
+                      ],
+                    ],
+                  },
+                ],
+              },
+            ],
           },
         },
       ],
@@ -78,6 +131,6 @@ export function getBlaineSecrets(_box1: Box) {
     powerPlantEncounter,
     lavenderTownLeaderMortyBattle,
     seafoamIslandsLeaderPryceBattle,
-    box: _box3,
+    box: _box4,
   };
 }

@@ -9,14 +9,14 @@ import {
 } from "@site/src/utils/opponents";
 
 export function getKogaSecrets(_box1: Box) {
-  const _encounter = { name: "Encounter", spriteKey: "secret" };
+  const _secret = { name: "Secret", spriteKey: "secret", level: 68 };
 
   const starterEgg3Encounter: Moment = {
     split: "Koga",
     label: "Starter Egg 3 Encounter",
     kind: "encounter",
     secret: true,
-    data: { pokemon: _encounter, playerBox: _box1 },
+    data: { pokemon: _secret, playerBox: _box1 },
   };
 
   const starterEgg4Encounter: Moment = {
@@ -24,7 +24,7 @@ export function getKogaSecrets(_box1: Box) {
     label: "Starter Egg 4 Encounter",
     kind: "encounter",
     secret: true,
-    data: { pokemon: _encounter, playerBox: _box1 },
+    data: { pokemon: _secret, playerBox: _box1 },
   };
 
   const starterEgg5Encounter: Moment = {
@@ -32,7 +32,7 @@ export function getKogaSecrets(_box1: Box) {
     label: "Starter Egg 5 Encounter",
     kind: "encounter",
     secret: true,
-    data: { pokemon: _encounter, playerBox: _box1 },
+    data: { pokemon: _secret, playerBox: _box1 },
   };
 
   const starterEgg5BoxChange: Moment = {
@@ -43,8 +43,8 @@ export function getKogaSecrets(_box1: Box) {
 
   const _box2 = getBox({
     box: _box1,
-    update: { Incineroar: { spriteKey: "secret" } },
-    team: ["Incineroar", "Incineroar", "Incineroar", "Incineroar", "Incineroar"],
+    add: [_secret],
+    team: ["Secret", "Secret", "Secret", "Secret", "Secret"],
   });
 
   const pewterCityLeaderBrockRematchBattle: Moment = {
@@ -52,12 +52,31 @@ export function getKogaSecrets(_box1: Box) {
     label: "Pewter City Leader Brock Rematch Battle",
     kind: "battle",
     secret: true,
-    data: { playerBox: _box2, opponentBox: pewterCityLeaderBrockRematchBox, lines: [] },
+    data: {
+      playerBox: _box2,
+      opponentBox: pewterCityLeaderBrockRematchBox,
+      lines: [
+        {
+          matchups: [
+            {
+              matchup: ["Iron Boulder"],
+              turns: [
+                [
+                  { player: "{p:Secret} switch to {p:Secret}" },
+                  { opponent: "{o:Iron Boulder} Close Combat {p:Secret} to {+:7}" },
+                  { opponent: "{p:Secret} sandstorm to {+:1}" },
+                ],
+              ],
+            },
+          ],
+        },
+      ],
+    },
   };
 
   const _box3 = getBox({
     box: _box2,
-    team: ["Incineroar", "Incineroar", "Incineroar", "Incineroar", "Incineroar", "Incineroar"],
+    team: ["Secret", "Secret", "Secret", "Secret", "Secret", "Secret"],
   });
 
   const ceruleanCityLeaderMistyRematchBattle: Moment = {
@@ -65,7 +84,27 @@ export function getKogaSecrets(_box1: Box) {
     label: "Cerulean City Leader Misty Rematch Battle",
     kind: "battle",
     secret: true,
-    data: { playerBox: _box3, opponentBox: ceruleanCityLeaderMistyRematchBox, lines: [] },
+    data: {
+      playerBox: _box3,
+      opponentBox: ceruleanCityLeaderMistyRematchBox,
+      lines: [
+        {
+          matchups: [
+            {
+              matchup: ["Iron Bundle"],
+              turns: [
+                [
+                  { player: "{p:Secret} mega evolve" },
+                  { player: "{p:Secret} Tackle {o:Iron Bundle} to {-:174}" },
+                  { player: "{p:Secret} switch to {p:Secret}" },
+                  { opponent: "{o:Iron Bundle} Hydro Pump {p:Secret} to {+:1}" },
+                ],
+              ],
+            },
+          ],
+        },
+      ],
+    },
   };
 
   const vermillionCityLeaderLtSurgeRematchBattle: Moment = {
@@ -73,12 +112,30 @@ export function getKogaSecrets(_box1: Box) {
     label: "Vermillion City Leader Lt. Surge Rematch Battle",
     kind: "battle",
     secret: true,
-    data: { playerBox: _box3, opponentBox: vermillionCityLeaderLtSurgeRematchBox, lines: [] },
+    data: {
+      playerBox: _box3,
+      opponentBox: vermillionCityLeaderLtSurgeRematchBox,
+      lines: [
+        {
+          matchups: [
+            {
+              matchup: ["Pawmot"],
+              turns: [
+                [
+                  { player: "{p:Secret} Tackle {o:Pawmot} to {-:193}" },
+                  { opponent: "{o:Pawmot} Thunder Punch {p:Secret}" },
+                ],
+              ],
+            },
+          ],
+        },
+      ],
+    },
   };
 
   const _box4 = getBox({
     box: _box3,
-    team: ["Incineroar", "Incineroar", "Incineroar", "Incineroar"],
+    team: ["Secret", "Secret", "Secret", "Secret"],
   });
 
   const fuschiaCityGymJugglerKaydenBattle: Moment = {
@@ -86,7 +143,25 @@ export function getKogaSecrets(_box1: Box) {
     label: "Fuschia City Gym Juggler Kayden Battle",
     kind: "battle",
     secret: true,
-    data: { playerBox: _box4, opponentBox: fuschiaCityGymJugglerKaydenBox, lines: [] },
+    data: {
+      playerBox: _box4,
+      opponentBox: fuschiaCityGymJugglerKaydenBox,
+      lines: [
+        {
+          matchups: [
+            {
+              matchup: ["Mr. Mime"],
+              turns: [
+                [
+                  { player: "{p:Secret} Fake Out {o:Mr. Mime} to {-:166}" },
+                  { opponent: "{o:Mr. Mime} flinched" },
+                ],
+              ],
+            },
+          ],
+        },
+      ],
+    },
   };
 
   const fuschiaCityGymJugglerKaydenBoxChange: Moment = {
@@ -95,18 +170,31 @@ export function getKogaSecrets(_box1: Box) {
     kind: "boxChange",
   };
 
-  const _box5 = getBox({
-    box: _box4,
-    update: { Incineroar: { spriteKey: "secret" } },
-    team: ["Incineroar", "Incineroar", "Incineroar", "Incineroar"],
-  });
-
   const fuschiaCityLeaderKogaBattle: Moment = {
     split: "Koga",
     label: "Fuschia City Leader Koga Battle",
     kind: "battle",
     secret: true,
-    data: { playerBox: _box5, opponentBox: fuschiaCityLeaderKogaBox, lines: [] },
+    data: {
+      playerBox: _box4,
+      opponentBox: fuschiaCityLeaderKogaBox,
+      lines: [
+        {
+          matchups: [
+            {
+              matchup: ["Tapu Lele"],
+              turns: [
+                [
+                  { opponent: "{o:Tapu Lele} Psyshock {p:Secret} to {+:1}" },
+                  { player: "{p:Secret} U-Turn {o:Tapu Lele} to {-:193}" },
+                  { player: "{p:Secret} switch to {p:Secret}" },
+                ],
+              ],
+            },
+          ],
+        },
+      ],
+    },
   };
 
   const fuschiaCityLeaderKogaBoxChange: Moment = {
@@ -127,6 +215,6 @@ export function getKogaSecrets(_box1: Box) {
     fuschiaCityGymJugglerKaydenBoxChange,
     fuschiaCityLeaderKogaBattle,
     fuschiaCityLeaderKogaBoxChange,
-    box: _box5,
+    box: _box4,
   };
 }
