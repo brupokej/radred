@@ -52,16 +52,6 @@ function applyStep(working: BoxData, step: PartialBoxData): BoxData {
     }
   }
 
-  if (step.cap) {
-    const excludeSet = new Set([...(step.cap.exclude ?? []), ...removed]);
-    pokemon = pokemon.map((p) => {
-      const current = resolvePokemon(p);
-      return !excludeSet.has(current.name) && current.level !== step.cap!.level
-        ? { ...p, update: { ...p.update, level: step.cap!.level } }
-        : p;
-    });
-  }
-
   if (step.pokemon?.length) {
     const nameIndex = new Map(pokemon.map((p, i) => [resolvePokemon(p).name, i]));
     const result = [...pokemon];
@@ -75,6 +65,16 @@ function applyStep(working: BoxData, step: PartialBoxData): BoxData {
       }
     }
     pokemon = result;
+  }
+
+  if (step.cap) {
+    const excludeSet = new Set([...(step.cap.exclude ?? []), ...removed]);
+    pokemon = pokemon.map((p) => {
+      const current = resolvePokemon(p);
+      return !excludeSet.has(current.name) && current.level !== step.cap!.level
+        ? { ...p, update: { ...p.update, level: step.cap!.level } }
+        : p;
+    });
   }
 
   return {

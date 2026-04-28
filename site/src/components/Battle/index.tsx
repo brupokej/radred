@@ -370,10 +370,7 @@ export function Battle({
     for (let i = 0; i < opponentTeam.length; i++) {
       const name = opponentTeam[i];
       const p = findPokemon(opponentResolved, name);
-      if (p) {
-        const resolved = resolvePokemon(p);
-        map[`o:${name}`] = blur && i > 0 ? { ...resolved, spriteKey: "secret" } : resolved;
-      }
+      if (p) map[`o:${name}`] = resolvePokemon(p);
     }
     for (const name of partnerResolved?.team ?? []) {
       const p = partnerResolved ? findPokemon(partnerResolved, name) : undefined;

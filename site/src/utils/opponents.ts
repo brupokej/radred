@@ -3209,7 +3209,7 @@ export const cinnabarGymLeaderBlaineBox = getOpponentBox([
     moves: ["Growth", "Solar Beam", "Sludge Bomb", "Weather Ball"],
   },
   {
-    name: "Ho-oh",
+    name: "Ho-Oh",
     level: 76,
     nature: "Jolly",
     ability: "Phoenix Down",

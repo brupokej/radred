@@ -13,8 +13,22 @@ import {
   blaineBoxChange,
   seafoamIslandsEncounter,
   powerPlantEncounter,
+  powerPlantBoxChange,
   lavenderTownLeaderMortyBattle,
   seafoamIslandsLeaderPryceBattle,
+  seafoamIslandsLeaderPryceBoxChange,
+  cinnabarLabLeaderJasmineBattle,
+  cinnabarLabLeaderJasmineBoxChange,
+  cinnabarIslandMayBattle,
+  cinnabarIslandMayBoxChange,
+  pokemonMansionBurglarLewisBattle,
+  pokemonMansionBurglarLewisBoxChange,
+  cinnabarGymAceTrainerDerekBattle,
+  cinnabarGymAceTrainerLucyBattle,
+  cinnabarGymAceTrainerZacBattle,
+  cinnabarGymAceTrainerZacBoxChange,
+  cinnabarGymLeaderBlaineBattle,
+  cinnabarGymLeaderBlaineBoxChange,
 } from "@site/src/data/guide/blaine";
 
 # Blaine
@@ -37,6 +51,8 @@ import {
   <Row row={["Level 70"]} />
 </Encounter>
 
+<BoxChange data={powerPlantBoxChange.data} secret />
+
 ## Lavender Town Leader Morty Battle
 
 <GoLiveButton moment={lavenderTownLeaderMortyBattle} secret />
@@ -48,3 +64,57 @@ import {
 <GoLiveButton moment={seafoamIslandsLeaderPryceBattle} secret />
 
 <SwitchBattle data={seafoamIslandsLeaderPryceBattle.data} secret />
+
+<BoxChange data={seafoamIslandsLeaderPryceBoxChange.data} secret />
+
+## Cinnabar Lab Leader Jasmine Battle
+
+<GoLiveButton moment={cinnabarLabLeaderJasmineBattle} secret />
+
+<Battle data={cinnabarLabLeaderJasmineBattle.data} secret />
+
+<BoxChange data={cinnabarLabLeaderJasmineBoxChange.data} secret />
+
+## Cinnabar Island May Battle
+
+<GoLiveButton moment={cinnabarIslandMayBattle} secret />
+
+<Battle data={cinnabarIslandMayBattle.data} secret />
+
+<BoxChange data={cinnabarIslandMayBoxChange.data} secret />
+
+## Pokemon Mansion Burglar Lewis Battle
+
+<GoLiveButton moment={pokemonMansionBurglarLewisBattle} secret />
+
+<Battle data={pokemonMansionBurglarLewisBattle.data} secret />
+
+<BoxChange data={pokemonMansionBurglarLewisBoxChange.data} secret />
+
+## Cinnabar Gym Ace Trainer Derek Battle
+
+<GoLiveButton moment={cinnabarGymAceTrainerDerekBattle} secret />
+
+<Battle data={cinnabarGymAceTrainerDerekBattle.data} secret />
+
+## Cinnabar Gym Ace Trainer Lucy Battle
+
+<GoLiveButton moment={cinnabarGymAceTrainerLucyBattle} secret />
+
+<Battle data={cinnabarGymAceTrainerLucyBattle.data} secret />
+
+## Cinnabar Gym Ace Trainer Zac Battle
+
+<GoLiveButton moment={cinnabarGymAceTrainerZacBattle} secret />
+
+<Battle data={cinnabarGymAceTrainerZacBattle.data} secret />
+
+<BoxChange data={cinnabarGymAceTrainerZacBoxChange.data} secret />
+
+## Cinnabar Gym Leader Blaine Battle
+
+<GoLiveButton moment={cinnabarGymLeaderBlaineBattle} secret />
+
+<Battle data={cinnabarGymLeaderBlaineBattle.data} secret />
+
+<BoxChange data={cinnabarGymLeaderBlaineBoxChange.data} secret />
