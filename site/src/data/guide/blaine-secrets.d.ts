@@ -18,7 +18,6 @@ export declare function getBlaineSecrets(_box1: Box): {
   cinnabarGymAceTrainerDerekBattle: Moment;
   cinnabarGymAceTrainerLucyBattle: Moment;
   cinnabarGymAceTrainerZacBattle: Moment;
-  cinnabarGymAceTrainerZacBoxChange: Moment;
   cinnabarGymLeaderBlaineBattle: Moment;
   cinnabarGymLeaderBlaineBoxChange: Moment;
   box: Box;

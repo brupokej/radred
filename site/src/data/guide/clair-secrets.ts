@@ -166,7 +166,24 @@ export function getClairSecrets(_box1: Box) {
       playerBox: _box6,
       opponentBox: ceruleanCaveGiovanniBox,
       partnerBox: championLanceBox,
-      lines: [],
+      lines: [
+        {
+          matchups: [
+            {
+              matchup: ["Delphox", "Spiritomb"],
+              turns: [],
+              branches: [
+                {
+                  branches: [
+                    "94% → Secret Tackle Spiritomb",
+                    "6% → Secret Tackle Spiritomb (crit)",
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+      ],
     },
   };
 

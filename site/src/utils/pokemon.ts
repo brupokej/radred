@@ -15,6 +15,7 @@ export interface PokemonData {
   level?: number | string;
   nature?: string | null;
   ability?: string | null;
+  nonMegaAbility?: string;
   item?: string | null;
   moves?: (string | null)[];
   hp?: string;

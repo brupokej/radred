@@ -622,7 +622,7 @@ function Branch({
   const hasCustomLabels = labels && labels.some((l, i) => l !== branch[i]);
 
   return (
-    <div data-branch={branchKey}>
+    <div data-branch={branchKey} data-branch-row>
       <Row
         row={[
           "Branch →",

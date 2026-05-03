@@ -144,3 +144,11 @@
   display: inline-block;
   filter: blur(4px);
 }
+
+.blurBattlePlan details > :not(summary) select {
+  filter: blur(4px);
+}
+
+.blurBattlePlan details > :not(summary) [data-branch-row] [data-token="text"] {
+  filter: none;
+}

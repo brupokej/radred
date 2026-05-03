@@ -355,12 +355,6 @@ export function getBlaineSecrets(_box1: Box) {
     },
   };
 
-  const cinnabarGymAceTrainerZacBoxChange: Moment = {
-    split: "Blaine",
-    label: "Cinnabar Gym Ace Trainer Zac Box Change",
-    kind: "boxChange",
-  };
-
   const _box11 = getBox({
     box: _box10,
     team: ["Secret", "Secret", "Secret", "Secret", "Secret", "Secret"],
@@ -416,7 +410,6 @@ export function getBlaineSecrets(_box1: Box) {
     cinnabarGymAceTrainerDerekBattle,
     cinnabarGymAceTrainerLucyBattle,
     cinnabarGymAceTrainerZacBattle,
-    cinnabarGymAceTrainerZacBoxChange,
     cinnabarGymLeaderBlaineBattle,
     cinnabarGymLeaderBlaineBoxChange,
     box: _box11,

@@ -106,6 +106,9 @@ function TeamGrid({
   const showIVs = [...team, ...extraTeam].some((p) => resolvePokemon(p).ivs !== undefined);
   const showEVs = [...team, ...extraTeam].some((p) => resolvePokemon(p).evs !== undefined);
   const showFriend = [...team, ...extraTeam].some((p) => resolvePokemon(p).friend === true);
+  const showNonMegaAbility = [...team, ...extraTeam].some(
+    (p) => resolvePokemon(p).nonMegaAbility !== undefined
+  );
 
   return (
     <div
@@ -127,6 +130,7 @@ function TeamGrid({
                 showIVs={showIVs}
                 showEVs={showEVs}
                 showFriend={showFriend}
+                showNonMegaAbility={showNonMegaAbility}
               />
             ))}
             {extraTeam.map((pokemon, i) => (
@@ -136,6 +140,7 @@ function TeamGrid({
                 showIVs={showIVs}
                 showEVs={showEVs}
                 showFriend={showFriend}
+                showNonMegaAbility={showNonMegaAbility}
               />
             ))}
             {emptySlots.map((_, i) => (
@@ -145,6 +150,7 @@ function TeamGrid({
                 showIVs={showIVs}
                 showEVs={showEVs}
                 showFriend={showFriend}
+                showNonMegaAbility={showNonMegaAbility}
               />
             ))}
           </div>
@@ -178,11 +184,13 @@ function PokemonCard({
   showIVs,
   showEVs,
   showFriend,
+  showNonMegaAbility,
 }: {
   pokemon: Pokemon | null;
   showIVs: boolean;
   showEVs: boolean;
   showFriend: boolean;
+  showNonMegaAbility: boolean;
 }) {
   const isExpanded = useCardDetail();
   const { update, base } = pokemon ?? {};
@@ -232,6 +240,13 @@ function PokemonCard({
           <div className={`${styles.detail} ${wc("ability")}`}>
             {current == null ? "-" : <span>{current?.ability ?? "-"}</span>}
           </div>
+          {showNonMegaAbility && (
+            <div
+              className={`${styles.detail} ${current?.nonMegaAbility ? styles.fieldWarning : ""}`}
+            >
+              {current == null ? "-" : <span>{current?.nonMegaAbility ?? "-"}</span>}
+            </div>
+          )}
           <div className={`${styles.detail} ${wc("item")}`}>
             {current == null ? "-" : <span>{current.item ?? "None"}</span>}
           </div>

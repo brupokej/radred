@@ -20,7 +20,6 @@ export const {
   cinnabarGymAceTrainerDerekBattle,
   cinnabarGymAceTrainerLucyBattle,
   cinnabarGymAceTrainerZacBattle,
-  cinnabarGymAceTrainerZacBoxChange,
   cinnabarGymLeaderBlaineBattle,
   cinnabarGymLeaderBlaineBoxChange,
   box,
@@ -43,7 +42,6 @@ export const moments: Moment[] = [
   cinnabarGymAceTrainerDerekBattle,
   cinnabarGymAceTrainerLucyBattle,
   cinnabarGymAceTrainerZacBattle,
-  cinnabarGymAceTrainerZacBoxChange,
   cinnabarGymLeaderBlaineBattle,
   cinnabarGymLeaderBlaineBoxChange,
 ];
