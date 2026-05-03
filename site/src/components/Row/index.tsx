@@ -6,6 +6,7 @@ import styles from "./styles.module.css";
 export type DropdownConfig = {
   value: string;
   options: string[];
+  labels?: string[];
   disabled?: boolean;
   onChange?: (value: string) => void;
 };
@@ -128,9 +129,9 @@ export function Row({ row }: { row: RowCell[] }) {
                 disabled={cell.dropdown.disabled}
                 onChange={(e) => cell.dropdown.onChange?.(e.target.value)}
               >
-                {cell.dropdown.options.map((o) => (
+                {cell.dropdown.options.map((o, oi) => (
                   <option key={o} value={o}>
-                    {o}
+                    {cell.dropdown.labels?.[oi] ?? o}
                   </option>
                 ))}
               </select>

@@ -231,24 +231,13 @@ export const route22RivalBattle: Moment = {
                 { player: "{p:Wooper-P} switch to {p:Kricketune}" },
                 { opponent: "{o:Snubbull} Pow-Up Punch {p:Kricketune} to {+:43}" },
               ],
-            ],
-            branches: [{ branches: ["Snubbull Pow-Up Punch Kricketune"] }],
-          },
-        ],
-      },
-      {
-        line: "Snubbull Pow-Up Punch Kricketune",
-        matchups: [
-          {
-            matchup: ["Snubbull"],
-            row: [
-              "Risk →",
-              {
-                danger:
-                  "Snubbull Pow-Up Punch Wooper-P → Snubbull Pow-Up Punch Wooper-P → Snubbull Fire Fang Kricketune → {c:0.3%}",
-              },
-            ],
-            turns: [
+              [
+                "Risk →",
+                {
+                  danger:
+                    "Snubbull Pow-Up Punch Wooper-P → Snubbull Pow-Up Punch Wooper-P → Snubbull Fire Fang Kricketune → {c:0.3%}",
+                },
+              ],
               [
                 { player: "{p:Kricketune} Rock Tomb {o:Snubbull} to {=:0}" },
                 { opponent: "{o:Snubbull} fainted" },
@@ -520,19 +509,7 @@ export const viridianForestLassAnneBattle: Moment = {
                 { player: "{p:Kricketune} switch to {p:Meowth-G}" },
                 { opponent: "{o:Clefairy} Metronome {p:Meowth-G}" },
               ],
-            ],
-            branches: [{ branches: ["Clefairy Metronome Meowth-G"] }],
-          },
-        ],
-        frags: { Marill: 1, Kricketune: 1 },
-      },
-      {
-        line: "Clefairy Metronome Meowth-G",
-        matchups: [
-          {
-            matchup: ["Clefairy"],
-            row: ["Risk →", { danger: "Clefairy Metronome Meowth-G (to 0) → {c:0.2%}" }],
-            turns: [
+              ["Risk →", { danger: "Clefairy Metronome Meowth-G (to 0) → {c:0.2%}" }],
               [
                 { player: "{p:Meowth-G} Fake Out {o:Clefairy} to {-:34}" },
                 { opponent: "{o:Clefairy} flinched" },
@@ -544,7 +521,7 @@ export const viridianForestLassAnneBattle: Moment = {
             ],
           },
         ],
-        frags: { "Meowth-G": 1 },
+        frags: { Marill: 1, Kricketune: 1, "Meowth-G": 1 },
       },
     ],
   },
@@ -900,25 +877,13 @@ export const pewterCityLeaderBrockBattle: Moment = {
                 { opponent: "{o:Lileep} recover to {-:16}" },
                 { opponent: "{p:Kricketune} sandstorm to {+:7}" },
               ],
-            ],
-            branches: [{ branches: ["Kricketune Bug Bite Lileep"] }],
-          },
-        ],
-        frags: { Torracat: 1, Kricketune: 1 },
-      },
-      {
-        line: "Kricketune Bug Bite Lileep",
-        matchups: [
-          {
-            matchup: ["Lileep"],
-            row: [
-              "Risk →",
-              {
-                danger:
-                  "Varoom Bulldoze Kricketune → Cacnea Pow-Up Punch Kricketune → Lileep Mega Drain Kricketune → Lileep Mega Drain Kricketune (to 0) → {c:0.00001%}",
-              },
-            ],
-            turns: [
+              [
+                "Risk →",
+                {
+                  danger:
+                    "Varoom Bulldoze Kricketune → Cacnea Pow-Up Punch Kricketune → Lileep Mega Drain Kricketune → Lileep Mega Drain Kricketune (to 0) → {c:0.00001%}",
+                },
+              ],
               [
                 { player: "{p:Kricketune} Bug Bite {o:Lileep} to {=:0}" },
                 { opponent: "{o:Lileep} fainted" },
@@ -934,7 +899,7 @@ export const pewterCityLeaderBrockBattle: Moment = {
             ],
           },
         ],
-        frags: { Kricketune: 1 },
+        frags: { Torracat: 1, Kricketune: 2 },
       },
       {
         line: "Kricketune Mega Drain Hippopotas",

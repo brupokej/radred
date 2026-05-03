@@ -3474,6 +3474,35 @@ export const ceruleanCaveGiovanniBox = getOpponentBox([
   },
 ]);
 
+export const championLanceBox = getOpponentBox([
+  {
+    name: "Dragapult",
+    level: 83,
+    nature: "Hasty",
+    ability: "Clear Body",
+    item: "Spell Tag",
+    moves: ["Spirit Shackle", "Dragon Darts", "Flamethrower", "Thunderbolt"],
+  },
+  {
+    name: "Dialga",
+    level: 83,
+    nature: "Modest",
+    ability: "Telepathy",
+    item: "Assault Vest",
+    moves: ["Body Press", "Dragon Pulse", "Flash Cannon", "Flamethrower"],
+  },
+  {
+    name: "Salamence-Mega",
+    spriteKey: "salamence-mega",
+    pokedexKey: "Salamence-Mega",
+    level: 82,
+    nature: "Naive",
+    ability: "Aerilate",
+    item: "Salamencite",
+    moves: ["Double-Edge", "Aqua Tail", "Hyper Voice", "Flamethrower"],
+  },
+]);
+
 export const viridianCityLeaderClairBox = getOpponentBox([
   {
     name: "Shuckle",

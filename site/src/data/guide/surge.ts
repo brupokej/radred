@@ -458,7 +458,7 @@ export const ssAnneLassAnnGentlemanBrooksBattle: Moment = {
               {
                 branches: [
                   "96% → Golduck Aqua Jet Simisear",
-                  "4% → Golduck Aqua Jet Simisear (crit to 0)",
+                  "4% → Golduck Aqua Jet Simisear (to 0)",
                 ],
               },
             ],
@@ -483,7 +483,7 @@ export const ssAnneLassAnnGentlemanBrooksBattle: Moment = {
         frags: { "Arcanine-H": 1 },
       },
       {
-        line: "4% → Golduck Aqua Jet Simisear (crit to 0)",
+        line: "4% → Golduck Aqua Jet Simisear (to 0)",
         matchups: [
           {
             matchup: ["Simisear"],

@@ -37,13 +37,13 @@ export interface BranchData {
 
 export interface MatchupData {
   matchup: string[];
-  turns: MoveData[][];
-  row?: RowCell[];
+  turns: (MoveData[] | RowCell[])[];
   branches?: BranchData[];
 }
 
 export interface LineData {
   line?: string;
+  label?: string;
   if?: string[];
   ifNot?: string[];
   matchups: MatchupData[];
@@ -208,28 +208,38 @@ type GraphCtxValue = {
   unregisterBranch: (branchId: string) => void;
   maxHp: Record<string, number>;
   teamMap: Record<string, PokemonData>;
+  labelsMap: Map<string, string>;
 };
 
 const BattleGraphCtx = React.createContext<GraphCtxValue | null>(null);
 const BattleLineCtx = React.createContext<string | null>(null);
+
+function isTurn(entry: MoveData[] | RowCell[]): entry is MoveData[] {
+  if (entry.length === 0) return true;
+  const first = entry[0];
+  return typeof first === "object" && first !== null && ("player" in first || "opponent" in first);
+}
 
 function battleDataToChildren(data: BattleData): React.ReactNode {
   return data.lines.map((lineData, li) => (
     <BattleLine key={li} line={lineData.line} lineIf={lineData.if} lineIfNot={lineData.ifNot}>
       {lineData.matchups.map((matchupData, mi) => (
         <Matchup key={mi} matchup={matchupData.matchup}>
-          {matchupData.row && <Row row={matchupData.row} />}
-          {matchupData.turns.map((moves, ti) => (
-            <Turn key={ti}>
-              {moves.map((move, mvi) =>
-                move.player !== undefined ? (
-                  <PlayerMove key={mvi} move={move.player} />
-                ) : move.opponent !== undefined ? (
-                  <OpponentMove key={mvi} move={move.opponent} />
-                ) : null
-              )}
-            </Turn>
-          ))}
+          {matchupData.turns.map((entry, ti) =>
+            isTurn(entry) ? (
+              <Turn key={ti}>
+                {entry.map((move, mvi) =>
+                  move.player !== undefined ? (
+                    <PlayerMove key={mvi} move={move.player} />
+                  ) : move.opponent !== undefined ? (
+                    <OpponentMove key={mvi} move={move.opponent} />
+                  ) : null
+                )}
+              </Turn>
+            ) : (
+              <Row key={ti} row={entry} />
+            )
+          )}
           {matchupData.branches?.map((branchData, bi) => (
             <Branch
               key={bi}
@@ -293,6 +303,14 @@ export function Battle({
       const name = line.line ?? "";
       if (!map.has(name)) map.set(name, []);
       map.get(name)!.push({ if: line.if, ifNot: line.ifNot });
+    }
+    return map;
+  }, [data]);
+
+  const labelsMap = useMemo(() => {
+    const map = new Map<string, string>();
+    for (const line of data.lines) {
+      if (line.line && line.label) map.set(line.line, line.label);
     }
     return map;
   }, [data]);
@@ -388,8 +406,8 @@ export function Battle({
   ]);
 
   const ctx = useMemo(
-    () => ({ state, dispatch, registerBranch, unregisterBranch, maxHp, teamMap }),
-    [state, dispatch, registerBranch, unregisterBranch, maxHp, teamMap]
+    () => ({ state, dispatch, registerBranch, unregisterBranch, maxHp, teamMap, labelsMap }),
+    [state, dispatch, registerBranch, unregisterBranch, maxHp, teamMap, labelsMap]
   );
 
   const enrichedLines = new Map<string, React.ReactNode>();
@@ -597,6 +615,12 @@ function Branch({
     dispatch({ type: "SELECT_BRANCH", branchId, childLine: value });
   }
 
+  const labelsMap = graphCtx?.labelsMap;
+  const labels = labelsMap
+    ? branch.map((b) => labelsMap.get(b) ?? b)
+    : undefined;
+  const hasCustomLabels = labels && labels.some((l, i) => l !== branch[i]);
+
   return (
     <div data-branch={branchKey}>
       <Row
@@ -606,6 +630,7 @@ function Branch({
             dropdown: {
               value: selectedChildLine ?? defaultBranch,
               options: branch,
+              labels: hasCustomLabels ? labels : undefined,
               onChange: handleChange,
             },
           },

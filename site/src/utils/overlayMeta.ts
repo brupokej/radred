@@ -1,6 +1,7 @@
 import { getSwitchBattleCaseData } from "@site/src/components/SwitchBattle";
 import { moments as blaineMoments } from "@site/src/data/guide/blaine";
 import { moments as brockMoments } from "@site/src/data/guide/brock";
+import { moments as clairMoments } from "@site/src/data/guide/clair";
 import { moments as erikaMoments } from "@site/src/data/guide/erika";
 import { moments as kogaMoments } from "@site/src/data/guide/koga";
 import { moments as mistyMoments } from "@site/src/data/guide/misty";
@@ -10,6 +11,7 @@ import { Box, findPokemon, resolveBox } from "@site/src/utils/box";
 import { Moment } from "@site/src/utils/moments";
 import { PokemonData, resolvePokemon } from "@site/src/utils/pokemon";
 import { computeStats, PokemonStats } from "@site/src/utils/stats";
+import { LIVE_MOMENT_DEFAULT } from "@site/src/utils/storageDefaults";
 
 export const allMoments = [
   ...brockMoments,
@@ -19,6 +21,7 @@ export const allMoments = [
   ...sabrinaMoments,
   ...kogaMoments,
   ...blaineMoments,
+  ...clairMoments,
 ].filter((m) => m.kind !== "boxChange");
 
 export type BadgeName =
@@ -71,14 +74,8 @@ const MILESTONES: { label: string; split?: string; cap?: number; badge?: BadgeNa
 export type OpponentInfo = { box: Box; label: string };
 
 export function findMomentByLabel(label: string | null): Moment {
-  if (!label) {
-    for (let i = allMoments.length - 1; i >= 0; i--) {
-      if (allMoments[i].kind === "battle" || allMoments[i].kind === "switchBattle")
-        return allMoments[i];
-    }
-    return brockMoments[0];
-  }
-  return allMoments.find((m) => m.label === label) ?? brockMoments[0];
+  const target = label ?? LIVE_MOMENT_DEFAULT;
+  return allMoments.find((m) => m.label === target) ?? brockMoments[0];
 }
 
 const CYCLE_START_INDEX = allMoments.findIndex((m) => m.label === "Mt. Moon Encounter");

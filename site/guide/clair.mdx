@@ -1,0 +1,58 @@
+---
+sidebar_position: 8
+---
+
+import { Battle } from "@site/src/components/Battle";
+import BoxChange from "@site/src/components/BoxChange";
+import Encounter from "@site/src/components/Encounter";
+import { Row } from "@site/src/components/Row";
+import GoLiveButton from "@site/src/components/GoLiveButton";
+
+import {
+  clairBoxChange,
+  ceruleanCaveGrunt1Battle,
+  ceruleanCaveGrunt1BoxChange,
+  ceruleanCaveGrunt2Battle,
+  ceruleanCaveArcherBattle,
+  ceruleanCaveArianaBattle,
+  ceruleanCaveArianaBoxChange,
+  ceruleanCaveGiovanniBattle,
+} from "@site/src/data/guide/clair";
+
+# Clair
+
+<BoxChange data={clairBoxChange.data} secret />
+
+## Cerulean Cave Grunt 1 Battle
+
+<GoLiveButton moment={ceruleanCaveGrunt1Battle} secret />
+
+<Battle data={ceruleanCaveGrunt1Battle.data} secret />
+
+<BoxChange data={ceruleanCaveGrunt1BoxChange.data} secret />
+
+## Cerulean Cave Grunt 2 Battle
+
+<GoLiveButton moment={ceruleanCaveGrunt2Battle} secret />
+
+<Battle data={ceruleanCaveGrunt2Battle.data} secret />
+
+## Cerulean Cave Archer Battle
+
+<GoLiveButton moment={ceruleanCaveArcherBattle} secret />
+
+<Battle data={ceruleanCaveArcherBattle.data} secret />
+
+## Cerulean Cave Ariana Battle
+
+<GoLiveButton moment={ceruleanCaveArianaBattle} secret />
+
+<Battle data={ceruleanCaveArianaBattle.data} secret />
+
+<BoxChange data={ceruleanCaveArianaBoxChange.data} secret />
+
+## Cerulean Cave Giovanni Battle
+
+<GoLiveButton moment={ceruleanCaveGiovanniBattle} secret />
+
+<Battle data={ceruleanCaveGiovanniBattle.data} secret />
