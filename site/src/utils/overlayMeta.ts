@@ -7,6 +7,7 @@ import { moments as kogaMoments } from "@site/src/data/guide/koga";
 import { moments as mistyMoments } from "@site/src/data/guide/misty";
 import { moments as sabrinaMoments } from "@site/src/data/guide/sabrina";
 import { moments as surgeMoments } from "@site/src/data/guide/surge";
+import { moments as victoryRoadMoments } from "@site/src/data/guide/victoryRoad";
 import { Box, findPokemon, resolveBox } from "@site/src/utils/box";
 import { Moment } from "@site/src/utils/moments";
 import { PokemonData, resolvePokemon } from "@site/src/utils/pokemon";
@@ -22,6 +23,7 @@ export const allMoments = [
   ...kogaMoments,
   ...blaineMoments,
   ...clairMoments,
+  ...victoryRoadMoments,
 ].filter((m) => m.kind !== "boxChange");
 
 export type BadgeName =

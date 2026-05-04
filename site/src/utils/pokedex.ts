@@ -6,6 +6,7 @@ export type PokedexData = Stats;
 export const pokedex = rawData as Record<string, PokedexData>;
 
 export function getHp(pokemon: PokemonData): number {
+  if (pokemon.name === "Shedinja") return 1;
   const stats = pokedex[pokemon.pokedexHpKey ?? pokemon.pokedexKey ?? pokemon.name];
   const base = stats?.hp ?? 0;
   const iv = pokemon.ivs?.hp ?? 31;

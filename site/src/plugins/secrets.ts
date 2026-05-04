@@ -8,21 +8,29 @@ export default function secretsPlugin(context: { siteDir: string }) {
         return {
           resolve: {
             alias: {
-              [path.join(context.siteDir, "src/data/guide/koga-secrets") + "$"]: path.join(
+              [path.join(context.siteDir, "src/data/guide/kogaSecrets") + "$"]: path.join(
                 context.siteDir,
-                "src/data/guide/koga-secrets.enabled"
+                "src/data/guide/kogaSecrets.enabled"
               ),
-              [path.join(context.siteDir, "src/data/guide/blaine-secrets") + "$"]: path.join(
+              [path.join(context.siteDir, "src/data/guide/blaineSecrets") + "$"]: path.join(
                 context.siteDir,
-                "src/data/guide/blaine-secrets.enabled"
+                "src/data/guide/blaineSecrets.enabled"
               ),
-              [path.join(context.siteDir, "src/data/guide/clair-secrets") + "$"]: path.join(
+              [path.join(context.siteDir, "src/data/guide/clairSecrets") + "$"]: path.join(
                 context.siteDir,
-                "src/data/guide/clair-secrets.enabled"
+                "src/data/guide/clairSecrets.enabled"
+              ),
+              [path.join(context.siteDir, "src/data/guide/victoryRoadSecrets") + "$"]: path.join(
+                context.siteDir,
+                "src/data/guide/victoryRoadSecrets.enabled"
               ),
               [path.join(context.siteDir, "src/data/secretMode") + "$"]: path.join(
                 context.siteDir,
                 "src/data/secretMode.enabled"
+              ),
+              [path.join(context.siteDir, "src/data/spriteColors") + "$"]: path.join(
+                context.siteDir,
+                "src/data/spriteColors.enabled"
               ),
             },
           },

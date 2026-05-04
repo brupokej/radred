@@ -20,14 +20,21 @@ import { box as _box1 } from "@site/src/data/guide/misty";
 const _box2 = getBox({
   box: _box1,
   cap: 36,
-  update: {
-    Shellder: {
-      name: "Cloyster",
+  update: [
+    {
+      Shellder: {
+        moves: ["Ice Shard", "Icicle Spear", "Leer", "Razor Shell"],
+      },
     },
-    Drilbur: {
-      name: "Excadrill",
+    {
+      Shellder: {
+        name: "Cloyster",
+      },
+      Drilbur: {
+        name: "Excadrill",
+      },
     },
-  },
+  ],
 });
 
 export const surgeBoxChange: Moment = {
@@ -49,7 +56,6 @@ const _box3 = getBox({
       nature: "Adamant",
       ability: "Skill Link",
       item: "Never-Melt Ice",
-      moves: ["Ice Shard", "Icicle Spear", "Leer", "Razor Shell"],
     },
     Perrserker: {
       item: "Sitrus Berry",

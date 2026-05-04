@@ -232,6 +232,7 @@ const PATHS = secretMode
       ["guide", "koga"],
       ["guide", "blaine"],
       ["guide", "clair"],
+      ["guide", "victory-road"],
     ]
   : [
       ["guide", "brock"],
@@ -242,6 +243,7 @@ const PATHS = secretMode
       ["guide", "koga"],
       ["guide", "blaine"],
       ["guide", "clair"],
+      ["guide", "victory-road"],
       ["team", "box"],
       ["team", "stats"],
       ["team", "timeline"],

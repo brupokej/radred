@@ -23,7 +23,8 @@
     "playwright:update": "tsx scripts/playwright.mts --update-snapshots",
     "vitest": "vitest run",
     "overlay-server": "node overlay-server.js",
-    "sprite-colors": "tsx scripts/sprite-colors.ts"
+    "sprite-colors": "tsx scripts/sprite-colors.ts",
+    "sprite-colors:secret": "SECRET_MODE=true tsx scripts/sprite-colors.ts"
   },
   "dependencies": {
     "@docusaurus/core": "3.10.0",

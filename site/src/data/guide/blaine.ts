@@ -1,5 +1,5 @@
 import { type Moment } from "@site/src/utils/moments";
-import { getBlaineSecrets } from "./blaine-secrets";
+import { getBlaineSecrets } from "./blaineSecrets";
 
 import { box as _box1 } from "@site/src/data/guide/koga";
 

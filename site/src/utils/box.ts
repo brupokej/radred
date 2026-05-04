@@ -28,8 +28,12 @@ export function findPokemon(boxData: BoxData, name: string): Pokemon | undefined
 
 export function getCanon(boxData: BoxData | null): (name: string) => string {
   const renames = boxData?.renames ?? {};
-  const canon = (name: string): string => (renames[name] ? canon(renames[name]) : name);
-  return canon;
+  const canon = (name: string, visited = new Set<string>()): string => {
+    if (!renames[name] || visited.has(name)) return name;
+    visited.add(name);
+    return canon(renames[name], visited);
+  };
+  return (name: string) => canon(name);
 }
 
 function applyStep(working: BoxData, step: PartialBoxData): BoxData {
@@ -48,6 +52,9 @@ function applyStep(working: BoxData, step: PartialBoxData): BoxData {
       return newName ? { ...p, update: { ...p.update, name: newName } } : p;
     });
     for (const [old, newName] of Object.entries(step.renames)) {
+      if (renames[newName] === old) {
+        delete renames[newName];
+      }
       renames[old] = newName;
     }
   }

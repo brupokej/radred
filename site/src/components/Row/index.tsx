@@ -66,6 +66,8 @@ export function expandPokemon(pokemon: Pokemon): Array<string | { warning: strin
       {
         "Arcanine-H": "Fire Stone",
         Ceruledge: "Moon Stone",
+        "Thundurus-I": "Reveal Glass",
+        "Thundurus-T": "Reveal Glass",
       }[toName] ?? "Rare Candy";
     header = `${item} → ${toName}`;
   } else {
@@ -75,7 +77,7 @@ export function expandPokemon(pokemon: Pokemon): Array<string | { warning: strin
   const cells: Array<string | { warning: string }> = [`${from} →`, { warning: header }];
 
   const baseMoveSet = new Set((base.moves ?? []).filter(Boolean));
-  const isLevelCap = levelChanged && LEVEL_CAP_LEVELS.has(Number(current.level));
+  const isLevelCap = LEVEL_CAP_LEVELS.has(Number(current.level));
   const hasNewMoves = current.moves?.some((move) => move && !baseMoveSet.has(move)) ?? false;
 
   if (!isLevelCap || hasNewMoves) {

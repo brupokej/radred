@@ -1,0 +1,120 @@
+---
+sidebar_position: 9
+---
+
+import { Battle } from "@site/src/components/Battle";
+import BoxChange from "@site/src/components/BoxChange";
+import Encounter from "@site/src/components/Encounter";
+import { Row } from "@site/src/components/Row";
+import GoLiveButton from "@site/src/components/GoLiveButton";
+
+import {
+  route13Encounter,
+  route18Encounter,
+  route20Encounter,
+  route20BoxChange,
+  route22RivalRematchBattle,
+  route22RivalRematchBoxChange,
+  route23BrendanBattle,
+  route23BrendanBoxChange,
+  victoryRoadAceTrainerNaomiBattle,
+  victoryRoadAceTrainerRolandoBattle,
+  victoryRoadAceTrainerGeorgeBattle,
+  victoryRoadAceTrainerCarolineBattle,
+  victoryRoadAceTrainerColbyBattle,
+  victoryRoadAceTrainerAlexaBattle,
+  victoryRoadCoolCoupleRayAndTyraBattle,
+  indigoPlateauCreatorSoupercellBattle,
+} from "@site/src/data/guide/victoryRoad";
+
+# Victory Road
+
+## Route 13 Encounter
+
+<GoLiveButton moment={route13Encounter} />
+
+<Encounter data={route13Encounter.data} secret>
+  <Row row={["Surfing · 10% · Level 56-58"]} />
+</Encounter>
+
+## Route 18 Encounter
+
+<GoLiveButton moment={route18Encounter} />
+
+<Encounter data={route18Encounter.data} secret>
+  <Row row={["Grass · Level 80"]} />
+</Encounter>
+
+## Route 20 Encounter
+
+<GoLiveButton moment={route20Encounter} />
+
+<Encounter data={route20Encounter.data} secret>
+  <Row row={["Surfing · Level 80"]} />
+</Encounter>
+
+<BoxChange data={route20BoxChange.data} secret />
+
+## Route 22 Rival Rematch Battle
+
+<GoLiveButton moment={route22RivalRematchBattle} secret />
+
+<Battle data={route22RivalRematchBattle.data} secret />
+
+<BoxChange data={route22RivalRematchBoxChange.data} secret />
+
+## Route 23 Brendan Battle
+
+<GoLiveButton moment={route23BrendanBattle} secret />
+
+<Battle data={route23BrendanBattle.data} secret />
+
+<BoxChange data={route23BrendanBoxChange.data} secret />
+
+## Victory Road Ace Trainer Naomi Battle
+
+<GoLiveButton moment={victoryRoadAceTrainerNaomiBattle} secret />
+
+<Battle data={victoryRoadAceTrainerNaomiBattle.data} secret />
+
+## Victory Road Ace Trainer Rolando Battle
+
+<GoLiveButton moment={victoryRoadAceTrainerRolandoBattle} secret />
+
+<Battle data={victoryRoadAceTrainerRolandoBattle.data} secret />
+
+## Victory Road Ace Trainer George Battle
+
+<GoLiveButton moment={victoryRoadAceTrainerGeorgeBattle} secret />
+
+<Battle data={victoryRoadAceTrainerGeorgeBattle.data} secret />
+
+## Victory Road Ace Trainer Caroline Battle
+
+<GoLiveButton moment={victoryRoadAceTrainerCarolineBattle} secret />
+
+<Battle data={victoryRoadAceTrainerCarolineBattle.data} secret />
+
+## Victory Road Ace Trainer Colby Battle
+
+<GoLiveButton moment={victoryRoadAceTrainerColbyBattle} secret />
+
+<Battle data={victoryRoadAceTrainerColbyBattle.data} secret />
+
+## Victory Road Ace Trainer Alexa Battle
+
+<GoLiveButton moment={victoryRoadAceTrainerAlexaBattle} secret />
+
+<Battle data={victoryRoadAceTrainerAlexaBattle.data} secret />
+
+## Victory Road Cool Couple Ray & Tyra Battle
+
+<GoLiveButton moment={victoryRoadCoolCoupleRayAndTyraBattle} secret />
+
+<Battle data={victoryRoadCoolCoupleRayAndTyraBattle.data} secret />
+
+## Indigo Plateau Creator Soupercell Battle
+
+<GoLiveButton moment={indigoPlateauCreatorSoupercellBattle} secret />
+
+<Battle data={indigoPlateauCreatorSoupercellBattle.data} secret />

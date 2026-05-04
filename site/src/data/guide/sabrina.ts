@@ -1484,8 +1484,8 @@ export const saffronDojoLeaderChuckBattle: Moment = {
             turns: [
               [
                 { player: "{p:Meowscarada} Knock Off {o:Iron Crown} to {=:0}" },
-                { opponent: "{o:Iron Crown} fainted" },
                 { opponent: "{p:Meowscarada} Rocky Helmet to {+:98}" },
+                { opponent: "{o:Iron Crown} fainted" },
               ],
             ],
           },

@@ -1,10 +1,9 @@
 import { type Moment } from "@site/src/utils/moments";
-import { getClairSecrets } from "./clair-secrets";
+import { getClairSecrets } from "./clairSecrets";
 
 import { box as _box1 } from "@site/src/data/guide/blaine";
 
 export const {
-  box,
   clairBoxChange,
   ceruleanCaveGrunt1Battle,
   ceruleanCaveGrunt1BoxChange,
@@ -15,6 +14,7 @@ export const {
   ceruleanCaveGiovanniBattle,
   ceruleanCaveGiovanniBoxChange,
   viridianCityClairBattle,
+  box,
 } = getClairSecrets(_box1);
 
 export const moments: Moment[] = [

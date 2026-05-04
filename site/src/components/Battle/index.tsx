@@ -39,6 +39,7 @@ export interface MatchupData {
   matchup: string[];
   turns: (MoveData[] | RowCell[])[];
   branches?: BranchData[];
+  newMatchup?: boolean;
 }
 
 export interface LineData {
@@ -185,8 +186,13 @@ function enrichMatchups(
   const enriched =
     React.Children.map(children, (child) => {
       if (React.isValidElement(child) && child.type === Matchup) {
-        const props = child.props as { matchup: string[]; children: React.ReactNode };
+        const props = child.props as {
+          matchup: string[];
+          newMatchup?: boolean;
+          children: React.ReactNode;
+        };
         const isContinued =
+          !props.newMatchup &&
           lastMatchup !== null &&
           lastMatchup.length === props.matchup.length &&
           lastMatchup.every((o, i) => o === props.matchup[i]);
@@ -224,7 +230,7 @@ function battleDataToChildren(data: BattleData): React.ReactNode {
   return data.lines.map((lineData, li) => (
     <BattleLine key={li} line={lineData.line} lineIf={lineData.if} lineIfNot={lineData.ifNot}>
       {lineData.matchups.map((matchupData, mi) => (
-        <Matchup key={mi} matchup={matchupData.matchup}>
+        <Matchup key={mi} matchup={matchupData.matchup} newMatchup={matchupData.newMatchup}>
           {matchupData.turns.map((entry, ti) =>
             isTurn(entry) ? (
               <Turn key={ti}>
@@ -509,6 +515,7 @@ function Matchup({
 }: {
   matchup: string[];
   isContinued?: boolean;
+  newMatchup?: boolean;
   children: React.ReactNode;
 }) {
   const graphCtx = useContext(BattleGraphCtx);
