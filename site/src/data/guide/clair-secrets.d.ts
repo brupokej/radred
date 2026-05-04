@@ -10,5 +10,7 @@ export declare function getClairSecrets(_box1: Box): {
   ceruleanCaveArianaBattle: Moment;
   ceruleanCaveArianaBoxChange: Moment;
   ceruleanCaveGiovanniBattle: Moment;
+  ceruleanCaveGiovanniBoxChange: Moment;
+  viridianCityClairBattle: Moment;
   box: Box;
 };

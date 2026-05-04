@@ -13,6 +13,8 @@ export const {
   ceruleanCaveArianaBattle,
   ceruleanCaveArianaBoxChange,
   ceruleanCaveGiovanniBattle,
+  ceruleanCaveGiovanniBoxChange,
+  viridianCityClairBattle,
 } = getClairSecrets(_box1);
 
 export const moments: Moment[] = [
@@ -24,4 +26,6 @@ export const moments: Moment[] = [
   ceruleanCaveArianaBattle,
   ceruleanCaveArianaBoxChange,
   ceruleanCaveGiovanniBattle,
+  ceruleanCaveGiovanniBoxChange,
+  viridianCityClairBattle,
 ];

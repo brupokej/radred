@@ -616,9 +616,7 @@ function Branch({
   }
 
   const labelsMap = graphCtx?.labelsMap;
-  const labels = labelsMap
-    ? branch.map((b) => labelsMap.get(b) ?? b)
-    : undefined;
+  const labels = labelsMap ? branch.map((b) => labelsMap.get(b) ?? b) : undefined;
   const hasCustomLabels = labels && labels.some((l, i) => l !== branch[i]);
 
   return (

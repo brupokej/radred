@@ -7,6 +7,7 @@ import {
   ceruleanCaveGrunt1Box,
   ceruleanCaveGrunt2Box,
   championLanceBox,
+  viridianCityLeaderClairBox,
 } from "@site/src/utils/opponents";
 
 export function getClairSecrets(_box1: Box) {
@@ -146,14 +147,19 @@ export function getClairSecrets(_box1: Box) {
     },
   };
 
+  const _box6 = getBox({
+    box: _box5,
+    cap: 80,
+  });
+
   const ceruleanCaveArianaBoxChange: Moment = {
     split: "Clair",
     label: "Cerulean Cave Ariana Box Change",
     kind: "boxChange",
   };
 
-  const _box6 = getBox({
-    box: _box5,
+  const _box7 = getBox({
+    box: _box6,
     team: ["Secret", "Secret", "Secret"],
   });
 
@@ -163,7 +169,7 @@ export function getClairSecrets(_box1: Box) {
     kind: "battle",
     secret: true,
     data: {
-      playerBox: _box6,
+      playerBox: _box7,
       opponentBox: ceruleanCaveGiovanniBox,
       partnerBox: championLanceBox,
       lines: [
@@ -187,6 +193,49 @@ export function getClairSecrets(_box1: Box) {
     },
   };
 
+  const ceruleanCaveGiovanniBoxChange: Moment = {
+    split: "Clair",
+    label: "Cerulean Cave Giovanni Box Change",
+    kind: "boxChange",
+  };
+
+  const _box8 = getBox({
+    box: _box7,
+    cap: 81,
+  });
+
+  const _box9 = getBox({
+    box: _box8,
+    team: ["Secret", "Secret", "Secret", "Secret", "Secret", "Secret"],
+  });
+
+  const viridianCityClairBattle: Moment = {
+    split: "Clair",
+    label: "Viridian City Leader Clair Battle",
+    kind: "battle",
+    secret: true,
+    data: {
+      playerBox: _box9,
+      opponentBox: viridianCityLeaderClairBox,
+      lines: [
+        {
+          matchups: [
+            {
+              matchup: ["Shuckle"],
+              turns: [
+                [
+                  { player: "{p:Secret} Tackle {o:Shuckle} to {=:0}" },
+                  { opponent: "{p:Secret} Life Orb to {=:105}" },
+                  { opponent: "{o:Shuckle} fainted" },
+                ],
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  };
+
   return {
     clairBoxChange,
     ceruleanCaveGrunt1Battle,
@@ -196,6 +245,8 @@ export function getClairSecrets(_box1: Box) {
     ceruleanCaveArianaBattle,
     ceruleanCaveArianaBoxChange,
     ceruleanCaveGiovanniBattle,
-    box: _box6,
+    ceruleanCaveGiovanniBoxChange,
+    viridianCityClairBattle,
+    box: _box9,
   };
 }
