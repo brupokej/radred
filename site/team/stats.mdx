@@ -13,6 +13,7 @@ import { moments as kogaMoments } from "@site/src/data/guide/koga";
 import { moments as blaineMoments } from "@site/src/data/guide/blaine";
 import { moments as clairMoments } from "@site/src/data/guide/clair";
 import { moments as victoryRoadMoments } from "@site/src/data/guide/victoryRoad";
+import { moments as eliteFourMoments } from "@site/src/data/guide/eliteFour";
 
 # Stats
 
@@ -26,6 +27,7 @@ export const allMoments = [
   ...blaineMoments,
   ...clairMoments,
   ...victoryRoadMoments,
+  ...eliteFourMoments,
 ];
 
 <GameState moments={allMoments} />
@@ -44,7 +46,7 @@ export const allMoments = [
     { label: "Blaine", moments: blaineMoments },
     { label: "Clair", moments: clairMoments },
     { label: "VR", moments: victoryRoadMoments, tooltip: "Victory Road" },
-    { label: "E4", moments: [], tooltip: "Elite Four" },
+    { label: "E4", moments: eliteFourMoments, tooltip: "Elite Four" },
   ]}
 />
 
@@ -62,7 +64,7 @@ export const allMoments = [
     { label: "Blaine", moments: blaineMoments },
     { label: "Clair", moments: clairMoments },
     { label: "VR", moments: victoryRoadMoments, tooltip: "Victory Road" },
-    { label: "E4", moments: [], tooltip: "Elite Four" },
+    { label: "E4", moments: eliteFourMoments, tooltip: "Elite Four" },
   ]}
 />
 

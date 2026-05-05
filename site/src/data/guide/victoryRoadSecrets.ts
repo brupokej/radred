@@ -20,6 +20,7 @@ export function getVictoryRoadSecrets(_box1: Box) {
     split: "Victory Road",
     label: "Route 13 Encounter",
     kind: "encounter",
+    secret: true,
     data: { pokemon: _secret, playerBox: _box1 },
   };
 
@@ -27,6 +28,7 @@ export function getVictoryRoadSecrets(_box1: Box) {
     split: "Victory Road",
     label: "Route 18 Encounter",
     kind: "encounter",
+    secret: true,
     data: { pokemon: _secret, playerBox: _box1 },
   };
 
@@ -34,6 +36,7 @@ export function getVictoryRoadSecrets(_box1: Box) {
     split: "Victory Road",
     label: "Route 20 Encounter",
     kind: "encounter",
+    secret: true,
     data: { pokemon: _secret, playerBox: _box1 },
   };
 

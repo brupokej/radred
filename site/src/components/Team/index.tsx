@@ -179,6 +179,11 @@ function statColor(v: number): string {
   return "var(--ifm-color-danger)";
 }
 
+function nameStyle(name: string): React.CSSProperties {
+  if (name.length > 13) return { fontSize: "0.875rem" };
+  return {};
+}
+
 function PokemonCard({
   pokemon,
   showIVs,
@@ -227,7 +232,9 @@ function PokemonCard({
       ) : (
         <div className={styles.emptySprite}>{current ? "?" : "✕"}</div>
       )}
-      <div className={`${styles.name}`}>{current == null ? "-" : <span>{current.name}</span>}</div>
+      <div className={`${styles.name}`} style={current ? nameStyle(current.name) : undefined}>
+        {current == null ? "-" : <span>{current.name}</span>}
+      </div>
       <div className={`${styles.level} ${wc("level")}`}>
         {current == null ? "-" : <span>{current?.level ?? "-"}</span>}
       </div>

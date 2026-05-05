@@ -2,6 +2,7 @@ import { getSwitchBattleCaseData } from "@site/src/components/SwitchBattle";
 import { moments as blaineMoments } from "@site/src/data/guide/blaine";
 import { moments as brockMoments } from "@site/src/data/guide/brock";
 import { moments as clairMoments } from "@site/src/data/guide/clair";
+import { moments as eliteFourMoments } from "@site/src/data/guide/eliteFour";
 import { moments as erikaMoments } from "@site/src/data/guide/erika";
 import { moments as kogaMoments } from "@site/src/data/guide/koga";
 import { moments as mistyMoments } from "@site/src/data/guide/misty";
@@ -24,6 +25,7 @@ export const allMoments = [
   ...blaineMoments,
   ...clairMoments,
   ...victoryRoadMoments,
+  ...eliteFourMoments,
 ].filter((m) => m.kind !== "boxChange");
 
 export type BadgeName =

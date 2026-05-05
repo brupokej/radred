@@ -135,8 +135,7 @@ function writeOutput(
   writeOutput("src/data/spriteColors.ts", baseEntries, colors);
 
   const secretMode =
-    process.env.SECRET_MODE === "true" &&
-    existsSync("src/data/guide/victoryRoadSecrets.enabled.ts");
+    process.env.SECRET_MODE === "true" && existsSync("src/data/guide/eliteFourSecrets.enabled.ts");
 
   if (secretMode) {
     console.log("\nGenerating secret sprite colors...");
@@ -148,8 +147,15 @@ function writeOutput(
     const { getClairSecrets } = await import("../src/data/guide/clairSecrets.enabled.ts");
     const { getVictoryRoadSecrets } =
       await import("../src/data/guide/victoryRoadSecrets.enabled.ts");
+    const { getEliteFourSecrets } = await import("../src/data/guide/eliteFourSecrets.enabled.ts");
 
-    const chain = [getKogaSecrets, getBlaineSecrets, getClairSecrets, getVictoryRoadSecrets];
+    const chain = [
+      getKogaSecrets,
+      getBlaineSecrets,
+      getClairSecrets,
+      getVictoryRoadSecrets,
+      getEliteFourSecrets,
+    ];
     let secretBox: Box = kogaBox;
     for (const fn of chain) {
       ({ box: secretBox } = fn(secretBox));

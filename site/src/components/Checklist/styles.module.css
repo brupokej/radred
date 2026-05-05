@@ -1,0 +1,13 @@
+.blurContent details > :not(summary) span {
+  filter: blur(4px);
+  pointer-events: none;
+  user-select: none;
+}
+
+.blurContent details button {
+  pointer-events: none;
+}
+
+.blurContent details > :not(summary) div {
+  pointer-events: none;
+}

@@ -1,0 +1,26 @@
+---
+sidebar_position: 10
+---
+
+import BoxChange from "@site/src/components/BoxChange";
+import Checklist from "@site/src/components/Checklist";
+import { SwitchBattle } from "@site/src/components/SwitchBattle";
+import GoLiveButton from "@site/src/components/GoLiveButton";
+
+import {
+  eliteFourBoxChange,
+  eliteFourChecklist,
+  eliteFourLoreleiBattle,
+} from "@site/src/data/guide/eliteFour";
+
+# Elite Four
+
+<BoxChange data={eliteFourBoxChange.data} secret />
+
+<Checklist data={eliteFourChecklist.data} secret />
+
+## Elite Four Lorelei Battle
+
+<GoLiveButton moment={eliteFourLoreleiBattle} secret />
+
+<SwitchBattle data={eliteFourLoreleiBattle.data} secret />
