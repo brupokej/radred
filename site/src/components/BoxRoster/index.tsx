@@ -1,3 +1,4 @@
+import { resolveActiveBox } from "@site/src/components/Battle";
 import Card from "@site/src/components/Card";
 import { PokemonEntry } from "@site/src/components/PokemonEntry";
 import { Row } from "@site/src/components/Row";
@@ -14,7 +15,7 @@ function computeTotals(moments: Moment[], canon: (name: string) => string) {
   const frags: Record<string, number> = {};
   for (const m of moments) {
     if (m.kind !== "battle") continue;
-    for (const name of resolveBox(m.data.playerBox).team ?? []) {
+    for (const name of resolveBox(resolveActiveBox(m.data)).team ?? []) {
       const key = canon(name);
       battles[key] = (battles[key] ?? 0) + 1;
     }
@@ -43,7 +44,11 @@ export default function BoxRoster({
   let resolvedActive = null;
   for (let i = sliced.length - 1; i >= 0; i--) {
     const m = sliced[i];
-    if (m.kind === "battle" || m.kind === "encounter") {
+    if (m.kind === "battle") {
+      resolvedActive = resolveBox(resolveActiveBox(m.data));
+      break;
+    }
+    if (m.kind === "encounter") {
       resolvedActive = resolveBox(m.data.playerBox);
       break;
     }

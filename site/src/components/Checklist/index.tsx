@@ -23,7 +23,7 @@ export default function Checklist({ data, secret }: { data: ChecklistData; secre
         <Team title="Player Team" box={data.playerBox} />
       )}
       {data.rows && (
-        <Card title="Game Checklist">
+        <Card title="Game Setup">
           {data.rows.map((row, i) => (
             <Row key={i} row={row} />
           ))}

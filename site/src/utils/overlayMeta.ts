@@ -1,3 +1,4 @@
+import { resolveActiveBox } from "@site/src/components/Battle";
 import { getSwitchBattleCaseData } from "@site/src/components/SwitchBattle";
 import { moments as blaineMoments } from "@site/src/data/guide/blaine";
 import { moments as brockMoments } from "@site/src/data/guide/brock";
@@ -96,8 +97,8 @@ export function derivePlayerBox(moment: Moment): Box | null {
   if (currentIndex === -1) return null;
   for (let i = currentIndex; i >= 0; i--) {
     const m = allMoments[i];
-    if (m.kind === "battle") return m.data.playerBox;
-    if (m.kind === "switchBattle") return getSwitchBattleCaseData(m.data).playerBox;
+    if (m.kind === "battle") return resolveActiveBox(m.data);
+    if (m.kind === "switchBattle") return resolveActiveBox(getSwitchBattleCaseData(m.data));
     if (m.kind === "encounter" && m.data.playerBox) return m.data.playerBox;
   }
   return null;

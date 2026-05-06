@@ -1,4 +1,4 @@
-import { BattleData } from "@site/src/components/Battle";
+import { BattleData, resolveActiveBox } from "@site/src/components/Battle";
 import { getCanon, resolveBox } from "@site/src/utils/box";
 import { resolvePokemon } from "@site/src/utils/pokemon";
 import { slugify } from "@site/src/utils/slugify";
@@ -81,7 +81,7 @@ function resolvePageMeta(pages: { label: string; battles: BattleData[] }[]): {
 } {
   const allBattles = pages.flatMap((p) => p.battles);
   const lastBattle = allBattles[allBattles.length - 1];
-  const resolvedLast = resolveBox(lastBattle.playerBox);
+  const resolvedLast = resolveBox(resolveActiveBox(lastBattle));
   const canon = getCanon(resolvedLast);
 
   const spriteKeyMap: Record<string, string> = {};
@@ -117,7 +117,7 @@ export function computePageStats(
 
   for (const { label, battles } of pages) {
     for (const battle of battles) {
-      for (const name of resolveBox(battle.playerBox).team ?? []) {
+      for (const name of resolveBox(resolveActiveBox(battle)).team ?? []) {
         const key = canon(name);
         if (!totals[key]) {
           totals[key] = { total: 0, byPage: {}, boxOrder: boxOrderMap[key] ?? Infinity };
@@ -171,7 +171,7 @@ export type PokemonStats = {
 
 export function computeStats(battles: BattleData[]): Record<string, PokemonStats> {
   const lastBattle = battles[battles.length - 1];
-  const resolvedLast = lastBattle ? resolveBox(lastBattle.playerBox) : { pokemon: [] };
+  const resolvedLast = lastBattle ? resolveBox(resolveActiveBox(lastBattle)) : { pokemon: [] };
   const canon = getCanon(resolvedLast);
 
   const spriteKeyMap: Record<string, string> = {};
@@ -185,7 +185,7 @@ export function computeStats(battles: BattleData[]): Record<string, PokemonStats
 
   const firstAppearance: Record<string, number> = {};
   for (let i = 0; i < battles.length; i++) {
-    for (const pokemon of resolveBox(battles[i].playerBox).pokemon) {
+    for (const pokemon of resolveBox(resolveActiveBox(battles[i])).pokemon) {
       const key = canon(resolvePokemon(pokemon).name);
       if (!(key in firstAppearance)) firstAppearance[key] = i;
     }
@@ -194,7 +194,7 @@ export function computeStats(battles: BattleData[]): Record<string, PokemonStats
   const totals: Record<string, PokemonStats> = {};
 
   for (const battle of battles) {
-    for (const name of resolveBox(battle.playerBox).team ?? []) {
+    for (const name of resolveBox(resolveActiveBox(battle)).team ?? []) {
       const key = canon(name);
       const entry = totals[key] ?? {
         battles: 0,

@@ -1,5 +1,6 @@
 import Card from "@site/src/components/Card";
 import { ScrollFade } from "@site/src/components/ScrollFade";
+import { resolveActiveBox } from "@site/src/components/Battle";
 import { getSwitchBattleCaseData } from "@site/src/components/SwitchBattle";
 import { SPRITE_COLORS } from "@site/src/data/spriteColors";
 import { getCanon, resolveBox } from "@site/src/utils/box";
@@ -71,7 +72,10 @@ export default function BarRace({
       if (m.kind === "switchBattle") {
         return getCanon(resolveBox(m.data.cases[0].data.playerBox));
       }
-      if (m.kind === "battle" || m.kind === "encounter") {
+      if (m.kind === "battle") {
+        return getCanon(resolveBox(resolveActiveBox(m.data)));
+      }
+      if (m.kind === "encounter") {
         return getCanon(resolveBox(m.data.playerBox));
       }
     }
@@ -83,7 +87,7 @@ export default function BarRace({
     const last = battleMoments[battleMoments.length - 1];
     if (!last) return map;
     for (const pokemon of resolveBox(
-      (last.kind === "battle" ? last.data : getSwitchBattleCaseData(last.data)).playerBox
+      resolveActiveBox(last.kind === "battle" ? last.data : getSwitchBattleCaseData(last.data))
     ).pokemon) {
       const p = resolvePokemon(pokemon);
       const key = canon(p.name);
@@ -118,10 +122,11 @@ export default function BarRace({
     // Frame 0: box state at the first battle, all values 0
     const { active: initialActive, display: initialDisplay } = snapshotResolved(
       resolveBox(
-        (battleMoments[0].kind === "battle"
-          ? battleMoments[0].data
-          : getSwitchBattleCaseData(battleMoments[0].data)
-        ).playerBox
+        resolveActiveBox(
+          battleMoments[0].kind === "battle"
+            ? battleMoments[0].data
+            : getSwitchBattleCaseData(battleMoments[0].data)
+        )
       )
     );
     const result: Frame[] = [
@@ -135,7 +140,7 @@ export default function BarRace({
 
     for (const m of battleMoments) {
       const activeData = m.kind === "battle" ? m.data : getSwitchBattleCaseData(m.data);
-      const resolved = resolveBox(activeData.playerBox);
+      const resolved = resolveBox(resolveActiveBox(activeData));
 
       if (metric === "frags") {
         for (const [p, c] of Object.entries(computeBattleFrags(activeData))) {

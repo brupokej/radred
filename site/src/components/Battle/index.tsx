@@ -9,7 +9,7 @@ import { getHp } from "@site/src/utils/pokedex";
 import { PokemonData, resolvePokemon } from "@site/src/utils/pokemon";
 import { slugify } from "@site/src/utils/slugify";
 import { getColouredSpriteUrl } from "@site/src/utils/sprites";
-import { getState, removeState, setState } from "@site/src/utils/storage";
+import { getState, removeState, setState, useStorageState } from "@site/src/utils/storage";
 import { parseTokens } from "@site/src/utils/tokens";
 import React, {
   useCallback,
@@ -53,9 +53,25 @@ export interface LineData {
 
 export interface BattleData {
   opponentBox: Box;
-  playerBox: Box;
+  playerBox?: Box;
   partnerBox?: Box;
+  playerBoxCases?: { cases: Record<string, Box> };
   lines: LineData[];
+}
+
+function activeBoxStorageKey(data: BattleData): string {
+  if (!data.playerBoxCases) return "";
+  return `branch-${slugify(Object.keys(data.playerBoxCases.cases))}`;
+}
+
+export function resolveActiveBox(data: BattleData): Box {
+  if (data.playerBoxCases) {
+    const entries = Object.entries(data.playerBoxCases.cases);
+    const stored = getState(activeBoxStorageKey(data));
+    const match = stored ? entries.find(([label]) => slugify(label) === stored) : null;
+    return match?.[1] ?? entries[0][1];
+  }
+  return data.playerBox!;
 }
 
 type GraphState = {
@@ -270,7 +286,9 @@ export function Battle({
   secret?: boolean;
   opponentTeamHeader?: React.ReactNode;
 }) {
-  const { opponentBox, playerBox: resolvedPlayerBox, partnerBox } = data;
+  const { opponentBox, partnerBox } = data;
+  useStorageState(activeBoxStorageKey(data));
+  const resolvedPlayerBox = resolveActiveBox(data);
   const playerResolved = resolveBox(resolvedPlayerBox);
   const opponentResolved = resolveBox(opponentBox);
   const partnerResolved = partnerBox ? resolveBox(partnerBox) : null;

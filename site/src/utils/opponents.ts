@@ -4218,7 +4218,7 @@ export const eliteFourBrunoInfernapeBox = getOpponentBox([
   },
 ]);
 
-export const eliteFourBrunoUrshifuBox = getOpponentBox([
+export const eliteFourBrunoUrshifuSBox = getOpponentBox([
   {
     name: "Urshifu-S",
     spriteKey: "urshifu",

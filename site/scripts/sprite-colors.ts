@@ -142,12 +142,12 @@ function writeOutput(
 
     // Chain each enabled secrets function starting from the stub koga box.
     // Each function adds the real secret Pokémon (including evolutions) on top.
-    const { getKogaSecrets } = await import("../src/data/guide/kogaSecrets.enabled.ts");
-    const { getBlaineSecrets } = await import("../src/data/guide/blaineSecrets.enabled.ts");
-    const { getClairSecrets } = await import("../src/data/guide/clairSecrets.enabled.ts");
+    const { getKogaSecrets } = await import("../src/data/guide/kogaSecrets.enabled");
+    const { getBlaineSecrets } = await import("../src/data/guide/blaineSecrets.enabled");
+    const { getClairSecrets } = await import("../src/data/guide/clairSecrets.enabled");
     const { getVictoryRoadSecrets } =
-      await import("../src/data/guide/victoryRoadSecrets.enabled.ts");
-    const { getEliteFourSecrets } = await import("../src/data/guide/eliteFourSecrets.enabled.ts");
+      await import("../src/data/guide/victoryRoadSecrets.enabled");
+    const { getEliteFourSecrets } = await import("../src/data/guide/eliteFourSecrets.enabled");
 
     const chain = [
       getKogaSecrets,
