@@ -1733,7 +1733,7 @@ export const silphCoArianaArcherBattle: Moment = {
             matchup: ["Incineroar", "Articuno-G"],
             turns: [
               [
-                { opponent: "{o:Incineroar} Fake Out {o:Masquerain} to {-:119}" },
+                { opponent: "{o:Incineroar} Fake Out {o:Masquerain} to {+:121}" },
                 { opponent: "{o:Articuno-G} Psychic {o:Masquerain} to {=:0}" },
                 { opponent: "{o:Masquerain} fainted" },
                 { player: "{p:Jellicent} Scald {o:Incineroar} to {=:0}" },
