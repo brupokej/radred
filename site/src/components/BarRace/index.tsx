@@ -1,6 +1,6 @@
+import { resolveActiveBox } from "@site/src/components/Battle";
 import Card from "@site/src/components/Card";
 import { ScrollFade } from "@site/src/components/ScrollFade";
-import { resolveActiveBox } from "@site/src/components/Battle";
 import { getSwitchBattleCaseData } from "@site/src/components/SwitchBattle";
 import { SPRITE_COLORS } from "@site/src/data/spriteColors";
 import { getCanon, resolveBox } from "@site/src/utils/box";

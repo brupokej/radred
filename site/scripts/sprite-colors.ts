@@ -145,8 +145,7 @@ function writeOutput(
     const { getKogaSecrets } = await import("../src/data/guide/kogaSecrets.enabled");
     const { getBlaineSecrets } = await import("../src/data/guide/blaineSecrets.enabled");
     const { getClairSecrets } = await import("../src/data/guide/clairSecrets.enabled");
-    const { getVictoryRoadSecrets } =
-      await import("../src/data/guide/victoryRoadSecrets.enabled");
+    const { getVictoryRoadSecrets } = await import("../src/data/guide/victoryRoadSecrets.enabled");
     const { getEliteFourSecrets } = await import("../src/data/guide/eliteFourSecrets.enabled");
 
     const chain = [

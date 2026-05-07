@@ -23,12 +23,13 @@ export type RowCell =
   | { info: string }
   | { warning: string }
   | { danger: string }
+  | { primary: string }
   | { dropdown: DropdownConfig }
   | { input: InputConfig };
 
 type NormalizedCell =
   | { sep: string }
-  | { value: string; variant?: "info" | "warning" | "danger" }
+  | { value: string; variant?: "info" | "warning" | "danger" | "primary" }
   | { dropdown: DropdownConfig }
   | { input: InputConfig };
 
@@ -95,6 +96,7 @@ const VARIANT_CLASS: Record<string, string> = {
   info: styles.contentInfo,
   warning: styles.contentWarning,
   danger: styles.contentDanger,
+  primary: styles.contentPrimary,
 };
 
 const ROW_HIGHLIGHT_CLASS: Record<string, string> = {
@@ -109,13 +111,18 @@ function normalizeCell(c: RowCell): NormalizedCell[] {
   if ("info" in c) return [{ value: c.info, variant: "info" as const }];
   if ("warning" in c) return [{ value: c.warning, variant: "warning" as const }];
   if ("danger" in c) return [{ value: c.danger, variant: "danger" as const }];
+  if ("primary" in c) return [{ value: c.primary, variant: "primary" as const }];
   return [c as NormalizedCell];
 }
 
 export function Row({ row }: { row: RowCell[] }) {
   const cells: NormalizedCell[] = row.flatMap(normalizeCell);
 
-  const variants = new Set(cells.flatMap((c) => ("variant" in c && c.variant ? [c.variant] : [])));
+  const variants = new Set(
+    cells.flatMap((c) =>
+      "variant" in c && c.variant && c.variant !== "primary" ? [c.variant] : []
+    )
+  );
   const rowHighlightClasses = [...variants].map((v) => ROW_HIGHLIGHT_CLASS[v]).join(" ");
 
   return (

@@ -1,6 +1,7 @@
 import { getBox, type Box } from "@site/src/utils/box";
 import type { Moment } from "@site/src/utils/moments";
 import {
+  eliteFourAgathaBox,
   eliteFourBrunoInfernapeBox,
   eliteFourBrunoUrshifuSBox,
   eliteFourLoreleiRainBox,
@@ -154,12 +155,46 @@ export function getEliteFourSecrets(_box1: Box) {
     },
   };
 
+  const eliteFourBrunoBoxChange: Moment = {
+    split: "Elite Four",
+    label: "Elite Four Bruno Box Change",
+    kind: "boxChange",
+  };
+
+  const eliteFourAgathaBattle: Moment = {
+    split: "Elite Four",
+    label: "Elite Four Agatha Battle",
+    kind: "battle",
+    secret: true,
+    data: {
+      playerBox: _box2,
+      opponentBox: eliteFourAgathaBox,
+      lines: [
+        {
+          matchups: [
+            {
+              matchup: ["Krookodile"],
+              turns: [
+                [
+                  { player: "{p:Secret} Tackle {o:Krookodile} to {=:0}" },
+                  { opponent: "{o:Krookodile} fainted" },
+                ],
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  };
+
   return {
     eliteFourBoxChange,
     eliteFourChecklist,
     eliteFourLoreleiBattle,
     eliteFourLoreleiBoxChange,
     eliteFourBrunoBattle,
+    eliteFourBrunoBoxChange,
+    eliteFourAgathaBattle,
     box: _box1,
   };
 }

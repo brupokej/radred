@@ -4,6 +4,7 @@ sidebar_position: 10
 
 import BoxChange from "@site/src/components/BoxChange";
 import Checklist from "@site/src/components/Checklist";
+import { Battle } from "@site/src/components/Battle";
 import { SwitchBattle } from "@site/src/components/SwitchBattle";
 import GoLiveButton from "@site/src/components/GoLiveButton";
 
@@ -13,6 +14,8 @@ import {
   eliteFourLoreleiBattle,
   eliteFourLoreleiBoxChange,
   eliteFourBrunoBattle,
+  eliteFourBrunoBoxChange,
+  eliteFourAgathaBattle,
 } from "@site/src/data/guide/eliteFour";
 
 # Elite Four
@@ -34,3 +37,11 @@ import {
 <GoLiveButton moment={eliteFourBrunoBattle} secret />
 
 <SwitchBattle data={eliteFourBrunoBattle.data} secret />
+
+<BoxChange data={eliteFourBrunoBoxChange.data} secret />
+
+## Elite Four Agatha Battle
+
+<GoLiveButton moment={eliteFourAgathaBattle} secret />
+
+<Battle data={eliteFourAgathaBattle.data} secret />

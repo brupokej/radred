@@ -7,5 +7,7 @@ export declare function getEliteFourSecrets(_box1: Box): {
   eliteFourLoreleiBattle: Moment;
   eliteFourLoreleiBoxChange: Moment;
   eliteFourBrunoBattle: Moment;
+  eliteFourBrunoBoxChange: Moment;
+  eliteFourAgathaBattle: Moment;
   box: Box;
 };

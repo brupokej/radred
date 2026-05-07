@@ -35,9 +35,17 @@ export interface BranchData {
   default?: string;
 }
 
+export interface LoopAnchor {
+  anchor: string;
+}
+
+export interface LoopLink {
+  loop: string;
+}
+
 export interface MatchupData {
   matchup: string[];
-  turns: (MoveData[] | RowCell[])[];
+  turns: (MoveData[] | RowCell[] | LoopAnchor | LoopLink)[];
   branches?: BranchData[];
   newMatchup?: boolean;
 }
@@ -168,6 +176,72 @@ function computeInitialOrder(
   return order;
 }
 
+type LoopZoneInfo = {
+  activeAnchors: Set<string>;
+  loopMembers: Set<string>;
+};
+
+function computeLoopZones(lines: LineData[], visibleOrder: string[]): LoopZoneInfo {
+  const lineDataBySlug = new Map<string, LineData[]>();
+  for (const line of lines) {
+    const slug = line.line ?? "";
+    if (!lineDataBySlug.has(slug)) lineDataBySlug.set(slug, []);
+    lineDataBySlug.get(slug)!.push(line);
+  }
+
+  const visitedSlugs = new Set<string>();
+  const activeVersions = new Map<string, LineData>();
+  for (const slug of visibleOrder) {
+    const versions = lineDataBySlug.get(slug) ?? [];
+    const version =
+      versions.find((v) => conditionsMatch({ if: v.if, ifNot: v.ifNot }, visitedSlugs)) ??
+      versions[0];
+    visitedSlugs.add(slug);
+    if (version) activeVersions.set(slug, version);
+  }
+
+  type Pos = { orderIndex: number; matchupIndex: number };
+  const anchorPositions = new Map<string, Pos>();
+  const loopPositions = new Map<string, Pos>();
+
+  for (let oi = 0; oi < visibleOrder.length; oi++) {
+    const slug = visibleOrder[oi];
+    const lineData = activeVersions.get(slug);
+    if (!lineData) continue;
+    for (let mi = 0; mi < lineData.matchups.length; mi++) {
+      for (const entry of lineData.matchups[mi].turns) {
+        if (Array.isArray(entry)) continue;
+        if ("anchor" in entry)
+          anchorPositions.set(entry.anchor, { orderIndex: oi, matchupIndex: mi });
+        if ("loop" in entry) loopPositions.set(entry.loop, { orderIndex: oi, matchupIndex: mi });
+      }
+    }
+  }
+
+  const activeAnchors = new Set<string>();
+  const loopMembers = new Set<string>();
+
+  for (const [anchorName, loopPos] of loopPositions) {
+    const anchorPos = anchorPositions.get(anchorName);
+    if (!anchorPos) continue;
+
+    activeAnchors.add(`${visibleOrder[anchorPos.orderIndex]}:${anchorPos.matchupIndex}`);
+
+    for (let oi = anchorPos.orderIndex; oi <= loopPos.orderIndex; oi++) {
+      const slug = visibleOrder[oi];
+      const lineData = activeVersions.get(slug);
+      if (!lineData) continue;
+      const startMi = oi === anchorPos.orderIndex ? anchorPos.matchupIndex + 1 : 0;
+      const endMi = oi === loopPos.orderIndex ? loopPos.matchupIndex : lineData.matchups.length - 1;
+      for (let mi = startMi; mi <= endMi; mi++) {
+        loopMembers.add(`${slug}:${mi}`);
+      }
+    }
+  }
+
+  return { activeAnchors, loopMembers };
+}
+
 function enrichBranchConditions(
   children: React.ReactNode,
   visibleOrder: string[]
@@ -191,6 +265,25 @@ function enrichBranchConditions(
       });
     }) ?? children
   );
+}
+
+function injectLoopZoneProps(
+  children: React.ReactNode,
+  slug: string,
+  info: LoopZoneInfo
+): React.ReactNode {
+  let mi = 0;
+  return React.Children.map(children, (child) => {
+    if (!React.isValidElement(child) || child.type !== Matchup) return child;
+    const key = `${slug}:${mi++}`;
+    const loopAnchorActive = info.activeAnchors.has(key);
+    const loopMember = info.loopMembers.has(key);
+    if (!loopAnchorActive && !loopMember) return child;
+    return React.cloneElement(
+      child as React.ReactElement<{ loopAnchorActive?: boolean; loopMember?: boolean }>,
+      { loopAnchorActive, loopMember }
+    );
+  });
 }
 
 function enrichMatchups(
@@ -247,8 +340,12 @@ function battleDataToChildren(data: BattleData): React.ReactNode {
     <BattleLine key={li} line={lineData.line} lineIf={lineData.if} lineIfNot={lineData.ifNot}>
       {lineData.matchups.map((matchupData, mi) => (
         <Matchup key={mi} matchup={matchupData.matchup} newMatchup={matchupData.newMatchup}>
-          {matchupData.turns.map((entry, ti) =>
-            isTurn(entry) ? (
+          {matchupData.turns.map((entry, ti) => {
+            if (!Array.isArray(entry)) {
+              if ("anchor" in entry) return <LoopAnchorMarker key={ti} anchor={entry.anchor} />;
+              return <LoopLinkRow key={ti} loop={entry.loop} />;
+            }
+            return isTurn(entry) ? (
               <Turn key={ti}>
                 {entry.map((move, mvi) =>
                   move.player !== undefined ? (
@@ -260,8 +357,8 @@ function battleDataToChildren(data: BattleData): React.ReactNode {
               </Turn>
             ) : (
               <Row key={ti} row={entry} />
-            )
-          )}
+            );
+          })}
           {matchupData.branches?.map((branchData, bi) => (
             <Branch
               key={bi}
@@ -434,9 +531,14 @@ export function Battle({
     [state, dispatch, registerBranch, unregisterBranch, maxHp, teamMap, labelsMap]
   );
 
+  const loopZoneInfo = useMemo(
+    () => computeLoopZones(data.lines, state.visibleOrder),
+    [data.lines, state.visibleOrder]
+  );
+
   const enrichedLines = new Map<string, React.ReactNode>();
   let prevMatchup: string[] | null = null;
-  const visitedForIf = new Set<string>();
+  const visitedForIf = new Set(state.visibleOrder);
   for (const slug of state.visibleOrder) {
     const versions = lineVersionsBySlug.get(slug) ?? [];
     const version =
@@ -465,12 +567,29 @@ export function Battle({
       )}
       <BattleGraphCtx.Provider value={ctx}>
         <Card title="Battle Plan" className={blur ? styles.blurBattlePlan : undefined}>
-          {state.visibleOrder.map((slug) => (
-            <BattleLineCtx.Provider key={slug} value={slug}>
-              {enrichedLines.get(slug)}
-            </BattleLineCtx.Provider>
-          ))}
-          {blur && <button className={styles.expandButton}>···</button>}
+          {blur ? (
+            <>
+              {state.visibleOrder.map((slug) => (
+                <BattleLineCtx.Provider key={slug} value={slug}>
+                  {enrichedLines.get(slug)}
+                </BattleLineCtx.Provider>
+              ))}
+              <button className={styles.expandButton}>···</button>
+            </>
+          ) : (
+            <div data-battle-lines="">
+              {state.visibleOrder.map((slug) => {
+                const enriched = enrichedLines.get(slug);
+                return (
+                  <BattleLineCtx.Provider key={slug} value={slug}>
+                    {enriched !== undefined
+                      ? injectLoopZoneProps(enriched, slug, loopZoneInfo)
+                      : enriched}
+                  </BattleLineCtx.Provider>
+                );
+              })}
+            </div>
+          )}
         </Card>
       </BattleGraphCtx.Provider>
     </>
@@ -529,16 +648,24 @@ function MatchupSprite({ pokemon }: { pokemon: PokemonData }) {
 function Matchup({
   matchup,
   isContinued = false,
+  loopAnchorActive,
+  loopMember,
   children,
 }: {
   matchup: string[];
   isContinued?: boolean;
   newMatchup?: boolean;
+  loopAnchorActive?: boolean;
+  loopMember?: boolean;
   children: React.ReactNode;
 }) {
   const graphCtx = useContext(BattleGraphCtx);
   return (
-    <div className={`${styles.matchup} ${isContinued ? styles.matchupContinued : ""}`}>
+    <div
+      className={`${styles.matchup} ${isContinued ? styles.matchupContinued : ""}`}
+      data-loop-anchor-active={loopAnchorActive ? "" : undefined}
+      data-loop-member={loopMember ? "" : undefined}
+    >
       <div className={styles.spriteWrapper}>
         {!isContinued &&
           matchup.map((name, i) => {
@@ -589,6 +716,18 @@ function PlayerMove({ move }: { move: string }) {
 
 function OpponentMove({ move }: { move: string }) {
   return <Move move={move} side="opponent" className={styles.opponentMove} />;
+}
+
+function LoopAnchorMarker({ anchor }: { anchor: string }) {
+  return <div id={`loop-anchor-${slugify(anchor)}`} className={styles.loopAnchor} />;
+}
+
+function LoopLinkRow({ loop }: { loop: string }) {
+  return (
+    <div data-loop-zone="">
+      <Row row={["Loop →", { primary: loop }]} />
+    </div>
+  );
 }
 
 function Branch({

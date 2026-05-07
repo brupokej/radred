@@ -982,7 +982,6 @@ export const route18BirdKeeperJacobBattle: Moment = {
       },
       {
         line: "80% → Cramorant-Gorg switch to Porygon2",
-        ifNot: ["20% → Lanturn Volt Switch Cramorant-Gorg"],
         matchups: [
           {
             matchup: ["Cramorant-Gorg"],
@@ -1029,7 +1028,7 @@ export const route18BirdKeeperJacobBattle: Moment = {
             branches: [
               {
                 branches: [
-                  "80% → Cramorant-Gorg switch to Porygon2",
+                  "80% → Cramorant-Gorg switch to Porygon2 2",
                   "20% → Drednaw Rock Slide Cramorant-Gorg",
                 ],
               },
@@ -1038,8 +1037,8 @@ export const route18BirdKeeperJacobBattle: Moment = {
         ],
       },
       {
-        line: "80% → Cramorant-Gorg switch to Porygon2",
-        if: ["20% → Lanturn Volt Switch Cramorant-Gorg"],
+        line: "80% → Cramorant-Gorg switch to Porygon2 2",
+        label: "80% → Cramorant-Gorg switch to Porygon2",
         matchups: [
           {
             matchup: ["Cramorant-Gorg"],
@@ -1144,10 +1143,7 @@ export const route18BirdKeeperJacobBattle: Moment = {
             ],
             branches: [
               {
-                if: [
-                  "80% → Cramorant-Gorg switch to Porygon2",
-                  "20% → Lanturn Volt Switch Cramorant-Gorg",
-                ],
+                if: ["80% → Cramorant-Gorg switch to Porygon2 2"],
                 ifNot: ["Swampert-Mega switch to Lanturn"],
                 branches: ["Swampert-Mega Rock Slide Cramorant-Gorg"],
               },

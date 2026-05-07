@@ -152,3 +152,61 @@
 .blurBattlePlan details > :not(summary) [data-branch-row] [data-token="text"] {
   filter: none;
 }
+
+.loopAnchor {
+  height: 0;
+  overflow: hidden;
+}
+
+.turns > .loopAnchor {
+  border-bottom: none;
+}
+
+/* Anchor matchup with active loop: accent only on turns after the anchor marker */
+[data-loop-anchor-active] .turns {
+  position: relative;
+}
+
+[data-loop-anchor-active] .turns::after {
+  background: var(--ifm-color-primary);
+  bottom: -1px;
+  content: "";
+  height: 1px;
+  left: 0;
+  position: absolute;
+  width: 2px;
+  z-index: 1;
+}
+
+[data-loop-anchor-active] .turns .loopAnchor ~ * {
+  position: relative;
+}
+
+[data-loop-anchor-active] .turns .loopAnchor ~ *::before {
+  background: var(--ifm-color-primary);
+  bottom: -1px;
+  content: "";
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  width: 2px;
+  z-index: 3;
+}
+
+/* Loop member matchups (intermediate + loop link): full accent on all turns */
+[data-loop-member] .turns > * {
+  position: relative;
+}
+
+[data-loop-member] .turns > *::before {
+  background: var(--ifm-color-primary);
+  bottom: -1px;
+  content: "";
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  width: 2px;
+  z-index: 3;
+}

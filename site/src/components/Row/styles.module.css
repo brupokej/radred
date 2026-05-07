@@ -49,6 +49,11 @@
   outline: var(--hl-danger-outline);
 }
 
+.contentPrimary {
+  background: var(--hl-primary-bg);
+  outline: var(--hl-primary-outline);
+}
+
 .select {
   appearance: none;
   background-color: var(--ifm-color-emphasis-200);

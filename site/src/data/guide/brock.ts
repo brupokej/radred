@@ -235,7 +235,7 @@ export const route22RivalBattle: Moment = {
                 "Risk →",
                 {
                   danger:
-                    "Snubbull Pow-Up Punch Wooper-P → Snubbull Pow-Up Punch Wooper-P → Snubbull Fire Fang Kricketune → {c:0.3%}",
+                    "Snubbull Pow-Up Punch Wooper-P ×2 → Snubbull Fire Fang Kricketune → {c:0.3%}",
                 },
               ],
               [
@@ -881,7 +881,7 @@ export const pewterCityLeaderBrockBattle: Moment = {
                 "Risk →",
                 {
                   danger:
-                    "Varoom Bulldoze Kricketune → Cacnea Pow-Up Punch Kricketune → Lileep Mega Drain Kricketune → Lileep Mega Drain Kricketune (to 0) → {c:0.00001%}",
+                    "Varoom Bulldoze Kricketune → Cacnea Pow-Up Punch Kricketune → Lileep Mega Drain Kricketune ×2 (to 0) → {c:0.00001%}",
                 },
               ],
               [
