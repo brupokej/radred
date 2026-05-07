@@ -4,6 +4,7 @@ import {
   eliteFourAgathaBox,
   eliteFourBrunoInfernapeBox,
   eliteFourBrunoUrshifuSBox,
+  eliteFourLanceBox,
   eliteFourLoreleiRainBox,
   eliteFourLoreleiSnowBox,
 } from "@site/src/utils/opponents";
@@ -187,6 +188,44 @@ export function getEliteFourSecrets(_box1: Box) {
     },
   };
 
+  const eliteFourAgathaBoxChange: Moment = {
+    split: "Elite Four",
+    label: "Elite Four Agatha Box Change",
+    kind: "boxChange",
+  };
+
+  const _box4 = getBox({
+    box: _box3,
+    team: ["Secret", "Secret", "Secret", "Secret", "Secret"],
+  });
+
+  const eliteFourLanceBattle: Moment = {
+    split: "Elite Four",
+    label: "Elite Four Lance Battle",
+    kind: "battle",
+    secret: true,
+    data: {
+      playerBox: _box4,
+      opponentBox: eliteFourLanceBox,
+      lines: [
+        {
+          matchups: [
+            {
+              matchup: ["Glimmora"],
+              turns: [
+                [
+                  { player: "{p:Secret} Tackle {o:Glimmora} to {=:0}" },
+                  { opponent: "{o:Glimmora} Toxic Debris" },
+                  { opponent: "{o:Glimmora} fainted" },
+                ],
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  };
+
   return {
     eliteFourBoxChange,
     eliteFourChecklist,
@@ -195,6 +234,8 @@ export function getEliteFourSecrets(_box1: Box) {
     eliteFourBrunoBattle,
     eliteFourBrunoBoxChange,
     eliteFourAgathaBattle,
-    box: _box1,
+    eliteFourAgathaBoxChange,
+    eliteFourLanceBattle,
+    box: _box4,
   };
 }

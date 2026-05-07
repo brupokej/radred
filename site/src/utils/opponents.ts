@@ -4369,7 +4369,7 @@ export const eliteFourLanceBox = getOpponentBox([
     name: "Dialga-Primal",
     spriteKey: "dialga",
     level: 85,
-    nature: "Calm",
+    nature: "Bold/Calm",
     ability: "Primal Armor",
     item: "Adamant Orb",
     moves: ["Roar of Time", "Flash Cannon", "Rest", "Sleep Talk"],
