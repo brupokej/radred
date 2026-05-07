@@ -13,6 +13,7 @@ export const {
   eliteFourAgathaBattle,
   eliteFourAgathaBoxChange,
   eliteFourLanceBattle,
+  championRivalBattle,
   box,
 } = getEliteFourSecrets(_box1);
 
@@ -26,4 +27,5 @@ export const moments: Moment[] = [
   eliteFourAgathaBattle,
   eliteFourAgathaBoxChange,
   eliteFourLanceBattle,
+  championRivalBattle,
 ];

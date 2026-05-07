@@ -1,6 +1,7 @@
 import { getBox, type Box } from "@site/src/utils/box";
 import type { Moment } from "@site/src/utils/moments";
 import {
+  championRivalBox,
   eliteFourAgathaBox,
   eliteFourBrunoInfernapeBox,
   eliteFourBrunoUrshifuSBox,
@@ -226,6 +227,37 @@ export function getEliteFourSecrets(_box1: Box) {
     },
   };
 
+  const _box5 = getBox({
+    box: _box4,
+    team: ["Secret", "Secret", "Secret", "Secret", "Secret", "Secret"],
+  });
+
+  const championRivalBattle: Moment = {
+    split: "Elite Four",
+    label: "Champion Rival Battle",
+    kind: "battle",
+    secret: true,
+    data: {
+      playerBox: _box5,
+      opponentBox: championRivalBox,
+      lines: [
+        {
+          matchups: [
+            {
+              matchup: ["Kyogre-P"],
+              turns: [
+                [
+                  { player: "{p:Secret} Fake Out {o:Kyogre-P} to {-:290}" },
+                  { opponent: "{o:Kyogre-P} flinched" },
+                ],
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  };
+
   return {
     eliteFourBoxChange,
     eliteFourChecklist,
@@ -236,6 +268,7 @@ export function getEliteFourSecrets(_box1: Box) {
     eliteFourAgathaBattle,
     eliteFourAgathaBoxChange,
     eliteFourLanceBattle,
-    box: _box4,
+    championRivalBattle,
+    box: _box5,
   };
 }

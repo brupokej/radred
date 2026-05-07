@@ -267,7 +267,7 @@ for (const [pathIndex, path] of PATHS.entries()) {
       await page.waitForLoadState("networkidle");
       await page.addStyleTag({
         content:
-          "nav.navbar { visibility: hidden !important; } [class*='skipToContent'] { display: none !important; } *:focus { outline: none !important; box-shadow: none !important; }",
+          "nav.navbar { visibility: hidden !important; } [class*='skipToContent'] { display: none !important; } *:focus, *:focus-visible { outline: none !important; box-shadow: none !important; }",
       });
       await page.waitForTimeout(1000);
     });
