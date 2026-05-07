@@ -713,7 +713,7 @@ export const pokemonTowerGhostBattle: Moment = {
               {
                 branches: [
                   "94% → Meowscarada Knock Off Marowak-A",
-                  "6% → Meowscarada Knock Off Marowak-A (crit)",
+                  "6% → Meowscarada Knock Off Marowak-A (to 0)",
                 ],
               },
             ],
@@ -748,7 +748,7 @@ export const pokemonTowerGhostBattle: Moment = {
         frags: { Golduck: 1 },
       },
       {
-        line: "6% → Meowscarada Knock Off Marowak-A (crit)",
+        line: "6% → Meowscarada Knock Off Marowak-A (to 0)",
         matchups: [
           {
             matchup: ["Marowak-A"],
@@ -1755,7 +1755,7 @@ export const silphCoArianaArcherBattle: Moment = {
               {
                 branches: [
                   "94% → Sceptile-Mega Mega Drain Primarina",
-                  "6% → Sceptile-Mega Mega Drain Primarina (crit)",
+                  "6% → Sceptile-Mega Mega Drain Primarina (to 0)",
                 ],
               },
             ],
@@ -1781,7 +1781,7 @@ export const silphCoArianaArcherBattle: Moment = {
         ],
       },
       {
-        line: "6% → Sceptile-Mega Mega Drain Primarina (crit)",
+        line: "6% → Sceptile-Mega Mega Drain Primarina (to 0)",
         matchups: [
           {
             matchup: ["Primarina", "Articuno-G"],
@@ -1841,7 +1841,7 @@ export const silphCoArianaArcherBattle: Moment = {
               {
                 branches: [
                   "94% → Jellicent Water Spout Articuno-G",
-                  "6% → Jellicent Water Spout Articuno-G (crit)",
+                  "6% → Jellicent Water Spout Articuno-G (to 0)",
                 ],
               },
             ],
@@ -1964,7 +1964,7 @@ export const silphCoArianaArcherBattle: Moment = {
         frags: { Meowscarada: 2 },
       },
       {
-        line: "6% → Jellicent Water Spout Articuno-G (crit)",
+        line: "6% → Jellicent Water Spout Articuno-G (to 0)",
         matchups: [
           {
             matchup: ["Mawile-Mega", "Articuno-G"],
@@ -2090,7 +2090,7 @@ export const silphCoArianaArcherBattle: Moment = {
       },
       {
         line: "81% → Articuno-G Psychic Sceptile-Mega (to 0)",
-        if: ["6% → Sceptile-Mega Mega Drain Primarina (crit)"],
+        if: ["6% → Sceptile-Mega Mega Drain Primarina (to 0)"],
         matchups: [
           {
             matchup: ["Primarina", "Articuno-G"],
@@ -2118,7 +2118,7 @@ export const silphCoArianaArcherBattle: Moment = {
       },
       {
         line: "70% → Articuno-G Focus Blast Exploud",
-        if: ["6% → Sceptile-Mega Mega Drain Primarina (crit)"],
+        if: ["6% → Sceptile-Mega Mega Drain Primarina (to 0)"],
         matchups: [
           {
             matchup: ["Mawile-Mega", "Articuno-G"],
@@ -2142,7 +2142,7 @@ export const silphCoArianaArcherBattle: Moment = {
       },
       {
         line: "30% → Articuno-G Focus Blast Exploud (miss)",
-        if: ["6% → Sceptile-Mega Mega Drain Primarina (crit)"],
+        if: ["6% → Sceptile-Mega Mega Drain Primarina (to 0)"],
         matchups: [
           {
             matchup: ["Mawile-Mega", "Articuno-G"],
@@ -2169,7 +2169,7 @@ export const silphCoArianaArcherBattle: Moment = {
       },
       {
         line: "19% → Articuno-G Psychic Sceptile-Mega",
-        if: ["6% → Sceptile-Mega Mega Drain Primarina (crit)"],
+        if: ["6% → Sceptile-Mega Mega Drain Primarina (to 0)"],
         matchups: [
           {
             matchup: ["Primarina", "Articuno-G"],
@@ -2195,7 +2195,7 @@ export const silphCoArianaArcherBattle: Moment = {
       },
       {
         line: "70% → Sceptile-Mega Dragon Breath Articuno-G",
-        if: ["6% → Sceptile-Mega Mega Drain Primarina (crit)"],
+        if: ["6% → Sceptile-Mega Mega Drain Primarina (to 0)"],
         matchups: [
           {
             matchup: ["Mawile-Mega", "Articuno-G"],
@@ -2220,7 +2220,7 @@ export const silphCoArianaArcherBattle: Moment = {
       },
       {
         line: "30% → Sceptile-Mega Dragon Breath Articuno-G (paralyze)",
-        if: ["6% → Sceptile-Mega Mega Drain Primarina (crit)"],
+        if: ["6% → Sceptile-Mega Mega Drain Primarina (to 0)"],
         matchups: [
           {
             matchup: ["Mawile-Mega", "Articuno-G"],
@@ -2618,12 +2618,12 @@ export const silphCoGiovanniBattle: Moment = {
               [
                 { player: "{p:Meowscarada} Flower Trick {o:Garganacl} to {-:82}" },
                 { opponent: "{o:Garganacl} Salt Cure {p:Meowscarada} to {+:111}" },
-                { opponent: "{p:Meowscarada} cure to {+:90}" },
+                { opponent: "{p:Meowscarada} salt cure to {+:90}" },
               ],
               [
                 { player: "{p:Meowscarada} Flower Trick {o:Garganacl} to {=:0}" },
                 { opponent: "{o:Garganacl} fainted" },
-                { opponent: "{p:Meowscarada} cure to {+:69}" },
+                { opponent: "{p:Meowscarada} salt cure to {+:69}" },
               ],
             ],
           },

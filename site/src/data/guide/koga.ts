@@ -638,13 +638,13 @@ export const route16RiderHideoBattle: Moment = {
                 { opponent: "{p:Meowscarada} sandstorm to {+:117}" },
               ],
             ],
-            branches: [{ branches: ["50% → Rotom-Heat Matchup", "50% → Aron Matchup"] }],
+            branches: [{ branches: ["50% → Rotom-Heat matchup", "50% → Aron matchup"] }],
           },
         ],
         frags: { Meowscarada: 2 },
       },
       {
-        line: "50% → Rotom-Heat Matchup",
+        line: "50% → Rotom-Heat matchup",
         matchups: [
           {
             matchup: ["Rotom-Heat"],
@@ -689,13 +689,13 @@ export const route16RiderHideoBattle: Moment = {
                 { opponent: "{o:Aron} fainted" },
               ],
             ],
-            branches: [{ branches: ["Dragapult Switch to Excadrill"] }],
+            branches: [{ branches: ["Dragapult switch to Excadrill"] }],
           },
         ],
         frags: { Swampert: 1, Dragapult: 1 },
       },
       {
-        line: "50% → Aron Matchup",
+        line: "50% → Aron matchup",
         matchups: [
           {
             matchup: ["Aron"],
@@ -746,13 +746,13 @@ export const route16RiderHideoBattle: Moment = {
                 { opponent: "{p:Dragapult} Stealth Rock to {=:164}" },
               ],
             ],
-            branches: [{ branches: ["Dragapult Switch to Excadrill"] }],
+            branches: [{ branches: ["Dragapult switch to Excadrill"] }],
           },
         ],
         frags: { Swampert: 1, Dragapult: 1 },
       },
       {
-        line: "Dragapult Switch to Excadrill",
+        line: "Dragapult switch to Excadrill",
         matchups: [
           {
             matchup: ["Greninja"],

@@ -302,7 +302,7 @@ export const mtMoonSuperNerdMiguelBattle: Moment = {
               {
                 branches: [
                   "94% → Houndour Incinerate Skiddo",
-                  "6% → Houndour Incinerate Skiddo (crit)",
+                  "6% → Houndour Incinerate Skiddo (to 0)",
                 ],
               },
             ],
@@ -327,7 +327,7 @@ export const mtMoonSuperNerdMiguelBattle: Moment = {
         frags: { Azumarill: 1 },
       },
       {
-        line: "6% → Houndour Incinerate Skiddo (crit)",
+        line: "6% → Houndour Incinerate Skiddo (to 0)",
         matchups: [
           {
             matchup: ["Skiddo"],
@@ -363,7 +363,7 @@ export const mtMoonSuperNerdMiguelBattle: Moment = {
               {
                 branches: [
                   "94% → Houndour Incinerate Sableye and Skiddo",
-                  "6% → Houndour Incinerate Sableye and Skiddo (crit)",
+                  "6% → Houndour Incinerate Sableye and Skiddo (to 0)",
                 ],
               },
             ],
@@ -403,14 +403,14 @@ export const mtMoonSuperNerdMiguelBattle: Moment = {
         frags: { Azumarill: 2 },
       },
       {
-        line: "6% → Houndour Incinerate Sableye and Skiddo (crit)",
+        line: "6% → Houndour Incinerate Sableye and Skiddo (to 0)",
         matchups: [
           {
             matchup: ["Skiddo", "Sableye"],
             turns: [
               [
                 {
-                  player: "{p:Houndour} Incinerate {o:Sableye} to {-:41} and {o:Skiddo} to {=:0}",
+                  player: "{p:Houndour} Incinerate {o:Sableye} to {-:41} and {o:Skiddo} (crit) to {=:0}",
                 },
                 { player: "{p:Azumarill} Play Rough {o:Skiddo} → {o:Sableye} to {=:0}" },
                 { opponent: "{o:Skiddo} fainted" },

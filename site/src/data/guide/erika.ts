@@ -274,7 +274,7 @@ export const celadonCityLeaderErikaBattle: Moment = {
               {
                 branches: [
                   "94% → Ceruledge Shadow Claw Hawlucha",
-                  "6% → Ceruledge Shadow Claw Hawlucha (crit)",
+                  "6% → Ceruledge Shadow Claw Hawlucha (to 0)",
                 ],
               },
             ],
@@ -337,7 +337,7 @@ export const celadonCityLeaderErikaBattle: Moment = {
         frags: { Runerigus: 1, Ceruledge: 1 },
       },
       {
-        line: "6% → Ceruledge Shadow Claw Hawlucha (crit)",
+        line: "6% → Ceruledge Shadow Claw Hawlucha (to 0)",
         matchups: [
           {
             matchup: ["Hawlucha"],
