@@ -821,6 +821,7 @@ export const pewterCityLeaderBrockBattle: Moment = {
               ],
               [
                 { player: "{p:Torracat} Fire Fang {o:Varoom} to {=:0}" },
+                { opponent: "{o:Varoom} fainted" },
                 { opponent: "{p:Torracat} sandstorm to {=:33}" },
                 { opponent: "{p:Torracat} badly poison to {=:24}" },
               ],

@@ -298,7 +298,7 @@ export const route25LeaderBugsyBattle: Moment = {
             matchup: ["Lokix"],
             turns: [
               [
-                { player: "{p:Excadrill} switch to {o:Golisopod}" },
+                { player: "{p:Excadrill} switch to {p:Golisopod}" },
                 { opponent: "{o:Lokix} Knock Off {p:Golisopod} to {+:56}" },
               ],
               [
@@ -1029,7 +1029,7 @@ const _box13 = getBox({
 
 export const rockTunnelPicnickerDanaBattle: Moment = {
   split: "Surge",
-  label: "Rock Tunnel Picnicker Data Battle",
+  label: "Rock Tunnel Picnicker Dana Battle",
   kind: "battle",
   data: {
     playerBox: _box13,
@@ -1484,6 +1484,7 @@ export const vermillionCityLeaderLtSurgeBattle: Moment = {
               [
                 { player: "{p:Houndoom} switch to {p:Runerigus}" },
                 { opponent: "{o:Electrode-H} Explosion {p:Runerigus}" },
+                { opponent: "{o:Electrode-H} fainted" },
               ],
             ],
           },

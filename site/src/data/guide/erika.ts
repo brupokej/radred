@@ -345,6 +345,7 @@ export const celadonCityLeaderErikaBattle: Moment = {
               [
                 { opponent: "{o:Hawlucha} Swords Dance" },
                 { player: "{p:Ceruledge} Shadow Claw {o:Hawlucha} (crit) to {=:0}" },
+                { opponent: "{o:Hawlucha} fainted" },
               ],
             ],
           },

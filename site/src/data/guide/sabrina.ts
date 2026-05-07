@@ -1287,8 +1287,8 @@ export const saffronDojoLeaderChuckBattle: Moment = {
               ],
               [
                 { player: "{p:Ceruledge} Bitter Blade {o:Zamazenta-C} to {=:0}" },
-                { opponent: "{o:Zamazenta-C} fainted" },
                 { opponent: "{p:Ceruledge} recover to {+:85}" },
+                { opponent: "{o:Zamazenta-C} fainted" },
               ],
             ],
             branches: [{ branches: ["Ceruledge switch to Azumarill"] }],
@@ -1338,6 +1338,7 @@ export const saffronDojoLeaderChuckBattle: Moment = {
                 { opponent: "{o:Zamazenta-C} recoil to {-:27}" },
                 { player: "{p:Ceruledge} Bitter Blade {o:Zamazenta-C} to {=:0}" },
                 { opponent: "{p:Ceruledge} recover to {+:63}" },
+                { opponent: "{o:Zamazenta-C} fainted" },
               ],
             ],
             branches: [{ branches: ["Ceruledge switch to Azumarill"] }],

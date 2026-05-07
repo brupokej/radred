@@ -120,7 +120,7 @@ export const route3LassSallyBattle: Moment = {
             ],
           },
           {
-            matchup: ["mawile"],
+            matchup: ["Mawile"],
             turns: [
               [
                 { player: "{p:Azumarill} switch to {p:Meowth-G}" },
@@ -545,6 +545,7 @@ export const mtMoonArcherBattle: Moment = {
               [
                 { opponent: "{o:Fearow} Double Hit {p:Azumarill} to {+:17}" },
                 { player: "{p:Azumarill} Ice Punch {o:Fearow} to {=:0}" },
+                { opponent: "{o:Fearow} fainted" },
               ],
             ],
           },
@@ -970,6 +971,7 @@ export const ceruleanCityRivalBattle: Moment = {
               [
                 { opponent: "{o:Hitmonlee} Knock Off {p:Azumarill} to {+:29}" },
                 { player: "{p:Azumarill} Play Rough {o:Hitmonlee} to {=:0}" },
+                { opponent: "{o:Hitmonlee} fainted" },
               ],
             ],
             branches: [
@@ -1088,6 +1090,7 @@ export const ceruleanCityRivalBattle: Moment = {
               [
                 { opponent: "{o:Hitmonlee} Low Sweep {p:Azumarill} to {+:29}" },
                 { player: "{p:Azumarill} Play Rough {o:Hitmonlee} to {=:0}" },
+                { opponent: "{o:Hitmonlee} fainted" },
               ],
             ],
           },
@@ -1432,6 +1435,7 @@ export const nuggetBridgeCamperEthanBattle: Moment = {
               [
                 { opponent: "{o:Mabosstiff} Trailblaze {p:Azumarill} to {+:25}" },
                 { player: "{p:Azumarill} Play Rough {o:Mabosstiff} to {=:0}" },
+                { opponent: "{o:Mabosstiff} fainted" },
               ],
             ],
           },

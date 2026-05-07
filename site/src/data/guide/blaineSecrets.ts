@@ -342,7 +342,7 @@ export function getBlaineSecrets(_box1: Box) {
                 [
                   { opponent: "{o:Salamence-Mega} mega evolve" },
                   { player: "{p:Secret} Fake Out {o:Cinderace} to {-:230}" },
-                  { opponent: "{p:Cinderace} flinched" },
+                  { opponent: "{o:Cinderace} flinched" },
                   { player: "{p:Secret} Tackle {o:Salamence-Mega} to {=:0}" },
                   { opponent: "{o:Salamence-Mega} fainted" },
                   { player: "{p:Secret} transform" },
