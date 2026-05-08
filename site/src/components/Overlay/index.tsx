@@ -23,6 +23,24 @@ export type OverlayPanelSlot = { pokemon: PokemonData; subtitle?: string } | nul
 
 // ---- Shared layout ----
 
+function OutlineFilter() {
+  return (
+    <svg width="0" height="0" style={{ position: "absolute" }}>
+      <defs>
+        <filter id="outline" x="-5%" y="-5%" width="110%" height="110%">
+          <feMorphology in="SourceAlpha" result="expanded" operator="dilate" radius="0.875" />
+          <feFlood floodColor="#424242" result="color" />
+          <feComposite in="color" in2="expanded" operator="in" result="outline" />
+          <feMerge>
+            <feMergeNode in="outline" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+      </defs>
+    </svg>
+  );
+}
+
 const FRAMES = {
   large: { left: 22, top: 22, width: 1372, height: 912 },
   camera: { left: 1420, top: 22, width: 478, height: 316 },
@@ -44,6 +62,7 @@ function OverlayCanvas({ children }: { children: ReactNode }) {
         color: "var(--overlay-white)",
       }}
     >
+      <OutlineFilter />
       {children}
     </div>
   );
@@ -376,6 +395,7 @@ export function OverlayBanner() {
 
   return (
     <div className={styles.overlay} style={{ background: "transparent" }}>
+      <OutlineFilter />
       <OverlayFrame frame={FRAMES.badges}>
         <div className={styles.badgesRow}>
           {BADGE_NAMES.map((name) => (

@@ -37,10 +37,7 @@
 }
 
 .shadow {
-  filter: drop-shadow(1px 1px 0px var(--overlay-dark-gray))
-    drop-shadow(-1px -1px 0px var(--overlay-dark-gray))
-    drop-shadow(1px -1px 0px var(--overlay-dark-gray))
-    drop-shadow(-1px 1px 0px var(--overlay-dark-gray));
+  filter: url(#outline);
 }
 
 .bannerStrip {

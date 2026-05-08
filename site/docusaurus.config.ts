@@ -47,6 +47,15 @@ const config: Config = {
     defaultLocale: "en",
     locales: ["en"],
   },
+  headTags: [
+    {
+      tagName: "meta",
+      attributes: {
+        name: "google-site-verification",
+        content: "yJOMihHl0ttkdji_qrdOfBFnHbzIHC0WyTGp-i2GqY0",
+      },
+    },
+  ],
   presets: [
     [
       "classic",
@@ -55,6 +64,10 @@ const config: Config = {
           path: "guide",
           routeBasePath: "guide",
           sidebarPath: "./sidebars.ts",
+        },
+        sitemap: {
+          changefreq: "weekly",
+          priority: 0.5,
         },
         theme: {
           customCss:

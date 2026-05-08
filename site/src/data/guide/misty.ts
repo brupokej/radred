@@ -410,7 +410,8 @@ export const mtMoonSuperNerdMiguelBattle: Moment = {
             turns: [
               [
                 {
-                  player: "{p:Houndour} Incinerate {o:Sableye} to {-:41} and {o:Skiddo} (crit) to {=:0}",
+                  player:
+                    "{p:Houndour} Incinerate {o:Sableye} to {-:41} and {o:Skiddo} (crit) to {=:0}",
                 },
                 { player: "{p:Azumarill} Play Rough {o:Skiddo} → {o:Sableye} to {=:0}" },
                 { opponent: "{o:Skiddo} fainted" },
