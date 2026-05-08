@@ -28,7 +28,7 @@ function OutlineFilter() {
     <svg width="0" height="0" style={{ position: "absolute" }}>
       <defs>
         <filter id="outline" x="-5%" y="-5%" width="110%" height="110%">
-          <feMorphology in="SourceAlpha" result="expanded" operator="dilate" radius="0.875" />
+          <feMorphology in="SourceAlpha" result="expanded" operator="dilate" radius="1.75" />
           <feFlood floodColor="#424242" result="color" />
           <feComposite in="color" in2="expanded" operator="in" result="outline" />
           <feMerge>

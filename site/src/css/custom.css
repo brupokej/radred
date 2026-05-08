@@ -72,3 +72,23 @@ html[data-highlight-level="off"] {
   --ifm-color-primary-lightest: #4fddbf;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
+
+[data-stream-mode="true"] {
+  --ifm-background-color: #424242;
+  --ifm-navbar-background-color: #4f4f4f;
+  --ifm-background-surface-color: #4f4f4f;
+  --ifm-card-background-color: #4f4f4f;
+  --ifm-color-emphasis-100: #484848;
+  --ifm-color-emphasis-200: #5c5c5c;
+  --ifm-color-emphasis-300: #676767;
+  --ifm-color-emphasis-400: #737373;
+  --hl-info-bg: rgba(54, 182, 255, 0.15);
+  --hl-warning-bg: rgba(255, 186, 0, 0.15);
+  --hl-danger-bg: rgba(250, 56, 56, 0.15);
+  --hl-primary-bg: rgba(37, 194, 160, 0.15);
+  --ifm-color-success-contrast-background: rgba(0, 200, 80, 0.18);
+}
+
+[data-stream-mode="true"] .footer--dark {
+  background-color: #3a3a3a;
+}

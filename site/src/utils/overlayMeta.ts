@@ -86,13 +86,13 @@ export function findMomentByLabel(label: string | null): Moment {
 const CYCLE_START_INDEX = allMoments.findIndex((m) => m.label === "Mt. Moon Encounter");
 
 export function hasCyclingStarted(moment: Moment): boolean {
-  if (moment.label === "New Game") return false;
+  if (moment.label === "Brock") return false;
   const idx = allMoments.findIndex((m) => m.label === moment.label);
   return CYCLE_START_INDEX !== -1 && idx >= CYCLE_START_INDEX;
 }
 
 export function derivePlayerBox(moment: Moment): Box | null {
-  if (moment.label === "New Game") return null;
+  if (moment.label === "Brock") return null;
   const currentIndex = allMoments.findIndex((m) => m.label === moment.label);
   if (currentIndex === -1) return null;
   for (let i = currentIndex; i >= 0; i--) {
@@ -105,7 +105,7 @@ export function derivePlayerBox(moment: Moment): Box | null {
 }
 
 export function deriveOpponentInfo(moment: Moment): OpponentInfo | null {
-  if (moment.label === "New Game") return null;
+  if (moment.label === "Brock") return null;
   const currentIndex = allMoments.findIndex((m) => m.label === moment.label);
   if (currentIndex === -1) return null;
   const current = allMoments[currentIndex];
@@ -156,7 +156,7 @@ export function deriveTopStats(
   playerBox: Box | null,
   view: StatViewType
 ): TopBattler[] {
-  if (moment.label === "New Game") return [];
+  if (moment.label === "Brock") return [];
   const currentIndex = allMoments.findIndex((m) => m.label === moment.label);
   const battleMoments = allMoments
     .slice(0, currentIndex === -1 ? 0 : currentIndex)
