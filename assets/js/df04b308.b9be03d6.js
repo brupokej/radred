@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunksite=self.webpackChunksite||[]).push([["3641"],{6527(r,s,e){e.r(s),e.d(s,{default:()=>d});var n=e(4848),t=e(3572),a=e(6596);function d(){return(0,n.jsxs)(n.Fragment,{children:[(0,n.jsx)(t.A,{children:(0,n.jsx)("style",{children:"html, body, #__docusaurus { background: transparent !important; margin: 0; padding: 0; }"})}),(0,n.jsx)(a.rd,{})]})}}}]);
