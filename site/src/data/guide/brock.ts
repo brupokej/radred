@@ -337,14 +337,8 @@ const _box13 = getBox({
       item: "Oran Berry",
       moves: ["Aqua Jet", "Body Slam", "Covet", "Tail Whip"],
     },
-    "Wooper-P": {
-      nature: "Bold",
-      ability: "Water Absorb",
-      item: undefined,
-      moves: ["Mud Shot", "Slam", "Tackle", "Tail Whip"],
-    },
     Torracat: {
-      nature: "Impish",
+      nature: "Adamant",
       ability: "Blaze",
       item: undefined,
       moves: ["Fake Out", "Double Kick", "Fire Fang", "Leer"],
@@ -356,7 +350,7 @@ const _box13 = getBox({
       moves: ["Bug Bite", "Mega Drain", "Rock Tomb", "Struggle Bug"],
     },
   },
-  team: ["Marill", "Wooper-P", "Torracat", "Kricketune"],
+  team: ["Marill", "Torracat", "Kricketune"],
 });
 
 export const viridianForestBrendanBattle: Moment = {
@@ -377,7 +371,8 @@ export const viridianForestBrendanBattle: Moment = {
                 { player: "{p:Marill} flinched" },
               ],
               [
-                { opponent: "{o:Meditite} Rock Tomb {p:Marill} to {+:20}" },
+                { opponent: "{o:Meditite} Rock Tomb {p:Marill} to {+:8}" },
+                { opponent: "{p:Marill} Oran Berry to {+:18}" },
                 { player: "{p:Marill} Covet {o:Meditite} to {-:4}" },
               ],
               [
@@ -390,12 +385,8 @@ export const viridianForestBrendanBattle: Moment = {
             matchup: ["Corphish"],
             turns: [
               [
-                { player: "{p:Marill} switch to {p:Wooper-P}" },
-                { opponent: "{o:Corphish} Knock Off {p:Wooper-P} to {+:24}" },
-              ],
-              [
-                { player: "{p:Wooper-P} switch to {p:Torracat}" },
-                { opponent: "{o:Corphish} Knock Off {p:Torracat} to {+:29}" },
+                { player: "{p:Marill} switch to {p:Torracat}" },
+                { opponent: "{o:Corphish} Rock Tomb {p:Torracat} to {+:7}" },
               ],
               [
                 { player: "{p:Torracat} Fake Out {o:Corphish} to {-:34}" },
@@ -417,7 +408,8 @@ export const viridianForestBrendanBattle: Moment = {
             turns: [
               [
                 { player: "{p:Kricketune} Rock Tomb {o:Numel} to {-:16}" },
-                { opponent: "{o:Numel} Flame Charge {p:Kricketune} to {+:13}" },
+                { opponent: "{o:Numel} Flame Charge {p:Kricketune} to {+:3}" },
+                { opponent: "{p:Kricketune} Oran Berry to {+:13}" },
               ],
               [
                 { player: "{p:Kricketune} Rock Tomb {o:Numel} to {=:0}" },
