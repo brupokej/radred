@@ -437,23 +437,11 @@ export const viridianForestBrendanBattle: Moment = {
 const _box14 = getBox({
   box: _box13,
   update: {
-    "Meowth-G": {
-      nature: "Sassy",
-      ability: "Tough Claws",
-      item: "Occa Berry",
-      moves: ["Fake Out", "Growl", "Metal Claw", "Scratch"],
-    },
-    Kricketune: {
-      nature: "Naughty",
-      ability: "Technician",
-      item: "Oran Berry",
-      moves: ["Bug Bite", "Mega Drain", "Rock Tomb", "Struggle Bug"],
-    },
-    Houndour: {
-      nature: "Modest",
-      ability: "Flash Fire",
-      item: "Oran Berry",
-      moves: ["Incinerate", "Leer", "Snarl", "Sucker Punch"],
+    Torracat: {
+      nature: "Adamant",
+      ability: "Blaze",
+      item: undefined,
+      moves: ["Fake Out", "Double Kick", "Fire Fang", "Leer"],
     },
     Marill: {
       nature: "Impish",
@@ -461,14 +449,20 @@ const _box14 = getBox({
       item: "Pixie Plate",
       moves: ["Aqua Jet", "Body Slam", "Covet", "Tail Whip"],
     },
-    "Wooper-P": {
-      nature: "Bold",
-      ability: "Water Absorb",
-      item: undefined,
-      moves: ["Mud Shot", "Slam", "Tackle", "Tail Whip"],
+    Kricketune: {
+      nature: "Naughty",
+      ability: "Technician",
+      item: "Oran Berry",
+      moves: ["Bug Bite", "Mega Drain", "Rock Tomb", "Struggle Bug"],
+    },
+    "Meowth-G": {
+      nature: "Sassy",
+      ability: "Tough Claws",
+      item: "Occa Berry",
+      moves: ["Fake Out", "Growl", "Metal Claw", "Scratch"],
     },
   },
-  team: ["Meowth-G", "Kricketune", "Houndour", "Marill", "Wooper-P"],
+  team: ["Torracat", "Marill", "Kricketune", "Meowth-G"],
 });
 
 export const viridianForestLassAnneBattle: Moment = {
@@ -485,29 +479,17 @@ export const viridianForestLassAnneBattle: Moment = {
             matchup: ["Stufful"],
             turns: [
               [
-                { player: "{p:Meowth-G} Fake Out {o:Stufful} to {-:45}" },
-                { opponent: "{o:Stufful} flinched" },
+                { player: "{p:Torracat} Leer {o:Stufful}" },
+                { opponent: "{o:Stufful} Low Sweep {p:Torracat} to {+:20}" },
               ],
               [
-                { player: "{p:Meowth-G} switch to {p:Kricketune}" },
-                { opponent: "{o:Stufful} Low Sweep {p:Kricketune} to {+:43}" },
-              ],
-              [
-                { opponent: "{o:Stufful} Aerial Ace {p:Kricketune} to {+:21}" },
-                { player: "{p:Kricketune} Bug Bite {o:Stufful} to {-:37}" },
-                { opponent: "{p:Kricketune} Oran Berry to {+:31}" },
-              ],
-              [
-                { player: "{p:Kricketune} switch to {p:Houndour}" },
-                { opponent: "{o:Stufful} Aerial Ace {p:Houndour} to {+:38}" },
-              ],
-              [
-                { player: "{p:Houndour} switch to {p:Marill}" },
+                { player: "{p:Torracat} switch to {p:Marill}" },
                 { opponent: "{o:Stufful} Low Sweep {p:Marill} to {+:39}" },
               ],
               [
                 { opponent: "{o:Stufful} Aerial Ace {p:Marill} to {+:20}" },
-                { player: "{p:Marill} Covet {o:Stufful} to {-:16}" },
+                { player: "{p:Marill} Covet {o:Stufful} to {-:19}" },
+                { opponent: "{o:Stufful} Oran Berry to {-:29}" },
               ],
               [
                 { opponent: "{o:Stufful} Aerial Ace {p:Marill} to {+:1}" },
@@ -523,13 +505,16 @@ export const viridianForestLassAnneBattle: Moment = {
                 { opponent: "{o:Audino} Yawn {p:Marill}" },
                 { player: "{p:Marill} Tail Whip {o:Audino}" },
               ],
-              [{ player: "{p:Marill} switch to {p:Wooper-P}" }, { opponent: "{o:Audino} Protect" }],
               [
-                { opponent: "{o:Audino} Yawn {p:Wooper-P}" },
-                { player: "{p:Wooper-P} Tail Whip {o:Audino}" },
+                { player: "{p:Marill} switch to {p:Torracat}" },
+                { opponent: "{o:Audino} Protect" },
               ],
               [
-                { player: "{p:Wooper-P} switch to {p:Kricketune}" },
+                { player: "{p:Torracat} Leer {o:Audino}" },
+                { opponent: "{o:Audino} Yawn {p:Torracat}" },
+              ],
+              [
+                { player: "{p:Torracat} switch to {p:Kricketune}" },
                 { opponent: "{o:Audino} Protect" },
               ],
               [
