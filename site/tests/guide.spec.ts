@@ -5,6 +5,9 @@ import { slugify } from "../src/utils/slugify";
 
 test.describe.configure({ mode: "serial" });
 
+// Cache sprite responses across tests so each URL is only fetched from the CDN once.
+const spriteCache = new Map<string, { body: Buffer; contentType: string }>();
+
 const SNAPSHOT_DIR = path.join(__dirname, "snapshots/guide.spec.ts-snapshots");
 const SNAPSHOT_SUFFIX = `desktop-${process.platform}`;
 const secretMode = process.env.SECRET_MODE === "true";
@@ -263,6 +266,22 @@ const PATHS = secretMode
 for (const [pathIndex, path] of PATHS.entries()) {
   test.describe(`${path[0]}/${path[1]}`, () => {
     test.beforeEach(async ({ page }) => {
+      await page.route("**/*.png", async (route) => {
+        const url = route.request().url();
+        const cached = spriteCache.get(url);
+        if (cached) {
+          await route.fulfill({ body: cached.body, contentType: cached.contentType });
+          return;
+        }
+        const response = await route.fetch();
+        const body = await response.body();
+        spriteCache.set(url, {
+          body,
+          contentType: response.headers()["content-type"] ?? "image/png",
+        });
+        await route.fulfill({ response, body });
+      });
+
       await page.goto(`/radred/${path[0]}/${path[1]}`);
       await page.waitForLoadState("networkidle");
       await page.addStyleTag({
