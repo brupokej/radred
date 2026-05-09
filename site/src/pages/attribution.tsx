@@ -20,7 +20,6 @@ const css = `
     height: 68px;
     width: 68px;
     object-fit: contain;
-    filter: url(#outline);
   }
 
   .mockup-banner-text {
@@ -40,7 +39,7 @@ const css = `
 `;
 
 export default function AttributionMockup(): ReactNode {
-  const imgSrc = useBaseUrl("/img/brupokej.png");
+  const imgSrc = useBaseUrl("/img/logo.svg");
   return (
     <>
       <Head>
