@@ -72,12 +72,26 @@ const _box4 = getBox({
       moves: ["Aerial Ace", "Earthquake", "Iron Head", "Shadow Claw"],
     },
     Gyarados: {
+      nature: "Impish",
+      ability: "Intimidate",
       item: "Charti Berry",
+      moves: ["Aqua Tail", "Bulldoze", "Rest", "Scary Face"],
+    },
+    Runerigus: {
+      nature: "Adamant",
+      ability: "Shadow Shield",
+      item: "Rindo Berry",
+      moves: ["Earthquake", "Rock Tomb", "Shadow Ball", "Shadow Sneak"],
     },
     Clodsire: {
+      nature: "Impish",
+      ability: "Water Absorb",
+      item: "Sitrus Berry",
       moves: ["Bulldoze", "Rock Slide", "Rock Tomb", "Yawn"],
     },
     Meowscarada: {
+      nature: "Brave",
+      ability: "Protean",
       item: undefined,
       moves: ["Acrobatics", "Flower Trick", "Knock Off", "Play Rough"],
     },
@@ -165,7 +179,18 @@ export const route16BikerLaoBattle: Moment = {
   },
 };
 
-const _box5 = getBox({ box: _box4, team: ["Excadrill"] });
+const _box5 = getBox({
+  box: _box4,
+  update: {
+    Excadrill: {
+      nature: "Adamant",
+      ability: "Sand Rush",
+      item: "Soft Sand",
+      moves: ["Aerial Ace", "Earthquake", "Iron Head", "Shadow Claw"],
+    },
+  },
+  team: ["Excadrill"],
+});
 
 export const route16CueBallKojiBattle: Moment = {
   split: "Koga",
@@ -203,7 +228,24 @@ export const route16CueBallKojiBattle: Moment = {
   },
 };
 
-const _box6 = getBox({ box: _box5, team: ["Excadrill", "Meowscarada"] });
+const _box6 = getBox({
+  box: _box5,
+  update: {
+    Excadrill: {
+      nature: "Adamant",
+      ability: "Sand Rush",
+      item: "Soft Sand",
+      moves: ["Aerial Ace", "Earthquake", "Iron Head", "Shadow Claw"],
+    },
+    Meowscarada: {
+      nature: "Brave",
+      ability: "Protean",
+      item: undefined,
+      moves: ["Acrobatics", "Flower Trick", "Knock Off", "Play Rough"],
+    },
+  },
+  team: ["Excadrill", "Meowscarada"],
+});
 
 export const route16CueBallLukeBattle: Moment = {
   split: "Koga",
@@ -260,17 +302,40 @@ const _box7 = getBox({
   update: {
     "Arcanine-H": {
       nature: "Adamant",
+      ability: "Rock Head",
       item: "Hard Stone",
       hp: undefined,
       moves: ["Accelerock", "Flare Blitz", "Play Rough", "Rock Slide"],
     },
+    Azumarill: {
+      nature: "Brave",
+      ability: "Huge Power",
+      item: "Iron Ball",
+      moves: ["Aqua Tail", "Helping Hand", "Play Rough", "Superpower"],
+    },
     Excadrill: {
+      nature: "Adamant",
+      ability: "Sand Rush",
       item: "Expert Belt",
       moves: ["Brick Break", "Earthquake", "Iron Head", "Shadow Claw"],
     },
+    Drednaw: {
+      nature: "Impish",
+      ability: "Shell Armor",
+      item: "Shuca Berry",
+      moves: ["Bulldoze", "Dig", "Flip Turn", "Jaw Lock"],
+    },
+    Meowscarada: {
+      nature: "Brave",
+      ability: "Protean",
+      item: undefined,
+      moves: ["Acrobatics", "Flower Trick", "Knock Off", "Play Rough"],
+    },
     Perrserker: {
+      nature: "Relaxed",
       ability: "Battle Armor",
       item: "Shuca Berry",
+      moves: ["Fake Out", "Bullet Punch", "Shadow Claw", "U-Turn"],
     },
   },
   team: ["Arcanine-H", "Azumarill", "Excadrill", "Drednaw", "Meowscarada", "Perrserker"],
@@ -389,7 +454,7 @@ export const route16BikerRubenBoxChange: Moment = {
   split: "Koga",
   label: "Route 16 Biker Ruben Box Change",
   kind: "boxChange",
-  data: { playerBox: _box7 },
+  data: { playerBox: _box8 },
 };
 
 const _box9 = getBox({
@@ -397,28 +462,37 @@ const _box9 = getBox({
   update: {
     Meowscarada: {
       nature: "Adamant",
+      ability: "Protean",
       item: "Miracle Seed",
       moves: ["Flower Trick", "Knock Off", "Play Rough", "Shadow Claw"],
     },
     Perrserker: {
+      nature: "Relaxed",
+      ability: "Battle Armor",
       item: "Sitrus Berry",
       moves: ["HP Fire", "Play Rough", "Shadow Claw", "U-Turn"],
     },
     Azumarill: {
       nature: "Adamant",
+      ability: "Huge Power",
       item: "Pixie Plate",
       moves: ["Aqua Jet", "Aqua Tail", "Knock Off", "Play Rough"],
     },
     Drednaw: {
+      nature: "Impish",
+      ability: "Shell Armor",
       item: undefined,
       moves: ["Bulldoze", "Dig", "Flip Turn", "Ice Fang"],
     },
     Dragapult: {
+      nature: "Adamant",
+      ability: "Clear Body",
       item: "Expert Belt",
       moves: ["Astonish", "Dragon Darts", "Flamethrower", "Quick Attack"],
     },
     Incineroar: {
       nature: "Impish",
+      ability: "Blaze",
       item: undefined,
       moves: ["Fake Out", "Darkest Lariat", "Outrage", "U-Turn"],
     },
@@ -557,26 +631,37 @@ const _box11 = getBox({
   update: {
     Meowscarada: {
       nature: "Jolly",
+      ability: "Protean",
       item: "Cheri Berry",
       moves: ["Aerial Ace", "Flower Trick", "Knock Off", "Play Rough"],
     },
     Clodsire: {
+      nature: "Impish",
+      ability: "Water Absorb",
+      item: "Sitrus Berry",
       moves: ["Bulldoze", "Megahorn", "Rock Slide", "Rock Tomb"],
     },
     Houndoom: {
       nature: "Timid",
+      ability: "Flash Fire",
+      item: "Charcoal",
       moves: ["Fiery Wrath", "Flamethrower", "Scorching Sands", "Thunder Fang"],
     },
     Swampert: {
       nature: "Careful",
+      ability: "Damp",
+      item: "Focus Sash",
       moves: ["Earthquake", "Flip Turn", "Hammer Arm", "Rock Tomb"],
     },
     Dragapult: {
+      nature: "Adamant",
+      ability: "Clear Body",
       item: "Safety Goggles",
       moves: ["Astonish", "Dragon Darts", "Flamethrower", "U-Turn"],
     },
     Excadrill: {
       nature: "Careful",
+      ability: "Sand Rush",
       item: "Sitrus Berry",
       moves: ["Brick Break", "Earthquake", "Iron Head", "Rock Slide"],
     },
@@ -798,15 +883,21 @@ const _box12 = getBox({
     },
     Clodsire: {
       nature: "Careful",
+      ability: "Water Absorb",
+      item: "Sitrus Berry",
       moves: ["Bulldoze", "Earthquake", "Rock Slide", "Rock Tomb"],
     },
     Meowscarada: {
       nature: "Adamant",
+      ability: "Protean",
       item: "Expert Belt",
       moves: ["Brick Break", "Flower Trick", "Knock Off", "Play Rough"],
     },
     Dragapult: {
       nature: "Jolly",
+      ability: "Clear Body",
+      item: "Safety Goggles",
+      moves: ["Astonish", "Dragon Darts", "Flamethrower", "U-Turn"],
     },
   },
   team: ["Excadrill", "Clodsire", "Meowscarada"],
@@ -930,6 +1021,8 @@ const _box15 = getBox({
   box: _box14,
   update: {
     Lanturn: {
+      nature: "Quiet",
+      ability: "Water Absorb",
       item: "Persim Berry",
       moves: ["Flip Turn", "Signal Beam", "Thunderbolt", "Volt Switch"],
     },
@@ -941,16 +1034,27 @@ const _box15 = getBox({
     },
     "Swampert-Mega": {
       nature: "Jolly",
+      ability: "Swift Swim",
       item: "Swampertite",
       moves: ["Earthquake", "Hammer Arm", "Knock Off", "Rock Slide"],
     },
     Meowscarada: {
+      nature: "Adamant",
+      ability: "Protean",
       item: undefined,
       moves: ["Acrobatics", "Flower Trick", "Knock Off", "Thunder Punch"],
     },
     Tentacruel: {
       nature: "Modest",
+      ability: "Clear Body",
+      item: "Black Sludge",
       moves: ["Dazzling Gleam", "Flip Turn", "Hydro Pump", "Sludge Wave"],
+    },
+    Gyarados: {
+      nature: "Impish",
+      ability: "Intimidate",
+      item: "Charti Berry",
+      moves: ["Aqua Tail", "Bulldoze", "Rest", "Scary Face"],
     },
   },
   team: ["Lanturn", "Drednaw", "Swampert-Mega", "Meowscarada", "Tentacruel", "Gyarados"],
@@ -1309,18 +1413,35 @@ export const route18BirdKeeperJacobBattle: Moment = {
 const _box16 = getBox({
   box: _box15,
   update: {
+    Dragapult: {
+      nature: "Jolly",
+      ability: "Clear Body",
+      item: "Safety Goggles",
+      moves: ["Astonish", "Dragon Darts", "Flamethrower", "U-Turn"],
+    },
     "Swampert-Mega": {
+      nature: "Jolly",
+      ability: "Swift Swim",
+      item: "Swampertite",
       moves: ["Earthquake", "Hammer Arm", "Ice Punch", "Rock Slide"],
     },
     Clodsire: {
+      nature: "Careful",
+      ability: "Water Absorb",
       item: "Persim Berry",
+      moves: ["Bulldoze", "Earthquake", "Rock Slide", "Rock Tomb"],
     },
     Perrserker: {
+      nature: "Relaxed",
+      ability: "Battle Armor",
       item: "Aspear Berry",
       moves: ["Fake Out", "Bullet Punch", "Thrash", "U-Turn"],
     },
     "Arcanine-H": {
+      nature: "Adamant",
+      ability: "Rock Head",
       item: "Persim Berry",
+      moves: ["Accelerock", "Flare Blitz", "Play Rough", "Rock Slide"],
     },
   },
   team: ["Dragapult", "Swampert-Mega", "Clodsire", "Perrserker", "Arcanine-H"],
@@ -1428,16 +1549,34 @@ const _box17 = getBox({
   box: _box16,
   update: {
     Meowscarada: {
+      nature: "Adamant",
+      ability: "Protean",
       item: "Expert Belt",
       moves: ["Cut", "Leaf Storm", "Play Rough", "Sucker Punch"],
     },
     Lanturn: {
+      nature: "Quiet",
       ability: "Volt Absorb",
+      item: "Persim Berry",
       moves: ["Icy Wind", "Hydro Pump", "Signal Beam", "Volt Switch"],
     },
     Tentacruel: {
       nature: "Timid",
+      ability: "Clear Body",
       item: "Poison Barb",
+      moves: ["Dazzling Gleam", "Flip Turn", "Hydro Pump", "Sludge Wave"],
+    },
+    "Swampert-Mega": {
+      nature: "Jolly",
+      ability: "Swift Swim",
+      item: "Swampertite",
+      moves: ["Earthquake", "Hammer Arm", "Ice Punch", "Rock Slide"],
+    },
+    Gyarados: {
+      nature: "Impish",
+      ability: "Intimidate",
+      item: "Charti Berry",
+      moves: ["Aqua Tail", "Bulldoze", "Rest", "Scary Face"],
     },
   },
   team: ["Meowscarada", "Lanturn", "Tentacruel", "Swampert-Mega", "Gyarados"],
@@ -1570,10 +1709,14 @@ const _box18 = getBox({
   add: [_screamTail],
   update: {
     Incineroar: {
+      nature: "Impish",
+      ability: "Blaze",
+      item: undefined,
       moves: ["Fake Out", "Darkest Lariat", "Flamethrower", "U-Turn"],
     },
     Excadrill: {
       nature: "Jolly",
+      ability: "Mold Breaker",
       item: "Expert Belt",
       moves: ["Brick Break", "Drill Run", "Iron Head", "Shadow Claw"],
     },

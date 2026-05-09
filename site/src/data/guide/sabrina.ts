@@ -42,22 +42,39 @@ const _box3 = getBox({
   box: _box2,
   update: {
     Perrserker: {
+      nature: "Adamant",
+      ability: "Battle Armor",
       item: "Sitrus Berry",
       moves: ["Fake Out", "Bullet Punch", "Thunderbolt", "U-Turn"],
     },
+    Golisopod: {
+      nature: "Lonely",
+      ability: "Emergency Exit",
+      item: "Silver Powder",
+      moves: ["First Impression", "Aerial Ace", "Rock Tomb", "Sucker Punch"],
+    },
     Incineroar: {
+      nature: "Impish",
+      ability: "Intimidate",
+      item: "Charti Berry",
       moves: ["Fake Out", "Darkest Lariat", "Thunder Punch", "U-Turn"],
     },
     Lanturn: {
       nature: "Modest",
+      ability: "Water Absorb",
       item: "Sitrus Berry",
       moves: ["Bubble Beam", "Icy Wind", "Thunderbolt", "Thunder Wave"],
     },
     Tentacruel: {
       nature: "Timid",
       ability: "Clear Body",
+      item: "Payapa Berry",
+      moves: ["Acid Spray", "Bubble Beam", "Icy Wind", "Poison Jab"],
     },
     "Arcanine-H": {
+      nature: "Impish",
+      ability: "Rock Head",
+      item: "Magnet",
       moves: ["Bad Tantrum", "Crunch", "Flare Blitz", "Thunder Fang"],
     },
   },
@@ -163,9 +180,12 @@ const _box5 = getBox({
   update: {
     Golduck: {
       nature: "Modest",
+      ability: "Neuroforce",
+      item: "Twisted Spoon",
       moves: ["Aqua Tail", "Flip Turn", "Psychic", "Scald"],
     },
     Perrserker: {
+      nature: "Adamant",
       ability: "Tough Claws",
       item: "Chople Berry",
       moves: ["Fake Out", "Aerial Ace", "Iron Head", "U-Turn"],
@@ -174,8 +194,12 @@ const _box5 = getBox({
       nature: "Lonely",
       ability: "Blaze",
       item: "Sitrus Berry",
+      moves: ["Fake Out", "Darkest Lariat", "Thunder Punch", "U-Turn"],
     },
     Excadrill: {
+      nature: "Jolly",
+      ability: "Mold Breaker",
+      item: "Soft Sand",
       moves: ["Drill Run", "Iron Head", "Rapid Spin", "Rock Tomb"],
     },
   },
@@ -260,13 +284,27 @@ const _box6 = getBox({
   update: {
     Golduck: {
       nature: "Lonely",
+      ability: "Neuroforce",
       item: "Mystic Water",
+      moves: ["Aqua Tail", "Flip Turn", "Psychic", "Scald"],
     },
     Perrserker: {
+      nature: "Adamant",
+      ability: "Tough Claws",
       item: "Silk Scarf",
+      moves: ["Fake Out", "Aerial Ace", "Iron Head", "U-Turn"],
     },
     Gyarados: {
+      nature: "Jolly",
+      ability: "Intimidate",
       item: "Sitrus Berry",
+      moves: ["Aqua Fang", "Bite", "Bulldoze", "Ice Fang"],
+    },
+    Excadrill: {
+      nature: "Jolly",
+      ability: "Mold Breaker",
+      item: "Soft Sand",
+      moves: ["Drill Run", "Iron Head", "Rapid Spin", "Rock Tomb"],
     },
   },
   team: ["Golduck", "Perrserker", "Gyarados", "Excadrill"],
@@ -334,6 +372,8 @@ const _box7 = getBox({
   update: {
     Golduck: {
       nature: "Rash",
+      ability: "Neuroforce",
+      item: "Mystic Water",
       moves: ["Aqua Jet", "Flip Turn", "Psychic", "Scald"],
     },
     Drednaw: {
@@ -342,17 +382,28 @@ const _box7 = getBox({
       item: "Sitrus Berry",
       moves: ["Bulldoze", "Crunch", "Ice Fang", "Jaw Lock"],
     },
+    Cloyster: {
+      nature: "Adamant",
+      ability: "Shell Armor",
+      item: "Charti Berry",
+      moves: ["Ice Shard", "Icicle Spear", "Leer", "Razor Shell"],
+    },
     Lanturn: {
+      nature: "Modest",
       ability: "Volt Absorb",
       item: "Shuca Berry",
       moves: ["Flip Turn", "Icy Wind", "Scald", "Volt Switch"],
     },
     "Arcanine-H": {
       nature: "Brave",
+      ability: "Rock Head",
       item: "Charcoal",
       moves: ["Accelerock", "Flamethrower", "Flare Blitz", "Return"],
     },
     Gyarados: {
+      nature: "Jolly",
+      ability: "Intimidate",
+      item: "Sitrus Berry",
       moves: ["Aqua Fang", "Bulldoze", "Flamethrower", "Ice Fang"],
     },
   },
@@ -524,6 +575,9 @@ const _box10 = getBox({
   box: _box9,
   update: {
     Perrserker: {
+      nature: "Adamant",
+      ability: "Tough Claws",
+      item: "Silk Scarf",
       moves: ["Fake Out", "Aerial Ace", "Thunderbolt", "U-Turn"],
     },
     Meowscarada: {
@@ -534,10 +588,15 @@ const _box10 = getBox({
     },
     Excadrill: {
       nature: "Adamant",
+      ability: "Mold Breaker",
+      item: "Soft Sand",
       moves: ["Brick Break", "Iron Head", "Rapid Spin", "Rock Tomb"],
     },
     Incineroar: {
+      nature: "Lonely",
+      ability: "Blaze",
       item: "Black Glasses",
+      moves: ["Fake Out", "Darkest Lariat", "Thunder Punch", "U-Turn"],
     },
   },
   team: ["Perrserker", "Meowscarada", "Excadrill", "Incineroar"],
@@ -688,9 +747,21 @@ const _box11 = getBox({
   update: {
     Meowscarada: {
       nature: "Impish",
+      ability: "Protean",
+      item: "Black Glasses",
+      moves: ["Flower Trick", "Knock Off", "Tail Whip", "U-Turn"],
+    },
+    Runerigus: {
+      nature: "Bold",
+      ability: "Shadow Shield",
+      item: "Rindo Berry",
+      moves: ["Disable", "Scary Face", "Shadow Ball", "Shadow Sneak"],
     },
     Golduck: {
+      nature: "Rash",
+      ability: "Neuroforce",
       item: "Kasib Berry",
+      moves: ["Aqua Jet", "Flip Turn", "Psychic", "Scald"],
     },
   },
   team: ["Meowscarada", "Runerigus", "Golduck"],
@@ -771,21 +842,25 @@ const _box12 = getBox({
   update: {
     "Arcanine-H": {
       nature: "Adamant",
+      ability: "Rock Head",
       item: "Hard Stone",
       moves: ["Accelerock", "Flamethrower", "Flare Blitz", "Rock Slide"],
     },
     Clodsire: {
       nature: "Impish",
+      ability: "Water Absorb",
       item: "Hard Stone",
       moves: ["Bulldoze", "Rock Slide", "Rock Tomb", "Tail Whip"],
     },
     Meowscarada: {
       nature: "Adamant",
+      ability: "Protean",
       item: "Metal Coat",
       moves: ["Cut", "Flower Trick", "Knock Off", "U-Turn"],
     },
     Tentacruel: {
       nature: "Calm",
+      ability: "Clear Body",
       item: "Sitrus Berry",
       moves: ["Acid Spray", "Icy Wind", "Poison Jab", "Scald"],
     },
@@ -887,20 +962,26 @@ const _box13 = getBox({
   update: {
     Excadrill: {
       nature: "Adamant",
+      ability: "Mold Breaker",
       item: "Hard Stone",
       moves: ["Brick Break", "Earthquake", "Iron Head", "Rock Slide"],
     },
     Golduck: {
       nature: "Naive",
+      ability: "Neuroforce",
       item: "Mystic Water",
       moves: ["Brick Break", "Flip Turn", "Ice Beam", "Psychic"],
     },
     Perrserker: {
+      nature: "Adamant",
       ability: "Battle Armor",
       item: "Chople Berry",
       moves: ["Fake Out", "Growl", "Metal Burst", "U-Turn"],
     },
     Meowscarada: {
+      nature: "Adamant",
+      ability: "Protean",
+      item: "Metal Coat",
       moves: ["Brick Break", "Cut", "Play Rough", "Thunder Punch"],
     },
   },
@@ -1006,16 +1087,21 @@ const _box14 = getBox({
   box: _box13,
   update: {
     Meowscarada: {
+      nature: "Adamant",
+      ability: "Protean",
       item: "Muscle Band",
       moves: ["Flower Trick", "Knock Off", "Low Kick", "Play Rough"],
     },
     Tentacruel: {
       nature: "Hasty",
+      ability: "Clear Body",
       item: "Mystic Water",
       moves: ["Dazzling Gleam", "Flip Turn", "Icy Wind", "Sludge Wave"],
     },
     Lanturn: {
       nature: "Quiet",
+      ability: "Volt Absorb",
+      item: "Shuca Berry",
       moves: ["Flip Turn", "Hydro Pump", "Thunderbolt", "Volt Switch"],
     },
   },
@@ -1197,25 +1283,31 @@ const _box17 = getBox({
   update: {
     Excadrill: {
       nature: "Jolly",
+      ability: "Mold Breaker",
       item: "Chople Berry",
       moves: ["Aerial Ace", "Bulldoze", "Iron Head", "Shadow Claw"],
     },
     Ceruledge: {
       nature: "Timid",
+      ability: "Sharpness",
       item: "Leftovers",
       moves: ["Bitter Blade", "Shadow Claw", "Shadow Sneak", "Will-O-Wisp"],
     },
     Azumarill: {
       nature: "Brave",
+      ability: "Huge Power",
       item: "Sitrus Berry",
       moves: ["Aqua Tail", "Knock Off", "Play Rough", "Return"],
     },
     Perrserker: {
       nature: "Brave",
+      ability: "Battle Armor",
+      item: "Chople Berry",
       moves: ["Fake Out", "Dig", "Shadow Claw", "U-Turn"],
     },
     Meowscarada: {
       nature: "Jolly",
+      ability: "Protean",
       item: "Pixie Plate",
       moves: ["Flower Trick", "Knock Off", "Play Rough", "Shadow Claw"],
     },
@@ -1552,9 +1644,14 @@ const _box19 = getBox({
   update: {
     Meowscarada: {
       nature: "Brave",
+      ability: "Protean",
       item: "Expert Belt",
+      moves: ["Flower Trick", "Knock Off", "Play Rough", "Shadow Claw"],
     },
     Jellicent: {
+      nature: "Bold",
+      ability: "Water Bubble",
+      item: "Rindo Berry",
       moves: ["Brine", "Hex", "Ice Beam", "Water Spout"],
     },
     Cloyster: {
@@ -1564,11 +1661,21 @@ const _box19 = getBox({
       moves: ["Ice Shard", "Icicle Crash", "Icicle Spear", "Return"],
     },
     Drednaw: {
+      nature: "Impish",
+      ability: "Shell Armor",
       item: "Shuca Berry",
       moves: ["Bulldoze", "Dig", "Flip Turn", "Jaw Lock"],
     },
+    "Arcanine-H": {
+      nature: "Adamant",
+      ability: "Rock Head",
+      item: "Hard Stone",
+      moves: ["Accelerock", "Flamethrower", "Flare Blitz", "Rock Slide"],
+    },
     Runerigus: {
       nature: "Adamant",
+      ability: "Shadow Shield",
+      item: "Rindo Berry",
       moves: ["Earthquake", "Rock Tomb", "Shadow Ball", "Shadow Sneak"],
     },
   },
@@ -1703,16 +1810,21 @@ const _box21 = getBox({
   update: {
     Jellicent: {
       nature: "Modest",
+      ability: "Water Bubble",
       item: "Mystic Water",
       moves: ["Brine", "Recover", "Scald", "Water Spout"],
     },
     Meowscarada: {
       nature: "Jolly",
+      ability: "Protean",
+      item: "Expert Belt",
       moves: ["Brick Break", "Quick Attack", "Shadow Claw", "U-Turn"],
     },
     Tentacruel: {
       nature: "Sassy",
+      ability: "Clear Body",
       item: "Black Sludge",
+      moves: ["Dazzling Gleam", "Flip Turn", "Icy Wind", "Sludge Wave"],
     },
   },
   team: ["Jellicent", "Meowscarada", "Tentacruel"],
@@ -2410,6 +2522,7 @@ const _box23 = getBox({
   update: {
     Meowscarada: {
       nature: "Adamant",
+      ability: "Protean",
       item: "Safety Goggles",
       moves: ["Flower Trick", "Play Rough", "Thunder Punch", "U-Turn"],
     },
@@ -2419,10 +2532,21 @@ const _box23 = getBox({
       item: "Leftovers",
       moves: ["Flash", "Flip Turn", "Psychic", "Scald"],
     },
+    Golisopod: {
+      nature: "Lonely",
+      ability: "Emergency Exit",
+      item: "Silver Powder",
+      moves: ["First Impression", "Aerial Ace", "Rock Tomb", "Sucker Punch"],
+    },
     Clodsire: {
+      nature: "Impish",
+      ability: "Water Absorb",
       item: "Sitrus Berry",
+      moves: ["Bulldoze", "Rock Slide", "Rock Tomb", "Tail Whip"],
     },
     Gyarados: {
+      nature: "Jolly",
+      ability: "Intimidate",
       item: "Charti Berry",
       moves: ["Leer", "Reflect", "Rest", "Scary Face"],
     },
@@ -2676,31 +2800,39 @@ const _box25 = getBox({
   update: {
     Golisopod: {
       nature: "Adamant",
+      ability: "Emergency Exit",
+      item: "Silver Powder",
       moves: ["First Impression", "Pounce", "Rock Tomb", "Sucker Punch"],
       ivs: undefined,
     },
     Meowscarada: {
       nature: "Brave",
+      ability: "Protean",
       item: "Expert Belt",
       moves: ["Cut", "Flower Trick", "Knock Off", "Play Rough"],
     },
     Swampert: {
       nature: "Brave",
+      ability: "Torrent",
       item: "Focus Sash",
       moves: ["Earthquake", "Flip Turn", "Ice Punch", "Tackle"],
     },
     "Arcanine-H": {
       nature: "Brave",
+      ability: "Rock Head",
       item: "Cheri Berry",
       moves: ["Accelerock", "Flare Blitz", "HP Grass", "Play Rough"],
     },
     Cloyster: {
+      nature: "Impish",
       ability: "Shell Armor",
+      item: "Never-Melt Ice",
       moves: ["Ice Shard", "Icicle Crash", "Icicle Spear", "Liquidation"],
       friend: undefined,
     },
     Gyarados: {
       nature: "Impish",
+      ability: "Intimidate",
       item: "Leftovers",
       moves: ["Aqua Tail", "Bulldoze", "Rest", "Scary Face"],
     },
@@ -2867,17 +2999,21 @@ const _box27 = getBox({
   box: _box26,
   update: {
     Lanturn: {
+      nature: "Quiet",
       ability: "Water Absorb",
       item: "Wise Glasses",
+      moves: ["Flip Turn", "Hydro Pump", "Thunderbolt", "Volt Switch"],
     },
     Golisopod: {
       nature: "Brave",
+      ability: "Emergency Exit",
       item: "Iron Ball",
       moves: ["Drill Run", "Liquidation", "Poison Jab", "Rock Tomb"],
     },
     Swampert: {
       nature: "Adamant",
       ability: "Damp",
+      item: "Focus Sash",
       moves: ["Earthquake", "Flip Turn", "Ice Punch", "Rock Slide"],
     },
     Perrserker: {
@@ -2887,6 +3023,8 @@ const _box27 = getBox({
       moves: ["Fake Out", "Bullet Punch", "Shadow Claw", "U-Turn"],
     },
     Azumarill: {
+      nature: "Brave",
+      ability: "Huge Power",
       item: "Iron Ball",
       moves: ["Aqua Tail", "Helping Hand", "Play Rough", "Superpower"],
     },

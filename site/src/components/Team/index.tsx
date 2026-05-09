@@ -4,7 +4,7 @@ import { ScrollFade } from "@site/src/components/ScrollFade";
 import type { Box } from "@site/src/utils/box";
 import { resolveBox } from "@site/src/utils/box";
 import { pokedex, type PokedexData } from "@site/src/utils/pokedex";
-import { formatStats, resolvePokemon, type Pokemon } from "@site/src/utils/pokemon";
+import { formatStats, resolvePokemon, type Pokemon, type PokemonData } from "@site/src/utils/pokemon";
 import { getColouredSpriteUrl } from "@site/src/utils/sprites";
 import {
   ReactNode,
@@ -213,7 +213,11 @@ function PokemonCard({
     const img = imgRef.current;
     if (img?.complete && img.naturalWidth === 0) setLoadError(true);
   }, [spriteKey]);
-  const wc = (field: string) => (update && field in update ? styles.fieldWarning : "");
+  const wc = (field: string) => {
+    if (!update || !(field in update)) return "";
+    const f = field as keyof PokemonData;
+    return update[f] !== base?.[f] ? styles.fieldWarning : "";
+  };
   const baseMoveSet = base?.moves ? new Set(base.moves.filter(Boolean)) : null;
   const mwc = (move: string | null | undefined) =>
     baseMoveSet && move && !baseMoveSet.has(move) ? styles.fieldWarning : "";

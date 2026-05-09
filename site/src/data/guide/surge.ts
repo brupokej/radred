@@ -49,6 +49,7 @@ const _box3 = getBox({
   update: {
     Houndoom: {
       nature: "Quiet",
+      ability: "Flash Fire",
       item: "Aspear Berry",
       moves: ["Dark Pulse", "Incinerate", "Leer", "Sucker Punch"],
     },
@@ -56,8 +57,11 @@ const _box3 = getBox({
       nature: "Adamant",
       ability: "Skill Link",
       item: "Never-Melt Ice",
+      moves: ["Ice Shard", "Icicle Spear", "Leer", "Razor Shell"],
     },
     Perrserker: {
+      nature: "Adamant",
+      ability: "Battle Armor",
       item: "Sitrus Berry",
       moves: ["Fake Out", "Bullet Punch", "Metal Burst", "Thief"],
     },
@@ -68,8 +72,16 @@ const _box3 = getBox({
       moves: ["Dig", "Earthquake", "Rapid Spin", "Rock Tomb"],
     },
     Golduck: {
+      nature: "Rash",
+      ability: "Swift Swim",
       item: "Sitrus Berry",
       moves: ["Disable", "Me First", "Psychic", "Zen Headbutt"],
+    },
+    Clodsire: {
+      nature: "Careful",
+      ability: "Water Absorb",
+      item: "Payapa Berry",
+      moves: ["Bulldoze", "Poison Jab", "Rock Tomb", "Yawn"],
     },
   },
   team: ["Houndoom", "Cloyster", "Perrserker", "Excadrill", "Golduck", "Clodsire"],
@@ -252,11 +264,13 @@ const _box7 = getBox({
     },
     Golisopod: {
       nature: "Adamant",
+      ability: "Emergency Exit",
       item: "Sitrus Berry",
       moves: ["First Impression", "Razor Shell", "Rock Tomb", "Sucker Punch"],
     },
     Clodsire: {
       nature: "Lonely",
+      ability: "Water Absorb",
       item: "Sitrus Berry",
       moves: ["Bulldoze", "Poison Jab", "Rock Tomb", "Tail Whip"],
     },
@@ -371,15 +385,32 @@ const _box8 = getBox({
   update: {
     Golisopod: {
       nature: "Careful",
+      ability: "Emergency Exit",
+      item: "Sitrus Berry",
       moves: ["First Impression", "Aerial Ace", "Rock Tomb", "Sucker Punch"],
     },
     Incineroar: {
+      nature: "Careful",
+      ability: "Blaze",
+      item: "Sitrus Berry",
       moves: ["Fake Out", "Double Kick", "Fire Fang", "U-Turn"],
     },
     Perrserker: {
+      nature: "Adamant",
+      ability: "Battle Armor",
+      item: "Sitrus Berry",
       moves: ["Fake Out", "Bullet Punch", "Iron Head", "Thief"],
     },
+    "Arcanine-H": {
+      nature: "Adamant",
+      ability: "Rock Head",
+      item: "Hard Stone",
+      moves: ["Accelerock", "Flare Blitz", "Rock Tomb", "Take Down"],
+    },
     Golduck: {
+      nature: "Naughty",
+      ability: "Neuroforce",
+      item: "Mystic Water",
       moves: ["Aqua Jet", "Flip Turn", "Low Sweep", "Zen Headbutt"],
     },
   },
@@ -511,18 +542,38 @@ const _box9 = getBox({
   box: _box8,
   update: {
     Perrserker: {
+      nature: "Adamant",
+      ability: "Battle Armor",
       item: "Shuca Berry",
       moves: ["Fake Out", "Aerial Ace", "Iron Head", "U-Turn"],
     },
     "Arcanine-H": {
       nature: "Jolly",
+      ability: "Rock Head",
+      item: "Hard Stone",
+      moves: ["Accelerock", "Flare Blitz", "Rock Tomb", "Take Down"],
+    },
+    Incineroar: {
+      nature: "Careful",
+      ability: "Blaze",
+      item: "Sitrus Berry",
+      moves: ["Fake Out", "Double Kick", "Fire Fang", "U-Turn"],
     },
     Golduck: {
       nature: "Lonely",
+      ability: "Neuroforce",
       item: "Twisted Spoon",
+      moves: ["Aqua Jet", "Flip Turn", "Low Sweep", "Zen Headbutt"],
+    },
+    Azumarill: {
+      nature: "Adamant",
+      ability: "Huge Power",
+      item: "Pixie Plate",
+      moves: ["Aqua Jet", "Body Slam", "Helping Hand", "Play Rough"],
     },
     Tentacruel: {
       nature: "Modest",
+      ability: "Clear Body",
       item: "Poison Barb",
       moves: ["Acid Spray", "Bubble Beam", "Icy Wind", "Sludge"],
     },
@@ -637,26 +688,38 @@ const _box10 = getBox({
   box: _box9,
   update: {
     Perrserker: {
+      nature: "Adamant",
+      ability: "Battle Armor",
       item: "Sitrus Berry",
       moves: ["Fake Out", "Bullet Punch", "Iron Head", "Metal Burst"],
     },
     Runerigus: {
+      nature: "Careful",
+      ability: "Wandering Soul",
       item: "Sitrus Berry",
       moves: ["Bulldoze", "Rock Tomb", "Shadow Claw", "Shadow Sneak"],
     },
     Drednaw: {
       nature: "Lonely",
+      ability: "Shell Armor",
       item: undefined,
       moves: ["Aqua Jet", "Counter", "Razor Shell", "Rock Tomb"],
     },
     Golisopod: {
       nature: "Adamant",
+      ability: "Emergency Exit",
+      item: "Sitrus Berry",
       moves: ["First Impression", "Razor Shell", "Rock Tomb", "Sucker Punch"],
     },
     Golduck: {
+      nature: "Lonely",
+      ability: "Neuroforce",
+      item: "Twisted Spoon",
       moves: ["Aqua Tail", "Flip Turn", "Psychic", "Zen Headbutt"],
     },
     Tentacruel: {
+      nature: "Modest",
+      ability: "Clear Body",
       item: "Payapa Berry",
       moves: ["Acid Spray", "Bubble Beam", "Icy Wind", "Poison Jab"],
     },
@@ -783,20 +846,33 @@ const _box11 = getBox({
   update: {
     "Arcanine-H": {
       nature: "Adamant",
+      ability: "Rock Head",
       item: "Chesto Berry",
+      moves: ["Accelerock", "Flare Blitz", "Rock Tomb", "Take Down"],
+    },
+    Clodsire: {
+      nature: "Lonely",
+      ability: "Water Absorb",
+      item: "Sitrus Berry",
+      moves: ["Bulldoze", "Poison Jab", "Rock Tomb", "Tail Whip"],
     },
     Houndoom: {
       nature: "Timid",
+      ability: "Flash Fire",
       item: "Black Glasses",
       moves: ["Dark Pulse", "Flame Burst", "Leer", "Sucker Punch"],
     },
     Golduck: {
       nature: "Jolly",
+      ability: "Neuroforce",
       item: "Sitrus Berry",
+      moves: ["Aqua Tail", "Flip Turn", "Psychic", "Zen Headbutt"],
     },
     Drednaw: {
       nature: "Naughty",
+      ability: "Shell Armor",
       item: "Sitrus Berry",
+      moves: ["Aqua Jet", "Counter", "Razor Shell", "Rock Tomb"],
     },
   },
   team: ["Arcanine-H", "Clodsire", "Houndoom", "Golduck", "Drednaw"],
@@ -883,6 +959,9 @@ const _box12 = getBox({
   box: _box11,
   update: {
     Golduck: {
+      nature: "Jolly",
+      ability: "Neuroforce",
+      item: "Sitrus Berry",
       moves: ["Aqua Jet", "Aqua Tail", "Flip Turn", "Zen Headbutt"],
     },
     Runerigus: {
@@ -893,6 +972,15 @@ const _box12 = getBox({
     },
     Azumarill: {
       nature: "Impish",
+      ability: "Huge Power",
+      item: "Pixie Plate",
+      moves: ["Aqua Jet", "Body Slam", "Helping Hand", "Play Rough"],
+    },
+    Houndoom: {
+      nature: "Timid",
+      ability: "Flash Fire",
+      item: "Black Glasses",
+      moves: ["Dark Pulse", "Flame Burst", "Leer", "Sucker Punch"],
     },
   },
   team: ["Golduck", "Runerigus", "Azumarill", "Houndoom"],
@@ -999,29 +1087,39 @@ const _box13 = getBox({
   update: {
     Excadrill: {
       nature: "Adamant",
+      ability: "Mold Breaker",
       item: "Occa Berry",
       moves: ["Earthquake", "Iron Head", "Rapid Spin", "Rock Tomb"],
     },
     Cloyster: {
+      nature: "Adamant",
       ability: "Shell Armor",
       item: "Chilan Berry",
+      moves: ["Ice Shard", "Icicle Spear", "Leer", "Razor Shell"],
     },
     Drednaw: {
       nature: "Hasty",
+      ability: "Shell Armor",
       item: "Shuca Berry",
       moves: ["Aqua Jet", "Flip Turn", "Razor Shell", "Rock Slide"],
     },
     "Arcanine-H": {
       nature: "Brave",
+      ability: "Rock Head",
       item: "Charcoal",
       moves: ["Accelerock", "Flare Blitz", "Rock Slide", "Take Down"],
     },
     Golisopod: {
       nature: "Careful",
+      ability: "Emergency Exit",
       item: "Persim Berry",
+      moves: ["First Impression", "Razor Shell", "Rock Tomb", "Sucker Punch"],
     },
     Golduck: {
+      nature: "Jolly",
+      ability: "Neuroforce",
       item: "Mystic Water",
+      moves: ["Aqua Jet", "Aqua Tail", "Flip Turn", "Zen Headbutt"],
     },
   },
   team: ["Excadrill", "Cloyster", "Drednaw", "Arcanine-H", "Golisopod", "Golduck"],
@@ -1131,7 +1229,21 @@ const _box14 = getBox({
     },
     Gyarados: {
       nature: "Jolly",
+      ability: "Intimidate",
+      item: "Sitrus Berry",
       moves: ["Aqua Fang", "Bite", "Bulldoze", "Ice Fang"],
+    },
+    Perrserker: {
+      nature: "Adamant",
+      ability: "Battle Armor",
+      item: "Sitrus Berry",
+      moves: ["Fake Out", "Bullet Punch", "Iron Head", "Metal Burst"],
+    },
+    Tentacruel: {
+      nature: "Modest",
+      ability: "Clear Body",
+      item: "Payapa Berry",
+      moves: ["Acid Spray", "Bubble Beam", "Icy Wind", "Poison Jab"],
     },
   },
   team: ["Golduck", "Gyarados", "Perrserker", "Tentacruel"],
@@ -1205,18 +1317,33 @@ const _box15 = getBox({
     },
     Golisopod: {
       nature: "Naughty",
+      ability: "Emergency Exit",
+      item: "Persim Berry",
       moves: ["First Impression", "Icy Wind", "Rock Tomb", "Sucker Punch"],
     },
     "Arcanine-H": {
       nature: "Impish",
+      ability: "Rock Head",
       item: "Sitrus Berry",
+      moves: ["Accelerock", "Flare Blitz", "Rock Slide", "Take Down"],
     },
     Excadrill: {
       nature: "Jolly",
+      ability: "Mold Breaker",
       item: "Soft Sand",
+      moves: ["Earthquake", "Iron Head", "Rapid Spin", "Rock Tomb"],
     },
     Gyarados: {
+      nature: "Jolly",
+      ability: "Intimidate",
       item: "Black Glasses",
+      moves: ["Aqua Fang", "Bite", "Bulldoze", "Ice Fang"],
+    },
+    Houndoom: {
+      nature: "Timid",
+      ability: "Flash Fire",
+      item: "Black Glasses",
+      moves: ["Dark Pulse", "Flame Burst", "Leer", "Sucker Punch"],
     },
   },
   team: ["Golduck", "Golisopod", "Arcanine-H", "Excadrill", "Gyarados", "Houndoom"],
@@ -1300,11 +1427,14 @@ const _box16 = getBox({
   box: _box15,
   update: {
     Perrserker: {
+      nature: "Adamant",
+      ability: "Battle Armor",
       item: "Pixie Plate",
       moves: ["Fake Out", "Bullet Punch", "Play Rough", "U-Turn"],
     },
     Drednaw: {
       nature: "Careful",
+      ability: "Shell Armor",
       item: "Persim Berry",
       moves: ["Aqua Jet", "Flip Turn", "Razor Shell", "Rock Tomb"],
     },
@@ -1315,15 +1445,22 @@ const _box16 = getBox({
       moves: ["Bulldoze", "Rock Tomb", "Shadow Claw", "Shadow Sneak"],
     },
     Azumarill: {
+      nature: "Impish",
+      ability: "Huge Power",
       item: "Sitrus Berry",
       moves: ["Aqua Jet", "Aqua Tail", "Helping Hand", "Play Rough"],
     },
     Lanturn: {
+      nature: "Calm",
       ability: "Water Absorb",
       item: undefined,
+      moves: ["Bubble Beam", "Icy Wind", "Shock Wave", "Thunder Wave"],
     },
     Cloyster: {
+      nature: "Adamant",
+      ability: "Shell Armor",
       item: "Charti Berry",
+      moves: ["Ice Shard", "Icicle Spear", "Leer", "Razor Shell"],
     },
   },
   team: ["Perrserker", "Drednaw", "Runerigus", "Azumarill", "Lanturn", "Cloyster"],
@@ -1433,23 +1570,41 @@ export const vermillionCityGymGentlemanTuckerBattle: Moment = {
 const _box17 = getBox({
   box: _box16,
   update: {
+    Excadrill: {
+      nature: "Jolly",
+      ability: "Mold Breaker",
+      item: "Soft Sand",
+      moves: ["Earthquake", "Iron Head", "Rapid Spin", "Rock Tomb"],
+    },
     Houndoom: {
       nature: "Modest",
       ability: "Flash Fire",
       item: "Sitrus Berry",
+      moves: ["Dark Pulse", "Flame Burst", "Leer", "Sucker Punch"],
     },
     Runerigus: {
+      nature: "Bold",
+      ability: "Wandering Soul",
       item: "Rindo Berry",
+      moves: ["Bulldoze", "Rock Tomb", "Shadow Claw", "Shadow Sneak"],
     },
     Azumarill: {
+      nature: "Impish",
+      ability: "Huge Power",
       item: "Pixie Plate",
+      moves: ["Aqua Jet", "Aqua Tail", "Helping Hand", "Play Rough"],
     },
     Clodsire: {
+      nature: "Lonely",
       ability: "Water Absorb",
+      item: "Sitrus Berry",
+      moves: ["Bulldoze", "Poison Jab", "Rock Tomb", "Tail Whip"],
     },
     Drednaw: {
+      nature: "Careful",
       ability: "Shell Armor",
       item: "Chople Berry",
+      moves: ["Aqua Jet", "Flip Turn", "Razor Shell", "Rock Tomb"],
     },
   },
   team: ["Excadrill", "Houndoom", "Runerigus", "Azumarill", "Clodsire", "Drednaw"],

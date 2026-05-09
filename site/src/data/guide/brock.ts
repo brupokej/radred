@@ -181,6 +181,18 @@ const _box10 = getBox({
         level: 16,
         moves: ["Bide", "Mega Drain", "Rock Tomb", "Struggle Bug"],
       },
+      Houndour: {
+        level: 16,
+        moves: ["Incinerate", "Leer", "Snarl", "Sucker Punch"],
+      },
+      "Meowth-G": {
+        level: 16,
+        moves: ["Fake Out", "Growl", "Metal Claw", "Scratch"],
+      },
+      Marill: {
+        level: 16,
+        moves: ["Aqua Jet", "Body Slam", "Covet", "Tail Whip"],
+      },
     },
   ],
 });
@@ -195,15 +207,37 @@ export const viridianForestBoxChange: Moment = {
 const _box11 = getBox({
   box: _box10,
   update: {
-    "Wooper-P": { nature: "Bold" },
+    "Wooper-P": {
+      nature: "Bold",
+      ability: "Water Absorb",
+      item: undefined,
+      moves: ["Mud Shot", "Slam", "Tackle", "Tail Whip"],
+    },
     Kricketune: {
       nature: "Naive",
+      ability: "Technician",
       item: "Hard Stone",
       moves: ["Bug Bite", "Mega Drain", "Rock Tomb", "Struggle Bug"],
     },
-    Tentacool: { nature: "Timid" },
+    Houndour: {
+      nature: "Modest",
+      ability: "Flash Fire",
+      item: "Wise Glasses",
+      moves: ["Incinerate", "Leer", "Snarl", "Sucker Punch"],
+    },
+    "Meowth-G": {
+      nature: "Sassy",
+      ability: "Tough Claws",
+      item: undefined,
+      moves: ["Fake Out", "Growl", "Metal Claw", "Scratch"],
+    },
+    Marill: {
+      nature: "Impish",
+      ability: "Huge Power",
+      moves: ["Aqua Jet", "Body Slam", "Covet", "Tail Whip"],
+    },
   },
-  team: ["Wooper-P", "Kricketune", "Tentacool"],
+  team: ["Wooper-P", "Kricketune", "Houndour", "Meowth-G", "Marill"],
 });
 
 export const route22RivalBattle: Moment = {
@@ -221,26 +255,44 @@ export const route22RivalBattle: Moment = {
             turns: [
               [
                 { opponent: "{o:Snubbull} Pow-Up Punch {p:Wooper-P} to {+:40}" },
-                { player: "{p:Wooper-P} Tail Whip {o:Snubbull}" },
-              ],
-              [
-                { opponent: "{o:Snubbull} Pow-Up Punch {p:Wooper-P} (non-crit) to {+:32}" },
-                { player: "{p:Wooper-P} Tail Whip {o:Snubbull}" },
+                { player: "{p:Wooper-P} Mud Shot {o:Snubbull} to {-:37}" },
               ],
               [
                 { player: "{p:Wooper-P} switch to {p:Kricketune}" },
-                { opponent: "{o:Snubbull} Pow-Up Punch {p:Kricketune} to {+:43}" },
+                { opponent: "{o:Snubbull} Pow-Up Punch {p:Kricketune} to {+:46}" },
               ],
               [
-                "Risk →",
-                {
-                  danger:
-                    "Snubbull Pow-Up Punch Wooper-P ×2 → Snubbull Fire Fang Kricketune → {c:0.3%}",
-                },
+                { player: "{p:Kricketune} switch to {p:Houndour}" },
+                { opponent: "{o:Snubbull} Fire Fang {p:Houndour}" },
               ],
               [
-                { player: "{p:Kricketune} Rock Tomb {o:Snubbull} to {=:0}" },
+                { player: "{p:Houndour} Incinerate {o:Snubbull} to {=:0}" },
                 { opponent: "{o:Snubbull} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Litleo"],
+            turns: [
+              [
+                { player: "{p:Houndour} switch to {p:Meowth-G}" },
+                { opponent: "{o:Litleo} Round {p:Meowth-G} to {+:26}" },
+              ],
+              [
+                { player: "{p:Meowth-G} Fake Out {o:Litleo} to {-:39}" },
+                { opponent: "{o:Litleo} flinched" },
+              ],
+              [
+                { player: "{p:Meowth-G} switch to {p:Marill}" },
+                { opponent: "{o:Litleo} Incinerate {p:Marill} to {+:33}" },
+              ],
+              [
+                { player: "{p:Marill} switch to {p:Kricketune}" },
+                { opponent: "{o:Litleo} HP Grass {p:Kricketune} to {+:34}" },
+              ],
+              [
+                { player: "{p:Kricketune} Rock Tomb {o:Litleo} to {=:0}" },
+                { opponent: "{o:Litleo} fainted" },
               ],
             ],
           },
@@ -249,35 +301,17 @@ export const route22RivalBattle: Moment = {
             turns: [
               [
                 { player: "{p:Kricketune} Bug Bite {o:Squirtle} to {-:20}" },
-                { opponent: "{p:Kricketune} Oran Berry to {+:53}" },
-                { opponent: "{o:Squirtle} Rock Tomb {p:Kricketune} to {+:23}" },
+                { opponent: "{p:Kricketune} Oran Berry to {+:44}" },
+                { opponent: "{o:Squirtle} Rock Tomb {p:Kricketune} to {+:14}" },
               ],
               [
-                { player: "{p:Kricketune} Mega Drain {o:Squirtle} to {=:0}" },
-                { opponent: "{p:Kricketune} recover to {+:24}" },
+                { player: "{p:Kricketune} Bug Bite {o:Squirtle} to {=:0}" },
                 { opponent: "{o:Squirtle} fainted" },
               ],
             ],
           },
-          {
-            matchup: ["Litleo"],
-            turns: [
-              [
-                { player: "{p:Kricketune} switch to {p:Tentacool}" },
-                { opponent: "{o:Litleo} Incinerate {p:Tentacool} to {+:31}" },
-              ],
-              [
-                { player: "{p:Tentacool} Water Pulse {o:Litleo} to {-:22}" },
-                { opponent: "{o:Litleo} Round {p:Tentacool} to {+:7}" },
-              ],
-              [
-                { player: "{p:Tentacool} Water Pulse {o:Litleo} to {=:0}" },
-                { opponent: "{o:Litleo} fainted" },
-              ],
-            ],
-          },
         ],
-        frags: { Kricketune: 2, Tentacool: 1 },
+        frags: { Houndour: 1, Kricketune: 2 },
       },
     ],
   },
@@ -298,25 +332,29 @@ const _box13 = getBox({
   box: _box12,
   update: {
     Marill: {
-      level: 16,
+      nature: "Impish",
+      ability: "Huge Power",
+      item: "Oran Berry",
       moves: ["Aqua Jet", "Body Slam", "Covet", "Tail Whip"],
     },
-  },
-});
-
-export const route22BoxChange: Moment = {
-  split: "Brock",
-  label: "Route 22 Box Change",
-  kind: "boxChange",
-  data: { playerBox: _box13 },
-};
-
-const _box14 = getBox({
-  box: _box13,
-  update: {
-    Marill: { nature: "Impish", item: "Oran Berry" },
-    Torracat: { nature: "Impish" },
-    Kricketune: { nature: "Naughty", item: "Oran Berry" },
+    "Wooper-P": {
+      nature: "Bold",
+      ability: "Water Absorb",
+      item: undefined,
+      moves: ["Mud Shot", "Slam", "Tackle", "Tail Whip"],
+    },
+    Torracat: {
+      nature: "Impish",
+      ability: "Blaze",
+      item: undefined,
+      moves: ["Fake Out", "Double Kick", "Fire Fang", "Leer"],
+    },
+    Kricketune: {
+      nature: "Naughty",
+      ability: "Technician",
+      item: "Oran Berry",
+      moves: ["Bug Bite", "Mega Drain", "Rock Tomb", "Struggle Bug"],
+    },
   },
   team: ["Marill", "Wooper-P", "Torracat", "Kricketune"],
 });
@@ -326,7 +364,7 @@ export const viridianForestBrendanBattle: Moment = {
   label: "Viridian Forest Brendan Battle",
   kind: "battle",
   data: {
-    playerBox: _box14,
+    playerBox: _box13,
     opponentBox: viridianForestBrendanBox,
     lines: [
       {
@@ -404,33 +442,39 @@ export const viridianForestBrendanBattle: Moment = {
   },
 };
 
-const _box15 = getBox({
-  box: _box14,
+const _box14 = getBox({
+  box: _box13,
   update: {
     "Meowth-G": {
-      level: 16,
+      nature: "Sassy",
+      ability: "Tough Claws",
+      item: "Occa Berry",
       moves: ["Fake Out", "Growl", "Metal Claw", "Scratch"],
     },
+    Kricketune: {
+      nature: "Naughty",
+      ability: "Technician",
+      item: "Oran Berry",
+      moves: ["Bug Bite", "Mega Drain", "Rock Tomb", "Struggle Bug"],
+    },
     Houndour: {
-      level: 16,
+      nature: "Modest",
+      ability: "Flash Fire",
+      item: "Oran Berry",
       moves: ["Incinerate", "Leer", "Snarl", "Sucker Punch"],
     },
-  },
-});
-
-export const viridianForestBrendanBoxChange: Moment = {
-  split: "Brock",
-  label: "Viridian Forest Brendan Box Change",
-  kind: "boxChange",
-  data: { playerBox: _box15 },
-};
-
-const _box16 = getBox({
-  box: _box15,
-  update: {
-    "Meowth-G": { nature: "Sassy", item: "Occa Berry" },
-    Houndour: { nature: "Modest", item: "Oran Berry" },
-    Marill: { item: "Pixie Plate" },
+    Marill: {
+      nature: "Impish",
+      ability: "Huge Power",
+      item: "Pixie Plate",
+      moves: ["Aqua Jet", "Body Slam", "Covet", "Tail Whip"],
+    },
+    "Wooper-P": {
+      nature: "Bold",
+      ability: "Water Absorb",
+      item: undefined,
+      moves: ["Mud Shot", "Slam", "Tackle", "Tail Whip"],
+    },
   },
   team: ["Meowth-G", "Kricketune", "Houndour", "Marill", "Wooper-P"],
 });
@@ -440,7 +484,7 @@ export const viridianForestLassAnneBattle: Moment = {
   label: "Viridian Forest Lass Anne Battle",
   kind: "battle",
   data: {
-    playerBox: _box16,
+    playerBox: _box14,
     opponentBox: viridianForestLassAnneBox,
     lines: [
       {
@@ -527,10 +571,15 @@ export const viridianForestLassAnneBattle: Moment = {
   },
 };
 
-const _box17 = getBox({
-  box: _box16,
+const _box15 = getBox({
+  box: _box14,
   update: {
-    Kricketune: { item: "Hard Stone" },
+    Kricketune: {
+      nature: "Naughty",
+      ability: "Technician",
+      item: "Hard Stone",
+      moves: ["Bug Bite", "Mega Drain", "Rock Tomb", "Struggle Bug"],
+    },
   },
   team: ["Kricketune"],
 });
@@ -541,7 +590,7 @@ export const viridianForestBugCatcherSammyBattle: Moment = {
   kind: "battle",
   data: {
     opponentBox: viridianForestBugCatcherSammyBox,
-    playerBox: _box17,
+    playerBox: _box15,
     lines: [
       {
         matchups: [
@@ -599,20 +648,36 @@ const _yamaskG = {
   moves: ["Haze", "Magnitude", "Shadow Sneak"],
 };
 
-const _box18 = getBox({ box: _box17, add: [_yamaskG] });
+const _box16 = getBox({ box: _box15, add: [_yamaskG] });
 
 export const diglettCaveEncounter: Moment = {
   split: "Brock",
   label: "Diglett Cave Encounter",
   kind: "encounter",
-  data: { pokemon: _yamaskG, playerBox: _box18 },
+  data: { pokemon: _yamaskG, playerBox: _box16 },
 };
 
-const _box19 = getBox({
-  box: _box18,
+const _box17 = getBox({
+  box: _box16,
   update: {
-    Kricketune: { nature: "Naive" },
-    Marill: { nature: "Adamant", item: "Oran Berry" },
+    Kricketune: {
+      nature: "Naive",
+      ability: "Technician",
+      item: "Hard Stone",
+      moves: ["Bug Bite", "Mega Drain", "Rock Tomb", "Struggle Bug"],
+    },
+    Marill: {
+      nature: "Adamant",
+      ability: "Huge Power",
+      item: "Oran Berry",
+      moves: ["Aqua Jet", "Body Slam", "Covet", "Tail Whip"],
+    },
+    "Meowth-G": {
+      nature: "Sassy",
+      ability: "Tough Claws",
+      item: "Occa Berry",
+      moves: ["Fake Out", "Growl", "Metal Claw", "Scratch"],
+    },
   },
   team: ["Kricketune", "Marill", "Meowth-G"],
 });
@@ -622,7 +687,7 @@ export const pewterMuseumLeaderFalknerBattle: Moment = {
   label: "Pewter Museum Leader Falkner Battle",
   kind: "battle",
   data: {
-    playerBox: _box19,
+    playerBox: _box17,
     opponentBox: pewterMuseumLeaderFalknerBox,
     lines: [
       {
@@ -699,8 +764,8 @@ export const pewterMuseumLeaderFalknerBattle: Moment = {
   },
 };
 
-const _box20 = getBox({
-  box: _box19,
+const _box18 = getBox({
+  box: _box17,
   update: {
     "Yamask-G": {
       level: 16,
@@ -713,17 +778,46 @@ export const pewterMuseumLeaderFalknerBoxChange: Moment = {
   split: "Brock",
   label: "Pewter Museum Leader Falkner Box Change",
   kind: "boxChange",
-  data: { playerBox: _box20 },
+  data: { playerBox: _box18 },
 };
 
-const _box21 = getBox({
-  box: _box20,
+const _box19 = getBox({
+  box: _box18,
   update: {
-    Kricketune: { nature: "Rash", item: "Miracle Seed" },
-    "Meowth-G": { nature: "Lonely" },
-    Torracat: { nature: "Adamant", item: "Black Belt" },
-    Tentacool: { nature: "Bold" },
-    "Yamask-G": { nature: "Careful", item: "Rindo" },
+    Kricketune: {
+      nature: "Rash",
+      ability: "Technician",
+      item: "Miracle Seed",
+      moves: ["Bug Bite", "Mega Drain", "Rock Tomb", "Struggle Bug"],
+    },
+    "Meowth-G": {
+      nature: "Lonely",
+      ability: "Tough Claws",
+      item: "Occa Berry",
+      moves: ["Fake Out", "Growl", "Metal Claw", "Scratch"],
+    },
+    Torracat: {
+      nature: "Adamant",
+      ability: "Blaze",
+      item: "Black Belt",
+      moves: ["Fake Out", "Double Kick", "Fire Fang", "Leer"],
+    },
+    Tentacool: {
+      nature: "Bold",
+      ability: "Clear Body",
+      moves: ["Acid", "Rapid Spin", "Supersonic", "Water Pulse"],
+    },
+    "Wooper-P": {
+      nature: "Bold",
+      ability: "Water Absorb",
+      moves: ["Mud Shot", "Slam", "Tackle", "Tail Whip"],
+    },
+    "Yamask-G": {
+      nature: "Careful",
+      ability: "Wandering Soul",
+      item: "Rindo",
+      moves: ["Disable", "Haze", "Magnitude", "Shadow Sneak"],
+    },
   },
   team: ["Kricketune", "Meowth-G", "Torracat", "Tentacool", "Wooper-P", "Yamask-G"],
 });
@@ -733,7 +827,7 @@ export const pewterCityLeaderBrockBattle: Moment = {
   label: "Pewter City Leader Brock Battle",
   kind: "battle",
   data: {
-    playerBox: _box21,
+    playerBox: _box19,
     opponentBox: pewterCityLeaderBrockBox,
     lines: [
       {
@@ -967,7 +1061,7 @@ export const pewterCityLeaderBrockBattle: Moment = {
   },
 };
 
-export const box = _box21;
+export const box = _box19;
 
 export const moments: Moment[] = [
   brockMoment,
@@ -983,9 +1077,7 @@ export const moments: Moment[] = [
   viridianForestBoxChange,
   route22RivalBattle,
   route22Encounter,
-  route22BoxChange,
   viridianForestBrendanBattle,
-  viridianForestBrendanBoxChange,
   viridianForestLassAnneBattle,
   viridianForestBugCatcherSammyBattle,
   diglettCaveEncounter,

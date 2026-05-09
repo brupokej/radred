@@ -44,6 +44,7 @@ const _box3 = getBox({
   update: {
     Incineroar: {
       nature: "Naive",
+      ability: "Blaze",
       item: "Chople Berry",
       moves: ["Fake Out", "Double Kick", "Flamethrower", "U-Turn"],
     },
@@ -54,11 +55,16 @@ const _box3 = getBox({
       moves: ["Brine", "Hex", "Recover", "Water Spout"],
     },
     Runerigus: {
+      nature: "Bold",
       ability: "Shadow Shield",
+      item: "Rindo Berry",
       moves: ["Disable", "Rock Tomb", "Shadow Claw", "Shadow Sneak"],
     },
     Houndoom: {
+      nature: "Modest",
+      ability: "Flash Fire",
       item: "Charcoal",
+      moves: ["Dark Pulse", "Flame Burst", "Leer", "Sucker Punch"],
     },
   },
   team: ["Incineroar", "Jellicent", "Runerigus", "Houndoom"],
@@ -143,18 +149,25 @@ const _box4 = getBox({
     },
     Golisopod: {
       nature: "Lonely",
+      ability: "Emergency Exit",
       item: "Silver Powder",
       moves: ["First Impression", "Aerial Ace", "Rock Tomb", "Sucker Punch"],
     },
     Runerigus: {
+      nature: "Bold",
+      ability: "Shadow Shield",
+      item: "Rindo Berry",
       moves: ["Disable", "Scary Face", "Shadow Ball", "Shadow Sneak"],
     },
     "Arcanine-H": {
+      nature: "Impish",
+      ability: "Rock Head",
       item: "Magnet",
       moves: ["Bad Tantrum", "Crunch", "Fire Fang", "Thunder Fang"],
     },
     Golduck: {
       nature: "Naive",
+      ability: "Neuroforce",
       item: "Twisted Spoon",
       moves: ["Aqua Tail", "Flip Turn", "Ice Punch", "Psychic"],
     },
