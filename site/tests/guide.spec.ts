@@ -23,6 +23,21 @@ async function expectSnapshot(
   await expect.soft(target).toHaveScreenshot([filename], { ...options });
 }
 
+async function waitForImages(loc: Locator) {
+  await loc.evaluate((el) =>
+    Promise.all(
+      Array.from(el.querySelectorAll("img")).map((img) =>
+        img.complete
+          ? Promise.resolve()
+          : new Promise<void>((res) => {
+              img.addEventListener("load", () => res(), { once: true });
+              img.addEventListener("error", () => res(), { once: true });
+            })
+      )
+    )
+  );
+}
+
 async function waitForRender(loc: Locator) {
   // Wait until the subtree has been DOM-stable for two animation frames.
   // Handles chains of React useEffect re-renders (e.g. auto-selected branches
@@ -94,6 +109,7 @@ async function getCardSnapshot(
     for (const value of values) {
       await select.selectOption(value);
       await waitForRender(switchBattle);
+      await waitForImages(switchBattle);
 
       const reLoc = switchBattle.locator(detailsSelector).filter({
         has: page.locator("summary", { hasText: summary }),
