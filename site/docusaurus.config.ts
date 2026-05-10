@@ -86,8 +86,8 @@ const config: Config = {
     [
       "@easyops-cn/docusaurus-search-local",
       {
-        docsRouteBasePath: ["guide", "team", "overlay"],
-        docsDir: ["guide", "team", "overlay"],
+        docsRouteBasePath: ["guide"],
+        docsDir: ["guide"],
         indexBlog: false,
       },
     ],
