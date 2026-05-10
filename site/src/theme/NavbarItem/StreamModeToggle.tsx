@@ -1,5 +1,6 @@
 import BrowserOnly from "@docusaurus/BrowserOnly";
 import { useColorMode } from "@docusaurus/theme-common";
+import { secretMode } from "@site/src/data/secretMode";
 import { setStreamMode, useStreamMode } from "@site/src/utils/streamMode";
 import type { JSX } from "react";
 import { useEffect } from "react";
@@ -23,7 +24,7 @@ function Toggle() {
     }
   }, [colorMode]);
 
-  if (process.env.NODE_ENV !== "development" || colorMode !== "dark") {
+  if (!secretMode || colorMode !== "dark") {
     return null;
   }
 

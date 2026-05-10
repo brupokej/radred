@@ -82,6 +82,16 @@ const config: Config = {
       } satisfies Preset.Options,
     ],
   ],
+  themes: [
+    [
+      "@easyops-cn/docusaurus-search-local",
+      {
+        docsRouteBasePath: ["guide", "team", "overlay"],
+        docsDir: ["guide", "team", "overlay"],
+        indexBlog: false,
+      },
+    ],
+  ],
   themeConfig: {
     image: "img/brupokej-social-card.jpg",
     colorMode: {
@@ -113,11 +123,6 @@ const config: Config = {
           docsPluginId: "overlay",
           position: "left",
           label: "Overlay",
-        },
-        {
-          href: "https://github.com/brupokej/radred",
-          label: "GitHub",
-          position: "right",
         },
       ],
     },

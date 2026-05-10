@@ -71,6 +71,7 @@ html[data-highlight-level="off"] {
   --ifm-color-primary-lighter: #32d8b4;
   --ifm-color-primary-lightest: #4fddbf;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  --ifm-navbar-search-input-icon: url('data:image/svg+xml;utf8,<svg fill="%23ffffff" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" height="16px" width="16px"><path d="M6.02945,10.20327a4.17382,4.17382,0,1,1,4.17382-4.17382A4.15609,4.15609,0,0,1,6.02945,10.20327Zm9.69195,4.2199L10.8989,9.59979A5.88021,5.88021,0,0,0,12.058,6.02856,6.00467,6.00467,0,1,0,9.59979,10.8989l4.82338,4.82338a.89729.89729,0,0,0,1.29912,0,.89749.89749,0,0,0-.00087-1.29909Z" /></svg>');
 }
 
 [data-stream-mode="true"] {
@@ -87,6 +88,42 @@ html[data-highlight-level="off"] {
   --hl-danger-bg: rgba(250, 56, 56, 0.15);
   --hl-primary-bg: rgba(37, 194, 160, 0.15);
   --ifm-color-success-contrast-background: rgba(0, 200, 80, 0.18);
+}
+
+/* Search bar — move before the toggle group in the right navbar */
+[class*="navbarSearchContainer"] {
+  order: -1;
+}
+
+/* Search bar */
+.navbar__search-input {
+  border-radius: var(--ifm-global-radius);
+}
+
+.navbar__search-input:focus {
+  padding-right: 2rem;
+}
+
+[class*="searchHintContainer"] {
+  display: none !important;
+}
+
+@media (min-width: 997px) {
+  [class*="navbarSearchContainer"] {
+    margin-right: var(--ifm-navbar-padding-horizontal);
+  }
+}
+
+@media (max-width: 996px) {
+  .navbar__search-input {
+    width: 12.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .navbar__search-input:focus {
+    max-width: calc(100vw - 15rem);
+  }
 }
 
 [data-stream-mode="true"] .footer--dark {
