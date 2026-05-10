@@ -694,7 +694,7 @@ const _box10 = getBox({
       moves: ["Fake Out", "Bullet Punch", "Iron Head", "Metal Burst"],
     },
     Runerigus: {
-      nature: "Careful",
+      nature: "Sassy",
       ability: "Wandering Soul",
       item: "Sitrus Berry",
       moves: ["Bulldoze", "Rock Tomb", "Shadow Claw", "Shadow Sneak"],

@@ -54,7 +54,7 @@ const _box3 = getBox({
   box: _box2,
   update: {
     Kricketune: {
-      nature: "Rash",
+      nature: "Mild",
       ability: "Technician",
       item: "Coba Berry",
       moves: ["Bug Bite", "Bulldoze", "Mega Drain", "Rock Tomb"],
@@ -95,7 +95,7 @@ export const route3LassSallyBattle: Moment = {
             matchup: ["Pikachu-Flying"],
             turns: [
               [
-                { opponent: "{o:Pikachu-Flying} Zippy Zap {p:Kricketune} to {+:38}" },
+                { opponent: "{o:Pikachu-Flying} Zippy Zap {p:Kricketune} to {+:33}" },
                 { player: "{p:Kricketune} Rock Tomb {o:Pikachu-Flying} to {=:0}" },
                 { opponent: "{o:Pikachu-Flying} fainted" },
               ],
@@ -237,10 +237,10 @@ const _box7 = getBox({
       moves: ["Bug Bite", "Bulldoze", "Mega Drain", "Rock Tomb"],
     },
     "Yamask-G": {
-      nature: "Careful",
+      nature: "Sassy",
       ability: "Wandering Soul",
       item: "Rawst Berry",
-      moves: ["Disable", "Haze", "Magnitude", "Shadow Sneak"],
+      moves: ["Disable", "Haze", "Night Shade", "Shadow Sneak"],
     },
     Azumarill: {
       nature: "Impish",
@@ -508,10 +508,10 @@ const _box9 = getBox({
       moves: ["Bug Bite", "Bulldoze", "Bullet Seed", "Mega Drain"],
     },
     "Yamask-G": {
-      nature: "Careful",
+      nature: "Sassy",
       ability: "Wandering Soul",
       item: "Pecha Berry",
-      moves: ["Disable", "Haze", "Magnitude", "Shadow Sneak"],
+      moves: ["Disable", "Haze", "Night Shade", "Shadow Sneak"],
     },
     Clodsire: {
       nature: "Bold",
@@ -1614,7 +1614,7 @@ const _box20 = getBox({
   box: _box19,
   update: {
     "Yamask-G": {
-      nature: "Careful",
+      nature: "Sassy",
       ability: "Wandering Soul",
       item: "Pecha Berry",
       moves: ["Disable", "Haze", "Rock Tomb", "Shadow Sneak"],
@@ -1816,7 +1816,7 @@ const _box23 = getBox({
       moves: ["Dark Pulse", "Flame Burst", "Leer", "Sucker Punch"],
     },
     "Yamask-G": {
-      nature: "Careful",
+      nature: "Sassy",
       ability: "Wandering Soul",
       item: "Pecha Berry",
       moves: ["Disable", "Haze", "Rock Tomb", "Shadow Sneak"],

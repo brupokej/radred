@@ -745,8 +745,8 @@ const _box18 = getBox({
   box: _box17,
   update: {
     "Yamask-G": {
-      level: 16,
-      moves: ["Disable", "Haze", "Magnitude", "Shadow Sneak"],
+      level: 15,
+      moves: ["Disable", "Haze", "Night Shade", "Shadow Sneak"],
     },
   },
 });
@@ -762,7 +762,7 @@ const _box19 = getBox({
   box: _box18,
   update: {
     Kricketune: {
-      nature: "Rash",
+      nature: "Mild",
       ability: "Technician",
       item: "Miracle Seed",
       moves: ["Bug Bite", "Mega Drain", "Rock Tomb", "Struggle Bug"],
@@ -790,10 +790,10 @@ const _box19 = getBox({
       moves: ["Mud Shot", "Slam", "Tackle", "Tail Whip"],
     },
     "Yamask-G": {
-      nature: "Careful",
+      nature: "Sassy",
       ability: "Wandering Soul",
       item: "Rindo",
-      moves: ["Disable", "Haze", "Magnitude", "Shadow Sneak"],
+      moves: ["Disable", "Haze", "Night Shade", "Shadow Sneak"],
     },
   },
   team: ["Kricketune", "Meowth-G", "Torracat", "Tentacool", "Wooper-P", "Yamask-G"],
@@ -835,7 +835,41 @@ export const pewterCityLeaderBrockBattle: Moment = {
                 { opponent: "{p:Kricketune} sandstorm to {=:52}" },
               ],
             ],
-            branches: [{ branches: ["Kricketune switch to Meowth-G"] }],
+          },
+          {
+            matchup: ["Varoom"],
+            turns: [
+              [
+                { player: "{p:Kricketune} switch to {p:Meowth-G}" },
+                { opponent: "{o:Varoom} Toxic {p:Meowth-G}" },
+              ],
+              [
+                { player: "{p:Meowth-G} Fake Out {o:Varoom} to {-:36}" },
+                { opponent: "{o:Varoom} flinched" },
+              ],
+              [
+                { player: "{p:Meowth-G} Metal Claw {o:Varoom} to {-:28}" },
+                { opponent: "{o:Varoom} Bulldoze {p:Meowth-G} to {+:4}" },
+              ],
+              [
+                { player: "{p:Meowth-G} switch to {p:Kricketune}" },
+                { opponent: "{o:Varoom} Bulldoze {p:Kricketune} to {+:43}" },
+                { opponent: "{p:Kricketune} sandstorm to {+:40}" },
+              ],
+              [
+                { player: "{p:Kricketune} switch to {p:Torracat}" },
+                { opponent: "{o:Varoom} Toxic {p:Torracat}" },
+                { opponent: "{p:Torracat} sandstorm to {=:48}" },
+                { opponent: "{p:Torracat} badly poison to {=:45}" },
+              ],
+              [
+                { player: "{p:Torracat} Fire Fang {o:Varoom} to {=:0}" },
+                { opponent: "{o:Varoom} fainted" },
+                { opponent: "{p:Torracat} sandstorm to {=:33}" },
+                { opponent: "{p:Torracat} badly poison to {=:24}" },
+              ],
+            ],
+            branches: [{ branches: ["Torracat switch to Tentacool"] }],
           },
         ],
       },
@@ -851,14 +885,7 @@ export const pewterCityLeaderBrockBattle: Moment = {
                 { opponent: "{p:Kricketune} sandstorm to {=:52}" },
               ],
             ],
-            branches: [{ branches: ["Kricketune switch to Meowth-G"] }],
           },
-        ],
-        frags: { Kricketune: 1 },
-      },
-      {
-        line: "Kricketune switch to Meowth-G",
-        matchups: [
           {
             matchup: ["Varoom"],
             turns: [
@@ -876,8 +903,8 @@ export const pewterCityLeaderBrockBattle: Moment = {
               ],
               [
                 { player: "{p:Meowth-G} switch to {p:Kricketune}" },
-                { opponent: "{o:Varoom} Bulldoze {p:Kricketune} to {+:44}" },
-                { opponent: "{p:Kricketune} sandstorm to {+:41}" },
+                { opponent: "{o:Varoom} Bulldoze {p:Kricketune} to {+:43}" },
+                { opponent: "{p:Kricketune} sandstorm to {+:40}" },
               ],
               [
                 { player: "{p:Kricketune} switch to {p:Torracat}" },
@@ -897,7 +924,14 @@ export const pewterCityLeaderBrockBattle: Moment = {
                 { opponent: "{p:Torracat} badly poison to {=:24}" },
               ],
             ],
+            branches: [{ branches: ["Torracat switch to Tentacool"] }],
           },
+        ],
+        frags: { Kricketune: 1 },
+      },
+      {
+        line: "Torracat switch to Tentacool",
+        matchups: [
           {
             matchup: ["Cacnea"],
             turns: [
@@ -916,13 +950,13 @@ export const pewterCityLeaderBrockBattle: Moment = {
               ],
               [
                 { player: "{p:Wooper-P} switch to {p:Kricketune}" },
-                { opponent: "{o:Cacnea} Pow-Up Punch {p:Kricketune} to {+:29}" },
-                { opponent: "{p:Kricketune} sandstorm to {+:26}" },
+                { opponent: "{o:Cacnea} Pow-Up Punch {p:Kricketune} to {+:27}" },
+                { opponent: "{p:Kricketune} sandstorm to {+:24}" },
               ],
               [
                 { player: "{p:Kricketune} Bug Bite {o:Cacnea} to {=:0}" },
                 { opponent: "{o:Cacnea} fainted" },
-                { opponent: "{p:Kricketune} sandstorm to {+:23}" },
+                { opponent: "{p:Kricketune} sandstorm to {+:21}" },
               ],
             ],
           },
@@ -931,35 +965,23 @@ export const pewterCityLeaderBrockBattle: Moment = {
             turns: [
               [
                 { player: "{p:Kricketune} switch to {p:Yamask-G}" },
-                { opponent: "{o:Lileep} HP Rock {p:Yamask-G} to {+:32}" },
+                { opponent: "{o:Lileep} HP Rock {p:Yamask-G} to {+:30}" },
               ],
               [
-                { player: "{p:Yamask-G} Disable {o:Lileep}" },
-                { opponent: "{o:Lileep} Mega Drain {p:Yamask-G} to {+:10}" },
+                { opponent: "{o:Lileep} Mega Drain {p:Yamask-G} to {+:8}" },
+                { player: "{p:Yamask-G} Night Shade {o:Lileep} to {=:37}" },
               ],
               [
                 { player: "{p:Yamask-G} switch to {p:Kricketune}" },
-                { opponent: "{o:Lileep} Mega Drain {p:Kricketune} to {+:11}" },
-                { opponent: "{p:Kricketune} sandstorm to {+:8}" },
-              ],
-              [
-                { player: "{p:Kricketune} Bug Bite {o:Lileep} to {-:10}" },
-                { opponent: "{p:Kricketune} Oran Berry to {+:18}" },
-                { opponent: "{o:Lileep} Mega Drain {p:Kricketune} (non-crit) to {+:10}" },
-                { opponent: "{o:Lileep} recover to {-:16}" },
+                { opponent: "{o:Lileep} Mega Drain {p:Kricketune} to {+:10}" },
+                { opponent: "{o:Lileep} recover to {-:42}" },
                 { opponent: "{p:Kricketune} sandstorm to {+:7}" },
               ],
               [
-                "Risk →",
-                {
-                  danger:
-                    "Varoom Bulldoze Kricketune → Cacnea Pow-Up Punch Kricketune → Lileep Mega Drain Kricketune ×2 (to 0) → {c:0.00001%}",
-                },
-              ],
-              [
                 { player: "{p:Kricketune} Bug Bite {o:Lileep} to {=:0}" },
+                { opponent: "{p:Kricketune} Oran Berry to {+:17}" },
                 { opponent: "{o:Lileep} fainted" },
-                { opponent: "{p:Kricketune} sandstorm to {+:4}" },
+                { opponent: "{p:Kricketune} sandstorm to {+:14}" },
               ],
             ],
             branches: [
@@ -981,9 +1003,9 @@ export const pewterCityLeaderBrockBattle: Moment = {
             turns: [
               [
                 { player: "{p:Kricketune} Mega Drain {o:Hippopotas} to {=:0}" },
-                { opponent: "{p:Kricketune} recover to {+:26}" },
+                { opponent: "{p:Kricketune} recover to {+:36}" },
                 { opponent: "{o:Hippopotas} fainted" },
-                { opponent: "{p:Kricketune} sandstorm to {+:23}" },
+                { opponent: "{p:Kricketune} sandstorm to {+:33}" },
               ],
             ],
           },
@@ -993,7 +1015,7 @@ export const pewterCityLeaderBrockBattle: Moment = {
               [
                 { player: "{p:Kricketune} Bug Bite {o:Lunatone} to {=:0}" },
                 { opponent: "{o:Lunatone} fainted" },
-                { opponent: "{p:Kricketune} sandstorm to {+:20}" },
+                { opponent: "{p:Kricketune} sandstorm to {+:30}" },
               ],
             ],
           },
@@ -1018,7 +1040,7 @@ export const pewterCityLeaderBrockBattle: Moment = {
               [
                 { player: "{p:Kricketune} Bug Bite {o:Lunatone} to {=:0}" },
                 { opponent: "{o:Lunatone} fainted" },
-                { opponent: "{p:Kricketune} sandstorm to {+:1}" },
+                { opponent: "{p:Kricketune} sandstorm to {+:11}" },
               ],
             ],
           },
