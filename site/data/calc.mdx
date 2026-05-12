@@ -4,9 +4,32 @@ sidebar_position: 2
 
 import BrowserOnly from "@docusaurus/BrowserOnly";
 import { CalcWithGameState } from "@site/src/components/Calc";
+import { moments as brockMoments } from "@site/src/data/guide/brock";
+import { moments as mistyMoments } from "@site/src/data/guide/misty";
+import { moments as surgeMoments } from "@site/src/data/guide/surge";
+import { moments as erikaMoments } from "@site/src/data/guide/erika";
+import { moments as sabrinaMoments } from "@site/src/data/guide/sabrina";
+import { moments as kogaMoments } from "@site/src/data/guide/koga";
+import { moments as blaineMoments } from "@site/src/data/guide/blaine";
+import { moments as clairMoments } from "@site/src/data/guide/clair";
+import { moments as victoryRoadMoments } from "@site/src/data/guide/victoryRoad";
+import { moments as eliteFourMoments } from "@site/src/data/guide/eliteFour";
 
 # Calc
 
+export const allMoments = [
+  ...brockMoments,
+  ...mistyMoments,
+  ...surgeMoments,
+  ...erikaMoments,
+  ...sabrinaMoments,
+  ...kogaMoments,
+  ...blaineMoments,
+  ...clairMoments,
+  ...victoryRoadMoments,
+  ...eliteFourMoments,
+];
+
 <BrowserOnly fallback={<div>Loading calculator…</div>}>
-  {() => <CalcWithGameState />}
+  {() => <CalcWithGameState moments={allMoments} />}
 </BrowserOnly>

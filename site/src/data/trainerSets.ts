@@ -1,4 +1,13 @@
 import { moments as brockMoments } from "@site/src/data/guide/brock";
+import { moments as mistyMoments } from "@site/src/data/guide/misty";
+import { moments as surgeMoments } from "@site/src/data/guide/surge";
+import { moments as erikaMoments } from "@site/src/data/guide/erika";
+import { moments as sabrinaMoments } from "@site/src/data/guide/sabrina";
+import { moments as kogaMoments } from "@site/src/data/guide/koga";
+import { moments as blaineMoments } from "@site/src/data/guide/blaine";
+import { moments as clairMoments } from "@site/src/data/guide/clair";
+import { moments as victoryRoadMoments } from "@site/src/data/guide/victoryRoad";
+import { moments as eliteFourMoments } from "@site/src/data/guide/eliteFour";
 import type { Moment } from "@site/src/utils/moments";
 import { boxToTeam, pokemonDataToSide, type CalcSideState } from "@site/src/utils/calcLink";
 
@@ -8,6 +17,19 @@ export interface TrainerSet {
 }
 
 type BattleMoment = Extract<Moment, { kind: "battle" }>;
+
+const allMoments: Moment[] = [
+  ...brockMoments,
+  ...mistyMoments,
+  ...surgeMoments,
+  ...erikaMoments,
+  ...sabrinaMoments,
+  ...kogaMoments,
+  ...blaineMoments,
+  ...clairMoments,
+  ...victoryRoadMoments,
+  ...eliteFourMoments,
+];
 
 function addToMap(
   map: Map<string, TrainerSet[]>,
@@ -29,7 +51,7 @@ function addToMap(
 export const TRAINER_SETS_BY_SPECIES: Map<string, TrainerSet[]> = (() => {
   const map = new Map<string, TrainerSet[]>();
 
-  for (const moment of brockMoments) {
+  for (const moment of allMoments) {
     if (moment.kind !== "battle") continue;
     const battle = (moment as BattleMoment).data;
     const label = moment.label.replace(/ Battle$/, "");

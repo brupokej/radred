@@ -11,8 +11,9 @@ import {
 import { TRAINER_SETS_BY_SPECIES } from "@site/src/data/trainerSets";
 import { getColouredSpriteUrl, getMonotoneSpriteUrl } from "@site/src/utils/sprites";
 import { ScrollFade } from "@site/src/components/ScrollFade";
+import { resolveActiveBox } from "@site/src/components/Battle";
+import { getSwitchBattleCaseData } from "@site/src/components/SwitchBattle";
 import GameState from "@site/src/components/GameState";
-import { moments as brockMoments } from "@site/src/data/guide/brock";
 import type { Moment } from "@site/src/utils/moments";
 import { useStorageState } from "@site/src/utils/storage";
 import { LIVE_MOMENT_DEFAULT } from "@site/src/utils/storageDefaults";
@@ -593,32 +594,51 @@ export function Calc({ p1Team = [], p2Team = [] }: CalcProps) {
   );
 }
 
-type BattleMoment = Extract<Moment, { kind: "battle" }>;
-
-export function CalcWithGameState() {
+export function CalcWithGameState({ moments }: { moments: Moment[] }) {
   const { value: storedLabel } = useStorageState("live-moment");
   const effectiveLabel = storedLabel ?? LIVE_MOMENT_DEFAULT;
 
-  const battle = useMemo(() => {
-    const found = brockMoments.find(
-      (m): m is BattleMoment => m.kind === "battle" && m.label === effectiveLabel
-    );
-    return found?.data ?? null;
-  }, [effectiveLabel]);
+  const moment = moments.find((m) => m.label === effectiveLabel) ?? null;
 
-  const p1Team = useMemo(
-    () => (battle?.playerBox ? boxToTeam(battle.playerBox) : []),
-    [battle]
-  );
-  const p2Team = useMemo(
-    () => (battle ? boxToTeam(battle.opponentBox) : []),
-    [battle]
-  );
+  const { p1Team, p2Team } = useMemo((): { p1Team: PokemonData[]; p2Team: PokemonData[] } => {
+    if (!moment) return { p1Team: [], p2Team: [] };
+
+    if (moment.kind === "battle") {
+      const { data } = moment;
+      return {
+        p1Team: [
+          ...boxToTeam(resolveActiveBox(data)),
+          ...(data.partnerBox ? boxToTeam(data.partnerBox) : []),
+        ],
+        p2Team: boxToTeam(data.opponentBox),
+      };
+    }
+
+    if (moment.kind === "switchBattle") {
+      const data = getSwitchBattleCaseData(moment.data);
+      return {
+        p1Team: [
+          ...boxToTeam(resolveActiveBox(data)),
+          ...(data.partnerBox ? boxToTeam(data.partnerBox) : []),
+        ],
+        p2Team: boxToTeam(data.opponentBox),
+      };
+    }
+
+    if (moment.kind === "encounter") {
+      return {
+        p1Team: boxToTeam(moment.data.playerBox),
+        p2Team: [moment.data.pokemon],
+      };
+    }
+
+    return { p1Team: [], p2Team: [] };
+  }, [moment]);
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
+      <GameState moments={moments} />
       <Calc key={effectiveLabel} p1Team={p1Team} p2Team={p2Team} />
-      <GameState moments={brockMoments} />
     </div>
   );
 }
