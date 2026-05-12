@@ -5,11 +5,17 @@ import {
   CALC_GEN,
   DEFAULT_SIDE,
   pokemonDataToSide,
+  boxToTeam,
   type CalcSideState,
 } from "@site/src/utils/calcLink";
 import { TRAINER_SETS_BY_SPECIES } from "@site/src/data/trainerSets";
 import { getColouredSpriteUrl, getMonotoneSpriteUrl } from "@site/src/utils/sprites";
 import { ScrollFade } from "@site/src/components/ScrollFade";
+import GameState from "@site/src/components/GameState";
+import { moments as brockMoments } from "@site/src/data/guide/brock";
+import type { Moment } from "@site/src/utils/moments";
+import { useStorageState } from "@site/src/utils/storage";
+import { LIVE_MOMENT_DEFAULT } from "@site/src/utils/storageDefaults";
 import styles from "./styles.module.css";
 
 // ── Static data derived from the calc engine ──────────────
@@ -583,6 +589,36 @@ export function Calc({ p1Team = [], p2Team = [] }: CalcProps) {
           playerTeam={p1Team}
         />
       </div>
+    </div>
+  );
+}
+
+type BattleMoment = Extract<Moment, { kind: "battle" }>;
+
+export function CalcWithGameState() {
+  const { value: storedLabel } = useStorageState("live-moment");
+  const effectiveLabel = storedLabel ?? LIVE_MOMENT_DEFAULT;
+
+  const battle = useMemo(() => {
+    const found = brockMoments.find(
+      (m): m is BattleMoment => m.kind === "battle" && m.label === effectiveLabel
+    );
+    return found?.data ?? null;
+  }, [effectiveLabel]);
+
+  const p1Team = useMemo(
+    () => (battle?.playerBox ? boxToTeam(battle.playerBox) : []),
+    [battle]
+  );
+  const p2Team = useMemo(
+    () => (battle ? boxToTeam(battle.opponentBox) : []),
+    [battle]
+  );
+
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
+      <Calc key={effectiveLabel} p1Team={p1Team} p2Team={p2Team} />
+      <GameState moments={brockMoments} />
     </div>
   );
 }

@@ -1,0 +1,12 @@
+---
+sidebar_position: 2
+---
+
+import BrowserOnly from "@docusaurus/BrowserOnly";
+import { CalcWithGameState } from "@site/src/components/Calc";
+
+# Calc
+
+<BrowserOnly fallback={<div>Loading calculator…</div>}>
+  {() => <CalcWithGameState />}
+</BrowserOnly>

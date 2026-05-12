@@ -37,7 +37,7 @@ const FeatureList: FeatureItem[] = [
     description: (
       <>
         Battle appearances and frag counts are tracked automatically throughout the guide. Browse
-        full stats on the Team page or&nbsp;the&nbsp;Twitch&nbsp;overlays.
+        full stats on the Data pages or&nbsp;the&nbsp;Twitch&nbsp;overlays.
       </>
     ),
   },

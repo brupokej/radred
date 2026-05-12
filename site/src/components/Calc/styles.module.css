@@ -111,7 +111,7 @@
   }
 }
 
-@container (max-width: 700px) {
+@container (max-width: 464px) {
   .formRow {
     grid-template-columns: 1fr;
   }
