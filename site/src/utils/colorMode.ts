@@ -10,7 +10,7 @@ const MODES_SECRET = ["light", "dark", "stream", "system"] as const satisfies re
 
 export function nextMode(mode: ExtendedMode): ExtendedMode {
   const modes = secretMode ? MODES_SECRET : MODES_BASE;
-  const idx = modes.indexOf(mode);
+  const idx = (modes as readonly ExtendedMode[]).indexOf(mode);
   return modes[(idx === -1 ? 0 : idx + 1) % modes.length];
 }
 

@@ -163,7 +163,7 @@ export function getBox({
     const stepRenames: Record<string, string> = {};
     const stepPokemon: PartialPokemonData[] = [];
 
-    for (const [key, partial] of Object.entries(u)) {
+    for (const [key, partial] of Object.entries(u) as [string, PartialPokemonData][]) {
       if (!working.pokemon.some((p) => resolvePokemon(p).name === key)) {
         console.error(`getBox: "${key}" not found — skipping update.`);
         continue;

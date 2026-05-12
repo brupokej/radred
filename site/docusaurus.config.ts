@@ -1,14 +1,31 @@
 import type * as Preset from "@docusaurus/preset-classic";
 import type { Config } from "@docusaurus/types";
 import { themes as prismThemes } from "prism-react-renderer";
+import path from "path";
 import overlayServerPlugin from "./src/plugins/overlayServer";
 import secretsPlugin from "./src/plugins/secrets";
 import storageDefaultsPlugin from "./src/plugins/storageDefaults";
+
+function calcAliasPlugin() {
+  return {
+    name: "calc-alias",
+    configureWebpack() {
+      return {
+        resolve: {
+          alias: {
+            "@calc": path.resolve(__dirname, "../calc/calc/src"),
+          },
+        },
+      };
+    },
+  };
+}
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
   plugins: [
+    calcAliasPlugin,
     overlayServerPlugin,
     storageDefaultsPlugin,
     secretsPlugin,

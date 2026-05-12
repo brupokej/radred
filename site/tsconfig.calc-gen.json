@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "declarationDir": "./generated/calc",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "lib": ["es2016", "dom"],
+    "module": "commonjs",
+    "noEmitOnError": false,
+    "strict": true,
+    "target": "es2015",
+    "downlevelIteration": true,
+    "rootDir": "../calc/calc/src"
+  },
+  "include": ["../calc/calc/src/**/*.ts"],
+  "exclude": ["../calc/calc/src/test"]
+}

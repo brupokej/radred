@@ -40,7 +40,7 @@ export function getChanges(box: Box): Pokemon[] {
 
   for (const step of box.updates ?? []) {
     const invertedRenames: Record<string, string> = {};
-    for (const [old, newName] of Object.entries(step.renames ?? {})) {
+    for (const [old, newName] of Object.entries(step.renames ?? {}) as [string, string][]) {
       invertedRenames[newName] = old;
     }
 

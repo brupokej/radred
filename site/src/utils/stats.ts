@@ -60,7 +60,7 @@ function getVisibleLines(data: BattleData): Map<string, (typeof data.lines)[0]> 
 export function computeBattleFrags(battle: BattleData): Record<string, number> {
   const frags: Record<string, number> = {};
   for (const line of getVisibleLines(battle).values()) {
-    for (const [pokemon, count] of Object.entries(line.frags ?? {})) {
+    for (const [pokemon, count] of Object.entries(line.frags ?? {}) as [string, number][]) {
       frags[pokemon] = (frags[pokemon] ?? 0) + count;
     }
   }
@@ -144,7 +144,7 @@ export function computePageFragStats(
   for (const { label, battles } of pages) {
     for (const battle of battles) {
       for (const line of getVisibleLines(battle).values()) {
-        for (const [pokemon, count] of Object.entries(line.frags ?? {})) {
+        for (const [pokemon, count] of Object.entries(line.frags ?? {}) as [string, number][]) {
           const key = canon(pokemon);
           if (!totals[key]) {
             totals[key] = { total: 0, byPage: {}, boxOrder: boxOrderMap[key] ?? Infinity };
@@ -209,7 +209,7 @@ export function computeStats(battles: BattleData[]): Record<string, PokemonStats
 
   for (const battle of battles) {
     for (const line of getVisibleLines(battle).values()) {
-      for (const [pokemon, count] of Object.entries(line.frags ?? {})) {
+      for (const [pokemon, count] of Object.entries(line.frags ?? {}) as [string, number][]) {
         const key = canon(pokemon);
         const entry = totals[key] ?? {
           battles: 0,

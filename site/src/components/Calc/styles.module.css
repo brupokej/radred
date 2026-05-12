@@ -1,0 +1,392 @@
+.calc {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  container-type: inline-size;
+}
+
+/* ── Results bar ─────────────────────────────────────────── */
+
+.resultsRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--ifm-spacing-horizontal);
+}
+
+.movesColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.moveResult {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 4px var(--ifm-spacing-horizontal);
+  border: none;
+  outline: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 3px;
+  cursor: pointer;
+  background: var(--ifm-color-emphasis-100);
+  font: inherit;
+  font-size: 0.875rem;
+  line-height: 18px;
+  text-align: left;
+  width: 100%;
+  transition: background 0.1s;
+}
+
+.moveResult:hover {
+  background: var(--ifm-color-emphasis-200);
+}
+
+.moveResult.active {
+  background: var(--ifm-color-primary);
+  color: white;
+  outline-color: var(--ifm-color-primary);
+}
+
+.moveResult.active .moveRange {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.moveName {
+  flex: 1;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.moveRange {
+  color: var(--ifm-color-emphasis-600);
+  white-space: nowrap;
+}
+
+.descBar {
+  padding: 0.5rem var(--ifm-spacing-horizontal);
+  background: var(--ifm-color-emphasis-100);
+  border-radius: 3px;
+  outline: 1px solid var(--ifm-color-emphasis-200);
+  font-size: 0.875rem;
+}
+
+.descMain {
+  font-weight: 500;
+}
+
+.descAmounts {
+  color: var(--ifm-color-emphasis-600);
+  margin-top: 0.15rem;
+}
+
+/* ── Two-column form ─────────────────────────────────────── */
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--ifm-spacing-horizontal);
+  align-items: start;
+}
+
+@container (min-width: 630px) {
+  .formRow,
+  .resultsRow {
+    max-width: 630px;
+  }
+}
+
+@container (min-width: 782px) {
+  .formRow,
+  .resultsRow {
+    max-width: 782px;
+  }
+}
+
+@container (min-width: 934px) {
+  .formRow,
+  .resultsRow {
+    max-width: 934px;
+  }
+}
+
+@container (max-width: 700px) {
+  .formRow {
+    grid-template-columns: 1fr;
+  }
+
+  .resultsRow {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Pokemon panel ───────────────────────────────────────── */
+
+.panel {
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: var(--ifm-global-radius);
+  box-shadow: var(--ifm-global-shadow-lw);
+  overflow: hidden;
+}
+
+.panelBody {
+  background: var(--ifm-card-background-color);
+}
+
+/* ── Sections with Row-style dividers ────────────────────── */
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-block: 13px;
+  padding-inline: calc(var(--ifm-spacing-horizontal) - 0.4rem);
+}
+
+.section + .section {
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+}
+
+/* ── Name row ─────────────────────────────────────────────── */
+
+.nameRow {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.nameInput {
+  width: 100%;
+  padding: 2px 1.2rem 2px 0.4rem;
+  border: none;
+  outline: 1px solid var(--ifm-color-emphasis-400);
+  border-radius: 3px;
+  background-color: var(--ifm-color-emphasis-200);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='5' viewBox='0 0 8 5'%3E%3Cpath stroke='%23999' stroke-width='1.5' fill='none' d='M0.5 0.5l3.5 3.5 3.5-3.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.35rem center;
+  color: var(--ifm-font-color-base);
+  font: inherit;
+  font-size: 0.875rem;
+  line-height: 22px;
+  min-width: 0;
+}
+
+.nameInput:hover,
+.nameInput:focus {
+  outline-color: var(--ifm-color-primary);
+}
+
+.inlineSprite {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+  image-rendering: pixelated;
+  flex-shrink: 0;
+}
+
+/* ── Sprite section ───────────────────────────────────────── */
+
+.spriteSection {
+  font-size: 0.875rem;
+  line-height: 26px;
+}
+
+.section + .spriteSection,
+.spriteSection + .section,
+.spriteSection + .spriteSection {
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.spriteSectionInner {
+  align-items: center;
+  display: flex;
+  flex-shrink: 0;
+  gap: 0.5rem;
+  padding-block: 13px;
+  padding-inline: calc(var(--ifm-spacing-horizontal) - 0.4rem);
+}
+
+.boxLabel {
+  padding-inline: 0.4rem;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.boxSep {
+  padding-inline: 0.25rem;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+
+.spriteChip {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+  padding: 0;
+  border: none;
+  outline: 1px solid color-mix(in srgb, var(--ifm-color-primary) 35%, transparent);
+  border-radius: 3px;
+  background: color-mix(in srgb, var(--ifm-color-primary) 10%, transparent);
+  cursor: pointer;
+  overflow: hidden;
+  transition: background 0.1s, outline-color 0.1s;
+}
+
+.spriteChip:hover {
+  background: color-mix(in srgb, var(--ifm-color-primary) 20%, transparent);
+  outline-color: var(--ifm-color-primary);
+}
+
+.spriteChipActive {
+  background: color-mix(in srgb, var(--ifm-color-emphasis-400) 10%, transparent);
+  outline-color: color-mix(in srgb, var(--ifm-color-emphasis-400) 35%, transparent);
+  cursor: default;
+  pointer-events: none;
+}
+
+.spriteThumb {
+  display: block;
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+
+/* ── Form rows ───────────────────────────────────────────── */
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  line-height: 26px;
+}
+
+.label {
+  width: 46px;
+  flex-shrink: 0;
+  font-size: 0.875rem;
+  color: var(--ifm-color-emphasis-700);
+  white-space: nowrap;
+}
+
+.input {
+  flex: 1;
+  appearance: none;
+  padding: 2px 1.2rem 2px 0.4rem;
+  border: none;
+  outline: 1px solid var(--ifm-color-emphasis-400);
+  border-radius: 3px;
+  background-color: var(--ifm-color-emphasis-200);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='5' viewBox='0 0 8 5'%3E%3Cpath stroke='%23999' stroke-width='1.5' fill='none' d='M0.5 0.5l3.5 3.5 3.5-3.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.35rem center;
+  color: var(--ifm-font-color-base);
+  font: inherit;
+  font-size: 0.875rem;
+  line-height: 22px;
+  min-width: 0;
+}
+
+.input:hover,
+.input:focus {
+  outline-color: var(--ifm-color-primary);
+}
+
+
+.inputNarrow {
+  width: 38px;
+  flex-shrink: 0;
+  padding: 2px 0.4rem;
+  border: none;
+  outline: 1px solid var(--ifm-color-emphasis-400);
+  border-radius: 3px;
+  background: var(--ifm-color-emphasis-200);
+  color: var(--ifm-font-color-base);
+  font: inherit;
+  font-size: 0.875rem;
+  line-height: 22px;
+  text-align: right;
+  appearance: textfield;
+}
+
+.inputNarrow:hover,
+.inputNarrow:focus {
+  outline-color: var(--ifm-color-primary);
+}
+
+.inputNarrow::-webkit-outer-spin-button,
+.inputNarrow::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* ── HP ──────────────────────────────────────────────────── */
+
+.hpLabel {
+  font-size: 0.875rem;
+  color: var(--ifm-color-emphasis-700);
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+.hpMax {
+  font-size: 0.875rem;
+  color: var(--ifm-color-emphasis-600);
+  white-space: nowrap;
+}
+
+.hpPct {
+  font-size: 0.875rem;
+  color: #4caf50;
+  white-space: nowrap;
+  width: 6ch;
+  text-align: right;
+}
+
+.hpPct.hpYellow {
+  color: #ffc107;
+}
+
+.hpPct.hpRed {
+  color: #f44336;
+}
+
+/* ── Species search dropdown ─────────────────────────────── */
+
+.speciesWrap {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+}
+
+.speciesDropdown {
+  position: fixed;
+  z-index: 1000;
+  max-height: 260px;
+  overflow-y: auto;
+  background: var(--ifm-card-background-color);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 3px;
+  box-shadow: var(--ifm-global-shadow-md);
+}
+
+.dropdownItem {
+  padding: 0.2rem 0.5rem;
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+
+.dropdownItem:hover {
+  background: var(--ifm-color-emphasis-100);
+}
+
+.dropdownSet {
+  color: var(--ifm-font-color-base);
+}

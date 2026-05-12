@@ -143,7 +143,7 @@ export default function BarRace({
       const resolved = resolveBox(resolveActiveBox(activeData));
 
       if (metric === "frags") {
-        for (const [p, c] of Object.entries(computeBattleFrags(activeData))) {
+        for (const [p, c] of Object.entries(computeBattleFrags(activeData)) as [string, number][]) {
           const key = canon(p);
           running[key] = (running[key] ?? 0) + c;
         }

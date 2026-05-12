@@ -19,7 +19,7 @@ function computeTotals(moments: Moment[], canon: (name: string) => string) {
       const key = canon(name);
       battles[key] = (battles[key] ?? 0) + 1;
     }
-    for (const [name, count] of Object.entries(computeBattleFrags(m.data))) {
+    for (const [name, count] of Object.entries(computeBattleFrags(m.data)) as [string, number][]) {
       const key = canon(name);
       frags[key] = (frags[key] ?? 0) + count;
     }

@@ -5,7 +5,7 @@ import Team from "@site/src/components/Team";
 import { secretMode } from "@site/src/data/secretMode";
 import { Box } from "@site/src/utils/box";
 import { readAllSelections, writeAll } from "@site/src/utils/encounterLog";
-import { encounterSequences, locations } from "@site/src/utils/encounterPools";
+import { EncounterSequenceConfig, encounterSequences, locations } from "@site/src/utils/encounterPools";
 import { PokemonData } from "@site/src/utils/pokemon";
 import { STORAGE_EVENT } from "@site/src/utils/storage";
 import { ReactNode, useEffect, useState } from "react";
@@ -20,7 +20,7 @@ function getFilteredOptions(
   currentIdx: number
 ): string[] {
   const consumed = new Set<string>();
-  for (const [seqTarget, cfg] of Object.entries(encounterSequences)) {
+  for (const [seqTarget, cfg] of Object.entries(encounterSequences) as [string, EncounterSequenceConfig][]) {
     if (cfg.poolName !== poolName || cfg.sequenceId === sequenceId) continue;
     if (cfg.priority > priority) continue;
     for (const s of all[cfg.sequenceId] ?? [seqTarget]) consumed.add(s);
@@ -45,7 +45,7 @@ function Sequence({ target }: { target: string }) {
 
   const selections = all[sequenceId] ?? [target];
 
-  const startIndex = Object.values(encounterSequences)
+  const startIndex = (Object.values(encounterSequences) as EncounterSequenceConfig[])
     .filter((c) => c.priority < priority)
     .reduce((sum, c) => sum + (all[c.sequenceId]?.length ?? 1), 0);
 
@@ -57,13 +57,13 @@ function Sequence({ target }: { target: string }) {
     }
 
     const updates: Record<string, string[]> = { [sequenceId]: newSelections };
-    for (const [seqTarget, cfg] of Object.entries(encounterSequences)) {
+    for (const [seqTarget, cfg] of Object.entries(encounterSequences) as [string, EncounterSequenceConfig][]) {
       if (cfg.priority > priority) updates[cfg.sequenceId] = [seqTarget];
     }
     writeAll(updates);
   }
 
-  const externalEntry = Object.entries(encounterSequences).find(
+  const externalEntry = (Object.entries(encounterSequences) as [string, EncounterSequenceConfig][]).find(
     ([seqTarget, cfg]) =>
       cfg.poolName === poolName &&
       cfg.sequenceId !== sequenceId &&
@@ -73,7 +73,7 @@ function Sequence({ target }: { target: string }) {
   if (externalEntry) {
     const [extTarget, extCfg] = externalEntry;
     const extSelections = all[extCfg.sequenceId] ?? [extTarget];
-    const extStart = Object.values(encounterSequences)
+    const extStart = (Object.values(encounterSequences) as EncounterSequenceConfig[])
       .filter((c) => c.priority < extCfg.priority)
       .reduce((sum, c) => sum + (all[c.sequenceId]?.length ?? 1), 0);
     const location = locations[extStart + extSelections.indexOf(target)];
