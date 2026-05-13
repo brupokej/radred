@@ -5,13 +5,10 @@ import { slugify } from "../src/utils/slugify";
 
 test.describe.configure({ mode: "serial" });
 
-// Cache sprite responses across tests so each URL is only fetched from the CDN once.
-const spriteCache = new Map<string, { body: Buffer; contentType: string }>();
-
 const SNAPSHOT_DIR = path.join(__dirname, "snapshots/guide.spec.ts-snapshots");
 const SNAPSHOT_SUFFIX = `desktop-${process.platform}`;
 const secretMode = process.env.SECRET_MODE === "true";
-const detailsSelector = secretMode ? "[data-secret] details" : "details";
+const detailsSelector = secretMode ? "[data-secret] [data-card]" : "[data-card]";
 const seenSnapshots = new Set<string>();
 
 async function expectSnapshot(
@@ -23,20 +20,6 @@ async function expectSnapshot(
   await expect.soft(target).toHaveScreenshot([filename], { ...options });
 }
 
-async function waitForImages(loc: Locator) {
-  await loc.evaluate((el) =>
-    Promise.all(
-      Array.from(el.querySelectorAll("img")).map((img) =>
-        img.complete
-          ? Promise.resolve()
-          : new Promise<void>((res) => {
-              img.addEventListener("load", () => res(), { once: true });
-              img.addEventListener("error", () => res(), { once: true });
-            })
-      )
-    )
-  );
-}
 
 async function waitForRender(loc: Locator) {
   // Wait until the subtree has been DOM-stable for two animation frames.
@@ -101,19 +84,19 @@ async function getCardSnapshot(
   if (switchBattleKey && !visited.has(switchBattleKey)) {
     visited.add(switchBattleKey);
 
-    const summary = await loc.locator("summary").first().textContent();
+    const summary = await loc.locator("[data-card-title]").first().textContent();
     const switchBattle = page.locator(`[data-switch-battle="${switchBattleKey}"]`);
-    const select = switchBattle.locator("select").first();
+    const select = switchBattle.locator("[data-switch-case='active'] select").first();
     const values = await getValues(select);
     const defaultValue = values[0];
     for (const value of values) {
       await select.selectOption(value);
       await waitForRender(switchBattle);
-      await waitForImages(switchBattle);
 
-      const reLoc = switchBattle.locator(detailsSelector).filter({
-        has: page.locator("summary", { hasText: summary }),
-      });
+      const reLoc = switchBattle
+        .locator("[data-switch-case='active']")
+        .locator(detailsSelector)
+        .filter({ has: page.locator("[data-card-title]", { hasText: summary }) });
       await expandAll(reLoc);
       await getCardSnapshot(reLoc, parts, locIndex, visited);
     }
@@ -236,7 +219,7 @@ async function getSnapshots(page: Page, pathIndex: number, path: string) {
     if (secretMode) parts.splice(0, 0, "secrets-");
 
     for (const feature of FEATURES.filter((f) => heading.includes(f.heading))) {
-      const summary = await loc.locator("summary").first().textContent();
+      const summary = await loc.locator("[data-card-title]").first().textContent();
       if (summary?.includes(feature.summary)) {
         await getFeatureSnapshot(loc, parts, featureIndex, feature.name);
       }
@@ -283,22 +266,6 @@ const PATHS = secretMode
 for (const [pathIndex, path] of PATHS.entries()) {
   test.describe(`${path[0]}/${path[1]}`, () => {
     test.beforeEach(async ({ page }) => {
-      await page.route("**/*.png", async (route) => {
-        const url = route.request().url();
-        const cached = spriteCache.get(url);
-        if (cached) {
-          await route.fulfill({ body: cached.body, contentType: cached.contentType });
-          return;
-        }
-        const response = await route.fetch();
-        const body = await response.body();
-        spriteCache.set(url, {
-          body,
-          contentType: response.headers()["content-type"] ?? "image/png",
-        });
-        await route.fulfill({ response, body });
-      });
-
       await page.goto(`/radred/${path[0]}/${path[1]}`);
       await page.waitForLoadState("networkidle");
       await page.addStyleTag({
@@ -309,7 +276,6 @@ for (const [pathIndex, path] of PATHS.entries()) {
     });
 
     test("snapshots", async ({ page }) => {
-      test.setTimeout(60_000);
       await getSnapshots(page, pathIndex + 1, path[1]);
     });
   });

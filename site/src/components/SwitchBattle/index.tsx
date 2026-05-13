@@ -1,6 +1,5 @@
 import { Battle, BattleData } from "@site/src/components/Battle";
 import { Row } from "@site/src/components/Row";
-import Switch, { Case } from "@site/src/components/Switch";
 import { slugify } from "@site/src/utils/slugify";
 import { getState, removeState, setState, useStorageState } from "@site/src/utils/storage";
 
@@ -52,13 +51,15 @@ export function SwitchBattle({ data, secret }: { data: SwitchBattleData; secret?
 
   return (
     <div data-switch-battle={storageKey}>
-      <Switch switch={() => getState(storageKey) ?? slugify(data.cases[0].label)}>
-        {data.cases.map((c) => (
-          <Case key={slugify(c.label)} case={slugify(c.label)}>
-            <Battle data={c.data} secret={secret} opponentTeamHeader={branchRow} />
-          </Case>
-        ))}
-      </Switch>
+      {data.cases.map((c) => (
+        <div
+          key={slugify(c.label)}
+          data-switch-case={c === activeCase ? "active" : undefined}
+          style={c === activeCase ? undefined : { display: "none" }}
+        >
+          <Battle data={c.data} secret={secret} opponentTeamHeader={branchRow} />
+        </div>
+      ))}
     </div>
   );
 }

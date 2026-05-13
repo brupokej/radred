@@ -6,6 +6,7 @@ export default defineConfig({
   testDir: "./tests",
   testMatch: "**/*.spec.ts",
   snapshotDir: "./tests/snapshots",
+  timeout: 120_000,
   expect: {
     toHaveScreenshot: {
       animations: "disabled",
@@ -19,7 +20,6 @@ export default defineConfig({
     command: secretMode ? "npm run start:secret" : "npm run start",
     url: "http://localhost:3000/radred/",
     reuseExistingServer: false,
-    timeout: 120_000,
   },
   projects: [
     {

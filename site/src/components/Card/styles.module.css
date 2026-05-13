@@ -1,5 +1,6 @@
 .cardContainer {
   container-type: inline-size;
+  margin: 0 0 1rem;
 }
 
 /* max-width snaps to exact N-column widths: N*140px + (N-1)*0.75rem + 2*1rem padding + 2px border */
@@ -9,7 +10,6 @@
   border: 1px solid var(--ifm-color-emphasis-200);
   border-radius: var(--ifm-global-radius);
   box-shadow: var(--ifm-global-shadow-lw);
-  margin: var(--ifm-leading) 0;
   overflow: clip;
 }
 
@@ -31,28 +31,18 @@
   }
 }
 
-.summary {
-  align-items: center;
+.halfCard .card {
+  max-width: none;
+}
+
+.header {
   background: var(--ifm-color-emphasis-100);
-  cursor: pointer;
-  display: flex;
-  font-weight: var(--ifm-font-weight-bold);
-  justify-content: space-between;
-  line-height: 25px;
-  list-style: none;
-  padding: var(--ifm-spacing-vertical) var(--ifm-spacing-horizontal);
-  user-select: none;
-}
-
-.summaryOpen {
   border-bottom: 1px solid var(--ifm-color-emphasis-200);
-}
-
-.summary::-webkit-details-marker {
-  display: none;
-}
-
-.chevron {
-  color: var(--ifm-color-primary);
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
+  font-weight: var(--ifm-font-weight-bold);
+  line-height: 22px;
+  padding: 5px var(--ifm-spacing-horizontal);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ifm-color-emphasis-700);
 }

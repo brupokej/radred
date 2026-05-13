@@ -1,31 +1,22 @@
-import { useState } from "react";
 import styles from "./styles.module.css";
 
 export default function Card({
   title,
   children,
   className,
+  halfCard,
 }: {
   title: React.ReactNode;
   children: React.ReactNode;
   className?: string;
+  halfCard?: boolean;
 }) {
-  const [isOpen, setIsOpen] = useState(true);
   return (
-    <div className={`${styles.cardContainer}${className ? ` ${className}` : ""}`}>
-      <details className={styles.card} open={isOpen}>
-        <summary
-          className={`${styles.summary} ${isOpen ? styles.summaryOpen : ""}`}
-          onClick={(e) => {
-            e.preventDefault();
-            setIsOpen(!isOpen);
-          }}
-        >
-          <span>{title}</span>
-          <span className={styles.chevron}>{isOpen ? "−" : "+"}</span>
-        </summary>
+    <div className={`${styles.cardContainer}${halfCard ? ` ${styles.halfCard}` : ""}${className ? ` ${className}` : ""}`}>
+      <div className={styles.card} data-card>
+        <div className={styles.header} data-card-title>{title}</div>
         {children}
-      </details>
+      </div>
     </div>
   );
 }

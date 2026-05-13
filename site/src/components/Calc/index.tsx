@@ -10,6 +10,7 @@ import {
 } from "@site/src/utils/calcLink";
 import { TRAINER_SETS_BY_SPECIES } from "@site/src/data/trainerSets";
 import { getColouredSpriteUrl, getMonotoneSpriteUrl } from "@site/src/utils/sprites";
+import Card from "@site/src/components/Card";
 import { ScrollFade } from "@site/src/components/ScrollFade";
 import { resolveActiveBox } from "@site/src/components/Battle";
 import { getSwitchBattleCaseData } from "@site/src/components/SwitchBattle";
@@ -201,12 +202,14 @@ function PokemonPanel({
   onSelectTeam,
   onChange,
   playerTeam,
+  title,
 }: {
   team: PokemonData[];
   state: CalcSideState;
   onSelectTeam: (idx: number) => void;
   onChange: (patch: Partial<CalcSideState>) => void;
   playerTeam?: PokemonData[];
+  title: string;
 }) {
   const pokemon = useMemo(() => {
     try { return makeCalcPokemon(state); } catch { return null; }
@@ -285,7 +288,7 @@ function PokemonPanel({
   }, [boxSource, team, playerTeam, state.species]);
 
   return (
-    <div className={styles.panel}>
+    <Card halfCard title={title}>
       <div className={styles.panelBody}>
 
         {/* § Name + inline sprite */}
@@ -457,7 +460,7 @@ function PokemonPanel({
         </div>
 
       </div>
-    </div>
+    </Card>
   );
 }
 
@@ -539,40 +542,47 @@ export function Calc({ p1Team = [], p2Team = [] }: CalcProps) {
         {(["p1", "p2"] as const).map((side) => {
           const results = side === "p1" ? p1Results : p2Results;
           const state = side === "p1" ? p1 : p2;
+          const speciesLabel = state.species || (side === "p1" ? "Pokémon 1" : "Pokémon 2");
           return (
-            <div key={side} className={styles.movesColumn}>
-              {results.map((r, i) => {
-                const isActive = activeMove?.side === side && activeMove?.idx === i;
-                const moveName = state.moves[i];
-                return (
-                  <button
-                    key={i}
-                    className={`${styles.moveResult}${isActive ? ` ${styles.active}` : ""}`}
-                    onClick={() => setActiveMove(isActive ? null : { side, idx: i })}
-                    disabled={!moveName}
-                  >
-                    <span className={styles.moveName}>{moveName || `Move ${i + 1}`}</span>
-                    <span className={styles.moveRange}>
-                      {r ? formatRange(r.range[0], r.range[1], r.defHp) : "—"}
-                    </span>
-                  </button>
-                );
-              })}
-            </div>
+            <Card key={side} halfCard title={`${speciesLabel} Moves`}>
+              <div className={styles.movesColumn}>
+                {results.map((r, i) => {
+                  const isActive = activeMove?.side === side && activeMove?.idx === i;
+                  const moveName = state.moves[i];
+                  return (
+                    <button
+                      key={i}
+                      className={`${styles.moveResult}${isActive ? ` ${styles.active}` : ""}`}
+                      onClick={() => setActiveMove(isActive ? null : { side, idx: i })}
+                      disabled={!moveName}
+                    >
+                      <span className={styles.moveName}>{moveName || `Move ${i + 1}`}</span>
+                      <span className={styles.moveRange}>
+                        {r ? formatRange(r.range[0], r.range[1], r.defHp) : "—"}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+            </Card>
           );
         })}
       </div>
 
-      {activeResult && (
-        <div className={styles.descBar}>
-          <div className={styles.descMain}>{activeResult.desc}</div>
-          {activeResult.amounts.length > 1 && (
-            <div className={styles.descAmounts}>
-              Possible damage: {activeResult.amounts.join(", ")}
-            </div>
-          )}
-        </div>
-      )}
+      <Card title="Move Description">
+        {activeResult ? (
+          <div className={styles.descBar}>
+            <div className={styles.descMain}>{activeResult.desc}</div>
+            {activeResult.amounts.length > 1 && (
+              <div className={styles.descAmounts}>
+                Possible damage: {activeResult.amounts.join(", ")}
+              </div>
+            )}
+          </div>
+        ) : (
+          <div className={styles.descPlaceholder}>Select a move to see damage details.</div>
+        )}
+      </Card>
 
       <div className={styles.formRow}>
         <PokemonPanel
@@ -581,6 +591,7 @@ export function Calc({ p1Team = [], p2Team = [] }: CalcProps) {
           onSelectTeam={selectTeamP1}
           onChange={(patch) => setP1((s) => ({ ...s, ...patch }))}
           playerTeam={p1Team}
+          title="Pokémon 1"
         />
         <PokemonPanel
           team={p2Team}
@@ -588,6 +599,7 @@ export function Calc({ p1Team = [], p2Team = [] }: CalcProps) {
           onSelectTeam={selectTeamP2}
           onChange={(patch) => setP2((s) => ({ ...s, ...patch }))}
           playerTeam={p1Team}
+          title="Pokémon 2"
         />
       </div>
     </div>
@@ -636,7 +648,7 @@ export function CalcWithGameState({ moments }: { moments: Moment[] }) {
   }, [moment]);
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
+    <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
       <GameState moments={moments} />
       <Calc key={effectiveLabel} p1Team={p1Team} p2Team={p2Team} />
     </div>

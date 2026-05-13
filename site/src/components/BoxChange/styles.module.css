@@ -1,4 +1,4 @@
-.blurContent details > :not(summary) span {
+.blurContent [data-card] > :not([data-card-title]) span {
   filter: blur(4px);
   pointer-events: none;
   user-select: none;

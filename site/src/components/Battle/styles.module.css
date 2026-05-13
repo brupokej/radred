@@ -120,36 +120,36 @@
   width: 100%;
 }
 
-.blurContent details > :not(summary) span {
+.blurContent [data-card] > :not([data-card-title]) span {
   filter: blur(4px);
   pointer-events: none;
   user-select: none;
 }
 
-.blurContent details button {
+.blurContent [data-card] button {
   pointer-events: none;
 }
 
-.blurContent details > :not(summary) div {
+.blurContent [data-card] > :not([data-card-title]) div {
   pointer-events: none;
 }
 
-.blurBattlePlan details > :not(summary) {
+.blurBattlePlan [data-card] > :not([data-card-title]) {
   pointer-events: none;
   user-select: none;
 }
 
-.blurBattlePlan details > :not(summary) [data-token="text"],
-.blurBattlePlan details > :not(summary) [data-token="result"] {
+.blurBattlePlan [data-card] > :not([data-card-title]) [data-token="text"],
+.blurBattlePlan [data-card] > :not([data-card-title]) [data-token="result"] {
   display: inline-block;
   filter: blur(4px);
 }
 
-.blurBattlePlan details > :not(summary) select {
+.blurBattlePlan [data-card] > :not([data-card-title]) select {
   filter: blur(4px);
 }
 
-.blurBattlePlan details > :not(summary) [data-branch-row] [data-token="text"] {
+.blurBattlePlan [data-card] > :not([data-card-title]) [data-branch-row] [data-token="text"] {
   filter: none;
 }
 
