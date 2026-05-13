@@ -176,7 +176,7 @@ async function getFeatureSnapshot(
 
     const filename = slugify([...parts, featureIndex.value++]).replace(/battle|table/g, "feature");
     await expectSnapshot(page, `${filename}.png`, {
-      clip: { x: box.x + 4, y: box.y + 61, width: 468, height: 314 },
+      clip: { x: box.x + 4, y: box.y + 35, width: 468, height: 314 },
     });
 
     if (["all", "changed"].includes(test.info().config.updateSnapshots)) {
