@@ -233,7 +233,7 @@ export default function BarRace({
   const maxValue =
     scaleStart + (scaleEnd - scaleStart) * (frameIdx / Math.max(1, frames.length - 1));
 
-  const visibleHeight = `346px`;
+  const visibleHeight = `368px`;
   const emptyCount = Math.max(0, TOP_N - chartData.length);
   const currentLabel = frames[frameIdx]?.label;
   const total = frames.length - 1;

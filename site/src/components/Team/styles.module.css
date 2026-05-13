@@ -7,8 +7,13 @@
 }
 
 .scrollArea {
+  --scroll-arrows-top-offset: -8.5px;
   overflow: clip;
   position: relative;
+}
+
+.scrollArea[data-expanded] {
+  --scroll-arrows-top-offset: -14.5px;
 }
 
 .gridInner {
@@ -121,6 +126,7 @@
   align-self: stretch;
   display: flex;
   flex-direction: column;
+  margin-block-end: 8px;
 }
 
 .statRow {

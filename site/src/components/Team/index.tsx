@@ -74,6 +74,7 @@ function TeamGrid({
   extraTeam?: Pokemon[];
   hasHeader?: boolean;
 }) {
+  const isExpanded = useCardDetail();
   const contentRef = useRef<HTMLDivElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
   const [cols, setCols] = useState(6);
@@ -115,7 +116,7 @@ function TeamGrid({
       ref={contentRef}
       className={`${styles.content}${hasHeader ? ` ${styles.contentWithHeader}` : ""}`}
     >
-      <div className={styles.scrollArea}>
+      <div className={styles.scrollArea} data-expanded={isExpanded || undefined}>
         <ScrollArrows
           scrollRef={scrollRef}
           onLeft={(el) => scroll(el, "left")}
