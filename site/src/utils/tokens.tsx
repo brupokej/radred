@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { PokemonData } from "./pokemon";
-import { getColouredSpriteUrl, getMonotoneSpriteUrl } from "./sprites";
+import { SpriteImg } from "./SpriteImg";
 import styles from "./tokens.module.css";
 
 function TokenSprite({ pokemon, monotone }: { pokemon: PokemonData; monotone: boolean }) {
@@ -20,10 +20,10 @@ function TokenSprite({ pokemon, monotone }: { pokemon: PokemonData; monotone: bo
   return imgError ? (
     <span className={styles.emptySprite}>?</span>
   ) : (
-    <img
+    <SpriteImg
       ref={imgRef}
-      src={monotone ? getMonotoneSpriteUrl(pokemon) : getColouredSpriteUrl(pokemon)}
-      alt={pokemon.name}
+      pokemon={pokemon}
+      palette={monotone ? "monotone" : "coloured"}
       className={styles.sprite}
       onError={() => setLoadError(true)}
     />

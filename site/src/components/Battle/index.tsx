@@ -8,7 +8,7 @@ import { useHpDisplay } from "@site/src/utils/hpDisplay";
 import { getHp } from "@site/src/utils/pokedex";
 import { PokemonData, resolvePokemon } from "@site/src/utils/pokemon";
 import { slugify } from "@site/src/utils/slugify";
-import { getColouredSpriteUrl } from "@site/src/utils/sprites";
+import { SpriteImg } from "@site/src/utils/SpriteImg";
 import { getState, removeState, setState, useStorageState } from "@site/src/utils/storage";
 import { parseTokens } from "@site/src/utils/tokens";
 import React, {
@@ -635,10 +635,9 @@ function MatchupSprite({ pokemon }: { pokemon: PokemonData }) {
   return imgError ? (
     <div className={styles.emptySprite}>?</div>
   ) : (
-    <img
+    <SpriteImg
       ref={imgRef}
-      src={getColouredSpriteUrl(pokemon)}
-      alt={pokemon.name}
+      pokemon={pokemon}
       className={styles.sprite}
       onError={() => setLoadError(true)}
     />

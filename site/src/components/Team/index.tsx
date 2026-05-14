@@ -5,7 +5,7 @@ import type { Box } from "@site/src/utils/box";
 import { resolveBox } from "@site/src/utils/box";
 import { pokedex, type PokedexData } from "@site/src/utils/pokedex";
 import { formatStats, resolvePokemon, type Pokemon, type PokemonData } from "@site/src/utils/pokemon";
-import { getColouredSpriteUrl } from "@site/src/utils/sprites";
+import { SpriteImg } from "@site/src/utils/SpriteImg";
 import {
   ReactNode,
   createContext,
@@ -227,10 +227,9 @@ function PokemonCard({
   return (
     <div className={`${styles.card} ${!pokemon ? styles.cardEmpty : ""}`}>
       {current && !imgError ? (
-        <img
+        <SpriteImg
           ref={imgRef}
-          src={getColouredSpriteUrl(current)}
-          alt={current.name}
+          pokemon={current}
           className={styles.sprite}
           onError={() => setLoadError(true)}
         />

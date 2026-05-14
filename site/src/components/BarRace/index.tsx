@@ -1,4 +1,5 @@
 import { resolveActiveBox } from "@site/src/components/Battle";
+import { SpriteImg } from "@site/src/utils/SpriteImg";
 import Card from "@site/src/components/Card";
 import { ScrollFade } from "@site/src/components/ScrollFade";
 import { getSwitchBattleCaseData } from "@site/src/components/SwitchBattle";
@@ -243,9 +244,6 @@ export default function BarRace({
     setFrameIdx((prev) => Math.max(0, Math.min(frames.length - 1, prev + delta)));
   };
 
-  const spriteUrl = (displayName: string, spriteKey?: string) =>
-    `https://raw.githubusercontent.com/Autumnchi/coloured-home-sprites/main/${(spriteKey ?? displayName).toLowerCase()}.png`;
-
   return (
     <Card title={"Pokémon Data"}>
       <div className={styles.container}>
@@ -272,9 +270,8 @@ export default function BarRace({
                   className={styles.row}
                 >
                   <div className={styles.spriteCell}>
-                    <img
-                      src={spriteUrl(entry.displayName, entry.spriteKey)}
-                      alt={entry.displayName}
+                    <SpriteImg
+                      pokemon={{ name: entry.displayName, spriteKey: entry.spriteKey }}
                       className={styles.sprite}
                     />
                   </div>

@@ -217,41 +217,41 @@ export const rocketHideoutLeftGuardBattle: Moment = {
       {
         matchups: [
           {
-            matchup: ["Slaking", "Weezing"],
+            matchup: ["Slaking", "Weezing-Galar"],
             turns: [
               [
                 { player: "{p:Perrserker} Fake Out {o:Slaking} to {-:190}" },
                 { opponent: "{o:Slaking} flinched" },
-                { player: "{p:Golduck} Psychic {o:Weezing} to {=:0}" },
-                { opponent: "{o:Weezing} fainted" },
+                { player: "{p:Golduck} Psychic {o:Weezing-Galar} to {=:0}" },
+                { opponent: "{o:Weezing-Galar} fainted" },
               ],
             ],
           },
           {
-            matchup: ["Slaking", "Lilligant"],
+            matchup: ["Slaking", "Lilligant-H"],
             turns: [
               [
                 { player: "{p:Golduck} switch to {p:Incineroar}" },
-                { opponent: "{o:Lilligant} Leaf Blade {p:Incineroar} to {+:97}" },
+                { opponent: "{o:Lilligant-H} Leaf Blade {p:Incineroar} to {+:97}" },
                 { opponent: "{o:Slaking} Truant" },
-                { player: "{p:Perrserker} Aerial Ace {o:Lilligant} to {=:0}" },
-                { opponent: "{o:Lilligant} fainted" },
+                { player: "{p:Perrserker} Aerial Ace {o:Lilligant-H} to {=:0}" },
+                { opponent: "{o:Lilligant-H} fainted" },
               ],
             ],
           },
           {
-            matchup: ["Slaking", "Rotom"],
+            matchup: ["Slaking", "Rotom-F"],
             turns: [
               [
                 { player: "{p:Perrserker} switch to {p:Excadrill}" },
                 { player: "{p:Incineroar} Fake Out {o:Slaking} to {-:174}" },
                 { opponent: "{o:Slaking} flinched" },
-                { opponent: "{o:Rotom} Thunderbolt {p:Excadrill}" },
+                { opponent: "{o:Rotom-F} Thunderbolt {p:Excadrill}" },
               ],
               [
                 { opponent: "{o:Slaking} Truant" },
-                { player: "{p:Excadrill} Drill Run {o:Rotom} to {=:0}" },
-                { opponent: "{o:Rotom} fainted" },
+                { player: "{p:Excadrill} Drill Run {o:Rotom-F} to {=:0}" },
+                { opponent: "{o:Rotom-F} fainted" },
                 { player: "{p:Incineroar} U-Turn {o:Slaking} to {-:144}" },
                 { player: "{p:Incineroar} switch to {p:Perrserker}" },
               ],
@@ -334,11 +334,11 @@ export const rocketHideoutRightGuardBattle: Moment = {
             ],
           },
           {
-            matchup: ["Rotom", "Shiftry"],
+            matchup: ["Rotom-W", "Shiftry"],
             turns: [
               [
                 { player: "{p:Gyarados} switch to {p:Excadrill}" },
-                { opponent: "{o:Rotom} Thunderbolt {p:Excadrill}" },
+                { opponent: "{o:Rotom-W} Thunderbolt {p:Excadrill}" },
                 { opponent: "{o:Shiftry} Low Kick {p:Perrserker} to {+:66}" },
                 { player: "{p:Perrserker} U-Turn {o:Shiftry} to {-:1}" },
                 { player: "{p:Perrserker} switch to {p:Golduck}" },
@@ -346,8 +346,8 @@ export const rocketHideoutRightGuardBattle: Moment = {
               [
                 { player: "{p:Golduck} Aqua Tail {o:Shiftry} to {=:0}" },
                 { opponent: "{o:Shiftry} fainted" },
-                { player: "{p:Excadrill} Drill Run {o:Rotom} to {=:0}" },
-                { opponent: "{o:Rotom} fainted" },
+                { player: "{p:Excadrill} Drill Run {o:Rotom-W} to {=:0}" },
+                { opponent: "{o:Rotom-W} fainted" },
               ],
             ],
           },

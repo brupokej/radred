@@ -1,7 +1,7 @@
 import { PokemonData } from "@site/src/utils/pokemon";
 
 const getSpriteUrl = (pokemon: PokemonData, palette: "coloured" | "monotone") =>
-  `https://cdn.jsdelivr.net/gh/Autumnchi/${palette}-home-sprites@main/${pokemon.spriteKey ?? pokemon.name.toLowerCase()}.png`;
+  `/sprites/${palette}/${pokemon.spriteKey ?? pokemon.name.toLowerCase()}.png`;
 
 export const getColouredSpriteUrl = (pokemon: PokemonData) => getSpriteUrl(pokemon, "coloured");
 

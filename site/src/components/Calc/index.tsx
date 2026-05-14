@@ -9,7 +9,7 @@ import {
   type CalcSideState,
 } from "@site/src/utils/calcLink";
 import { TRAINER_SETS_BY_SPECIES } from "@site/src/data/trainerSets";
-import { getColouredSpriteUrl, getMonotoneSpriteUrl } from "@site/src/utils/sprites";
+import { SpriteImg } from "@site/src/utils/SpriteImg";
 import Card from "@site/src/components/Card";
 import { ScrollFade } from "@site/src/components/ScrollFade";
 import { resolveActiveBox } from "@site/src/components/Battle";
@@ -295,10 +295,9 @@ function PokemonPanel({
         <div className={styles.section}>
           <div className={styles.nameRow}>
             {inlineSpritePokemon && (
-              <img
-                src={getColouredSpriteUrl(inlineSpritePokemon)}
+              <SpriteImg
+                pokemon={inlineSpritePokemon}
                 className={styles.inlineSprite}
-                alt={inlineSpritePokemon.name}
               />
             )}
             <FilterableInput
@@ -335,10 +334,10 @@ function PokemonPanel({
                         disabled={isActive}
                         title={p.name}
                       >
-                        <img
-                          src={isActive ? getMonotoneSpriteUrl(p) : getColouredSpriteUrl(p)}
+                        <SpriteImg
+                          pokemon={p}
+                          palette={isActive ? "monotone" : "coloured"}
                           className={styles.spriteThumb}
-                          alt={p.name}
                         />
                       </button>
                     );
@@ -353,10 +352,10 @@ function PokemonPanel({
               <span className={styles.boxLabel}>Box</span>
               <span className={styles.boxSep}>→</span>
               <div className={`${styles.spriteChip} ${styles.spriteChipActive}`}>
-                <img
-                  src={getMonotoneSpriteUrl(blankPokemon)}
+                <SpriteImg
+                  pokemon={blankPokemon}
+                  palette="monotone"
                   className={styles.spriteThumb}
-                  alt={blankPokemon.name}
                 />
               </div>
             </div>

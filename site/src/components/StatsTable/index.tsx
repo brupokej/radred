@@ -3,7 +3,7 @@ import { ScrollArrows } from "@site/src/components/ScrollArrows";
 import { ScrollFade } from "@site/src/components/ScrollFade";
 import { getSwitchBattleCaseData } from "@site/src/components/SwitchBattle";
 import { Moment } from "@site/src/utils/moments";
-import { getColouredSpriteUrl } from "@site/src/utils/sprites";
+import { SpriteImg } from "@site/src/utils/SpriteImg";
 import {
   computePageFragStats,
   computePageStats,
@@ -265,11 +265,8 @@ export function PageStatsTable({
         size: SPRITE_COL_SIZE,
         enableSorting: false,
         cell: ({ row }) => (
-          <img
-            src={getColouredSpriteUrl({
-              name: row.original.pokemon,
-              spriteKey: row.original.spriteKey,
-            })}
+          <SpriteImg
+            pokemon={{ name: row.original.pokemon, spriteKey: row.original.spriteKey }}
             alt={row.original.pokemon}
             className={styles.sprite}
           />
@@ -331,11 +328,8 @@ const percentsColumns = [
     size: 52,
     enableSorting: false,
     cell: ({ row }) => (
-      <img
-        src={getColouredSpriteUrl({
-          name: row.original.pokemon,
-          spriteKey: row.original.spriteKey,
-        })}
+      <SpriteImg
+        pokemon={{ name: row.original.pokemon, spriteKey: row.original.spriteKey }}
         alt={row.original.pokemon}
         className={styles.sprite}
       />

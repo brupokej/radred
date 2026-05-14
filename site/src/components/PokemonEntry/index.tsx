@@ -1,5 +1,5 @@
 import { PokemonData } from "@site/src/utils/pokemon";
-import { getColouredSpriteUrl } from "@site/src/utils/sprites";
+import { SpriteImg } from "@site/src/utils/SpriteImg";
 import { ReactNode, useEffect, useRef, useState } from "react";
 import styles from "./styles.module.css";
 
@@ -30,10 +30,9 @@ export function PokemonEntry({
     <div className={`${styles.entry} ${className ?? ""}`}>
       <div className={styles.spritePanel}>
         {!imgError ? (
-          <img
+          <SpriteImg
             ref={imgRef}
-            src={getColouredSpriteUrl(pokemon)}
-            alt={pokemon.name}
+            pokemon={pokemon}
             className={styles.sprite}
             onError={() => setLoadError(true)}
           />

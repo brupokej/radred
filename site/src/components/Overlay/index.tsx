@@ -12,7 +12,7 @@ import {
 } from "@site/src/utils/overlayMeta";
 import { pokedex, type PokedexData } from "@site/src/utils/pokedex";
 import { formatStats, PokemonData } from "@site/src/utils/pokemon";
-import { getColouredSpriteUrl } from "@site/src/utils/sprites";
+import { SpriteImg } from "@site/src/utils/SpriteImg";
 import { FADE_MS, useFadedKey, useFadedValue } from "@site/src/utils/useFadedValue";
 import { ReactNode, useEffect, useMemo, useRef, useState } from "react";
 import styles from "./styles.module.css";
@@ -169,10 +169,9 @@ function OverlayCard({
   return (
     <div className={`${styles.card} ${!slot ? styles.cardEmpty : ""}`}>
       {pokemon && !imgError ? (
-        <img
+        <SpriteImg
           ref={imgRef}
-          src={getColouredSpriteUrl(pokemon)}
-          alt={pokemon.name}
+          pokemon={pokemon}
           className={styles.sprite}
           onError={() => setLoadError(true)}
         />
