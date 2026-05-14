@@ -44,10 +44,16 @@ function GoLiveButtonInner({ moment, attempt }: { moment: Moment; attempt?: numb
       }
     }
     if (!target) return;
+    const headingEl = target as HTMLElement;
+    const prevPosition = headingEl.style.position;
+    headingEl.style.position = "relative";
     const slot = document.createElement("span");
-    target.appendChild(slot);
+    headingEl.appendChild(slot);
     setPortalTarget(slot);
-    return () => slot.remove();
+    return () => {
+      slot.remove();
+      headingEl.style.position = prevPosition;
+    };
   }, []);
 
   async function handleStart() {
