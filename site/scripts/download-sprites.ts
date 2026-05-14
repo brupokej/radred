@@ -1,8 +1,6 @@
 import { existsSync, mkdirSync, writeFileSync } from "fs";
 import { join } from "path";
 import type { BattleData } from "../src/components/Battle";
-import type { Moment } from "../src/utils/moments";
-import * as opponents from "../src/utils/opponents";
 import { moments as blaineMoments } from "../src/data/guide/blaine";
 import { moments as brockMoments } from "../src/data/guide/brock";
 import { moments as clairMoments } from "../src/data/guide/clair";
@@ -14,6 +12,8 @@ import { moments as sabrinaMoments } from "../src/data/guide/sabrina";
 import { moments as surgeMoments } from "../src/data/guide/surge";
 import { moments as victoryRoadMoments } from "../src/data/guide/victoryRoad";
 import { type Box, resolveBox } from "../src/utils/box";
+import type { Moment } from "../src/utils/moments";
+import * as opponents from "../src/utils/opponents";
 import { type PokemonData, resolvePokemon } from "../src/utils/pokemon";
 
 const STATIC_DIR = join(process.cwd(), "static/sprites");
@@ -71,8 +71,16 @@ async function main() {
   }
 
   for (const moments of [
-    brockMoments, mistyMoments, surgeMoments, erikaMoments, kogaMoments,
-    sabrinaMoments, blaineMoments, clairMoments, victoryRoadMoments, eliteFourMoments,
+    brockMoments,
+    mistyMoments,
+    surgeMoments,
+    erikaMoments,
+    kogaMoments,
+    sabrinaMoments,
+    blaineMoments,
+    clairMoments,
+    victoryRoadMoments,
+    eliteFourMoments,
   ]) {
     collectMoments(moments, keys);
   }
@@ -86,7 +94,13 @@ async function main() {
     const { getEliteFourSecrets } = await import("../src/data/guide/eliteFourSecrets.enabled");
 
     let box: Box = kogaBox;
-    for (const fn of [getKogaSecrets, getBlaineSecrets, getClairSecrets, getVictoryRoadSecrets, getEliteFourSecrets]) {
+    for (const fn of [
+      getKogaSecrets,
+      getBlaineSecrets,
+      getClairSecrets,
+      getVictoryRoadSecrets,
+      getEliteFourSecrets,
+    ]) {
       const result = fn(box) as Record<string, unknown>;
       collectSecretReturn(result, keys);
       box = result.box as Box;
@@ -107,7 +121,12 @@ async function main() {
     for (const palette of PALETTES) {
       const dest = join(STATIC_DIR, palette, `${key}.png`);
       if (!existsSync(dest)) {
-        tasks.push({ key, palette, url: `${CDN_BASE}/${palette}-home-sprites@main/${key}.png`, dest });
+        tasks.push({
+          key,
+          palette,
+          url: `${CDN_BASE}/${palette}-home-sprites@main/${key}.png`,
+          dest,
+        });
       }
     }
   }

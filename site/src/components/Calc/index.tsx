@@ -1,23 +1,23 @@
-import { useMemo, useState, useRef, useEffect } from "react";
-import { calculate, Pokemon, Move, Field, Generations, NATURES } from "@site/src/calc-shim";
-import type { PokemonData } from "@site/src/utils/pokemon";
+import { calculate, Field, Generations, Move, NATURES, Pokemon } from "@site/src/calc-shim";
+import { resolveActiveBox } from "@site/src/components/Battle";
+import Card from "@site/src/components/Card";
+import GameState from "@site/src/components/GameState";
+import { ScrollFade } from "@site/src/components/ScrollFade";
+import { getSwitchBattleCaseData } from "@site/src/components/SwitchBattle";
+import { TRAINER_SETS_BY_SPECIES } from "@site/src/data/trainerSets";
 import {
+  boxToTeam,
   CALC_GEN,
   DEFAULT_SIDE,
   pokemonDataToSide,
-  boxToTeam,
   type CalcSideState,
 } from "@site/src/utils/calcLink";
-import { TRAINER_SETS_BY_SPECIES } from "@site/src/data/trainerSets";
-import { SpriteImg } from "@site/src/utils/SpriteImg";
-import Card from "@site/src/components/Card";
-import { ScrollFade } from "@site/src/components/ScrollFade";
-import { resolveActiveBox } from "@site/src/components/Battle";
-import { getSwitchBattleCaseData } from "@site/src/components/SwitchBattle";
-import GameState from "@site/src/components/GameState";
 import type { Moment } from "@site/src/utils/moments";
+import type { PokemonData } from "@site/src/utils/pokemon";
+import { SpriteImg } from "@site/src/utils/SpriteImg";
 import { useStorageState } from "@site/src/utils/storage";
 import { LIVE_MOMENT_DEFAULT } from "@site/src/utils/storageDefaults";
+import { useEffect, useMemo, useRef, useState } from "react";
 import styles from "./styles.module.css";
 
 // ── Static data derived from the calc engine ──────────────
@@ -50,15 +50,25 @@ const ITEM_NAMES: string[] = (() => {
   return names.sort();
 })();
 
-const STATUS_OPTIONS = ["", "Paralyzed", "Poisoned", "Badly Poisoned", "Burned", "Asleep", "Frozen"];
+const STATUS_OPTIONS = [
+  "",
+  "Paralyzed",
+  "Poisoned",
+  "Badly Poisoned",
+  "Burned",
+  "Asleep",
+  "Frozen",
+];
 
 function statesMatch(a: CalcSideState, b: CalcSideState): boolean {
-  return a.species === b.species &&
+  return (
+    a.species === b.species &&
     a.level === b.level &&
     a.nature === b.nature &&
     a.ability === b.ability &&
     a.item === b.item &&
-    a.moves.every((m, i) => m === b.moves[i]);
+    a.moves.every((m, i) => m === b.moves[i])
+  );
 }
 
 function computeDerivedLabel(state: CalcSideState, playerTeam: PokemonData[]): string {
@@ -84,7 +94,11 @@ const SPECIES_OPTION_DATA: SpeciesOptionData[] = (() => {
   for (const [species, sets] of TRAINER_SETS_BY_SPECIES) {
     speciesWithSets.add(species);
     for (const set of sets) {
-      opts.push({ label: `${species} (${set.label.replace(/^\* /, "")})`, species, state: set.state });
+      opts.push({
+        label: `${species} (${set.label.replace(/^\* /, "")})`,
+        species,
+        state: set.state,
+      });
     }
     opts.push({ label: `${species} (Blank Set)`, species, state: null });
   }
@@ -148,15 +162,18 @@ function FilterableInput({
   const results = useMemo(() => {
     const q = value.trim().toLowerCase();
     if (!q) return [] as FilterOption[];
-    return options.filter((o) => {
-      const label = typeof o === "string" ? o : o.label;
-      return label.toLowerCase().includes(q);
-    }).slice(0, 40);
+    return options
+      .filter((o) => {
+        const label = typeof o === "string" ? o : o.label;
+        return label.toLowerCase().includes(q);
+      })
+      .slice(0, 40);
   }, [value, options]);
 
-  const rect = open && results.length > 0 && inputRef.current
-    ? inputRef.current.getBoundingClientRect()
-    : null;
+  const rect =
+    open && results.length > 0 && inputRef.current
+      ? inputRef.current.getBoundingClientRect()
+      : null;
 
   return (
     <div className={styles.speciesWrap}>
@@ -166,8 +183,14 @@ function FilterableInput({
         value={value}
         placeholder={placeholder}
         onChange={(e) => onChange(e.target.value)}
-        onFocus={() => { setOpen(true); onFocusChange?.(true); }}
-        onBlur={() => { setOpen(false); onFocusChange?.(false); }}
+        onFocus={() => {
+          setOpen(true);
+          onFocusChange?.(true);
+        }}
+        onBlur={() => {
+          setOpen(false);
+          onFocusChange?.(false);
+        }}
       />
       {rect && (
         <div
@@ -212,22 +235,40 @@ function PokemonPanel({
   title: string;
 }) {
   const pokemon = useMemo(() => {
-    try { return makeCalcPokemon(state); } catch { return null; }
+    try {
+      return makeCalcPokemon(state);
+    } catch {
+      return null;
+    }
   }, [state]);
 
   const maxHp = pokemon?.stats.hp ?? 1;
   const curHpAbs = Math.round((state.curHP / 100) * maxHp);
-  const hpPctClass = state.curHP > 50 ? styles.hpPct : state.curHP > 20 ? `${styles.hpPct} ${styles.hpYellow}` : `${styles.hpPct} ${styles.hpRed}`;
+  const hpPctClass =
+    state.curHP > 50
+      ? styles.hpPct
+      : state.curHP > 20
+        ? `${styles.hpPct} ${styles.hpYellow}`
+        : `${styles.hpPct} ${styles.hpRed}`;
 
   const [levelStr, setLevelStr] = useState(String(state.level));
   const [hpStr, setHpStr] = useState(String(curHpAbs));
   const [speciesEditing, setSpeciesEditing] = useState(false);
-  const [speciesLabel, setSpeciesLabel] = useState(() => computeDerivedLabel(state, playerTeam ?? []));
+  const [speciesLabel, setSpeciesLabel] = useState(() =>
+    computeDerivedLabel(state, playerTeam ?? [])
+  );
 
-  useEffect(() => { setLevelStr(String(state.level)); }, [state.level]);
-  useEffect(() => { setHpStr(String(curHpAbs)); }, [curHpAbs]);
+  useEffect(() => {
+    setLevelStr(String(state.level));
+  }, [state.level]);
+  useEffect(() => {
+    setHpStr(String(curHpAbs));
+  }, [curHpAbs]);
 
-  const derivedLabel = useMemo(() => computeDerivedLabel(state, playerTeam ?? []), [state, playerTeam]);
+  const derivedLabel = useMemo(
+    () => computeDerivedLabel(state, playerTeam ?? []),
+    [state, playerTeam]
+  );
 
   useEffect(() => {
     if (speciesEditing) return;
@@ -245,20 +286,31 @@ function PokemonPanel({
       const s = pokemonDataToSide(p);
       if (!s.species) return [];
       const label = `${s.species} (Player Box)`;
-      return [{ label, onSelect: () => { setSpeciesLabel(label); onChange({ ...s }); } }];
+      return [
+        {
+          label,
+          onSelect: () => {
+            setSpeciesLabel(label);
+            onChange({ ...s });
+          },
+        },
+      ];
     });
   }, [playerTeam, onChange]);
 
-  const speciesOptions = useMemo<FilterOption[]>(() => [
-    ...playerBoxOptions,
-    ...SPECIES_OPTION_DATA.map(({ label, species, state: optState }) => ({
-      label,
-      onSelect: () => {
-        setSpeciesLabel(label);
-        onChange(optState ?? { ...DEFAULT_SIDE, species });
-      },
-    })),
-  ], [playerBoxOptions, onChange]);
+  const speciesOptions = useMemo<FilterOption[]>(
+    () => [
+      ...playerBoxOptions,
+      ...SPECIES_OPTION_DATA.map(({ label, species, state: optState }) => ({
+        label,
+        onSelect: () => {
+          setSpeciesLabel(label);
+          onChange(optState ?? { ...DEFAULT_SIDE, species });
+        },
+      })),
+    ],
+    [playerBoxOptions, onChange]
+  );
 
   const boxSource = useMemo(() => {
     if (!state.species) return "blank" as const;
@@ -273,36 +325,38 @@ function PokemonPanel({
 
   const displayTeam = boxSource === "playerBox" ? (playerTeam ?? []) : team;
 
-  const inlineSpritePokemon = useMemo(() =>
-    team.find(p => statesMatch(state, pokemonDataToSide(p)))
-    ?? playerTeam?.find(p => statesMatch(state, pokemonDataToSide(p)))
-    ?? null,
+  const inlineSpritePokemon = useMemo(
+    () =>
+      team.find((p) => statesMatch(state, pokemonDataToSide(p))) ??
+      playerTeam?.find((p) => statesMatch(state, pokemonDataToSide(p))) ??
+      null,
     [state, team, playerTeam]
   );
 
   const blankPokemon = useMemo(() => {
     if (boxSource !== "blank") return null;
-    return team.find(p => pokemonDataToSide(p).species === state.species)
-      ?? playerTeam?.find(p => pokemonDataToSide(p).species === state.species)
-      ?? null;
+    return (
+      team.find((p) => pokemonDataToSide(p).species === state.species) ??
+      playerTeam?.find((p) => pokemonDataToSide(p).species === state.species) ??
+      null
+    );
   }, [boxSource, team, playerTeam, state.species]);
 
   return (
     <Card halfCard title={title}>
       <div className={styles.panelBody}>
-
         {/* § Name + inline sprite */}
         <div className={styles.section}>
           <div className={styles.nameRow}>
             {inlineSpritePokemon && (
-              <SpriteImg
-                pokemon={inlineSpritePokemon}
-                className={styles.inlineSprite}
-              />
+              <SpriteImg pokemon={inlineSpritePokemon} className={styles.inlineSprite} />
             )}
             <FilterableInput
               value={speciesLabel}
-              onChange={(v) => { setSpeciesLabel(v); onChange({ species: v }); }}
+              onChange={(v) => {
+                setSpeciesLabel(v);
+                onChange({ species: v });
+              }}
               options={speciesOptions}
               className={styles.nameInput}
               onFocusChange={(f) => setSpeciesEditing(f)}
@@ -412,8 +466,16 @@ function PokemonPanel({
         <div className={styles.section}>
           <div className={styles.row}>
             <span className={styles.label}>Nature:</span>
-            <select className={styles.input} value={state.nature} onChange={(e) => onChange({ nature: e.target.value })}>
-              {NATURE_NAMES.map((n) => <option key={n} value={n}>{n}</option>)}
+            <select
+              className={styles.input}
+              value={state.nature}
+              onChange={(e) => onChange({ nature: e.target.value })}
+            >
+              {NATURE_NAMES.map((n) => (
+                <option key={n} value={n}>
+                  {n}
+                </option>
+              ))}
             </select>
           </div>
           <div className={styles.row}>
@@ -435,8 +497,16 @@ function PokemonPanel({
           </div>
           <div className={styles.row}>
             <span className={styles.label}>Status:</span>
-            <select className={styles.input} value={state.status} onChange={(e) => onChange({ status: e.target.value })}>
-              {STATUS_OPTIONS.map((s) => <option key={s} value={s}>{s || "Healthy"}</option>)}
+            <select
+              className={styles.input}
+              value={state.status}
+              onChange={(e) => onChange({ status: e.target.value })}
+            >
+              {STATUS_OPTIONS.map((s) => (
+                <option key={s} value={s}>
+                  {s || "Healthy"}
+                </option>
+              ))}
             </select>
           </div>
         </div>
@@ -457,7 +527,6 @@ function PokemonPanel({
             </div>
           ))}
         </div>
-
       </div>
     </Card>
   );
@@ -475,7 +544,11 @@ interface MoveResult {
 
 const DEFAULT_FIELD = new Field({ gameType: "Singles" });
 
-function computeMove(attacker: CalcSideState, defender: CalcSideState, moveName: string): MoveResult | null {
+function computeMove(
+  attacker: CalcSideState,
+  defender: CalcSideState,
+  moveName: string
+): MoveResult | null {
   if (!moveName || !attacker.species || !defender.species) return null;
   try {
     const atk = makeCalcPokemon(attacker);
@@ -483,7 +556,11 @@ function computeMove(attacker: CalcSideState, defender: CalcSideState, moveName:
     const move = new Move(GEN, moveName);
     const result = calculate(GEN as any, atk, def, move, DEFAULT_FIELD);
     const dmg = result.damage;
-    const amounts = Array.isArray(dmg) ? (Array.isArray(dmg[0]) ? (dmg as number[][]).flat() : dmg as number[]) : [dmg as number];
+    const amounts = Array.isArray(dmg)
+      ? Array.isArray(dmg[0])
+        ? (dmg as number[][]).flat()
+        : (dmg as number[])
+      : [dmg as number];
     const min = Math.min(...amounts);
     const max = Math.max(...amounts);
     return {
@@ -514,14 +591,8 @@ export function Calc({ p1Team = [], p2Team = [] }: CalcProps) {
   );
   const [activeMove, setActiveMove] = useState<{ side: "p1" | "p2"; idx: number } | null>(null);
 
-  const p1Results = useMemo(
-    () => p1.moves.map((m) => computeMove(p1, p2, m)),
-    [p1, p2]
-  );
-  const p2Results = useMemo(
-    () => p2.moves.map((m) => computeMove(p2, p1, m)),
-    [p1, p2]
-  );
+  const p1Results = useMemo(() => p1.moves.map((m) => computeMove(p1, p2, m)), [p1, p2]);
+  const p2Results = useMemo(() => p2.moves.map((m) => computeMove(p2, p1, m)), [p1, p2]);
 
   function selectTeamP1(idx: number) {
     if (p1Team[idx]) setP1((prev) => ({ ...pokemonDataToSide(p1Team[idx]), curHP: prev.curHP }));

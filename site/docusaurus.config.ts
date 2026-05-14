@@ -1,7 +1,7 @@
 import type * as Preset from "@docusaurus/preset-classic";
 import type { Config } from "@docusaurus/types";
-import { themes as prismThemes } from "prism-react-renderer";
 import path from "path";
+import { themes as prismThemes } from "prism-react-renderer";
 import overlayServerPlugin from "./src/plugins/overlayServer";
 import secretsPlugin from "./src/plugins/secrets";
 import storageDefaultsPlugin from "./src/plugins/storageDefaults";
@@ -86,10 +86,7 @@ const config: Config = {
           changefreq: "weekly",
           priority: 0.5,
         },
-        pages:
-          process.env.NODE_ENV !== "development"
-            ? { exclude: ["**/attribution.tsx"] }
-            : {},
+        pages: process.env.NODE_ENV !== "development" ? { exclude: ["**/attribution.tsx"] } : {},
         theme: {
           customCss:
             process.env.NODE_ENV === "development"

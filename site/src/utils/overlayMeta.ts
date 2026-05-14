@@ -141,16 +141,16 @@ function statScore(s: PokemonStats, view: StatViewType): number {
 function statSubtitle(s: PokemonStats, view: StatViewType): string {
   switch (view) {
     case "battlesRaw":
-      return s.battles > 0 ? String(s.battles) : '-';
+      return s.battles > 0 ? String(s.battles) : "-";
     case "battlesPercent": {
       const pct = s.possibleBattles > 0 ? Math.round((s.battles / s.possibleBattles) * 100) : 0;
-      return pct > 0 ? `${pct}%` : '-';
+      return pct > 0 ? `${pct}%` : "-";
     }
     case "fragsRaw":
-      return s.frags > 0 ? String(s.frags) : '-';
+      return s.frags > 0 ? String(s.frags) : "-";
     case "fragsPercent": {
       const pct = s.possibleFrags > 0 ? Math.round((s.frags / s.possibleFrags) * 100) : 0;
-      return pct > 0 ? `${pct}%` : '-';
+      return pct > 0 ? `${pct}%` : "-";
     }
   }
 }

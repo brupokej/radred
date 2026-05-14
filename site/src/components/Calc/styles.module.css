@@ -217,7 +217,6 @@
   white-space: nowrap;
 }
 
-
 .spriteChip {
   position: relative;
   display: inline-flex;
@@ -233,7 +232,9 @@
   background: color-mix(in srgb, var(--ifm-color-primary) 10%, transparent);
   cursor: pointer;
   overflow: hidden;
-  transition: background 0.1s, outline-color 0.1s;
+  transition:
+    background 0.1s,
+    outline-color 0.1s;
 }
 
 .spriteChip:hover {
@@ -295,7 +296,6 @@
 .input:focus {
   outline-color: var(--ifm-color-primary);
 }
-
 
 .inputNarrow {
   width: 38px;

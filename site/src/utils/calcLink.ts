@@ -35,10 +35,7 @@ export function pokemonDataToSide(data: PokemonData): CalcSideState {
   const moves = (data.moves ?? []).filter((m): m is string => Boolean(m));
   return {
     species: data.pokedexKey ?? data.name,
-    level:
-      typeof data.level === "string"
-        ? parseInt(data.level) || 100
-        : (data.level ?? 100),
+    level: typeof data.level === "string" ? parseInt(data.level) || 100 : (data.level ?? 100),
     nature: data.nature ?? "Hardy",
     ability: data.ability ?? "",
     item: data.item ?? "",

@@ -5,7 +5,11 @@ import Team from "@site/src/components/Team";
 import { secretMode } from "@site/src/data/secretMode";
 import { Box } from "@site/src/utils/box";
 import { readAllSelections, writeAll } from "@site/src/utils/encounterLog";
-import { EncounterSequenceConfig, encounterSequences, locations } from "@site/src/utils/encounterPools";
+import {
+  EncounterSequenceConfig,
+  encounterSequences,
+  locations,
+} from "@site/src/utils/encounterPools";
 import { PokemonData } from "@site/src/utils/pokemon";
 import { STORAGE_EVENT } from "@site/src/utils/storage";
 import { ReactNode, useEffect, useState } from "react";
@@ -20,7 +24,10 @@ function getFilteredOptions(
   currentIdx: number
 ): string[] {
   const consumed = new Set<string>();
-  for (const [seqTarget, cfg] of Object.entries(encounterSequences) as [string, EncounterSequenceConfig][]) {
+  for (const [seqTarget, cfg] of Object.entries(encounterSequences) as [
+    string,
+    EncounterSequenceConfig,
+  ][]) {
     if (cfg.poolName !== poolName || cfg.sequenceId === sequenceId) continue;
     if (cfg.priority > priority) continue;
     for (const s of all[cfg.sequenceId] ?? [seqTarget]) consumed.add(s);
@@ -57,13 +64,18 @@ function Sequence({ target }: { target: string }) {
     }
 
     const updates: Record<string, string[]> = { [sequenceId]: newSelections };
-    for (const [seqTarget, cfg] of Object.entries(encounterSequences) as [string, EncounterSequenceConfig][]) {
+    for (const [seqTarget, cfg] of Object.entries(encounterSequences) as [
+      string,
+      EncounterSequenceConfig,
+    ][]) {
       if (cfg.priority > priority) updates[cfg.sequenceId] = [seqTarget];
     }
     writeAll(updates);
   }
 
-  const externalEntry = (Object.entries(encounterSequences) as [string, EncounterSequenceConfig][]).find(
+  const externalEntry = (
+    Object.entries(encounterSequences) as [string, EncounterSequenceConfig][]
+  ).find(
     ([seqTarget, cfg]) =>
       cfg.poolName === poolName &&
       cfg.sequenceId !== sequenceId &&

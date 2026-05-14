@@ -505,10 +505,7 @@ export const viridianForestLassAnneBattle: Moment = {
                 { opponent: "{o:Audino} Yawn {p:Marill}" },
                 { player: "{p:Marill} Tail Whip {o:Audino}" },
               ],
-              [
-                { player: "{p:Marill} switch to {p:Torracat}" },
-                { opponent: "{o:Audino} Protect" },
-              ],
+              [{ player: "{p:Marill} switch to {p:Torracat}" }, { opponent: "{o:Audino} Protect" }],
               [
                 { player: "{p:Torracat} Leer {o:Audino}" },
                 { opponent: "{o:Audino} Yawn {p:Torracat}" },

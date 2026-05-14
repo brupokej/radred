@@ -20,7 +20,6 @@ async function expectSnapshot(
   await expect.soft(target).toHaveScreenshot([filename], { ...options });
 }
 
-
 async function waitForRender(loc: Locator) {
   // Wait until the subtree has been DOM-stable for two animation frames.
   // Handles chains of React useEffect re-renders (e.g. auto-selected branches

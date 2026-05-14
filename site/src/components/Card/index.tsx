@@ -12,9 +12,13 @@ export default function Card({
   halfCard?: boolean;
 }) {
   return (
-    <div className={`${styles.cardContainer}${halfCard ? ` ${styles.halfCard}` : ""}${className ? ` ${className}` : ""}`}>
+    <div
+      className={`${styles.cardContainer}${halfCard ? ` ${styles.halfCard}` : ""}${className ? ` ${className}` : ""}`}
+    >
       <div className={styles.card} data-card>
-        <div className={styles.header} data-card-title>{title}</div>
+        <div className={styles.header} data-card-title>
+          {title}
+        </div>
         {children}
       </div>
     </div>

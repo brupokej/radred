@@ -6,7 +6,12 @@ import { useEffect } from "react";
 export type ExtendedMode = "light" | "dark" | "stream" | "system";
 
 const MODES_BASE = ["light", "dark", "system"] as const satisfies readonly ExtendedMode[];
-const MODES_SECRET = ["light", "dark", "stream", "system"] as const satisfies readonly ExtendedMode[];
+const MODES_SECRET = [
+  "light",
+  "dark",
+  "stream",
+  "system",
+] as const satisfies readonly ExtendedMode[];
 
 export function nextMode(mode: ExtendedMode): ExtendedMode {
   const modes = secretMode ? MODES_SECRET : MODES_BASE;

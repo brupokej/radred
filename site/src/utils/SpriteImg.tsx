@@ -12,7 +12,8 @@ export const SpriteImg = React.forwardRef<HTMLImageElement, Props>(function Spri
   { pokemon, palette = "coloured", alt, ...imgProps },
   ref
 ) {
-  const url = palette === "coloured" ? getColouredSpriteUrl(pokemon) : getMonotoneSpriteUrl(pokemon);
+  const url =
+    palette === "coloured" ? getColouredSpriteUrl(pokemon) : getMonotoneSpriteUrl(pokemon);
   const src = useBaseUrl(url);
   return <img ref={ref} src={src} alt={alt ?? pokemon.name} {...imgProps} />;
 });

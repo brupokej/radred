@@ -4,7 +4,12 @@ import { ScrollFade } from "@site/src/components/ScrollFade";
 import type { Box } from "@site/src/utils/box";
 import { resolveBox } from "@site/src/utils/box";
 import { pokedex, type PokedexData } from "@site/src/utils/pokedex";
-import { formatStats, resolvePokemon, type Pokemon, type PokemonData } from "@site/src/utils/pokemon";
+import {
+  formatStats,
+  resolvePokemon,
+  type Pokemon,
+  type PokemonData,
+} from "@site/src/utils/pokemon";
 import { SpriteImg } from "@site/src/utils/SpriteImg";
 import {
   ReactNode,
