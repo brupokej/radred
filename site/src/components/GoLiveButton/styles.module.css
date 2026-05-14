@@ -26,10 +26,10 @@
 }
 
 .button.live {
-  background: color-mix(in srgb, var(--ifm-color-emphasis-400) 10%, transparent);
-  color: var(--ifm-color-emphasis-600);
+  background: var(--ifm-color-primary);
+  color: white;
   cursor: default;
-  outline-color: color-mix(in srgb, var(--ifm-color-emphasis-400) 35%, transparent);
+  outline-color: var(--ifm-color-primary);
 }
 
 .button.pending {

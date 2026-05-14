@@ -1,10 +1,8 @@
 import { calculate, Field, Generations, Move, NATURES, Pokemon } from "@site/src/calc-shim";
 import { resolveActiveBox } from "@site/src/components/Battle";
 import Card from "@site/src/components/Card";
-import GameState from "@site/src/components/GameState";
 import { ScrollFade } from "@site/src/components/ScrollFade";
 import { getSwitchBattleCaseData } from "@site/src/components/SwitchBattle";
-import { TRAINER_SETS_BY_SPECIES } from "@site/src/data/trainerSets";
 import {
   boxToTeam,
   CALC_GEN,
@@ -17,38 +15,14 @@ import type { PokemonData } from "@site/src/utils/pokemon";
 import { SpriteImg } from "@site/src/utils/SpriteImg";
 import { useStorageState } from "@site/src/utils/storage";
 import { LIVE_MOMENT_DEFAULT } from "@site/src/utils/storageDefaults";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import styles from "./styles.module.css";
 
 // ── Static data derived from the calc engine ──────────────
 
 const GEN = Generations.get(CALC_GEN as any);
 
-const SPECIES_NAMES: string[] = (() => {
-  const names: string[] = [];
-  for (const s of GEN.species) names.push(s.name);
-  return names.sort();
-})();
-
-const MOVE_NAMES: string[] = (() => {
-  const names: string[] = [];
-  for (const m of GEN.moves) names.push(m.name);
-  return names.sort();
-})();
-
 const NATURE_NAMES = Object.keys(NATURES).sort();
-
-const ABILITY_NAMES: string[] = (() => {
-  const names: string[] = [];
-  for (const a of GEN.abilities) names.push(a.name);
-  return names.sort();
-})();
-
-const ITEM_NAMES: string[] = (() => {
-  const names: string[] = [];
-  for (const i of GEN.items) names.push(i.name);
-  return names.sort();
-})();
 
 const STATUS_OPTIONS = [
   "",
@@ -59,56 +33,6 @@ const STATUS_OPTIONS = [
   "Asleep",
   "Frozen",
 ];
-
-function statesMatch(a: CalcSideState, b: CalcSideState): boolean {
-  return (
-    a.species === b.species &&
-    a.level === b.level &&
-    a.nature === b.nature &&
-    a.ability === b.ability &&
-    a.item === b.item &&
-    a.moves.every((m, i) => m === b.moves[i])
-  );
-}
-
-function computeDerivedLabel(state: CalcSideState, playerTeam: PokemonData[]): string {
-  if (!state.species) return "";
-  for (const p of playerTeam) {
-    const s = pokemonDataToSide(p);
-    if (statesMatch(state, s)) return `${state.species} (Player Box)`;
-  }
-  const sets = TRAINER_SETS_BY_SPECIES.get(state.species);
-  if (sets) {
-    for (const { label, state: setState } of sets) {
-      if (statesMatch(state, setState)) return `${state.species} (${label})`;
-    }
-  }
-  return state.species;
-}
-
-type SpeciesOptionData = { label: string; species: string; state: CalcSideState | null };
-
-const SPECIES_OPTION_DATA: SpeciesOptionData[] = (() => {
-  const opts: SpeciesOptionData[] = [];
-  const speciesWithSets = new Set<string>();
-  for (const [species, sets] of TRAINER_SETS_BY_SPECIES) {
-    speciesWithSets.add(species);
-    for (const set of sets) {
-      opts.push({
-        label: `${species} (${set.label.replace(/^\* /, "")})`,
-        species,
-        state: set.state,
-      });
-    }
-    opts.push({ label: `${species} (Blank Set)`, species, state: null });
-  }
-  for (const species of SPECIES_NAMES) {
-    if (!speciesWithSets.has(species)) {
-      opts.push({ label: `${species} (Blank Set)`, species, state: null });
-    }
-  }
-  return opts;
-})();
 
 // ── Helpers ────────────────────────────────────────────────
 
@@ -137,102 +61,28 @@ function formatRange(min: number, max: number, defHp: number): string {
   return lo === hi ? `${lo}%` : `${lo} – ${hi}%`;
 }
 
-// ── Filterable input with custom dropdown ─────────────────
-
-type FilterOption = string | { label: string; onSelect: () => void };
-
-function FilterableInput({
-  value,
-  onChange,
-  options,
-  className,
-  placeholder,
-  onFocusChange,
-}: {
-  value: string;
-  onChange: (v: string) => void;
-  options: FilterOption[];
-  className?: string;
-  placeholder?: string;
-  onFocusChange?: (focused: boolean) => void;
-}) {
-  const inputRef = useRef<HTMLInputElement>(null);
-  const [open, setOpen] = useState(false);
-
-  const results = useMemo(() => {
-    const q = value.trim().toLowerCase();
-    if (!q) return [] as FilterOption[];
-    return options
-      .filter((o) => {
-        const label = typeof o === "string" ? o : o.label;
-        return label.toLowerCase().includes(q);
-      })
-      .slice(0, 40);
-  }, [value, options]);
-
-  const rect =
-    open && results.length > 0 && inputRef.current
-      ? inputRef.current.getBoundingClientRect()
-      : null;
-
-  return (
-    <div className={styles.speciesWrap}>
-      <input
-        ref={inputRef}
-        className={className ?? styles.input}
-        value={value}
-        placeholder={placeholder}
-        onChange={(e) => onChange(e.target.value)}
-        onFocus={() => {
-          setOpen(true);
-          onFocusChange?.(true);
-        }}
-        onBlur={() => {
-          setOpen(false);
-          onFocusChange?.(false);
-        }}
-      />
-      {rect && (
-        <div
-          className={styles.speciesDropdown}
-          style={{ top: rect.bottom + 2, left: rect.left, width: rect.width }}
-        >
-          {results.map((option, i) => {
-            const label = typeof option === "string" ? option : option.label;
-            return (
-              <div
-                key={i}
-                className={`${styles.dropdownItem} ${styles.dropdownSet}`}
-                onMouseDown={() => {
-                  if (typeof option === "string") onChange(option);
-                  else option.onSelect();
-                  setOpen(false);
-                }}
-              >
-                {label}
-              </div>
-            );
-          })}
-        </div>
-      )}
-    </div>
-  );
-}
-
 function PokemonPanel({
   team,
   state,
   onSelectTeam,
   onChange,
-  playerTeam,
   title,
+  results,
+  activeResultIdx,
+  onToggleResult,
+  showDetails,
+  onToggleDetails,
 }: {
   team: PokemonData[];
   state: CalcSideState;
   onSelectTeam: (idx: number) => void;
   onChange: (patch: Partial<CalcSideState>) => void;
-  playerTeam?: PokemonData[];
   title: string;
+  results: (MoveResult | null)[];
+  activeResultIdx: number | null;
+  onToggleResult: (idx: number) => void;
+  showDetails: boolean;
+  onToggleDetails: () => void;
 }) {
   const pokemon = useMemo(() => {
     try {
@@ -251,192 +101,69 @@ function PokemonPanel({
         ? `${styles.hpPct} ${styles.hpYellow}`
         : `${styles.hpPct} ${styles.hpRed}`;
 
-  const [levelStr, setLevelStr] = useState(String(state.level));
   const [hpStr, setHpStr] = useState(String(curHpAbs));
-  const [speciesEditing, setSpeciesEditing] = useState(false);
-  const [speciesLabel, setSpeciesLabel] = useState(() =>
-    computeDerivedLabel(state, playerTeam ?? [])
-  );
 
-  useEffect(() => {
-    setLevelStr(String(state.level));
-  }, [state.level]);
   useEffect(() => {
     setHpStr(String(curHpAbs));
   }, [curHpAbs]);
 
-  const derivedLabel = useMemo(
-    () => computeDerivedLabel(state, playerTeam ?? []),
-    [state, playerTeam]
+  const activeIdx = Math.max(
+    0,
+    team.findIndex((p) => pokemonDataToSide(p).species === state.species)
   );
-
-  useEffect(() => {
-    if (speciesEditing) return;
-    setSpeciesLabel((prev) => {
-      const prevSpecies = prev.includes(" (") ? prev.split(" (")[0] : prev;
-      if (prevSpecies !== state.species) return derivedLabel;
-      if (derivedLabel.includes(" (")) return derivedLabel;
-      return prev;
-    });
-  }, [derivedLabel, speciesEditing, state.species]);
-
-  const playerBoxOptions = useMemo<FilterOption[]>(() => {
-    if (!playerTeam?.length) return [];
-    return playerTeam.flatMap((p) => {
-      const s = pokemonDataToSide(p);
-      if (!s.species) return [];
-      const label = `${s.species} (Player Box)`;
-      return [
-        {
-          label,
-          onSelect: () => {
-            setSpeciesLabel(label);
-            onChange({ ...s });
-          },
-        },
-      ];
-    });
-  }, [playerTeam, onChange]);
-
-  const speciesOptions = useMemo<FilterOption[]>(
-    () => [
-      ...playerBoxOptions,
-      ...SPECIES_OPTION_DATA.map(({ label, species, state: optState }) => ({
-        label,
-        onSelect: () => {
-          setSpeciesLabel(label);
-          onChange(optState ?? { ...DEFAULT_SIDE, species });
-        },
-      })),
-    ],
-    [playerBoxOptions, onChange]
-  );
-
-  const boxSource = useMemo(() => {
-    if (!state.species) return "blank" as const;
-    for (const p of playerTeam ?? []) {
-      if (statesMatch(state, pokemonDataToSide(p))) return "playerBox" as const;
-    }
-    for (const p of team) {
-      if (statesMatch(state, pokemonDataToSide(p))) return "team" as const;
-    }
-    return "blank" as const;
-  }, [state, playerTeam, team]);
-
-  const displayTeam = boxSource === "playerBox" ? (playerTeam ?? []) : team;
-
-  const inlineSpritePokemon = useMemo(
-    () =>
-      team.find((p) => statesMatch(state, pokemonDataToSide(p))) ??
-      playerTeam?.find((p) => statesMatch(state, pokemonDataToSide(p))) ??
-      null,
-    [state, team, playerTeam]
-  );
-
-  const blankPokemon = useMemo(() => {
-    if (boxSource !== "blank") return null;
-    return (
-      team.find((p) => pokemonDataToSide(p).species === state.species) ??
-      playerTeam?.find((p) => pokemonDataToSide(p).species === state.species) ??
-      null
-    );
-  }, [boxSource, team, playerTeam, state.species]);
+  const activePokemon = team[activeIdx] ?? null;
+  const originalItem = activePokemon ? pokemonDataToSide(activePokemon).item : "";
 
   return (
     <Card halfCard title={title}>
       <div className={styles.panelBody}>
-        {/* § Name + inline sprite */}
-        <div className={styles.section}>
-          <div className={styles.nameRow}>
-            {inlineSpritePokemon && (
-              <SpriteImg pokemon={inlineSpritePokemon} className={styles.inlineSprite} />
-            )}
-            <FilterableInput
-              value={speciesLabel}
-              onChange={(v) => {
-                setSpeciesLabel(v);
-                onChange({ species: v });
-              }}
-              options={speciesOptions}
-              className={styles.nameInput}
-              onFocusChange={(f) => setSpeciesEditing(f)}
-            />
-          </div>
+        {/* § Move results */}
+        <div className={styles.movesColumn}>
+          {results.map((r, i) => {
+            const isActive = activeResultIdx === i;
+            const moveName = state.moves[i];
+            return (
+              <button
+                key={i}
+                className={`${styles.moveResult}${isActive ? ` ${styles.active}` : ""}`}
+                onClick={() => onToggleResult(i)}
+                disabled={!moveName}
+              >
+                <span className={styles.moveName}>{moveName || `Move ${i + 1}`}</span>
+                <span className={styles.moveRange}>
+                  {r ? formatRange(r.range[0], r.range[1], r.defHp) : "—"}
+                </span>
+              </button>
+            );
+          })}
         </div>
 
-        {/* § Team sprite strip */}
-        {boxSource !== "blank" ? (
-          displayTeam.length > 1 && (
-            <div className={styles.spriteSection}>
-              <ScrollFade>
-                <div className={styles.spriteSectionInner}>
-                  <span className={styles.boxLabel}>Box</span>
-                  <span className={styles.boxSep}>→</span>
-                  {displayTeam.map((p, i) => {
-                    const isActive = statesMatch(state, pokemonDataToSide(p));
-                    return (
-                      <button
-                        key={i}
-                        className={`${styles.spriteChip}${isActive ? ` ${styles.spriteChipActive}` : ""}`}
-                        onClick={() => {
-                          if (boxSource === "playerBox") {
-                            onChange({ ...pokemonDataToSide(p), curHP: state.curHP });
-                          } else {
-                            onSelectTeam(i);
-                          }
-                        }}
-                        disabled={isActive}
-                        title={p.name}
-                      >
-                        <SpriteImg
-                          pokemon={p}
-                          palette={isActive ? "monotone" : "coloured"}
-                          className={styles.spriteThumb}
-                        />
-                      </button>
-                    );
-                  })}
-                </div>
-              </ScrollFade>
-            </div>
-          )
-        ) : blankPokemon ? (
-          <div className={styles.spriteSection}>
-            <div className={styles.spriteSectionInner}>
-              <span className={styles.boxLabel}>Box</span>
-              <span className={styles.boxSep}>→</span>
-              <div className={`${styles.spriteChip} ${styles.spriteChipActive}`}>
-                <SpriteImg
-                  pokemon={blankPokemon}
-                  palette="monotone"
-                  className={styles.spriteThumb}
-                />
-              </div>
-            </div>
-          </div>
-        ) : null}
-
-        {/* § Level / HP */}
+        {/* § Name + Level / HP */}
         <div className={styles.section}>
+          <div className={styles.nameRow}>
+            {activePokemon && (
+              <SpriteImg pokemon={activePokemon} className={styles.inlineSprite} />
+            )}
+            <select
+              className={styles.nameInput}
+              value={activeIdx}
+              onChange={(e) => onSelectTeam(Number(e.target.value))}
+            >
+              {team.map((p, i) => (
+                <option key={i} value={i}>
+                  {p.name}
+                </option>
+              ))}
+            </select>
+          </div>
           <div className={styles.row}>
             <span className={styles.label}>Level:</span>
             <input
               type="number"
               className={styles.inputNarrow}
-              value={levelStr}
-              min={1}
-              max={255}
-              onChange={(e) => setLevelStr(e.target.value)}
-              onBlur={() => {
-                const n = parseInt(levelStr);
-                if (!isNaN(n)) {
-                  const clamped = Math.max(1, Math.min(255, n));
-                  setLevelStr(String(clamped));
-                  onChange({ level: clamped });
-                } else {
-                  setLevelStr(String(state.level));
-                }
-              }}
+              value={state.level}
+              disabled
+              readOnly
             />
             <span className={styles.hpLabel}>HP:</span>
             <input
@@ -462,71 +189,89 @@ function PokemonPanel({
           </div>
         </div>
 
-        {/* § Nature / Ability / Item / Status */}
-        <div className={styles.section}>
-          <div className={styles.row}>
-            <span className={styles.label}>Nature:</span>
-            <select
-              className={styles.input}
-              value={state.nature}
-              onChange={(e) => onChange({ nature: e.target.value })}
-            >
-              {NATURE_NAMES.map((n) => (
-                <option key={n} value={n}>
-                  {n}
-                </option>
-              ))}
-            </select>
+        {/* § Team sprite strip */}
+        {team.length > 1 && (
+          <div className={styles.spriteSection}>
+            <ScrollFade>
+              <div className={styles.spriteSectionInner}>
+                <span className={styles.boxLabel}>Box</span>
+                <span className={styles.boxSep}>→</span>
+                {team.map((p, i) => {
+                  const isActive = i === activeIdx;
+                  return (
+                    <button
+                      key={i}
+                      className={`${styles.spriteChip}${isActive ? ` ${styles.spriteChipActive}` : ""}`}
+                      onClick={() => onSelectTeam(i)}
+                      disabled={isActive}
+                      title={p.name}
+                    >
+                      <SpriteImg
+                        pokemon={p}
+                        palette="coloured"
+                        className={styles.spriteThumb}
+                      />
+                    </button>
+                  );
+                })}
+              </div>
+            </ScrollFade>
           </div>
-          <div className={styles.row}>
-            <span className={styles.label}>Ability:</span>
-            <FilterableInput
-              value={state.ability}
-              onChange={(ability) => onChange({ ability })}
-              options={ABILITY_NAMES}
-            />
-          </div>
-          <div className={styles.row}>
-            <span className={styles.label}>Item:</span>
-            <FilterableInput
-              value={state.item}
-              onChange={(item) => onChange({ item })}
-              options={ITEM_NAMES}
-              placeholder="None"
-            />
-          </div>
-          <div className={styles.row}>
-            <span className={styles.label}>Status:</span>
-            <select
-              className={styles.input}
-              value={state.status}
-              onChange={(e) => onChange({ status: e.target.value })}
-            >
-              {STATUS_OPTIONS.map((s) => (
-                <option key={s} value={s}>
-                  {s || "Healthy"}
-                </option>
-              ))}
-            </select>
-          </div>
-        </div>
+        )}
 
-        {/* § Moves */}
-        <div className={styles.section}>
-          {([0, 1, 2, 3] as const).map((i) => (
-            <div key={i} className={styles.row}>
-              <FilterableInput
-                value={state.moves[i]}
-                onChange={(move) => {
-                  const moves = [...state.moves] as [string, string, string, string];
-                  moves[i] = move;
-                  onChange({ moves });
-                }}
-                options={MOVE_NAMES}
-              />
+        {/* § Nature / Ability / Item / Status */}
+        {showDetails && (
+          <div className={styles.section}>
+            <div className={styles.row}>
+              <span className={styles.label}>Nature:</span>
+              <select className={styles.input} value={state.nature} disabled>
+                {NATURE_NAMES.map((n) => (
+                  <option key={n} value={n}>
+                    {n}
+                  </option>
+                ))}
+              </select>
             </div>
-          ))}
-        </div>
+            <div className={styles.row}>
+              <span className={styles.label}>Ability:</span>
+              <select className={styles.input} value={state.ability} disabled>
+                <option value={state.ability}>{state.ability || "—"}</option>
+              </select>
+            </div>
+            <div className={styles.row}>
+              <span className={styles.label}>Item:</span>
+              <select
+                className={styles.input}
+                value={state.item}
+                onChange={(e) => onChange({ item: e.target.value })}
+              >
+                <option value="">None</option>
+                {originalItem && <option value={originalItem}>{originalItem}</option>}
+              </select>
+            </div>
+            <div className={styles.row}>
+              <span className={styles.label}>Status:</span>
+              <select
+                className={styles.input}
+                value={state.status}
+                onChange={(e) => onChange({ status: e.target.value })}
+              >
+                {STATUS_OPTIONS.map((s) => (
+                  <option key={s} value={s}>
+                    {s || "Healthy"}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
+        )}
+
+        <button
+          className={styles.detailToggle}
+          onClick={onToggleDetails}
+        >
+          <span>{showDetails ? "−" : "+"}</span>
+        </button>
       </div>
     </Card>
   );
@@ -577,19 +322,23 @@ function computeMove(
 
 // ── Main export ────────────────────────────────────────────
 
-export interface CalcProps {
+interface CalcViewProps {
   p1Team?: PokemonData[];
   p2Team?: PokemonData[];
 }
 
-export function Calc({ p1Team = [], p2Team = [] }: CalcProps) {
+function CalcView({ p1Team = [], p2Team = [] }: CalcViewProps) {
   const [p1, setP1] = useState<CalcSideState>(() =>
     p1Team[0] ? pokemonDataToSide(p1Team[0]) : DEFAULT_SIDE
   );
   const [p2, setP2] = useState<CalcSideState>(() =>
     p2Team[0] ? pokemonDataToSide(p2Team[0]) : DEFAULT_SIDE
   );
-  const [activeMove, setActiveMove] = useState<{ side: "p1" | "p2"; idx: number } | null>(null);
+  const [showDetails, setShowDetails] = useState(false);
+  const [activeMove, setActiveMove] = useState<{ side: "p1" | "p2"; idx: number }>({
+    side: "p1",
+    idx: 0,
+  });
 
   const p1Results = useMemo(() => p1.moves.map((m) => computeMove(p1, p2, m)), [p1, p2]);
   const p2Results = useMemo(() => p2.moves.map((m) => computeMove(p2, p1, m)), [p1, p2]);
@@ -601,44 +350,36 @@ export function Calc({ p1Team = [], p2Team = [] }: CalcProps) {
     if (p2Team[idx]) setP2((prev) => ({ ...pokemonDataToSide(p2Team[idx]), curHP: prev.curHP }));
   }
 
-  const activeResult = activeMove
-    ? (activeMove.side === "p1" ? p1Results : p2Results)[activeMove.idx]
-    : null;
+  const activeResult = (activeMove.side === "p1" ? p1Results : p2Results)[activeMove.idx];
 
   return (
     <div className={styles.calc}>
-      {/* Results bar */}
-      <div className={styles.resultsRow}>
-        {(["p1", "p2"] as const).map((side) => {
-          const results = side === "p1" ? p1Results : p2Results;
-          const state = side === "p1" ? p1 : p2;
-          const speciesLabel = state.species || (side === "p1" ? "Pokémon 1" : "Pokémon 2");
-          return (
-            <Card key={side} halfCard title={`${speciesLabel} Moves`}>
-              <div className={styles.movesColumn}>
-                {results.map((r, i) => {
-                  const isActive = activeMove?.side === side && activeMove?.idx === i;
-                  const moveName = state.moves[i];
-                  return (
-                    <button
-                      key={i}
-                      className={`${styles.moveResult}${isActive ? ` ${styles.active}` : ""}`}
-                      onClick={() => setActiveMove(isActive ? null : { side, idx: i })}
-                      disabled={!moveName}
-                    >
-                      <span className={styles.moveName}>{moveName || `Move ${i + 1}`}</span>
-                      <span className={styles.moveRange}>
-                        {r ? formatRange(r.range[0], r.range[1], r.defHp) : "—"}
-                      </span>
-                    </button>
-                  );
-                })}
-              </div>
-            </Card>
-          );
-        })}
+      <div className={styles.formRow}>
+        <PokemonPanel
+          team={p1Team}
+          state={p1}
+          onSelectTeam={selectTeamP1}
+          onChange={(patch) => setP1((s) => ({ ...s, ...patch }))}
+          title="Pokémon 1"
+          results={p1Results}
+          activeResultIdx={activeMove.side === "p1" ? activeMove.idx : null}
+          onToggleResult={(i) => setActiveMove({ side: "p1", idx: i })}
+          showDetails={showDetails}
+          onToggleDetails={() => setShowDetails((v) => !v)}
+        />
+        <PokemonPanel
+          team={p2Team}
+          state={p2}
+          onSelectTeam={selectTeamP2}
+          onChange={(patch) => setP2((s) => ({ ...s, ...patch }))}
+          title="Pokémon 2"
+          results={p2Results}
+          activeResultIdx={activeMove.side === "p2" ? activeMove.idx : null}
+          onToggleResult={(i) => setActiveMove({ side: "p2", idx: i })}
+          showDetails={showDetails}
+          onToggleDetails={() => setShowDetails((v) => !v)}
+        />
       </div>
-
       <Card title="Move Description">
         {activeResult ? (
           <div className={styles.descBar}>
@@ -653,30 +394,11 @@ export function Calc({ p1Team = [], p2Team = [] }: CalcProps) {
           <div className={styles.descPlaceholder}>Select a move to see damage details.</div>
         )}
       </Card>
-
-      <div className={styles.formRow}>
-        <PokemonPanel
-          team={p1Team}
-          state={p1}
-          onSelectTeam={selectTeamP1}
-          onChange={(patch) => setP1((s) => ({ ...s, ...patch }))}
-          playerTeam={p1Team}
-          title="Pokémon 1"
-        />
-        <PokemonPanel
-          team={p2Team}
-          state={p2}
-          onSelectTeam={selectTeamP2}
-          onChange={(patch) => setP2((s) => ({ ...s, ...patch }))}
-          playerTeam={p1Team}
-          title="Pokémon 2"
-        />
-      </div>
     </div>
   );
 }
 
-export function CalcWithGameState({ moments }: { moments: Moment[] }) {
+export function Calc({ moments }: { moments: Moment[] }) {
   const { value: storedLabel } = useStorageState("live-moment");
   const effectiveLabel = storedLabel ?? LIVE_MOMENT_DEFAULT;
 
@@ -708,8 +430,9 @@ export function CalcWithGameState({ moments }: { moments: Moment[] }) {
     }
 
     if (moment.kind === "encounter") {
+      const fullTeam = boxToTeam(moment.data.playerBox);
       return {
-        p1Team: boxToTeam(moment.data.playerBox),
+        p1Team: moment.data.showPlayerTeam === false ? fullTeam.slice(0, 1) : fullTeam,
         p2Team: [moment.data.pokemon],
       };
     }
@@ -717,10 +440,5 @@ export function CalcWithGameState({ moments }: { moments: Moment[] }) {
     return { p1Team: [], p2Team: [] };
   }, [moment]);
 
-  return (
-    <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
-      <GameState moments={moments} />
-      <Calc key={effectiveLabel} p1Team={p1Team} p2Team={p2Team} />
-    </div>
-  );
+  return <CalcView key={effectiveLabel} p1Team={p1Team} p2Team={p2Team} />;
 }

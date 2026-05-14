@@ -2,8 +2,8 @@
 sidebar_position: 2
 ---
 
-import BrowserOnly from "@docusaurus/BrowserOnly";
-import { CalcWithGameState } from "@site/src/components/Calc";
+import { Calc } from "@site/src/components/Calc";
+import GameState from "@site/src/components/GameState";
 import { moments as brockMoments } from "@site/src/data/guide/brock";
 import { moments as mistyMoments } from "@site/src/data/guide/misty";
 import { moments as surgeMoments } from "@site/src/data/guide/surge";
@@ -30,6 +30,8 @@ export const allMoments = [
   ...eliteFourMoments,
 ];
 
-<BrowserOnly fallback={<div>Loading calculator…</div>}>
-  {() => <CalcWithGameState moments={allMoments} />}
-</BrowserOnly>
+<GameState moments={allMoments} />
+
+## Damage Calculator
+
+<Calc moments={allMoments} />
