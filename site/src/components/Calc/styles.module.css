@@ -49,7 +49,6 @@
 }
 
 .moveName {
-  flex: 1;
   font-weight: 500;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -57,7 +56,26 @@
 }
 
 .moveRange {
+  margin-left: auto;
   white-space: nowrap;
+}
+
+.moveProb {
+  flex-shrink: 0;
+  border-radius: 2px;
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 1;
+  padding: 2px 4px;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+  color: var(--ifm-font-color-base);
+}
+
+.moveResult.active .moveProb {
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.6);
+  color: white;
 }
 
 .descBar {
@@ -73,6 +91,7 @@
   color: var(--ifm-color-emphasis-600);
   margin-top: 0.15rem;
 }
+
 
 /* ── Two-column form ─────────────────────────────────────── */
 
@@ -241,7 +260,7 @@
   border-radius: 3px;
   background: var(--ifm-color-emphasis-200);
   cursor: pointer;
-  overflow: hidden;
+  overflow: visible;
   transition:
     background 0.1s,
     outline-color 0.1s;
@@ -263,6 +282,68 @@
   width: 26px;
   height: 26px;
   object-fit: contain;
+  clip-path: inset(0 round 3px);
+}
+
+.scoreChip {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  border-radius: 2px;
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 1;
+  padding: 2px 4px;
+  pointer-events: none;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+  color: var(--ifm-font-color-base);
+}
+
+.scoreHigh {
+  background: var(--ifm-color-success-contrast-background);
+  box-shadow: inset 0 0 0 1px var(--ifm-color-success);
+}
+
+.scoreMid {
+  background: var(--hl-warning-bg);
+  box-shadow: inset 0 0 0 1px var(--ifm-color-warning);
+}
+
+.scoreNone {
+  background: var(--hl-info-bg);
+  box-shadow: inset 0 0 0 1px var(--ifm-color-info);
+}
+
+.scoreKo {
+  background: var(--hl-danger-bg);
+  box-shadow: inset 0 0 0 1px var(--ifm-color-danger);
+}
+
+/* ── Stat row (Level / HP cells) ────────────────────────── */
+
+.statRow {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 0.5rem;
+}
+
+.statCell {
+  align-items: center;
+  display: flex;
+  gap: 0.5rem;
+  line-height: 26px;
+}
+
+.statCell + .statCell {
+  border-left: 1px solid var(--ifm-color-emphasis-200);
+  margin-left: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+.hpCell {
+  min-width: 175px;
 }
 
 /* ── Form rows ───────────────────────────────────────────── */
@@ -347,8 +428,8 @@
 .hpLabel {
   font-size: 0.875rem;
   color: var(--ifm-color-emphasis-700);
-  margin-left: auto;
   white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .hpMax {

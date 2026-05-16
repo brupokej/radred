@@ -1,6 +1,7 @@
 import { calculate, Field, Generations, Move, NATURES, Pokemon } from "@site/src/calc-shim";
 import { resolveActiveBox } from "@site/src/components/Battle";
 import Card from "@site/src/components/Card";
+import { Row } from "@site/src/components/Row";
 import { ScrollFade } from "@site/src/components/ScrollFade";
 import { getSwitchBattleCaseData } from "@site/src/components/SwitchBattle";
 import {
@@ -15,6 +16,8 @@ import type { PokemonData } from "@site/src/utils/pokemon";
 import { SpriteImg } from "@site/src/utils/SpriteImg";
 import { useStorageState } from "@site/src/utils/storage";
 import { LIVE_MOMENT_DEFAULT } from "@site/src/utils/storageDefaults";
+import { computeMovePrediction, type MovePrediction } from "@site/src/utils/aiMoveScore";
+import { computeSwitchScores, type SwitchScore } from "@site/src/utils/switchScore";
 import { useEffect, useMemo, useState } from "react";
 import styles from "./styles.module.css";
 
@@ -61,6 +64,13 @@ function formatRange(min: number, max: number, defHp: number): string {
   return lo === hi ? `${lo}%` : `${lo} – ${hi}%`;
 }
 
+function switchScoreClass(score: number): string {
+  if (score < -1) return styles.scoreKo;
+  if (score > 15) return styles.scoreHigh;
+  if (score > 2) return styles.scoreMid;
+  return styles.scoreNone;
+}
+
 function PokemonPanel({
   team,
   state,
@@ -72,6 +82,8 @@ function PokemonPanel({
   onToggleResult,
   showDetails,
   onToggleDetails,
+  switchScores,
+  movePrediction,
 }: {
   team: PokemonData[];
   state: CalcSideState;
@@ -83,6 +95,8 @@ function PokemonPanel({
   onToggleResult: (idx: number) => void;
   showDetails: boolean;
   onToggleDetails: () => void;
+  switchScores?: SwitchScore[] | null;
+  movePrediction?: MovePrediction | null;
 }) {
   const pokemon = useMemo(() => {
     try {
@@ -122,6 +136,9 @@ function PokemonPanel({
           {results.map((r, i) => {
             const isActive = activeResultIdx === i;
             const moveName = state.moves[i];
+            const prob = movePrediction
+              ? getMoveProb(movePrediction, moveName)
+              : null;
             return (
               <button
                 key={i}
@@ -130,6 +147,11 @@ function PokemonPanel({
                 disabled={!moveName}
               >
                 <span className={styles.moveName}>{moveName || `Move ${i + 1}`}</span>
+                {prob && (
+                  <span className={`${styles.moveProb} ${prob.pct > 50 ? styles.scoreHigh : styles.scoreMid}`}>
+                    {prob.label}
+                  </span>
+                )}
                 <span className={styles.moveRange}>
                   {r ? formatRange(r.range[0], r.range[1], r.defHp) : "—"}
                 </span>
@@ -138,7 +160,7 @@ function PokemonPanel({
           })}
         </div>
 
-        {/* § Name + Level / HP */}
+        {/* § Name */}
         <div className={styles.section}>
           <div className={styles.nameRow}>
             {activePokemon && (
@@ -156,36 +178,44 @@ function PokemonPanel({
               ))}
             </select>
           </div>
-          <div className={styles.row}>
-            <span className={styles.label}>Level:</span>
-            <input
-              type="number"
-              className={styles.inputNarrow}
-              value={state.level}
-              disabled
-              readOnly
-            />
-            <span className={styles.hpLabel}>HP:</span>
-            <input
-              type="number"
-              className={styles.inputNarrow}
-              value={hpStr}
-              min={0}
-              max={maxHp}
-              onChange={(e) => setHpStr(e.target.value)}
-              onBlur={() => {
-                const n = parseInt(hpStr);
-                if (!isNaN(n)) {
-                  const clamped = Math.max(0, Math.min(maxHp, n));
-                  setHpStr(String(clamped));
-                  onChange({ curHP: Math.round((clamped / maxHp) * 100) });
-                } else {
-                  setHpStr(String(curHpAbs));
-                }
-              }}
-            />
-            <span className={styles.hpMax}>/ {maxHp}</span>
-            <span className={hpPctClass}>({state.curHP}%)</span>
+        </div>
+
+        {/* § Level / HP */}
+        <div className={styles.section}>
+          <div className={styles.statRow}>
+            <div className={styles.statCell}>
+              <span className={styles.label}>Level:</span>
+              <input
+                type="number"
+                className={styles.inputNarrow}
+                value={state.level}
+                disabled
+                readOnly
+              />
+            </div>
+            <div className={`${styles.statCell} ${styles.hpCell}`}>
+              <span className={styles.hpLabel}>HP:</span>
+              <input
+                type="number"
+                className={styles.inputNarrow}
+                value={hpStr}
+                min={0}
+                max={maxHp}
+                onChange={(e) => setHpStr(e.target.value)}
+                onBlur={() => {
+                  const n = parseInt(hpStr);
+                  if (!isNaN(n)) {
+                    const clamped = Math.max(0, Math.min(maxHp, n));
+                    setHpStr(String(clamped));
+                    onChange({ curHP: Math.round((clamped / maxHp) * 100) });
+                  } else {
+                    setHpStr(String(curHpAbs));
+                  }
+                }}
+              />
+              <span className={styles.hpMax}>/ {maxHp}</span>
+              <span className={hpPctClass}>({state.curHP}%)</span>
+            </div>
           </div>
         </div>
 
@@ -211,6 +241,11 @@ function PokemonPanel({
                         palette="coloured"
                         className={styles.spriteThumb}
                       />
+                      {switchScores && (
+                        <span className={`${styles.scoreChip} ${switchScoreClass(switchScores[i]?.score ?? 0)}`}>
+                          {switchScores[i]?.chipText ?? "0"}
+                        </span>
+                      )}
                     </button>
                   );
                 })}
@@ -275,6 +310,28 @@ function PokemonPanel({
       </div>
     </Card>
   );
+}
+
+// ── Move probability ───────────────────────────────────────
+
+interface MoveProb {
+  label: string;
+  pct: number; // 1–100; drives color
+}
+
+// Returns a probability label for one move given a prediction result.
+// Only produces a value for winner moves when max score > 100.
+// Returns null for non-winners and when the AI might switch instead of attacking.
+function getMoveProb(prediction: MovePrediction, moveName: string): MoveProb | null {
+  if (!moveName || !prediction.predicted) return null;
+  const maxScore = prediction.scores[0]?.score ?? 0;
+  if (maxScore <= 100) return null;
+
+  const winners = prediction.scores.filter((s) => s.score === maxScore);
+  if (!winners.some((s) => s.move === moveName)) return null;
+
+  const pct = Math.round(100 / winners.length);
+  return { label: `${pct}%`, pct };
 }
 
 // ── Move result ────────────────────────────────────────────
@@ -342,6 +399,23 @@ function CalcView({ p1Team = [], p2Team = [] }: CalcViewProps) {
 
   const p1Results = useMemo(() => p1.moves.map((m) => computeMove(p1, p2, m)), [p1, p2]);
   const p2Results = useMemo(() => p2.moves.map((m) => computeMove(p2, p1, m)), [p1, p2]);
+  const p1MovePrediction = useMemo(
+    () => (p1.species && p2.species ? computeMovePrediction(p1, p2) : null),
+    [p1, p2]
+  );
+
+  const p2MovePrediction = useMemo(
+    () => (p2.species && p1.species ? computeMovePrediction(p2, p1) : null),
+    [p2, p1]
+  );
+
+  const p2SwitchScores = useMemo(() => {
+    const idx = Math.max(0, p1Team.findIndex(
+      (p) => pokemonDataToSide(p).species === p1.species
+    ));
+    const foeName = p1Team[idx]?.name ?? p1.species;
+    return computeSwitchScores(p1, p2Team, foeName);
+  }, [p1, p2Team, p1Team]);
 
   function selectTeamP1(idx: number) {
     if (p1Team[idx]) setP1((prev) => ({ ...pokemonDataToSide(p1Team[idx]), curHP: prev.curHP }));
@@ -351,6 +425,11 @@ function CalcView({ p1Team = [], p2Team = [] }: CalcViewProps) {
   }
 
   const activeResult = (activeMove.side === "p1" ? p1Results : p2Results)[activeMove.idx];
+
+  const p2ActiveIdx = Math.max(0, p2Team.findIndex(
+    (p) => pokemonDataToSide(p).species === p2.species
+  ));
+  const activeP2Score = p2SwitchScores[p2ActiveIdx] ?? null;
 
   return (
     <div className={styles.calc}>
@@ -366,6 +445,7 @@ function CalcView({ p1Team = [], p2Team = [] }: CalcViewProps) {
           onToggleResult={(i) => setActiveMove({ side: "p1", idx: i })}
           showDetails={showDetails}
           onToggleDetails={() => setShowDetails((v) => !v)}
+          movePrediction={p1MovePrediction}
         />
         <PokemonPanel
           team={p2Team}
@@ -378,9 +458,16 @@ function CalcView({ p1Team = [], p2Team = [] }: CalcViewProps) {
           onToggleResult={(i) => setActiveMove({ side: "p2", idx: i })}
           showDetails={showDetails}
           onToggleDetails={() => setShowDetails((v) => !v)}
+          switchScores={p2SwitchScores}
+          movePrediction={p2MovePrediction}
         />
       </div>
-      <Card title="Move Description">
+      {activeP2Score && (
+        <Card title="Switch AI">
+          <Row row={activeP2Score.rowCells} />
+        </Card>
+      )}
+      <Card title="Turn Description">
         {activeResult ? (
           <div className={styles.descBar}>
             <div className={styles.descMain}>{activeResult.desc}</div>
