@@ -18,6 +18,7 @@
 
 import { calculate, Field, Generations, Move, Pokemon } from "@site/src/calc-shim";
 import { CALC_GEN, type CalcSideState } from "@site/src/utils/calcLink";
+import { resolveItem, resolveMove } from "@site/src/utils/abbreviations";
 
 const GEN = Generations.get(CALC_GEN as any);
 const DEFAULT_FIELD = new Field({ gameType: "Singles" });
@@ -43,12 +44,12 @@ function makeCalcMon(side: CalcSideState): Pokemon | null {
       level: side.level,
       nature: side.nature || undefined,
       ability: side.ability || undefined,
-      item: side.item || undefined,
+      item: resolveItem(side.item) || undefined,
       ivs: side.ivs,
       evs: side.evs,
       boosts: side.boosts,
       status: (side.status as any) || undefined,
-      moves: side.moves.filter(Boolean) as string[],
+      moves: side.moves.filter(Boolean).map(resolveMove) as string[],
     } as any;
     const base = new Pokemon(GEN, name, opts);
     const curHP = Math.max(1, Math.round((side.curHP / 100) * base.stats.hp));
@@ -65,7 +66,7 @@ function damageRatio(atk: CalcSideState, def: CalcSideState, moveName: string): 
     const atkMon = makeCalcMon(atk);
     const defMon = makeCalcMon(def);
     if (!atkMon || !defMon || defMon.stats.hp === 0) return 0;
-    const result = calculate(GEN as any, atkMon, defMon, new Move(GEN, moveName), DEFAULT_FIELD);
+    const result = calculate(GEN as any, atkMon, defMon, new Move(GEN, resolveMove(moveName)), DEFAULT_FIELD);
     const dmg = result.damage;
     const amounts = Array.isArray(dmg)
       ? Array.isArray(dmg[0]) ? (dmg as number[][]).flat() : (dmg as number[])
@@ -89,7 +90,7 @@ function atkOutspeeds(atk: CalcSideState, def: CalcSideState): boolean {
 
 function getSmogonMove(moveName: string): Move | null {
   if (!moveName) return null;
-  try { return new Move(GEN, moveName); } catch { return null; }
+  try { return new Move(GEN, resolveMove(moveName)); } catch { return null; }
 }
 
 function getAtkTypes(atk: CalcSideState): string[] {

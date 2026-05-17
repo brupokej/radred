@@ -1,5 +1,6 @@
 import { resolveBox, type Box } from "@site/src/utils/box";
 import { resolvePokemon, type PokemonData } from "@site/src/utils/pokemon";
+import { resolveSpecies } from "@site/src/utils/abbreviations";
 
 export const CALC_GEN = 9;
 
@@ -34,7 +35,7 @@ export const DEFAULT_SIDE: CalcSideState = {
 export function pokemonDataToSide(data: PokemonData): CalcSideState {
   const moves = (data.moves ?? []).filter((m): m is string => Boolean(m));
   return {
-    species: data.pokedexKey ?? data.name,
+    species: resolveSpecies(data.name),
     level: typeof data.level === "string" ? parseInt(data.level) || 100 : (data.level ?? 100),
     nature: data.nature ?? "Hardy",
     ability: data.ability ?? "",

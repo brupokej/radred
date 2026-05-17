@@ -4,6 +4,7 @@ import { ScrollFade } from "@site/src/components/ScrollFade";
 import type { Box } from "@site/src/utils/box";
 import { resolveBox } from "@site/src/utils/box";
 import { pokedex, type PokedexData } from "@site/src/utils/pokedex";
+import { resolveSpecies } from "@site/src/utils/abbreviations";
 import {
   formatStats,
   resolvePokemon,
@@ -227,7 +228,7 @@ function PokemonCard({
   const baseMoveSet = base?.moves ? new Set(base.moves.filter(Boolean)) : null;
   const mwc = (move: string | null | undefined) =>
     baseMoveSet && move && !baseMoveSet.has(move) ? styles.fieldWarning : "";
-  const stats = current ? (pokedex[current.pokedexKey ?? current.name] ?? null) : null;
+  const stats = current ? (pokedex[resolveSpecies(current.name)] ?? null) : null;
 
   return (
     <div className={`${styles.card} ${!pokemon ? styles.cardEmpty : ""}`}>

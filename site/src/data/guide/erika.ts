@@ -151,7 +151,7 @@ const _box4 = getBox({
       nature: "Lonely",
       ability: "Emergency Exit",
       item: "Silver Powder",
-      moves: ["First Impression", "Aerial Ace", "Rock Tomb", "Sucker Punch"],
+      moves: ["First Impress.", "Aerial Ace", "Rock Tomb", "Sucker Punch"],
     },
     Runerigus: {
       nature: "Bold",

@@ -1,5 +1,6 @@
 import { calculate, Field, Generations, Move, Pokemon } from "@site/src/calc-shim";
 import { CALC_GEN, pokemonDataToSide, type CalcSideState } from "@site/src/utils/calcLink";
+import { resolveItem, resolveMove } from "@site/src/utils/abbreviations";
 import type { PokemonData } from "@site/src/utils/pokemon";
 
 const GEN = Generations.get(CALC_GEN as any);
@@ -22,12 +23,12 @@ function makeCalcPokemon(state: CalcSideState): Pokemon {
     level: state.level,
     nature: state.nature || undefined,
     ability: state.ability || undefined,
-    item: state.item || undefined,
+    item: resolveItem(state.item) || undefined,
     ivs: state.ivs,
     evs: state.evs,
     boosts: state.boosts,
     status: (state.status as any) || undefined,
-    moves: state.moves.filter(Boolean) as string[],
+    moves: state.moves.filter(Boolean).map(resolveMove) as string[],
   } as any;
   const base = new Pokemon(GEN, name, opts);
   const curHP = Math.max(1, Math.round((state.curHP / 100) * base.stats.hp));
@@ -43,7 +44,7 @@ function computeMoveRange(
   try {
     const atk = makeCalcPokemon(attacker);
     const def = makeCalcPokemon(defender);
-    const result = calculate(GEN as any, atk, def, new Move(GEN, moveName), DEFAULT_FIELD);
+    const result = calculate(GEN as any, atk, def, new Move(GEN, resolveMove(moveName)), DEFAULT_FIELD);
     const dmg = result.damage;
     const amounts = Array.isArray(dmg)
       ? Array.isArray(dmg[0]) ? (dmg as number[][]).flat() : (dmg as number[])
@@ -109,7 +110,7 @@ export function computeSwitchScores(
   let hasSpecial = false;
   for (const moveName of p1Moves) {
     try {
-      const cat = new Move(GEN, moveName).category;
+      const cat = new Move(GEN, resolveMove(moveName)).category;
       if (cat === "Physical") hasPhysical = true;
       if (cat === "Special") hasSpecial = true;
     } catch {}

@@ -467,7 +467,6 @@ const _box8 = getBox({
       "Wooper-P": {
         name: "Clodsire",
         spriteKey: undefined,
-        pokedexKey: undefined,
         level: 20,
       },
     },
@@ -664,7 +663,6 @@ const _box11 = getBox({
     "Meowth-G": {
       name: "Perrserker",
       spriteKey: undefined,
-      pokedexKey: undefined,
       moves: ["Fake Out", "Bullet Punch", "Iron Head", "Scratch"],
     },
     Chewtle: {
@@ -1251,13 +1249,13 @@ export const nuggetBridgeBugCatcherCaleBattle: Moment = {
             ],
           },
           {
-            matchup: ["Wormadam-Sa"],
+            matchup: ["Wormadam-S"],
             turns: [
               [
-                { player: "{p:Drednaw} Aqua Jet {o:Wormadam-Sa} to {-:33}" },
+                { player: "{p:Drednaw} Aqua Jet {o:Wormadam-S} to {-:33}" },
                 { opponent: "{p:Drednaw} Rocky Helmet to {=:81}" },
-                { player: "{p:Houndoom} Flame Burst {o:Wormadam-Sa} to {=:0}" },
-                { opponent: "{o:Wormadam-Sa} fainted" },
+                { player: "{p:Houndoom} Flame Burst {o:Wormadam-S} to {=:0}" },
+                { opponent: "{o:Wormadam-S} fainted" },
               ],
             ],
           },
@@ -1926,7 +1924,6 @@ export const digHouseGruntBattle: Moment = {
 const _growlitheH = {
   name: "Growlithe-H",
   spriteKey: "growlithe-hisui",
-  pokedexKey: "Growlithe-Hisui",
   level: "18-20",
   moves: ["Flame Wheel", "Helping Hand", "Leer", "Odor Sleuth"],
 };

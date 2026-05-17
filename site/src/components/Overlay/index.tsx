@@ -11,6 +11,7 @@ import {
   TopBattler,
 } from "@site/src/utils/overlayMeta";
 import { pokedex, type PokedexData } from "@site/src/utils/pokedex";
+import { resolveSpecies } from "@site/src/utils/abbreviations";
 import { formatStats, PokemonData } from "@site/src/utils/pokemon";
 import { SpriteImg } from "@site/src/utils/SpriteImg";
 import { FADE_MS, useFadedKey, useFadedValue } from "@site/src/utils/useFadedValue";
@@ -143,7 +144,7 @@ function OverlayCard({
     const img = imgRef.current;
     if (img?.complete && img.naturalWidth === 0) setLoadError(true);
   }, [spriteKey]);
-  const pokedexEntry = pokemon ? (pokedex[pokemon.pokedexKey ?? pokemon.name] ?? null) : null;
+  const pokedexEntry = pokemon ? (pokedex[resolveSpecies(pokemon.name)] ?? null) : null;
   const subtitle = slot
     ? (slot.subtitle ?? (pokemon?.level != null ? String(pokemon.level) : "-"))
     : "-";

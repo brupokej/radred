@@ -222,19 +222,17 @@ const _box6 = getBox({
       "Yamask-G": {
         name: "Runerigus",
         spriteKey: undefined,
-        pokedexKey: undefined,
         moves: ["Disable", "Rock Tomb", "Shadow Claw", "Shadow Sneak"],
       },
       "Growlithe-H": {
         name: "Arcanine-H",
         spriteKey: "arcanine-hisui",
-        pokedexKey: "Arcanine-Hisui",
         moves: ["Accelerock", "Helping Hand", "Leer", "Take Down"],
       },
       Wimpod: {
         name: "Golisopod",
         ability: "Emergency Exit",
-        moves: ["First Impression", "Struggle Bug"],
+        moves: ["First Impress.", "Struggle Bug"],
       },
     },
   ],
@@ -266,7 +264,7 @@ const _box7 = getBox({
       nature: "Adamant",
       ability: "Emergency Exit",
       item: "Sitrus Berry",
-      moves: ["First Impression", "Razor Shell", "Rock Tomb", "Sucker Punch"],
+      moves: ["First Impress.", "Razor Shell", "Rock Tomb", "Sucker Punch"],
     },
     Clodsire: {
       nature: "Lonely",
@@ -387,7 +385,7 @@ const _box8 = getBox({
       nature: "Careful",
       ability: "Emergency Exit",
       item: "Sitrus Berry",
-      moves: ["First Impression", "Aerial Ace", "Rock Tomb", "Sucker Punch"],
+      moves: ["First Impress.", "Aerial Ace", "Rock Tomb", "Sucker Punch"],
     },
     Incineroar: {
       nature: "Careful",
@@ -709,7 +707,7 @@ const _box10 = getBox({
       nature: "Adamant",
       ability: "Emergency Exit",
       item: "Sitrus Berry",
-      moves: ["First Impression", "Razor Shell", "Rock Tomb", "Sucker Punch"],
+      moves: ["First Impress.", "Razor Shell", "Rock Tomb", "Sucker Punch"],
     },
     Golduck: {
       nature: "Lonely",
@@ -1113,7 +1111,7 @@ const _box13 = getBox({
       nature: "Careful",
       ability: "Emergency Exit",
       item: "Persim Berry",
-      moves: ["First Impression", "Razor Shell", "Rock Tomb", "Sucker Punch"],
+      moves: ["First Impress.", "Razor Shell", "Rock Tomb", "Sucker Punch"],
     },
     Golduck: {
       nature: "Jolly",
@@ -1319,7 +1317,7 @@ const _box15 = getBox({
       nature: "Naughty",
       ability: "Emergency Exit",
       item: "Persim Berry",
-      moves: ["First Impression", "Icy Wind", "Rock Tomb", "Sucker Punch"],
+      moves: ["First Impress.", "Icy Wind", "Rock Tomb", "Sucker Punch"],
     },
     "Arcanine-H": {
       nature: "Impish",
@@ -1621,11 +1619,11 @@ export const vermillionCityLeaderLtSurgeBattle: Moment = {
       {
         matchups: [
           {
-            matchup: ["Rotom-F"],
+            matchup: ["Rotom-Frost"],
             turns: [
               [
-                { player: "{p:Excadrill} Earthquake {o:Rotom-F} to {=:0}" },
-                { opponent: "{o:Rotom-F} fainted" },
+                { player: "{p:Excadrill} Earthquake {o:Rotom-Frost} to {=:0}" },
+                { opponent: "{o:Rotom-Frost} fainted" },
               ],
             ],
           },

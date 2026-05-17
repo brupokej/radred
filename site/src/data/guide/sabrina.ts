@@ -51,7 +51,7 @@ const _box3 = getBox({
       nature: "Lonely",
       ability: "Emergency Exit",
       item: "Silver Powder",
-      moves: ["First Impression", "Aerial Ace", "Rock Tomb", "Sucker Punch"],
+      moves: ["First Impress.", "Aerial Ace", "Rock Tomb", "Sucker Punch"],
     },
     Incineroar: {
       nature: "Impish",
@@ -240,18 +240,18 @@ export const rocketHideoutLeftGuardBattle: Moment = {
             ],
           },
           {
-            matchup: ["Slaking", "Rotom-F"],
+            matchup: ["Slaking", "Rotom-Frost"],
             turns: [
               [
                 { player: "{p:Perrserker} switch to {p:Excadrill}" },
                 { player: "{p:Incineroar} Fake Out {o:Slaking} to {-:174}" },
                 { opponent: "{o:Slaking} flinched" },
-                { opponent: "{o:Rotom-F} Thunderbolt {p:Excadrill}" },
+                { opponent: "{o:Rotom-Frost} Thunderbolt {p:Excadrill}" },
               ],
               [
                 { opponent: "{o:Slaking} Truant" },
-                { player: "{p:Excadrill} Drill Run {o:Rotom-F} to {=:0}" },
-                { opponent: "{o:Rotom-F} fainted" },
+                { player: "{p:Excadrill} Drill Run {o:Rotom-Frost} to {=:0}" },
+                { opponent: "{o:Rotom-Frost} fainted" },
                 { player: "{p:Incineroar} U-Turn {o:Slaking} to {-:144}" },
                 { player: "{p:Incineroar} switch to {p:Perrserker}" },
               ],
@@ -334,11 +334,11 @@ export const rocketHideoutRightGuardBattle: Moment = {
             ],
           },
           {
-            matchup: ["Rotom-W", "Shiftry"],
+            matchup: ["Rotom-Wash", "Shiftry"],
             turns: [
               [
                 { player: "{p:Gyarados} switch to {p:Excadrill}" },
-                { opponent: "{o:Rotom-W} Thunderbolt {p:Excadrill}" },
+                { opponent: "{o:Rotom-Wash} Thunderbolt {p:Excadrill}" },
                 { opponent: "{o:Shiftry} Low Kick {p:Perrserker} to {+:66}" },
                 { player: "{p:Perrserker} U-Turn {o:Shiftry} to {-:1}" },
                 { player: "{p:Perrserker} switch to {p:Golduck}" },
@@ -346,8 +346,8 @@ export const rocketHideoutRightGuardBattle: Moment = {
               [
                 { player: "{p:Golduck} Aqua Tail {o:Shiftry} to {=:0}" },
                 { opponent: "{o:Shiftry} fainted" },
-                { player: "{p:Excadrill} Drill Run {o:Rotom-W} to {=:0}" },
-                { opponent: "{o:Rotom-W} fainted" },
+                { player: "{p:Excadrill} Drill Run {o:Rotom-Wash} to {=:0}" },
+                { opponent: "{o:Rotom-Wash} fainted" },
               ],
             ],
           },
@@ -1096,7 +1096,7 @@ const _box14 = getBox({
       nature: "Hasty",
       ability: "Clear Body",
       item: "Mystic Water",
-      moves: ["Dazzling Gleam", "Flip Turn", "Icy Wind", "Sludge Wave"],
+      moves: ["Dazz. Gleam", "Flip Turn", "Icy Wind", "Sludge Wave"],
     },
     Lanturn: {
       nature: "Quiet",
@@ -1446,7 +1446,7 @@ export const saffronDojoLeaderChuckBattle: Moment = {
             turns: [
               [
                 { player: "{p:Ceruledge} switch to {p:Azumarill}" },
-                { opponent: "{o:Kommo-o} Clangorous Soulblaze {p:Azumarill}" },
+                { opponent: "{o:Kommo-o} Clang. Scales (Z) {p:Azumarill}" },
               ],
               [
                 { opponent: "{o:Kommo-o} Poison Jab {p:Azumarill} to {+:75}" },
@@ -1824,7 +1824,7 @@ const _box21 = getBox({
       nature: "Sassy",
       ability: "Clear Body",
       item: "Black Sludge",
-      moves: ["Dazzling Gleam", "Flip Turn", "Icy Wind", "Sludge Wave"],
+      moves: ["Dazz. Gleam", "Flip Turn", "Icy Wind", "Sludge Wave"],
     },
   },
   team: ["Jellicent", "Meowscarada", "Tentacruel"],
@@ -2536,7 +2536,7 @@ const _box23 = getBox({
       nature: "Lonely",
       ability: "Emergency Exit",
       item: "Silver Powder",
-      moves: ["First Impression", "Aerial Ace", "Rock Tomb", "Sucker Punch"],
+      moves: ["First Impress.", "Aerial Ace", "Rock Tomb", "Sucker Punch"],
     },
     Clodsire: {
       nature: "Impish",
@@ -2802,7 +2802,7 @@ const _box25 = getBox({
       nature: "Adamant",
       ability: "Emergency Exit",
       item: "Silver Powder",
-      moves: ["First Impression", "Pounce", "Rock Tomb", "Sucker Punch"],
+      moves: ["First Impress.", "Pounce", "Rock Tomb", "Sucker Punch"],
       ivs: undefined,
     },
     Meowscarada: {
@@ -2875,7 +2875,7 @@ export const saffronCityDumassKidBattle: Moment = {
                 { opponent: "{o:Zapdos} Thunder {p:Swampert}" },
               ],
               [
-                { opponent: "{o:Zapdos} Supersonic Skystrike {p:Swampert} to {+:1}" },
+                { opponent: "{o:Zapdos} Hurricane (Z) {p:Swampert} to {+:1}" },
                 { player: "{p:Swampert} Flip Turn {o:Zapdos} to {-:75}" },
                 { player: "{p:Swampert} switch to {p:Arcanine-H}" },
               ],
@@ -3032,7 +3032,7 @@ const _box27 = getBox({
       nature: "Quiet",
       ability: "Water Bubble",
       item: "Iron Ball",
-      moves: ["Brine", "Hidden Power Fire", "Scald", "Water Spout"],
+      moves: ["Brine", "HP Fire", "Scald", "Water Spout"],
     },
   },
   team: ["Lanturn", "Golisopod", "Swampert", "Perrserker", "Azumarill", "Jellicent"],

@@ -147,7 +147,6 @@ export const pewterMuseumLeaderFalknerBox = getOpponentBox([
   {
     name: "Squawkabilly-G",
     spriteKey: "squawkabilly",
-    pokedexKey: "Squawkabilly",
     level: 14,
     nature: "Bashful",
     ability: "Hustle",
@@ -157,7 +156,6 @@ export const pewterMuseumLeaderFalknerBox = getOpponentBox([
   {
     name: "Farfetch'd-G",
     spriteKey: "farfetchd-galar",
-    pokedexKey: "Farfetch\u2019d-Galar",
     level: 14,
     nature: "Bashful",
     ability: "Scrappy",
@@ -265,7 +263,6 @@ export const mtMoonSuperNerdMiguelBox = getOpponentBox([
   {
     name: "Voltorb-H",
     spriteKey: "voltorb-hisui",
-    pokedexKey: "Voltorb-Hisui",
     level: 22,
     nature: "Naive",
     ability: "Reckless",
@@ -410,9 +407,8 @@ export const nuggetBridgeBugCatcherCaleBox = getOpponentBox([
     moves: ["Sleep Powder", "Mega Drain", "Air Cutter", "Bug Buzz"],
   },
   {
-    name: "Wormadam-Sa",
+    name: "Wormadam-S",
     spriteKey: "wormadam-sandy",
-    pokedexKey: "Wormadam-Sandy",
     level: 26,
     nature: "Careful",
     ability: "Overcoat",
@@ -568,7 +564,6 @@ export const digHouseGruntBox = getOpponentBox([
   {
     name: "Persian-A",
     spriteKey: "persian-alola",
-    pokedexKey: "Persian-Alola",
     level: 26,
     nature: "Timid",
     ability: "Feline Prowess",
@@ -664,7 +659,6 @@ export const route6CamperJeffBox = getOpponentBox([
   {
     name: "Mr. Mime-G",
     spriteKey: "mr-mime-galar",
-    pokedexKey: "Mr. Mime-Galar",
     level: 35,
     nature: "Timid",
     ability: "Ice Body",
@@ -948,7 +942,6 @@ export const route9PicnickerCaitlinBox = getOpponentBox([
   {
     name: "Sneasel-H",
     spriteKey: "sneasel-hisui",
-    pokedexKey: "Sneasel-Hisui",
     level: 35,
     nature: "Bashful",
     ability: "Inner Focus",
@@ -1039,7 +1032,7 @@ export const route10PokeManiacHermanBox = getOpponentBox([
     nature: "Modest",
     ability: "Pixilate",
     item: "Pixie Plate",
-    moves: ["Hyper Voice", "Weather Ball", "Misty Explosion", "Psyshock"],
+    moves: ["Hyper Voice", "Weather Ball", "Misty Explosi.", "Psyshock"],
   },
 ]);
 
@@ -1063,7 +1056,6 @@ export const route8SuperNerdAidanBox = getOpponentBox([
   {
     name: "Arcanine-H",
     spriteKey: "arcanine-hisui",
-    pokedexKey: "Arcanine-Hisui",
     level: 35,
     nature: "Jolly",
     ability: "Rock Head",
@@ -1073,7 +1065,6 @@ export const route8SuperNerdAidanBox = getOpponentBox([
   {
     name: "Basculegion-F",
     spriteKey: "basculegion-f",
-    pokedexKey: "Basculegion-F",
     level: 36,
     nature: "Naive",
     ability: "Adaptability",
@@ -1083,7 +1074,6 @@ export const route8SuperNerdAidanBox = getOpponentBox([
   {
     name: "Braviary-H",
     spriteKey: "braviary-hisui",
-    pokedexKey: "Braviary-Hisui",
     level: 36,
     nature: "Modest",
     ability: "Sheer Force",
@@ -1104,7 +1094,6 @@ export const vermillionCityGymGentlemanTuckerBox = getOpponentBox([
   {
     name: "Farfetch'd",
     spriteKey: "farfetchd",
-    pokedexKey: "Farfetch’d",
     level: 36,
     nature: "Jolly",
     ability: "Sharpness",
@@ -1122,7 +1111,6 @@ export const vermillionCityGymGentlemanTuckerBox = getOpponentBox([
   {
     name: "Pikachu-Surfing",
     spriteKey: "pikachu",
-    pokedexKey: "Pikachu-Surfing",
     level: 35,
     nature: "Naive",
     ability: "Lightning Rod",
@@ -1141,9 +1129,8 @@ export const vermillionCityGymGentlemanTuckerBox = getOpponentBox([
 
 export const vermillionCityLeaderLtSurgeBox = getOpponentBox([
   {
-    name: "Rotom-F",
+    name: "Rotom-Frost",
     spriteKey: "rotom-frost",
-    pokedexKey: "Rotom-Frost",
     level: 35,
     nature: "Timid",
     ability: "Levitate",
@@ -1153,7 +1140,6 @@ export const vermillionCityLeaderLtSurgeBox = getOpponentBox([
   {
     name: "Electrode-H",
     spriteKey: "electrode-hisui",
-    pokedexKey: "Electrode-Hisui",
     level: 36,
     nature: "Naive",
     ability: "Reckless",
@@ -1163,7 +1149,6 @@ export const vermillionCityLeaderLtSurgeBox = getOpponentBox([
   {
     name: "Raichu-A",
     spriteKey: "raichu-alola",
-    pokedexKey: "Raichu-Alola",
     level: 36,
     nature: "Modest",
     ability: "Surge Surfer",
@@ -1189,7 +1174,6 @@ export const vermillionCityLeaderLtSurgeBox = getOpponentBox([
   {
     name: "Ampharos-Mega",
     spriteKey: "ampharos-mega",
-    pokedexKey: "Ampharos-Mega",
     level: 36,
     nature: "Modest",
     ability: "Mold Breaker",
@@ -1237,7 +1221,6 @@ export const celadonCityLeaderErikaBox = getOpponentBox([
   {
     name: "Ogerpon-C",
     spriteKey: "ogerpon-cornerstone",
-    pokedexKey: "Ogerpon-Cornerstone",
     level: 44,
     nature: "Jolly",
     ability: "Sturdy",
@@ -1255,7 +1238,6 @@ export const celadonCityLeaderErikaBox = getOpponentBox([
   {
     name: "Sceptile-Mega",
     spriteKey: "sceptile-mega",
-    pokedexKey: "Sceptile-Mega",
     level: 44,
     nature: "Jolly",
     ability: "Technician",
@@ -1273,7 +1255,6 @@ export const celadonCityLeaderErikaBox = getOpponentBox([
   {
     name: "Slowbro-G",
     spriteKey: "slowbro-galar",
-    pokedexKey: "Slowbro-Galar",
     level: 44,
     nature: "Bold",
     ability: "Regenerator",
@@ -1305,7 +1286,7 @@ export const gameCornerGuardBox = getOpponentBox([
     nature: "Jolly",
     ability: "Unnerve",
     item: "Focus Sash",
-    moves: ["Rock Slide", "Dual Wingbeat", "Headlong Rush", "Iron Head"],
+    moves: ["Rock Slide", "Dual Wingbeat", "Headlon. Rush", "Iron Head"],
   },
   {
     name: "Tinkaton",
@@ -1329,7 +1310,6 @@ export const rocketHideoutLeftGuardBox = getOpponentBox([
   {
     name: "Weezing-G",
     spriteKey: "weezing-galar",
-    pokedexKey: "Weezing-Galar",
     level: 47,
     nature: "Bold",
     ability: "Neutralizing Gas",
@@ -1347,7 +1327,6 @@ export const rocketHideoutLeftGuardBox = getOpponentBox([
   {
     name: "Lilligant-H",
     spriteKey: "lilligant-hisui",
-    pokedexKey: "Lilligant-Hisui",
     level: 47,
     nature: "Jolly",
     ability: "Hustle",
@@ -1355,9 +1334,8 @@ export const rocketHideoutLeftGuardBox = getOpponentBox([
     moves: ["Leaf Blade", "Close Combat", "Stone Edge", "Knock Off"],
   },
   {
-    name: "Rotom-F",
+    name: "Rotom-Frost",
     spriteKey: "rotom-frost",
-    pokedexKey: "Rotom-Frost",
     level: 47,
     nature: "Timid",
     ability: "Levitate",
@@ -1381,7 +1359,7 @@ export const rocketHideoutRightGuardBox = getOpponentBox([
     nature: "Jolly",
     ability: "Wind Rider",
     item: "Focus Sash",
-    moves: ["Ceaseless Edge", "Leaf Blade", "Low Kick", "X-Scissor"],
+    moves: ["Cease. Edge", "Leaf Blade", "Low Kick", "X-Scissor"],
   },
   {
     name: "Okidogi",
@@ -1392,9 +1370,8 @@ export const rocketHideoutRightGuardBox = getOpponentBox([
     moves: ["Poison Jab", "Drain Punch", "Mach Punch", "Knock Off"],
   },
   {
-    name: "Rotom-W",
+    name: "Rotom-Wash",
     spriteKey: "rotom-wash",
-    pokedexKey: "Rotom-Wash",
     level: 47,
     nature: "Timid",
     ability: "Levitate",
@@ -1447,7 +1424,6 @@ export const rocketHideoutGiovanniBox = getOpponentBox([
   {
     name: "Kangaskhan-Mega",
     spriteKey: "kangaskhan-mega",
-    pokedexKey: "Kangaskhan-Mega",
     level: 47,
     nature: "Jolly",
     ability: "Parental Bond",
@@ -1503,7 +1479,6 @@ export const pokemonTowerGhostBox = getOpponentBox([
   {
     name: "Marowak-A",
     spriteKey: "marowak-alola",
-    pokedexKey: "Marowak-Alola",
     level: 58,
     nature: "Jolly",
     ability: "Bone Zone",
@@ -1533,7 +1508,6 @@ export const pokemonTowerGrunt1Box = getOpponentBox([
   {
     name: "Ninetales-A",
     spriteKey: "ninetales-alola",
-    pokedexKey: "Ninetales-Alola",
     level: 55,
     nature: "Timid",
     ability: "Serene Grace",
@@ -1609,7 +1583,7 @@ export const pokemonTowerGrunt3Box = getOpponentBox([
     nature: "Timid",
     ability: "Unburden",
     item: "Focus Sash",
-    moves: ["Dazzling Gleam", "Misty Explosion", "Fire Blast", "Thunderbolt"],
+    moves: ["Dazz. Gleam", "Misty Explosi.", "Fire Blast", "Thunderbolt"],
   },
   {
     name: "Hydreigon",
@@ -1669,7 +1643,7 @@ export const saffronDojoLeaderChuckBox = getOpponentBox([
     nature: "Naive",
     ability: "Overcoat",
     item: "Kommonium Z",
-    moves: ["Clanging Scales", "Close Combat", "Poison Jab", "Flamethrower"],
+    moves: ["Clang. Scales", "Close Combat", "Poison Jab", "Flamethrower"],
   },
   {
     name: "Annihilape",
@@ -1682,7 +1656,6 @@ export const saffronDojoLeaderChuckBox = getOpponentBox([
   {
     name: "Zamazenta-C",
     spriteKey: "zamazenta-crowned",
-    pokedexKey: "Zamazenta-Crowned",
     level: 56,
     nature: "Jolly",
     ability: "Dauntless Shield",
@@ -1692,7 +1665,6 @@ export const saffronDojoLeaderChuckBox = getOpponentBox([
   {
     name: "Gallade-Mega",
     spriteKey: "gallade-mega",
-    pokedexKey: "Gallade-Mega",
     level: 56,
     nature: "Jolly",
     ability: "Sharpness",
@@ -1715,7 +1687,7 @@ export const silphCoRivalBox = getOpponentBox([
     level: 56,
     nature: "Modest",
     ability: "Beast Boost",
-    item: "Weakness Policy",
+    item: "Weakness Pol.",
     moves: ["Autotomize", "Air Slash", "Flamethrower", "Giga Drain"],
   },
   {
@@ -1745,7 +1717,6 @@ export const silphCoRivalBox = getOpponentBox([
   {
     name: "Blastoise-Mega",
     spriteKey: "blastoise-mega",
-    pokedexKey: "Blastoise-Mega",
     level: 56,
     nature: "Modest",
     ability: "Mega Launcher",
@@ -1774,7 +1745,6 @@ export const silphCoArianaArcherBox = getOpponentBox([
   {
     name: "Mawile-Mega",
     spriteKey: "mawile-mega",
-    pokedexKey: "Mawile-Mega",
     level: 56,
     nature: "Adamant",
     ability: "Huge Power",
@@ -1784,7 +1754,6 @@ export const silphCoArianaArcherBox = getOpponentBox([
   {
     name: "Articuno-G",
     spriteKey: "articuno-galar",
-    pokedexKey: "Articuno-Galar",
     level: 55,
     nature: "Timid",
     ability: "Competitive",
@@ -1802,12 +1771,11 @@ export const silphCoArianaArcherBox = getOpponentBox([
   {
     name: "Houndoom-Mega",
     spriteKey: "houndoom-mega",
-    pokedexKey: "Houndoom-Mega",
     level: 56,
     nature: "Naive",
     ability: "Dark Aura",
     item: "Houndoominite",
-    moves: ["Pursuit", "Fiery Wrath", "Heat Wave", "Scorching Sands"],
+    moves: ["Pursuit", "Fiery Wrath", "Heat Wave", "Scorch. Sands"],
   },
 ]);
 
@@ -1831,7 +1799,6 @@ export const pokemonTrainerBrendanBox = getOpponentBox([
   {
     name: "Sceptile-Mega",
     spriteKey: "sceptile-mega",
-    pokedexKey: "Sceptile-Mega",
     level: 55,
     nature: "Timid",
     ability: "Unburden",
@@ -1847,7 +1814,7 @@ export const silphCoGiovanniBox = getOpponentBox([
     nature: "Jolly",
     ability: "Thick Fat",
     item: "Focus Sash",
-    moves: ["Stone Edge", "Ice Shard", "Headlong Rush", "Icicle Crash"],
+    moves: ["Stone Edge", "Ice Shard", "Headlon. Rush", "Icicle Crash"],
   },
   {
     name: "Dracovish",
@@ -1884,7 +1851,6 @@ export const silphCoGiovanniBox = getOpponentBox([
   {
     name: "Garchomp-Mega",
     spriteKey: "garchomp-mega",
-    pokedexKey: "Garchomp-Mega",
     level: 57,
     nature: "Jolly",
     ability: "Sand Force",
@@ -1937,7 +1903,6 @@ export const saffronCityDumassKidBox = getOpponentBox([
   {
     name: "Swampert-Mega",
     spriteKey: "swampert-mega",
-    pokedexKey: "Swampert-Mega",
     level: 59,
     nature: "Adamant",
     ability: "Swift Swim",
@@ -1954,17 +1919,16 @@ export const saffronCityLeaderSabrinaBox = getOpponentBox([
     nature: "Quiet",
     ability: "Misty Surge",
     item: "Focus Sash",
-    moves: ["Misty Explosion", "Muddy Water", "Moonblast", "Flip Turn"],
+    moves: ["Misty Explosi.", "Muddy Water", "Moonblast", "Flip Turn"],
   },
   {
     name: "Camerupt-Mega",
     spriteKey: "camerupt-mega",
-    pokedexKey: "Camerupt-Mega",
     level: 59,
     nature: "Quiet",
     ability: "Sheer Force",
     item: "Cameruptite",
-    moves: ["Flamethrower", "Earth Power", "Steam Eruption", "Slack Off"],
+    moves: ["Flamethrower", "Earth Power", "Steam Erupt.", "Slack Off"],
   },
   {
     name: "Glastrier",
@@ -1972,7 +1936,7 @@ export const saffronCityLeaderSabrinaBox = getOpponentBox([
     nature: "Brave",
     ability: "Chilling Neigh",
     item: "Iapapa Berry",
-    moves: ["Swords Dance", "Ice Hammer", "Close Combat", "High Horsepower"],
+    moves: ["Swords Dance", "Ice Hammer", "Close Combat", "High Horsep."],
   },
   {
     name: "Magearna",
@@ -2021,7 +1985,6 @@ export const route16BikerLaoBox = getOpponentBox([
   {
     name: "Dugtrio-A",
     spriteKey: "dugtrio-alola",
-    pokedexKey: "Dugtrio-Alola",
     level: 66,
     nature: "Naive",
     ability: "Sand Force",
@@ -2034,7 +1997,6 @@ export const route16CueBallKojiBox = getOpponentBox([
   {
     name: "Kingler-Mega",
     spriteKey: "kingler",
-    pokedexKey: "Kingler-Mega",
     level: 66,
     nature: "Jolly",
     ability: "Tough Claws",
@@ -2055,12 +2017,11 @@ export const route16CueBallLukeBox = getOpponentBox([
   {
     name: "Zygarde-10",
     spriteKey: "zygarde-10",
-    pokedexKey: "Zygarde-10%",
     level: 66,
     nature: "Jolly",
     ability: "Inner Focus",
     item: "Life Orb",
-    moves: ["Thousand Arrows", "Extreme Speed", "Draco Barrage", "Glare"],
+    moves: ["Thous. Arrows", "Extreme Speed", "Draco Barrage", "Glare"],
   },
   {
     name: "Hariyama",
@@ -2076,7 +2037,7 @@ export const route16CueBallLukeBox = getOpponentBox([
     nature: "Adamant",
     ability: "Sand Veil",
     item: "Rock Gem",
-    moves: ["Head Smash", "Headlong Rush", "Sucker Punch", "Explosion"],
+    moves: ["Head Smash", "Headlon. Rush", "Sucker Punch", "Explosion"],
   },
 ]);
 
@@ -2116,7 +2077,6 @@ export const route16BikerRubenBox = getOpponentBox([
   {
     name: "Lopunny-Mega",
     spriteKey: "lopunny-mega",
-    pokedexKey: "Lopunny-Mega",
     level: 66,
     nature: "Jolly",
     ability: "Scrappy",
@@ -2145,7 +2105,6 @@ export const route16CueBallCamronBox = getOpponentBox([
   {
     name: "Scizor-Mega",
     spriteKey: "scizor-mega",
-    pokedexKey: "Scizor-Mega",
     level: 66,
     nature: "Adamant",
     ability: "Technician",
@@ -2190,7 +2149,6 @@ export const route16RiderHideoBox = getOpponentBox([
   {
     name: "Beedrill-Mega",
     spriteKey: "beedrill-mega",
-    pokedexKey: "Beedrill-Mega",
     level: 66,
     nature: "Jolly",
     ability: "Adaptability",
@@ -2198,9 +2156,8 @@ export const route16RiderHideoBox = getOpponentBox([
     moves: ["U-Turn", "Drill Run", "Poison Jab", "Pursuit"],
   },
   {
-    name: "Rotom-H",
+    name: "Rotom-Heat",
     spriteKey: "rotom-heat",
-    pokedexKey: "Rotom-Heat",
     level: 66,
     nature: "Timid",
     ability: "Levitate",
@@ -2272,7 +2229,6 @@ export const route18BirdKeeperJacobBox = getOpponentBox([
   {
     name: "Cramorant-Gorg",
     spriteKey: "cramorant-gorging",
-    pokedexKey: "Cramorant-Gorging",
     level: 68,
     nature: "Timid",
     ability: "Gulp Missile",
@@ -2282,11 +2238,10 @@ export const route18BirdKeeperJacobBox = getOpponentBox([
   {
     name: "Ogerpon-W",
     spriteKey: "ogerpon-wellspring",
-    pokedexKey: "Ogerpon-Wellspring",
     level: 66,
     nature: "Jolly",
     ability: "Water Absorb",
-    item: "Wellspring Mask",
+    item: "Well. Mask",
     moves: ["Ivy Cudgel", "Power Whip", "Play Rough", "U-Turn"],
   },
   {
@@ -2335,7 +2290,6 @@ export const route18AceTrainerWiltonBox = getOpponentBox([
   {
     name: "Pinsir-Mega",
     spriteKey: "pinsir-mega",
-    pokedexKey: "Pinsir-Mega",
     level: 66,
     nature: "Jolly",
     ability: "Aerilate",
@@ -2389,17 +2343,15 @@ export const fuschiaCityBrendanBox = getOpponentBox([
   {
     name: "Urshifu-R",
     spriteKey: "urshifu",
-    pokedexKey: "Urshifu-Rapid-Strike",
     level: 68,
     nature: "Jolly",
     ability: "Unseen Fist",
     item: "Mystic Water",
-    moves: ["Surging Strikes", "Close Combat", "Aqua Jet", "U-Turn"],
+    moves: ["Surg. Strikes", "Close Combat", "Aqua Jet", "U-Turn"],
   },
   {
     name: "Deoxys-A",
     spriteKey: "deoxys-attack",
-    pokedexKey: "Deoxys-Attack",
     level: 68,
     nature: "Naive",
     ability: "Pressure",
@@ -2409,7 +2361,6 @@ export const fuschiaCityBrendanBox = getOpponentBox([
   {
     name: "Sceptile-Mega",
     spriteKey: "sceptile-mega",
-    pokedexKey: "Sceptile-Mega",
     level: 68,
     nature: "Jolly",
     ability: "Technician",
@@ -2431,7 +2382,6 @@ export const pewterCityLeaderBrockRematchBox = getOpponentBox([
   {
     name: "Landorus-I",
     spriteKey: "landorus",
-    pokedexKey: "Landorus",
     level: 68,
     nature: "Naive",
     ability: "Sand Force",
@@ -2441,13 +2391,12 @@ export const pewterCityLeaderBrockRematchBox = getOpponentBox([
   {
     name: "Zygarde-C",
     spriteKey: "zygarde-complete",
-    pokedexKey: "Zygarde-Complete",
     pokedexHpKey: "Zygarde",
     level: 68,
     nature: "Careful",
     ability: "Power Construct",
     item: "Leftovers",
-    moves: ["Coil", "Thousand Arrows", "Rest", "Sleep Talk"],
+    moves: ["Coil", "Thous. Arrows", "Rest", "Sleep Talk"],
   },
   {
     name: "Iron Treads",
@@ -2461,7 +2410,6 @@ export const pewterCityLeaderBrockRematchBox = getOpponentBox([
   {
     name: "Ursaluna-BM",
     spriteKey: "ursaluna-bloodmoon",
-    pokedexKey: "Ursaluna-Bloodmoon",
     level: 68,
     nature: "Modest",
     ability: "Scrappy",
@@ -2471,7 +2419,6 @@ export const pewterCityLeaderBrockRematchBox = getOpponentBox([
   {
     name: "Aerodactyl-Mega",
     spriteKey: "aerodactyl-mega",
-    pokedexKey: "Aerodactyl-Mega",
     level: 68,
     nature: "Jolly",
     ability: "Tough Claws",
@@ -2493,7 +2440,6 @@ export const ceruleanCityLeaderMistyRematchBox = getOpponentBox([
   {
     name: "Palafin-Hero",
     spriteKey: "palafin-hero",
-    pokedexKey: "Palafin-Hero",
     level: 68,
     nature: "Jolly",
     ability: "Mold Breaker",
@@ -2519,7 +2465,6 @@ export const ceruleanCityLeaderMistyRematchBox = getOpponentBox([
   {
     name: "Thundurus-T",
     spriteKey: "thundurus-therian",
-    pokedexKey: "Thundurus-Therian",
     level: 68,
     nature: "Timid",
     ability: "Volt Absorb",
@@ -2529,7 +2474,6 @@ export const ceruleanCityLeaderMistyRematchBox = getOpponentBox([
   {
     name: "Gyarados-Mega",
     spriteKey: "gyarados-mega",
-    pokedexKey: "Gyarados-Mega",
     level: 68,
     nature: "Jolly",
     ability: "Mold Breaker",
@@ -2563,7 +2507,7 @@ export const vermillionCityLeaderLtSurgeRematchBox = getOpponentBox([
     nature: "Timid",
     ability: "Quark Drive",
     item: "Fire Gem",
-    moves: ["Fiery Dance", "Sludge Wave", "Energy Ball", "Dazzling Gleam"],
+    moves: ["Fiery Dance", "Sludge Wave", "Energy Ball", "Dazz. Gleam"],
   },
   {
     name: "Iron Hands",
@@ -2580,12 +2524,11 @@ export const vermillionCityLeaderLtSurgeRematchBox = getOpponentBox([
     nature: "Timid",
     ability: "Hadron Engine",
     item: "Leftovers",
-    moves: ["Calm Mind", "Parabolic Charge", "Dragon Pulse", "Dazzling Gleam"],
+    moves: ["Calm Mind", "Parab. Charge", "Dragon Pulse", "Dazz. Gleam"],
   },
   {
     name: "Manectric-Mega",
     spriteKey: "manectric-mega",
-    pokedexKey: "Manectric-Mega",
     level: 68,
     nature: "Timid",
     ability: "Intimidate",
@@ -2602,7 +2545,7 @@ export const fuschiaCityGymJugglerKaydenBox = getOpponentBox([
     nature: "Timid",
     ability: "Misty Surge",
     item: "Life Orb",
-    moves: ["Misty Explosion", "Psyshock", "Mystical Fire", "Focus Blast"],
+    moves: ["Misty Explosi.", "Psyshock", "Mystical Fire", "Focus Blast"],
   },
   {
     name: "Hatterene",
@@ -2610,7 +2553,7 @@ export const fuschiaCityGymJugglerKaydenBox = getOpponentBox([
     nature: "Bold",
     ability: "Magic Bounce",
     item: "Life Orb",
-    moves: ["Misty Explosion", "Psyshock", "Mystical Fire", "Draining Kiss"],
+    moves: ["Misty Explosi.", "Psyshock", "Mystical Fire", "Draining Kiss"],
   },
   {
     name: "Electrode",
@@ -2642,7 +2585,7 @@ export const fuschiaCityGymJugglerKaydenBox = getOpponentBox([
     nature: "Naive",
     ability: "Water Absorb",
     item: "Life Orb",
-    moves: ["Explosion", "Steam Eruption", "Flamethrower", "Earth Power"],
+    moves: ["Explosion", "Steam Erupt.", "Flamethrower", "Earth Power"],
   },
 ]);
 
@@ -2659,12 +2602,11 @@ export const fuschiaCityLeaderKogaBox = getOpponentBox([
   {
     name: "Hoopa-U",
     spriteKey: "hoopa-unbound",
-    pokedexKey: "Hoopa-Unbound",
     level: 68,
     nature: "Modest",
     ability: "Magician",
     item: "Darkinium Z",
-    moves: ["Dark Pulse", "Expanding Force", "Thunderbolt", "Focus Blast"],
+    moves: ["Dark Pulse", "Expand. Force", "Thunderbolt", "Focus Blast"],
   },
   {
     name: "Krookodile",
@@ -2694,7 +2636,6 @@ export const fuschiaCityLeaderKogaBox = getOpponentBox([
   {
     name: "Toxtricity-Mega",
     spriteKey: "toxtricity",
-    pokedexKey: "Toxtricity-Mega",
     level: 68,
     nature: "Rash",
     ability: "Punk Rock",
@@ -2718,7 +2659,7 @@ export const lavenderTownLeaderMortyBox = getOpponentBox([
     nature: "Adamant",
     ability: "Hustle",
     item: "Reaper Cloth",
-    moves: ["Shadow Punch", "Shadow Sneak", "Dynamic Punch", "Will-O-Wisp"],
+    moves: ["Shadow Punch", "Shadow Sneak", "Dynam. Punch", "Will-O-Wisp"],
   },
   {
     name: "Mismagius",
@@ -2747,7 +2688,6 @@ export const lavenderTownLeaderMortyBox = getOpponentBox([
   {
     name: "Gengar-Mega",
     spriteKey: "gengar-mega",
-    pokedexKey: "Gengar-Mega",
     level: 73,
     nature: "Timid",
     ability: "Shadow Tag",
@@ -2784,7 +2724,6 @@ export const seafoamIslandsLeaderPryceJynxBox = getOpponentBox([
   {
     name: "Kyurem-B",
     spriteKey: "kyurem-black",
-    pokedexKey: "Kyurem-Black",
     level: 73,
     nature: "Jolly",
     ability: "Teravolt",
@@ -2802,7 +2741,6 @@ export const seafoamIslandsLeaderPryceJynxBox = getOpponentBox([
   {
     name: "Glalie-Mega",
     spriteKey: "glalie-mega",
-    pokedexKey: "Glalie-Mega",
     level: 73,
     nature: "Jolly",
     ability: "Refrigerate",
@@ -2815,7 +2753,6 @@ export const seafoamIslandsLeaderPryceSandslashABox = getOpponentBox([
   {
     name: "Sandslash-A",
     spriteKey: "sandslash-alola",
-    pokedexKey: "Sandslash-Alola",
     level: 73,
     nature: "Adamant",
     ability: "Slush Rush",
@@ -2841,7 +2778,6 @@ export const seafoamIslandsLeaderPryceSandslashABox = getOpponentBox([
   {
     name: "Kyurem-B",
     spriteKey: "kyurem-black",
-    pokedexKey: "Kyurem-Black",
     level: 73,
     nature: "Jolly",
     ability: "Teravolt",
@@ -2859,7 +2795,6 @@ export const seafoamIslandsLeaderPryceSandslashABox = getOpponentBox([
   {
     name: "Glalie-Mega",
     spriteKey: "glalie-mega",
-    pokedexKey: "Glalie-Mega",
     level: 73,
     nature: "Jolly",
     ability: "Refrigerate",
@@ -2875,7 +2810,7 @@ export const cinnabarLabLeaderJasmineBox = getOpponentBox([
     nature: "Jolly",
     ability: "Poison Heal",
     item: "Toxic Orb",
-    moves: ["Stealth Rock", "High Horsepower", "Protect", "Toxic"],
+    moves: ["Stealth Rock", "High Horsep.", "Protect", "Toxic"],
   },
   {
     name: "Tapu Bulu",
@@ -2889,12 +2824,11 @@ export const cinnabarLabLeaderJasmineBox = getOpponentBox([
   {
     name: "Necrozma-DM",
     spriteKey: "necrozma-dusk",
-    pokedexKey: "Necrozma-Dusk-Mane",
     level: 73,
     nature: "Jolly",
     ability: "Prism Armor",
-    item: "Weakness Policy",
-    moves: ["Dragon Dance", "Sunsteel Strike", "Stone Edge", "High Horsepower"],
+    item: "Weakness Pol.",
+    moves: ["Dragon Dance", "Sunsteel Strike", "Stone Edge", "High Horsep."],
   },
   {
     name: "Genesect",
@@ -2915,7 +2849,6 @@ export const cinnabarLabLeaderJasmineBox = getOpponentBox([
   {
     name: "Aggron-Mega",
     spriteKey: "aggron-mega",
-    pokedexKey: "Aggron-Mega",
     level: 73,
     nature: "Careful",
     ability: "Filter",
@@ -2968,7 +2901,6 @@ export const cinnabarIslandMayBox = getOpponentBox([
   {
     name: "Blaziken-Mega",
     spriteKey: "blaziken-mega",
-    pokedexKey: "Blaziken-Mega",
     level: 73,
     nature: "Jolly",
     ability: "Speed Boost",
@@ -3005,7 +2937,6 @@ export const pokemonMansionBurglarLewisBox = getOpponentBox([
   {
     name: "Lopunny-Mega",
     spriteKey: "lopunny-mega",
-    pokedexKey: "Lopunny-Mega",
     level: 76,
     nature: "Jolly",
     ability: "Scrappy",
@@ -3023,7 +2954,6 @@ export const pokemonMansionBurglarLewisBox = getOpponentBox([
   {
     name: "Articuno-G",
     spriteKey: "articuno-galar",
-    pokedexKey: "Articuno-Galar",
     level: 76,
     nature: "Timid",
     ability: "Competitive",
@@ -3036,17 +2966,15 @@ export const cinnabarGymAceTrainerDerekBox = getOpponentBox([
   {
     name: "Zapdos-G",
     spriteKey: "zapdos-galar",
-    pokedexKey: "Zapdos-Galar",
     level: 76,
     nature: "Jolly",
     ability: "Defiant",
     item: "Flying Gem",
-    moves: ["Acrobatics", "Close Combat", "U-Turn", "Thunderous Kick"],
+    moves: ["Acrobatics", "Close Combat", "U-Turn", "Thund. Kick"],
   },
   {
     name: "Arcanine-H",
     spriteKey: "arcanine-hisui",
-    pokedexKey: "Arcanine-Hisui",
     level: 76,
     nature: "Jolly",
     ability: "Rock Head",
@@ -3072,7 +3000,6 @@ export const cinnabarGymAceTrainerDerekBox = getOpponentBox([
   {
     name: "Centiskorch-Mega",
     spriteKey: "centiskorch",
-    pokedexKey: "Centiskorch-Mega",
     level: 76,
     nature: "Jolly",
     ability: "Mountaineer",
@@ -3121,7 +3048,7 @@ export const cinnabarGymAceTrainerLucyBox = getOpponentBox([
     nature: "Timid",
     ability: "Solar Power",
     item: "Firium Z",
-    moves: ["Fire Blast", "Solar Beam", "Air Slash", "Scorching Sands"],
+    moves: ["Fire Blast", "Solar Beam", "Air Slash", "Scorch. Sands"],
   },
 ]);
 
@@ -3132,12 +3059,11 @@ export const cinnabarGymAceTrainerZacBox = getOpponentBox([
     nature: "Jolly",
     ability: "Libero",
     item: "Focus Sash",
-    moves: ["Pyro Ball", "High Jump Kick", "Gunk Shot", "Sucker Punch"],
+    moves: ["Pyro Ball", "High J. Kick", "Gunk Shot", "Sucker Punch"],
   },
   {
     name: "Salamence-Mega",
     spriteKey: "salamence-mega",
-    pokedexKey: "Salamence-Mega",
     level: 76,
     nature: "Naive",
     ability: "Aerilate",
@@ -3147,7 +3073,6 @@ export const cinnabarGymAceTrainerZacBox = getOpponentBox([
   {
     name: "Braviary-H",
     spriteKey: "braviary-hisui",
-    pokedexKey: "Braviary-Hisui",
     level: 76,
     nature: "Timid",
     ability: "Tinted Lens",
@@ -3160,7 +3085,7 @@ export const cinnabarGymAceTrainerZacBox = getOpponentBox([
     nature: "Adamant",
     ability: "Mold Breaker",
     item: "Ground Gem",
-    moves: ["High Horsepower", "Iron Head", "Earthquake", "Rock Slide"],
+    moves: ["High Horsep.", "Iron Head", "Earthquake", "Rock Slide"],
   },
   {
     name: "Volcarona",
@@ -3189,7 +3114,7 @@ export const cinnabarGymLeaderBlaineBox = getOpponentBox([
     nature: "Jolly",
     ability: "Protosynthesis",
     item: "Fighting Gem",
-    moves: ["Ice Spinner", "Knock Off", "Headlong Rush", "Close Combat"],
+    moves: ["Ice Spinner", "Knock Off", "Headlon. Rush", "Close Combat"],
   },
   {
     name: "Walking Wake",
@@ -3219,7 +3144,6 @@ export const cinnabarGymLeaderBlaineBox = getOpponentBox([
   {
     name: "Charizard-MegaX",
     spriteKey: "charizard-mega-x",
-    pokedexKey: "Charizard-Mega-X",
     level: 76,
     nature: "Jolly",
     ability: "Tough Claws",
@@ -3272,7 +3196,6 @@ export const ceruleanCaveGrunt1Box = getOpponentBox([
   {
     name: "Garbodor-Mega",
     spriteKey: "garbodor",
-    pokedexKey: "Garbodor-Mega",
     level: 79,
     nature: "Adamant",
     ability: "Parasitic Waste",
@@ -3320,12 +3243,11 @@ export const ceruleanCaveGrunt2Box = getOpponentBox([
     nature: "Modest",
     ability: "Speed Boost",
     item: "Focus Sash",
-    moves: ["Protect", "Psychic", "Calm Mind", "Dazzling Gleam"],
+    moves: ["Protect", "Psychic", "Calm Mind", "Dazz. Gleam"],
   },
   {
     name: "Sharpedo-Mega",
     spriteKey: "sharpedo-mega",
-    pokedexKey: "Sharpedo-Mega",
     level: 79,
     nature: "Jolly",
     ability: "Strong Jaw",
@@ -3341,7 +3263,7 @@ export const ceruleanCaveArcherBox = getOpponentBox([
     nature: "Timid",
     ability: "Drought",
     item: "Charcoal",
-    moves: ["Weather Ball", "Solar Beam", "Scorching Sands", "Hypnosis"],
+    moves: ["Weather Ball", "Solar Beam", "Scorch. Sands", "Hypnosis"],
   },
   {
     name: "Exeggutor",
@@ -3354,7 +3276,6 @@ export const ceruleanCaveArcherBox = getOpponentBox([
   {
     name: "Landorus-T",
     spriteKey: "landorus-therian",
-    pokedexKey: "Landorus-Therian",
     level: 79,
     nature: "Jolly",
     ability: "Intimidate",
@@ -3364,7 +3285,6 @@ export const ceruleanCaveArcherBox = getOpponentBox([
   {
     name: "Houndoom-Mega",
     spriteKey: "houndoom-mega",
-    pokedexKey: "Houndoom-Mega",
     level: 79,
     nature: "Naive",
     ability: "Dark Aura",
@@ -3409,12 +3329,11 @@ export const ceruleanCaveArianaBox = getOpponentBox([
   {
     name: "Mawile-Mega",
     spriteKey: "mawile-mega",
-    pokedexKey: "Mawile-Mega",
     level: 79,
     nature: "Adamant",
     ability: "Huge Power",
     item: "Mawilite",
-    moves: ["Sucker Punch", "Double Iron Bash", "Play Rough", "Fire Fang"],
+    moves: ["Sucker Punch", "Double I. Bash", "Play Rough", "Fire Fang"],
   },
 ]);
 
@@ -3433,12 +3352,11 @@ export const ceruleanCaveGiovanniBox = getOpponentBox([
     nature: "Timid",
     ability: "Magic Guard",
     item: "Focus Sash",
-    moves: ["Heat Wave", "Expanding Force", "Grass Knot", "Shadow Ball"],
+    moves: ["Heat Wave", "Expand. Force", "Grass Knot", "Shadow Ball"],
   },
   {
     name: "Silvally-Fairy",
     spriteKey: "silvally",
-    pokedexKey: "Silvally-Fairy",
     level: 80,
     nature: "Jolly",
     ability: "Battle Armor",
@@ -3448,7 +3366,6 @@ export const ceruleanCaveGiovanniBox = getOpponentBox([
   {
     name: "Moltres-G",
     spriteKey: "moltres-galar",
-    pokedexKey: "Moltres-Galar",
     level: 80,
     nature: "Timid",
     ability: "Berserk",
@@ -3466,11 +3383,10 @@ export const ceruleanCaveGiovanniBox = getOpponentBox([
   {
     name: "Mewtwo-MegaY",
     spriteKey: "mewtwo-mega-y",
-    pokedexKey: "Mewtwo-Mega-Y",
     level: 80,
     nature: "Timid",
     ability: "Insomnia",
-    moves: ["Expanding Force", "Soul Robbery", "Flamethrower", "Aura Sphere"],
+    moves: ["Expand. Force", "Soul Robbery", "Flamethrower", "Aura Sphere"],
   },
 ]);
 
@@ -3494,7 +3410,6 @@ export const championLanceBox = getOpponentBox([
   {
     name: "Salamence-Mega",
     spriteKey: "salamence-mega",
-    pokedexKey: "Salamence-Mega",
     level: 82,
     nature: "Naive",
     ability: "Aerilate",
@@ -3526,18 +3441,17 @@ export const viridianCityLeaderClairBox = getOpponentBox([
     level: 81,
     nature: "Modest",
     ability: "Soul-Heart",
-    item: "Weakness Policy",
+    item: "Weakness Pol.",
     moves: ["Shift Gear", "Moonblast", "Thunderbolt", "Aura Sphere"],
   },
   {
     name: "Necrozma-Ultra",
     spriteKey: "necrozma-ultra",
-    pokedexKey: "Necrozma-Ultra",
     level: 81,
     nature: "Adamant",
     ability: "Neuroforce",
     item: "Ultranecrozium Z",
-    moves: ["Dragon Dance", "Photon Geyser", "Earthquake", "Dragon Hammer"],
+    moves: ["Dragon Dance", "Photon Geyser", "Earthquake", "Dragon Hamm."],
   },
   {
     name: "Eternatus",
@@ -3545,7 +3459,7 @@ export const viridianCityLeaderClairBox = getOpponentBox([
     nature: "Timid",
     ability: "Pressure",
     item: "Power Herb",
-    moves: ["Dynamax Cannon", "Meteor Beam", "Flamethrower", "Recover"],
+    moves: ["Dyna. Cannon", "Meteor Beam", "Flamethrower", "Recover"],
   },
   {
     name: "Archaludon",
@@ -3579,7 +3493,7 @@ export const route22RivalRematchBox = getOpponentBox([
     level: 82,
     nature: "Naive",
     ability: "Beast Boost",
-    item: "Weakness Policy",
+    item: "Weakness Pol.",
     moves: ["Autotomize", "Iron Head", "Air Slash", "Giga Drain"],
   },
   {
@@ -3620,7 +3534,6 @@ export const route23BrendanBox = getOpponentBox([
   {
     name: "Marowak-A",
     spriteKey: "marowak-alola",
-    pokedexKey: "Marowak-Alola",
     level: 82,
     nature: "Adamant",
     ability: "Bone Zone",
@@ -3638,7 +3551,6 @@ export const route23BrendanBox = getOpponentBox([
   {
     name: "Landorus-I",
     spriteKey: "landorus",
-    pokedexKey: "Landorus",
     level: 82,
     nature: "Rash",
     ability: "Sheer Force",
@@ -3648,7 +3560,6 @@ export const route23BrendanBox = getOpponentBox([
   {
     name: "Ursaluna-BM",
     spriteKey: "ursaluna-bloodmoon",
-    pokedexKey: "Ursaluna-Bloodmoon",
     level: 82,
     nature: "Timid",
     ability: "Scrappy",
@@ -3672,7 +3583,7 @@ export const victoryRoadAceTrainerNaomiBox = getOpponentBox([
     nature: "Jolly",
     ability: "Technician",
     item: "Wide Lens",
-    moves: ["Population Bomb", "Bullet Seed", "U-Turn", "Beat Up"],
+    moves: ["Popula. Bomb", "Bullet Seed", "U-Turn", "Beat Up"],
   },
   {
     name: "Veluza",
@@ -3731,7 +3642,7 @@ export const victoryRoadAceTrainerRolandoBox = getOpponentBox([
     nature: "Timid",
     ability: "Water Absorb",
     item: "Waterium Z",
-    moves: ["Steam Eruption", "Flamethrower", "Sludge Bomb", "Earth Power"],
+    moves: ["Steam Erupt.", "Flamethrower", "Sludge Bomb", "Earth Power"],
   },
   {
     name: "Flygon",
@@ -3799,7 +3710,7 @@ export const victoryRoadAceTrainerGeorgeBox = getOpponentBox([
     nature: "Timid",
     ability: "Magic Bounce",
     item: "Eevium Z",
-    moves: ["Last Resort", "Stored Power", "Fiery Dance", "Dazzling Gleam"],
+    moves: ["Last Resort", "Stored Power", "Fiery Dance", "Dazz. Gleam"],
   },
   {
     name: "Tauros",
@@ -3885,7 +3796,7 @@ export const victoryRoadAceTrainerColbyBox = getOpponentBox([
     nature: "Timid",
     ability: "Magic Bounce",
     item: "Diancite",
-    moves: ["Moonblast", "Diamond Storm", "Earth Power", "Misty Explosion"],
+    moves: ["Moonblast", "Diam. Storm", "Earth Power", "Misty Explosi."],
   },
   {
     name: "Iron Leaves",
@@ -3899,7 +3810,6 @@ export const victoryRoadAceTrainerColbyBox = getOpponentBox([
   {
     name: "Muk-A",
     spriteKey: "muk-alola",
-    pokedexKey: "Muk-Alola",
     level: 85,
     nature: "Adamant",
     ability: "Poison Touch",
@@ -3992,7 +3902,7 @@ export const victoryRoadCoolCoupleRayAndTyraBox = getOpponentBox([
     nature: "Brave",
     ability: "Sheer Force",
     item: "Copperajite",
-    moves: ["Double Iron Bash", "Close Combat", "Heat Crash", "Power Whip"],
+    moves: ["Double I. Bash", "Close Combat", "Heat Crash", "Power Whip"],
   },
   {
     name: "Dragalge",
@@ -4005,7 +3915,6 @@ export const victoryRoadCoolCoupleRayAndTyraBox = getOpponentBox([
   {
     name: "Darmanitan-Z",
     spriteKey: "darmanitan-zen",
-    pokedexKey: "Darmanitan-Zen",
     level: 85,
     nature: "Quiet",
     ability: "Zen Mode",
@@ -4089,7 +3998,6 @@ export const eliteFourLoreleiRainBox = getOpponentBox([
   {
     name: "Palkia-O",
     spriteKey: "palkia-origin",
-    pokedexKey: "Palkia-Origin",
     level: 85,
     nature: "Timid",
     ability: "Pressure",
@@ -4118,12 +4026,11 @@ export const eliteFourLoreleiSnowBox = getOpponentBox([
   {
     name: "Landorus-T",
     spriteKey: "landorus-therian",
-    pokedexKey: "Landorus-Therian",
     level: 85,
     nature: "Jolly",
     ability: "Intimidate",
     item: "Assault Vest",
-    moves: ["High Horsepower", "Stone Edge", "U-Turn", "Knock Off"],
+    moves: ["High Horsep.", "Stone Edge", "U-Turn", "Knock Off"],
   },
   {
     name: "Chien-Pao",
@@ -4145,7 +4052,6 @@ export const eliteFourLoreleiSnowBox = getOpponentBox([
   {
     name: "Kyurem-W",
     spriteKey: "kyurem-white",
-    pokedexKey: "Kyurem-White",
     level: 85,
     nature: "Timid",
     ability: "Turboblaze",
@@ -4191,22 +4097,20 @@ export const eliteFourBrunoInfernapeBox = getOpponentBox([
   {
     name: "Necrozma-DM",
     spriteKey: "necrozma-dusk",
-    pokedexKey: "Necrozma-Dusk-Mane",
     level: 85,
     nature: "Adamant",
     ability: "Prism Armor",
-    item: "Weakness Policy",
+    item: "Weakness Pol.",
     moves: ["Dragon Dance", "Sunsteel Strike", "Earthquake", "Stone Edge"],
   },
   {
     name: "Zacian-C",
     spriteKey: "zacian-crowned",
-    pokedexKey: "Zacian-Crowned",
     level: 85,
     nature: "Jolly",
     ability: "Intrepid Sword",
     item: "Rusted Sword",
-    moves: ["Swords Dance", "Behemoth Blade", "Close Combat", "Wild Charge"],
+    moves: ["Swords Dance", "Behem. Blade", "Close Combat", "Wild Charge"],
   },
   {
     name: "Lucario-Mega",
@@ -4222,7 +4126,6 @@ export const eliteFourBrunoUrshifuSBox = getOpponentBox([
   {
     name: "Urshifu-S",
     spriteKey: "urshifu",
-    pokedexKey: "Urshifu",
     level: 85,
     nature: "Jolly",
     ability: "Unseen Fist",
@@ -4249,22 +4152,20 @@ export const eliteFourBrunoUrshifuSBox = getOpponentBox([
   {
     name: "Necrozma-DM",
     spriteKey: "necrozma-dusk",
-    pokedexKey: "Necrozma-Dusk-Mane",
     level: 85,
     nature: "Adamant",
     ability: "Prism Armor",
-    item: "Weakness Policy",
+    item: "Weakness Pol.",
     moves: ["Dragon Dance", "Sunsteel Strike", "Earthquake", "Stone Edge"],
   },
   {
     name: "Zacian-C",
     spriteKey: "zacian-crowned",
-    pokedexKey: "Zacian-Crowned",
     level: 85,
     nature: "Jolly",
     ability: "Intrepid Sword",
     item: "Rusted Sword",
-    moves: ["Swords Dance", "Behemoth Blade", "Close Combat", "Wild Charge"],
+    moves: ["Swords Dance", "Behem. Blade", "Close Combat", "Wild Charge"],
   },
   {
     name: "Medicham-Mega",
@@ -4288,12 +4189,11 @@ export const eliteFourAgathaBox = getOpponentBox([
   {
     name: "Mewtwo-MegaX",
     spriteKey: "mewtwo-mega-x",
-    pokedexKey: "Mewtwo-Mega-X",
     level: 85,
     nature: "Naive",
     ability: "Steadfast",
     item: "Mewtwonite X",
-    moves: ["Drain Punch", "Expanding Force", "Stone Edge", "Bulk Up"],
+    moves: ["Drain Punch", "Expand. Force", "Stone Edge", "Bulk Up"],
   },
   {
     name: "Yveltal",
@@ -4318,17 +4218,16 @@ export const eliteFourAgathaBox = getOpponentBox([
     nature: "Hasty",
     ability: "Victory Star",
     item: "Normalium Z",
-    moves: ["Celebrate", "Expanding Force", "Pyro Ball", "Focus Blast"],
+    moves: ["Celebrate", "Expand. Force", "Pyro Ball", "Focus Blast"],
   },
   {
     name: "Calyrex-S",
     spriteKey: "calyrex-shadow",
-    pokedexKey: "Calyrex-Shadow",
     level: 85,
     nature: "Timid",
     ability: "As One",
     item: "Colbur Berry",
-    moves: ["Draining Kiss", "Expanding Force", "Astral Barrage", "Nasty Plot"],
+    moves: ["Draining Kiss", "Expand. Force", "Astral Barrage", "Nasty Plot"],
   },
 ]);
 
@@ -4347,7 +4246,7 @@ export const eliteFourLanceBox = getOpponentBox([
     nature: "Careful",
     ability: "Iron Fist",
     item: "Assault Vest",
-    moves: ["Double Iron Bash", "Ice Punch", "Earthquake", "Thunder Punch"],
+    moves: ["Double I. Bash", "Ice Punch", "Earthquake", "Thunder Punch"],
   },
   {
     name: "Arceus-Fairy",
@@ -4366,7 +4265,7 @@ export const eliteFourLanceBox = getOpponentBox([
     moves: ["Dragon Dance", "Dual Wingbeat", "Earthquake", "Extreme Speed"],
   },
   {
-    name: "Dialga-Primal",
+    name: "Dialga-P",
     spriteKey: "dialga",
     level: 85,
     nature: "Bold/Calm",
@@ -4388,7 +4287,6 @@ export const championRivalBox = getOpponentBox([
   {
     name: "Kyogre-P",
     spriteKey: "kyogre-primal",
-    pokedexKey: "Kyogre-Primal",
     level: 85,
     nature: "Timid",
     ability: "Primordial Sea",
@@ -4406,7 +4304,6 @@ export const championRivalBox = getOpponentBox([
   {
     name: "Eternatus-Max",
     spriteKey: "eternatus-eternamax",
-    pokedexKey: "Eternatus-Eternamax",
     level: 85,
     nature: "Timid",
     ability: "Levitate",
@@ -4416,7 +4313,6 @@ export const championRivalBox = getOpponentBox([
   {
     name: "Necrozma-Ultra",
     spriteKey: "necrozma-ultra",
-    pokedexKey: "Necrozma-Ultra",
     level: 85,
     nature: "Jolly",
     ability: "Neuroforce",

@@ -11,6 +11,7 @@ import {
   pokemonDataToSide,
   type CalcSideState,
 } from "@site/src/utils/calcLink";
+import { resolveItem, resolveMove } from "@site/src/utils/abbreviations";
 import type { Moment } from "@site/src/utils/moments";
 import type { PokemonData } from "@site/src/utils/pokemon";
 import { SpriteImg } from "@site/src/utils/SpriteImg";
@@ -45,12 +46,12 @@ function makeCalcPokemon(state: CalcSideState): Pokemon {
     level: state.level,
     nature: state.nature || undefined,
     ability: state.ability || undefined,
-    item: state.item || undefined,
+    item: resolveItem(state.item) || undefined,
     ivs: state.ivs,
     evs: state.evs,
     boosts: state.boosts,
     status: (state.status as any) || undefined,
-    moves: state.moves.filter(Boolean) as string[],
+    moves: state.moves.filter(Boolean).map(resolveMove) as string[],
   } as any;
   const base = new Pokemon(GEN, name, opts);
   const curHP = Math.max(1, Math.round((state.curHP / 100) * base.stats.hp));
@@ -355,7 +356,7 @@ function computeMove(
   try {
     const atk = makeCalcPokemon(attacker);
     const def = makeCalcPokemon(defender);
-    const move = new Move(GEN, moveName);
+    const move = new Move(GEN, resolveMove(moveName));
     const result = calculate(GEN as any, atk, def, move, DEFAULT_FIELD);
     const dmg = result.damage;
     const amounts = Array.isArray(dmg)

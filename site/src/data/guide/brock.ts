@@ -81,7 +81,6 @@ export const palletTownBoxChange: Moment = {
 const _wooperP = {
   name: "Wooper-P",
   spriteKey: "wooper-paldea",
-  pokedexKey: "Wooper-Paldea",
   level: "4-6",
   ability: "Water Absorb",
   moves: ["Mud Shot", "Tackle", "Tail Whip"],
@@ -99,7 +98,6 @@ export const route21Encounter: Moment = {
 const _meowthG = {
   name: "Meowth-G",
   spriteKey: "meowth-galar",
-  pokedexKey: "Meowth-Galar",
   level: "2-4",
   ability: "Tough Claws",
   moves: ["Fake Out", "Growl"],
@@ -616,7 +614,6 @@ export const viridianForestBugCatcherSammyBattle: Moment = {
 const _yamaskG = {
   name: "Yamask-G",
   spriteKey: "yamask-galar",
-  pokedexKey: "Yamask-Galar",
   level: "7-9",
   ability: "Wandering Soul",
   moves: ["Haze", "Magnitude", "Shadow Sneak"],

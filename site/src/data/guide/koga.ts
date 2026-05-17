@@ -645,7 +645,7 @@ const _box11 = getBox({
       nature: "Timid",
       ability: "Flash Fire",
       item: "Charcoal",
-      moves: ["Fiery Wrath", "Flamethrower", "Scorching Sands", "Thunder Fang"],
+      moves: ["Fiery Wrath", "Flamethrower", "Scorch. Sands", "Thunder Fang"],
     },
     Swampert: {
       nature: "Careful",
@@ -737,7 +737,7 @@ export const route16RiderHideoBattle: Moment = {
               [
                 { player: "{p:Meowscarada} switch to {p:Houndoom}" },
                 { opponent: "{p:Houndoom} Stealth Rock to {=:151}" },
-                { opponent: "{o:Rotom-Heat} Inferno Overdrive {p:Houndoom}" },
+                { opponent: "{o:Rotom-Heat} Overheat (Z) {p:Houndoom}" },
                 { opponent: "{p:Houndoom} sandstorm to {=:139}" },
                 { opponent: "{o:Rotom-Heat} sandstorm to {=:152}" },
               ],
@@ -809,7 +809,7 @@ export const route16RiderHideoBattle: Moment = {
               [
                 { player: "{p:Meowscarada} switch to {p:Houndoom}" },
                 { opponent: "{p:Houndoom} Stealth Rock to {=:151}" },
-                { opponent: "{o:Rotom-Heat} Inferno Overdrive {p:Houndoom}" },
+                { opponent: "{o:Rotom-Heat} Overheat (Z) {p:Houndoom}" },
                 { opponent: "{p:Houndoom} sandstorm to {=:139}" },
                 { opponent: "{o:Rotom-Heat} sandstorm to {=:152}" },
               ],
@@ -1048,7 +1048,7 @@ const _box15 = getBox({
       nature: "Modest",
       ability: "Clear Body",
       item: "Black Sludge",
-      moves: ["Dazzling Gleam", "Flip Turn", "Hydro Pump", "Sludge Wave"],
+      moves: ["Dazz. Gleam", "Flip Turn", "Hydro Pump", "Sludge Wave"],
     },
     Gyarados: {
       nature: "Impish",
@@ -1564,7 +1564,7 @@ const _box17 = getBox({
       nature: "Timid",
       ability: "Clear Body",
       item: "Poison Barb",
-      moves: ["Dazzling Gleam", "Flip Turn", "Hydro Pump", "Sludge Wave"],
+      moves: ["Dazz. Gleam", "Flip Turn", "Hydro Pump", "Sludge Wave"],
     },
     "Swampert-Mega": {
       nature: "Jolly",
@@ -1699,7 +1699,6 @@ export const fuschiaCityBrendanBattle: Moment = {
 const _screamTail = {
   name: "Scream Tail",
   spriteKey: "scream-tail",
-  pokedexKey: "Screamtail",
   level: "50-52",
   moves: ["Body Slam", "Hyper Voice", "Play Rough", "Rest"],
 };
