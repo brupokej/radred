@@ -1,0 +1,7378 @@
+{
+  "pound": {
+    "cfruId": 1,
+    "displayName": "Pound",
+    "effect": "EFFECT_HIT",
+    "power": 40,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "karatechop": {
+    "cfruId": 2,
+    "displayName": "Karate Chop",
+    "effect": "EFFECT_HIGH_CRITICAL",
+    "power": 50,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "doubleslap": {
+    "cfruId": 3,
+    "displayName": "Double Slap",
+    "effect": "EFFECT_MULTI_HIT",
+    "power": 15,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "cometpunch": {
+    "cfruId": 4,
+    "displayName": "Comet Punch",
+    "effect": "EFFECT_MULTI_HIT",
+    "power": 18,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "megapunch": {
+    "cfruId": 5,
+    "displayName": "Mega Punch",
+    "effect": "EFFECT_HIT",
+    "power": 80,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "payday": {
+    "cfruId": 6,
+    "displayName": "Pay Day",
+    "effect": "EFFECT_PAY_DAY",
+    "power": 40,
+    "split": "Physical",
+    "secondaryEffectChance": 100
+  },
+  "firepunch": {
+    "cfruId": 7,
+    "displayName": "Fire Punch",
+    "effect": "EFFECT_BURN_HIT",
+    "power": 75,
+    "split": "Physical",
+    "secondaryEffectChance": 10
+  },
+  "icepunch": {
+    "cfruId": 8,
+    "displayName": "Ice Punch",
+    "effect": "EFFECT_FREEZE_HIT",
+    "power": 75,
+    "split": "Physical",
+    "secondaryEffectChance": 10
+  },
+  "thunderpunch": {
+    "cfruId": 9,
+    "displayName": "ThunderPunch",
+    "effect": "EFFECT_PARALYZE_HIT",
+    "power": 75,
+    "split": "Physical",
+    "secondaryEffectChance": 10
+  },
+  "scratch": {
+    "cfruId": 10,
+    "displayName": "Scratch",
+    "effect": "EFFECT_HIT",
+    "power": 40,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "vicegrip": {
+    "cfruId": 11,
+    "displayName": "Vise Grip",
+    "effect": "EFFECT_HIT",
+    "power": 55,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "guillotine": {
+    "cfruId": 12,
+    "displayName": "Guillotine",
+    "effect": "EFFECT_0HKO",
+    "power": 1,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "razorwind": {
+    "cfruId": 13,
+    "displayName": "Razor Wind",
+    "effect": "EFFECT_RAZOR_WIND",
+    "power": 80,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "swordsdance": {
+    "cfruId": 14,
+    "displayName": "Swords Dance",
+    "effect": "EFFECT_ATTACK_UP_2",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "cut": {
+    "cfruId": 15,
+    "displayName": "Cut",
+    "effect": "EFFECT_HIT",
+    "power": 50,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "gust": {
+    "cfruId": 16,
+    "displayName": "Gust",
+    "effect": "EFFECT_GUST",
+    "power": 40,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "wingattack": {
+    "cfruId": 17,
+    "displayName": "Wing Attack",
+    "effect": "EFFECT_HIT",
+    "power": 60,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "whirlwind": {
+    "cfruId": 18,
+    "displayName": "Whirlwind",
+    "effect": "EFFECT_ROAR",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "fly": {
+    "cfruId": 19,
+    "displayName": "Fly",
+    "effect": "EFFECT_SEMI_INVULNERABLE",
+    "power": 90,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "bind": {
+    "cfruId": 20,
+    "displayName": "Bind",
+    "effect": "EFFECT_TRAP",
+    "power": 15,
+    "split": "Physical",
+    "secondaryEffectChance": 100
+  },
+  "slam": {
+    "cfruId": 21,
+    "displayName": "Slam",
+    "effect": "EFFECT_HIT",
+    "power": 80,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "vinewhip": {
+    "cfruId": 22,
+    "displayName": "Vine Whip",
+    "effect": "EFFECT_HIT",
+    "power": 45,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "stomp": {
+    "cfruId": 23,
+    "displayName": "Stomp",
+    "effect": "EFFECT_FLINCH_HIT",
+    "power": 65,
+    "split": "Physical",
+    "secondaryEffectChance": 30
+  },
+  "doublekick": {
+    "cfruId": 24,
+    "displayName": "Double Kick",
+    "effect": "EFFECT_DOUBLE_HIT",
+    "power": 30,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "megakick": {
+    "cfruId": 25,
+    "displayName": "Mega Kick",
+    "effect": "EFFECT_HIT",
+    "power": 120,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "jumpkick": {
+    "cfruId": 26,
+    "displayName": "Jump Kick",
+    "effect": "EFFECT_RECOIL_IF_MISS",
+    "power": 100,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "rollingkick": {
+    "cfruId": 27,
+    "displayName": "Rolling Kick",
+    "effect": "EFFECT_FLINCH_HIT",
+    "power": 60,
+    "split": "Physical",
+    "secondaryEffectChance": 30
+  },
+  "sandattack": {
+    "cfruId": 28,
+    "displayName": "Sand Attack",
+    "effect": "EFFECT_ACCURACY_DOWN",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "headbutt": {
+    "cfruId": 29,
+    "displayName": "Headbutt",
+    "effect": "EFFECT_FLINCH_HIT",
+    "power": 70,
+    "split": "Physical",
+    "secondaryEffectChance": 30
+  },
+  "hornattack": {
+    "cfruId": 30,
+    "displayName": "Horn Attack",
+    "effect": "EFFECT_HIT",
+    "power": 65,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "furyattack": {
+    "cfruId": 31,
+    "displayName": "Fury Attack",
+    "effect": "EFFECT_MULTI_HIT",
+    "power": 15,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "horndrill": {
+    "cfruId": 32,
+    "displayName": "Horn Drill",
+    "effect": "EFFECT_0HKO",
+    "power": 1,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "tackle": {
+    "cfruId": 33,
+    "displayName": "Tackle",
+    "effect": "EFFECT_HIT",
+    "power": 40,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "bodyslam": {
+    "cfruId": 34,
+    "displayName": "Body Slam",
+    "effect": "EFFECT_PARALYZE_HIT",
+    "power": 85,
+    "split": "Physical",
+    "secondaryEffectChance": 30
+  },
+  "wrap": {
+    "cfruId": 35,
+    "displayName": "Wrap",
+    "effect": "EFFECT_TRAP",
+    "power": 15,
+    "split": "Physical",
+    "secondaryEffectChance": 100
+  },
+  "takedown": {
+    "cfruId": 36,
+    "displayName": "Take Down",
+    "effect": "EFFECT_RECOIL",
+    "power": 90,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "thrash": {
+    "cfruId": 37,
+    "displayName": "Thrash",
+    "effect": "EFFECT_RAMPAGE",
+    "power": 120,
+    "split": "Physical",
+    "secondaryEffectChance": 100
+  },
+  "doubleedge": {
+    "cfruId": 38,
+    "displayName": "Double-Edge",
+    "effect": "EFFECT_RECOIL",
+    "power": 120,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "tailwhip": {
+    "cfruId": 39,
+    "displayName": "Tail Whip",
+    "effect": "EFFECT_DEFENSE_DOWN",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "poisonsting": {
+    "cfruId": 40,
+    "displayName": "Poison Sting",
+    "effect": "EFFECT_POISON_HIT",
+    "power": 15,
+    "split": "Physical",
+    "secondaryEffectChance": 30
+  },
+  "twineedle": {
+    "cfruId": 41,
+    "displayName": "Twineedle",
+    "effect": "EFFECT_POISON_HIT",
+    "power": 25,
+    "split": "Physical",
+    "secondaryEffectChance": 20
+  },
+  "pinmissile": {
+    "cfruId": 42,
+    "displayName": "Pin Missile",
+    "effect": "EFFECT_MULTI_HIT",
+    "power": 25,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "leer": {
+    "cfruId": 43,
+    "displayName": "Leer",
+    "effect": "EFFECT_DEFENSE_DOWN",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "bite": {
+    "cfruId": 44,
+    "displayName": "Bite",
+    "effect": "EFFECT_FLINCH_HIT",
+    "power": 60,
+    "split": "Physical",
+    "secondaryEffectChance": 30
+  },
+  "growl": {
+    "cfruId": 45,
+    "displayName": "Growl",
+    "effect": "EFFECT_ATTACK_DOWN",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "roar": {
+    "cfruId": 46,
+    "displayName": "Roar",
+    "effect": "EFFECT_ROAR",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "sing": {
+    "cfruId": 47,
+    "displayName": "Sing",
+    "effect": "EFFECT_SLEEP",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "supersonic": {
+    "cfruId": 48,
+    "displayName": "Supersonic",
+    "effect": "EFFECT_CONFUSE",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "sonicboom": {
+    "cfruId": 49,
+    "displayName": "Sonic Boom",
+    "effect": "EFFECT_SONICBOOM",
+    "power": 1,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "disable": {
+    "cfruId": 50,
+    "displayName": "Disable",
+    "effect": "EFFECT_DISABLE",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "acid": {
+    "cfruId": 51,
+    "displayName": "Acid",
+    "effect": "EFFECT_SPECIAL_DEFENSE_DOWN_HIT",
+    "power": 40,
+    "split": "Special",
+    "secondaryEffectChance": 10
+  },
+  "ember": {
+    "cfruId": 52,
+    "displayName": "Ember",
+    "effect": "EFFECT_BURN_HIT",
+    "power": 40,
+    "split": "Special",
+    "secondaryEffectChance": 10
+  },
+  "flamethrower": {
+    "cfruId": 53,
+    "displayName": "Flamethrower",
+    "effect": "EFFECT_BURN_HIT",
+    "power": 90,
+    "split": "Special",
+    "secondaryEffectChance": 10
+  },
+  "mist": {
+    "cfruId": 54,
+    "displayName": "Mist",
+    "effect": "EFFECT_MIST",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "watergun": {
+    "cfruId": 55,
+    "displayName": "Water Gun",
+    "effect": "EFFECT_HIT",
+    "power": 40,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "hydropump": {
+    "cfruId": 56,
+    "displayName": "Hydro Pump",
+    "effect": "EFFECT_HIT",
+    "power": 110,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "surf": {
+    "cfruId": 57,
+    "displayName": "Surf",
+    "effect": "EFFECT_HIT",
+    "power": 90,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "icebeam": {
+    "cfruId": 58,
+    "displayName": "Ice Beam",
+    "effect": "EFFECT_FREEZE_HIT",
+    "power": 90,
+    "split": "Special",
+    "secondaryEffectChance": 10
+  },
+  "blizzard": {
+    "cfruId": 59,
+    "displayName": "Blizzard",
+    "effect": "EFFECT_FREEZE_HIT",
+    "power": 110,
+    "split": "Special",
+    "secondaryEffectChance": 10
+  },
+  "psybeam": {
+    "cfruId": 60,
+    "displayName": "Psybeam",
+    "effect": "EFFECT_CONFUSE_HIT",
+    "power": 65,
+    "split": "Special",
+    "secondaryEffectChance": 10
+  },
+  "bubblebeam": {
+    "cfruId": 61,
+    "displayName": "Bubble Beam",
+    "effect": "EFFECT_SPEED_DOWN_HIT",
+    "power": 65,
+    "split": "Special",
+    "secondaryEffectChance": 10
+  },
+  "aurorabeam": {
+    "cfruId": 62,
+    "displayName": "Aurora Beam",
+    "effect": "EFFECT_ATTACK_DOWN_HIT",
+    "power": 65,
+    "split": "Special",
+    "secondaryEffectChance": 10
+  },
+  "hyperbeam": {
+    "cfruId": 63,
+    "displayName": "Hyper Beam",
+    "effect": "EFFECT_RECHARGE",
+    "power": 150,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "peck": {
+    "cfruId": 64,
+    "displayName": "Peck",
+    "effect": "EFFECT_HIT",
+    "power": 35,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "drillpeck": {
+    "cfruId": 65,
+    "displayName": "Drill Peck",
+    "effect": "EFFECT_HIT",
+    "power": 80,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "submission": {
+    "cfruId": 66,
+    "displayName": "Submission",
+    "effect": "EFFECT_RECOIL",
+    "power": 80,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "lowkick": {
+    "cfruId": 67,
+    "displayName": "Low Kick",
+    "effect": "EFFECT_HIT",
+    "power": 1,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "counter": {
+    "cfruId": 68,
+    "displayName": "Counter",
+    "effect": "EFFECT_COUNTER",
+    "power": 1,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "seismictoss": {
+    "cfruId": 69,
+    "displayName": "Seismic Toss",
+    "effect": "EFFECT_LEVEL_DAMAGE",
+    "power": 1,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "strength": {
+    "cfruId": 70,
+    "displayName": "Strength",
+    "effect": "EFFECT_HIT",
+    "power": 80,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "absorb": {
+    "cfruId": 71,
+    "displayName": "Absorb",
+    "effect": "EFFECT_ABSORB",
+    "power": 25,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "megadrain": {
+    "cfruId": 72,
+    "displayName": "Mega Drain",
+    "effect": "EFFECT_ABSORB",
+    "power": 40,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "leechseed": {
+    "cfruId": 73,
+    "displayName": "Leech Seed",
+    "effect": "EFFECT_LEECH_SEED",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "growth": {
+    "cfruId": 74,
+    "displayName": "Growth",
+    "effect": "EFFECT_ATK_SPATK_UP",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "razorleaf": {
+    "cfruId": 75,
+    "displayName": "Razor Leaf",
+    "effect": "EFFECT_HIGH_CRITICAL",
+    "power": 55,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "solarbeam": {
+    "cfruId": 76,
+    "displayName": "Solar Beam",
+    "effect": "EFFECT_SOLARBEAM",
+    "power": 120,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "poisonpowder": {
+    "cfruId": 77,
+    "displayName": "PoisonPowder",
+    "effect": "EFFECT_POISON",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "stunspore": {
+    "cfruId": 78,
+    "displayName": "Stun Spore",
+    "effect": "EFFECT_PARALYZE",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "sleeppowder": {
+    "cfruId": 79,
+    "displayName": "Sleep Powder",
+    "effect": "EFFECT_SLEEP",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "petaldance": {
+    "cfruId": 80,
+    "displayName": "Petal Dance",
+    "effect": "EFFECT_RAMPAGE",
+    "power": 120,
+    "split": "Special",
+    "secondaryEffectChance": 100
+  },
+  "stringshot": {
+    "cfruId": 81,
+    "displayName": "String Shot",
+    "effect": "EFFECT_SPEED_DOWN_2",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "dragonrage": {
+    "cfruId": 82,
+    "displayName": "Dragon Rage",
+    "effect": "EFFECT_DRAGON_RAGE",
+    "power": 1,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "firespin": {
+    "cfruId": 83,
+    "displayName": "Fire Spin",
+    "effect": "EFFECT_TRAP",
+    "power": 35,
+    "split": "Special",
+    "secondaryEffectChance": 100
+  },
+  "thundershock": {
+    "cfruId": 84,
+    "displayName": "ThunderShock",
+    "effect": "EFFECT_PARALYZE_HIT",
+    "power": 40,
+    "split": "Special",
+    "secondaryEffectChance": 10
+  },
+  "thunderbolt": {
+    "cfruId": 85,
+    "displayName": "Thunderbolt",
+    "effect": "EFFECT_PARALYZE_HIT",
+    "power": 90,
+    "split": "Special",
+    "secondaryEffectChance": 10
+  },
+  "thunderwave": {
+    "cfruId": 86,
+    "displayName": "Thunder Wave",
+    "effect": "EFFECT_PARALYZE",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "thunder": {
+    "cfruId": 87,
+    "displayName": "Thunder",
+    "effect": "EFFECT_THUNDER",
+    "power": 110,
+    "split": "Special",
+    "secondaryEffectChance": 30
+  },
+  "rockthrow": {
+    "cfruId": 88,
+    "displayName": "Rock Throw",
+    "effect": "EFFECT_HIT",
+    "power": 50,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "earthquake": {
+    "cfruId": 89,
+    "displayName": "Earthquake",
+    "effect": "EFFECT_HIT",
+    "power": 100,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "fissure": {
+    "cfruId": 90,
+    "displayName": "Fissure",
+    "effect": "EFFECT_0HKO",
+    "power": 1,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "dig": {
+    "cfruId": 91,
+    "displayName": "Dig",
+    "effect": "EFFECT_SEMI_INVULNERABLE",
+    "power": 80,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "toxic": {
+    "cfruId": 92,
+    "displayName": "Toxic",
+    "effect": "EFFECT_TOXIC",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "confusion": {
+    "cfruId": 93,
+    "displayName": "Confusion",
+    "effect": "EFFECT_CONFUSE_HIT",
+    "power": 50,
+    "split": "Special",
+    "secondaryEffectChance": 10
+  },
+  "psychic": {
+    "cfruId": 94,
+    "displayName": "Psychic",
+    "effect": "EFFECT_SPECIAL_DEFENSE_DOWN_HIT",
+    "power": 90,
+    "split": "Special",
+    "secondaryEffectChance": 10
+  },
+  "hypnosis": {
+    "cfruId": 95,
+    "displayName": "Hypnosis",
+    "effect": "EFFECT_SLEEP",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "meditate": {
+    "cfruId": 96,
+    "displayName": "Meditate",
+    "effect": "EFFECT_ATTACK_UP",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "agility": {
+    "cfruId": 97,
+    "displayName": "Agility",
+    "effect": "EFFECT_SPEED_UP_2",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "quickattack": {
+    "cfruId": 98,
+    "displayName": "Quick Attack",
+    "effect": "EFFECT_QUICK_ATTACK",
+    "power": 40,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "rage": {
+    "cfruId": 99,
+    "displayName": "Rage",
+    "effect": "EFFECT_RAGE",
+    "power": 20,
+    "split": "Physical",
+    "secondaryEffectChance": 100
+  },
+  "teleport": {
+    "cfruId": 100,
+    "displayName": "Teleport",
+    "effect": "EFFECT_TELEPORT",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "nightshade": {
+    "cfruId": 101,
+    "displayName": "Night Shade",
+    "effect": "EFFECT_LEVEL_DAMAGE",
+    "power": 1,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "mimic": {
+    "cfruId": 102,
+    "displayName": "Mimic",
+    "effect": "EFFECT_MIMIC",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "screech": {
+    "cfruId": 103,
+    "displayName": "Screech",
+    "effect": "EFFECT_DEFENSE_DOWN_2",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "doubleteam": {
+    "cfruId": 104,
+    "displayName": "Double Team",
+    "effect": "EFFECT_EVASION_UP",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "recover": {
+    "cfruId": 105,
+    "displayName": "Recover",
+    "effect": "EFFECT_RESTORE_HP",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "harden": {
+    "cfruId": 106,
+    "displayName": "Harden",
+    "effect": "EFFECT_DEFENSE_UP",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "minimize": {
+    "cfruId": 107,
+    "displayName": "Minimize",
+    "effect": "EFFECT_MINIMIZE",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "smokescreen": {
+    "cfruId": 108,
+    "displayName": "Smokescreen",
+    "effect": "EFFECT_ACCURACY_DOWN",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "confuseray": {
+    "cfruId": 109,
+    "displayName": "Confuse Ray",
+    "effect": "EFFECT_CONFUSE",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "withdraw": {
+    "cfruId": 110,
+    "displayName": "Withdraw",
+    "effect": "EFFECT_DEFENSE_UP",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "defensecurl": {
+    "cfruId": 111,
+    "displayName": "Defense Curl",
+    "effect": "EFFECT_DEFENSE_CURL",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "barrier": {
+    "cfruId": 112,
+    "displayName": "Barrier",
+    "effect": "EFFECT_DEFENSE_UP_2",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "lightscreen": {
+    "cfruId": 113,
+    "displayName": "Light Screen",
+    "effect": "EFFECT_LIGHT_SCREEN",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "haze": {
+    "cfruId": 114,
+    "displayName": "Haze",
+    "effect": "EFFECT_HAZE",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "reflect": {
+    "cfruId": 115,
+    "displayName": "Reflect",
+    "effect": "EFFECT_REFLECT",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "focusenergy": {
+    "cfruId": 116,
+    "displayName": "Focus Energy",
+    "effect": "EFFECT_FOCUS_ENERGY",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "bide": {
+    "cfruId": 117,
+    "displayName": "Bide",
+    "effect": "EFFECT_BIDE",
+    "power": 1,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "metronome": {
+    "cfruId": 118,
+    "displayName": "Metronome",
+    "effect": "EFFECT_METRONOME",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "mirrormove": {
+    "cfruId": 119,
+    "displayName": "Mirror Move",
+    "effect": "EFFECT_MIRROR_MOVE",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "selfdestruct": {
+    "cfruId": 120,
+    "displayName": "Selfdestruct",
+    "effect": "EFFECT_EXPLOSION",
+    "power": 200,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "eggbomb": {
+    "cfruId": 121,
+    "displayName": "Egg Bomb",
+    "effect": "EFFECT_HIT",
+    "power": 100,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "lick": {
+    "cfruId": 122,
+    "displayName": "Lick",
+    "effect": "EFFECT_PARALYZE_HIT",
+    "power": 30,
+    "split": "Physical",
+    "secondaryEffectChance": 30
+  },
+  "smog": {
+    "cfruId": 123,
+    "displayName": "Smog",
+    "effect": "EFFECT_POISON_HIT",
+    "power": 30,
+    "split": "Special",
+    "secondaryEffectChance": 40
+  },
+  "sludge": {
+    "cfruId": 124,
+    "displayName": "Sludge",
+    "effect": "EFFECT_POISON_HIT",
+    "power": 65,
+    "split": "Special",
+    "secondaryEffectChance": 30
+  },
+  "boneclub": {
+    "cfruId": 125,
+    "displayName": "Bone Club",
+    "effect": "EFFECT_FLINCH_HIT",
+    "power": 65,
+    "split": "Physical",
+    "secondaryEffectChance": 10
+  },
+  "fireblast": {
+    "cfruId": 126,
+    "displayName": "Fire Blast",
+    "effect": "EFFECT_BURN_HIT",
+    "power": 110,
+    "split": "Special",
+    "secondaryEffectChance": 10
+  },
+  "waterfall": {
+    "cfruId": 127,
+    "displayName": "Waterfall",
+    "effect": "EFFECT_FLINCH_HIT",
+    "power": 80,
+    "split": "Physical",
+    "secondaryEffectChance": 20
+  },
+  "clamp": {
+    "cfruId": 128,
+    "displayName": "Clamp",
+    "effect": "EFFECT_TRAP",
+    "power": 35,
+    "split": "Physical",
+    "secondaryEffectChance": 100
+  },
+  "swift": {
+    "cfruId": 129,
+    "displayName": "Swift",
+    "effect": "EFFECT_ALWAYS_HIT",
+    "power": 60,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "skullbash": {
+    "cfruId": 130,
+    "displayName": "Skull Bash",
+    "effect": "EFFECT_SKULL_BASH",
+    "power": 130,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "spikecannon": {
+    "cfruId": 131,
+    "displayName": "Spike Cannon",
+    "effect": "EFFECT_MULTI_HIT",
+    "power": 20,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "constrict": {
+    "cfruId": 132,
+    "displayName": "Constrict",
+    "effect": "EFFECT_SPEED_DOWN_HIT",
+    "power": 10,
+    "split": "Physical",
+    "secondaryEffectChance": 10
+  },
+  "amnesia": {
+    "cfruId": 133,
+    "displayName": "Amnesia",
+    "effect": "EFFECT_SPECIAL_DEFENSE_UP_2",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "kinesis": {
+    "cfruId": 134,
+    "displayName": "Kinesis",
+    "effect": "EFFECT_ACCURACY_DOWN",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "softboiled": {
+    "cfruId": 135,
+    "displayName": "Soft-Boiled",
+    "effect": "EFFECT_RESTORE_HP",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "highjumpkick": {
+    "cfruId": 136,
+    "displayName": "Hi Jump Kick",
+    "effect": "EFFECT_RECOIL_IF_MISS",
+    "power": 130,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "glare": {
+    "cfruId": 137,
+    "displayName": "Glare",
+    "effect": "EFFECT_PARALYZE",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "dreameater": {
+    "cfruId": 138,
+    "displayName": "Dream Eater",
+    "effect": "EFFECT_DREAM_EATER",
+    "power": 100,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "poisongas": {
+    "cfruId": 139,
+    "displayName": "Poison Gas",
+    "effect": "EFFECT_POISON",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "barrage": {
+    "cfruId": 140,
+    "displayName": "Barrage",
+    "effect": "EFFECT_MULTI_HIT",
+    "power": 15,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "leechlife": {
+    "cfruId": 141,
+    "displayName": "Leech Life",
+    "effect": "EFFECT_ABSORB",
+    "power": 80,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "lovelykiss": {
+    "cfruId": 142,
+    "displayName": "Lovely Kiss",
+    "effect": "EFFECT_SLEEP",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "skyattack": {
+    "cfruId": 143,
+    "displayName": "Sky Attack",
+    "effect": "EFFECT_SKY_ATTACK",
+    "power": 140,
+    "split": "Physical",
+    "secondaryEffectChance": 30
+  },
+  "transform": {
+    "cfruId": 144,
+    "displayName": "Transform",
+    "effect": "EFFECT_TRANSFORM",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "bubble": {
+    "cfruId": 145,
+    "displayName": "Bubble",
+    "effect": "EFFECT_SPEED_DOWN_HIT",
+    "power": 40,
+    "split": "Special",
+    "secondaryEffectChance": 10
+  },
+  "dizzypunch": {
+    "cfruId": 146,
+    "displayName": "Dizzy Punch",
+    "effect": "EFFECT_CONFUSE_HIT",
+    "power": 70,
+    "split": "Physical",
+    "secondaryEffectChance": 20
+  },
+  "spore": {
+    "cfruId": 147,
+    "displayName": "Spore",
+    "effect": "EFFECT_SLEEP",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "flash": {
+    "cfruId": 148,
+    "displayName": "Flash",
+    "effect": "EFFECT_ACCURACY_DOWN",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "psywave": {
+    "cfruId": 149,
+    "displayName": "Psywave",
+    "effect": "EFFECT_PSYWAVE",
+    "power": 1,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "splash": {
+    "cfruId": 150,
+    "displayName": "Splash",
+    "effect": "EFFECT_SPLASH",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "acidarmor": {
+    "cfruId": 151,
+    "displayName": "Acid Armor",
+    "effect": "EFFECT_DEFENSE_UP_2",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "crabhammer": {
+    "cfruId": 152,
+    "displayName": "Crabhammer",
+    "effect": "EFFECT_HIGH_CRITICAL",
+    "power": 100,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "explosion": {
+    "cfruId": 153,
+    "displayName": "Explosion",
+    "effect": "EFFECT_EXPLOSION",
+    "power": 250,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "furyswipes": {
+    "cfruId": 154,
+    "displayName": "Fury Swipes",
+    "effect": "EFFECT_MULTI_HIT",
+    "power": 18,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "bonemerang": {
+    "cfruId": 155,
+    "displayName": "Bonemerang",
+    "effect": "EFFECT_DOUBLE_HIT",
+    "power": 50,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "rest": {
+    "cfruId": 156,
+    "displayName": "Rest",
+    "effect": "EFFECT_REST",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "rockslide": {
+    "cfruId": 157,
+    "displayName": "Rock Slide",
+    "effect": "EFFECT_FLINCH_HIT",
+    "power": 75,
+    "split": "Physical",
+    "secondaryEffectChance": 30
+  },
+  "hyperfang": {
+    "cfruId": 158,
+    "displayName": "Hyper Fang",
+    "effect": "EFFECT_FLINCH_HIT",
+    "power": 80,
+    "split": "Physical",
+    "secondaryEffectChance": 10
+  },
+  "sharpen": {
+    "cfruId": 159,
+    "displayName": "Sharpen",
+    "effect": "EFFECT_ATTACK_UP",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "conversion": {
+    "cfruId": 160,
+    "displayName": "Conversion",
+    "effect": "EFFECT_CONVERSION",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "triattack": {
+    "cfruId": 161,
+    "displayName": "Tri Attack",
+    "effect": "EFFECT_TRI_ATTACK",
+    "power": 80,
+    "split": "Special",
+    "secondaryEffectChance": 20
+  },
+  "superfang": {
+    "cfruId": 162,
+    "displayName": "Super Fang",
+    "effect": "EFFECT_SUPER_FANG",
+    "power": 1,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "slash": {
+    "cfruId": 163,
+    "displayName": "Slash",
+    "effect": "EFFECT_HIGH_CRITICAL",
+    "power": 70,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "substitute": {
+    "cfruId": 164,
+    "displayName": "Substitute",
+    "effect": "EFFECT_SUBSTITUTE",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "struggle": {
+    "cfruId": 165,
+    "displayName": "Struggle",
+    "effect": "EFFECT_RECOIL",
+    "power": 50,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "sketch": {
+    "cfruId": 166,
+    "displayName": "Sketch",
+    "effect": "EFFECT_SKETCH",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "triplekick": {
+    "cfruId": 167,
+    "displayName": "Triple Kick",
+    "effect": "EFFECT_TRIPLE_KICK",
+    "power": 10,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "thief": {
+    "cfruId": 168,
+    "displayName": "Thief",
+    "effect": "EFFECT_THIEF",
+    "power": 60,
+    "split": "Physical",
+    "secondaryEffectChance": 100
+  },
+  "spiderweb": {
+    "cfruId": 169,
+    "displayName": "Spider Web",
+    "effect": "EFFECT_MEAN_LOOK",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "mindreader": {
+    "cfruId": 170,
+    "displayName": "Mind Reader",
+    "effect": "EFFECT_LOCK_ON",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "nightmare": {
+    "cfruId": 171,
+    "displayName": "Nightmare",
+    "effect": "EFFECT_NIGHTMARE",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "flamewheel": {
+    "cfruId": 172,
+    "displayName": "Flame Wheel",
+    "effect": "EFFECT_BURN_HIT",
+    "power": 60,
+    "split": "Physical",
+    "secondaryEffectChance": 10
+  },
+  "snore": {
+    "cfruId": 173,
+    "displayName": "Snore",
+    "effect": "EFFECT_SNORE",
+    "power": 50,
+    "split": "Special",
+    "secondaryEffectChance": 30
+  },
+  "curse": {
+    "cfruId": 174,
+    "displayName": "Curse",
+    "effect": "EFFECT_CURSE",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "flail": {
+    "cfruId": 175,
+    "displayName": "Flail",
+    "effect": "EFFECT_FLAIL",
+    "power": 1,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "conversion2": {
+    "cfruId": 176,
+    "displayName": "Conversion 2",
+    "effect": "EFFECT_CONVERSION_2",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "aeroblast": {
+    "cfruId": 177,
+    "displayName": "Aeroblast",
+    "effect": "EFFECT_HIGH_CRITICAL",
+    "power": 100,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "cottonspore": {
+    "cfruId": 178,
+    "displayName": "Cotton Spore",
+    "effect": "EFFECT_SPEED_DOWN_2",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "reversal": {
+    "cfruId": 179,
+    "displayName": "Reversal",
+    "effect": "EFFECT_FLAIL",
+    "power": 1,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "spite": {
+    "cfruId": 180,
+    "displayName": "Spite",
+    "effect": "EFFECT_SPITE",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "powdersnow": {
+    "cfruId": 181,
+    "displayName": "Powder Snow",
+    "effect": "EFFECT_FREEZE_HIT",
+    "power": 40,
+    "split": "Special",
+    "secondaryEffectChance": 10
+  },
+  "protect": {
+    "cfruId": 182,
+    "displayName": "Protect",
+    "effect": "EFFECT_PROTECT",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "machpunch": {
+    "cfruId": 183,
+    "displayName": "Mach Punch",
+    "effect": "EFFECT_QUICK_ATTACK",
+    "power": 40,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "scaryface": {
+    "cfruId": 184,
+    "displayName": "Scary Face",
+    "effect": "EFFECT_SPEED_DOWN_2",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "feintattack": {
+    "cfruId": 185,
+    "displayName": "Feint Attack",
+    "effect": "EFFECT_ALWAYS_HIT",
+    "power": 60,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "sweetkiss": {
+    "cfruId": 186,
+    "displayName": "Sweet Kiss",
+    "effect": "EFFECT_CONFUSE",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "bellydrum": {
+    "cfruId": 187,
+    "displayName": "Belly Drum",
+    "effect": "EFFECT_BELLY_DRUM",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "sludgebomb": {
+    "cfruId": 188,
+    "displayName": "Sludge Bomb",
+    "effect": "EFFECT_POISON_HIT",
+    "power": 90,
+    "split": "Special",
+    "secondaryEffectChance": 30
+  },
+  "mudslap": {
+    "cfruId": 189,
+    "displayName": "Mud-Slap",
+    "effect": "EFFECT_ACCURACY_DOWN_HIT",
+    "power": 20,
+    "split": "Special",
+    "secondaryEffectChance": 100
+  },
+  "octazooka": {
+    "cfruId": 190,
+    "displayName": "Octazooka",
+    "effect": "EFFECT_ACCURACY_DOWN_HIT",
+    "power": 65,
+    "split": "Special",
+    "secondaryEffectChance": 50
+  },
+  "spikes": {
+    "cfruId": 191,
+    "displayName": "Spikes",
+    "effect": "EFFECT_SPIKES",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "zapcannon": {
+    "cfruId": 192,
+    "displayName": "Zap Cannon",
+    "effect": "EFFECT_PARALYZE_HIT",
+    "power": 120,
+    "split": "Special",
+    "secondaryEffectChance": 100
+  },
+  "foresight": {
+    "cfruId": 193,
+    "displayName": "Foresight",
+    "effect": "EFFECT_FORESIGHT",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "destinybond": {
+    "cfruId": 194,
+    "displayName": "Destiny Bond",
+    "effect": "EFFECT_DESTINY_BOND",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "perishsong": {
+    "cfruId": 195,
+    "displayName": "Perish Song",
+    "effect": "EFFECT_PERISH_SONG",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "icywind": {
+    "cfruId": 196,
+    "displayName": "Icy Wind",
+    "effect": "EFFECT_SPEED_DOWN_HIT",
+    "power": 55,
+    "split": "Special",
+    "secondaryEffectChance": 100
+  },
+  "detect": {
+    "cfruId": 197,
+    "displayName": "Detect",
+    "effect": "EFFECT_PROTECT",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "bonerush": {
+    "cfruId": 198,
+    "displayName": "Bone Rush",
+    "effect": "EFFECT_MULTI_HIT",
+    "power": 25,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "lockon": {
+    "cfruId": 199,
+    "displayName": "Lock-On",
+    "effect": "EFFECT_LOCK_ON",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "outrage": {
+    "cfruId": 200,
+    "displayName": "Outrage",
+    "effect": "EFFECT_RAMPAGE",
+    "power": 120,
+    "split": "Physical",
+    "secondaryEffectChance": 100
+  },
+  "sandstorm": {
+    "cfruId": 201,
+    "displayName": "Sandstorm",
+    "effect": "EFFECT_SANDSTORM",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "gigadrain": {
+    "cfruId": 202,
+    "displayName": "Giga Drain",
+    "effect": "EFFECT_ABSORB",
+    "power": 75,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "endure": {
+    "cfruId": 203,
+    "displayName": "Endure",
+    "effect": "EFFECT_PROTECT",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "charm": {
+    "cfruId": 204,
+    "displayName": "Charm",
+    "effect": "EFFECT_ATTACK_DOWN_2",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "rollout": {
+    "cfruId": 205,
+    "displayName": "Rollout",
+    "effect": "EFFECT_ROLLOUT",
+    "power": 30,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "falseswipe": {
+    "cfruId": 206,
+    "displayName": "False Swipe",
+    "effect": "EFFECT_FALSE_SWIPE",
+    "power": 40,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "swagger": {
+    "cfruId": 207,
+    "displayName": "Swagger",
+    "effect": "EFFECT_SWAGGER",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 100
+  },
+  "milkdrink": {
+    "cfruId": 208,
+    "displayName": "Milk Drink",
+    "effect": "EFFECT_RESTORE_HP",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "spark": {
+    "cfruId": 209,
+    "displayName": "Spark",
+    "effect": "EFFECT_PARALYZE_HIT",
+    "power": 65,
+    "split": "Physical",
+    "secondaryEffectChance": 30
+  },
+  "furycutter": {
+    "cfruId": 210,
+    "displayName": "Fury Cutter",
+    "effect": "EFFECT_FURY_CUTTER",
+    "power": 40,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "steelwing": {
+    "cfruId": 211,
+    "displayName": "Steel Wing",
+    "effect": "EFFECT_DEFENSE_UP_HIT",
+    "power": 70,
+    "split": "Physical",
+    "secondaryEffectChance": 10
+  },
+  "meanlook": {
+    "cfruId": 212,
+    "displayName": "Mean Look",
+    "effect": "EFFECT_MEAN_LOOK",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "attract": {
+    "cfruId": 213,
+    "displayName": "Attract",
+    "effect": "EFFECT_ATTRACT",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "sleeptalk": {
+    "cfruId": 214,
+    "displayName": "Sleep Talk",
+    "effect": "EFFECT_SLEEP_TALK",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "healbell": {
+    "cfruId": 215,
+    "displayName": "Heal Bell",
+    "effect": "EFFECT_HEAL_BELL",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "return": {
+    "cfruId": 216,
+    "displayName": "Return",
+    "effect": "EFFECT_HIT",
+    "power": 1,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "present": {
+    "cfruId": 217,
+    "displayName": "Present",
+    "effect": "EFFECT_PRESENT",
+    "power": 1,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "frustration": {
+    "cfruId": 218,
+    "displayName": "Frustration",
+    "effect": "EFFECT_HIT",
+    "power": 1,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "safeguard": {
+    "cfruId": 219,
+    "displayName": "Safeguard",
+    "effect": "EFFECT_SAFEGUARD",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "painsplit": {
+    "cfruId": 220,
+    "displayName": "Pain Split",
+    "effect": "EFFECT_PAIN_SPLIT",
+    "power": 1,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "sacredfire": {
+    "cfruId": 221,
+    "displayName": "Sacred Fire",
+    "effect": "EFFECT_BURN_HIT",
+    "power": 100,
+    "split": "Physical",
+    "secondaryEffectChance": 50
+  },
+  "magnitude": {
+    "cfruId": 222,
+    "displayName": "Magnitude",
+    "effect": "EFFECT_MAGNITUDE",
+    "power": 1,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "dynamicpunch": {
+    "cfruId": 223,
+    "displayName": "DynamicPunch",
+    "effect": "EFFECT_CONFUSE_HIT",
+    "power": 100,
+    "split": "Physical",
+    "secondaryEffectChance": 100
+  },
+  "megahorn": {
+    "cfruId": 224,
+    "displayName": "Megahorn",
+    "effect": "EFFECT_HIT",
+    "power": 120,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "dragonbreath": {
+    "cfruId": 225,
+    "displayName": "DragonBreath",
+    "effect": "EFFECT_PARALYZE_HIT",
+    "power": 60,
+    "split": "Special",
+    "secondaryEffectChance": 30
+  },
+  "batonpass": {
+    "cfruId": 226,
+    "displayName": "Baton Pass",
+    "effect": "EFFECT_BATON_PASS",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "encore": {
+    "cfruId": 227,
+    "displayName": "Encore",
+    "effect": "EFFECT_ENCORE",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "pursuit": {
+    "cfruId": 228,
+    "displayName": "Pursuit",
+    "effect": "EFFECT_PURSUIT",
+    "power": 40,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "rapidspin": {
+    "cfruId": 229,
+    "displayName": "Rapid Spin",
+    "effect": "EFFECT_RAPID_SPIN",
+    "power": 50,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "sweetscent": {
+    "cfruId": 230,
+    "displayName": "Sweet Scent",
+    "effect": "EFFECT_EVASION_DOWN_2",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "irontail": {
+    "cfruId": 231,
+    "displayName": "Iron Tail",
+    "effect": "EFFECT_DEFENSE_DOWN_HIT",
+    "power": 100,
+    "split": "Physical",
+    "secondaryEffectChance": 30
+  },
+  "metalclaw": {
+    "cfruId": 232,
+    "displayName": "Metal Claw",
+    "effect": "EFFECT_ATTACK_UP_HIT",
+    "power": 50,
+    "split": "Physical",
+    "secondaryEffectChance": 10
+  },
+  "vitalthrow": {
+    "cfruId": 233,
+    "displayName": "Vital Throw",
+    "effect": "EFFECT_ALWAYS_HIT",
+    "power": 70,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "morningsun": {
+    "cfruId": 234,
+    "displayName": "Morning Sun",
+    "effect": "EFFECT_MORNING_SUN",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "synthesis": {
+    "cfruId": 235,
+    "displayName": "Synthesis",
+    "effect": "EFFECT_MORNING_SUN",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "moonlight": {
+    "cfruId": 236,
+    "displayName": "Moonlight",
+    "effect": "EFFECT_MORNING_SUN",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "hiddenpower": {
+    "cfruId": 237,
+    "displayName": "Hidden Power",
+    "effect": "EFFECT_HIT",
+    "power": 60,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "crosschop": {
+    "cfruId": 238,
+    "displayName": "Cross Chop",
+    "effect": "EFFECT_HIGH_CRITICAL",
+    "power": 100,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "twister": {
+    "cfruId": 239,
+    "displayName": "Twister",
+    "effect": "EFFECT_TWISTER",
+    "power": 40,
+    "split": "Special",
+    "secondaryEffectChance": 20
+  },
+  "raindance": {
+    "cfruId": 240,
+    "displayName": "Rain Dance",
+    "effect": "EFFECT_RAIN_DANCE",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "sunnyday": {
+    "cfruId": 241,
+    "displayName": "Sunny Day",
+    "effect": "EFFECT_SUNNY_DAY",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "crunch": {
+    "cfruId": 242,
+    "displayName": "Crunch",
+    "effect": "EFFECT_DEFENSE_DOWN_HIT",
+    "power": 80,
+    "split": "Physical",
+    "secondaryEffectChance": 20
+  },
+  "mirrorcoat": {
+    "cfruId": 243,
+    "displayName": "Mirror Coat",
+    "effect": "EFFECT_MIRROR_COAT",
+    "power": 1,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "psychup": {
+    "cfruId": 244,
+    "displayName": "Psych Up",
+    "effect": "EFFECT_PSYCH_UP",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "extremespeed": {
+    "cfruId": 245,
+    "displayName": "ExtremeSpeed",
+    "effect": "EFFECT_QUICK_ATTACK",
+    "power": 80,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "ancientpower": {
+    "cfruId": 246,
+    "displayName": "AncientPower",
+    "effect": "EFFECT_ALL_STATS_UP_HIT",
+    "power": 60,
+    "split": "Special",
+    "secondaryEffectChance": 10
+  },
+  "shadowball": {
+    "cfruId": 247,
+    "displayName": "Shadow Ball",
+    "effect": "EFFECT_SPECIAL_DEFENSE_DOWN_HIT",
+    "power": 80,
+    "split": "Special",
+    "secondaryEffectChance": 20
+  },
+  "futuresight": {
+    "cfruId": 248,
+    "displayName": "Future Sight",
+    "effect": "EFFECT_FUTURE_SIGHT",
+    "power": 120,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "rocksmash": {
+    "cfruId": 249,
+    "displayName": "Rock Smash",
+    "effect": "EFFECT_DEFENSE_DOWN_HIT",
+    "power": 40,
+    "split": "Physical",
+    "secondaryEffectChance": 50
+  },
+  "whirlpool": {
+    "cfruId": 250,
+    "displayName": "Whirlpool",
+    "effect": "EFFECT_TRAP",
+    "power": 35,
+    "split": "Special",
+    "secondaryEffectChance": 100
+  },
+  "beatup": {
+    "cfruId": 251,
+    "displayName": "Beat Up",
+    "effect": "EFFECT_BEAT_UP",
+    "power": 1,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "fakeout": {
+    "cfruId": 252,
+    "displayName": "Fake Out",
+    "effect": "EFFECT_FAKE_OUT",
+    "power": 40,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "uproar": {
+    "cfruId": 253,
+    "displayName": "Uproar",
+    "effect": "EFFECT_UPROAR",
+    "power": 90,
+    "split": "Special",
+    "secondaryEffectChance": 100
+  },
+  "stockpile": {
+    "cfruId": 254,
+    "displayName": "Stockpile",
+    "effect": "EFFECT_STOCKPILE",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "spitup": {
+    "cfruId": 255,
+    "displayName": "Spit Up",
+    "effect": "EFFECT_SPIT_UP",
+    "power": 1,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "swallow": {
+    "cfruId": 256,
+    "displayName": "Swallow",
+    "effect": "EFFECT_SWALLOW",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "heatwave": {
+    "cfruId": 257,
+    "displayName": "Heat Wave",
+    "effect": "EFFECT_BURN_HIT",
+    "power": 95,
+    "split": "Special",
+    "secondaryEffectChance": 10
+  },
+  "hail": {
+    "cfruId": 258,
+    "displayName": "Hail",
+    "effect": "EFFECT_HAIL",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "torment": {
+    "cfruId": 259,
+    "displayName": "Torment",
+    "effect": "EFFECT_TORMENT",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "flatter": {
+    "cfruId": 260,
+    "displayName": "Flatter",
+    "effect": "EFFECT_FLATTER",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "willowisp": {
+    "cfruId": 261,
+    "displayName": "Will-O-Wisp",
+    "effect": "EFFECT_WILL_O_WISP",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "memento": {
+    "cfruId": 262,
+    "displayName": "Memento",
+    "effect": "EFFECT_MEMENTO",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "facade": {
+    "cfruId": 263,
+    "displayName": "Facade",
+    "effect": "EFFECT_HIT",
+    "power": 70,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "focuspunch": {
+    "cfruId": 264,
+    "displayName": "Focus Punch",
+    "effect": "EFFECT_FOCUS_PUNCH",
+    "power": 150,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "smellingsalts": {
+    "cfruId": 265,
+    "displayName": "SmellingSalt",
+    "effect": "EFFECT_SMELLINGSALT",
+    "power": 70,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "followme": {
+    "cfruId": 266,
+    "displayName": "Follow Me",
+    "effect": "EFFECT_FOLLOW_ME",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "naturepower": {
+    "cfruId": 267,
+    "displayName": "Nature Power",
+    "effect": "EFFECT_NATURE_POWER",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "charge": {
+    "cfruId": 268,
+    "displayName": "Charge",
+    "effect": "EFFECT_CHARGE",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "taunt": {
+    "cfruId": 269,
+    "displayName": "Taunt",
+    "effect": "EFFECT_TAUNT",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "helpinghand": {
+    "cfruId": 270,
+    "displayName": "Helping Hand",
+    "effect": "EFFECT_HELPING_HAND",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "trick": {
+    "cfruId": 271,
+    "displayName": "Trick",
+    "effect": "EFFECT_TRICK",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "roleplay": {
+    "cfruId": 272,
+    "displayName": "Role Play",
+    "effect": "EFFECT_ROLE_PLAY",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "wish": {
+    "cfruId": 273,
+    "displayName": "Wish",
+    "effect": "EFFECT_WISH",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "assist": {
+    "cfruId": 274,
+    "displayName": "Assist",
+    "effect": "EFFECT_ASSIST",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "ingrain": {
+    "cfruId": 275,
+    "displayName": "Ingrain",
+    "effect": "EFFECT_INGRAIN",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "superpower": {
+    "cfruId": 276,
+    "displayName": "Superpower",
+    "effect": "EFFECT_SUPERPOWER",
+    "power": 120,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "magiccoat": {
+    "cfruId": 277,
+    "displayName": "Magic Coat",
+    "effect": "EFFECT_MAGIC_COAT",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "recycle": {
+    "cfruId": 278,
+    "displayName": "Recycle",
+    "effect": "EFFECT_RECYCLE",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "revenge": {
+    "cfruId": 279,
+    "displayName": "Revenge",
+    "effect": "EFFECT_HIT",
+    "power": 60,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "brickbreak": {
+    "cfruId": 280,
+    "displayName": "Brick Break",
+    "effect": "EFFECT_BRICK_BREAK",
+    "power": 75,
+    "split": "Physical",
+    "secondaryEffectChance": 100
+  },
+  "yawn": {
+    "cfruId": 281,
+    "displayName": "Yawn",
+    "effect": "EFFECT_YAWN",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "knockoff": {
+    "cfruId": 282,
+    "displayName": "Knock Off",
+    "effect": "EFFECT_KNOCK_OFF",
+    "power": 65,
+    "split": "Physical",
+    "secondaryEffectChance": 100
+  },
+  "endeavor": {
+    "cfruId": 283,
+    "displayName": "Endeavor",
+    "effect": "EFFECT_ENDEAVOR",
+    "power": 1,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "eruption": {
+    "cfruId": 284,
+    "displayName": "Eruption",
+    "effect": "EFFECT_HIT",
+    "power": 150,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "skillswap": {
+    "cfruId": 285,
+    "displayName": "Skill Swap",
+    "effect": "EFFECT_SKILL_SWAP",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "imprison": {
+    "cfruId": 286,
+    "displayName": "Imprison",
+    "effect": "EFFECT_IMPRISON",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "refresh": {
+    "cfruId": 287,
+    "displayName": "Refresh",
+    "effect": "EFFECT_REFRESH",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "grudge": {
+    "cfruId": 288,
+    "displayName": "Grudge",
+    "effect": "EFFECT_GRUDGE",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "snatch": {
+    "cfruId": 289,
+    "displayName": "Snatch",
+    "effect": "EFFECT_SNATCH",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "secretpower": {
+    "cfruId": 290,
+    "displayName": "Secret Power",
+    "effect": "EFFECT_SECRET_POWER",
+    "power": 70,
+    "split": "Physical",
+    "secondaryEffectChance": 30
+  },
+  "dive": {
+    "cfruId": 291,
+    "displayName": "Dive",
+    "effect": "EFFECT_SEMI_INVULNERABLE",
+    "power": 80,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "armthrust": {
+    "cfruId": 292,
+    "displayName": "Arm Thrust",
+    "effect": "EFFECT_MULTI_HIT",
+    "power": 15,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "camouflage": {
+    "cfruId": 293,
+    "displayName": "Camouflage",
+    "effect": "EFFECT_CAMOUFLAGE",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "tailglow": {
+    "cfruId": 294,
+    "displayName": "Tail Glow",
+    "effect": "EFFECT_SPECIAL_ATTACK_UP_2",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "lusterpurge": {
+    "cfruId": 295,
+    "displayName": "Luster Purge",
+    "effect": "EFFECT_SPECIAL_DEFENSE_DOWN_HIT",
+    "power": 70,
+    "split": "Special",
+    "secondaryEffectChance": 50
+  },
+  "mistball": {
+    "cfruId": 296,
+    "displayName": "Mist Ball",
+    "effect": "EFFECT_SPECIAL_ATTACK_DOWN_HIT",
+    "power": 70,
+    "split": "Special",
+    "secondaryEffectChance": 50
+  },
+  "featherdance": {
+    "cfruId": 297,
+    "displayName": "FeatherDance",
+    "effect": "EFFECT_ATTACK_DOWN_2",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "teeterdance": {
+    "cfruId": 298,
+    "displayName": "Teeter Dance",
+    "effect": "EFFECT_CONFUSE",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "blazekick": {
+    "cfruId": 299,
+    "displayName": "Blaze Kick",
+    "effect": "EFFECT_BURN_HIT",
+    "power": 85,
+    "split": "Physical",
+    "secondaryEffectChance": 10
+  },
+  "mudsport": {
+    "cfruId": 300,
+    "displayName": "Mud Sport",
+    "effect": "EFFECT_MUD_SPORT",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "iceball": {
+    "cfruId": 301,
+    "displayName": "Ice Ball",
+    "effect": "EFFECT_ROLLOUT",
+    "power": 30,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "needlearm": {
+    "cfruId": 302,
+    "displayName": "Needle Arm",
+    "effect": "EFFECT_FLINCH_HIT",
+    "power": 60,
+    "split": "Physical",
+    "secondaryEffectChance": 30
+  },
+  "slackoff": {
+    "cfruId": 303,
+    "displayName": "Slack Off",
+    "effect": "EFFECT_RESTORE_HP",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "hypervoice": {
+    "cfruId": 304,
+    "displayName": "Hyper Voice",
+    "effect": "EFFECT_HIT",
+    "power": 90,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "poisonfang": {
+    "cfruId": 305,
+    "displayName": "Poison Fang",
+    "effect": "EFFECT_BAD_POISON_HIT",
+    "power": 50,
+    "split": "Physical",
+    "secondaryEffectChance": 50
+  },
+  "crushclaw": {
+    "cfruId": 306,
+    "displayName": "Crush Claw",
+    "effect": "EFFECT_DEFENSE_DOWN_HIT",
+    "power": 75,
+    "split": "Physical",
+    "secondaryEffectChance": 50
+  },
+  "blastburn": {
+    "cfruId": 307,
+    "displayName": "Blast Burn",
+    "effect": "EFFECT_RECHARGE",
+    "power": 150,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "hydrocannon": {
+    "cfruId": 308,
+    "displayName": "Hydro Cannon",
+    "effect": "EFFECT_RECHARGE",
+    "power": 150,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "meteormash": {
+    "cfruId": 309,
+    "displayName": "Meteor Mash",
+    "effect": "EFFECT_ATTACK_UP_HIT",
+    "power": 90,
+    "split": "Physical",
+    "secondaryEffectChance": 20
+  },
+  "astonish": {
+    "cfruId": 310,
+    "displayName": "Astonish",
+    "effect": "EFFECT_FLINCH_HIT",
+    "power": 30,
+    "split": "Physical",
+    "secondaryEffectChance": 30
+  },
+  "weatherball": {
+    "cfruId": 311,
+    "displayName": "Weather Ball",
+    "effect": "EFFECT_HIT",
+    "power": 50,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "aromatherapy": {
+    "cfruId": 312,
+    "displayName": "Aromatherapy",
+    "effect": "EFFECT_HEAL_BELL",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "faketears": {
+    "cfruId": 313,
+    "displayName": "Fake Tears",
+    "effect": "EFFECT_SPECIAL_DEFENSE_DOWN_2",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "aircutter": {
+    "cfruId": 314,
+    "displayName": "Air Cutter",
+    "effect": "EFFECT_HIGH_CRITICAL",
+    "power": 60,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "overheat": {
+    "cfruId": 315,
+    "displayName": "Overheat",
+    "effect": "EFFECT_OVERHEAT",
+    "power": 130,
+    "split": "Special",
+    "secondaryEffectChance": 100
+  },
+  "odorsleuth": {
+    "cfruId": 316,
+    "displayName": "Odor Sleuth",
+    "effect": "EFFECT_FORESIGHT",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "rocktomb": {
+    "cfruId": 317,
+    "displayName": "Rock Tomb",
+    "effect": "EFFECT_SPEED_DOWN_HIT",
+    "power": 60,
+    "split": "Physical",
+    "secondaryEffectChance": 100
+  },
+  "silverwind": {
+    "cfruId": 318,
+    "displayName": "Silver Wind",
+    "effect": "EFFECT_ALL_STATS_UP_HIT",
+    "power": 60,
+    "split": "Special",
+    "secondaryEffectChance": 10
+  },
+  "metalsound": {
+    "cfruId": 319,
+    "displayName": "Metal Sound",
+    "effect": "EFFECT_SPECIAL_DEFENSE_DOWN_2",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "grasswhistle": {
+    "cfruId": 320,
+    "displayName": "Grasswhistle",
+    "effect": "EFFECT_SLEEP",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "tickle": {
+    "cfruId": 321,
+    "displayName": "Tickle",
+    "effect": "EFFECT_TICKLE",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "cosmicpower": {
+    "cfruId": 322,
+    "displayName": "Cosmic Power",
+    "effect": "EFFECT_COSMIC_POWER",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "waterspout": {
+    "cfruId": 323,
+    "displayName": "Water Spout",
+    "effect": "EFFECT_HIT",
+    "power": 150,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "signalbeam": {
+    "cfruId": 324,
+    "displayName": "Signal Beam",
+    "effect": "EFFECT_CONFUSE_HIT",
+    "power": 75,
+    "split": "Special",
+    "secondaryEffectChance": 10
+  },
+  "shadowpunch": {
+    "cfruId": 325,
+    "displayName": "Shadow Punch",
+    "effect": "EFFECT_ALWAYS_HIT",
+    "power": 60,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "extrasensory": {
+    "cfruId": 326,
+    "displayName": "Extrasensory",
+    "effect": "EFFECT_FLINCH_HIT",
+    "power": 80,
+    "split": "Special",
+    "secondaryEffectChance": 10
+  },
+  "skyuppercut": {
+    "cfruId": 327,
+    "displayName": "Sky Uppercut",
+    "effect": "EFFECT_HIT",
+    "power": 85,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "sandtomb": {
+    "cfruId": 328,
+    "displayName": "Sand Tomb",
+    "effect": "EFFECT_TRAP",
+    "power": 35,
+    "split": "Physical",
+    "secondaryEffectChance": 100
+  },
+  "sheercold": {
+    "cfruId": 329,
+    "displayName": "Sheer Cold",
+    "effect": "EFFECT_0HKO",
+    "power": 1,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "muddywater": {
+    "cfruId": 330,
+    "displayName": "Muddy Water",
+    "effect": "EFFECT_ACCURACY_DOWN_HIT",
+    "power": 90,
+    "split": "Special",
+    "secondaryEffectChance": 30
+  },
+  "bulletseed": {
+    "cfruId": 331,
+    "displayName": "Bullet Seed",
+    "effect": "EFFECT_MULTI_HIT",
+    "power": 25,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "aerialace": {
+    "cfruId": 332,
+    "displayName": "Aerial Ace",
+    "effect": "EFFECT_ALWAYS_HIT",
+    "power": 60,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "iciclespear": {
+    "cfruId": 333,
+    "displayName": "Icicle Spear",
+    "effect": "EFFECT_MULTI_HIT",
+    "power": 25,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "irondefense": {
+    "cfruId": 334,
+    "displayName": "Iron Defense",
+    "effect": "EFFECT_DEFENSE_UP_2",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "block": {
+    "cfruId": 335,
+    "displayName": "Block",
+    "effect": "EFFECT_MEAN_LOOK",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "howl": {
+    "cfruId": 336,
+    "displayName": "Howl",
+    "effect": "EFFECT_ATTACK_UP",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "dragonclaw": {
+    "cfruId": 337,
+    "displayName": "Dragon Claw",
+    "effect": "EFFECT_HIT",
+    "power": 80,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "frenzyplant": {
+    "cfruId": 338,
+    "displayName": "Frenzy Plant",
+    "effect": "EFFECT_RECHARGE",
+    "power": 150,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "bulkup": {
+    "cfruId": 339,
+    "displayName": "Bulk Up",
+    "effect": "EFFECT_BULK_UP",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "bounce": {
+    "cfruId": 340,
+    "displayName": "Bounce",
+    "effect": "EFFECT_SEMI_INVULNERABLE",
+    "power": 85,
+    "split": "Physical",
+    "secondaryEffectChance": 30
+  },
+  "mudshot": {
+    "cfruId": 341,
+    "displayName": "Mud Shot",
+    "effect": "EFFECT_SPEED_DOWN_HIT",
+    "power": 55,
+    "split": "Special",
+    "secondaryEffectChance": 100
+  },
+  "poisontail": {
+    "cfruId": 342,
+    "displayName": "Poison Tail",
+    "effect": "EFFECT_POISON_HIT",
+    "power": 50,
+    "split": "Physical",
+    "secondaryEffectChance": 10
+  },
+  "covet": {
+    "cfruId": 343,
+    "displayName": "Covet",
+    "effect": "EFFECT_THIEF",
+    "power": 60,
+    "split": "Physical",
+    "secondaryEffectChance": 100
+  },
+  "volttackle": {
+    "cfruId": 344,
+    "displayName": "Volt Tackle",
+    "effect": "EFFECT_PARALYZE_HIT",
+    "power": 120,
+    "split": "Physical",
+    "secondaryEffectChance": 10
+  },
+  "magicalleaf": {
+    "cfruId": 345,
+    "displayName": "Magical Leaf",
+    "effect": "EFFECT_ALWAYS_HIT",
+    "power": 60,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "watersport": {
+    "cfruId": 346,
+    "displayName": "Water Sport",
+    "effect": "EFFECT_WATER_SPORT",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "calmmind": {
+    "cfruId": 347,
+    "displayName": "Calm Mind",
+    "effect": "EFFECT_CALM_MIND",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "leafblade": {
+    "cfruId": 348,
+    "displayName": "Leaf Blade",
+    "effect": "EFFECT_HIGH_CRITICAL",
+    "power": 90,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "dragondance": {
+    "cfruId": 349,
+    "displayName": "Dragon Dance",
+    "effect": "EFFECT_DRAGON_DANCE",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "rockblast": {
+    "cfruId": 350,
+    "displayName": "Rock Blast",
+    "effect": "EFFECT_MULTI_HIT",
+    "power": 25,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "shockwave": {
+    "cfruId": 351,
+    "displayName": "Shock Wave",
+    "effect": "EFFECT_ALWAYS_HIT",
+    "power": 60,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "waterpulse": {
+    "cfruId": 352,
+    "displayName": "Water Pulse",
+    "effect": "EFFECT_CONFUSE_HIT",
+    "power": 60,
+    "split": "Special",
+    "secondaryEffectChance": 20
+  },
+  "doomdesire": {
+    "cfruId": 353,
+    "displayName": "Doom Desire",
+    "effect": "EFFECT_FUTURE_SIGHT",
+    "power": 140,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "psychoboost": {
+    "cfruId": 354,
+    "displayName": "Psycho Boost",
+    "effect": "EFFECT_OVERHEAT",
+    "power": 140,
+    "split": "Special",
+    "secondaryEffectChance": 100
+  },
+  "leechfang": {
+    "cfruId": 355,
+    "displayName": "Leech Fang",
+    "effect": "EFFECT_ABSORB",
+    "power": 80,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "airslash": {
+    "cfruId": 356,
+    "displayName": "Air Slash",
+    "effect": "EFFECT_FLINCH_HIT",
+    "power": 75,
+    "split": "Special",
+    "secondaryEffectChance": 30
+  },
+  "aquajet": {
+    "cfruId": 357,
+    "displayName": "Aqua Jet",
+    "effect": "EFFECT_QUICK_ATTACK",
+    "power": 40,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "aquatail": {
+    "cfruId": 358,
+    "displayName": "Aqua Tail",
+    "effect": "EFFECT_HIT",
+    "power": 90,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "aurasphere": {
+    "cfruId": 359,
+    "displayName": "Aura Sphere",
+    "effect": "EFFECT_ALWAYS_HIT",
+    "power": 80,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "avalanche": {
+    "cfruId": 360,
+    "displayName": "Avalanche",
+    "effect": "EFFECT_HIT",
+    "power": 60,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "bravebird": {
+    "cfruId": 361,
+    "displayName": "Brave Bird",
+    "effect": "EFFECT_RECOIL",
+    "power": 120,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "bugbuzz": {
+    "cfruId": 362,
+    "displayName": "Bug Buzz",
+    "effect": "EFFECT_SPECIAL_DEFENSE_DOWN_HIT",
+    "power": 90,
+    "split": "Special",
+    "secondaryEffectChance": 10
+  },
+  "bulletpunch": {
+    "cfruId": 363,
+    "displayName": "Bullet Punch",
+    "effect": "EFFECT_QUICK_ATTACK",
+    "power": 40,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "chargebeam": {
+    "cfruId": 364,
+    "displayName": "Charge Beam",
+    "effect": "EFFECT_SPECIAL_ATTACK_UP_HIT",
+    "power": 50,
+    "split": "Special",
+    "secondaryEffectChance": 70
+  },
+  "closecombat": {
+    "cfruId": 365,
+    "displayName": "Close Combat",
+    "effect": "EFFECT_SUPERPOWER",
+    "power": 120,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "crosspoison": {
+    "cfruId": 366,
+    "displayName": "Cross Poison",
+    "effect": "EFFECT_POISON_HIT",
+    "power": 70,
+    "split": "Physical",
+    "secondaryEffectChance": 10
+  },
+  "darkpulse": {
+    "cfruId": 367,
+    "displayName": "Dark Pulse",
+    "effect": "EFFECT_FLINCH_HIT",
+    "power": 80,
+    "split": "Special",
+    "secondaryEffectChance": 20
+  },
+  "discharge": {
+    "cfruId": 368,
+    "displayName": "Discharge",
+    "effect": "EFFECT_PARALYZE_HIT",
+    "power": 80,
+    "split": "Special",
+    "secondaryEffectChance": 30
+  },
+  "dracometeor": {
+    "cfruId": 369,
+    "displayName": "Draco Meteor",
+    "effect": "EFFECT_OVERHEAT",
+    "power": 130,
+    "split": "Special",
+    "secondaryEffectChance": 100
+  },
+  "dragonpulse": {
+    "cfruId": 370,
+    "displayName": "Dragon Pulse",
+    "effect": "EFFECT_HIT",
+    "power": 85,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "drainpunch": {
+    "cfruId": 371,
+    "displayName": "Drain Punch",
+    "effect": "EFFECT_ABSORB",
+    "power": 75,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "earthpower": {
+    "cfruId": 372,
+    "displayName": "Earth Power",
+    "effect": "EFFECT_SPECIAL_DEFENSE_DOWN_HIT",
+    "power": 90,
+    "split": "Special",
+    "secondaryEffectChance": 10
+  },
+  "energyball": {
+    "cfruId": 373,
+    "displayName": "Energy Ball",
+    "effect": "EFFECT_SPECIAL_DEFENSE_DOWN_HIT",
+    "power": 90,
+    "split": "Special",
+    "secondaryEffectChance": 10
+  },
+  "focusblast": {
+    "cfruId": 374,
+    "displayName": "Focus Blast",
+    "effect": "EFFECT_SPECIAL_DEFENSE_DOWN_HIT",
+    "power": 120,
+    "split": "Special",
+    "secondaryEffectChance": 10
+  },
+  "forcepalm": {
+    "cfruId": 375,
+    "displayName": "Force Palm",
+    "effect": "EFFECT_PARALYZE_HIT",
+    "power": 60,
+    "split": "Physical",
+    "secondaryEffectChance": 30
+  },
+  "gigaimpact": {
+    "cfruId": 376,
+    "displayName": "Giga Impact",
+    "effect": "EFFECT_RECHARGE",
+    "power": 150,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "grassknot": {
+    "cfruId": 377,
+    "displayName": "Grass Knot",
+    "effect": "EFFECT_HIT",
+    "power": 1,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "gunkshot": {
+    "cfruId": 378,
+    "displayName": "Gunk Shot",
+    "effect": "EFFECT_POISON_HIT",
+    "power": 120,
+    "split": "Physical",
+    "secondaryEffectChance": 30
+  },
+  "hammerarm": {
+    "cfruId": 379,
+    "displayName": "Hammer Arm",
+    "effect": "EFFECT_SUPERPOWER",
+    "power": 100,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "headsmash": {
+    "cfruId": 380,
+    "displayName": "Head Smash",
+    "effect": "EFFECT_RECOIL",
+    "power": 150,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "iceshard": {
+    "cfruId": 381,
+    "displayName": "Ice Shard",
+    "effect": "EFFECT_QUICK_ATTACK",
+    "power": 40,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "ironhead": {
+    "cfruId": 382,
+    "displayName": "Iron Head",
+    "effect": "EFFECT_FLINCH_HIT",
+    "power": 80,
+    "split": "Physical",
+    "secondaryEffectChance": 30
+  },
+  "lavaplume": {
+    "cfruId": 383,
+    "displayName": "Lava Plume",
+    "effect": "EFFECT_BURN_HIT",
+    "power": 80,
+    "split": "Special",
+    "secondaryEffectChance": 30
+  },
+  "magnetbomb": {
+    "cfruId": 384,
+    "displayName": "Magnet Bomb",
+    "effect": "EFFECT_ALWAYS_HIT",
+    "power": 60,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "mudbomb": {
+    "cfruId": 385,
+    "displayName": "Mud Bomb",
+    "effect": "EFFECT_ACCURACY_DOWN_HIT",
+    "power": 65,
+    "split": "Special",
+    "secondaryEffectChance": 30
+  },
+  "nastyplot": {
+    "cfruId": 386,
+    "displayName": "Nasty Plot",
+    "effect": "EFFECT_SPECIAL_ATTACK_UP_2",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "nightslash": {
+    "cfruId": 387,
+    "displayName": "Night Slash",
+    "effect": "EFFECT_HIGH_CRITICAL",
+    "power": 70,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "ominouswind": {
+    "cfruId": 388,
+    "displayName": "Ominous Wind",
+    "effect": "EFFECT_ALL_STATS_UP_HIT",
+    "power": 60,
+    "split": "Special",
+    "secondaryEffectChance": 10
+  },
+  "powergem": {
+    "cfruId": 389,
+    "displayName": "Power Gem",
+    "effect": "EFFECT_HIT",
+    "power": 80,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "powerwhip": {
+    "cfruId": 390,
+    "displayName": "Power Whip",
+    "effect": "EFFECT_HIT",
+    "power": 120,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "psychocut": {
+    "cfruId": 391,
+    "displayName": "Psycho Cut",
+    "effect": "EFFECT_HIGH_CRITICAL",
+    "power": 70,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "rockclimb": {
+    "cfruId": 392,
+    "displayName": "Rock Climb",
+    "effect": "EFFECT_CONFUSE_HIT",
+    "power": 90,
+    "split": "Physical",
+    "secondaryEffectChance": 20
+  },
+  "rockpolish": {
+    "cfruId": 393,
+    "displayName": "Rock Polish",
+    "effect": "EFFECT_SPEED_UP_2",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "rockwrecker": {
+    "cfruId": 394,
+    "displayName": "Rock Wrecker",
+    "effect": "EFFECT_RECHARGE",
+    "power": 150,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "roost": {
+    "cfruId": 395,
+    "displayName": "Roost",
+    "effect": "EFFECT_RESTORE_HP",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "seedbomb": {
+    "cfruId": 396,
+    "displayName": "Seed Bomb",
+    "effect": "EFFECT_HIT",
+    "power": 80,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "shadowclaw": {
+    "cfruId": 397,
+    "displayName": "Shadow Claw",
+    "effect": "EFFECT_HIGH_CRITICAL",
+    "power": 70,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "shadowsneak": {
+    "cfruId": 398,
+    "displayName": "Shadow Sneak",
+    "effect": "EFFECT_QUICK_ATTACK",
+    "power": 40,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "vacuumwave": {
+    "cfruId": 399,
+    "displayName": "Vacuum Wave",
+    "effect": "EFFECT_QUICK_ATTACK",
+    "power": 40,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "xscissor": {
+    "cfruId": 400,
+    "displayName": "X-Scissor",
+    "effect": "EFFECT_HIT",
+    "power": 80,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "zenheadbutt": {
+    "cfruId": 401,
+    "displayName": "Zen Headbutt",
+    "effect": "EFFECT_FLINCH_HIT",
+    "power": 80,
+    "split": "Physical",
+    "secondaryEffectChance": 20
+  },
+  "switcheroo": {
+    "cfruId": 402,
+    "displayName": "Switcheroo",
+    "effect": "EFFECT_TRICK",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "drillrun": {
+    "cfruId": 403,
+    "displayName": "Drill Run",
+    "effect": "EFFECT_HIGH_CRITICAL",
+    "power": 80,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "bulldoze": {
+    "cfruId": 404,
+    "displayName": "Bulldoze",
+    "effect": "EFFECT_SPEED_DOWN_HIT",
+    "power": 60,
+    "split": "Physical",
+    "secondaryEffectChance": 100
+  },
+  "electroweb": {
+    "cfruId": 405,
+    "displayName": "Electroweb",
+    "effect": "EFFECT_SPEED_DOWN_HIT",
+    "power": 55,
+    "split": "Special",
+    "secondaryEffectChance": 100
+  },
+  "flamecharge": {
+    "cfruId": 406,
+    "displayName": "Flame Charge",
+    "effect": "EFFECT_SPEED_UP_1_HIT",
+    "power": 50,
+    "split": "Physical",
+    "secondaryEffectChance": 100
+  },
+  "frostbreath": {
+    "cfruId": 407,
+    "displayName": "Frost Breath",
+    "effect": "EFFECT_HIT",
+    "power": 60,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "heartstamp": {
+    "cfruId": 408,
+    "displayName": "Heart Stamp",
+    "effect": "EFFECT_FLINCH_HIT",
+    "power": 60,
+    "split": "Physical",
+    "secondaryEffectChance": 30
+  },
+  "honeclaws": {
+    "cfruId": 409,
+    "displayName": "Hone Claws",
+    "effect": "EFFECT_ATK_ACC_UP",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "hornleech": {
+    "cfruId": 410,
+    "displayName": "Horn Leech",
+    "effect": "EFFECT_ABSORB",
+    "power": 75,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "coil": {
+    "cfruId": 411,
+    "displayName": "Coil",
+    "effect": "EFFECT_BULK_UP",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "hurricane": {
+    "cfruId": 412,
+    "displayName": "Hurricane",
+    "effect": "EFFECT_THUNDER",
+    "power": 110,
+    "split": "Special",
+    "secondaryEffectChance": 30
+  },
+  "iciclecrash": {
+    "cfruId": 413,
+    "displayName": "Icicle Crash",
+    "effect": "EFFECT_FLINCH_HIT",
+    "power": 85,
+    "split": "Physical",
+    "secondaryEffectChance": 30
+  },
+  "workup": {
+    "cfruId": 414,
+    "displayName": "Work Up",
+    "effect": "EFFECT_ATK_SPATK_UP",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "quiverdance": {
+    "cfruId": 415,
+    "displayName": "Quiver Dance",
+    "effect": "EFFECT_CALM_MIND",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "leaftornado": {
+    "cfruId": 416,
+    "displayName": "Leaf Tornado",
+    "effect": "EFFECT_ACCURACY_DOWN_HIT",
+    "power": 65,
+    "split": "Special",
+    "secondaryEffectChance": 30
+  },
+  "lowsweep": {
+    "cfruId": 417,
+    "displayName": "Low Sweep",
+    "effect": "EFFECT_SPEED_DOWN_HIT",
+    "power": 65,
+    "split": "Physical",
+    "secondaryEffectChance": 100
+  },
+  "snarl": {
+    "cfruId": 418,
+    "displayName": "Snarl",
+    "effect": "EFFECT_SPECIAL_ATTACK_DOWN_HIT",
+    "power": 55,
+    "split": "Special",
+    "secondaryEffectChance": 100
+  },
+  "strugglebug": {
+    "cfruId": 419,
+    "displayName": "Struggle Bug",
+    "effect": "EFFECT_SPECIAL_ATTACK_DOWN_HIT",
+    "power": 50,
+    "split": "Special",
+    "secondaryEffectChance": 100
+  },
+  "steamroller": {
+    "cfruId": 420,
+    "displayName": "Steamroller",
+    "effect": "EFFECT_FLINCH_HIT",
+    "power": 65,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "stormthrow": {
+    "cfruId": 421,
+    "displayName": "Storm Throw",
+    "effect": "EFFECT_HIT",
+    "power": 60,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "venoshock": {
+    "cfruId": 422,
+    "displayName": "Venoshock",
+    "effect": "EFFECT_HIT",
+    "power": 65,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "wildcharge": {
+    "cfruId": 423,
+    "displayName": "Wild Charge",
+    "effect": "EFFECT_RECOIL",
+    "power": 90,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "poisonjab": {
+    "cfruId": 424,
+    "displayName": "Poison Jab",
+    "effect": "EFFECT_POISON_HIT",
+    "power": 80,
+    "split": "Physical",
+    "secondaryEffectChance": 30
+  },
+  "acidspray": {
+    "cfruId": 425,
+    "displayName": "Acid Spray",
+    "effect": "EFFECT_SPECIAL_DEFENSE_DOWN_2_HIT",
+    "power": 40,
+    "split": "Special",
+    "secondaryEffectChance": 100
+  },
+  "fierydance": {
+    "cfruId": 426,
+    "displayName": "Fiery Dance",
+    "effect": "EFFECT_SPECIAL_ATTACK_UP_HIT",
+    "power": 80,
+    "split": "Special",
+    "secondaryEffectChance": 50
+  },
+  "clearsmog": {
+    "cfruId": 427,
+    "displayName": "Clear Smog",
+    "effect": "EFFECT_REMOVE_TARGET_STAT_CHANGES",
+    "power": 50,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "leafstorm": {
+    "cfruId": 428,
+    "displayName": "Leaf Storm",
+    "effect": "EFFECT_OVERHEAT",
+    "power": 130,
+    "split": "Special",
+    "secondaryEffectChance": 100
+  },
+  "stoneedge": {
+    "cfruId": 429,
+    "displayName": "Stone Edge",
+    "effect": "EFFECT_HIGH_CRITICAL",
+    "power": 100,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "payback": {
+    "cfruId": 430,
+    "displayName": "Payback",
+    "effect": "EFFECT_HIT",
+    "power": 50,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "firefang": {
+    "cfruId": 431,
+    "displayName": "Fire Fang",
+    "effect": "EFFECT_FLINCH_HIT",
+    "power": 65,
+    "split": "Physical",
+    "secondaryEffectChance": 10
+  },
+  "icefang": {
+    "cfruId": 432,
+    "displayName": "Ice Fang",
+    "effect": "EFFECT_FLINCH_HIT",
+    "power": 65,
+    "split": "Physical",
+    "secondaryEffectChance": 10
+  },
+  "thunderfang": {
+    "cfruId": 433,
+    "displayName": "Thunder Fang",
+    "effect": "EFFECT_FLINCH_HIT",
+    "power": 65,
+    "split": "Physical",
+    "secondaryEffectChance": 10
+  },
+  "flareblitz": {
+    "cfruId": 434,
+    "displayName": "Flare Blitz",
+    "effect": "EFFECT_BURN_HIT",
+    "power": 120,
+    "split": "Physical",
+    "secondaryEffectChance": 10
+  },
+  "inferno": {
+    "cfruId": 435,
+    "displayName": "Inferno",
+    "effect": "EFFECT_BURN_HIT",
+    "power": 100,
+    "split": "Special",
+    "secondaryEffectChance": 100
+  },
+  "hex": {
+    "cfruId": 436,
+    "displayName": "Hex",
+    "effect": "EFFECT_HIT",
+    "power": 65,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "dualchop": {
+    "cfruId": 437,
+    "displayName": "Dual Chop",
+    "effect": "EFFECT_DOUBLE_HIT",
+    "power": 40,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "doublehit": {
+    "cfruId": 438,
+    "displayName": "Double Hit",
+    "effect": "EFFECT_DOUBLE_HIT",
+    "power": 35,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "cottonguard": {
+    "cfruId": 439,
+    "displayName": "Cotton Guard",
+    "effect": "EFFECT_DEFENSE_UP_2",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "acrobatics": {
+    "cfruId": 440,
+    "displayName": "Acrobatics",
+    "effect": "EFFECT_HIT",
+    "power": 55,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "flameburst": {
+    "cfruId": 441,
+    "displayName": "Flame Burst",
+    "effect": "EFFECT_FLAMEBURST",
+    "power": 70,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "uturn": {
+    "cfruId": 442,
+    "displayName": "U-turn",
+    "effect": "EFFECT_BATON_PASS",
+    "power": 70,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "voltswitch": {
+    "cfruId": 443,
+    "displayName": "Volt Switch",
+    "effect": "EFFECT_BATON_PASS",
+    "power": 70,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "dragontail": {
+    "cfruId": 444,
+    "displayName": "Dragon Tail",
+    "effect": "EFFECT_ROAR",
+    "power": 60,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "circlethrow": {
+    "cfruId": 445,
+    "displayName": "Circle Throw",
+    "effect": "EFFECT_ROAR",
+    "power": 60,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "mirrorshot": {
+    "cfruId": 446,
+    "displayName": "Mirror Shot",
+    "effect": "EFFECT_ACCURACY_DOWN_HIT",
+    "power": 65,
+    "split": "Special",
+    "secondaryEffectChance": 30
+  },
+  "woodhammer": {
+    "cfruId": 447,
+    "displayName": "Wood Hammer",
+    "effect": "EFFECT_RECOIL",
+    "power": 120,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "healpulse": {
+    "cfruId": 448,
+    "displayName": "Heal Pulse",
+    "effect": "EFFECT_HEAL_TARGET",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "flashcannon": {
+    "cfruId": 449,
+    "displayName": "Flash Cannon",
+    "effect": "EFFECT_SPECIAL_DEFENSE_DOWN_HIT",
+    "power": 80,
+    "split": "Special",
+    "secondaryEffectChance": 10
+  },
+  "bugbite": {
+    "cfruId": 450,
+    "displayName": "Bug Bite",
+    "effect": "EFFECT_EAT_BERRY",
+    "power": 60,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "pluck": {
+    "cfruId": 451,
+    "displayName": "Pluck",
+    "effect": "EFFECT_EAT_BERRY",
+    "power": 60,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "shellsmash": {
+    "cfruId": 452,
+    "displayName": "Shell Smash",
+    "effect": "EFFECT_DRAGON_DANCE",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "ragepowder": {
+    "cfruId": 453,
+    "displayName": "Rage Powder",
+    "effect": "EFFECT_FOLLOW_ME",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "wakeupslap": {
+    "cfruId": 454,
+    "displayName": "Wake-Up Slap",
+    "effect": "EFFECT_SMELLINGSALT",
+    "power": 70,
+    "split": "Physical",
+    "secondaryEffectChance": 100
+  },
+  "razorshell": {
+    "cfruId": 455,
+    "displayName": "Razor Shell",
+    "effect": "EFFECT_DEFENSE_DOWN_HIT",
+    "power": 75,
+    "split": "Physical",
+    "secondaryEffectChance": 50
+  },
+  "copycat": {
+    "cfruId": 456,
+    "displayName": "Copycat",
+    "effect": "EFFECT_MIRROR_MOVE",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "miracleeye": {
+    "cfruId": 457,
+    "displayName": "Miracle Eye",
+    "effect": "EFFECT_FORESIGHT",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "suckerpunch": {
+    "cfruId": 458,
+    "displayName": "Sucker Punch",
+    "effect": "EFFECT_SUCKER_PUNCH",
+    "power": 70,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "scald": {
+    "cfruId": 459,
+    "displayName": "Scald",
+    "effect": "EFFECT_BURN_HIT",
+    "power": 80,
+    "split": "Special",
+    "secondaryEffectChance": 30
+  },
+  "brine": {
+    "cfruId": 460,
+    "displayName": "Brine",
+    "effect": "EFFECT_HIT",
+    "power": 65,
+    "split": "Special",
+    "secondaryEffectChance": 100
+  },
+  "fairywind": {
+    "cfruId": 461,
+    "displayName": "Fairy Wind",
+    "effect": "EFFECT_HIT",
+    "power": 40,
+    "split": "Special",
+    "secondaryEffectChance": 30
+  },
+  "babydolleyes": {
+    "cfruId": 462,
+    "displayName": "Doll Eyes",
+    "effect": "EFFECT_ATTACK_DOWN",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "playrough": {
+    "cfruId": 463,
+    "displayName": "Play Rough",
+    "effect": "EFFECT_ATTACK_DOWN_HIT",
+    "power": 90,
+    "split": "Physical",
+    "secondaryEffectChance": 10
+  },
+  "moonblast": {
+    "cfruId": 464,
+    "displayName": "Moonblast",
+    "effect": "EFFECT_SPECIAL_ATTACK_DOWN_HIT",
+    "power": 95,
+    "split": "Special",
+    "secondaryEffectChance": 30
+  },
+  "drainingkiss": {
+    "cfruId": 465,
+    "displayName": "Drain Kiss",
+    "effect": "EFFECT_ABSORB",
+    "power": 50,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "dazzlinggleam": {
+    "cfruId": 466,
+    "displayName": "Dazzle Gleam",
+    "effect": "EFFECT_HIT",
+    "power": 80,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "disarmingvoice": {
+    "cfruId": 467,
+    "displayName": "Disarm Cry",
+    "effect": "EFFECT_ALWAYS_HIT",
+    "power": 40,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "stealthrock": {
+    "cfruId": 468,
+    "displayName": "Stealth Rock",
+    "effect": "EFFECT_SPIKES",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "toxicspikes": {
+    "cfruId": 469,
+    "displayName": "Toxic Spikes",
+    "effect": "EFFECT_SPIKES",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "healingwish": {
+    "cfruId": 470,
+    "displayName": "Healing Wish",
+    "effect": "EFFECT_MEMENTO",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "lunardance": {
+    "cfruId": 471,
+    "displayName": "Lunar Dance",
+    "effect": "EFFECT_MEMENTO",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "tailwind": {
+    "cfruId": 472,
+    "displayName": "Tailwind",
+    "effect": "EFFECT_TEAM_EFFECTS",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "boomburst": {
+    "cfruId": 473,
+    "displayName": "Boomburst",
+    "effect": "EFFECT_HIT",
+    "power": 140,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "incinerate": {
+    "cfruId": 474,
+    "displayName": "Incinerate",
+    "effect": "EFFECT_EAT_BERRY",
+    "power": 60,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "worryseed": {
+    "cfruId": 475,
+    "displayName": "Worry Seed",
+    "effect": "EFFECT_SKILL_SWAP",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "gastroacid": {
+    "cfruId": 476,
+    "displayName": "Gastro Acid",
+    "effect": "EFFECT_SKILL_SWAP",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "geomancy": {
+    "cfruId": 477,
+    "displayName": "Geomancy",
+    "effect": "EFFECT_CALM_MIND",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "flowershield": {
+    "cfruId": 478,
+    "displayName": "Flower Guard",
+    "effect": "EFFECT_DEFENSE_UP",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "rototiller": {
+    "cfruId": 479,
+    "displayName": "Rototiller",
+    "effect": "EFFECT_ATK_SPATK_UP",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "shiftgear": {
+    "cfruId": 480,
+    "displayName": "Shift Gear",
+    "effect": "EFFECT_DRAGON_DANCE",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "stickyweb": {
+    "cfruId": 481,
+    "displayName": "Sticky Web",
+    "effect": "EFFECT_SPIKES",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "storedpower": {
+    "cfruId": 482,
+    "displayName": "Stored Power",
+    "effect": "EFFECT_HIT",
+    "power": 20,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "acupressure": {
+    "cfruId": 483,
+    "displayName": "Acupressure",
+    "effect": "EFFECT_EVASION_UP",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "punishment": {
+    "cfruId": 484,
+    "displayName": "Punishment",
+    "effect": "EFFECT_HIT",
+    "power": 60,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "assurance": {
+    "cfruId": 485,
+    "displayName": "Assurance",
+    "effect": "EFFECT_HIT",
+    "power": 60,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "dragonrush": {
+    "cfruId": 486,
+    "displayName": "Dragon Rush",
+    "effect": "EFFECT_FLINCH_HIT",
+    "power": 100,
+    "split": "Physical",
+    "secondaryEffectChance": 30
+  },
+  "darkvoid": {
+    "cfruId": 487,
+    "displayName": "Dark Void",
+    "effect": "EFFECT_SLEEP",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 100
+  },
+  "feint": {
+    "cfruId": 488,
+    "displayName": "Feint",
+    "effect": "EFFECT_FEINT",
+    "power": 30,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "phantomforce": {
+    "cfruId": 489,
+    "displayName": "PhantomForce",
+    "effect": "EFFECT_SEMI_INVULNERABLE",
+    "power": 90,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "petalblizzard": {
+    "cfruId": 490,
+    "displayName": "Petal Storm",
+    "effect": "EFFECT_HIT",
+    "power": 90,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "playnice": {
+    "cfruId": 491,
+    "displayName": "Play Nice",
+    "effect": "EFFECT_PLAY_NICE",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "roaroftime": {
+    "cfruId": 492,
+    "displayName": "Roar of Time",
+    "effect": "EFFECT_RECHARGE",
+    "power": 150,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "spacialrend": {
+    "cfruId": 493,
+    "displayName": "Spacial Rend",
+    "effect": "EFFECT_HIGH_CRITICAL",
+    "power": 100,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "magmastorm": {
+    "cfruId": 494,
+    "displayName": "Magma Storm",
+    "effect": "EFFECT_TRAP",
+    "power": 100,
+    "split": "Special",
+    "secondaryEffectChance": 100
+  },
+  "finalgambit": {
+    "cfruId": 495,
+    "displayName": "Final Gambit",
+    "effect": "EFFECT_MEMENTO",
+    "power": 1,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "shadowforce": {
+    "cfruId": 496,
+    "displayName": "Shadow Force",
+    "effect": "EFFECT_SEMI_INVULNERABLE",
+    "power": 120,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "nuzzle": {
+    "cfruId": 497,
+    "displayName": "Nuzzle",
+    "effect": "EFFECT_PARALYZE_HIT",
+    "power": 20,
+    "split": "Physical",
+    "secondaryEffectChance": 100
+  },
+  "retaliate": {
+    "cfruId": 498,
+    "displayName": "Retaliate",
+    "effect": "EFFECT_HIT",
+    "power": 70,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "steelyhit": {
+    "cfruId": 499,
+    "displayName": "Metal Bash",
+    "effect": "EFFECT_HIT",
+    "power": 40,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "judgment": {
+    "cfruId": 500,
+    "displayName": "Judgment",
+    "effect": "EFFECT_HIT",
+    "power": 100,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "freezedry": {
+    "cfruId": 501,
+    "displayName": "Freeze-Dry",
+    "effect": "EFFECT_FREEZE_HIT",
+    "power": 70,
+    "split": "Special",
+    "secondaryEffectChance": 30
+  },
+  "psyshock": {
+    "cfruId": 502,
+    "displayName": "Psyshock",
+    "effect": "EFFECT_HIT",
+    "power": 80,
+    "split": "Special",
+    "secondaryEffectChance": 100
+  },
+  "round": {
+    "cfruId": 503,
+    "displayName": "Round",
+    "effect": "EFFECT_FURY_CUTTER",
+    "power": 60,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "tailslap": {
+    "cfruId": 504,
+    "displayName": "Tail Slap",
+    "effect": "EFFECT_MULTI_HIT",
+    "power": 25,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "geargrind": {
+    "cfruId": 505,
+    "displayName": "Gear Grind",
+    "effect": "EFFECT_DOUBLE_HIT",
+    "power": 50,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "naturalgift": {
+    "cfruId": 506,
+    "displayName": "Natural Gift",
+    "effect": "EFFECT_NATURAL_GIFT",
+    "power": 1,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "chipaway": {
+    "cfruId": 507,
+    "displayName": "Chip Away",
+    "effect": "EFFECT_HIT",
+    "power": 70,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "smackdown": {
+    "cfruId": 508,
+    "displayName": "Smack Down",
+    "effect": "EFFECT_SMACK_DOWN",
+    "power": 50,
+    "split": "Physical",
+    "secondaryEffectChance": 100
+  },
+  "hyperspacehole": {
+    "cfruId": 509,
+    "displayName": "Space Hole",
+    "effect": "EFFECT_FEINT",
+    "power": 80,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "gyroball": {
+    "cfruId": 510,
+    "displayName": "Gyro Ball",
+    "effect": "EFFECT_HIT",
+    "power": 1,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "hyperspacefury": {
+    "cfruId": 511,
+    "displayName": "Space Fury",
+    "effect": "EFFECT_SUPERPOWER",
+    "power": 100,
+    "split": "Physical",
+    "secondaryEffectChance": 100
+  },
+  "attackorder": {
+    "cfruId": 512,
+    "displayName": "Attack Order",
+    "effect": "EFFECT_HIGH_CRITICAL",
+    "power": 90,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "defendorder": {
+    "cfruId": 513,
+    "displayName": "Defend Order",
+    "effect": "EFFECT_COSMIC_POWER",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "healorder": {
+    "cfruId": 514,
+    "displayName": "Heal Order",
+    "effect": "EFFECT_RESTORE_HP",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "captivate": {
+    "cfruId": 515,
+    "displayName": "Captivate",
+    "effect": "EFFECT_SPECIAL_ATTACK_DOWN_2",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "defog": {
+    "cfruId": 516,
+    "displayName": "Defog",
+    "effect": "EFFECT_RAPID_SPIN",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "originpulse": {
+    "cfruId": 517,
+    "displayName": "Origin Pulse",
+    "effect": "EFFECT_HIT",
+    "power": 110,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "precipiceblades": {
+    "cfruId": 518,
+    "displayName": "Cliff Blades",
+    "effect": "EFFECT_HIT",
+    "power": 120,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "guardswap": {
+    "cfruId": 519,
+    "displayName": "Guard Swap",
+    "effect": "EFFECT_STAT_SWAP_SPLIT",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "steameruption": {
+    "cfruId": 520,
+    "displayName": "Steam Pump",
+    "effect": "EFFECT_BURN_HIT",
+    "power": 120,
+    "split": "Special",
+    "secondaryEffectChance": 30
+  },
+  "metalburst": {
+    "cfruId": 521,
+    "displayName": "Metal Burst",
+    "effect": "EFFECT_COUNTER",
+    "power": 1,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "mefirst": {
+    "cfruId": 522,
+    "displayName": "Me First",
+    "effect": "EFFECT_ME_FIRST",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "powerswap": {
+    "cfruId": 523,
+    "displayName": "Power Swap",
+    "effect": "EFFECT_STAT_SWAP_SPLIT",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "powertrick": {
+    "cfruId": 524,
+    "displayName": "Power Trick",
+    "effect": "EFFECT_STAT_SWAP_SPLIT",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "psychoshift": {
+    "cfruId": 525,
+    "displayName": "Psycho Shift",
+    "effect": "EFFECT_REFRESH",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "wringout": {
+    "cfruId": 526,
+    "displayName": "Wring Out",
+    "effect": "EFFECT_HIT",
+    "power": 1,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "kingsshield": {
+    "cfruId": 527,
+    "displayName": "Kings Shield",
+    "effect": "EFFECT_PROTECT",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "psystrike": {
+    "cfruId": 528,
+    "displayName": "Psystrike",
+    "effect": "EFFECT_HIT",
+    "power": 100,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "autotomize": {
+    "cfruId": 529,
+    "displayName": "Autotomize",
+    "effect": "EFFECT_SPEED_UP_2",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "diamondstorm": {
+    "cfruId": 530,
+    "displayName": "DiamondStorm",
+    "effect": "EFFECT_DEFENSE_UP_2_HIT",
+    "power": 100,
+    "split": "Physical",
+    "secondaryEffectChance": 50
+  },
+  "sludgewave": {
+    "cfruId": 531,
+    "displayName": "Sludge Wave",
+    "effect": "EFFECT_POISON_HIT",
+    "power": 95,
+    "split": "Special",
+    "secondaryEffectChance": 10
+  },
+  "heavyslam": {
+    "cfruId": 532,
+    "displayName": "Heavy Slam",
+    "effect": "EFFECT_HIT",
+    "power": 1,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "synchronoise": {
+    "cfruId": 533,
+    "displayName": "Synchronoise",
+    "effect": "EFFECT_HIT",
+    "power": 120,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "electroball": {
+    "cfruId": 534,
+    "displayName": "Electro Ball",
+    "effect": "EFFECT_HIT",
+    "power": 1,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "foulplay": {
+    "cfruId": 535,
+    "displayName": "Foul Play",
+    "effect": "EFFECT_HIT",
+    "power": 95,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "entrainment": {
+    "cfruId": 536,
+    "displayName": "Entrainment",
+    "effect": "EFFECT_SKILL_SWAP",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "nightdaze": {
+    "cfruId": 537,
+    "displayName": "Night Daze",
+    "effect": "EFFECT_ACCURACY_DOWN_HIT",
+    "power": 85,
+    "split": "Special",
+    "secondaryEffectChance": 40
+  },
+  "echoedvoice": {
+    "cfruId": 538,
+    "displayName": "Echoed Voice",
+    "effect": "EFFECT_FURY_CUTTER",
+    "power": 40,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "landswrath": {
+    "cfruId": 539,
+    "displayName": "Land's Wrath",
+    "effect": "EFFECT_HIT",
+    "power": 90,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "oblivionwing": {
+    "cfruId": 540,
+    "displayName": "OblivionWing",
+    "effect": "EFFECT_ABSORB",
+    "power": 80,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "heartswap": {
+    "cfruId": 541,
+    "displayName": "Heart Swap",
+    "effect": "EFFECT_STAT_SWAP_SPLIT",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "crushgrip": {
+    "cfruId": 542,
+    "displayName": "Crush Grip",
+    "effect": "EFFECT_HIT",
+    "power": 1,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "sacredsword": {
+    "cfruId": 543,
+    "displayName": "Sacred Sword",
+    "effect": "EFFECT_HIT",
+    "power": 90,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "heatcrash": {
+    "cfruId": 544,
+    "displayName": "Heat Crash",
+    "effect": "EFFECT_HIT",
+    "power": 1,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "headcharge": {
+    "cfruId": 545,
+    "displayName": "Head Charge",
+    "effect": "EFFECT_RECOIL",
+    "power": 120,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "technoblast": {
+    "cfruId": 546,
+    "displayName": "Techno Blast",
+    "effect": "EFFECT_HIT",
+    "power": 120,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "relicsong": {
+    "cfruId": 547,
+    "displayName": "Relic Song",
+    "effect": "EFFECT_RELIC_SONG",
+    "power": 75,
+    "split": "Special",
+    "secondaryEffectChance": 10
+  },
+  "secretsword": {
+    "cfruId": 548,
+    "displayName": "Secret Sword",
+    "effect": "EFFECT_HIT",
+    "power": 85,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "glaciate": {
+    "cfruId": 549,
+    "displayName": "Glaciate",
+    "effect": "EFFECT_SPEED_DOWN_HIT",
+    "power": 65,
+    "split": "Special",
+    "secondaryEffectChance": 100
+  },
+  "boltstrike": {
+    "cfruId": 550,
+    "displayName": "Bolt Strike",
+    "effect": "EFFECT_PARALYZE_HIT",
+    "power": 130,
+    "split": "Physical",
+    "secondaryEffectChance": 20
+  },
+  "blueflare": {
+    "cfruId": 551,
+    "displayName": "Blue Flare",
+    "effect": "EFFECT_BURN_HIT",
+    "power": 130,
+    "split": "Special",
+    "secondaryEffectChance": 20
+  },
+  "freezeshock": {
+    "cfruId": 552,
+    "displayName": "Freeze Shock",
+    "effect": "EFFECT_SKY_ATTACK",
+    "power": 140,
+    "split": "Physical",
+    "secondaryEffectChance": 30
+  },
+  "iceburn": {
+    "cfruId": 553,
+    "displayName": "Ice Burn",
+    "effect": "EFFECT_SKY_ATTACK",
+    "power": 140,
+    "split": "Special",
+    "secondaryEffectChance": 30
+  },
+  "vcreate": {
+    "cfruId": 554,
+    "displayName": "V-create",
+    "effect": "EFFECT_SUPERPOWER",
+    "power": 180,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "fusionflare": {
+    "cfruId": 555,
+    "displayName": "Fusion Flare",
+    "effect": "EFFECT_HIT",
+    "power": 100,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "fusionbolt": {
+    "cfruId": 556,
+    "displayName": "Fusion Bolt",
+    "effect": "EFFECT_HIT",
+    "power": 100,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "fellstinger": {
+    "cfruId": 557,
+    "displayName": "Fell Stinger",
+    "effect": "EFFECT_ATTACK_UP_HIT",
+    "power": 50,
+    "split": "Physical",
+    "secondaryEffectChance": 100
+  },
+  "nobleroar": {
+    "cfruId": 558,
+    "displayName": "Noble Roar",
+    "effect": "EFFECT_PLAY_NICE",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "dragonascent": {
+    "cfruId": 559,
+    "displayName": "DragonAscent",
+    "effect": "EFFECT_SUPERPOWER",
+    "power": 120,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "partingshot": {
+    "cfruId": 560,
+    "displayName": "Parting Shot",
+    "effect": "EFFECT_BATON_PASS",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "topsyturvy": {
+    "cfruId": 561,
+    "displayName": "Topsy-Turvy",
+    "effect": "EFFECT_TOPSY_TURVY_ELECTRIFY",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "coreenforcer": {
+    "cfruId": 562,
+    "displayName": "Core Enforce",
+    "effect": "EFFECT_SKILL_SWAP",
+    "power": 100,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "chatter": {
+    "cfruId": 563,
+    "displayName": "Chatter",
+    "effect": "EFFECT_CONFUSE_HIT",
+    "power": 65,
+    "split": "Special",
+    "secondaryEffectChance": 100
+  },
+  "confide": {
+    "cfruId": 564,
+    "displayName": "Confide",
+    "effect": "EFFECT_SPECIAL_ATTACK_DOWN",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "watershuriken": {
+    "cfruId": 565,
+    "displayName": "Water Star",
+    "effect": "EFFECT_MULTI_HIT",
+    "power": 15,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "mysticalfire": {
+    "cfruId": 566,
+    "displayName": "Mystic Fire",
+    "effect": "EFFECT_SPECIAL_ATTACK_DOWN_HIT",
+    "power": 75,
+    "split": "Special",
+    "secondaryEffectChance": 100
+  },
+  "spikyshield": {
+    "cfruId": 567,
+    "displayName": "Spiky Shield",
+    "effect": "EFFECT_PROTECT",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "eerieimpulse": {
+    "cfruId": 568,
+    "displayName": "EerieImpulse",
+    "effect": "EFFECT_SPECIAL_ATTACK_DOWN_2",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "holdback": {
+    "cfruId": 569,
+    "displayName": "Hold Back",
+    "effect": "EFFECT_FALSE_SWIPE",
+    "power": 40,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "infestation": {
+    "cfruId": 570,
+    "displayName": "Infestation",
+    "effect": "EFFECT_TRAP",
+    "power": 20,
+    "split": "Special",
+    "secondaryEffectChance": 100
+  },
+  "poweruppunch": {
+    "cfruId": 571,
+    "displayName": "Power-Up Hit",
+    "effect": "EFFECT_ATTACK_UP_HIT",
+    "power": 40,
+    "split": "Physical",
+    "secondaryEffectChance": 100
+  },
+  "thousandarrows": {
+    "cfruId": 572,
+    "displayName": "1000 Arrows",
+    "effect": "EFFECT_SMACK_DOWN",
+    "power": 90,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "thousandwaves": {
+    "cfruId": 573,
+    "displayName": "1000 Waves",
+    "effect": "EFFECT_MEAN_LOOK",
+    "power": 90,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "paraboliccharge": {
+    "cfruId": 574,
+    "displayName": "Para Charge",
+    "effect": "EFFECT_ABSORB",
+    "power": 65,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "searingshot": {
+    "cfruId": 575,
+    "displayName": "Searing Shot",
+    "effect": "EFFECT_BURN_HIT",
+    "power": 100,
+    "split": "Special",
+    "secondaryEffectChance": 30
+  },
+  "seedflare": {
+    "cfruId": 576,
+    "displayName": "Seed Flare",
+    "effect": "EFFECT_SPECIAL_DEFENSE_DOWN_2_HIT",
+    "power": 120,
+    "split": "Special",
+    "secondaryEffectChance": 40
+  },
+  "accelerock": {
+    "cfruId": 577,
+    "displayName": "Accelerock",
+    "effect": "EFFECT_QUICK_ATTACK",
+    "power": 40,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "anchorshot": {
+    "cfruId": 578,
+    "displayName": "Anchor Shot",
+    "effect": "EFFECT_MEAN_LOOK",
+    "power": 80,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "auroraveil": {
+    "cfruId": 579,
+    "displayName": "Aurora Veil",
+    "effect": "EFFECT_REFLECT",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "banefulbunker": {
+    "cfruId": 580,
+    "displayName": "Baneful Bunk",
+    "effect": "EFFECT_PROTECT",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "beakblast": {
+    "cfruId": 581,
+    "displayName": "Beak Blast",
+    "effect": "EFFECT_FOCUS_PUNCH",
+    "power": 100,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "brutalswing": {
+    "cfruId": 582,
+    "displayName": "Brutal Swing",
+    "effect": "EFFECT_HIT",
+    "power": 60,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "burnup": {
+    "cfruId": 583,
+    "displayName": "Burn Up",
+    "effect": "EFFECT_BURN_UP",
+    "power": 130,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "clangingscales": {
+    "cfruId": 584,
+    "displayName": "Clang Scales",
+    "effect": "EFFECT_SUPERPOWER",
+    "power": 110,
+    "split": "Special",
+    "secondaryEffectChance": 100
+  },
+  "darkestlariat": {
+    "cfruId": 585,
+    "displayName": "Dark Lariat",
+    "effect": "EFFECT_HIT",
+    "power": 85,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "dragonhammer": {
+    "cfruId": 586,
+    "displayName": "Draco Hammer",
+    "effect": "EFFECT_HIT",
+    "power": 90,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "firelash": {
+    "cfruId": 587,
+    "displayName": "Fire Lash",
+    "effect": "EFFECT_DEFENSE_DOWN_HIT",
+    "power": 80,
+    "split": "Physical",
+    "secondaryEffectChance": 100
+  },
+  "firstimpression": {
+    "cfruId": 588,
+    "displayName": "First Press",
+    "effect": "EFFECT_FAKE_OUT",
+    "power": 90,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "fleurcannon": {
+    "cfruId": 589,
+    "displayName": "Fleur Cannon",
+    "effect": "EFFECT_OVERHEAT",
+    "power": 130,
+    "split": "Special",
+    "secondaryEffectChance": 100
+  },
+  "floralhealing": {
+    "cfruId": 590,
+    "displayName": "Floral Heal",
+    "effect": "EFFECT_HEAL_TARGET",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 100
+  },
+  "gearup": {
+    "cfruId": 591,
+    "displayName": "Gear Up",
+    "effect": "EFFECT_ATK_SPATK_UP",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "highhorsepower": {
+    "cfruId": 592,
+    "displayName": "HiHorsepower",
+    "effect": "EFFECT_HIT",
+    "power": 95,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "icehammer": {
+    "cfruId": 593,
+    "displayName": "Ice Hammer",
+    "effect": "EFFECT_SUPERPOWER",
+    "power": 100,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "laserfocus": {
+    "cfruId": 594,
+    "displayName": "Laser Focus",
+    "effect": "EFFECT_LOCK_ON",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "leafage": {
+    "cfruId": 595,
+    "displayName": "Leafage",
+    "effect": "EFFECT_HIT",
+    "power": 40,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "liquidation": {
+    "cfruId": 596,
+    "displayName": "Liquidation",
+    "effect": "EFFECT_DEFENSE_DOWN_HIT",
+    "power": 85,
+    "split": "Physical",
+    "secondaryEffectChance": 20
+  },
+  "lunge": {
+    "cfruId": 597,
+    "displayName": "Lunge",
+    "effect": "EFFECT_ATTACK_DOWN_HIT",
+    "power": 80,
+    "split": "Physical",
+    "secondaryEffectChance": 100
+  },
+  "moongeistbeam": {
+    "cfruId": 598,
+    "displayName": "Geist Beam",
+    "effect": "EFFECT_HIT",
+    "power": 100,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "multiattack": {
+    "cfruId": 599,
+    "displayName": "Multi-Attack",
+    "effect": "EFFECT_HIT",
+    "power": 120,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "naturesmadness": {
+    "cfruId": 600,
+    "displayName": "Nature's Mad",
+    "effect": "EFFECT_SUPER_FANG",
+    "power": 1,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "pollenpuff": {
+    "cfruId": 601,
+    "displayName": "Pollen Puff",
+    "effect": "EFFECT_HEAL_TARGET",
+    "power": 90,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "powertrip": {
+    "cfruId": 602,
+    "displayName": "Power Trip",
+    "effect": "EFFECT_HIT",
+    "power": 20,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "prismaticlaser": {
+    "cfruId": 603,
+    "displayName": "Prism Laser",
+    "effect": "EFFECT_RECHARGE",
+    "power": 160,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "psychicfangs": {
+    "cfruId": 604,
+    "displayName": "Psychic Fang",
+    "effect": "EFFECT_BRICK_BREAK",
+    "power": 85,
+    "split": "Physical",
+    "secondaryEffectChance": 100
+  },
+  "purify": {
+    "cfruId": 605,
+    "displayName": "Purify",
+    "effect": "EFFECT_RESTORE_HP",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "revelationdance": {
+    "cfruId": 606,
+    "displayName": "Revel Dance",
+    "effect": "EFFECT_HIT",
+    "power": 90,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "shadowbone": {
+    "cfruId": 607,
+    "displayName": "Shadow Bone",
+    "effect": "EFFECT_DEFENSE_DOWN_HIT",
+    "power": 85,
+    "split": "Physical",
+    "secondaryEffectChance": 20
+  },
+  "shelltrap": {
+    "cfruId": 608,
+    "displayName": "Shell Trap",
+    "effect": "EFFECT_FOCUS_PUNCH",
+    "power": 150,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "shoreup": {
+    "cfruId": 609,
+    "displayName": "Shore Up",
+    "effect": "EFFECT_MORNING_SUN",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "smartstrike": {
+    "cfruId": 610,
+    "displayName": "Smart Strike",
+    "effect": "EFFECT_ALWAYS_HIT",
+    "power": 70,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "solarblade": {
+    "cfruId": 611,
+    "displayName": "Solar Blade",
+    "effect": "EFFECT_SOLARBEAM",
+    "power": 125,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "sparklingaria": {
+    "cfruId": 612,
+    "displayName": "Sparkle Aria",
+    "effect": "EFFECT_SMELLINGSALT",
+    "power": 90,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "spectralthief": {
+    "cfruId": 613,
+    "displayName": "Spect Thief",
+    "effect": "EFFECT_PSYCH_UP",
+    "power": 90,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "speedswap": {
+    "cfruId": 614,
+    "displayName": "Speed Swap",
+    "effect": "EFFECT_STAT_SWAP_SPLIT",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "spiritshackle": {
+    "cfruId": 615,
+    "displayName": "Spirit Lock",
+    "effect": "EFFECT_MEAN_LOOK",
+    "power": 80,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "spotlight": {
+    "cfruId": 616,
+    "displayName": "Spotlight",
+    "effect": "EFFECT_FOLLOW_ME",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "stompingtantrum": {
+    "cfruId": 617,
+    "displayName": "Bad Tantrum",
+    "effect": "EFFECT_HIT",
+    "power": 75,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "strengthsap": {
+    "cfruId": 618,
+    "displayName": "Strength Sap",
+    "effect": "EFFECT_ABSORB",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "sunsteelstrike": {
+    "cfruId": 619,
+    "displayName": "Sunsteel Ram",
+    "effect": "EFFECT_HIT",
+    "power": 100,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "tearfullook": {
+    "cfruId": 620,
+    "displayName": "Teary Look",
+    "effect": "EFFECT_PLAY_NICE",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "throatchop": {
+    "cfruId": 621,
+    "displayName": "Throat Chop",
+    "effect": "EFFECT_ATTACK_BLOCKERS",
+    "power": 80,
+    "split": "Physical",
+    "secondaryEffectChance": 100
+  },
+  "toxicthread": {
+    "cfruId": 622,
+    "displayName": "Toxic Thread",
+    "effect": "EFFECT_POISON",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "tropkick": {
+    "cfruId": 623,
+    "displayName": "Trop Kick",
+    "effect": "EFFECT_ATTACK_DOWN_HIT",
+    "power": 70,
+    "split": "Physical",
+    "secondaryEffectChance": 100
+  },
+  "zingzap": {
+    "cfruId": 624,
+    "displayName": "Zing Zap",
+    "effect": "EFFECT_FLINCH_HIT",
+    "power": 80,
+    "split": "Physical",
+    "secondaryEffectChance": 30
+  },
+  "electricterrain": {
+    "cfruId": 625,
+    "displayName": "Elec Terrain",
+    "effect": "EFFECT_SET_TERRAIN",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "grassyterrain": {
+    "cfruId": 626,
+    "displayName": "GrassTerrain",
+    "effect": "EFFECT_SET_TERRAIN",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "mistyterrain": {
+    "cfruId": 627,
+    "displayName": "Mist Terrain",
+    "effect": "EFFECT_SET_TERRAIN",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "psychicterrain": {
+    "cfruId": 628,
+    "displayName": "Psyc Terrain",
+    "effect": "EFFECT_SET_TERRAIN",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "grasspledge": {
+    "cfruId": 629,
+    "displayName": "Grass Pledge",
+    "effect": "EFFECT_PLEDGE",
+    "power": 80,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "firepledge": {
+    "cfruId": 630,
+    "displayName": "Fire Pledge",
+    "effect": "EFFECT_PLEDGE",
+    "power": 80,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "waterpledge": {
+    "cfruId": 631,
+    "displayName": "Water Pledge",
+    "effect": "EFFECT_PLEDGE",
+    "power": 80,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "trickroom": {
+    "cfruId": 632,
+    "displayName": "Trick Room",
+    "effect": "EFFECT_FIELD_EFFECTS",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "magicroom": {
+    "cfruId": 633,
+    "displayName": "Magic Room",
+    "effect": "EFFECT_FIELD_EFFECTS",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "wonderroom": {
+    "cfruId": 634,
+    "displayName": "Wonder Room",
+    "effect": "EFFECT_FIELD_EFFECTS",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "craftyshield": {
+    "cfruId": 635,
+    "displayName": "Crafty Guard",
+    "effect": "EFFECT_PROTECT",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "matblock": {
+    "cfruId": 636,
+    "displayName": "Mat Block",
+    "effect": "EFFECT_PROTECT",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "quickguard": {
+    "cfruId": 637,
+    "displayName": "Quick Guard",
+    "effect": "EFFECT_PROTECT",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "wideguard": {
+    "cfruId": 638,
+    "displayName": "Wide Guard",
+    "effect": "EFFECT_PROTECT",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "aquaring": {
+    "cfruId": 639,
+    "displayName": "Aqua Ring",
+    "effect": "EFFECT_INGRAIN",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "aromaticmist": {
+    "cfruId": 640,
+    "displayName": "Aroma Mist",
+    "effect": "EFFECT_SPECIAL_DEFENSE_UP",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "belch": {
+    "cfruId": 641,
+    "displayName": "Belch",
+    "effect": "EFFECT_RECYCLE",
+    "power": 120,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "bestow": {
+    "cfruId": 642,
+    "displayName": "Bestow",
+    "effect": "EFFECT_TRICK",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "fling": {
+    "cfruId": 643,
+    "displayName": "Fling",
+    "effect": "EFFECT_FLING",
+    "power": 1,
+    "split": "Physical",
+    "secondaryEffectChance": 100
+  },
+  "flyingpress": {
+    "cfruId": 644,
+    "displayName": "Flying Press",
+    "effect": "EFFECT_HIT",
+    "power": 100,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "gravity": {
+    "cfruId": 645,
+    "displayName": "Gravity",
+    "effect": "EFFECT_FIELD_EFFECTS",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "guardsplit": {
+    "cfruId": 646,
+    "displayName": "Guard Split",
+    "effect": "EFFECT_STAT_SWAP_SPLIT",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "healblock": {
+    "cfruId": 647,
+    "displayName": "Heal Block",
+    "effect": "EFFECT_ATTACK_BLOCKERS",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "iondeluge": {
+    "cfruId": 648,
+    "displayName": "Ion Deluge",
+    "effect": "EFFECT_FIELD_EFFECTS",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "luckychant": {
+    "cfruId": 649,
+    "displayName": "Lucky Chant",
+    "effect": "EFFECT_TEAM_EFFECTS",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "magnetrise": {
+    "cfruId": 650,
+    "displayName": "Magnet Rise",
+    "effect": "EFFECT_TEAM_EFFECTS",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "magneticflux": {
+    "cfruId": 651,
+    "displayName": "Magnet Flux",
+    "effect": "EFFECT_COSMIC_POWER",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "powder": {
+    "cfruId": 652,
+    "displayName": "Powder",
+    "effect": "EFFECT_ATTACK_BLOCKERS",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "powersplit": {
+    "cfruId": 653,
+    "displayName": "Power Split",
+    "effect": "EFFECT_STAT_SWAP_SPLIT",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "reflecttype": {
+    "cfruId": 654,
+    "displayName": "Reflect Type",
+    "effect": "EFFECT_CONVERSION",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "simplebeam": {
+    "cfruId": 655,
+    "displayName": "Simple Beam",
+    "effect": "EFFECT_SKILL_SWAP",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "soak": {
+    "cfruId": 656,
+    "displayName": "Soak",
+    "effect": "EFFECT_TYPE_CHANGES",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "telekinesis": {
+    "cfruId": 657,
+    "displayName": "Telekinesis",
+    "effect": "EFFECT_ATTACK_BLOCKERS",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "trickortreat": {
+    "cfruId": 658,
+    "displayName": "TrickoTreat",
+    "effect": "EFFECT_TYPE_CHANGES",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "venomdrench": {
+    "cfruId": 659,
+    "displayName": "Venom Drench",
+    "effect": "EFFECT_VENOM_DRENCH",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "forestscurse": {
+    "cfruId": 660,
+    "displayName": "Woods Curse",
+    "effect": "EFFECT_TYPE_CHANGES",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "mindblown": {
+    "cfruId": 661,
+    "displayName": "Mind Blown",
+    "effect": "EFFECT_HIT",
+    "power": 150,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "photongeyser": {
+    "cfruId": 662,
+    "displayName": "PhotonGeyser",
+    "effect": "EFFECT_HIT",
+    "power": 100,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "plasmafists": {
+    "cfruId": 663,
+    "displayName": "Plasma Fists",
+    "effect": "EFFECT_FIELD_EFFECTS",
+    "power": 100,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "electrify": {
+    "cfruId": 664,
+    "displayName": "Electrify",
+    "effect": "EFFECT_TOPSY_TURVY_ELECTRIFY",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "embargo": {
+    "cfruId": 665,
+    "displayName": "Embargo",
+    "effect": "EFFECT_ATTACK_BLOCKERS",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "fairylock": {
+    "cfruId": 666,
+    "displayName": "Fairy Lock",
+    "effect": "EFFECT_FAIRY_LOCK_HAPPY_HOUR",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "lightofruin": {
+    "cfruId": 667,
+    "displayName": "Light o Ruin",
+    "effect": "EFFECT_RECOIL",
+    "power": 140,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "trumpcard": {
+    "cfruId": 668,
+    "displayName": "Trump Card",
+    "effect": "EFFECT_HIT",
+    "power": 1,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "afteryou": {
+    "cfruId": 669,
+    "displayName": "After You",
+    "effect": "EFFECT_INSTRUCT_AFTER_YOU_QUASH",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "instruct": {
+    "cfruId": 670,
+    "displayName": "Instruct",
+    "effect": "EFFECT_INSTRUCT_AFTER_YOU_QUASH",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "quash": {
+    "cfruId": 671,
+    "displayName": "Quash",
+    "effect": "EFFECT_INSTRUCT_AFTER_YOU_QUASH",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "happyhour": {
+    "cfruId": 672,
+    "displayName": "Happy Hour",
+    "effect": "EFFECT_FAIRY_LOCK_HAPPY_HOUR",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "doubleironbash": {
+    "cfruId": 673,
+    "displayName": "Double Iron",
+    "effect": "EFFECT_FLINCH_HIT",
+    "power": 60,
+    "split": "Physical",
+    "secondaryEffectChance": 30
+  },
+  "lastresort": {
+    "cfruId": 674,
+    "displayName": "Last Resort",
+    "effect": "EFFECT_LAST_RESORT",
+    "power": 140,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "skydrop": {
+    "cfruId": 675,
+    "displayName": "Sky Drop",
+    "effect": "EFFECT_SKY_DROP",
+    "power": 60,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "celebrate": {
+    "cfruId": 676,
+    "displayName": "Celebrate",
+    "effect": "EFFECT_FAIRY_LOCK_HAPPY_HOUR",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "holdhands": {
+    "cfruId": 677,
+    "displayName": "Hold Hands",
+    "effect": "EFFECT_FAIRY_LOCK_HAPPY_HOUR",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "dynamaxcannon": {
+    "cfruId": 678,
+    "displayName": "DMax Cannon",
+    "effect": "0",
+    "power": 100,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "snipeshot": {
+    "cfruId": 679,
+    "displayName": "Snipe Shot",
+    "effect": "EFFECT_IGNORE_REDIRECTION",
+    "power": 80,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "jawlock": {
+    "cfruId": 680,
+    "displayName": "Jaw Lock",
+    "effect": "EFFECT_MEAN_LOOK",
+    "power": 80,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "stuffcheeks": {
+    "cfruId": 681,
+    "displayName": "Stuff Cheeks",
+    "effect": "EFFECT_DEFENSE_UP_2",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "noretreat": {
+    "cfruId": 682,
+    "displayName": "No Retreat",
+    "effect": "EFFECT_EXTREME_EVOBOOST",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "tarshot": {
+    "cfruId": 683,
+    "displayName": "Tar Shot",
+    "effect": "EFFECT_SPEED_DOWN",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "magicpowder": {
+    "cfruId": 684,
+    "displayName": "Magic Powder",
+    "effect": "EFFECT_TYPE_CHANGES",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "dragondarts": {
+    "cfruId": 685,
+    "displayName": "Dragon Darts",
+    "effect": "0",
+    "power": 50,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "teatime": {
+    "cfruId": 686,
+    "displayName": "Teatime",
+    "effect": "EFFECT_TEATIME",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "octolock": {
+    "cfruId": 687,
+    "displayName": "Octolock",
+    "effect": "EFFECT_MEAN_LOOK",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "boltbeak": {
+    "cfruId": 688,
+    "displayName": "Bolt Beak",
+    "effect": "0",
+    "power": 85,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "fishiousrend": {
+    "cfruId": 689,
+    "displayName": "FishiousRend",
+    "effect": "0",
+    "power": 85,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "courtchange": {
+    "cfruId": 690,
+    "displayName": "Court Change",
+    "effect": "EFFECT_FIELD_EFFECTS",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "clangoroussoul": {
+    "cfruId": 691,
+    "displayName": "Clang Soul",
+    "effect": "EFFECT_EXTREME_EVOBOOST",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "bodypress": {
+    "cfruId": 692,
+    "displayName": "Body Press",
+    "effect": "0",
+    "power": 80,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "decorate": {
+    "cfruId": 693,
+    "displayName": "Decorate",
+    "effect": "EFFECT_HELPING_HAND",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "drumbeating": {
+    "cfruId": 694,
+    "displayName": "Drum Beating",
+    "effect": "EFFECT_SPEED_DOWN_HIT",
+    "power": 80,
+    "split": "Physical",
+    "secondaryEffectChance": 100
+  },
+  "snaptrap": {
+    "cfruId": 695,
+    "displayName": "Snap Trap",
+    "effect": "EFFECT_TRAP",
+    "power": 35,
+    "split": "Physical",
+    "secondaryEffectChance": 100
+  },
+  "pyroball": {
+    "cfruId": 696,
+    "displayName": "Pyro Ball",
+    "effect": "EFFECT_BURN_HIT",
+    "power": 120,
+    "split": "Physical",
+    "secondaryEffectChance": 10
+  },
+  "behemothblade": {
+    "cfruId": 697,
+    "displayName": "Giant Blade",
+    "effect": "0",
+    "power": 100,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "behemothbash": {
+    "cfruId": 698,
+    "displayName": "Giant Bash",
+    "effect": "0",
+    "power": 100,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "aurawheel": {
+    "cfruId": 699,
+    "displayName": "Aura Wheel",
+    "effect": "EFFECT_SPEED_UP_1_HIT",
+    "power": 110,
+    "split": "Physical",
+    "secondaryEffectChance": 100
+  },
+  "breakingswipe": {
+    "cfruId": 700,
+    "displayName": "Break Swipe",
+    "effect": "EFFECT_ATTACK_DOWN_HIT",
+    "power": 60,
+    "split": "Physical",
+    "secondaryEffectChance": 100
+  },
+  "branchpoke": {
+    "cfruId": 701,
+    "displayName": "Branch Poke",
+    "effect": "0",
+    "power": 40,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "overdrive": {
+    "cfruId": 702,
+    "displayName": "Overdrive",
+    "effect": "0",
+    "power": 80,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "appleacid": {
+    "cfruId": 703,
+    "displayName": "Apple Acid",
+    "effect": "EFFECT_SPECIAL_DEFENSE_DOWN_HIT",
+    "power": 80,
+    "split": "Special",
+    "secondaryEffectChance": 100
+  },
+  "gravapple": {
+    "cfruId": 704,
+    "displayName": "Grav Apple",
+    "effect": "EFFECT_DEFENSE_DOWN_HIT",
+    "power": 80,
+    "split": "Physical",
+    "secondaryEffectChance": 100
+  },
+  "spiritbreak": {
+    "cfruId": 705,
+    "displayName": "Spirit Break",
+    "effect": "EFFECT_SPECIAL_ATTACK_DOWN_HIT",
+    "power": 75,
+    "split": "Physical",
+    "secondaryEffectChance": 100
+  },
+  "strangesteam": {
+    "cfruId": 706,
+    "displayName": "Weird Steam",
+    "effect": "EFFECT_CONFUSE_HIT",
+    "power": 90,
+    "split": "Special",
+    "secondaryEffectChance": 20
+  },
+  "lifedew": {
+    "cfruId": 707,
+    "displayName": "Life Dew",
+    "effect": "EFFECT_RESTORE_HP",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "obstruct": {
+    "cfruId": 708,
+    "displayName": "Obstruct",
+    "effect": "EFFECT_PROTECT",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "falsesurrender": {
+    "cfruId": 709,
+    "displayName": "False Yield",
+    "effect": "0",
+    "power": 80,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "meteorassault": {
+    "cfruId": 710,
+    "displayName": "Meteor Rush",
+    "effect": "EFFECT_RECHARGE",
+    "power": 150,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "eternabeam": {
+    "cfruId": 711,
+    "displayName": "Eternabeam",
+    "effect": "EFFECT_RECHARGE",
+    "power": 160,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "steelbeam": {
+    "cfruId": 712,
+    "displayName": "Steel Beam",
+    "effect": "0",
+    "power": 140,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "expandingforce": {
+    "cfruId": 713,
+    "displayName": "Expand Force",
+    "effect": "EFFECT_HIT",
+    "power": 80,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "steelroller": {
+    "cfruId": 714,
+    "displayName": "Steel Roller",
+    "effect": "EFFECT_DAMAGE_SET_TERRAIN",
+    "power": 130,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "scaleshot": {
+    "cfruId": 715,
+    "displayName": "Scale Shot",
+    "effect": "EFFECT_MULTI_HIT",
+    "power": 25,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "meteorbeam": {
+    "cfruId": 716,
+    "displayName": "Meteor Beam",
+    "effect": "EFFECT_SKULL_BASH",
+    "power": 120,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "shellsidearm": {
+    "cfruId": 717,
+    "displayName": "ShellSideArm",
+    "effect": "EFFECT_HIT",
+    "power": 90,
+    "split": "Special",
+    "secondaryEffectChance": 10
+  },
+  "mistyexplosion": {
+    "cfruId": 718,
+    "displayName": "MistyExplode",
+    "effect": "EFFECT_EXPLOSION",
+    "power": 100,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "grassyglide": {
+    "cfruId": 719,
+    "displayName": "Grassy Glide",
+    "effect": "EFFECT_HIT",
+    "power": 70,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "risingvoltage": {
+    "cfruId": 720,
+    "displayName": "Rising Volt",
+    "effect": "EFFECT_HIT",
+    "power": 70,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "terrainpulse": {
+    "cfruId": 721,
+    "displayName": "TerrainPulse",
+    "effect": "EFFECT_HIT",
+    "power": 50,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "skittersmack": {
+    "cfruId": 722,
+    "displayName": "SkitterSmack",
+    "effect": "EFFECT_SPECIAL_ATTACK_DOWN_HIT",
+    "power": 70,
+    "split": "Physical",
+    "secondaryEffectChance": 100
+  },
+  "burningjealousy": {
+    "cfruId": 723,
+    "displayName": "Jealous Burn",
+    "effect": "EFFECT_BURN_HIT",
+    "power": 70,
+    "split": "Special",
+    "secondaryEffectChance": 100
+  },
+  "lashout": {
+    "cfruId": 724,
+    "displayName": "Lash Out",
+    "effect": "EFFECT_HIT",
+    "power": 75,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "poltergeist": {
+    "cfruId": 725,
+    "displayName": "Poltergeist",
+    "effect": "EFFECT_POLTERGEIST",
+    "power": 110,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "corrosivegas": {
+    "cfruId": 726,
+    "displayName": "Corrode Gas",
+    "effect": "EFFECT_KNOCK_OFF",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "coaching": {
+    "cfruId": 727,
+    "displayName": "Coaching",
+    "effect": "EFFECT_HELPING_HAND",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "flipturn": {
+    "cfruId": 728,
+    "displayName": "Flip Turn",
+    "effect": "EFFECT_BATON_PASS",
+    "power": 60,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "tripleaxel": {
+    "cfruId": 729,
+    "displayName": "Triple Axel",
+    "effect": "EFFECT_TRIPLE_KICK",
+    "power": 20,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "dualwingbeat": {
+    "cfruId": 730,
+    "displayName": "DualWingbeat",
+    "effect": "EFFECT_DOUBLE_HIT",
+    "power": 40,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "scorchingsands": {
+    "cfruId": 731,
+    "displayName": "Scorch Sands",
+    "effect": "EFFECT_BURN_HIT",
+    "power": 70,
+    "split": "Special",
+    "secondaryEffectChance": 30
+  },
+  "junglehealing": {
+    "cfruId": 732,
+    "displayName": "Jungle Heal",
+    "effect": "EFFECT_RESTORE_HP",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "wickedblow": {
+    "cfruId": 733,
+    "displayName": "Wicked Blow",
+    "effect": "EFFECT_HIT",
+    "power": 80,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "surgingstrikes": {
+    "cfruId": 734,
+    "displayName": "SurgeStrikes",
+    "effect": "EFFECT_MULTI_HIT",
+    "power": 25,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "freezingglare": {
+    "cfruId": 735,
+    "displayName": "Freeze Glare",
+    "effect": "EFFECT_FREEZE_HIT",
+    "power": 90,
+    "split": "Special",
+    "secondaryEffectChance": 20
+  },
+  "thunderouskick": {
+    "cfruId": 736,
+    "displayName": "Thunder Kick",
+    "effect": "EFFECT_DEFENSE_DOWN_HIT",
+    "power": 90,
+    "split": "Physical",
+    "secondaryEffectChance": 100
+  },
+  "fierywrath": {
+    "cfruId": 737,
+    "displayName": "Fiery Wrath",
+    "effect": "EFFECT_FLINCH_HIT",
+    "power": 90,
+    "split": "Special",
+    "secondaryEffectChance": 20
+  },
+  "eeriespell": {
+    "cfruId": 738,
+    "displayName": "Eerie Spell",
+    "effect": "EFFECT_SPITE",
+    "power": 80,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "thundercage": {
+    "cfruId": 739,
+    "displayName": "Thunder Cage",
+    "effect": "EFFECT_TRAP",
+    "power": 80,
+    "split": "Special",
+    "secondaryEffectChance": 100
+  },
+  "dragonenergy": {
+    "cfruId": 740,
+    "displayName": "DragonEnergy",
+    "effect": "EFFECT_HIT",
+    "power": 150,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "astralbarrage": {
+    "cfruId": 741,
+    "displayName": "Astral Storm",
+    "effect": "EFFECT_HIT",
+    "power": 120,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "glaciallance": {
+    "cfruId": 742,
+    "displayName": "GlacialLance",
+    "effect": "EFFECT_HIT",
+    "power": 130,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "direclaw": {
+    "cfruId": 743,
+    "displayName": "Dire Claw",
+    "effect": "EFFECT_TRI_ATTACK",
+    "power": 60,
+    "split": "Physical",
+    "secondaryEffectChance": 50
+  },
+  "psyshieldbash": {
+    "cfruId": 744,
+    "displayName": "PsyshieldRam",
+    "effect": "EFFECT_DEFENSE_UP_HIT",
+    "power": 70,
+    "split": "Physical",
+    "secondaryEffectChance": 100
+  },
+  "powershift": {
+    "cfruId": 745,
+    "displayName": "Power Shift",
+    "effect": "EFFECT_STAT_SWAP_SPLIT",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "stoneaxe": {
+    "cfruId": 746,
+    "displayName": "Stone Axe",
+    "effect": "EFFECT_SPLINTER",
+    "power": 65,
+    "split": "Physical",
+    "secondaryEffectChance": 100
+  },
+  "mysticalpower": {
+    "cfruId": 747,
+    "displayName": "Mystic Power",
+    "effect": "EFFECT_HIGHER_OFFENSES_DEFENSES_UP_HIT",
+    "power": 70,
+    "split": "Special",
+    "secondaryEffectChance": 100
+  },
+  "ragingfury": {
+    "cfruId": 748,
+    "displayName": "Raging Fury",
+    "effect": "EFFECT_RAMPAGE",
+    "power": 90,
+    "split": "Physical",
+    "secondaryEffectChance": 100
+  },
+  "wavecrash": {
+    "cfruId": 749,
+    "displayName": "Wave Crash",
+    "effect": "EFFECT_HIT",
+    "power": 75,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "chloroblast": {
+    "cfruId": 750,
+    "displayName": "Chloroblast",
+    "effect": "EFFECT_HIT",
+    "power": 120,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "mountaingale": {
+    "cfruId": 751,
+    "displayName": "MountainGale",
+    "effect": "EFFECT_FLINCH_HIT",
+    "power": 100,
+    "split": "Physical",
+    "secondaryEffectChance": 30
+  },
+  "victorydance": {
+    "cfruId": 752,
+    "displayName": "VictoryDance",
+    "effect": "EFFECT_BULK_UP",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "headlongrush": {
+    "cfruId": 753,
+    "displayName": "HeadlongRush",
+    "effect": "EFFECT_SUPERPOWER",
+    "power": 100,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "barbbarrage": {
+    "cfruId": 754,
+    "displayName": "Barb Barrage",
+    "effect": "EFFECT_POISON_HIT",
+    "power": 60,
+    "split": "Physical",
+    "secondaryEffectChance": 30
+  },
+  "esperwing": {
+    "cfruId": 755,
+    "displayName": "Esper Wing",
+    "effect": "EFFECT_HIT",
+    "power": 75,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "bittermalice": {
+    "cfruId": 756,
+    "displayName": "BitterMalice",
+    "effect": "EFFECT_FREEZE_HIT",
+    "power": 60,
+    "split": "Special",
+    "secondaryEffectChance": 30
+  },
+  "shelter": {
+    "cfruId": 757,
+    "displayName": "Shelter",
+    "effect": "EFFECT_DEF_SPD_UP",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "triplearrows": {
+    "cfruId": 758,
+    "displayName": "TripleArrows",
+    "effect": "EFFECT_DEFENSE_DOWN_HIT",
+    "power": 50,
+    "split": "Physical",
+    "secondaryEffectChance": 100
+  },
+  "infernalparade": {
+    "cfruId": 759,
+    "displayName": "InfernalRage",
+    "effect": "EFFECT_BURN_HIT",
+    "power": 60,
+    "split": "Special",
+    "secondaryEffectChance": 30
+  },
+  "ceaselessedge": {
+    "cfruId": 760,
+    "displayName": "Endless Edge",
+    "effect": "EFFECT_SPLINTER",
+    "power": 65,
+    "split": "Physical",
+    "secondaryEffectChance": 100
+  },
+  "bleakwindstorm": {
+    "cfruId": 761,
+    "displayName": "BleakiceWind",
+    "effect": "EFFECT_FREEZE_HIT",
+    "power": 95,
+    "split": "Special",
+    "secondaryEffectChance": 30
+  },
+  "wildboltstorm": {
+    "cfruId": 762,
+    "displayName": "WildboltWind",
+    "effect": "EFFECT_PARALYZE_HIT",
+    "power": 95,
+    "split": "Special",
+    "secondaryEffectChance": 30
+  },
+  "sandsearstorm": {
+    "cfruId": 763,
+    "displayName": "SandsearWind",
+    "effect": "EFFECT_BURN_HIT",
+    "power": 95,
+    "split": "Special",
+    "secondaryEffectChance": 30
+  },
+  "springtidestorm": {
+    "cfruId": 764,
+    "displayName": "Spring Wind",
+    "effect": "EFFECT_SPRINGTIDE_STORM",
+    "power": 95,
+    "split": "Special",
+    "secondaryEffectChance": 30
+  },
+  "lunarblessing": {
+    "cfruId": 765,
+    "displayName": "Lunar Bless",
+    "effect": "EFFECT_RESTORE_HP",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "takeheart": {
+    "cfruId": 766,
+    "displayName": "Take Heart",
+    "effect": "EFFECT_CALM_MIND",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "breakneck_blitz_p": {
+    "cfruId": 767,
+    "displayName": "Guard",
+    "effect": "EFFECT_HIT",
+    "power": 1,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "breakneck_blitz_s": {
+    "cfruId": 768,
+    "displayName": "Strike",
+    "effect": "EFFECT_HIT",
+    "power": 1,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "all_out_pummeling_p": {
+    "cfruId": 769,
+    "displayName": "Strike",
+    "effect": "EFFECT_HIT",
+    "power": 1,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "all_out_pummeling_s": {
+    "cfruId": 770,
+    "displayName": "Knuckle",
+    "effect": "EFFECT_HIT",
+    "power": 1,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "supersonic_skystrike_p": {
+    "cfruId": 771,
+    "displayName": "Knuckle",
+    "effect": "EFFECT_HIT",
+    "power": 1,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "supersonic_skystrike_s": {
+    "cfruId": 772,
+    "displayName": "Airstream",
+    "effect": "EFFECT_HIT",
+    "power": 1,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "acid_downpour_p": {
+    "cfruId": 773,
+    "displayName": "Airstream",
+    "effect": "EFFECT_HIT",
+    "power": 1,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "acid_downpour_s": {
+    "cfruId": 774,
+    "displayName": "Ooze",
+    "effect": "EFFECT_HIT",
+    "power": 1,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "tectonic_rage_p": {
+    "cfruId": 775,
+    "displayName": "Ooze",
+    "effect": "EFFECT_HIT",
+    "power": 1,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "tectonic_rage_s": {
+    "cfruId": 776,
+    "displayName": "Quake",
+    "effect": "EFFECT_HIT",
+    "power": 1,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "continental_crush_p": {
+    "cfruId": 777,
+    "displayName": "Quake",
+    "effect": "EFFECT_HIT",
+    "power": 1,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "continental_crush_s": {
+    "cfruId": 778,
+    "displayName": "Rockfall",
+    "effect": "EFFECT_HIT",
+    "power": 1,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "savage_spin_out_p": {
+    "cfruId": 779,
+    "displayName": "Rockfall",
+    "effect": "EFFECT_HIT",
+    "power": 1,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "savage_spin_out_s": {
+    "cfruId": 780,
+    "displayName": "Flutterby",
+    "effect": "EFFECT_HIT",
+    "power": 1,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "never_ending_nightmare_p": {
+    "cfruId": 781,
+    "displayName": "Flutterby",
+    "effect": "EFFECT_HIT",
+    "power": 1,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "never_ending_nightmare_s": {
+    "cfruId": 782,
+    "displayName": "Phantasm",
+    "effect": "EFFECT_HIT",
+    "power": 1,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "corkscrew_crash_p": {
+    "cfruId": 783,
+    "displayName": "Phantasm",
+    "effect": "EFFECT_HIT",
+    "power": 1,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "corkscrew_crash_s": {
+    "cfruId": 784,
+    "displayName": "Steelspike",
+    "effect": "EFFECT_HIT",
+    "power": 1,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "inferno_overdrive_p": {
+    "cfruId": 785,
+    "displayName": "Steelspike",
+    "effect": "EFFECT_HIT",
+    "power": 1,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "inferno_overdrive_s": {
+    "cfruId": 786,
+    "displayName": "Flare",
+    "effect": "EFFECT_HIT",
+    "power": 1,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "hydro_vortex_p": {
+    "cfruId": 787,
+    "displayName": "Flare",
+    "effect": "EFFECT_HIT",
+    "power": 1,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "hydro_vortex_s": {
+    "cfruId": 788,
+    "displayName": "Geyser",
+    "effect": "EFFECT_HIT",
+    "power": 1,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "bloom_doom_p": {
+    "cfruId": 789,
+    "displayName": "Geyser",
+    "effect": "EFFECT_HIT",
+    "power": 1,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "bloom_doom_s": {
+    "cfruId": 790,
+    "displayName": "Overgrowth",
+    "effect": "EFFECT_HIT",
+    "power": 1,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "gigavolt_havoc_p": {
+    "cfruId": 791,
+    "displayName": "Overgrowth",
+    "effect": "EFFECT_HIT",
+    "power": 1,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "gigavolt_havoc_s": {
+    "cfruId": 792,
+    "displayName": "Lightning",
+    "effect": "EFFECT_HIT",
+    "power": 1,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "shattered_psyche_p": {
+    "cfruId": 793,
+    "displayName": "Lightning",
+    "effect": "EFFECT_HIT",
+    "power": 1,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "shattered_psyche_s": {
+    "cfruId": 794,
+    "displayName": "Mindstorm",
+    "effect": "EFFECT_HIT",
+    "power": 1,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "subzero_slammer_p": {
+    "cfruId": 795,
+    "displayName": "Mindstorm",
+    "effect": "EFFECT_HIT",
+    "power": 1,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "subzero_slammer_s": {
+    "cfruId": 796,
+    "displayName": "Hailstorm",
+    "effect": "EFFECT_HIT",
+    "power": 1,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "devastating_drake_p": {
+    "cfruId": 797,
+    "displayName": "Hailstorm",
+    "effect": "EFFECT_HIT",
+    "power": 1,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "devastating_drake_s": {
+    "cfruId": 798,
+    "displayName": "Wyrmwind",
+    "effect": "EFFECT_HIT",
+    "power": 1,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "black_hole_eclipse_p": {
+    "cfruId": 799,
+    "displayName": "Wyrmwind",
+    "effect": "EFFECT_HIT",
+    "power": 1,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "black_hole_eclipse_s": {
+    "cfruId": 800,
+    "displayName": "Darkness",
+    "effect": "EFFECT_HIT",
+    "power": 1,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "twinkle_tackle_p": {
+    "cfruId": 801,
+    "displayName": "Darkness",
+    "effect": "EFFECT_HIT",
+    "power": 1,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "twinkle_tackle_s": {
+    "cfruId": 802,
+    "displayName": "Starfall",
+    "effect": "EFFECT_HIT",
+    "power": 1,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "catastropika": {
+    "cfruId": 803,
+    "displayName": "Starfall",
+    "effect": "EFFECT_HIT",
+    "power": 210,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "10000000_volt_thunderbolt": {
+    "cfruId": 804,
+    "displayName": "Vine Lash",
+    "effect": "EFFECT_HIGH_CRITICAL",
+    "power": 195,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "stoked_sparksurfer": {
+    "cfruId": 805,
+    "displayName": "Vine Lash",
+    "effect": "EFFECT_PARALYZE_HIT",
+    "power": 175,
+    "split": "Special",
+    "secondaryEffectChance": 100
+  },
+  "extreme_evoboost": {
+    "cfruId": 806,
+    "displayName": "Wildfire",
+    "effect": "EFFECT_EXTREME_EVOBOOST",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "pulverizing_pancake": {
+    "cfruId": 807,
+    "displayName": "Wildfire",
+    "effect": "EFFECT_HIT",
+    "power": 210,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "genesis_supernova": {
+    "cfruId": 808,
+    "displayName": "Cannonade",
+    "effect": "EFFECT_DAMAGE_SET_TERRAIN",
+    "power": 185,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "sinister_arrow_raid": {
+    "cfruId": 809,
+    "displayName": "Cannonade",
+    "effect": "EFFECT_HIT",
+    "power": 180,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "malicious_moonsault": {
+    "cfruId": 810,
+    "displayName": "Befuddle",
+    "effect": "EFFECT_HIT",
+    "power": 180,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "oceanic_operetta": {
+    "cfruId": 811,
+    "displayName": "Befuddle",
+    "effect": "EFFECT_HIT",
+    "power": 195,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "splintered_stormshards": {
+    "cfruId": 812,
+    "displayName": "Voltcrash",
+    "effect": "EFFECT_DAMAGE_SET_TERRAIN",
+    "power": 190,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "lets_snuggle_forever": {
+    "cfruId": 813,
+    "displayName": "Voltcrash",
+    "effect": "EFFECT_HIT",
+    "power": 190,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "clangorous_soulblaze": {
+    "cfruId": 814,
+    "displayName": "Goldrush",
+    "effect": "EFFECT_ALL_STATS_UP_HIT",
+    "power": 185,
+    "split": "Special",
+    "secondaryEffectChance": 100
+  },
+  "guardian_of_alola": {
+    "cfruId": 815,
+    "displayName": "Goldrush",
+    "effect": "EFFECT_SUPER_FANG",
+    "power": 1,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "searing_sunraze_smash": {
+    "cfruId": 816,
+    "displayName": "Chistrike",
+    "effect": "EFFECT_HIT",
+    "power": 200,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "menacing_moonraze_maelstrom": {
+    "cfruId": 817,
+    "displayName": "Chistrike",
+    "effect": "EFFECT_HIT",
+    "power": 200,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "light_that_burns_the_sky": {
+    "cfruId": 818,
+    "displayName": "Terror",
+    "effect": "EFFECT_HIT",
+    "power": 200,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "soul_stealing_7_star_strike": {
+    "cfruId": 819,
+    "displayName": "Terror",
+    "effect": "EFFECT_HIT",
+    "power": 195,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "max_guard": {
+    "cfruId": 820,
+    "displayName": "Foamburst",
+    "effect": "EFFECT_PROTECT",
+    "power": 0,
+    "split": "Status",
+    "secondaryEffectChance": 0
+  },
+  "max_strike_p": {
+    "cfruId": 821,
+    "displayName": "Foamburst",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 1,
+    "split": "Physical",
+    "secondaryEffectChance": 100
+  },
+  "max_strike_s": {
+    "cfruId": 822,
+    "displayName": "Resonance",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 1,
+    "split": "Special",
+    "secondaryEffectChance": 100
+  },
+  "max_knuckle_p": {
+    "cfruId": 823,
+    "displayName": "Resonance",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 1,
+    "split": "Physical",
+    "secondaryEffectChance": 100
+  },
+  "max_knuckle_s": {
+    "cfruId": 824,
+    "displayName": "Cuddle",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 1,
+    "split": "Special",
+    "secondaryEffectChance": 100
+  },
+  "max_airstream_p": {
+    "cfruId": 825,
+    "displayName": "Cuddle",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 1,
+    "split": "Physical",
+    "secondaryEffectChance": 100
+  },
+  "max_airstream_s": {
+    "cfruId": 826,
+    "displayName": "Replenish",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 1,
+    "split": "Special",
+    "secondaryEffectChance": 100
+  },
+  "max_ooze_p": {
+    "cfruId": 827,
+    "displayName": "Replenish",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 1,
+    "split": "Physical",
+    "secondaryEffectChance": 100
+  },
+  "max_ooze_s": {
+    "cfruId": 828,
+    "displayName": "Malodor",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 1,
+    "split": "Special",
+    "secondaryEffectChance": 100
+  },
+  "max_quake_p": {
+    "cfruId": 829,
+    "displayName": "Malodor",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 1,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "max_quake_s": {
+    "cfruId": 830,
+    "displayName": "Meltdown",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 1,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "max_rockfall_p": {
+    "cfruId": 831,
+    "displayName": "Meltdown",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 1,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "max_rockfall_s": {
+    "cfruId": 832,
+    "displayName": "Drum Solo",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 1,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "max_flutterby_p": {
+    "cfruId": 833,
+    "displayName": "Drum Solo",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 1,
+    "split": "Physical",
+    "secondaryEffectChance": 100
+  },
+  "max_flutterby_s": {
+    "cfruId": 834,
+    "displayName": "Fireball",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 1,
+    "split": "Special",
+    "secondaryEffectChance": 100
+  },
+  "max_phantasm_p": {
+    "cfruId": 835,
+    "displayName": "Fireball",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 1,
+    "split": "Physical",
+    "secondaryEffectChance": 100
+  },
+  "max_phantasm_s": {
+    "cfruId": 836,
+    "displayName": "Hydrosnipe",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 1,
+    "split": "Special",
+    "secondaryEffectChance": 100
+  },
+  "max_steelspike_p": {
+    "cfruId": 837,
+    "displayName": "Hydrosnipe",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 10,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "max_steelspike_s": {
+    "cfruId": 838,
+    "displayName": "Windrage",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 10,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "max_flare_p": {
+    "cfruId": 839,
+    "displayName": "Windrage",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 1,
+    "split": "Physical",
+    "secondaryEffectChance": 100
+  },
+  "max_flare_s": {
+    "cfruId": 840,
+    "displayName": "Gravitas",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 1,
+    "split": "Special",
+    "secondaryEffectChance": 100
+  },
+  "max_geyser_p": {
+    "cfruId": 841,
+    "displayName": "Gravitas",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 1,
+    "split": "Physical",
+    "secondaryEffectChance": 100
+  },
+  "max_geyser_s": {
+    "cfruId": 842,
+    "displayName": "Stonesurge",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 1,
+    "split": "Special",
+    "secondaryEffectChance": 100
+  },
+  "max_overgrowth_p": {
+    "cfruId": 843,
+    "displayName": "Stonesurge",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 10,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "max_overgrowth_s": {
+    "cfruId": 844,
+    "displayName": "Volcalith",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 10,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "max_lightning_p": {
+    "cfruId": 845,
+    "displayName": "Volcalith",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 1,
+    "split": "Physical",
+    "secondaryEffectChance": 100
+  },
+  "max_lightning_s": {
+    "cfruId": 846,
+    "displayName": "Tartness",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 1,
+    "split": "Special",
+    "secondaryEffectChance": 100
+  },
+  "max_mindstorm_p": {
+    "cfruId": 847,
+    "displayName": "Tartness",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 1,
+    "split": "Physical",
+    "secondaryEffectChance": 100
+  },
+  "max_mindstorm_s": {
+    "cfruId": 848,
+    "displayName": "Sweetness",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 1,
+    "split": "Special",
+    "secondaryEffectChance": 100
+  },
+  "max_hailstorm_p": {
+    "cfruId": 849,
+    "displayName": "Sweetness",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 1,
+    "split": "Physical",
+    "secondaryEffectChance": 100
+  },
+  "max_hailstorm_s": {
+    "cfruId": 850,
+    "displayName": "Sandblast",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 1,
+    "split": "Special",
+    "secondaryEffectChance": 100
+  },
+  "max_wyrmwind_p": {
+    "cfruId": 851,
+    "displayName": "Sandblast",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 1,
+    "split": "Physical",
+    "secondaryEffectChance": 100
+  },
+  "max_wyrmwind_s": {
+    "cfruId": 852,
+    "displayName": "Stunshock",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 1,
+    "split": "Special",
+    "secondaryEffectChance": 100
+  },
+  "max_darkness_p": {
+    "cfruId": 853,
+    "displayName": "Stunshock",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 1,
+    "split": "Physical",
+    "secondaryEffectChance": 100
+  },
+  "max_darkness_s": {
+    "cfruId": 854,
+    "displayName": "Centiferno",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 1,
+    "split": "Special",
+    "secondaryEffectChance": 100
+  },
+  "max_starfall_p": {
+    "cfruId": 855,
+    "displayName": "Centiferno",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 1,
+    "split": "Physical",
+    "secondaryEffectChance": 100
+  },
+  "max_starfall_s": {
+    "cfruId": 856,
+    "displayName": "Smite",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 1,
+    "split": "Special",
+    "secondaryEffectChance": 100
+  },
+  "g_max_vine_lash_p": {
+    "cfruId": 857,
+    "displayName": "Smite",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 10,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "g_max_vine_lash_s": {
+    "cfruId": 858,
+    "displayName": "Snooze",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 10,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "g_max_wildfire_p": {
+    "cfruId": 859,
+    "displayName": "Snooze",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 10,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "g_max_wildfire_s": {
+    "cfruId": 860,
+    "displayName": "Finale",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 10,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "g_max_cannonade_p": {
+    "cfruId": 861,
+    "displayName": "Finale",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 10,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "g_max_cannonade_s": {
+    "cfruId": 862,
+    "displayName": "Steelsurge",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 10,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "g_max_befuddle_p": {
+    "cfruId": 863,
+    "displayName": "Steelsurge",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 10,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "g_max_befuddle_s": {
+    "cfruId": 864,
+    "displayName": "Depletion",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 10,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "g_max_volt_crash_p": {
+    "cfruId": 865,
+    "displayName": "Depletion",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 10,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "g_max_volt_crash_s": {
+    "cfruId": 866,
+    "displayName": "One Blow",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 10,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "g_max_gold_rush_p": {
+    "cfruId": 867,
+    "displayName": "One Blow",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 10,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "g_max_gold_rush_s": {
+    "cfruId": 868,
+    "displayName": "Rapid Flow",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 10,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "g_max_chi_strike_p": {
+    "cfruId": 869,
+    "displayName": "Rapid Flow",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 10,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "g_max_chi_strike_s": {
+    "cfruId": 870,
+    "displayName": "",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 10,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "g_max_terror_p": {
+    "cfruId": 871,
+    "displayName": "",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 10,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "g_max_terror_s": {
+    "cfruId": 872,
+    "displayName": "",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 10,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "g_max_foam_burst_p": {
+    "cfruId": 873,
+    "displayName": "",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 10,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "g_max_foam_burst_s": {
+    "cfruId": 874,
+    "displayName": "",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 10,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "g_max_resonance_p": {
+    "cfruId": 875,
+    "displayName": "",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 10,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "g_max_resonance_s": {
+    "cfruId": 876,
+    "displayName": "",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 10,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "g_max_cuddle_p": {
+    "cfruId": 877,
+    "displayName": "",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 10,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "g_max_cuddle_s": {
+    "cfruId": 878,
+    "displayName": "",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 10,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "g_max_replenish_p": {
+    "cfruId": 879,
+    "displayName": "",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 10,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "g_max_replenish_s": {
+    "cfruId": 880,
+    "displayName": "",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 10,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "g_max_malodor_p": {
+    "cfruId": 881,
+    "displayName": "",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 10,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "g_max_malodor_s": {
+    "cfruId": 882,
+    "displayName": "",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 10,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "g_max_meltdown_p": {
+    "cfruId": 883,
+    "displayName": "",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 10,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "g_max_meltdown_s": {
+    "cfruId": 884,
+    "displayName": "",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 10,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "g_max_drum_solo_p": {
+    "cfruId": 885,
+    "displayName": "",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 10,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "g_max_drum_solo_s": {
+    "cfruId": 886,
+    "displayName": "",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 10,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "g_max_fireball_p": {
+    "cfruId": 887,
+    "displayName": "",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 10,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "g_max_fireball_s": {
+    "cfruId": 888,
+    "displayName": "",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 10,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "g_max_hydrosnipe_p": {
+    "cfruId": 889,
+    "displayName": "",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 10,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "g_max_hydrosnipe_s": {
+    "cfruId": 890,
+    "displayName": "",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 10,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "g_max_wind_rage_p": {
+    "cfruId": 891,
+    "displayName": "",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 10,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "g_max_wind_rage_s": {
+    "cfruId": 892,
+    "displayName": "",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 10,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "g_max_gravitas_p": {
+    "cfruId": 893,
+    "displayName": "",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 10,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "g_max_gravitas_s": {
+    "cfruId": 894,
+    "displayName": "",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 10,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "g_max_stonesurge_p": {
+    "cfruId": 895,
+    "displayName": "",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 10,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "g_max_stonesurge_s": {
+    "cfruId": 896,
+    "displayName": "",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 10,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "g_max_volcalith_p": {
+    "cfruId": 897,
+    "displayName": "",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 10,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "g_max_volcalith_s": {
+    "cfruId": 898,
+    "displayName": "",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 10,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "g_max_tartness_p": {
+    "cfruId": 899,
+    "displayName": "",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 10,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "g_max_tartness_s": {
+    "cfruId": 900,
+    "displayName": "",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 10,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "g_max_sweetness_p": {
+    "cfruId": 901,
+    "displayName": "",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 10,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "g_max_sweetness_s": {
+    "cfruId": 902,
+    "displayName": "",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 10,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "g_max_sandblast_p": {
+    "cfruId": 903,
+    "displayName": "",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 10,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "g_max_sandblast_s": {
+    "cfruId": 904,
+    "displayName": "",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 10,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "g_max_stun_shock_p": {
+    "cfruId": 905,
+    "displayName": "",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 10,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "g_max_stun_shock_s": {
+    "cfruId": 906,
+    "displayName": "",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 10,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "g_max_centiferno_p": {
+    "cfruId": 907,
+    "displayName": "",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 10,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "g_max_centiferno_s": {
+    "cfruId": 908,
+    "displayName": "",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 10,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "g_max_smite_p": {
+    "cfruId": 909,
+    "displayName": "",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 10,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "g_max_smite_s": {
+    "cfruId": 910,
+    "displayName": "",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 10,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "g_max_snooze_p": {
+    "cfruId": 911,
+    "displayName": "",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 10,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "g_max_snooze_s": {
+    "cfruId": 912,
+    "displayName": "",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 10,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "g_max_finale_p": {
+    "cfruId": 913,
+    "displayName": "",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 10,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "g_max_finale_s": {
+    "cfruId": 914,
+    "displayName": "",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 10,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "g_max_steelsurge_p": {
+    "cfruId": 915,
+    "displayName": "",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 10,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "g_max_steelsurge_s": {
+    "cfruId": 916,
+    "displayName": "",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 10,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "g_max_depletion_p": {
+    "cfruId": 917,
+    "displayName": "",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 10,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "g_max_depletion_s": {
+    "cfruId": 918,
+    "displayName": "",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 10,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "g_max_one_blow_p": {
+    "cfruId": 919,
+    "displayName": "",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 10,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "g_max_one_blow_s": {
+    "cfruId": 920,
+    "displayName": "",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 10,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  },
+  "g_max_rapid_flow_p": {
+    "cfruId": 921,
+    "displayName": "",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 10,
+    "split": "Physical",
+    "secondaryEffectChance": 0
+  },
+  "g_max_rapid_flow_s": {
+    "cfruId": 922,
+    "displayName": "",
+    "effect": "EFFECT_MAX_MOVE",
+    "power": 10,
+    "split": "Special",
+    "secondaryEffectChance": 0
+  }
+}

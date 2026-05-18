@@ -16,9 +16,10 @@
 //   ✗ stub          — NEEDS_LIVE_STATE; returns 0; comment names required runtime data
 //   ⊗ doubles-only  — not applicable in singles; no adjustment applied
 
-import { calculate, Field, Generations, Move, Pokemon } from "@site/src/calc-shim";
+import { calculate, Field, Generations, Move, Pokemon, toID } from "@site/src/calc-shim";
 import { CALC_GEN, type CalcSideState } from "@site/src/utils/calcLink";
 import { resolveItem, resolveMove } from "@site/src/utils/abbreviations";
+import cfruMoves from "@site/src/data/utils/cfruMoves.json";
 
 const GEN = Generations.get(CALC_GEN as any);
 const DEFAULT_FIELD = new Field({ gameType: "Singles" });
@@ -74,6 +75,31 @@ function damageRatio(atk: CalcSideState, def: CalcSideState, moveName: string): 
     return Math.min(...amounts) / defMon.stats.hp;
   } catch {
     return 0;
+  }
+}
+
+// ~ approximated: ai_util.c:1185 — CalculateMoveKnocksOutXHits / MoveKnocksOutXHits.
+// AI damage uses 93% of max roll (damage_calc.c AI_CalcDmg: "damage * 93 / 100 — halfway between min & max").
+// Compares against defender's current HP (gBattleMons[bankDef].hp).
+// numHits=1 → OHKO; numHits=2 → 2HKO.
+// Omitted: Disguise/sub hit deduction, charge-turn deduction, recharge deduction, Parental Bond.
+function moveKnocksOutXHits(atk: CalcSideState, def: CalcSideState, moveName: string, numHits: number): boolean {
+  if (!moveName || !atk.species || !def.species || numHits === 0) return false;
+  try {
+    const atkMon = makeCalcMon(atk);
+    const defMon = makeCalcMon(def);
+    if (!atkMon || !defMon || defMon.stats.hp === 0) return false;
+    const result = calculate(GEN as any, atkMon, defMon, new Move(GEN, resolveMove(moveName)), DEFAULT_FIELD);
+    const dmg = result.damage;
+    const amounts = Array.isArray(dmg)
+      ? Array.isArray(dmg[0]) ? (dmg as number[][]).flat() : (dmg as number[])
+      : [dmg as number];
+    const singleHitAI = Math.max(...amounts) * 0.93;
+    if (singleHitAI === 0) return false;
+    const curHP = Math.max(1, Math.round((def.curHP / 100) * defMon.stats.hp));
+    return singleHitAI * numHits >= curHP;
+  } catch {
+    return false;
   }
 }
 
@@ -201,6 +227,112 @@ const ROLE_PLAY_BANNED_ABILITIES = new Set([
   "Power Construct", "Illusion", "Zen Mode", "Gorilla Tactics",
   "Neutralizing Gas", "Ice Face",
 ]);
+
+// Looks up CFRU move data from the generated JSON (scripts/cfruMoves.mts → src/data/utils/cfruMoves.json).
+// Key: toID(canonical Smogon name) ≡ CFRU MOVE_CONSTANT stripped of "MOVE_" prefix, lowercased.
+function getCfruMove(moveName: string) {
+  return (cfruMoves as Record<string, { cfruId: number; displayName: string; effect: string; power: number; split: string; secondaryEffectChance: number }>)[toID(resolveMove(moveName))];
+}
+
+// ai_util.c:2728 — CalcSecondaryEffectChance.
+// Uses cfruMoves.json for the base secondaryEffectChance value (faithful to battle_moves.c).
+// Sheer Force suppresses secondaries entirely; Serene Grace doubles non-flinch-chance moves.
+// Whether a move is a flinch-chance move cannot always be determined from the Smogon data,
+// so Serene Grace is applied as a simple doubling for all qualifying moves (conservative approximation).
+function calcSecondaryEffectChance(moveName: string, atkAbility: string): number {
+  const base = getCfruMove(moveName)?.secondaryEffectChance ?? 0;
+  if (base === 0 || atkAbility === "Sheer Force") return 0;
+  return atkAbility === "Serene Grace" ? base * 2 : base;
+}
+
+// ai_util.c — RealPhysicalMoveInMoveset: attacker has at least one Physical damaging move.
+function realPhysicalMoveInMoveset(moves: string[]): boolean {
+  return moves.some((mn) => {
+    if (!mn) return false;
+    const dm = getSmogonMove(mn);
+    return dm != null && dm.category === "Physical" && (dm as any).bp > 0;
+  });
+}
+
+// ai_util.c — SpecialMoveInMoveset: attacker has at least one Special damaging move.
+function specialMoveInMoveset(moves: string[]): boolean {
+  return moves.some((mn) => {
+    if (!mn) return false;
+    const dm = getSmogonMove(mn);
+    return dm != null && dm.category === "Special" && (dm as any).bp > 0;
+  });
+}
+
+// battle_util.c:707 — AreDefensesHigherThanOffenses: (def + spDef) > (atk + spAtk).
+function areDefensesHigherThanOffenses(side: CalcSideState): boolean {
+  try {
+    const mon = makeCalcMon(side);
+    if (!mon) return false;
+    return mon.stats.def + mon.stats.spd > mon.stats.atk + mon.stats.spa;
+  } catch { return false; }
+}
+
+// ~ approximated: ai_advanced.c:1801 — ShouldTryToSetUpStat for offensive stats (ATK/SPATK).
+// Omitted (NEEDS_LIVE_STATE): WillFaintFromSecondaryDamage, semi-invulnerable state,
+// IsMovePredictionSemiInvulnerable, speed-buff going-second path, STAT_STAGE cap (assumed 0),
+// MultiHitMoveWithSplitInMoveset check.
+function shouldTryToSetUpOffensiveStat(atk: CalcSideState, def: CalcSideState): boolean {
+  // Unaware ignores our stat boosts. Checked as raw ability (not effDefAbility) because
+  // Unaware affects how the foe attacks us, not whether our moves land — Mold Breaker irrelevant.
+  if (def.ability === "Unaware") return false;
+
+  if (!atkOutspeeds(atk, def)) {
+    // Going second: don't set up if foe can likely 2HKO us.
+    // ~ approximated: Can2HKO(bankDef, bankAtk) — CFRU uses cached strongest foe move;
+    // we check all foe moves (equivalent when the strongest is the only 2HKO-capable one).
+    const foeCanTwoHKO = (def.moves.filter(Boolean) as string[])
+      .some((mn) => moveKnocksOutXHits(def, atk, mn, 2));
+    if (foeCanTwoHKO) return false;
+  }
+  // Going first: skip CanKnockOutWithChipDamage (needs live secondary-damage state).
+
+  // Omitted: EnduresAHitFromFullHealth (Sturdy / Focus Sash) → return FALSE.
+  // CFRU would skip setup here, but observed RR behavior is that the AI sets up regardless.
+  // No flag in the source explains this; omitting to match RR in practice.
+
+  return true;
+}
+
+// ~ approximated: ai_util.c:3249 — GoodIdeaToRaiseAttackAgainst.
+// = !BadIdeaToRaiseAttackAgainst && RealPhysicalMoveInMoveset. ShouldTryToSetUpStat is NOT
+// part of this function — it runs later inside IncreaseStatViability at the AI_ATTACK_PLUS label.
+// Omitted (NEEDS_LIVE_STATE): IsMovePredictionPhazingMove, HasUsedPhazingMoveThatAffects,
+// HasUsedMoveWithEffect (ATTACK_DOWN_2, ATTACK_DOWN, TICKLE, PLAY_NICE, VENOM_DRENCH, ATK_DOWN_HIT).
+// Approximated: King's Shield check uses "any physical contact move" instead of CFRU's
+// "strongest move is contact" (CheckContact(GetStrongestMove(bankAtk, bankDef), ...)).
+function goodIdeaToRaiseAttackAgainst(
+  atk: CalcSideState, def: CalcSideState, allAtkMoves: string[],
+): boolean {
+  if (def.ability === "Unaware") return false;
+  // King's Shield lowers the attacker's Atk by 2 on contact → bad idea to raise Attack.
+  if (
+    def.moves.some((mn) => resolveMove(mn || "") === "King's Shield") &&
+    allAtkMoves.some((mn) => {
+      const dm = getSmogonMove(mn);
+      return dm && dm.category === "Physical" && Boolean((dm as any).flags?.contact);
+    })
+  ) return false;
+  if (!realPhysicalMoveInMoveset(allAtkMoves)) return false;
+  return true;
+}
+
+// ~ approximated: ai_util.c:3269 — GoodIdeaToRaiseSpAttackAgainst.
+// = !BadIdeaToRaiseSpAttackAgainst && SpecialMoveInMoveset. ShouldTryToSetUpStat is NOT
+// part of this function — it runs inside IncreaseStatViability at the AI_SP_ATTACK_PLUS label.
+// Omitted (NEEDS_LIVE_STATE): IsMovePredictionPhazingMove, HasUsedPhazingMoveThatAffects,
+// HasUsedMoveWithEffect (SPATK_DOWN_2, SPATK_DOWN, FLATTER, SPATK_DOWN_HIT).
+function goodIdeaToRaiseSpAttackAgainst(
+  atk: CalcSideState, def: CalcSideState, allAtkMoves: string[],
+): boolean {
+  if (def.ability === "Unaware") return false;
+  if (!specialMoveInMoveset(allAtkMoves)) return false;
+  return true;
+}
 
 // ── AIScript_Negatives ────────────────────────────────────────────────────────
 //
@@ -1122,8 +1254,53 @@ function aiScript_Positives(
   // ✗ ai_positives.c:1603–1668 — EFFECT_RAIN_DANCE / SUNNY_DAY: Z-crystal, Swift Swim/Chlorophyll, benefits
   //   NEEDS_LIVE_STATE: Z-move state, item, ability, moveset [INCREASE 2 or 17]
 
-  // ✗ ai_positives.c:1670–1704 — EFFECT_ATTACK_UP_HIT (Fell Stinger etc) / HIGHER_OFFENSES_DEFENSES_UP_HIT
-  //   NEEDS_LIVE_STATE: stat stages, KO calc, secondary chance [INCREASE 3/6/9]
+  // ~ approximated: ai_positives.c:1670–1694 — EFFECT_ATTACK_UP_HIT
+  //   (Metal Claw 10%, Meteor Mash 20%, Fell Stinger 100%, Power-Up Punch 100% — from cfruMoves.json)
+  //   Fell Stinger: KO check + speed → INCREASE_VIABILITY(9) or (3).
+  //     Omitted (NEEDS_LIVE_STATE): AI_STAT_CAN_RISE(ATK) guard (ATK stat below +6).
+  //   Others: CalcSecondaryEffectChance ≥ 75 + GoodIdeaToRaiseAttackAgainst → AI_ATTACK_PLUS
+  //     → INCREASE_STAT_VIABILITY(ATK, 8, 2) → ShouldTryToSetUpStat ? +5 : +1 fallback.
+  //   Class-based increase omitted; assumes SWEEPER_KILL (boost=2). Metal Claw and
+  //   Meteor Mash fall through the secondary-chance check (<75%) and contribute 0 from this block.
+  {
+    const cfruMove = getCfruMove(moveName);
+    if (cfruMove?.effect === "EFFECT_ATTACK_UP_HIT" && atk.ability !== "Contrary") {
+      const isFellStinger = resolveMove(moveName) === "Fell Stinger";
+      if (isFellStinger) {
+        // Fell Stinger only raises Atk on KO; scored analogously to the OHKO path.
+        if (moveKnocksOutXHits(atk, def, moveName, 1)) {
+          return atkOutspeeds(atk, def) ? 9 : 3;
+        }
+      } else if (
+        calcSecondaryEffectChance(moveName, atk.ability) >= 75 &&
+        goodIdeaToRaiseAttackAgainst(atk, def, allAtkMoves)
+      ) {
+        return shouldTryToSetUpOffensiveStat(atk, def) ? 5 : 1;
+      }
+    }
+  }
+
+  // ~ approximated: ai_positives.c:1696–1704 — EFFECT_HIGHER_OFFENSES_DEFENSES_UP_HIT
+  //   (Mystical Power 100% — from cfruMoves.json)
+  //   AreDefensesHigherThanOffenses → AI_COSMIC_POWER (Def/SpDef raise) or AI_WORK_UP (Atk/SpAtk raise).
+  //   AI_COSMIC_POWER path omitted (GoodIdeaToRaiseDefenseAgainst is complex; NEEDS_LIVE_STATE).
+  {
+    const cfruMove = getCfruMove(moveName);
+    if (
+      cfruMove?.effect === "EFFECT_HIGHER_OFFENSES_DEFENSES_UP_HIT" &&
+      atk.ability !== "Contrary" &&
+      calcSecondaryEffectChance(moveName, atk.ability) >= 75 &&
+      !areDefensesHigherThanOffenses(atk)
+    ) {
+      // AI_WORK_UP: prefer Atk raise if physical moveset; fall back to SpAtk.
+      if (realPhysicalMoveInMoveset(allAtkMoves) && goodIdeaToRaiseAttackAgainst(atk, def, allAtkMoves)) {
+        return shouldTryToSetUpOffensiveStat(atk, def) ? 5 : 1;
+      }
+      if (specialMoveInMoveset(allAtkMoves) && goodIdeaToRaiseSpAttackAgainst(atk, def, allAtkMoves)) {
+        return shouldTryToSetUpOffensiveStat(atk, def) ? 5 : 1;
+      }
+    }
+  }
 
   // ✗ ai_positives.c:1706–1717 — EFFECT_BELLY_DRUM: Z-crystal, class, ability, not bad idea
   //   NEEDS_LIVE_STATE: item, Z-move state, ability, class [INCREASE stat-viability 2 or 5]
@@ -1321,8 +1498,7 @@ function damageMoveViabilityIncrease(
   //   NEEDS_LIVE_STATE: switch prediction, accuracy calc, Destiny Bond status [INCREASE 9]
   //   ~ approximated: check OHKO going first only (no accuracy/switch/DB state)
   {
-    const ratio = damageRatio(atk, def, moveName);
-    if (ratio >= 1.0 && atkOutspeeds(atk, def)) {
+    if (moveKnocksOutXHits(atk, def, moveName, 1) && atkOutspeeds(atk, def)) {
       return 9;
     }
   }
