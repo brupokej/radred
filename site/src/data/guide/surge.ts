@@ -314,7 +314,7 @@ export const route25LeaderBugsyBattle: Moment = {
                 { opponent: "{o:Lokix} Knock Off {p:Golisopod} to {+:56}" },
               ],
               [
-                { player: "{p:Golisopod} First Impression {o:Lokix} to {=:0}" },
+                { player: "{p:Golisopod} First Impress. {o:Lokix} to {=:0}" },
                 { opponent: "{o:Lokix} fainted" },
               ],
             ],
@@ -778,7 +778,7 @@ export const ssAnneBrendanBattle: Moment = {
                 { opponent: "{o:Sceptile} Rock Slide {p:Golisopod} to {+:59}" },
               ],
               [
-                { player: "{p:Golisopod} First Impression {o:Sceptile} to {=:0}" },
+                { player: "{p:Golisopod} First Impress. {o:Sceptile} to {=:0}" },
                 { opponent: "{o:Sceptile} fainted" },
               ],
             ],
@@ -1177,7 +1177,7 @@ export const rockTunnelPicnickerDanaBattle: Moment = {
                 { opponent: "{o:Clawitzer} Water Pulse {p:Golisopod} to {+:72}" },
               ],
               [
-                { player: "{p:Golisopod} First Impression {o:Clawitzer} to {-:57}" },
+                { player: "{p:Golisopod} First Impress. {o:Clawitzer} to {-:57}" },
                 { opponent: "{o:Clawitzer} Dark Pulse {p:Golisopod} to {+:3}" },
                 { player: "{p:Golisopod} Emergency Exit to {p:Excadrill}" },
               ],
@@ -1291,7 +1291,7 @@ export const route10PokeManiacHermanBattle: Moment = {
                 { player: "{p:Gyarados} switch to {p:Tentacruel}" },
                 {
                   opponent:
-                    "{o:Sylveon} Misty Explosion {p:Perrserker} to {+:73} and {p:Tentacruel} to {+:53}",
+                    "{o:Sylveon} Misty Explosi. {p:Perrserker} to {+:73} and {p:Tentacruel} to {+:53}",
                 },
                 { opponent: "{o:Sylveon} fainted" },
               ],

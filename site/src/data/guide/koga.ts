@@ -623,7 +623,7 @@ export const route16CueBallCamronBoxChange: Moment = {
   split: "Koga",
   label: "Route 16 Cue Ball Camron Box Change",
   kind: "boxChange",
-  data: { playerBox: _box9 },
+  data: { playerBox: _box10 },
 };
 
 const _box11 = getBox({
@@ -1423,28 +1423,16 @@ const _box16 = getBox({
       nature: "Jolly",
       ability: "Swift Swim",
       item: "Swampertite",
-      moves: ["Earthquake", "Hammer Arm", "Ice Punch", "Rock Slide"],
+      moves: ["Earthquake", "Flip Turn", "Ice Punch", "Rock Slide"],
     },
-    Clodsire: {
-      nature: "Careful",
-      ability: "Water Absorb",
-      item: "Persim Berry",
-      moves: ["Bulldoze", "Earthquake", "Rock Slide", "Rock Tomb"],
-    },
-    Perrserker: {
-      nature: "Relaxed",
-      ability: "Battle Armor",
-      item: "Aspear Berry",
-      moves: ["Fake Out", "Bullet Punch", "Thrash", "U-Turn"],
-    },
-    "Arcanine-H": {
-      nature: "Adamant",
-      ability: "Rock Head",
-      item: "Persim Berry",
-      moves: ["Accelerock", "Flare Blitz", "Play Rough", "Rock Slide"],
+    Golduck: {
+      nature: "Modest",
+      ability: "Swift Swim",
+      item: "Expert Belt",
+      moves: ["Flash", "Flip Turn", "Psychic", "Vacuum Wave"],
     },
   },
-  team: ["Dragapult", "Swampert-Mega", "Clodsire", "Perrserker", "Arcanine-H"],
+  team: ["Dragapult", "Swampert-Mega", "Golduck"],
 });
 
 export const route18AceTrainerWiltonBattle: Moment = {
@@ -1473,7 +1461,7 @@ export const route18AceTrainerWiltonBattle: Moment = {
                 { opponent: "{o:Kabutops} Stone Axe {p:Dragapult} to {+:91}" },
                 { player: "{p:Dragapult} U-Turn {o:Kabutops} to {-:130}" },
                 { player: "{p:Dragapult} switch to {p:Swampert-Mega}" },
-                { opponent: "{p:Swampert-Mega} Stealth Rock to {=:221}" },
+                { opponent: "{p:Swampert-Mega} Stealth Rock to {+:221}" },
               ],
               [
                 { player: "{p:Swampert-Mega} mega evolve" },
@@ -1496,21 +1484,13 @@ export const route18AceTrainerWiltonBattle: Moment = {
             matchup: ["Omastar"],
             turns: [
               [
-                { player: "{p:Swampert-Mega} Earthquake {o:Omastar} to {=:1}" },
+                { player: "{p:Swampert-Mega} Flip Turn {o:Omastar} to {-:104}" },
+                { player: "{p:Swampert-Mega} switch to {p:Golduck}" },
+                { opponent: "{p:Golduck} Stealth Rock to {+:182}" },
                 { opponent: "{o:Omastar} Shell Smash" },
               ],
               [
-                { player: "{p:Swampert-Mega} switch to {p:Clodsire}" },
-                { opponent: "{p:Clodsire} Stealth Rock to {=:258}" },
-                { opponent: "{o:Omastar} Hydro Pump {p:Clodsire} to {+:258}" },
-              ],
-              [
-                { player: "{p:Clodsire} switch to {p:Perrserker}" },
-                { opponent: "{p:Perrserker} Stealth Rock to {=:208}" },
-                { opponent: "{o:Omastar} Ice Beam {p:Perrserker} to {+:129}" },
-              ],
-              [
-                { player: "{p:Perrserker} Bullet Punch {o:Omastar} to {=:0}" },
+                { player: "{p:Golduck} Vacuum Wave {o:Omastar} to {=:0}" },
                 { opponent: "{o:Omastar} fainted" },
               ],
             ],
@@ -1519,27 +1499,19 @@ export const route18AceTrainerWiltonBattle: Moment = {
             matchup: ["Kilowattrel"],
             turns: [
               [
-                { player: "{p:Perrserker} switch to {p:Clodsire}" },
-                { opponent: "{p:Clodsire} Stealth Rock to {=:241}" },
-                { opponent: "{o:Kilowattrel} Thunder {p:Clodsire}" },
+                { player: "{p:Golduck} Flip Turn {o:Kilowattrel} to {-:107}" },
+                { player: "{p:Golduck} switch to {p:Swampert-Mega}" },
+                { opponent: "{p:Swampert-Mega} Stealth Rock to {+:207}" },
+                { opponent: "{o:Kilowattrel} Thunder {p:Swampert-Mega}" },
               ],
               [
-                { opponent: "{o:Kilowattrel} Hurricane {p:Clodsire} to {+:27}" },
-                { player: "{p:Clodsire} Rock Tomb {o:Kilowattrel} to {-:114}" },
-              ],
-              [
-                { player: "{p:Clodsire} switch to {p:Arcanine-H}" },
-                { opponent: "{p:Arcanine-H} Stealth Rock to {=:171}" },
-                { opponent: "{o:Kilowattrel} Hurricane {p:Arcanine-H} to {+:42}" },
-              ],
-              [
-                { player: "{p:Arcanine-H} Rock Slide {o:Kilowattrel} to {=:0}" },
+                { player: "{p:Swampert-Mega} Rock Slide {o:Kilowattrel} to {=:0}" },
                 { opponent: "{o:Kilowattrel} fainted" },
               ],
             ],
           },
         ],
-        frags: { Dragapult: 1, "Swampert-Mega": 2, Perrserker: 1, "Arcanine-H": 1 },
+        frags: { Dragapult: 1, "Swampert-Mega": 3, Golduck: 1 },
       },
     ],
   },
@@ -1570,7 +1542,7 @@ const _box17 = getBox({
       nature: "Jolly",
       ability: "Swift Swim",
       item: "Swampertite",
-      moves: ["Earthquake", "Hammer Arm", "Ice Punch", "Rock Slide"],
+      moves: ["Earthquake", "Flip Turn", "Ice Punch", "Rock Slide"],
     },
     Gyarados: {
       nature: "Impish",

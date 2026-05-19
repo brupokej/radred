@@ -96,7 +96,7 @@ export const gameCornerGuardBattle: Moment = {
             turns: [
               [
                 { player: "{p:Perrserker} Bullet Punch {o:Aerodactyl} to {-:71}" },
-                { player: "{p:Golisopod} First Impression {o:Hypno} to {=:0}" },
+                { player: "{p:Golisopod} First Impress. {o:Hypno} to {=:0}" },
                 { opponent: "{o:Hypno} fainted" },
                 {
                   opponent:
@@ -123,7 +123,7 @@ export const gameCornerGuardBattle: Moment = {
               [
                 { player: "{p:Incineroar} switch to {p:Lanturn}" },
                 { opponent: "{o:Inteleon} Snipe Shot {p:Perrserker} to {+:84}" },
-                { opponent: "{o:Tinkaton} Gigaton Hammer {p:Perrserker} to {+:21}" },
+                { opponent: "{o:Tinkaton} Giga. Hammer {p:Perrserker} to {+:21}" },
                 { player: "{p:Perrserker} U-Turn {o:Tinkaton} to {-:131}" },
                 { player: "{p:Perrserker} switch to {p:Incineroar}" },
               ],
@@ -438,13 +438,13 @@ export const rocketHideoutGiovanniBattle: Moment = {
             turns: [
               [
                 { opponent: "{o:Kangaskhan-Mega} mega evolve" },
-                { opponent: "{o:Kangaskhan-Mega} Power-Up Punch {p:Golduck} to {+:119}" },
+                { opponent: "{o:Kangaskhan-Mega} Pow-Up Punch {p:Golduck} to {+:119}" },
                 { player: "{p:Golduck} Flip Turn {o:Kangaskhan-Mega} to {-:137}" },
                 { player: "{p:Golduck} switch to {p:Drednaw}" },
                 { opponent: "{p:Drednaw} Stealth Rock to {=:137}" },
               ],
               [
-                { opponent: "{o:Kangaskhan-Mega} Power-Up Punch {p:Drednaw} to {+:6}" },
+                { opponent: "{o:Kangaskhan-Mega} Pow-Up Punch {p:Drednaw} to {+:6}" },
                 { player: "{p:Drednaw} Bulldoze {o:Kangaskhan-Mega} to {-:111}" },
               ],
               [
@@ -1123,7 +1123,7 @@ export const pokemonTowerGrunt3Battle: Moment = {
             turns: [
               [
                 { player: "{p:Meowscarada} switch to {p:Tentacruel}" },
-                { opponent: "{o:Slurpuff} Misty Explosion {p:Tentacruel} to {+:98}" },
+                { opponent: "{o:Slurpuff} Misty Explosi. {p:Tentacruel} to {+:98}" },
                 { opponent: "{o:Slurpuff} fainted" },
               ],
             ],
@@ -2527,7 +2527,7 @@ const _box23 = getBox({
       moves: ["Flower Trick", "Play Rough", "Thunder Punch", "U-Turn"],
     },
     Golduck: {
-      nature: "Rash",
+      nature: "Modest",
       ability: "Cloud Nine",
       item: "Leftovers",
       moves: ["Flash", "Flip Turn", "Psychic", "Scald"],
@@ -2644,7 +2644,7 @@ export const silphCoGiovanniBattle: Moment = {
                 { opponent: "{p:Golduck} Leftovers to {+:64}" },
               ],
               [
-                { player: "{p:Golduck} Flip Turn {o:Excadrill} to {-:114}" },
+                { player: "{p:Golduck} Flip Turn {o:Excadrill} to {-:126}" },
                 { player: "{p:Golduck} switch to {p:Gyarados}" },
                 { opponent: "{o:Excadrill} Earthquake {p:Gyarados}" },
                 { opponent: "{p:Gyarados} sandstorm to {+:180}" },
@@ -2682,7 +2682,7 @@ export const silphCoGiovanniBattle: Moment = {
                 { opponent: "{p:Golduck} Leftovers to {+:64}" },
               ],
               [
-                { player: "{p:Golduck} Flip Turn {o:Excadrill} to {-:114}" },
+                { player: "{p:Golduck} Flip Turn {o:Excadrill} to {-:126}" },
                 { player: "{p:Golduck} switch to {p:Gyarados}" },
                 { opponent: "{o:Excadrill} Earthquake {p:Gyarados}" },
                 { opponent: "{p:Gyarados} sandstorm to {+:180}" },
@@ -3057,7 +3057,7 @@ export const saffronCityLeaderSabrinaBattle: Moment = {
                 { opponent: "{o:Camerupt-Mega} fainted" },
                 { player: "{p:Lanturn} Volt Switch {o:Tapu Fini} to {-:101}" },
                 { player: "{p:Lanturn} switch to {p:Swampert}" },
-                { opponent: "{o:Tapu Fini} Misty Explosion" },
+                { opponent: "{o:Tapu Fini} Misty Explosi." },
               ],
             ],
           },
