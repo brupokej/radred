@@ -2,30 +2,12 @@ import { resolveActiveBox } from "@site/src/components/Battle";
 import Card from "@site/src/components/Card";
 import { PokemonEntry } from "@site/src/components/PokemonEntry";
 import { Row } from "@site/src/components/Row";
-import { getCanon, resolveBox } from "@site/src/utils/box";
+import { resolveBox } from "@site/src/utils/box";
 import { Moment } from "@site/src/utils/moments";
 import { resolvePokemon } from "@site/src/utils/pokemon";
-import { computeBattleFrags } from "@site/src/utils/stats";
 import { useStorageState } from "@site/src/utils/storage";
 import { LIVE_MOMENT_DEFAULT } from "@site/src/utils/storageDefaults";
 import styles from "./styles.module.css";
-
-function computeTotals(moments: Moment[], canon: (name: string) => string) {
-  const battles: Record<string, number> = {};
-  const frags: Record<string, number> = {};
-  for (const m of moments) {
-    if (m.kind !== "battle") continue;
-    for (const name of resolveBox(resolveActiveBox(m.data)).team ?? []) {
-      const key = canon(name);
-      battles[key] = (battles[key] ?? 0) + 1;
-    }
-    for (const [name, count] of Object.entries(computeBattleFrags(m.data)) as [string, number][]) {
-      const key = canon(name);
-      frags[key] = (frags[key] ?? 0) + count;
-    }
-  }
-  return { battles, frags };
-}
 
 export default function BoxRoster({
   moments,
@@ -53,8 +35,6 @@ export default function BoxRoster({
       break;
     }
   }
-
-  const canon = getCanon(resolvedActive);
 
   const teamOrder = new Map<string, number>(
     (resolvedActive?.team ?? []).map((name, i) => [name, i] as [string, number])
@@ -97,20 +77,10 @@ export default function BoxRoster({
 
   if (entries.length === 0) return null;
 
-  const totals = computeTotals(sliced, canon);
-
   return (
     <Card title={title}>
       {entries.map((pokemon, i) => {
-        const canonName = canon(pokemon.name);
-        const levelLabel = pokemon.level != null ? `Level ${pokemon.level}` : null;
-        const detail = [
-          levelLabel,
-          `${totals.battles[canonName] ?? 0} Battles`,
-          `${totals.frags[canonName] ?? 0} Frags`,
-        ]
-          .filter(Boolean)
-          .join(" · ");
+        const detail = pokemon.level != null ? `Level ${pokemon.level}` : null;
         return (
           <PokemonEntry key={i} pokemon={pokemon} className={i > 0 ? styles.bordered : undefined}>
             {detail && <Row row={[detail]} />}

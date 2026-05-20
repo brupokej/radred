@@ -1,6 +1,6 @@
 import rawData from "@site/src/data/utils/pokedex.json";
-import { PokemonData, Stats } from "@site/src/utils/pokemon";
 import { resolveSpecies } from "@site/src/utils/abbreviations";
+import { PokemonData, Stats } from "@site/src/utils/pokemon";
 
 export type PokedexData = Stats;
 

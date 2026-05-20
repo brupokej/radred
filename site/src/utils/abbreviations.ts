@@ -191,11 +191,8 @@ export const ITEM_ABBREVIATIONS: Record<string, string> = {
   "Well. Mask": "Wellspring Mask",
 };
 
-export const resolveItem = (name: string): string =>
-  ITEM_ABBREVIATIONS[name] ?? name;
+export const resolveItem = (name: string): string => ITEM_ABBREVIATIONS[name] ?? name;
 
-export const resolveSpecies = (name: string): string =>
-  POKEMON_ABBREVIATIONS[name] ?? name;
+export const resolveSpecies = (name: string): string => POKEMON_ABBREVIATIONS[name] ?? name;
 
-export const resolveMove = (name: string): string =>
-  MOVE_ABBREVIATIONS[name] ?? name;
+export const resolveMove = (name: string): string => MOVE_ABBREVIATIONS[name] ?? name;

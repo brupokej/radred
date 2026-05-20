@@ -1,4 +1,5 @@
 import useBaseUrl from "@docusaurus/useBaseUrl";
+import { resolveSpecies } from "@site/src/utils/abbreviations";
 import { useOpponent, useRelayState } from "@site/src/utils/overlayHooks";
 import {
   BADGE_NAMES,
@@ -11,7 +12,6 @@ import {
   TopBattler,
 } from "@site/src/utils/overlayMeta";
 import { pokedex, type PokedexData } from "@site/src/utils/pokedex";
-import { resolveSpecies } from "@site/src/utils/abbreviations";
 import { formatStats, PokemonData } from "@site/src/utils/pokemon";
 import { SpriteImg } from "@site/src/utils/SpriteImg";
 import { FADE_MS, useFadedKey, useFadedValue } from "@site/src/utils/useFadedValue";

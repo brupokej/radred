@@ -1,10 +1,10 @@
 import Card from "@site/src/components/Card";
 import { ScrollArrows } from "@site/src/components/ScrollArrows";
 import { ScrollFade } from "@site/src/components/ScrollFade";
+import { resolveSpecies } from "@site/src/utils/abbreviations";
 import type { Box } from "@site/src/utils/box";
 import { resolveBox } from "@site/src/utils/box";
 import { pokedex, type PokedexData } from "@site/src/utils/pokedex";
-import { resolveSpecies } from "@site/src/utils/abbreviations";
 import {
   formatStats,
   resolvePokemon,

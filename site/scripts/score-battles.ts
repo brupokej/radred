@@ -29,19 +29,19 @@ import { resolveBox } from "../src/utils/box";
 import { Moment } from "../src/utils/moments";
 
 import { moments as brockMoments } from "../src/data/guide/brock";
-import { moments as mistyMoments } from "../src/data/guide/misty";
-import { moments as surgeMoments } from "../src/data/guide/surge";
 import { moments as erikaMoments } from "../src/data/guide/erika";
-import { moments as sabrinaMoments } from "../src/data/guide/sabrina";
 import { box18, moments as kogaMoments } from "../src/data/guide/koga";
+import { moments as mistyMoments } from "../src/data/guide/misty";
+import { moments as sabrinaMoments } from "../src/data/guide/sabrina";
+import { moments as surgeMoments } from "../src/data/guide/surge";
 
 // Enabled secrets files contain the real battle data; the default stub files contain placeholders.
 // We chain them starting from box18 (koga's pre-secrets box state) for correct team compositions.
-import { getKogaSecrets } from "../src/data/guide/kogaSecrets.enabled";
 import { getBlaineSecrets } from "../src/data/guide/blaineSecrets.enabled";
 import { getClairSecrets } from "../src/data/guide/clairSecrets.enabled";
-import { getVictoryRoadSecrets } from "../src/data/guide/victoryRoadSecrets.enabled";
 import { getEliteFourSecrets } from "../src/data/guide/eliteFourSecrets.enabled";
+import { getKogaSecrets } from "../src/data/guide/kogaSecrets.enabled";
+import { getVictoryRoadSecrets } from "../src/data/guide/victoryRoadSecrets.enabled";
 
 function secretsToMoments(obj: Record<string, unknown>): Moment[] {
   return Object.entries(obj)
@@ -219,8 +219,8 @@ function scoreBattle(split: string, label: string, data: BattleData): BattleScor
     }
   }
 
-  const E = oppSize > 0 ? 25 * (oppSize - teamSize) / oppSize : 0;
-  const C = oppSize > 0 ? 25 * topFrags / oppSize : 0;
+  const E = oppSize > 0 ? (25 * (oppSize - teamSize)) / oppSize : 0;
+  const C = oppSize > 0 ? (25 * topFrags) / oppSize : 0;
   const P = Math.max(0, 25 - (oppSize > 0 ? (idleTurns / oppSize) * 12.5 : 0));
   const D = Math.max(0, 25 - (oppSize > 0 ? (activeHitTurns / oppSize) * 10 : 0));
   const total = E + C + P + D;
@@ -241,7 +241,7 @@ function scoreBattle(split: string, label: string, data: BattleData): BattleScor
 
 // --- Opponent attention ------------------------------------------------------
 
-const ATTN_TURNS = 1;    // weight per turn
+const ATTN_TURNS = 1; // weight per turn
 const ATTN_SWITCHES = 2; // weight per player switch
 
 interface MatchupDifficulty {
@@ -310,8 +310,9 @@ function expandMoment(m: Moment): { split: string; label: string; data: BattleDa
   return [];
 }
 
-const results: BattleScore[] = ALL_MOMENTS
-  .filter((m) => !splitFilter || m.split.toLowerCase().includes(splitFilter))
+const results: BattleScore[] = ALL_MOMENTS.filter(
+  (m) => !splitFilter || m.split.toLowerCase().includes(splitFilter)
+)
   .flatMap(expandMoment)
   .map(({ split, label, data }) => scoreBattle(split, label, data))
   .sort((a, b) => b.total - a.total);
@@ -360,9 +361,9 @@ console.log(`\n${results.length} battles scored.`);
 
 // --- Opponent attention table -----------------------------------------------
 
-const filteredBattles = ALL_MOMENTS
-  .filter((m) => !splitFilter || m.split.toLowerCase().includes(splitFilter))
-  .flatMap(expandMoment);
+const filteredBattles = ALL_MOMENTS.filter(
+  (m) => !splitFilter || m.split.toLowerCase().includes(splitFilter)
+).flatMap(expandMoment);
 
 const TOP_N = 15;
 const hardest = filteredBattles
@@ -371,11 +372,11 @@ const hardest = filteredBattles
   .slice(0, TOP_N);
 
 const WA = {
-  score:    Math.max(5, ...hardest.map((d) => String(d.score).length)),
-  turns:    Math.max(5, ...hardest.map((d) => String(d.turns).length)),
+  score: Math.max(5, ...hardest.map((d) => String(d.score).length)),
+  turns: Math.max(5, ...hardest.map((d) => String(d.turns).length)),
   switches: Math.max(8, ...hardest.map((d) => String(d.switches).length)),
-  opp:      Math.max(8, ...hardest.map((d) => d.opponent.length)),
-  battle:   Math.max(6, ...hardest.map((d) => d.battle.length)),
+  opp: Math.max(8, ...hardest.map((d) => d.opponent.length)),
+  battle: Math.max(6, ...hardest.map((d) => d.battle.length)),
 };
 
 const attnHeader = [
@@ -386,7 +387,9 @@ const attnHeader = [
   lp("Battle", WA.battle),
 ].join(sep);
 
-console.log(`\nTop ${TOP_N} opponent pokemon by player attention (${ATTN_TURNS}×turns + ${ATTN_SWITCHES}×switches):`);
+console.log(
+  `\nTop ${TOP_N} opponent pokemon by player attention (${ATTN_TURNS}×turns + ${ATTN_SWITCHES}×switches):`
+);
 console.log(attnHeader);
 console.log("─".repeat(attnHeader.length));
 
