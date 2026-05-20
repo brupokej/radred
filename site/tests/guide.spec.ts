@@ -248,7 +248,6 @@ const PATHS = secretMode
       ["guide", "victory-road"],
       ["guide", "elite-four"],
       ["data", "box"],
-      ["data", "calc"],
       ["data", "stats"],
       ["data", "timeline"],
       ["overlay", "background"],

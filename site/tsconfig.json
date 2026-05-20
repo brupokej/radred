@@ -4,9 +4,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@site/*": ["./*"],
-      "@calc": ["./generated/calc/index.d.ts"],
-      "@calc/*": ["./generated/calc/*"]
+      "@site/*": ["./*"]
     }
   },
   "exclude": [".docusaurus", "build"]
