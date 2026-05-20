@@ -217,13 +217,13 @@ export const rocketHideoutLeftGuardBattle: Moment = {
       {
         matchups: [
           {
-            matchup: ["Slaking", "Weezing-Galar"],
+            matchup: ["Slaking", "Weezing-G"],
             turns: [
               [
                 { player: "{p:Perrserker} Fake Out {o:Slaking} to {-:190}" },
                 { opponent: "{o:Slaking} flinched" },
-                { player: "{p:Golduck} Psychic {o:Weezing-Galar} to {=:0}" },
-                { opponent: "{o:Weezing-Galar} fainted" },
+                { player: "{p:Golduck} Psychic {o:Weezing-G} to {=:0}" },
+                { opponent: "{o:Weezing-G} fainted" },
               ],
             ],
           },

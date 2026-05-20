@@ -15,6 +15,7 @@
     "write-heading-ids": "docusaurus write-heading-ids",
     "typecheck": "tsc",
     "format": "prettier --write \"**/*.{mdx,jsx,tsx,ts,js,css}\"",
+    "score-battles": "tsx scripts/score-battles.ts",
     "pokedex": "tsx scripts/pokedex.mts",
     "postinstall": "npx playwright install chromium",
     "playwright": "tsx scripts/playwright.mts",
