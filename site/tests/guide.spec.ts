@@ -2,6 +2,7 @@ import { expect, Locator, Page, test } from "@playwright/test";
 import fs from "fs";
 import path from "path";
 import { slugify } from "../src/utils/slugify";
+import { LIVE_ATTEMPT_DEFAULT, LIVE_MOMENT_DEFAULT } from "../src/utils/storageDefaults";
 
 test.describe.configure({ mode: "serial" });
 
@@ -260,6 +261,14 @@ const PATHS = secretMode
       ["overlay", "title"],
       ["overlay", "controls"],
     ];
+
+test.beforeAll(async () => {
+  await fetch("http://localhost:3001/state", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ moment: { label: LIVE_MOMENT_DEFAULT }, attempt: LIVE_ATTEMPT_DEFAULT }),
+  }).catch(() => {});
+});
 
 for (const [pathIndex, path] of PATHS.entries()) {
   test.describe(`${path[0]}/${path[1]}`, () => {

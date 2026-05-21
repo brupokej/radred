@@ -1,5 +1,5 @@
 /**
- * Scores battle plans by elegance using 4 axes (each 0–25, total 0–100):
+ * Scores battle plans by elegance using 5 axes (each 0–25, total 0–125):
  *
  *   E  Roster Efficiency   25 × (opp_size − team_size) / opp_size
  *                          Positive when we use fewer pokemon than the opponent; negative when more.
@@ -15,6 +15,12 @@
  *                          Active hit = opponent deals HP damage to player (excludes sand/poison ticks).
  *                          Normalized by opponent count.
  *
+ *   R  Resource Discipline max(0, 25 − resources_per_team_member × 5)
+ *                          Resource = any field that actually changed on a team member's box entry
+ *                          (mirrors Team component warning highlights: update[field] !== base[field],
+ *                          plus each move present in update.moves but absent from base.moves set).
+ *                          Normalized by team size.
+ *
  * Branching battles (where opponent AI varies the path) are scored on a best-effort basis:
  *   - Matchups are deduplicated by opponent name (first non-empty occurrence wins).
  *   - Frags are summed across all lines and scaled down if they exceed opp_size.
@@ -27,6 +33,7 @@ import { BattleData, LineData, MoveData } from "../src/components/Battle";
 import { SwitchBattleData } from "../src/components/SwitchBattle";
 import { resolveBox } from "../src/utils/box";
 import { Moment } from "../src/utils/moments";
+import { Pokemon, PokemonData, resolvePokemon } from "../src/utils/pokemon";
 
 import { moments as brockMoments } from "../src/data/guide/brock";
 import { moments as erikaMoments } from "../src/data/guide/erika";
@@ -154,6 +161,34 @@ function isActiveHitEvent(s: string): boolean {
   return s.startsWith("{o:") && s.includes("{p:") && s.includes("to {+:");
 }
 
+// --- Resource counting ------------------------------------------------------
+
+const RESOURCE_FIELDS: (keyof PokemonData)[] = [
+  "level", "nature", "ability", "nonMegaAbility", "item", "ivs", "evs", "friend",
+];
+
+function countPokemonResources(pokemon: Pokemon): number {
+  const { base, update } = pokemon;
+  if (!update) return 0;
+
+  let count = 0;
+  for (const field of RESOURCE_FIELDS) {
+    if (field in update && update[field as keyof typeof update] !== base[field as keyof typeof base]) {
+      count++;
+    }
+  }
+
+  // Count each move present in the resolved moveset but absent from the base moveset.
+  const baseMoveSet = base.moves ? new Set(base.moves.filter(Boolean)) : null;
+  if (update.moves) {
+    for (const move of update.moves) {
+      if (move && (!baseMoveSet || !baseMoveSet.has(move))) count++;
+    }
+  }
+
+  return count;
+}
+
 // --- Scoring ----------------------------------------------------------------
 
 function round1(n: number): number {
@@ -169,18 +204,29 @@ interface BattleScore {
   C: number;
   P: number;
   D: number;
+  R: number;
   total: number;
   branching: boolean;
 }
 
 function scoreBattle(split: string, label: string, data: BattleData): BattleScore {
-  const playerBox = data.playerBoxCases
-    ? resolveBox(Object.values(data.playerBoxCases.cases)[0])
-    : resolveBox(data.playerBox!);
+  const playerBoxRaw = data.playerBoxCases
+    ? Object.values(data.playerBoxCases.cases)[0]
+    : data.playerBox!;
+  const playerBox = resolveBox(playerBoxRaw);
   const opponentBox = resolveBox(data.opponentBox);
 
   const teamSize = playerBox.team?.length ?? 0;
   const oppSize = opponentBox.team?.length ?? 0;
+
+  // Count non-redundant resource changes for team members (mirrors Team component warning logic).
+  const teamSet = new Set(playerBox.team ?? []);
+  let totalResources = 0;
+  for (const pokemon of playerBox.pokemon) {
+    if (teamSet.has(resolvePokemon(pokemon).name)) {
+      totalResources += countPokemonResources(pokemon);
+    }
+  }
 
   const hasBranching = data.lines.some((l) =>
     l.matchups.some((m) => (m.branches?.length ?? 0) > 0)
@@ -223,7 +269,8 @@ function scoreBattle(split: string, label: string, data: BattleData): BattleScor
   const C = oppSize > 0 ? (25 * topFrags) / oppSize : 0;
   const P = Math.max(0, 25 - (oppSize > 0 ? (idleTurns / oppSize) * 12.5 : 0));
   const D = Math.max(0, 25 - (oppSize > 0 ? (activeHitTurns / oppSize) * 10 : 0));
-  const total = E + C + P + D;
+  const R = Math.max(0, 25 - (teamSize > 0 ? (totalResources / teamSize) * 5 : 0));
+  const total = E + C + P + D + R;
 
   return {
     split,
@@ -234,6 +281,7 @@ function scoreBattle(split: string, label: string, data: BattleData): BattleScor
     C: round1(C),
     P: round1(P),
     D: round1(D),
+    R: round1(R),
     total: round1(total),
     branching: hasBranching,
   };
@@ -318,7 +366,7 @@ const results: BattleScore[] = ALL_MOMENTS.filter(
   .sort((a, b) => b.total - a.total);
 
 const longestLabel = Math.max(...results.map((r) => r.battle.length + (r.branching ? 2 : 0)));
-const W = { split: 12, battle: longestLabel, opp: 4, team: 5, E: 7, C: 7, P: 7, D: 7, total: 8 };
+const W = { split: 12, battle: longestLabel, opp: 4, team: 5, E: 7, C: 7, P: 7, D: 7, R: 7, total: 8 };
 const rp = (s: string | number, n: number) => String(s).padStart(n);
 const lp = (s: string | number, n: number) => String(s).padEnd(n);
 const score = (n: number, w: number) => n.toFixed(1).padStart(w);
@@ -333,6 +381,7 @@ const header = [
   rp("C", W.C),
   rp("P", W.P),
   rp("D", W.D),
+  rp("R", W.R),
   rp("Total", W.total),
 ].join(sep);
 
@@ -351,6 +400,7 @@ for (const r of results) {
       score(r.C, W.C),
       score(r.P, W.P),
       score(r.D, W.D),
+      score(r.R, W.R),
       score(r.total, W.total),
     ].join(sep)
   );

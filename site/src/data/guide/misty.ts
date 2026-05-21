@@ -1409,10 +1409,10 @@ const _box18 = getBox({
       moves: ["Fake Out", "Bullet Punch", "Iron Head", "Scratch"],
     },
     Gyarados: {
-      nature: "Adamant",
+      nature: "Impish",
       ability: "Intimidate",
       item: "Sitrus Berry",
-      moves: ["Bite", "Ice Fang", "Leer", "Thrash"],
+      moves: ["Bite", "Ice Fang", "Leer", "Splash"],
     },
     Azumarill: {
       nature: "Adamant",
@@ -1420,20 +1420,14 @@ const _box18 = getBox({
       item: "Pixie Plate",
       moves: ["Aqua Jet", "Aqua Tail", "Ice Punch", "Play Rough"],
     },
-    Clodsire: {
-      nature: "Sassy",
-      ability: "Water Absorb",
-      item: "Poison Barb",
-      moves: ["Mud Shot", "Poison Jab", "Rock Tomb", "Yawn"],
-    },
-    Tentacruel: {
-      nature: "Calm",
-      ability: "Clear Body",
-      item: "Persim Berry",
-      moves: ["Acid Spray", "Bubble Beam", "Rapid Spin", "Sludge"],
+    Houndoom: {
+      nature: "Modest",
+      ability: "Flash Fire",
+      item: "Black Glasses",
+      moves: ["Dark Pulse", "Flame Burst", "Leer", "Sucker Punch"],
     },
   },
-  team: ["Perrserker", "Gyarados", "Azumarill", "Clodsire", "Tentacruel"],
+  team: ["Perrserker", "Gyarados", "Azumarill", "Houndoom"],
 });
 
 export const nuggetBridgeLassReliBattle: Moment = {
@@ -1459,11 +1453,12 @@ export const nuggetBridgeLassReliBattle: Moment = {
               ],
               [
                 { player: "{p:Gyarados} Leer {o:Greedent}" },
-                { opponent: "{o:Greedent} Facade {p:Gyarados} to {+:54}" },
+                { opponent: "{o:Greedent} Swords Dance" },
               ],
               [
                 { player: "{p:Gyarados} Leer {o:Greedent}" },
-                { opponent: "{o:Greedent} Facade {p:Gyarados} to {+:33}" },
+                { opponent: "{o:Greedent} Facade {p:Gyarados} to {+:39}" },
+                { opponent: "{p:Gyarados} Sitrus Berry to {+:63}" },
               ],
               [
                 { player: "{p:Gyarados} switch to {p:Azumarill}" },
@@ -1492,25 +1487,21 @@ export const nuggetBridgeLassReliBattle: Moment = {
             matchup: ["Clamperl"],
             turns: [
               [
-                { player: "{p:Perrserker} switch to {p:Clodsire}" },
-                { opponent: "{o:Clamperl} Icy Wind {p:Clodsire} to {+:57}" },
+                { player: "{p:Perrserker} switch to {p:Gyarados}" },
+                { opponent: "{o:Clamperl} Icy Wind {p:Gyarados} to {+:29}" },
               ],
               [
-                { player: "{p:Clodsire} switch to {p:Tentacruel}" },
-                { opponent: "{o:Clamperl} Icy Wind {p:Tentacruel} to {+:78}" },
+                { player: "{p:Gyarados} switch to {p:Houndoom}" },
+                { opponent: "{o:Clamperl} Icy Wind {p:Houndoom} to {+:68}" },
               ],
               [
-                { player: "{p:Tentacruel} Acid Spray {o:Clamperl} to {-:40}" },
-                { opponent: "{o:Clamperl} Water Pulse {p:Tentacruel} to {+:56}" },
-              ],
-              [
-                { player: "{p:Tentacruel} Sludge {o:Clamperl} to {=:0}" },
+                { player: "{p:Houndoom} Dark Pulse {o:Clamperl} to {=:0}" },
                 { opponent: "{o:Clamperl} fainted" },
               ],
             ],
           },
         ],
-        frags: { Azumarill: 1, Perrserker: 1, Tentacruel: 1 },
+        frags: { Azumarill: 1, Perrserker: 1, Houndoom: 1 },
       },
     ],
   },
@@ -1534,7 +1525,7 @@ const _box19 = getBox({
     Tentacruel: {
       nature: "Calm",
       ability: "Clear Body",
-      item: "Persim Berry",
+      item: "Mystic Water",
       moves: ["Acid Spray", "Bubble Beam", "Rapid Spin", "Sludge"],
     },
   },
