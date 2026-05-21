@@ -1513,23 +1513,17 @@ const _box19 = getBox({
     Houndoom: {
       nature: "Modest",
       ability: "Flash Fire",
-      item: "Wise Glasses",
+      item: "Black Glasses",
       moves: ["Dark Pulse", "Flame Burst", "Leer", "Sucker Punch"],
     },
     Azumarill: {
       nature: "Adamant",
       ability: "Huge Power",
-      item: "Pixie Plate",
+      item: "Sitrus Berry",
       moves: ["Aqua Jet", "Aqua Tail", "Ice Punch", "Play Rough"],
     },
-    Tentacruel: {
-      nature: "Calm",
-      ability: "Clear Body",
-      item: "Mystic Water",
-      moves: ["Acid Spray", "Bubble Beam", "Rapid Spin", "Sludge"],
-    },
   },
-  team: ["Houndoom", "Azumarill", "Tentacruel"],
+  team: ["Houndoom", "Azumarill"],
 });
 
 export const nuggetBridgeCamperEthanBattle: Moment = {
@@ -1555,6 +1549,7 @@ export const nuggetBridgeCamperEthanBattle: Moment = {
               ],
               [
                 { opponent: "{o:Mabosstiff} Trailblaze {p:Azumarill} to {+:25}" },
+                { opponent: "{p:Azumarill} Sitrus Berry to {+:50}" },
                 { player: "{p:Azumarill} Play Rough {o:Mabosstiff} to {=:0}" },
                 { opponent: "{o:Mabosstiff} fainted" },
               ],
@@ -1564,18 +1559,13 @@ export const nuggetBridgeCamperEthanBattle: Moment = {
             matchup: ["Misdreavus"],
             turns: [
               [
-                { player: "{p:Azumarill} switch to {p:Tentacruel}" },
-                { opponent: "{o:Misdreavus} Will-O-Wisp {p:Tentacruel}" },
-                { opponent: "{p:Tentacruel} burn to {+:86}" },
+                { player: "{p:Azumarill} Aqua Jet {o:Misdreavus} to {-:66}" },
+                { opponent: "{o:Misdreavus} Will-O-Wisp {p:Azumarill}" },
+                { opponent: "{p:Azumarill} burn to {+:44}" },
               ],
               [
-                { player: "{p:Tentacruel} Acid Spray {o:Misdreavus} to {-:70}" },
-                { opponent: "{o:Misdreavus} Hex {p:Tentacruel} to {+:37}" },
-                { opponent: "{p:Tentacruel} burn to {+:32}" },
-              ],
-              [
-                { player: "{p:Tentacruel} switch to {p:Houndoom}" },
-                { opponent: "{o:Misdreavus} Hex {p:Houndoom} to {+:34}" },
+                { player: "{p:Azumarill} switch to {p:Houndoom}" },
+                { opponent: "{o:Misdreavus} Shock Wave {p:Houndoom} to {-:28}" },
               ],
               [
                 { player: "{p:Houndoom} Dark Pulse {o:Misdreavus} to {=:0}" },
