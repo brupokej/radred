@@ -201,10 +201,6 @@ const _box6 = getBox({
     "Yamask-G": {
       level: 23,
     },
-    "Meowth-G": {
-      level: 23,
-      moves: ["Fake Out", "Bullet Punch", "Metal Claw", "Scratch"],
-    },
   },
 });
 
@@ -473,6 +469,10 @@ const _box8 = getBox({
     {
       Clodsire: {
         level: 23,
+      },
+      "Meowth-G": {
+        level: 23,
+        moves: ["Fake Out", "Bullet Punch", "Metal Claw", "Scratch"],
       },
     },
   ],
@@ -1242,6 +1242,7 @@ export const nuggetBridgeBugCatcherCaleBattle: Moment = {
             turns: [
               [
                 { player: "{p:Houndoom} Flame Burst {o:Vivillon} to {=:0}" },
+                { opponent: "{o:Butterfree} Flame Burst to {=:71}" },
                 { player: "{p:Drednaw} Rock Tomb {o:Butterfree} to {=:0}" },
                 { opponent: "{o:Vivillon} fainted" },
                 { opponent: "{o:Butterfree} fainted" },
@@ -1565,7 +1566,7 @@ export const nuggetBridgeCamperEthanBattle: Moment = {
               ],
               [
                 { player: "{p:Azumarill} switch to {p:Houndoom}" },
-                { opponent: "{o:Misdreavus} Shock Wave {p:Houndoom} to {-:28}" },
+                { opponent: "{o:Misdreavus} Hex {p:Houndoom} to {-:34}" },
               ],
               [
                 { player: "{p:Houndoom} Dark Pulse {o:Misdreavus} to {=:0}" },
@@ -1721,11 +1722,11 @@ export const nuggetBridgeGruntBattle: Moment = {
               [
                 { player: "{p:Azumarill} Play Rough {o:Druddigon} to {-:17}" },
                 { opponent: "{o:Druddigon} Rough Skin {p:Azumarill} to {=:90}" },
-                { opponent: "{o:Druddigon} Poison Tail {p:Azumarill} to {+:34}" },
+                { opponent: "{o:Druddigon} Poison Tail {p:Azumarill} to {+:22}" },
               ],
               [
                 { player: "{p:Azumarill} Play Rough {o:Druddigon} to {=:0}" },
-                { opponent: "{o:Druddigon} Rough Skin {p:Azumarill} to {=:22}" },
+                { opponent: "{o:Druddigon} Rough Skin {p:Azumarill} to {+:10}" },
                 { opponent: "{o:Druddigon} fainted" },
               ],
             ],

@@ -79,6 +79,7 @@
   height: 138px;
   display: flex;
   align-items: center;
+  background: #cad6d6;
 }
 
 .bannerSection {
@@ -95,18 +96,34 @@
   justify-content: flex-start;
 }
 
-.banner3 {
-  justify-content: flex-end;
-  width: 245px;
+.bannerVariable {
+  flex: 1;
+  position: relative;
+  align-self: stretch;
+  overflow: hidden;
 }
 
-.banner4 {
-  justify-content: flex-end;
-  width: 280px;
+.bannerVariant {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  transition: transform 0.8s ease-in-out;
 }
 
-.banner4Single {
-  width: 261px;
+.bannerVariantSlid {
+  transform: translateX(244px);
+}
+
+.bannerDeaths {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 1;
 }
 
 .accent {

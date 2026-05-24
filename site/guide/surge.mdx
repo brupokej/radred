@@ -19,6 +19,7 @@ import {
   fishing2Encounter,
   fishing2BoxChange,
   route25LeaderBugsyBattle,
+  route25LeaderBugsyBoxChange,
   ssAnneLassAnnGentlemanBrooksBattle,
   ssAnneSailorEdmundSailorTrevorBattle,
   ssAnneBrendanBattle,
@@ -58,7 +59,7 @@ import {
 
 ## Fishing 2 Encounter
 
-<GoLiveButton moment={fishing1Encounter} />
+<GoLiveButton moment={fishing2Encounter} />
 
 <Encounter data={fishing2Encounter.data}>
   <Switch switch={() => getLocation("Frillish")}>
@@ -86,22 +87,24 @@ import {
 
 <Battle data={route25LeaderBugsyBattle.data} />
 
+<BoxChange data={route25LeaderBugsyBoxChange.data} />
+
 ## S.S. Anne Lass Ann & Gentleman Brooks Battle
 
 <GoLiveButton moment={ssAnneLassAnnGentlemanBrooksBattle} />
 
 <Battle data={ssAnneLassAnnGentlemanBrooksBattle.data} />
 
-<Card title="Game Setup">
-  <Row row={["S.S. Anne → ", { warning: "TM 031 Brick Break → Bag" }]} />
-  <Row row={["S.S. Anne → ", { warning: "TM 069 Stom. Tantrum → Bag" }]} />
-</Card>
-
 ## S.S. Anne Sailor Edmund & Sailor Trevor Battle
 
 <GoLiveButton moment={ssAnneSailorEdmundSailorTrevorBattle} />
 
 <Battle data={ssAnneSailorEdmundSailorTrevorBattle.data} />
+
+<Card title="Game Setup">
+  <Row row={["S.S. Anne → ", { warning: "TM 031 Brick Break → Bag" }]} />
+  <Row row={["S.S. Anne → ", { warning: "TM 069 Stom. Tantrum → Bag" }]} />
+</Card>
 
 ## S.S. Anne Brendan Battle
 

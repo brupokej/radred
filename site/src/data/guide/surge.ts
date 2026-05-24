@@ -27,11 +27,17 @@ const _box2 = getBox({
       },
     },
     {
-      Shellder: {
-        name: "Cloyster",
+      "Yamask-G": {
+        name: "Runerigus",
+        spriteKey: undefined,
+        moves: ["Disable", "Rock Tomb", "Shadow Claw", "Shadow Sneak"],
       },
       Drilbur: {
         name: "Excadrill",
+        moves: ["Earthquake", "Mud-Slap", "Rapid Spin", "Scratch"],
+      },
+      Shellder: {
+        name: "Cloyster",
       },
     },
   ],
@@ -69,7 +75,7 @@ const _box3 = getBox({
       nature: "Adamant",
       ability: "Sand Rush",
       item: "Soft Sand",
-      moves: ["Dig", "Earthquake", "Rapid Spin", "Rock Tomb"],
+      moves: ["Earthquake", "Mud-Slap", "Rapid Spin", "Rock Slide"],
     },
     Golduck: {
       nature: "Rash",
@@ -77,14 +83,14 @@ const _box3 = getBox({
       item: "Sitrus Berry",
       moves: ["Disable", "Me First", "Psychic", "Zen Headbutt"],
     },
-    Clodsire: {
-      nature: "Careful",
-      ability: "Water Absorb",
-      item: "Payapa Berry",
-      moves: ["Bulldoze", "Poison Jab", "Rock Tomb", "Yawn"],
+    Runerigus: {
+      nature: "Sassy",
+      ability: "Wandering Soul",
+      item: "Pecha Berry",
+      moves: ["Disable", "Rock Tomb", "Shadow Claw", "Shadow Sneak"],
     },
   },
-  team: ["Houndoom", "Cloyster", "Perrserker", "Excadrill", "Golduck", "Clodsire"],
+  team: ["Houndoom", "Cloyster", "Perrserker", "Excadrill", "Golduck", "Runerigus"],
 });
 
 export const route6CamperJeffBattle: Moment = {
@@ -136,16 +142,11 @@ export const route6CamperJeffBattle: Moment = {
                 { opponent: "{p:Golduck} burn to {+:68}" },
               ],
               [
-                { player: "{p:Golduck} switch to {p:Clodsire}" },
-                { opponent: "{o:Boltund} Thunder Fang {p:Clodsire}" },
-                { player: "{p:Excadrill} Rock Tomb {o:Boltund} to {-:68}" },
-                { opponent: "{o:Perrserker} Iron Head {p:Excadrill} to {+:32}" },
-              ],
-              [
-                { player: "{p:Clodsire} switch to {p:Cloyster}" },
+                { player: "{p:Golduck} switch to {p:Runerigus}" },
+                { opponent: "{o:Boltund} Thunder Fang {p:Runerigus}" },
                 {
                   player:
-                    "{p:Excadrill} Earthquake {o:Boltund} to {=:0} and {o:Perrserker} to {=:0} and {p:Cloyster} to {+:38}",
+                    "{p:Excadrill} Earthquake {o:Boltund} to {=:0} and {o:Perrserker} to {=:0} and {p:Runerigus} to {+:56}",
                 },
                 { opponent: "{o:Boltund} fainted" },
                 { opponent: "{o:Perrserker} fainted" },
@@ -156,8 +157,8 @@ export const route6CamperJeffBattle: Moment = {
             matchup: ["Granbull"],
             turns: [
               [
-                { player: "{p:Cloyster} switch to {p:Golduck}" },
-                { player: "{p:Excadrill} Dig {o:Granbull}" },
+                { player: "{p:Excadrill} switch to {p:Golduck}" },
+                { player: "{p:Runerigus} switch to {p:Cloyster}" },
                 { opponent: "{o:Granbull} Brick Break {p:Golduck} to {+:15}" },
                 { opponent: "{p:Golduck} burn to {+:8}" },
               ],
@@ -216,14 +217,6 @@ const _box6 = getBox({
       },
     },
     {
-      Torracat: {
-        name: "Incineroar",
-      },
-      "Yamask-G": {
-        name: "Runerigus",
-        spriteKey: undefined,
-        moves: ["Disable", "Rock Tomb", "Shadow Claw", "Shadow Sneak"],
-      },
       "Growlithe-H": {
         name: "Arcanine-H",
         spriteKey: "arcanine-hisui",
@@ -248,28 +241,28 @@ export const fishing2BoxChange: Moment = {
 const _box7 = getBox({
   box: _box6,
   update: {
-    Golduck: {
-      nature: "Naughty",
-      ability: "Neuroforce",
+    Drednaw: {
+      nature: "Adamant",
+      ability: "Shell Armor",
       item: "Mystic Water",
-      moves: ["Disable", "Flip Turn", "Psychic", "Zen Headbutt"],
+      moves: ["Aqua Jet", "Flip Turn", "Razor Shell", "Rock Tomb"],
     },
     Excadrill: {
       nature: "Jolly",
-      ability: "Mold Breaker",
-      item: "Sitrus Berry",
-      moves: ["Earthquake", "Rapid Spin", "Rock Slide", "Rock Tomb"],
+      ability: "Sand Rush",
+      item: "Soft Sand",
+      moves: ["Earthquake", "Mud-Slap", "Rapid Spin", "Rock Slide"],
     },
     Golisopod: {
       nature: "Adamant",
       ability: "Emergency Exit",
-      item: "Sitrus Berry",
-      moves: ["First Impress.", "Razor Shell", "Rock Tomb", "Sucker Punch"],
+      item: undefined,
+      moves: ["First Impress.", "Razor Shell", "Rock Tomb", "Struggle Bug"],
     },
     Clodsire: {
-      nature: "Lonely",
+      nature: "Careful",
       ability: "Water Absorb",
-      item: "Sitrus Berry",
+      item: "Payapa Berry",
       moves: ["Bulldoze", "Poison Jab", "Rock Tomb", "Tail Whip"],
     },
     "Arcanine-H": {
@@ -279,7 +272,7 @@ const _box7 = getBox({
       moves: ["Accelerock", "Flare Blitz", "Rock Tomb", "Take Down"],
     },
   },
-  team: ["Golduck", "Excadrill", "Golisopod", "Clodsire", "Arcanine-H"],
+  team: ["Drednaw", "Excadrill", "Golisopod", "Clodsire", "Arcanine-H"],
 });
 
 export const route25LeaderBugsyBattle: Moment = {
@@ -296,9 +289,10 @@ export const route25LeaderBugsyBattle: Moment = {
             matchup: ["Kleavor"],
             turns: [
               [
-                { player: "{p:Golduck} Flip Turn {o:Kleavor} to {-:6}" },
-                { player: "{p:Golduck} switch to {p:Excadrill}" },
-                { opponent: "{o:Kleavor} X-Scissor {p:Excadrill} to {+:80}" },
+                { opponent: "{o:Kleavor} Stone Axe {p:Drednaw} to {+:54}" },
+                { player: "{p:Drednaw} Flip Turn {o:Kleavor} to {-:2}" },
+                { player: "{p:Drednaw} switch to {p:Excadrill}" },
+                { opponent: "{p:Excadrill} Stealth Rock to {=:132}" },
               ],
               [
                 { player: "{p:Excadrill} Rapid Spin {o:Kleavor} to {=:0}" },
@@ -381,6 +375,22 @@ export const route25LeaderBugsyBattle: Moment = {
 const _box8 = getBox({
   box: _box7,
   update: {
+    Torracat: {
+      name: "Incineroar",
+    },
+  },
+});
+
+export const route25LeaderBugsyBoxChange: Moment = {
+  split: "Surge",
+  label: "Route 25 Leader Bugsy Box Change",
+  kind: "boxChange",
+  data: { playerBox: _box8 },
+};
+
+const _box9 = getBox({
+  box: _box8,
+  update: {
     Golisopod: {
       nature: "Careful",
       ability: "Emergency Exit",
@@ -406,10 +416,10 @@ const _box8 = getBox({
       moves: ["Accelerock", "Flare Blitz", "Rock Tomb", "Take Down"],
     },
     Golduck: {
-      nature: "Naughty",
-      ability: "Neuroforce",
-      item: "Mystic Water",
-      moves: ["Aqua Jet", "Flip Turn", "Low Sweep", "Zen Headbutt"],
+      nature: "Rash",
+      ability: "Swift Swim",
+      item: "Sitrus Berry",
+      moves: ["Aqua Jet", "Low Sweep", "Psychic", "Zen Headbutt"],
     },
   },
   team: ["Golisopod", "Incineroar", "Perrserker", "Arcanine-H", "Golduck"],
@@ -420,7 +430,7 @@ export const ssAnneLassAnnGentlemanBrooksBattle: Moment = {
   label: "S.S. Anne Lass Ann & Gentleman Brooks Battle",
   kind: "battle",
   data: {
-    playerBox: _box8,
+    playerBox: _box9,
     opponentBox: ssAnneLassAnnGentlemanBrooksBox,
     lines: [
       {
@@ -437,7 +447,8 @@ export const ssAnneLassAnnGentlemanBrooksBattle: Moment = {
               [
                 { player: "{p:Golisopod} Sucker Punch {o:Decidueye} to {=:0}" },
                 { opponent: "{o:Decidueye} fainted" },
-                { opponent: "{o:Samurott} Water Pledge {p:Incineroar} to {+:40}" },
+                { opponent: "{o:Samurott} Water Pledge {p:Incineroar} to {+:9}" },
+                { opponent: "{p:Incineroar} Sitrus Berry to {+:40}" },
                 { player: "{p:Incineroar} U-Turn {o:Samurott} to {-:106}" },
                 { player: "{p:Incineroar} switch to {p:Perrserker}" },
               ],
@@ -480,7 +491,7 @@ export const ssAnneLassAnnGentlemanBrooksBattle: Moment = {
                 { opponent: "{o:Samurott} Water Pledge {p:Golduck} to {+:79}" },
               ],
               [
-                { player: "{p:Golduck} Low Sweep {o:Samurott} to {-:53}" },
+                { player: "{p:Golduck} Low Sweep {o:Samurott} to {-:64}" },
                 { player: "{p:Arcanine-H} Flare Blitz {o:Samurott} to {=:0}" },
                 { opponent: "{o:Samurott} fainted" },
               ],
@@ -488,59 +499,26 @@ export const ssAnneLassAnnGentlemanBrooksBattle: Moment = {
           },
           {
             matchup: ["Simisear"],
-            turns: [],
-            branches: [
-              {
-                branches: [
-                  "96% → Golduck Aqua Jet Simisear",
-                  "4% → Golduck Aqua Jet Simisear (to 0)",
-                ],
-              },
-            ],
-          },
-        ],
-        frags: { Golisopod: 2, Perrserker: 1, "Arcanine-H": 1 },
-      },
-      {
-        line: "96% → Golduck Aqua Jet Simisear",
-        matchups: [
-          {
-            matchup: ["Simisear"],
             turns: [
               [
-                { player: "{p:Golduck} Aqua Jet {o:Simisear} to {-:51}" },
+                { player: "{p:Golduck} Aqua Jet {o:Simisear} to {-:69}" },
                 { player: "{p:Arcanine-H} Accelerock {o:Simisear} to {=:0}" },
                 { opponent: "{o:Simisear} fainted" },
               ],
             ],
           },
         ],
-        frags: { "Arcanine-H": 1 },
-      },
-      {
-        line: "4% → Golduck Aqua Jet Simisear (to 0)",
-        matchups: [
-          {
-            matchup: ["Simisear"],
-            turns: [
-              [
-                { player: "{p:Golduck} Aqua Jet {o:Simisear} (crit) to {=:0}" },
-                { opponent: "{o:Simisear} fainted" },
-              ],
-            ],
-          },
-        ],
-        frags: { Golduck: 1 },
+        frags: { Golisopod: 2, Perrserker: 1, "Arcanine-H": 2 },
       },
     ],
   },
 };
 
-const _box9 = getBox({
-  box: _box8,
+const _box10 = getBox({
+  box: _box9,
   update: {
     Perrserker: {
-      nature: "Adamant",
+      nature: "Careful",
       ability: "Battle Armor",
       item: "Shuca Berry",
       moves: ["Fake Out", "Aerial Ace", "Iron Head", "U-Turn"],
@@ -561,7 +539,7 @@ const _box9 = getBox({
       nature: "Lonely",
       ability: "Neuroforce",
       item: "Twisted Spoon",
-      moves: ["Aqua Jet", "Flip Turn", "Low Sweep", "Zen Headbutt"],
+      moves: ["Aqua Jet", "Low Sweep", "Psychic", "Zen Headbutt"],
     },
     Azumarill: {
       nature: "Adamant",
@@ -573,7 +551,7 @@ const _box9 = getBox({
       nature: "Modest",
       ability: "Clear Body",
       item: "Poison Barb",
-      moves: ["Acid Spray", "Bubble Beam", "Icy Wind", "Sludge"],
+      moves: ["Acid Spray", "Icy Wind", "Sludge", "Supersonic"],
     },
   },
   team: ["Perrserker", "Arcanine-H", "Incineroar", "Golduck", "Azumarill", "Tentacruel"],
@@ -584,7 +562,7 @@ export const ssAnneSailorEdmundSailorTrevorBattle: Moment = {
   label: "S.S. Anne Sailor Edmund & Sailor Trevor Battle",
   kind: "battle",
   data: {
-    playerBox: _box9,
+    playerBox: _box10,
     opponentBox: ssAnneSailorEdmundSailorTrevorBox,
     lines: [
       {
@@ -608,7 +586,7 @@ export const ssAnneSailorEdmundSailorTrevorBattle: Moment = {
               [
                 { player: "{p:Arcanine-H} switch to {p:Golduck}" },
                 { opponent: "{o:Nidoqueen} Earth Power {p:Golduck} to {+:33}" },
-                { player: "{p:Perrserker} U-Turn {o:Nidoqueen} to {-:105}" },
+                { player: "{p:Perrserker} U-Turn {o:Nidoqueen} to {-:103}" },
                 { player: "{p:Perrserker} switch to {p:Incineroar}" },
                 { opponent: "{o:Cradily} HP Fire {p:Incineroar} to {+:113}" },
               ],
@@ -643,12 +621,12 @@ export const ssAnneSailorEdmundSailorTrevorBattle: Moment = {
             turns: [
               [
                 { player: "{p:Arcanine-H} switch to {p:Tentacruel}" },
-                { player: "{p:Perrserker} U-Turn {o:Cradily} to {-:49}" },
+                { player: "{p:Perrserker} U-Turn {o:Cradily} to {-:53}" },
                 { player: "{p:Perrserker} switch to {p:Azumarill}" },
                 { opponent: "{o:Cradily} Earth Power {p:Tentacruel} to {+:48}" },
               ],
               [
-                { player: "{p:Tentacruel} Sludge {o:Cradily} to {-:33}" },
+                { player: "{p:Tentacruel} Supersonic {o:Cradily}" },
                 { player: "{p:Azumarill} Play Rough {o:Cradily} to {=:0}" },
                 { opponent: "{o:Cradily} fainted" },
               ],
@@ -682,13 +660,13 @@ export const ssAnneSailorEdmundSailorTrevorBattle: Moment = {
   },
 };
 
-const _box10 = getBox({
-  box: _box9,
+const _box11 = getBox({
+  box: _box10,
   update: {
     Perrserker: {
-      nature: "Adamant",
+      nature: "Careful",
       ability: "Battle Armor",
-      item: "Sitrus Berry",
+      item: "Shuca Berry",
       moves: ["Fake Out", "Bullet Punch", "Iron Head", "Metal Burst"],
     },
     Runerigus: {
@@ -713,13 +691,13 @@ const _box10 = getBox({
       nature: "Lonely",
       ability: "Neuroforce",
       item: "Twisted Spoon",
-      moves: ["Aqua Tail", "Flip Turn", "Psychic", "Zen Headbutt"],
+      moves: ["Aqua Tail", "Low Sweep", "Psychic", "Zen Headbutt"],
     },
     Tentacruel: {
       nature: "Modest",
       ability: "Clear Body",
       item: "Payapa Berry",
-      moves: ["Acid Spray", "Bubble Beam", "Icy Wind", "Poison Jab"],
+      moves: ["Acid Spray", "Icy Wind", "Poison Jab", "Supersonic"],
     },
   },
   team: ["Perrserker", "Runerigus", "Drednaw", "Golisopod", "Golduck", "Tentacruel"],
@@ -730,7 +708,7 @@ export const ssAnneBrendanBattle: Moment = {
   label: "S.S. Anne Brendan Battle",
   kind: "battle",
   data: {
-    playerBox: _box10,
+    playerBox: _box11,
     opponentBox: ssAnneBrendanBox,
     lines: [
       {
@@ -761,7 +739,8 @@ export const ssAnneBrendanBattle: Moment = {
               ],
               [
                 { opponent: "{o:Slaking} Brick Break {p:Drednaw} to {+:31}" },
-                { player: "{p:Drednaw} Counter {o:Slaking} to {-:23}" },
+                { player: "{p:Drednaw} Counter {o:Slaking} to {-:13}" },
+                { opponent: "{o:Slaking} Leftovers to {-:23}" },
               ],
               [
                 { opponent: "{o:Slaking} Truant" },
@@ -788,7 +767,7 @@ export const ssAnneBrendanBattle: Moment = {
             turns: [
               [
                 { player: "{p:Golisopod} switch to {p:Golduck}" },
-                { opponent: "{o:Hariyama} Fake Out {p:Golduck} to {+:62}" },
+                { opponent: "{o:Hariyama} Fake Out {p:Golduck} to {+:78}" },
                 { player: "{p:Golduck} flinched" },
               ],
               [
@@ -839,8 +818,8 @@ export const ssAnneBrendanBattle: Moment = {
   },
 };
 
-const _box11 = getBox({
-  box: _box10,
+const _box12 = getBox({
+  box: _box11,
   update: {
     "Arcanine-H": {
       nature: "Adamant",
@@ -881,7 +860,7 @@ export const route9PicnickerAliciaBattle: Moment = {
   label: "Route 9 Picnicker Alicia Battle",
   kind: "battle",
   data: {
-    playerBox: _box11,
+    playerBox: _box12,
     opponentBox: route9PicnickerAliciaBox,
     lines: [
       {
@@ -953,8 +932,8 @@ export const route9PicnickerAliciaBattle: Moment = {
   },
 };
 
-const _box12 = getBox({
-  box: _box11,
+const _box13 = getBox({
+  box: _box12,
   update: {
     Golduck: {
       nature: "Jolly",
@@ -989,7 +968,7 @@ export const route9PicnickerCaitlinBattle: Moment = {
   label: "Route 9 Picnicker Caitlin Battle",
   kind: "battle",
   data: {
-    playerBox: _box12,
+    playerBox: _box13,
     opponentBox: route9PicnickerCaitlinBox,
     lines: [
       {
@@ -1080,8 +1059,8 @@ export const route9PicnickerCaitlinBattle: Moment = {
   },
 };
 
-const _box13 = getBox({
-  box: _box12,
+const _box14 = getBox({
+  box: _box13,
   update: {
     Excadrill: {
       nature: "Adamant",
@@ -1128,7 +1107,7 @@ export const rockTunnelPicnickerDanaBattle: Moment = {
   label: "Rock Tunnel Picnicker Dana Battle",
   kind: "battle",
   data: {
-    playerBox: _box13,
+    playerBox: _box14,
     opponentBox: rockTunnelPicnickerDanaBox,
     lines: [
       {
@@ -1216,8 +1195,8 @@ export const rockTunnelPicnickerDanaBattle: Moment = {
   },
 };
 
-const _box14 = getBox({
-  box: _box13,
+const _box15 = getBox({
+  box: _box14,
   update: {
     Golduck: {
       nature: "Modest",
@@ -1252,7 +1231,7 @@ export const route10PokeManiacHermanBattle: Moment = {
   label: "Route 10 Poké Maniac Herman Battle",
   kind: "battle",
   data: {
-    playerBox: _box14,
+    playerBox: _box15,
     opponentBox: route10PokeManiacHermanBox,
     lines: [
       {
@@ -1304,8 +1283,8 @@ export const route10PokeManiacHermanBattle: Moment = {
   },
 };
 
-const _box15 = getBox({
-  box: _box14,
+const _box16 = getBox({
+  box: _box15,
   update: {
     Golduck: {
       nature: "Quiet",
@@ -1352,7 +1331,7 @@ export const route8SuperNerdAidanBattle: Moment = {
   label: "Route 8 Super Nerd Aidan Battle",
   kind: "battle",
   data: {
-    playerBox: _box15,
+    playerBox: _box16,
     opponentBox: route8SuperNerdAidanBox,
     lines: [
       {
@@ -1421,8 +1400,8 @@ export const route8SuperNerdAidanBattle: Moment = {
   },
 };
 
-const _box16 = getBox({
-  box: _box15,
+const _box17 = getBox({
+  box: _box16,
   update: {
     Perrserker: {
       nature: "Adamant",
@@ -1469,7 +1448,7 @@ export const vermillionCityGymGentlemanTuckerBattle: Moment = {
   label: "Vermillion City Gym Gentleman Tucker Battle",
   kind: "battle",
   data: {
-    playerBox: _box16,
+    playerBox: _box17,
     opponentBox: vermillionCityGymGentlemanTuckerBox,
     lines: [
       {
@@ -1565,8 +1544,8 @@ export const vermillionCityGymGentlemanTuckerBattle: Moment = {
   },
 };
 
-const _box17 = getBox({
-  box: _box16,
+const _box18 = getBox({
+  box: _box17,
   update: {
     Excadrill: {
       nature: "Jolly",
@@ -1613,7 +1592,7 @@ export const vermillionCityLeaderLtSurgeBattle: Moment = {
   label: "Vermillion City Leader Lt. Surge Battle",
   kind: "battle",
   data: {
-    playerBox: _box17,
+    playerBox: _box18,
     opponentBox: vermillionCityLeaderLtSurgeBox,
     lines: [
       {
@@ -1813,7 +1792,7 @@ export const vermillionCityLeaderLtSurgeBattle: Moment = {
   },
 };
 
-export const box = _box17;
+export const box = _box18;
 
 export const moments: Moment[] = [
   surgeBoxChange,
@@ -1822,6 +1801,7 @@ export const moments: Moment[] = [
   fishing2Encounter,
   fishing2BoxChange,
   route25LeaderBugsyBattle,
+  route25LeaderBugsyBoxChange,
   ssAnneLassAnnGentlemanBrooksBattle,
   ssAnneSailorEdmundSailorTrevorBattle,
   ssAnneBrendanBattle,

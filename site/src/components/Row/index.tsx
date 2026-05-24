@@ -65,6 +65,7 @@ export function expandPokemon(pokemon: Pokemon): Array<string | { warning: strin
   } else if (nameChanged) {
     const item =
       {
+        Cloyster: "Water Stone",
         "Arcanine-H": "Fire Stone",
         Ceruledge: "Moon Stone",
         "Thundurus-I": "Reveal Glass",

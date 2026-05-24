@@ -7,6 +7,7 @@ import {
   deriveOverlayMeta,
   derivePlayerBox,
   deriveTopStats,
+  hasAttemptStarted,
   hasCyclingStarted,
   StatViewType,
   TopBattler,
@@ -387,6 +388,7 @@ export function OverlayBanner() {
     ? deriveOverlayMeta(liveState.moment)
     : { split: "Brock", cap: 16, badges: {} };
   const liveAttempt = Math.min(liveState?.attempt ?? 1, 99);
+  const showAttempt = liveState?.moment ? hasAttemptStarted(liveState.moment) : false;
 
   const { displayed: split, visible: splitVisible } = useFadedValue(liveMeta.split);
   const { displayed: cap, visible: capVisible } = useFadedValue(liveMeta.cap);
@@ -410,30 +412,36 @@ export function OverlayBanner() {
         </div>
       </OverlayFrame>
       <div className={styles.banner}>
-        <div className={`${styles.bannerSection} ${styles.banner1}`}>
-          <span className={`${styles.shadow} ${fv(splitVisible)}`}>Split:</span>&nbsp;
-          <span className={`${styles.accent} ${styles.shadow} ${fv(splitVisible)}`}>{split}</span>
-          &nbsp;&nbsp;
+        <div className={styles.bannerVariable}>
+          <div
+            className={`${styles.bannerVariant} ${!showAttempt ? styles.bannerVariantSlid : ""}`}
+          >
+            <div className={`${styles.bannerSection} ${styles.banner1}`}>
+              <span className={`${styles.shadow} ${fv(splitVisible)}`}>Split:</span>&nbsp;
+              <span className={`${styles.accent} ${styles.shadow} ${fv(splitVisible)}`}>
+                {split}
+              </span>
+              &nbsp;&nbsp;
+            </div>
+            <div className={styles.bannerSection}>
+              <img width={8} src={barSrc} alt="" />
+              &nbsp;&nbsp;
+              <span className={styles.shadow}>Level Cap:</span>&nbsp;
+              <span className={`${styles.accent} ${styles.shadow} ${fv(capVisible)}`}>{cap}</span>
+              &nbsp;&nbsp;
+            </div>
+            <div className={styles.bannerSection}>
+              <img width={8} src={barSrc} alt="" />
+              &nbsp;&nbsp;
+              <span className={styles.shadow}>!attempt:</span>&nbsp;
+              <span className={`${styles.accent} ${styles.shadow} ${fv(attemptVisible)}`}>
+                {attempt}
+              </span>
+              &nbsp;&nbsp;
+            </div>
+          </div>
         </div>
-        <div className={`${styles.bannerSection} ${styles.banner2}`}>
-          <img width={8} src={barSrc} alt="" />
-          &nbsp;&nbsp;
-          <span className={styles.shadow}>Level Cap:</span>&nbsp;
-        </div>
-        <div className={`${styles.bannerSection} ${styles.banner3}`}>
-          <span className={`${styles.accent} ${styles.shadow} ${fv(capVisible)}`}>{cap}</span>
-          &nbsp;&nbsp;
-          <img width={8} src={barSrc} alt="" />
-          &nbsp;&nbsp;
-          <span className={styles.shadow}>!attempt:</span>&nbsp;
-        </div>
-        <div
-          className={`${styles.bannerSection} ${styles.banner4} ${attempt < 10 ? styles.banner4Single : ""}`}
-        >
-          <span className={`${styles.accent} ${styles.shadow} ${fv(attemptVisible)}`}>
-            {attempt}
-          </span>
-          &nbsp;&nbsp;
+        <div className={styles.bannerDeaths}>
           <img width={8} src={barSrc} alt="" />
           &nbsp;&nbsp;
           <span className={styles.shadow}>Deaths:</span>&nbsp;
@@ -507,7 +515,7 @@ export function OverlayStatsSmall() {
   const liveTopStats = liveState?.moment
     ? deriveTopStats(liveState.moment, livePlayerBox, STAT_VIEWS[view])
     : [];
-  const liveStatsTitle = STAT_TITLES[view];
+  const liveStatsTitle = liveTopStats.length > 0 ? STAT_TITLES[view] : "-";
   const statsContentKey = `${view}:${liveTopStats.map((b) => `${b.pokemon.name}:${b.subtitle}`).join(",")}`;
 
   const { displayed: statsTitle, visible: statsTitleVisible } = useFadedValue(liveStatsTitle);

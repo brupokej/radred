@@ -164,7 +164,14 @@ function isActiveHitEvent(s: string): boolean {
 // --- Resource counting ------------------------------------------------------
 
 const RESOURCE_FIELDS: (keyof PokemonData)[] = [
-  "level", "nature", "ability", "nonMegaAbility", "item", "ivs", "evs", "friend",
+  "level",
+  "nature",
+  "ability",
+  "nonMegaAbility",
+  "item",
+  "ivs",
+  "evs",
+  "friend",
 ];
 
 function countPokemonResources(pokemon: Pokemon): number {
@@ -173,7 +180,10 @@ function countPokemonResources(pokemon: Pokemon): number {
 
   let count = 0;
   for (const field of RESOURCE_FIELDS) {
-    if (field in update && update[field as keyof typeof update] !== base[field as keyof typeof base]) {
+    if (
+      field in update &&
+      update[field as keyof typeof update] !== base[field as keyof typeof base]
+    ) {
       count++;
     }
   }
@@ -366,7 +376,18 @@ const results: BattleScore[] = ALL_MOMENTS.filter(
   .sort((a, b) => b.total - a.total);
 
 const longestLabel = Math.max(...results.map((r) => r.battle.length + (r.branching ? 2 : 0)));
-const W = { split: 12, battle: longestLabel, opp: 4, team: 5, E: 7, C: 7, P: 7, D: 7, R: 7, total: 8 };
+const W = {
+  split: 12,
+  battle: longestLabel,
+  opp: 4,
+  team: 5,
+  E: 7,
+  C: 7,
+  P: 7,
+  D: 7,
+  R: 7,
+  total: 8,
+};
 const rp = (s: string | number, n: number) => String(s).padStart(n);
 const lp = (s: string | number, n: number) => String(s).padEnd(n);
 const score = (n: number, w: number) => n.toFixed(1).padStart(w);

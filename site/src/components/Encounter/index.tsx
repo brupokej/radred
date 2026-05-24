@@ -161,10 +161,10 @@ export default function Encounter({
         resolvedPlayerBox &&
         (blur ? (
           <div className={styles.blurContent}>
-            <Team title="Player Team" box={resolvedPlayerBox} />
+            <Team title="Player Team" box={resolvedPlayerBox} defaultExpanded={secretMode} />
           </div>
         ) : (
-          <Team title="Player Team" box={resolvedPlayerBox} />
+          <Team title="Player Team" box={resolvedPlayerBox} defaultExpanded={secretMode} />
         ))}
       <Card title="Encounter Plan" className={blur ? styles.blurContent : undefined}>
         {isSequence && <Sequence target={resolvedEncounter.name} />}

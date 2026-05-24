@@ -17,10 +17,10 @@ export default function Checklist({ data, secret }: { data: ChecklistData; secre
     <>
       {blur ? (
         <div className={styles.blurContent}>
-          <Team title="Player Team" box={data.playerBox} />
+          <Team title="Player Team" box={data.playerBox} defaultExpanded={secretMode} />
         </div>
       ) : (
-        <Team title="Player Team" box={data.playerBox} />
+        <Team title="Player Team" box={data.playerBox} defaultExpanded={secretMode} />
       )}
       {data.rows && (
         <Card title="Game Setup">

@@ -2,7 +2,7 @@ import { secretMode } from "@site/src/data/secretMode";
 import { Moment } from "@site/src/utils/moments";
 import { useRelayState } from "@site/src/utils/overlayHooks";
 import { postRelayState } from "@site/src/utils/overlayRelay";
-import { removeState, setState } from "@site/src/utils/storage";
+import { removeState, setState, useStorageState } from "@site/src/utils/storage";
 import { LIVE_MOMENT_DEFAULT } from "@site/src/utils/storageDefaults";
 import { useLayoutEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
@@ -25,6 +25,8 @@ export default function GoLiveButton({
 function GoLiveButtonInner({ moment, attempt }: { moment: Moment; attempt?: number }) {
   const relayState = useRelayState();
   const [pending, setPending] = useState(false);
+  const { value: livePendingLabel } = useStorageState("live-pending");
+  const isPendingExternal = livePendingLabel === moment.label;
   const [portalTarget, setPortalTarget] = useState<HTMLSpanElement | null>(null);
   const sentinelRef = useRef<HTMLSpanElement>(null);
 
@@ -57,10 +59,9 @@ function GoLiveButtonInner({ moment, attempt }: { moment: Moment; attempt?: numb
   }, []);
 
   async function handleStart() {
-    if (isLive || pending) return;
+    if (isLive || pending || isPendingExternal) return;
     setPending(true);
-    if (moment.label === LIVE_MOMENT_DEFAULT) removeState("live-moment");
-    else setState("live-moment", moment.label);
+    setState("live-pending", moment.label);
     await Promise.all([
       postRelayState({
         moment,
@@ -68,16 +69,19 @@ function GoLiveButtonInner({ moment, attempt }: { moment: Moment; attempt?: numb
       }).catch(() => {}),
       new Promise((r) => setTimeout(r, 1400)),
     ]);
+    if (moment.label === LIVE_MOMENT_DEFAULT) removeState("live-moment");
+    else setState("live-moment", moment.label);
+    removeState("live-pending");
     setPending(false);
   }
 
-  const iconState = pending ? "pending" : isLive ? "live" : "default";
+  const iconState = pending || isPendingExternal ? "pending" : isLive ? "live" : "default";
 
   const button = (
     <button
-      className={`${styles.button} ${isLive ? styles.live : ""} ${pending ? styles.pending : ""}`}
+      className={`${styles.button} ${isLive ? styles.live : ""} ${pending || isPendingExternal ? styles.pending : ""}`}
       onClick={handleStart}
-      disabled={isLive || pending}
+      disabled={isLive || pending || isPendingExternal}
     >
       Go Live{" "}
       <span key={iconState} className={styles.icon}>

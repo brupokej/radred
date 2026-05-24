@@ -153,6 +153,90 @@
   filter: none;
 }
 
+.goLiveRow {
+  font-size: 0.875rem;
+  line-height: 26px;
+  white-space: nowrap;
+}
+
+.goLiveRowInner {
+  align-items: center;
+  display: flex;
+  padding-block: 13px;
+  padding-inline: calc(var(--ifm-spacing-horizontal) - 0.4rem);
+}
+
+.goLivePlainCell {
+  align-items: center;
+  display: inline-flex;
+  padding-inline: 0.4rem;
+}
+
+.goLiveSepCell {
+  padding-inline: 0.25rem;
+}
+
+.goLiveButton {
+  align-items: center;
+  background: color-mix(in srgb, var(--ifm-color-primary) 10%, transparent);
+  border: none;
+  border-radius: 3px;
+  color: var(--ifm-color-primary);
+  cursor: pointer;
+  display: inline-flex;
+  font-family: var(--ifm-font-family-base);
+  font-size: inherit;
+  gap: 0.4rem;
+  line-height: 26px;
+  outline: 1px solid color-mix(in srgb, var(--ifm-color-primary) 35%, transparent);
+  padding-block: 0;
+  padding-inline: 0.4rem;
+  transition:
+    background 0.5s,
+    outline-color 0.5s,
+    color 0.5s;
+}
+
+.goLiveButton:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--ifm-color-primary) 20%, transparent);
+  outline-color: var(--ifm-color-primary);
+}
+
+.goLiveLive {
+  background: var(--ifm-color-primary);
+  color: white;
+  cursor: default;
+  outline-color: var(--ifm-color-primary);
+}
+
+.goLivePending {
+  cursor: default;
+}
+
+.goLiveIcon {
+  display: inline-block;
+  text-align: center;
+  width: 1em;
+}
+
+.goLiveSpinner {
+  animation: spin 0.7s linear infinite;
+  border: 2px solid color-mix(in srgb, currentColor 30%, transparent);
+  border-radius: 50%;
+  border-top-color: currentColor;
+  display: inline-block;
+  height: 0.85em;
+  margin-bottom: 3px;
+  vertical-align: middle;
+  width: 0.85em;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .loopAnchor {
   height: 0;
   overflow: hidden;

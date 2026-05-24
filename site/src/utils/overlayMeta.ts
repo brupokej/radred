@@ -1,33 +1,13 @@
 import { resolveActiveBox } from "@site/src/components/Battle";
 import { getSwitchBattleCaseData } from "@site/src/components/SwitchBattle";
-import { moments as blaineMoments } from "@site/src/data/guide/blaine";
-import { moments as brockMoments } from "@site/src/data/guide/brock";
-import { moments as clairMoments } from "@site/src/data/guide/clair";
-import { moments as eliteFourMoments } from "@site/src/data/guide/eliteFour";
-import { moments as erikaMoments } from "@site/src/data/guide/erika";
-import { moments as kogaMoments } from "@site/src/data/guide/koga";
-import { moments as mistyMoments } from "@site/src/data/guide/misty";
-import { moments as sabrinaMoments } from "@site/src/data/guide/sabrina";
-import { moments as surgeMoments } from "@site/src/data/guide/surge";
-import { moments as victoryRoadMoments } from "@site/src/data/guide/victoryRoad";
+import { allMoments } from "@site/src/utils/allMoments";
 import { Box, findPokemon, resolveBox } from "@site/src/utils/box";
 import { Moment } from "@site/src/utils/moments";
 import { PokemonData, resolvePokemon } from "@site/src/utils/pokemon";
 import { computeStats, PokemonStats } from "@site/src/utils/stats";
 import { LIVE_MOMENT_DEFAULT } from "@site/src/utils/storageDefaults";
 
-export const allMoments = [
-  ...brockMoments,
-  ...mistyMoments,
-  ...surgeMoments,
-  ...erikaMoments,
-  ...sabrinaMoments,
-  ...kogaMoments,
-  ...blaineMoments,
-  ...clairMoments,
-  ...victoryRoadMoments,
-  ...eliteFourMoments,
-].filter((m) => m.kind !== "boxChange");
+export { allMoments };
 
 export type BadgeName =
   | "boulder"
@@ -83,7 +63,16 @@ export function findMomentByLabel(label: string | null): Moment {
   return allMoments.find((m) => m.label === target) ?? brockMoments[0];
 }
 
+const ATTEMPT_START_INDEX = allMoments.findIndex(
+  (m) => m.label === "Pewter City Leader Brock Battle"
+);
 const CYCLE_START_INDEX = allMoments.findIndex((m) => m.label === "Mt. Moon Encounter");
+
+export function hasAttemptStarted(moment: Moment): boolean {
+  if (moment.label === "Brock") return false;
+  const idx = allMoments.findIndex((m) => m.label === moment.label);
+  return ATTEMPT_START_INDEX !== -1 && idx >= ATTEMPT_START_INDEX;
+}
 
 export function hasCyclingStarted(moment: Moment): boolean {
   if (moment.label === "Brock") return false;

@@ -32,8 +32,14 @@ const SIDE_PAD = 16; // var(--ifm-spacing-horizontal) at 16px base
 const CardDetailCtx = createContext(false);
 const useCardDetail = () => useContext(CardDetailCtx);
 
-function CardDetail({ children }: { children: React.ReactNode }) {
-  const [isOpen, setIsOpen] = useState(false);
+function CardDetail({
+  children,
+  defaultExpanded = false,
+}: {
+  children: React.ReactNode;
+  defaultExpanded?: boolean;
+}) {
+  const [isOpen, setIsOpen] = useState(defaultExpanded);
   return (
     <CardDetailCtx.Provider value={isOpen}>
       {children}
@@ -48,10 +54,12 @@ export default function Team({
   box,
   title = "Team",
   header,
+  defaultExpanded = false,
 }: {
   box: Box;
   title?: string;
   header?: ReactNode;
+  defaultExpanded?: boolean;
 }) {
   const resolved = resolveBox(box);
   const pokemonMap = new Map(resolved.pokemon.map((p) => [resolvePokemon(p).name, p]));
@@ -64,7 +72,7 @@ export default function Team({
   return (
     <Card title={title}>
       {header}
-      <CardDetail>
+      <CardDetail defaultExpanded={defaultExpanded}>
         <TeamGrid team={team} extraTeam={extraTeam} hasHeader={!!header} />
       </CardDetail>
     </Card>
