@@ -75,7 +75,7 @@ const _box3 = getBox({
       nature: "Impish",
       ability: "Rock Head",
       item: "Magnet",
-      moves: ["Bad Tantrum", "Crunch", "Flare Blitz", "Thunder Fang"],
+      moves: ["Crunch", "Flare Blitz", "Stom. Tantrum", "Thunder Fang"],
     },
   },
   team: ["Perrserker", "Golisopod", "Incineroar", "Lanturn", "Tentacruel", "Arcanine-H"],
@@ -1652,7 +1652,7 @@ const _box19 = getBox({
       nature: "Bold",
       ability: "Water Bubble",
       item: "Rindo Berry",
-      moves: ["Brine", "Hex", "Ice Beam", "Water Spout"],
+      moves: ["Brine", "Ominous Wind", "Ice Beam", "Water Spout"],
     },
     Cloyster: {
       nature: "Impish",

@@ -887,201 +887,6 @@ export const ssAnneBrendanBox = getOpponentBox([
   },
 ]);
 
-export const route9PicnickerAliciaBox = getOpponentBox([
-  {
-    name: "Roserade",
-    level: 34,
-    nature: "Timid",
-    ability: "Technician",
-    item: "Focus Sash",
-    moves: ["Clear Smog", "Mega Drain", "HP Fire", "Sleep Powder"],
-  },
-  {
-    name: "Bruxish",
-    level: 35,
-    nature: "Jolly",
-    ability: "Strong Jaw",
-    item: "Life Orb",
-    moves: ["Aqua Fang", "Psychic Fangs", "Crunch", "Aqua Jet"],
-  },
-  {
-    name: "Flareon",
-    level: 36,
-    nature: "Jolly",
-    ability: "Toxic Boost",
-    item: "Toxic Orb",
-    moves: ["Flame Charge", "Sacred Fire", "Facade", "Stom. Tantrum"],
-  },
-  {
-    name: "Chatot",
-    level: 36,
-    nature: "Timid",
-    ability: "Punk Rock",
-    item: "Silk Scarf",
-    moves: ["Chatter", "Boomburst", "Heat Wave", "U-Turn"],
-  },
-]);
-
-export const route9PicnickerCaitlinBox = getOpponentBox([
-  {
-    name: "Smeargle",
-    level: 36,
-    nature: "Jolly",
-    ability: "Own Tempo",
-    item: "Choice Scarf",
-    moves: ["V-Create", "Dragon Ascent", "Trick", "Close Combat"],
-  },
-  {
-    name: "Spinda",
-    level: 36,
-    nature: "Jolly",
-    ability: "Contrary",
-    item: "Choice Scarf",
-    moves: ["Assist"],
-  },
-  {
-    name: "Sneasel-H",
-    spriteKey: "sneasel-hisui",
-    level: 35,
-    nature: "Bashful",
-    ability: "Inner Focus",
-    item: "Eviolite",
-    moves: ["Assist"],
-  },
-  {
-    name: "Liepard",
-    level: 35,
-    nature: "Adamant",
-    ability: "Prankster",
-    item: "Focus Sash",
-    moves: ["Assist"],
-  },
-]);
-
-export const rockTunnelPicnickerDanaBox = getOpponentBox([
-  {
-    name: "Ribombee",
-    level: 34,
-    nature: "Naive",
-    ability: "Shield Dust",
-    item: "Focus Sash",
-    moves: ["Sticky Web", "U-Turn", "Moonblast", "Stun Spore"],
-  },
-  {
-    name: "Bouffalant",
-    level: 35,
-    nature: "Jolly",
-    ability: "Bull Rush",
-    item: "Silk Scarf",
-    moves: ["Head Charge", "Throat Chop", "Earthquake", "Rock Slide"],
-  },
-  {
-    name: "Clawitzer",
-    level: 36,
-    nature: "Timid",
-    ability: "Mega Launcher",
-    item: "Expert Belt",
-    moves: ["Water Pulse", "Dark Pulse", "Aura Sphere", "Ice Beam"],
-  },
-  {
-    name: "Rampardos",
-    level: 36,
-    nature: "Jolly",
-    ability: "Mold Breaker",
-    item: "Hard Stone",
-    moves: ["Pow-Up Punch", "Accelerock", "Earthquake", "Head Smash"],
-  },
-  {
-    name: "Magmortar",
-    level: 36,
-    nature: "Timid",
-    ability: "Mega Launcher",
-    item: "Magmarizer",
-    moves: ["Flamethrower", "Aura Sphere", "Thunderbolt", "Dark Pulse"],
-  },
-]);
-
-export const route10PokeManiacHermanBox = getOpponentBox([
-  {
-    name: "Ninetales",
-    level: 34,
-    nature: "Timid",
-    ability: "Drought",
-    item: "Air Balloon",
-    moves: ["Heat Wave", "Solar Beam", "Scorch. Sands", "Psyshock"],
-  },
-  {
-    name: "Victreebel",
-    level: 35,
-    nature: "Rash",
-    ability: "Chlorophyll",
-    item: "Life Orb",
-    moves: ["Giga Drain", "Sludge Bomb", "Solar Blade", "Weather Ball"],
-  },
-  {
-    name: "Cherrim",
-    level: 36,
-    nature: "Lonely",
-    ability: "Flower Gift",
-    item: "Miracle Seed",
-    moves: ["Solar Blade", "X-Scissor", "Weather Ball", "Return"],
-  },
-  {
-    name: "Sylveon",
-    level: 36,
-    nature: "Modest",
-    ability: "Pixilate",
-    item: "Pixie Plate",
-    moves: ["Hyper Voice", "Weather Ball", "Misty Explosi.", "Psyshock"],
-  },
-]);
-
-export const route8SuperNerdAidanBox = getOpponentBox([
-  {
-    name: "Armarouge",
-    level: 35,
-    nature: "Modest",
-    ability: "Weak Armor",
-    item: "Weakness Pol.",
-    moves: ["Flamethrower", "Stored Power", "Shadow Ball", "Aura Sphere"],
-  },
-  {
-    name: "Tsareena",
-    level: 35,
-    nature: "Adamant",
-    ability: "Queenly Majesty",
-    item: "Choice Scarf",
-    moves: ["Brutal Swing", "Power Whip", "Knock Off", "U-Turn"],
-  },
-  {
-    name: "Arcanine-H",
-    spriteKey: "arcanine-hisui",
-    level: 35,
-    nature: "Jolly",
-    ability: "Rock Head",
-    item: "Focus Sash",
-    moves: ["Flare Blitz", "Head Smash", "Accelerock", "Wild Charge"],
-  },
-  {
-    name: "Basculegion-F",
-    spriteKey: "basculegion-f",
-    level: 36,
-    nature: "Naive",
-    ability: "Adaptability",
-    item: "Weakness Pol.",
-    moves: ["Shadow Ball", "Hydro Pump", "Ice Beam", "Shadow Sneak"],
-  },
-  {
-    name: "Braviary-H",
-    spriteKey: "braviary-hisui",
-    level: 36,
-    nature: "Modest",
-    ability: "Sheer Force",
-    item: "Life Orb",
-    moves: ["Psychic", "Heat Wave", "Air Slash", "Esper Wing"],
-  },
-]);
-
 export const vermillionCityGymGentlemanTuckerBox = getOpponentBox([
   {
     name: "Alakazam",
@@ -1179,6 +984,201 @@ export const vermillionCityLeaderLtSurgeBox = getOpponentBox([
     ability: "Mold Breaker",
     item: "Ampharosite",
     moves: ["Volt Switch", "Dragon Pulse", "Focus Blast", "HP Grass"],
+  },
+]);
+
+export const route9PicnickerAliciaBox = getOpponentBox([
+  {
+    name: "Roserade",
+    level: 42,
+    nature: "Timid",
+    ability: "Technician",
+    item: "Focus Sash",
+    moves: ["Clear Smog", "Mega Drain", "HP Fire", "Sleep Powder"],
+  },
+  {
+    name: "Bruxish",
+    level: 43,
+    nature: "Jolly",
+    ability: "Strong Jaw",
+    item: "Life Orb",
+    moves: ["Aqua Fang", "Psychic Fangs", "Crunch", "Aqua Jet"],
+  },
+  {
+    name: "Flareon",
+    level: 44,
+    nature: "Jolly",
+    ability: "Toxic Boost",
+    item: "Toxic Orb",
+    moves: ["Flame Charge", "Sacred Fire", "Facade", "Stom. Tantrum"],
+  },
+  {
+    name: "Chatot",
+    level: 44,
+    nature: "Timid",
+    ability: "Punk Rock",
+    item: "Silk Scarf",
+    moves: ["Chatter", "Boomburst", "Heat Wave", "U-Turn"],
+  },
+]);
+
+export const route9PicnickerCaitlinBox = getOpponentBox([
+  {
+    name: "Smeargle",
+    level: 44,
+    nature: "Jolly",
+    ability: "Own Tempo",
+    item: "Choice Scarf",
+    moves: ["V-Create", "Dragon Ascent", "Trick", "Close Combat"],
+  },
+  {
+    name: "Spinda",
+    level: 44,
+    nature: "Jolly",
+    ability: "Contrary",
+    item: "Choice Scarf",
+    moves: ["Assist"],
+  },
+  {
+    name: "Sneasel-H",
+    spriteKey: "sneasel-hisui",
+    level: 43,
+    nature: "Bashful",
+    ability: "Inner Focus",
+    item: "Eviolite",
+    moves: ["Assist"],
+  },
+  {
+    name: "Liepard",
+    level: 43,
+    nature: "Adamant",
+    ability: "Prankster",
+    item: "Focus Sash",
+    moves: ["Assist"],
+  },
+]);
+
+export const rockTunnelPicnickerDanaBox = getOpponentBox([
+  {
+    name: "Ribombee",
+    level: 42,
+    nature: "Naive",
+    ability: "Shield Dust",
+    item: "Focus Sash",
+    moves: ["Sticky Web", "U-Turn", "Moonblast", "Stun Spore"],
+  },
+  {
+    name: "Bouffalant",
+    level: 43,
+    nature: "Jolly",
+    ability: "Bull Rush",
+    item: "Silk Scarf",
+    moves: ["Head Charge", "Throat Chop", "Earthquake", "Rock Slide"],
+  },
+  {
+    name: "Clawitzer",
+    level: 44,
+    nature: "Timid",
+    ability: "Mega Launcher",
+    item: "Expert Belt",
+    moves: ["Water Pulse", "Dark Pulse", "Aura Sphere", "Ice Beam"],
+  },
+  {
+    name: "Rampardos",
+    level: 44,
+    nature: "Jolly",
+    ability: "Mold Breaker",
+    item: "Hard Stone",
+    moves: ["Pow-Up Punch", "Accelerock", "Earthquake", "Head Smash"],
+  },
+  {
+    name: "Magmortar",
+    level: 44,
+    nature: "Timid",
+    ability: "Mega Launcher",
+    item: "Magmarizer",
+    moves: ["Flamethrower", "Aura Sphere", "Thunderbolt", "Dark Pulse"],
+  },
+]);
+
+export const route10PokeManiacHermanBox = getOpponentBox([
+  {
+    name: "Ninetales",
+    level: 42,
+    nature: "Timid",
+    ability: "Drought",
+    item: "Air Balloon",
+    moves: ["Heat Wave", "Solar Beam", "Scorch. Sands", "Psyshock"],
+  },
+  {
+    name: "Victreebel",
+    level: 43,
+    nature: "Rash",
+    ability: "Chlorophyll",
+    item: "Life Orb",
+    moves: ["Giga Drain", "Sludge Bomb", "Solar Blade", "Weather Ball"],
+  },
+  {
+    name: "Cherrim",
+    level: 44,
+    nature: "Lonely",
+    ability: "Flower Gift",
+    item: "Miracle Seed",
+    moves: ["Solar Blade", "X-Scissor", "Weather Ball", "Return"],
+  },
+  {
+    name: "Sylveon",
+    level: 44,
+    nature: "Modest",
+    ability: "Pixilate",
+    item: "Pixie Plate",
+    moves: ["Hyper Voice", "Weather Ball", "Misty Explosi.", "Psyshock"],
+  },
+]);
+
+export const route8SuperNerdAidanBox = getOpponentBox([
+  {
+    name: "Armarouge",
+    level: 43,
+    nature: "Modest",
+    ability: "Weak Armor",
+    item: "Weakness Pol.",
+    moves: ["Flamethrower", "Stored Power", "Shadow Ball", "Aura Sphere"],
+  },
+  {
+    name: "Tsareena",
+    level: 43,
+    nature: "Adamant",
+    ability: "Queenly Majesty",
+    item: "Choice Scarf",
+    moves: ["Brutal Swing", "Power Whip", "Knock Off", "U-Turn"],
+  },
+  {
+    name: "Arcanine-H",
+    spriteKey: "arcanine-hisui",
+    level: 43,
+    nature: "Jolly",
+    ability: "Rock Head",
+    item: "Focus Sash",
+    moves: ["Flare Blitz", "Head Smash", "Accelerock", "Wild Charge"],
+  },
+  {
+    name: "Basculegion-F",
+    spriteKey: "basculegion-f",
+    level: 44,
+    nature: "Naive",
+    ability: "Adaptability",
+    item: "Weakness Pol.",
+    moves: ["Shadow Ball", "Hydro Pump", "Ice Beam", "Shadow Sneak"],
+  },
+  {
+    name: "Braviary-H",
+    spriteKey: "braviary-hisui",
+    level: 44,
+    nature: "Modest",
+    ability: "Sheer Force",
+    item: "Life Orb",
+    moves: ["Psychic", "Heat Wave", "Air Slash", "Esper Wing"],
   },
 ]);
 

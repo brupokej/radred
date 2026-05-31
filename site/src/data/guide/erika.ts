@@ -3,6 +3,11 @@ import { Moment } from "@site/src/utils/moments";
 import {
   celadonCityGymAceTrainerMaryBox,
   celadonCityLeaderErikaBox,
+  rockTunnelPicnickerDanaBox,
+  route10PokeManiacHermanBox,
+  route8SuperNerdAidanBox,
+  route9PicnickerAliciaBox,
+  route9PicnickerCaitlinBox,
 } from "@site/src/utils/opponents";
 
 import { box as _box1 } from "@site/src/data/guide/surge";
@@ -10,26 +15,6 @@ import { box as _box1 } from "@site/src/data/guide/surge";
 const _box2 = getBox({
   box: _box1,
   cap: { level: 44, exclude: ["Golisopod"] },
-  update: [
-    {
-      Charcadet: {
-        name: "Ceruledge",
-        moves: ["Clear Smog", "Ember", "Fire Spin", "Shadow Claw"],
-      },
-      Golisopod: {
-        level: 42,
-      },
-      Frillish: {
-        moves: ["Bubble Beam", "Hex", "Recover", "Water Pulse"],
-      },
-    },
-    {
-      Frillish: {
-        name: "Jellicent",
-        spriteKey: "jellicent-f",
-      },
-    },
-  ],
 });
 
 export const erikaBoxChange: Moment = {
@@ -42,6 +27,613 @@ export const erikaBoxChange: Moment = {
 const _box3 = getBox({
   box: _box2,
   update: {
+    "Arcanine-H": {
+      nature: "Adamant",
+      ability: "Rock Head",
+      item: "Chesto Berry",
+      moves: ["Accelerock", "Flamethrower", "Flare Blitz", "Rock Tomb"],
+    },
+    Clodsire: {
+      nature: "Careful",
+      ability: "Water Absorb",
+      item: undefined,
+      moves: ["Bulldoze", "Poison Jab", "Rock Tomb", "Tail Whip"],
+    },
+    Houndoom: {
+      nature: "Timid",
+      ability: "Flash Fire",
+      item: "Black Glasses",
+      moves: ["Dark Pulse", "Incinerate", "Leer", "Sucker Punch"],
+    },
+    Golduck: {
+      nature: "Jolly",
+      ability: "Neuroforce",
+      item: "Sitrus Berry",
+      moves: ["Aqua Tail", "Low Sweep", "Psychic", "Zen Headbutt"],
+    },
+    Drednaw: {
+      nature: "Naughty",
+      ability: "Shell Armor",
+      item: "Sitrus Berry",
+      moves: ["Aqua Jet", "Counter", "Razor Shell", "Rock Tomb"],
+    },
+  },
+  team: ["Arcanine-H", "Clodsire", "Houndoom", "Golduck", "Drednaw"],
+});
+
+export const route9PicnickerAliciaBattle: Moment = {
+  split: "Surge",
+  label: "Route 9 Picnicker Alicia Battle",
+  kind: "battle",
+  data: {
+    playerBox: _box3,
+    opponentBox: route9PicnickerAliciaBox,
+    lines: [
+      {
+        matchups: [
+          {
+            matchup: ["Roserade"],
+            turns: [
+              [
+                { opponent: "{o:Roserade} Sleep Powder {p:Arcanine-H}" },
+                { player: "{p:Arcanine-H} Flare Blitz {o:Roserade} to {=:1}" },
+              ],
+              [
+                { player: "{p:Arcanine-H} Accelerock {o:Roserade} to {=:0}" },
+                { opponent: "{o:Roserade} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Bruxish"],
+            turns: [
+              [
+                { player: "{p:Arcanine-H} switch to {p:Clodsire}" },
+                { opponent: "{o:Bruxish} Aqua Fang {p:Clodsire}" },
+              ],
+              [
+                { player: "{p:Clodsire} switch to {p:Houndoom}" },
+                { opponent: "{o:Bruxish} Psychic Fangs {p:Houndoom}" },
+              ],
+              [
+                { player: "{p:Houndoom} Dark Pulse {o:Bruxish} to {=:0}" },
+                { opponent: "{o:Bruxish} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Flareon"],
+            turns: [
+              [
+                { player: "{p:Houndoom} switch to {p:Golduck}" },
+                { opponent: "{o:Flareon} Stom. Tantrum {p:Golduck} (non-crit) to {+:71}" },
+              ],
+              [
+                { player: "{p:Golduck} Aqua Tail {o:Flareon} to {=:0}" },
+                { opponent: "{o:Flareon} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Chatot"],
+            turns: [
+              [
+                { player: "{p:Golduck} switch to {p:Drednaw}" },
+                { opponent: "{o:Chatot} Boomburst {p:Drednaw} to {+:57}" },
+                { opponent: "{p:Drednaw} Sitrus Berry to {+:93}" },
+              ],
+              [
+                { opponent: "{o:Chatot} Boomburst {p:Drednaw} to {+:4}" },
+                { player: "{p:Drednaw} Rock Tomb {o:Chatot} to {=:0}" },
+              ],
+            ],
+          },
+        ],
+        frags: { "Arcanine-H": 1, Houndoom: 1, Golduck: 1, Drednaw: 1 },
+      },
+    ],
+  },
+};
+
+const _box4 = getBox({
+  box: _box3,
+  update: {
+    Golduck: {
+      nature: "Jolly",
+      ability: "Neuroforce",
+      item: "Sitrus Berry",
+      moves: ["Aqua Jet", "Aqua Tail", "Flip Turn", "Zen Headbutt"],
+    },
+    Runerigus: {
+      nature: "Bold",
+      ability: "Shadow Shield",
+      item: "Chesto Berry",
+      moves: ["Disable", "Haze", "Mean Look", "Rest"],
+    },
+    Azumarill: {
+      nature: "Impish",
+      ability: "Huge Power",
+      item: "Sitrus Berry",
+      moves: ["Aqua Jet", "Aqua Tail", "Helping Hand", "Play Rough"],
+    },
+    Houndoom: {
+      nature: "Timid",
+      ability: "Flash Fire",
+      item: "Black Glasses",
+      moves: ["Dark Pulse", "Flame Burst", "Leer", "Sucker Punch"],
+    },
+  },
+  team: ["Golduck", "Runerigus", "Azumarill", "Houndoom"],
+});
+
+export const route9PicnickerCaitlinBattle: Moment = {
+  split: "Surge",
+  label: "Route 9 Picnicker Caitlin Battle",
+  kind: "battle",
+  data: {
+    playerBox: _box4,
+    opponentBox: route9PicnickerCaitlinBox,
+    lines: [
+      {
+        matchups: [
+          {
+            matchup: ["Smeargle"],
+            turns: [
+              [
+                { opponent: "{o:Smeargle} Dragon Ascent {p:Golduck} to {+:108}" },
+                { player: "{p:Golduck} Aqua Tail {o:Smeargle} to {=:0}" },
+                { opponent: "{o:Smeargle} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Spinda"],
+            turns: [
+              [
+                { opponent: "{o:Spinda} Assist (Dragon Ascent) {p:Golduck} to {+:36}" },
+                { opponent: "{p:Golduck} Sitrus Berry to {+:70}" },
+                { player: "{p:Golduck} Flip Turn {o:Spinda} to {-:117}" },
+                { player: "{p:Golduck} switch to {p:Runerigus}" },
+              ],
+              [
+                { opponent: "{o:Spinda} Assist (V-Create) {p:Runerigus} to {+:88}" },
+                { player: "{p:Runerigus} Mean Look {o:Spinda}" },
+              ],
+              [
+                { opponent: "{o:Spinda} Assist (V-Create) {p:Runerigus} to {+:28}" },
+                { player: "{p:Runerigus} Disable {o:Spinda}" },
+              ],
+              [
+                { opponent: "{o:Spinda} Struggle {p:Runerigus} to {+:10}" },
+                { opponent: "{o:Spinda} recoil to {-:83}" },
+                { player: "{p:Runerigus} Rest to {=:118}" },
+              ],
+              [
+                { opponent: "{o:Spinda} Struggle {p:Runerigus} to {+:49}" },
+                { opponent: "{o:Spinda} recoil to {-:40}" },
+                { player: "{p:Runerigus} Haze {o:Spinda}" },
+              ],
+              [
+                { player: "{p:Runerigus} switch to {p:Golduck}" },
+                { opponent: "{o:Spinda} Struggle {p:Golduck} to {+:39}" },
+                { opponent: "{o:Spinda} recoil to {-:15}" },
+              ],
+              [
+                { player: "{p:Golduck} Aqua Jet {o:Spinda} to {=:0}" },
+                { opponent: "{o:Spinda} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Sneasel-H"],
+            turns: [
+              [
+                { player: "{p:Golduck} switch to {p:Azumarill}" },
+                { opponent: "{o:Sneasel-H} Assist (Dragon Ascent) {p:Azumarill} to {+:82}" },
+              ],
+              [
+                { opponent: "{o:Sneasel-H} Assist (Dragon Ascent) {p:Azumarill} to {+:9}" },
+                { opponent: "{p:Azumarill} Sitrus Berry to {+:47}" },
+                { player: "{p:Azumarill} Play Rough {o:Sneasel-H} to {=:0}" },
+                { opponent: "{o:Sneasel-H} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Liepard"],
+            turns: [
+              [
+                { player: "{p:Azumarill} switch to {p:Houndoom}" },
+                { opponent: "{o:Liepard} Assist {p:Houndoom}" },
+              ],
+              [
+                { opponent: "{o:Liepard} Assist {p:Houndoom}" },
+                { player: "{p:Houndoom} Flame Burst {o:Liepard} to {-:55}" },
+              ],
+              [
+                { opponent: "{o:Liepard} Assist {p:Houndoom}" },
+                { player: "{p:Houndoom} Flame Burst {o:Liepard} to {=:0}" },
+                { opponent: "{o:Liepard} fainted" },
+              ],
+            ],
+          },
+        ],
+        frags: { Golduck: 2, Azumarill: 1, Houndoom: 1 },
+      },
+    ],
+  },
+};
+
+const _box5 = getBox({
+  box: _box4,
+  update: {
+    Golisopod: {
+      level: 41,
+    },
+  },
+});
+
+export const route9PicnickerCaitlinBoxChange: Moment = {
+  split: "Erika",
+  label: "Route 9 Picnicker Caitlin Box Change",
+  kind: "boxChange",
+  data: { playerBox: _box5 },
+};
+
+const _box6 = getBox({
+  box: _box5,
+  update: {
+    Excadrill: {
+      nature: "Adamant",
+      ability: "Mold Breaker",
+      item: "Shuca Berry",
+      moves: ["Earthquake", "Mud-Slap", "Rapid Spin", "Rock Tomb"],
+    },
+    Golisopod: {
+      nature: "Impish",
+      ability: "Emergency Exit",
+      item: "Charti Berry",
+      moves: ["First Impress.", "Razor Shell", "Rock Tomb", "Sucker Punch"],
+    },
+    Drednaw: {
+      nature: "Adamant",
+      ability: "Strong Jaw",
+      item: "Black Belt",
+      moves: ["Aqua Jet", "Jaw Lock", "Razor Shell", "Rock Tomb"],
+    },
+    Tentacruel: {
+      nature: "Timid",
+      ability: "Clear Body",
+      item: "Sitrus Berry",
+      moves: ["Acid Spray", "Icy Wind", "Poison Jab", "Scald"],
+    },
+    Incineroar: {
+      nature: "Adamant",
+      ability: "Blaze",
+      item: "Passho Berry",
+      moves: ["Fake Out", "Darkest Lariat", "Fire Fang", "U-Turn"],
+    },
+    Golduck: {
+      nature: "Naive",
+      ability: "Neuroforce",
+      item: "Mystic Water",
+      moves: ["Aqua Tail", "Flash", "Flip Turn", "Zen Headbutt"],
+    }
+  },
+  team: ["Excadrill", "Golisopod", "Drednaw", "Tentacruel", "Incineroar", "Golduck"],
+});
+
+export const rockTunnelPicnickerDanaBattle: Moment = {
+  split: "Erika",
+  label: "Rock Tunnel Picnicker Dana Battle",
+  kind: "battle",
+  data: {
+    playerBox: _box6,
+    opponentBox: rockTunnelPicnickerDanaBox,
+    lines: [
+      {
+        matchups: [
+          {
+            matchup: ["Ribombee"],
+            turns: [
+              [
+                { opponent: "{o:Ribombee} Moonblast {p:Excadrill} to {+:113}" },
+                { player: "{p:Excadrill} Rock Tomb {o:Ribombee} to {-:27}" },
+              ],
+              [
+                { player: "{p:Excadrill} Rapid Spin {o:Ribombee} to {=:0}" },
+                { opponent: "{o:Ribombee} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Bouffalant"],
+            turns: [
+              [
+                { player: "{p:Excadrill} switch to {p:Golisopod}" },
+                { opponent: "{o:Bouffalant} Head Charge {p:Golisopod} to {+:8}" },
+                { opponent: "{o:Bouffalant} recoil to {-:136}" },
+                { player: "{p:Golisopod} Emergency Exit to {p:Drednaw}" },
+              ],
+              [
+                { player: "{p:Drednaw} Jaw Lock {o:Bouffalant} to {=:0}" },
+                { opponent: "{o:Bouffalant} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Clawitzer"],
+            turns: [
+              [
+                { player: "{p:Drednaw} switch to {p:Tentacruel}" },
+                { opponent: "{o:Clawitzer} Aura Sphere {p:Tentacruel} to {+:103}" },
+              ],
+              [
+                { player: "{p:Tentacruel} Acid Spray {o:Clawitzer} to {-:109}" },
+                { opponent: "{o:Clawitzer} Dark Pulse {p:Tentacruel} to {+:33}" },
+                { opponent: "{p:Tentacruel} Sitrus Berry to {+:67}" },
+              ],
+              [
+                { player: "{p:Tentacruel} switch to {p:Incineroar}" },
+                { opponent: "{o:Clawitzer} Dark Pulse {p:Incineroar} to {+:121}" },
+              ],
+              [
+                { player: "{p:Incineroar} switch to {p:Golduck}" },
+                { opponent: "{o:Clawitzer} Aura Sphere {p:Golduck} to {+:84}" },
+              ],
+              [
+                { player: "{p:Golduck} Flash {o:Clawitzer} to {=:0}" },
+                { opponent: "{o:Clawitzer} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Rampardos"],
+            turns: [
+              [
+                { player: "{p:Golduck} Aqua Tail {o:Rampardos} to {=:0}" },
+                { opponent: "{o:Rampardos} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Magmortar"],
+            turns: [
+              [
+                { player: "{p:Golduck} Aqua Tail {o:Magmortar} to {=:0}" },
+                { opponent: "{o:Magmortar} fainted" },
+              ],
+            ],
+          },
+        ],
+        frags: { Excadrill: 1, Drednaw: 1, Golduck: 3 },
+      },
+    ],
+  },
+};
+
+const _box7 = getBox({
+  box: _box6,
+  update: {
+    Golduck: {
+      nature: "Modest",
+      ability: "Cloud Nine",
+      item: "Mystic Water",
+      moves: ["Aqua Tail", "Flash", "Flip Turn", "Psychic"],
+    },
+    Gyarados: {
+      nature: "Jolly",
+      ability: "Intimidate",
+      item: "Sitrus Berry",
+      moves: ["Aqua Fang", "Bulldoze", "Ice Fang", "Leer"],
+    },
+    Perrserker: {
+      nature: "Careful",
+      ability: "Battle Armor",
+      item: "Shuca Berry",
+      moves: ["Fake Out", "Bullet Punch", "Iron Head", "Metal Burst"],
+    },
+    Tentacruel: {
+      nature: "Timid",
+      ability: "Clear Body",
+      item: "Sitrus Berry",
+      moves: ["Acid Spray", "Icy Wind", "Poison Jab", "Scald"],
+    },
+  },
+  team: ["Golduck", "Gyarados", "Perrserker", "Tentacruel"],
+});
+
+export const route10PokeManiacHermanBattle: Moment = {
+  split: "Surge",
+  label: "Route 10 Poké Maniac Herman Battle",
+  kind: "battle",
+  data: {
+    playerBox: _box7,
+    opponentBox: route10PokeManiacHermanBox,
+    lines: [
+      {
+        matchups: [
+          {
+            matchup: ["Ninetales", "Victreebel"],
+            turns: [
+              [
+                { opponent: "{o:Ninetales} Solar Beam" },
+                { player: "{p:Golduck} Psychic {o:Victreebel} to {=:0}" },
+                { opponent: "{o:Victreebel} fainted" },
+                { player: "{p:Gyarados} Aqua Fang {o:Ninetales} to {=:0}" },
+                { opponent: "{o:Ninetales} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Sylveon", "Cherrim"],
+            turns: [
+              [
+                { player: "{p:Golduck} Psychic {o:Cherrim} to {-:71}" },
+                { player: "{p:Gyarados} Ice Fang {o:Cherrim} to {=:0}" },
+                { opponent: "{o:Cherrim} fainted" },
+                {
+                  opponent:
+                    "{o:Sylveon} Hyper Voice {p:Golduck} to {+:20} and {p:Gyarados} (non-crit) to {+:84}",
+                },
+              ],
+            ],
+          },
+          {
+            matchup: ["Sylveon"],
+            turns: [
+              [
+                { player: "{p:Golduck} switch to {p:Perrserker}" },
+                { player: "{p:Gyarados} switch to {p:Tentacruel}" },
+                {
+                  opponent:
+                    "{o:Sylveon} Misty Explosi. {p:Perrserker} to {+:62} and {p:Tentacruel} (non-crit) to {+:86}",
+                },
+                { opponent: "{o:Sylveon} fainted" },
+              ],
+            ],
+          },
+        ],
+        frags: { Golduck: 1, Gyarados: 2, Perrserker: 1 },
+      },
+    ],
+  },
+};
+
+const _box8 = getBox({
+  box: _box7,
+  update: {
+    Golduck: {
+      nature: "Modest",
+      ability: "Neuroforce",
+      item: "Mystic Water",
+      moves: ["Aqua Tail", "Flash", "Flip Turn", "Scald"],
+    },
+    Golisopod: {
+      nature: "Impish",
+      ability: "Emergency Exit",
+      item: "Charti Berry",
+      moves: ["First Impress.", "Icy Wind", "Rock Tomb", "Sucker Punch"],
+    },
+    "Arcanine-H": {
+      nature: "Relaxed",
+      ability: "Rock Head",
+      item: "Sitrus Berry",
+      moves: ["Accelerock", "Flamethrower", "Flare Blitz", "Rock Tomb"],
+    },
+    Excadrill: {
+      nature: "Naive",
+      ability: "Mold Breaker",
+      item: "Soft Sand",
+      moves: ["Earthquake", "Mud-Slap", "Rapid Spin", "Rock Tomb"],
+    },
+    Gyarados: {
+      nature: "Jolly",
+      ability: "Intimidate",
+      item: "Sitrus Berry",
+      moves: ["Aqua Fang", "Crunch", "Ice Fang", "Leer"],
+    },
+  },
+  team: ["Golduck", "Golisopod", "Arcanine-H", "Excadrill", "Gyarados"],
+});
+
+export const route8SuperNerdAidanBattle: Moment = {
+  split: "Surge",
+  label: "Route 8 Super Nerd Aidan Battle",
+  kind: "battle",
+  data: {
+    playerBox: _box8,
+    opponentBox: route8SuperNerdAidanBox,
+    lines: [
+      {
+        matchups: [
+          {
+            matchup: ["Tsareena", "Armarouge"],
+            turns: [
+              [
+                { player: "{p:Golduck} switch to {p:Arcanine-H}" },
+                { opponent: "{o:Tsareena} Power Whip {p:Arcanine-H} to {+:7}" },
+                { opponent: "{p:Arcanine-H} Sitrus Berry to {+:44}" },
+                { opponent: "{o:Armarouge} Flamethrower {p:Golisopod} to {+:7}" },
+                {
+                  player:
+                    "{p:Golisopod} Icy Wind {o:Tsareena} to {-:108} and {o:Armarouge} to {-:134}",
+                },
+                { player: "{p:Golisopod} Emergency Exit to {p:Golduck}" },
+              ],
+              [
+                { player: "{p:Golduck} Scald {o:Armarouge} to {=:0}" },
+                { player: "{p:Arcanine-H} Flare Blitz {o:Tsareena} to {=:0}" },
+                { opponent: "{o:Tsareena} fainted" },
+                { opponent: "{o:Armarouge} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Arcanine-H", "Basculegion-F"],
+            turns: [
+              [
+                { player: "{p:Arcanine-H} switch to {p:Excadrill}" },
+                { player: "{p:Golduck} Flip Turn {o:Arcanine-H} to {=:1}" },
+                { player: "{p:Golduck} switch to {p:Gyarados}" },
+                { opponent: "{o:Arcanine-H} Head Smash {p:Excadrill} to {+:107}" },
+                { opponent: "{o:Basculegion-F} Shadow Ball {p:Gyarados} to {+:55}" },
+                { opponent: "{p:Gyarados} Sitrus Berry to {+:92}" },
+              ],
+              [
+                {
+                  player:
+                    "{p:Excadrill} Earthquake {o:Arcanine-H} to {=:0} and {o:Basculegion-F} to {-:77}",
+                },
+                { opponent: "{o:Arcanine-H} fainted" },
+                { player: "{p:Gyarados} Crunch {o:Basculegion-F} to {=:0}" },
+                { opponent: "{o:Basculegion-F} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Braviary-H"],
+            turns: [
+              [
+                { player: "{p:Excadrill} switch to {p:Arcanine-H}" },
+                { player: "{p:Gyarados} Crunch {o:Braviary-H} to {-:92}" },
+                { opponent: "{o:Braviary-H} Heat Wave {p:Arcanine-H} to {+:11} and {p:Gyarados} to {+:28}" },
+                { opponent: "{p:Gyarados} burn to {+:19}" },
+              ],
+              [
+                { player: "{p:Gyarados} Leer {o:Braviary-H}" },
+                { player: "{p:Arcanine-H} Rock Tomb {o:Braviary-H} to {=:0}" },
+                { opponent: "{o:Braviary-H} fainted" },
+              ],
+            ],
+          },
+        ],
+        frags: { "Arcanine-H": 2, Golduck: 1, Excadrill: 1, Gyarados: 1 },
+      },
+    ],
+  },
+};
+
+const _box9 = getBox({
+  box: _box8,
+  update: {
+    Frillish: {
+      name: "Jellicent",
+      spriteKey: "jellicent-f",
+    },
+  },
+});
+
+export const route8SuperNerdAidanBoxChange: Moment = {
+  split: "Erika",
+  label: "Route 8 Super Nerd Aidan Box Change",
+  kind: "boxChange",
+  data: { playerBox: _box9 },
+};
+
+const _box10 = getBox({
+  box: _box9,
+  update: {
     Incineroar: {
       nature: "Naive",
       ability: "Blaze",
@@ -52,7 +644,7 @@ const _box3 = getBox({
       nature: "Bold",
       ability: "Water Bubble",
       item: "Rindo Berry",
-      moves: ["Brine", "Hex", "Recover", "Water Spout"],
+      moves: ["Brine", "Ominous Wind", "Recover", "Water Spout"],
     },
     Runerigus: {
       nature: "Bold",
@@ -75,7 +667,7 @@ export const celadonCityGymAceTrainerMaryBattle: Moment = {
   label: "Celadon City Gym Ace Trainer Mary Battle",
   kind: "battle",
   data: {
-    playerBox: _box3,
+    playerBox: _box10,
     opponentBox: celadonCityGymAceTrainerMaryBox,
     lines: [
       {
@@ -138,8 +730,28 @@ export const celadonCityGymAceTrainerMaryBattle: Moment = {
   },
 };
 
-const _box4 = getBox({
-  box: _box3,
+const _box11 = getBox({
+  box: _box10,
+  update: {
+    Charcadet: {
+      name: "Ceruledge",
+      moves: ["Clear Smog", "Ember", "Fire Spin", "Shadow Claw"],
+    },
+    Golisopod: {
+      level: 42,
+    },
+  }
+});
+
+export const celadonCityGymAceTrainerMaryBoxChange: Moment = {
+  split: "Erika",
+  label: "Celadon City Gym Ace Trainer Mary Box Change",
+  kind: "boxChange",
+  data: { playerBox: _box11 },
+};
+
+const _box12 = getBox({
+  box: _box11,
   update: {
     Incineroar: {
       nature: "Impish",
@@ -154,31 +766,31 @@ const _box4 = getBox({
       moves: ["First Impress.", "Aerial Ace", "Rock Tomb", "Sucker Punch"],
     },
     Runerigus: {
-      nature: "Bold",
+      nature: "Adamant",
       ability: "Shadow Shield",
       item: "Rindo Berry",
-      moves: ["Disable", "Scary Face", "Shadow Ball", "Shadow Sneak"],
+      moves: ["Night Shade", "Scary Face", "Shadow Ball", "Shadow Sneak"],
     },
     "Arcanine-H": {
-      nature: "Impish",
+      nature: "Bold",
       ability: "Rock Head",
-      item: "Magnet",
-      moves: ["Bad Tantrum", "Crunch", "Fire Fang", "Thunder Fang"],
+      item: "Charcoal",
+      moves: ["Accelerock", "Flamethrower", "Helping Hand", "Stom. Tantrum"],
     },
-    Golduck: {
-      nature: "Naive",
-      ability: "Neuroforce",
-      item: "Twisted Spoon",
-      moves: ["Aqua Tail", "Flip Turn", "Ice Punch", "Psychic"],
+    Cloyster: {
+      nature: "Naughty",
+      ability: "Shell Armor",
+      item: "Never-Melt Ice",
+      moves: ["Hydro Pump", "Ice Shard", "Icicle Spear", "Razor Shell"],
     },
     Ceruledge: {
-      nature: "Impish",
+      nature: "Adamant",
       ability: "Sharpness",
-      item: "Cheri Berry",
-      moves: ["Flamethrower", "Shadow Claw", "Shadow Sneak", "Will-O-Wisp"],
+      item: "Spell Tag",
+      moves: ["Flamethrower", "Night Shade", "Shadow Claw", "Will-O-Wisp"],
     },
   },
-  team: ["Incineroar", "Golisopod", "Runerigus", "Arcanine-H", "Golduck", "Ceruledge"],
+  team: ["Incineroar", "Golisopod", "Runerigus", "Arcanine-H", "Cloyster", "Ceruledge"],
 });
 
 export const celadonCityLeaderErikaBattle: Moment = {
@@ -186,7 +798,7 @@ export const celadonCityLeaderErikaBattle: Moment = {
   label: "Celadon City Leader Erika Battle",
   kind: "battle",
   data: {
-    playerBox: _box4,
+    playerBox: _box12,
     opponentBox: celadonCityLeaderErikaBox,
     lines: [
       {
@@ -216,7 +828,9 @@ export const celadonCityLeaderErikaBattle: Moment = {
               [
                 { player: "{p:Runerigus} switch to {p:Arcanine-H}" },
                 { opponent: "{o:Toxtricity} HP Grass {p:Arcanine-H} to {+:72}" },
+                { opponent: "{o:Toxtricity} Life Orb to {=:120}" },
                 { opponent: "{p:Arcanine-H} grassy terrain to {+:81}" },
+                { opponent: "{o:Toxtricity} grassy terrain to {=:128}" },
               ],
               [
                 { player: "{p:Arcanine-H} Stom. Tantrum {o:Toxtricity} to {=:0}" },
@@ -229,19 +843,15 @@ export const celadonCityLeaderErikaBattle: Moment = {
             matchup: ["Sceptile-Mega"],
             turns: [
               [
-                { player: "{p:Arcanine-H} switch to {p:Golisopod}" },
+                { player: "{p:Arcanine-H} switch to {p:Cloyster}" },
                 { opponent: "{o:Sceptile-Mega} mega evolve" },
-                { opponent: "{o:Sceptile-Mega} High Horsep. {p:Golisopod} to {+:97}" },
-                { opponent: "{p:Golisopod} grassy terrain to {+:105}" },
+                { opponent: "{o:Sceptile-Mega} High Horsep. {p:Cloyster} to {+:82}" },
+                { opponent: "{p:Cloyster} grassy terrain to {+:88}" },
               ],
               [
-                { opponent: "{o:Sceptile-Mega} Draco Barrage {p:Golisopod} to {+:5}" },
-                { player: "{p:Golisopod} Rock Tomb {o:Sceptile-Mega} to {-:107}" },
-                { player: "{p:Golisopod} Emergency Exit to {p:Golduck}" },
-              ],
-              [
-                { player: "{p:Golduck} Ice Punch {o:Sceptile-Mega} to {=:0}" },
+                { player: "{p:Cloyster} Ice Shard {o:Sceptile-Mega} to {=:0}" },
                 { opponent: "{o:Sceptile-Mega} fainted" },
+                { opponent: "{p:Cloyster} grassy terrain to {+:94}" },
               ],
             ],
           },
@@ -249,7 +859,7 @@ export const celadonCityLeaderErikaBattle: Moment = {
             matchup: ["Kartana"],
             turns: [
               [
-                { player: "{p:Golduck} switch to {p:Incineroar}" },
+                { player: "{p:Cloyster} switch to {p:Incineroar}" },
                 { opponent: "{o:Kartana} Grassy Glide {p:Incineroar} to {+:43}" },
                 { opponent: "{o:Kartana} Life Orb to {=:108}" },
                 { opponent: "{p:Incineroar} grassy terrain to {+:52}" },
@@ -282,46 +892,27 @@ export const celadonCityLeaderErikaBattle: Moment = {
                 { player: "{p:Ceruledge} Will-O-Wisp {o:Hawlucha}" },
                 { opponent: "{o:Hawlucha} burn to {=:128}" },
               ],
-            ],
-            branches: [
-              {
-                branches: [
-                  "94% → Ceruledge Shadow Claw Hawlucha",
-                  "6% → Ceruledge Shadow Claw Hawlucha (to 0)",
-                ],
-              },
-            ],
-          },
-        ],
-        frags: { Golisopod: 1, "Arcanine-H": 1, Golduck: 1, Ceruledge: 1 },
-      },
-      {
-        line: "94% → Ceruledge Shadow Claw Hawlucha",
-        matchups: [
-          {
-            matchup: ["Hawlucha"],
-            turns: [
               [
                 { opponent: "{o:Hawlucha} Swords Dance" },
-                { player: "{p:Ceruledge} Shadow Claw {o:Hawlucha} to {-:68}" },
-                { opponent: "{o:Hawlucha} burn to {-:60}" },
+                { player: "{p:Ceruledge} Night Shade {o:Hawlucha} to {=:84}" },
+                { opponent: "{o:Hawlucha} burn to {=:76}" },
               ],
               [
                 { player: "{p:Ceruledge} switch to {p:Runerigus}" },
-                { opponent: "{o:Hawlucha} Stone Edge {p:Runerigus} to {+:104}" },
-                { opponent: "{p:Runerigus} grassy terrain to {+:111}" },
-                { opponent: "{o:Hawlucha} burn to {-:52}" },
+                { opponent: "{o:Hawlucha} Stone Edge {p:Runerigus} to {+:102}" },
+                { opponent: "{p:Runerigus} grassy terrain to {+:109}" },
+                { opponent: "{o:Hawlucha} burn to {=:68}" },
               ],
               [
-                { opponent: "{o:Hawlucha} Acrobatics {p:Runerigus} to {+:15}" },
-                { player: "{p:Runerigus} Shadow Ball {o:Hawlucha} to {-:19}" },
-                { opponent: "{p:Runerigus} grassy terrain to {+:22}" },
-                { opponent: "{o:Hawlucha} burn to {-:11}" },
+                { opponent: "{o:Hawlucha} Acrobatics {p:Runerigus} to {+:4}" },
+                { player: "{p:Runerigus} Night Shade {o:Hawlucha} to {=:24}" },
+                { opponent: "{p:Runerigus} grassy terrain to {+:11}" },
+                { opponent: "{o:Hawlucha} burn to {=:18}" },
               ],
               [
                 { player: "{p:Runerigus} Shadow Sneak {o:Hawlucha} to {=:0}" },
                 { opponent: "{o:Hawlucha} fainted" },
-                { opponent: "{p:Runerigus} grassy terrain to {+:22}" },
+                { opponent: "{p:Runerigus} grassy terrain to {+:11}" },
               ],
             ],
           },
@@ -334,70 +925,30 @@ export const celadonCityLeaderErikaBattle: Moment = {
                 { opponent: "{p:Ceruledge} grassy terrain to {+:111}" },
               ],
               [
-                { player: "{p:Ceruledge} Shadow Claw {o:Slowbro-G} to {-:29}" },
-                { opponent: "{o:Slowbro-G} Sludge Bomb {p:Ceruledge} to {+:66}" },
-                { opponent: "{p:Ceruledge} grassy terrain to {+:74}" },
-                { opponent: "{o:Slowbro-G} grassy terrain to {-:47}" },
-                { opponent: "{p:Ceruledge} poison to {+:66}" },
-              ],
-              [
                 { player: "{p:Ceruledge} Shadow Claw {o:Slowbro-G} to {=:0}" },
                 { opponent: "{o:Slowbro-G} fainted" },
               ],
             ],
           },
         ],
-        frags: { Runerigus: 1, Ceruledge: 1 },
-      },
-      {
-        line: "6% → Ceruledge Shadow Claw Hawlucha (to 0)",
-        matchups: [
-          {
-            matchup: ["Hawlucha"],
-            turns: [
-              [
-                { opponent: "{o:Hawlucha} Swords Dance" },
-                { player: "{p:Ceruledge} Shadow Claw {o:Hawlucha} (crit) to {=:0}" },
-                { opponent: "{o:Hawlucha} fainted" },
-              ],
-            ],
-          },
-          {
-            matchup: ["Slowbro-G"],
-            turns: [
-              [
-                { player: "{p:Ceruledge} Shadow Claw {o:Slowbro-G} to {-:29}" },
-                { opponent: "{o:Slowbro-G} Sludge Bomb {p:Ceruledge} to {+:66}" },
-                { opponent: "{p:Ceruledge} grassy terrain to {+:74}" },
-                { opponent: "{o:Slowbro-G} grassy terrain to {-:47}" },
-                { opponent: "{p:Ceruledge} poison to {+:66}" },
-              ],
-              [
-                { player: "{p:Ceruledge} Shadow Claw {o:Slowbro-G} to {=:0}" },
-                { opponent: "{o:Slowbro-G} fainted" },
-              ],
-            ],
-          },
-        ],
-        frags: { Ceruledge: 2 },
+        frags: { Golisopod: 1, "Arcanine-H": 1, Cloyster: 1, Ceruledge: 2, Runerigus: 1 },
       },
     ],
   },
 };
 
-const _box5 = getBox({
-  box: _box4,
-  update: {
-    Golisopod: {
-      level: 43,
-    },
-  },
-});
-
-export const box = _box5;
+export const box = _box12;
 
 export const moments: Moment[] = [
   erikaBoxChange,
+  route9PicnickerAliciaBattle,
+  route9PicnickerCaitlinBattle,
+  route9PicnickerCaitlinBoxChange,
+  rockTunnelPicnickerDanaBattle,
+  route10PokeManiacHermanBattle,
+  route8SuperNerdAidanBattle,
+  route8SuperNerdAidanBoxChange,
   celadonCityGymAceTrainerMaryBattle,
+  celadonCityGymAceTrainerMaryBoxChange,
   celadonCityLeaderErikaBattle,
 ];
