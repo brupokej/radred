@@ -617,6 +617,15 @@ export const route8SuperNerdAidanBattle: Moment = {
 const _box9 = getBox({
   box: _box8,
   update: {
+    Golisopod: {
+      level: 42,
+    },
+  },
+});
+
+const _box10 = getBox({
+  box: _box9,
+  update: {
     Frillish: {
       name: "Jellicent",
       spriteKey: "jellicent-f",
@@ -628,20 +637,20 @@ export const route8SuperNerdAidanBoxChange: Moment = {
   split: "Erika",
   label: "Route 8 Super Nerd Aidan Box Change",
   kind: "boxChange",
-  data: { playerBox: _box9 },
+  data: { playerBox: _box10 },
 };
 
-const _box10 = getBox({
-  box: _box9,
+const _box11 = getBox({
+  box: _box10,
   update: {
     Incineroar: {
       nature: "Naive",
       ability: "Blaze",
       item: "Chople Berry",
-      moves: ["Fake Out", "Double Kick", "Flamethrower", "U-Turn"],
+      moves: ["Fake Out", "Darkest Lariat", "Flamethrower", "U-Turn"],
     },
     Jellicent: {
-      nature: "Bold",
+      nature: "Modest",
       ability: "Water Bubble",
       item: "Rindo Berry",
       moves: ["Brine", "Ominous Wind", "Recover", "Water Spout"],
@@ -649,8 +658,8 @@ const _box10 = getBox({
     Runerigus: {
       nature: "Bold",
       ability: "Shadow Shield",
-      item: "Rindo Berry",
-      moves: ["Disable", "Rock Tomb", "Shadow Claw", "Shadow Sneak"],
+      item: "Chesto Berry",
+      moves: ["Disable", "Haze", "Mean Look", "Rest"],
     },
     Houndoom: {
       nature: "Modest",
@@ -667,7 +676,7 @@ export const celadonCityGymAceTrainerMaryBattle: Moment = {
   label: "Celadon City Gym Ace Trainer Mary Battle",
   kind: "battle",
   data: {
-    playerBox: _box10,
+    playerBox: _box11,
     opponentBox: celadonCityGymAceTrainerMaryBox,
     lines: [
       {
@@ -692,12 +701,12 @@ export const celadonCityGymAceTrainerMaryBattle: Moment = {
             turns: [
               [
                 {
-                  opponent: "{o:Maractus} Sucker Punch {p:Jellicent} to {+:22}",
+                  opponent: "{o:Maractus} Sucker Punch {p:Jellicent} to {+:12}",
                 },
                 { player: "{p:Incineroar} Flamethrower {o:Copperajah} to {-:85}" },
                 { player: "{p:Jellicent} Brine {o:Copperajah} to {=:0}" },
                 { opponent: "{o:Copperajah} fainted" },
-                { opponent: "{p:Jellicent} grassy terrain to {+:31}" },
+                { opponent: "{p:Jellicent} grassy terrain to {+:21}" },
               ],
             ],
           },
@@ -711,14 +720,7 @@ export const celadonCityGymAceTrainerMaryBattle: Moment = {
                 { opponent: "{p:Houndoom} grassy terrain to {+:63}" },
               ],
               [
-                { opponent: "{o:Maractus} Spiky Shield" },
                 { player: "{p:Houndoom} Flame Burst {o:Maractus}" },
-                { player: "{p:Runerigus} Disable {o:Maractus}" },
-                { opponent: "{p:Houndoom} grassy terrain to {+:71}" },
-              ],
-              [
-                { opponent: "{o:Maractus} Grassy Glide {p:Runerigus} to {+:86}" },
-                { player: "{p:Houndoom} Flame Burst {o:Maractus} to {=:0}" },
                 { opponent: "{o:Maractus} fainted" },
               ],
             ],
@@ -730,15 +732,12 @@ export const celadonCityGymAceTrainerMaryBattle: Moment = {
   },
 };
 
-const _box11 = getBox({
-  box: _box10,
+const _box12 = getBox({
+  box: _box11,
   update: {
     Charcadet: {
       name: "Ceruledge",
       moves: ["Clear Smog", "Ember", "Fire Spin", "Shadow Claw"],
-    },
-    Golisopod: {
-      level: 42,
     },
   }
 });
@@ -747,11 +746,11 @@ export const celadonCityGymAceTrainerMaryBoxChange: Moment = {
   split: "Erika",
   label: "Celadon City Gym Ace Trainer Mary Box Change",
   kind: "boxChange",
-  data: { playerBox: _box11 },
+  data: { playerBox: _box12 },
 };
 
-const _box12 = getBox({
-  box: _box11,
+const _box13 = getBox({
+  box: _box12,
   update: {
     Incineroar: {
       nature: "Impish",
@@ -760,7 +759,7 @@ const _box12 = getBox({
       moves: ["Fake Out", "Darkest Lariat", "Flamethrower", "U-Turn"],
     },
     Golisopod: {
-      nature: "Lonely",
+      nature: "Adamant",
       ability: "Emergency Exit",
       item: "Silver Powder",
       moves: ["First Impress.", "Aerial Ace", "Rock Tomb", "Sucker Punch"],
@@ -768,7 +767,7 @@ const _box12 = getBox({
     Runerigus: {
       nature: "Adamant",
       ability: "Shadow Shield",
-      item: "Rindo Berry",
+      item: "Chesto Berry",
       moves: ["Night Shade", "Scary Face", "Shadow Ball", "Shadow Sneak"],
     },
     "Arcanine-H": {
@@ -798,7 +797,7 @@ export const celadonCityLeaderErikaBattle: Moment = {
   label: "Celadon City Leader Erika Battle",
   kind: "battle",
   data: {
-    playerBox: _box12,
+    playerBox: _box13,
     opponentBox: celadonCityLeaderErikaBox,
     lines: [
       {
@@ -937,7 +936,7 @@ export const celadonCityLeaderErikaBattle: Moment = {
   },
 };
 
-export const box = _box12;
+export const box = _box13;
 
 export const moments: Moment[] = [
   erikaBoxChange,

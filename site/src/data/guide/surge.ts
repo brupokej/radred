@@ -471,7 +471,8 @@ export const ssAnneLassAnnGentlemanBrooksBattle: Moment = {
             turns: [
               [
                 { player: "{p:Golisopod} Sucker Punch {o:Wigglytuff} to {-:136}" },
-                { opponent: "{o:Samurott} Water Pledge {p:Perrserker} to {+:37}" },
+                { opponent: "{o:Samurott} Water Pledge {p:Perrserker} to {+:7}" },
+                { opponent: "{p:Perrserker} Sitrus Berry to {+:37}" },
                 { player: "{p:Perrserker} Iron Head {o:Wigglytuff} to {=:0}" },
                 { opponent: "{o:Wigglytuff} fainted" },
               ],
