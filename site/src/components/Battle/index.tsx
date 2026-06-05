@@ -6,14 +6,11 @@ import { secretMode } from "@site/src/data/secretMode";
 import { allMoments } from "@site/src/utils/allMoments";
 import { Box, findPokemon, resolveBox } from "@site/src/utils/box";
 import { useHpDisplay } from "@site/src/utils/hpDisplay";
-import type { Moment } from "@site/src/utils/moments";
 import { getHp } from "@site/src/utils/pokedex";
 import { PokemonData, resolvePokemon } from "@site/src/utils/pokemon";
 import { slugify } from "@site/src/utils/slugify";
 import { SpriteImg } from "@site/src/utils/SpriteImg";
 import { getState, removeState, setState, useStorageState } from "@site/src/utils/storage";
-import { LIVE_MOMENT_DEFAULT } from "@site/src/utils/storageDefaults";
-import { postRelayState } from "@site/src/utils/overlayRelay";
 import { parseTokens } from "@site/src/utils/tokens";
 import React, {
   useCallback,
@@ -397,74 +394,6 @@ function lineEndsWithBranchOrLoop(data: BattleData, visibleOrder: string[]): boo
   return false;
 }
 
-function BattleGoLiveRow({ moment }: { moment: Moment }) {
-  const { value: storedLabel } = useStorageState("live-moment");
-  const { value: livePendingLabel } = useStorageState("live-pending");
-  const isLive =
-    storedLabel !== null
-      ? storedLabel === moment.label
-      : moment.label === LIVE_MOMENT_DEFAULT;
-  const pending = livePendingLabel === moment.label;
-
-  async function handleClick() {
-    if (isLive || pending) return;
-    setState("live-pending", moment.label);
-    await Promise.all([
-      postRelayState({ moment }).catch(() => {}),
-      new Promise((r) => setTimeout(r, 1400)),
-    ]);
-    if (moment.label === LIVE_MOMENT_DEFAULT) removeState("live-moment");
-    else setState("live-moment", moment.label);
-    removeState("live-pending");
-  }
-
-  const iconState = pending ? "pending" : isLive ? "live" : "default";
-
-  return (
-    <ScrollFade className={styles.goLiveRow}>
-      <div className={styles.goLiveRowInner}>
-        <span className={styles.goLivePlainCell}>End</span>
-        <span className={styles.goLiveSepCell}>→</span>
-        <button
-          className={`${styles.goLiveButton} ${isLive ? styles.goLiveLive : ""} ${pending ? styles.goLivePending : ""}`}
-          onClick={handleClick}
-          disabled={isLive || pending}
-        >
-          Go Live{" "}
-          <span key={iconState} className={styles.goLiveIcon}>
-            {iconState === "live" && "✓"}
-            {iconState === "pending" && <span className={styles.goLiveSpinner} />}
-            {iconState === "default" && "▶"}
-          </span>
-        </button>
-      </div>
-    </ScrollFade>
-  );
-}
-
-function injectGoLiveRow(
-  children: React.ReactNode,
-  goLiveRow: React.ReactNode
-): React.ReactNode {
-  const arr = React.Children.toArray(children);
-  let lastMatchupIdx = -1;
-  for (let i = arr.length - 1; i >= 0; i--) {
-    if (React.isValidElement(arr[i]) && (arr[i] as React.ReactElement).type === Matchup) {
-      lastMatchupIdx = i;
-      break;
-    }
-  }
-  if (lastMatchupIdx < 0) return children;
-  const lastMatchup = arr[lastMatchupIdx] as React.ReactElement<{ children: React.ReactNode }>;
-  arr[lastMatchupIdx] = React.cloneElement(
-    lastMatchup,
-    null,
-    ...React.Children.toArray(lastMatchup.props.children),
-    goLiveRow
-  );
-  return arr;
-}
-
 export function Battle({
   data,
   secret,
@@ -633,8 +562,6 @@ export function Battle({
     return idx >= 0 ? allMoments[idx + 1] : undefined;
   }, [data]);
 
-  const showGoLive = secretMode && !!nextMoment && !lineEndsWithBranchOrLoop(data, state.visibleOrder);
-
   const enrichedLines = new Map<string, React.ReactNode>();
   let prevMatchup: string[] | null = null;
   const visitedForIf = new Set(state.visibleOrder);
@@ -679,17 +606,10 @@ export function Battle({
             <div data-battle-lines="">
               {state.visibleOrder.map((slug, slugIndex) => {
                 const enriched = enrichedLines.get(slug);
-                const isLastSlug = slugIndex === state.visibleOrder.length - 1;
                 let finalEnriched =
                   enriched !== undefined
                     ? injectLoopZoneProps(enriched, slug, loopZoneInfo)
                     : enriched;
-                if (isLastSlug && showGoLive) {
-                  finalEnriched = injectGoLiveRow(
-                    finalEnriched,
-                    <BattleGoLiveRow moment={nextMoment!} />
-                  );
-                }
                 return (
                   <BattleLineCtx.Provider key={slug} value={slug}>
                     {finalEnriched}

@@ -1274,7 +1274,7 @@ export const celadonCityLeaderErikaBox = getOpponentBox([
 export const gameCornerGuardBox = getOpponentBox([
   {
     name: "Hypno",
-    level: 44,
+    level: 47,
     nature: "Calm",
     ability: "Bad Dreams",
     item: "Colbur Berry",
@@ -1282,7 +1282,7 @@ export const gameCornerGuardBox = getOpponentBox([
   },
   {
     name: "Aerodactyl",
-    level: 43,
+    level: 46,
     nature: "Jolly",
     ability: "Unnerve",
     item: "Focus Sash",
@@ -1290,7 +1290,7 @@ export const gameCornerGuardBox = getOpponentBox([
   },
   {
     name: "Tinkaton",
-    level: 43,
+    level: 46,
     nature: "Jolly",
     ability: "Own Tempo",
     item: "Steel Gem",
@@ -1298,7 +1298,7 @@ export const gameCornerGuardBox = getOpponentBox([
   },
   {
     name: "Inteleon",
-    level: 43,
+    level: 46,
     nature: "Timid",
     ability: "Sniper",
     item: "Mystic Water",

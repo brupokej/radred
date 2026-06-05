@@ -24,11 +24,6 @@ import { box as _box1 } from "@site/src/data/guide/erika";
 const _box2 = getBox({
   box: _box1,
   cap: { level: 47, exclude: ["Golisopod", "Jellicent"] },
-  update: {
-    Golisopod: {
-      ivs: { def: 0 },
-    },
-  },
 });
 
 export const sabrinaBoxChange: Moment = {
@@ -41,44 +36,32 @@ export const sabrinaBoxChange: Moment = {
 const _box3 = getBox({
   box: _box2,
   update: {
+    Drednaw: {
+      nature: "Adamant",
+      ability: "Shell Armor",
+      item: "Chesto Berry",
+      moves: ["Aqua Jet", "Bulldoze", "Flip Turn", "Rock Tomb"],
+    },
     Perrserker: {
       nature: "Adamant",
       ability: "Battle Armor",
-      item: "Sitrus Berry",
-      moves: ["Fake Out", "Bullet Punch", "Thunderbolt", "U-Turn"],
-    },
-    Golisopod: {
-      nature: "Lonely",
-      ability: "Emergency Exit",
-      item: "Silver Powder",
-      moves: ["First Impress.", "Aerial Ace", "Rock Tomb", "Sucker Punch"],
-    },
-    Incineroar: {
-      nature: "Impish",
-      ability: "Intimidate",
-      item: "Charti Berry",
-      moves: ["Fake Out", "Darkest Lariat", "Thunder Punch", "U-Turn"],
+      item: "Chesto Berry",
+      moves: ["Fake Out", "Bullet Punch", "Iron Head", "U-Turn"],
     },
     Lanturn: {
-      nature: "Modest",
-      ability: "Water Absorb",
+      nature: "Calm",
+      ability: "Volt Absorb",
       item: "Sitrus Berry",
-      moves: ["Bubble Beam", "Icy Wind", "Thunderbolt", "Thunder Wave"],
+      moves: ["Bubble Beam", "Icy Wind", "Shock Wave", "Volt Switch"],
     },
-    Tentacruel: {
-      nature: "Timid",
-      ability: "Clear Body",
-      item: "Payapa Berry",
-      moves: ["Acid Spray", "Bubble Beam", "Icy Wind", "Poison Jab"],
-    },
-    "Arcanine-H": {
-      nature: "Impish",
-      ability: "Rock Head",
-      item: "Magnet",
-      moves: ["Crunch", "Flare Blitz", "Stom. Tantrum", "Thunder Fang"],
+    Incineroar: {
+      nature: "Naughty",
+      ability: "Intimidate",
+      item: "Sitrus Berry",
+      moves: ["Fake Out", "Darkest Lariat", "Flamethrower", "U-Turn"],
     },
   },
-  team: ["Perrserker", "Golisopod", "Incineroar", "Lanturn", "Tentacruel", "Arcanine-H"],
+  team: ["Drednaw", "Perrserker", "Lanturn", "Incineroar"],
 });
 
 export const gameCornerGuardBattle: Moment = {
@@ -95,25 +78,32 @@ export const gameCornerGuardBattle: Moment = {
             matchup: ["Aerodactyl", "Hypno"],
             turns: [
               [
-                { player: "{p:Perrserker} Bullet Punch {o:Aerodactyl} to {-:71}" },
-                { player: "{p:Golisopod} First Impress. {o:Hypno} to {=:0}" },
-                { opponent: "{o:Hypno} fainted" },
+                { player: "{p:Perrserker} Fake Out {o:Hypno} to {-:129}" },
+                { player: "{p:Drednaw} Aqua Jet {o:Aerodactyl} to {-:69}" },
                 {
                   opponent:
-                    "{o:Aerodactyl} Rock Slide {p:Perrserker} to {=:138} and {p:Golisopod} to {+:22}",
+                    "{o:Aerodactyl} Rock Slide {p:Perrserker} to {=:138} and {p:Drednaw} to {=:117}",
                 },
-                { player: "{p:Golisopod} Emergency Exit to {p:Incineroar}" },
+                { opponent: "{o:Hypno} flinched" },
+              ],
+              [
+                { player: "{p:Perrserker} Bullet Punch {o:Aerodactyl} to {=:0}" },
+                { opponent: "{o:Aerodactyl} fainted" },
+                { player: "{p:Drednaw} Rock Tomb {o:Hypno} to {-:78}" },
+                { opponent: "{o:Hypno} Dark Void {p:Perrserker} and {p:Drednaw}" },
               ],
             ],
           },
           {
-            matchup: ["Aerodactyl", "Tinkaton"],
+            matchup: ["Inteleon", "Hypno"],
             turns: [
               [
-                { player: "{p:Incineroar} Fake Out {o:Tinkaton} to {-:139}" },
-                { player: "{p:Perrserker} Bullet Punch {o:Aerodactyl} to {=:0}" },
-                { opponent: "{o:Aerodactyl} fainted" },
-                { opponent: "{o:Tinkaton} flinched" },
+                { opponent: "{o:Inteleon} Snipe Shot {p:Drednaw} to {+:33}" },
+                { player: "{p:Drednaw} Flip Turn {o:Inteleon} to {-:107}" },
+                { player: "{p:Drednaw} switch to {p:Lanturn}" },
+                { player: "{p:Perrserker} U-Turn {o:Hypno} to {=:0}" },
+                { opponent: "{o:Hypno} fainted" },
+                { player: "{p:Perrserker} switch to {p:Incineroar}" },
               ],
             ],
           },
@@ -121,18 +111,13 @@ export const gameCornerGuardBattle: Moment = {
             matchup: ["Inteleon", "Tinkaton"],
             turns: [
               [
-                { player: "{p:Incineroar} switch to {p:Lanturn}" },
-                { opponent: "{o:Inteleon} Snipe Shot {p:Perrserker} to {+:84}" },
-                { opponent: "{o:Tinkaton} Giga. Hammer {p:Perrserker} to {+:21}" },
-                { player: "{p:Perrserker} U-Turn {o:Tinkaton} to {-:131}" },
-                { player: "{p:Perrserker} switch to {p:Incineroar}" },
-              ],
-              [
-                { player: "{p:Incineroar} Fake Out {o:Inteleon} to {-:112}" },
+                { player: "{p:Incineroar} Fake Out {o:Inteleon} to {-:82}" },
                 { opponent: "{o:Inteleon} flinched" },
-                { player: "{p:Lanturn} Thunderbolt {o:Inteleon} to {=:0}" },
+                { opponent: "{o:Tinkaton} Giga. Hammer {p:Incineroar} to {+:58}" },
+                { opponent: "{p:Incineroar} Sitrus Berry to {+:98}" },
+                { player: "{p:Lanturn} Volt Switch {o:Inteleon} to {=:0}" },
                 { opponent: "{o:Inteleon} fainted" },
-                { opponent: "{o:Tinkaton} Play Rough {p:Incineroar} to {+:88}" },
+                { player: "{p:Lanturn} switch to {p:Perrserker}" },
               ],
             ],
           },
@@ -140,20 +125,20 @@ export const gameCornerGuardBattle: Moment = {
             matchup: ["Tinkaton"],
             turns: [
               [
-                { player: "{p:Lanturn} switch to {p:Tentacruel}" },
-                { opponent: "{o:Tinkaton} Play Rough {p:Incineroar} to {+:16}" },
-                { player: "{p:Incineroar} U-Turn {o:Tinkaton} to {-:127}" },
-                { player: "{p:Incineroar} switch to {p:Arcanine-H}" },
+                { player: "{p:Perrserker} Fake Out {o:Tinkaton} to {-:139}" },
+                { opponent: "{o:Tinkaton} flinched" },
+                { player: "{p:Incineroar} Flamethrower {o:Tinkaton} to {-:61}" },
               ],
               [
-                { player: "{p:Tentacruel} Icy Wind {o:Tinkaton} to {-:121}" },
-                { player: "{p:Arcanine-H} Flare Blitz {o:Tinkaton} to {=:0}" },
+                { player: "{p:Perrserker} switch to {p:Lanturn}" },
+                { opponent: "{o:Tinkaton} Play Rough {p:Incineroar} to {+:20}" },
+                { player: "{p:Incineroar} Flamethrower {o:Tinkaton} to {-:61}" },
                 { opponent: "{o:Tinkaton} fainted" },
               ],
             ],
           },
         ],
-        frags: { Golisopod: 1, Perrserker: 1, Lanturn: 1, "Arcanine-H": 1 },
+        frags: { Perrserker: 2, Lanturn: 1, Incineroar: 1 },
       },
     ],
   },
@@ -161,22 +146,6 @@ export const gameCornerGuardBattle: Moment = {
 
 const _box4 = getBox({
   box: _box3,
-  update: {
-    Golisopod: {
-      ivs: { def: 31 },
-    },
-  },
-});
-
-export const gameCornerGuardBoxChange: Moment = {
-  split: "Sabrina",
-  label: "Game Corner Guard Box Change",
-  kind: "boxChange",
-  data: { playerBox: _box4 },
-};
-
-const _box5 = getBox({
-  box: _box4,
   update: {
     Golduck: {
       nature: "Modest",
@@ -211,7 +180,7 @@ export const rocketHideoutLeftGuardBattle: Moment = {
   label: "Rocket Hideout Left Guard Battle",
   kind: "battle",
   data: {
-    playerBox: _box5,
+    playerBox: _box4,
     opponentBox: rocketHideoutLeftGuardBox,
     lines: [
       {
@@ -279,8 +248,8 @@ export const rocketHideoutLeftGuardBattle: Moment = {
   },
 };
 
-const _box6 = getBox({
-  box: _box5,
+const _box5 = getBox({
+  box: _box4,
   update: {
     Golduck: {
       nature: "Lonely",
@@ -315,7 +284,7 @@ export const rocketHideoutRightGuardBattle: Moment = {
   label: "Rocket Hideout Right Guard Battle",
   kind: "battle",
   data: {
-    playerBox: _box6,
+    playerBox: _box5,
     opponentBox: rocketHideoutRightGuardBox,
     lines: [
       {
@@ -367,8 +336,8 @@ export const rocketHideoutRightGuardBattle: Moment = {
   },
 };
 
-const _box7 = getBox({
-  box: _box6,
+const _box6 = getBox({
+  box: _box5,
   update: {
     Golduck: {
       nature: "Rash",
@@ -415,7 +384,7 @@ export const rocketHideoutGiovanniBattle: Moment = {
   label: "Rocket Hideout Giovanni Battle",
   kind: "battle",
   data: {
-    playerBox: _box7,
+    playerBox: _box6,
     opponentBox: rocketHideoutGiovanniBox,
     lines: [
       {
@@ -537,17 +506,17 @@ const _sprigatito = {
   moves: ["Scratch", "Tail Whip"],
 };
 
-const _box8 = getBox({ box: _box7, add: [_sprigatito] });
+const _box7 = getBox({ box: _box6, add: [_sprigatito] });
 
 export const starterEgg1Encounter: Moment = {
   split: "Sabrina",
   label: "Starter Egg 1 Encounter",
   kind: "encounter",
-  data: { pokemon: _sprigatito, playerBox: _box8 },
+  data: { pokemon: _sprigatito, playerBox: _box7 },
 };
 
-const _box9 = getBox({
-  box: _box8,
+const _box8 = getBox({
+  box: _box7,
   cap: { level: 56, exclude: ["Golisopod", "Jellicent"] },
   update: [
     {
@@ -568,11 +537,11 @@ export const starterEgg1BoxChange: Moment = {
   split: "Sabrina",
   label: "Starter Egg 1 Box Change",
   kind: "boxChange",
-  data: { playerBox: _box9 },
+  data: { playerBox: _box8 },
 };
 
-const _box10 = getBox({
-  box: _box9,
+const _box9 = getBox({
+  box: _box8,
   update: {
     Perrserker: {
       nature: "Adamant",
@@ -607,7 +576,7 @@ export const pokemonTowerChannelerRuthBattle: Moment = {
   label: "Pokémon Tower Channeler Ruth Battle",
   kind: "battle",
   data: {
-    playerBox: _box10,
+    playerBox: _box9,
     opponentBox: pokemonTowerChannelerRuthBox,
     lines: [
       {
@@ -742,8 +711,8 @@ export const pokemonTowerChannelerRuthBattle: Moment = {
   },
 };
 
-const _box11 = getBox({
-  box: _box10,
+const _box10 = getBox({
+  box: _box9,
   update: {
     Meowscarada: {
       nature: "Impish",
@@ -772,7 +741,7 @@ export const pokemonTowerGhostBattle: Moment = {
   label: "Pokémon Tower Ghost Battle",
   kind: "battle",
   data: {
-    playerBox: _box11,
+    playerBox: _box10,
     opponentBox: pokemonTowerGhostBox,
     lines: [
       {
@@ -837,8 +806,8 @@ export const pokemonTowerGhostBattle: Moment = {
   },
 };
 
-const _box12 = getBox({
-  box: _box11,
+const _box11 = getBox({
+  box: _box10,
   update: {
     "Arcanine-H": {
       nature: "Adamant",
@@ -873,7 +842,7 @@ export const pokemonTowerGrunt1Battle: Moment = {
   label: "Pokémon Tower Grunt 1 Battle",
   kind: "battle",
   data: {
-    playerBox: _box12,
+    playerBox: _box11,
     opponentBox: pokemonTowerGrunt1Box,
     lines: [
       {
@@ -957,8 +926,8 @@ export const pokemonTowerGrunt1Battle: Moment = {
   },
 };
 
-const _box13 = getBox({
-  box: _box12,
+const _box12 = getBox({
+  box: _box11,
   update: {
     Excadrill: {
       nature: "Adamant",
@@ -993,7 +962,7 @@ export const pokemonTowerGrunt2Battle: Moment = {
   label: "Pokémon Tower Grunt 2 Battle",
   kind: "battle",
   data: {
-    playerBox: _box13,
+    playerBox: _box12,
     opponentBox: pokemonTowerGrunt2Box,
     lines: [
       {
@@ -1083,8 +1052,8 @@ export const pokemonTowerGrunt2Battle: Moment = {
   },
 };
 
-const _box14 = getBox({
-  box: _box13,
+const _box13 = getBox({
+  box: _box12,
   update: {
     Meowscarada: {
       nature: "Adamant",
@@ -1113,7 +1082,7 @@ export const pokemonTowerGrunt3Battle: Moment = {
   label: "Pokémon Tower Grunt 3 Battle",
   kind: "battle",
   data: {
-    playerBox: _box14,
+    playerBox: _box13,
     opponentBox: pokemonTowerGrunt3Box,
     lines: [
       {
@@ -1253,17 +1222,17 @@ const _mudkip = {
   moves: ["Growl", "Tackle"],
 };
 
-const _box15 = getBox({ box: _box14, add: [_mudkip] });
+const _box14 = getBox({ box: _box13, add: [_mudkip] });
 
 export const starterEgg2Encounter: Moment = {
   split: "Sabrina",
   label: "Starter Egg 2 Encounter",
   kind: "encounter",
-  data: { pokemon: _mudkip, playerBox: _box15 },
+  data: { pokemon: _mudkip, playerBox: _box14 },
 };
 
-const _box16 = getBox({
-  box: _box15,
+const _box15 = getBox({
+  box: _box14,
   update: {
     Azumarill: {
       friend: true,
@@ -1275,11 +1244,11 @@ export const starterEgg2BoxChange: Moment = {
   split: "Sabrina",
   label: "Starter Egg 2 Change",
   kind: "boxChange",
-  data: { playerBox: _box16 },
+  data: { playerBox: _box15 },
 };
 
-const _box17 = getBox({
-  box: _box16,
+const _box16 = getBox({
+  box: _box15,
   update: {
     Excadrill: {
       nature: "Jolly",
@@ -1326,7 +1295,7 @@ export const saffronDojoLeaderChuckBattle: Moment = {
   label: "Saffron Dojo Leader Chuck Battle",
   kind: "battle",
   data: {
-    playerBox: _box17,
+    playerBox: _box16,
     opponentBox: saffronDojoLeaderChuckBox,
     lines: [
       {
@@ -1623,8 +1592,8 @@ export const saffronDojoLeaderChuckBattle: Moment = {
   },
 };
 
-const _box18 = getBox({
-  box: _box17,
+const _box17 = getBox({
+  box: _box16,
   update: {
     Cloyster: {
       friend: true,
@@ -1636,11 +1605,11 @@ export const saffronDojoLeaderChuckBoxChange: Moment = {
   split: "Sabrina",
   label: "Saffron Dojo Leader Chuck Box Change",
   kind: "boxChange",
-  data: { playerBox: _box18 },
+  data: { playerBox: _box17 },
 };
 
-const _box19 = getBox({
-  box: _box18,
+const _box18 = getBox({
+  box: _box17,
   update: {
     Meowscarada: {
       nature: "Brave",
@@ -1687,7 +1656,7 @@ export const silphCoRivalBattle: Moment = {
   label: "Silph Co. Rival Battle",
   kind: "battle",
   data: {
-    playerBox: _box19,
+    playerBox: _box18,
     opponentBox: silphCoRivalBox,
     lines: [
       {
@@ -1789,8 +1758,8 @@ export const silphCoRivalBattle: Moment = {
   },
 };
 
-const _box20 = getBox({
-  box: _box19,
+const _box19 = getBox({
+  box: _box18,
   update: {
     Jellicent: {
       level: 56,
@@ -1802,11 +1771,11 @@ export const silphCoRivalBoxChange: Moment = {
   split: "Sabrina",
   label: "Silph Co. Rival Box Change",
   kind: "boxChange",
-  data: { playerBox: _box20 },
+  data: { playerBox: _box19 },
 };
 
-const _box21 = getBox({
-  box: _box20,
+const _box20 = getBox({
+  box: _box19,
   update: {
     Jellicent: {
       nature: "Modest",
@@ -1835,7 +1804,7 @@ export const silphCoArianaArcherBattle: Moment = {
   label: "Silph Co. Ariana & Archer Battle",
   kind: "battle",
   data: {
-    playerBox: _box21,
+    playerBox: _box20,
     opponentBox: silphCoArianaArcherBox,
     partnerBox: pokemonTrainerBrendanBox,
     lines: [
@@ -2505,8 +2474,8 @@ export const silphCoArianaArcherBattle: Moment = {
   },
 };
 
-const _box22 = getBox({
-  box: _box21,
+const _box21 = getBox({
+  box: _box20,
   cap: { level: 57, exclude: ["Golisopod"] },
 });
 
@@ -2514,11 +2483,11 @@ export const silphCoArianaArcherBoxChange: Moment = {
   split: "Sabrina",
   label: "Silph Co. Ariana & Archer Box Change",
   kind: "boxChange",
-  data: { playerBox: _box22 },
+  data: { playerBox: _box21 },
 };
 
-const _box23 = getBox({
-  box: _box22,
+const _box22 = getBox({
+  box: _box21,
   update: {
     Meowscarada: {
       nature: "Adamant",
@@ -2559,7 +2528,7 @@ export const silphCoGiovanniBattle: Moment = {
   label: "Silph Co. Giovanni Battle",
   kind: "battle",
   data: {
-    playerBox: _box23,
+    playerBox: _box22,
     opponentBox: silphCoGiovanniBox,
     lines: [
       {
@@ -2767,8 +2736,8 @@ export const silphCoGiovanniBattle: Moment = {
   },
 };
 
-const _box24 = getBox({
-  box: _box23,
+const _box23 = getBox({
+  box: _box22,
   cap: 59,
   update: [
     {
@@ -2792,11 +2761,11 @@ export const silphCoGiovanniBoxChange: Moment = {
   split: "Sabrina",
   label: "Silph Co. Giovanni Box Change",
   kind: "boxChange",
-  data: { playerBox: _box24 },
+  data: { playerBox: _box23 },
 };
 
-const _box25 = getBox({
-  box: _box24,
+const _box24 = getBox({
+  box: _box23,
   update: {
     Golisopod: {
       nature: "Adamant",
@@ -2845,7 +2814,7 @@ export const saffronCityDumassKidBattle: Moment = {
   label: "Saffron City Dumass Kid Battle",
   kind: "battle",
   data: {
-    playerBox: _box25,
+    playerBox: _box24,
     opponentBox: saffronCityDumassKidBox,
     lines: [
       {
@@ -2961,8 +2930,8 @@ export const saffronCityDumassKidBattle: Moment = {
   },
 };
 
-const _box26 = getBox({
-  box: _box25,
+const _box25 = getBox({
+  box: _box24,
   remove: ["Cloyster"],
   update: {
     Perrserker: {
@@ -2992,11 +2961,11 @@ export const saffronCityDumassKidBoxChange: Moment = {
   split: "Sabrina",
   label: "Saffron City Dumass Kid Box Change",
   kind: "boxChange",
-  data: { playerBox: _box26 },
+  data: { playerBox: _box25 },
 };
 
-const _box27 = getBox({
-  box: _box26,
+const _box26 = getBox({
+  box: _box25,
   update: {
     Lanturn: {
       nature: "Quiet",
@@ -3043,7 +3012,7 @@ export const saffronCityLeaderSabrinaBattle: Moment = {
   label: "Saffron City Leader Sabrina Battle",
   kind: "battle",
   data: {
-    playerBox: _box27,
+    playerBox: _box26,
     opponentBox: saffronCityLeaderSabrinaBox,
     lines: [
       {
@@ -3190,8 +3159,8 @@ export const saffronCityLeaderSabrinaBattle: Moment = {
   },
 };
 
-const _box28 = getBox({
-  box: _box27,
+const _box27 = getBox({
+  box: _box26,
   update: {
     Perrserker: {
       ivs: { spe: 31 },
@@ -3216,15 +3185,14 @@ export const saffronCityLeaderSabrinaBoxChange: Moment = {
   split: "Sabrina",
   label: "Saffron City Leader Sabrina Box Change",
   kind: "boxChange",
-  data: { playerBox: _box28 },
+  data: { playerBox: _box27 },
 };
 
-export const box = _box28;
+export const box = _box27;
 
 export const moments: Moment[] = [
   sabrinaBoxChange,
   gameCornerGuardBattle,
-  gameCornerGuardBoxChange,
   rocketHideoutLeftGuardBattle,
   rocketHideoutRightGuardBattle,
   rocketHideoutGiovanniBattle,

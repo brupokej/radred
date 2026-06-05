@@ -48,7 +48,7 @@ const FRAMES = {
   camera: { left: 1420, top: 22, width: 478, height: 316 },
   medium: { left: 1420, top: 448, width: 478, height: 314 },
   small: { left: 1420, top: 788, width: 478, height: 146 },
-  badges: { left: 1416, top: 360, width: 486, height: 84 },
+  badges: { left: 1420, top: 362, width: 478, height: 84 },
 } as const;
 
 function OverlayCanvas({ children }: { children: ReactNode }) {
