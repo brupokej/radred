@@ -169,7 +169,7 @@ const _box4 = getBox({
       nature: "Jolly",
       ability: "Mold Breaker",
       item: "Soft Sand",
-      moves: ["Drill Run", "Iron Head", "Rapid Spin", "Rock Tomb"],
+      moves: ["Drill Run", "Mud-Slap", "Rapid Spin", "Rock Tomb"],
     },
   },
   team: ["Golduck", "Perrserker", "Incineroar", "Excadrill"],
@@ -267,13 +267,13 @@ const _box5 = getBox({
       nature: "Jolly",
       ability: "Intimidate",
       item: "Sitrus Berry",
-      moves: ["Aqua Fang", "Bite", "Bulldoze", "Ice Fang"],
+      moves: ["Aqua Fang", "Crunch", "Ice Fang", "Leer"],
     },
     Excadrill: {
       nature: "Jolly",
       ability: "Mold Breaker",
       item: "Soft Sand",
-      moves: ["Drill Run", "Iron Head", "Rapid Spin", "Rock Tomb"],
+      moves: ["Drill Run", "Mud-Slap", "Rapid Spin", "Rock Tomb"],
     },
   },
   team: ["Golduck", "Perrserker", "Gyarados", "Excadrill"],
@@ -298,7 +298,7 @@ export const rocketHideoutRightGuardBattle: Moment = {
                 { player: "{p:Golduck} Flip Turn {o:Talonflame} to {=:0}" },
                 { opponent: "{o:Talonflame} fainted" },
                 { player: "{p:Golduck} switch to {p:Gyarados}" },
-                { opponent: "{o:Shiftry} Leaf Blade {p:Gyarados} to {+:82}" },
+                { opponent: "{o:Shiftry} Leaf Blade {p:Gyarados} (non-crit) to {+:81}" },
               ],
             ],
           },
@@ -352,28 +352,28 @@ const _box6 = getBox({
       moves: ["Bulldoze", "Crunch", "Ice Fang", "Jaw Lock"],
     },
     Cloyster: {
-      nature: "Adamant",
+      nature: "Naughty",
       ability: "Shell Armor",
-      item: "Charti Berry",
-      moves: ["Ice Shard", "Icicle Spear", "Leer", "Razor Shell"],
+      item: "Never-Melt Ice",
+      moves: ["Hydro Pump", "Ice Shard", "Icicle Spear", "Razor Shell"],
     },
     Lanturn: {
-      nature: "Modest",
+      nature: "Calm",
       ability: "Volt Absorb",
       item: "Shuca Berry",
-      moves: ["Flip Turn", "Icy Wind", "Scald", "Volt Switch"],
+      moves: ["Flip Turn", "Icy Wind", "Shock Wave", "Volt Switch"],
     },
     "Arcanine-H": {
-      nature: "Brave",
+      nature: "Adamant",
       ability: "Rock Head",
       item: "Charcoal",
-      moves: ["Accelerock", "Flamethrower", "Flare Blitz", "Return"],
+      moves: ["Accelerock", "Flamethrower", "Flare Blitz", "Stom. Tantrum"],
     },
     Gyarados: {
       nature: "Jolly",
       ability: "Intimidate",
       item: "Sitrus Berry",
-      moves: ["Aqua Fang", "Bulldoze", "Flamethrower", "Ice Fang"],
+      moves: ["Aqua Fang", "Flamethrower", "Ice Fang", "Leer"],
     },
   },
   team: ["Golduck", "Drednaw", "Cloyster", "Lanturn", "Arcanine-H", "Gyarados"],
@@ -435,9 +435,28 @@ export const rocketHideoutGiovanniBattle: Moment = {
                 { opponent: "{p:Lanturn} Stealth Rock to {=:166}" },
                 { opponent: "{o:Gyarados} Dragon Dance" },
               ],
+            ],
+            branches: [
+              {
+                branches: [
+                  "94% → Lanturn Volt Switch Gyarados",
+                  "6% → Lanturn Volt Switch Gyarados (to 0)",
+                ],
+              },
+            ],
+          },
+        ],
+        frags: { Golduck: 1, Drednaw: 1 },
+      },
+      {
+        line: "94% → Lanturn Volt Switch Gyarados",
+        matchups: [
+          {
+            matchup: ["Gyarados"],
+            turns: [
               [
                 { opponent: "{o:Gyarados} Dragon Dance" },
-                { player: "{p:Lanturn} Volt Switch {o:Gyarados} to {-:28}" },
+                { player: "{p:Lanturn} Volt Switch {o:Gyarados} to {-:40}" },
                 { player: "{p:Lanturn} switch to {p:Arcanine-H}" },
                 { opponent: "{p:Arcanine-H} Stealth Rock to {=:120}" },
               ],
@@ -446,7 +465,32 @@ export const rocketHideoutGiovanniBattle: Moment = {
                 { opponent: "{o:Gyarados} fainted" },
               ],
             ],
+            branches: [{ branches: ["Arcanine-H switch to Gyarados"] }],
           },
+        ],
+        frags: { "Arcanine-H": 1 },
+      },
+      {
+        line: "6% → Lanturn Volt Switch Gyarados (to 0)",
+        matchups: [
+          {
+            matchup: ["Gyarados"],
+            turns: [
+              [
+                { opponent: "{o:Gyarados} Dragon Dance" },
+                { player: "{p:Lanturn} Volt Switch {o:Gyarados} (crit) to {=:0}" },
+                { player: "{p:Lanturn} switch to {p:Arcanine-H}" },
+                { opponent: "{p:Arcanine-H} Stealth Rock to {=:120}" },
+              ],
+            ],
+            branches: [{ branches: ["Arcanine-H switch to Gyarados"] }],
+          },
+        ],
+        frags: { Lanturn: 1 },
+      },
+      {
+        line: "Arcanine-H switch to Gyarados",
+        matchups: [
           {
             matchup: ["Nidoking"],
             turns: [
@@ -493,7 +537,7 @@ export const rocketHideoutGiovanniBattle: Moment = {
             ],
           },
         ],
-        frags: { Golduck: 2, Drednaw: 1, "Arcanine-H": 3 },
+        frags: { Golduck: 1, "Arcanine-H": 2 },
       },
     ],
   },
