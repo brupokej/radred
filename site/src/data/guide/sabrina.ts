@@ -603,7 +603,7 @@ const _box9 = getBox({
       nature: "Adamant",
       ability: "Mold Breaker",
       item: "Soft Sand",
-      moves: ["Brick Break", "Iron Head", "Rapid Spin", "Rock Tomb"],
+      moves: ["Brick Break", "Mud-Slap", "Rapid Spin", "Rock Tomb"],
     },
     Incineroar: {
       nature: "Lonely",
@@ -654,8 +654,8 @@ export const pokemonTowerChannelerRuthBattle: Moment = {
             branches: [
               {
                 branches: [
-                  "93% → Meowscarada U-Turn Grimmsnarl",
-                  "7% → Meowscarada U-Turn Grimmsnarl (to 0)",
+                  "86% → Meowscarada U-Turn Grimmsnarl",
+                  "14% → Meowscarada U-Turn Grimmsnarl (to 0)",
                 ],
               },
             ],
@@ -664,7 +664,7 @@ export const pokemonTowerChannelerRuthBattle: Moment = {
         frags: { Meowscarada: 2 },
       },
       {
-        line: "93% → Meowscarada U-Turn Grimmsnarl",
+        line: "86% → Meowscarada U-Turn Grimmsnarl",
         matchups: [
           {
             matchup: ["Grimmsnarl", "Cresselia"],
@@ -683,9 +683,9 @@ export const pokemonTowerChannelerRuthBattle: Moment = {
             matchup: ["Drifblim", "Cresselia"],
             turns: [
               [
+                { player: "{p:Excadrill} switch to {p:Perrserker}" },
                 { opponent: "{o:Drifblim} Calm Mind" },
                 { opponent: "{o:Cresselia} Moonblast {p:Incineroar} to {+:99}" },
-                { player: "{p:Excadrill} Iron Head {o:Cresselia} to {-:175}" },
                 { player: "{p:Incineroar} Darkest Lariat {o:Drifblim} to {=:0}" },
                 { opponent: "{o:Drifblim} fainted" },
               ],
@@ -695,8 +695,12 @@ export const pokemonTowerChannelerRuthBattle: Moment = {
             matchup: ["Cresselia"],
             turns: [
               [
+                { player: "{p:Perrserker} Fake Out {o:Cresselia} to {-:199}" },
+                { opponent: "{o:Cresselia} flinched" },
+                { player: "{p:Incineroar} Darkest Lariat {o:Cresselia} to {-:65}" },
+              ],
+              [
                 { opponent: "{o:Cresselia} Moonblast {p:Incineroar} to {+:9}" },
-                { player: "{p:Excadrill} Iron Head {o:Cresselia} to {-:134}" },
                 { player: "{p:Incineroar} Darkest Lariat {o:Cresselia} to {=:0}" },
                 { opponent: "{o:Cresselia} fainted" },
               ],
@@ -706,7 +710,7 @@ export const pokemonTowerChannelerRuthBattle: Moment = {
         frags: { Excadrill: 1, Incineroar: 2 },
       },
       {
-        line: "7% → Meowscarada U-Turn Grimmsnarl (to 0)",
+        line: "14% → Meowscarada U-Turn Grimmsnarl (to 0)",
         matchups: [
           {
             matchup: ["Grimmsnarl", "Cresselia"],
@@ -767,8 +771,8 @@ const _box10 = getBox({
     Runerigus: {
       nature: "Bold",
       ability: "Shadow Shield",
-      item: "Rindo Berry",
-      moves: ["Disable", "Scary Face", "Shadow Ball", "Shadow Sneak"],
+      item: "Chesto Berry",
+      moves: ["Rest", "Scary Face", "Shadow Ball", "Shadow Sneak"],
     },
     Golduck: {
       nature: "Rash",
@@ -860,7 +864,7 @@ const _box11 = getBox({
       moves: ["Accelerock", "Flamethrower", "Flare Blitz", "Rock Slide"],
     },
     Clodsire: {
-      nature: "Impish",
+      nature: "Careful",
       ability: "Water Absorb",
       item: "Hard Stone",
       moves: ["Bulldoze", "Rock Slide", "Rock Tomb", "Tail Whip"],
@@ -872,7 +876,7 @@ const _box11 = getBox({
       moves: ["Cut", "Flower Trick", "Knock Off", "U-Turn"],
     },
     Tentacruel: {
-      nature: "Calm",
+      nature: "Timid",
       ability: "Clear Body",
       item: "Sitrus Berry",
       moves: ["Acid Spray", "Icy Wind", "Poison Jab", "Scald"],
@@ -933,7 +937,7 @@ export const pokemonTowerGrunt1Battle: Moment = {
               [
                 { player: "{p:Meowscarada} U-Turn {o:Arctovish} to {-:133}" },
                 { player: "{p:Meowscarada} switch to {p:Tentacruel}" },
-                { opponent: "{o:Arctovish} Fishious Rend {p:Tentacruel} to {+:95}" },
+                { opponent: "{o:Arctovish} Fishious Rend {p:Tentacruel} (non-crit) to {+:95}" },
               ],
               [
                 { player: "{p:Tentacruel} switch to {p:Meowscarada}" },
@@ -977,19 +981,13 @@ const _box12 = getBox({
       nature: "Adamant",
       ability: "Mold Breaker",
       item: "Hard Stone",
-      moves: ["Brick Break", "Earthquake", "Iron Head", "Rock Slide"],
+      moves: ["Brick Break", "Earthquake", "Rock Slide", "Rock Tomb"],
     },
-    Golduck: {
-      nature: "Naive",
-      ability: "Neuroforce",
-      item: "Mystic Water",
-      moves: ["Brick Break", "Flip Turn", "Ice Beam", "Psychic"],
-    },
-    Perrserker: {
+    Golisopod: {
       nature: "Adamant",
-      ability: "Battle Armor",
-      item: "Chople Berry",
-      moves: ["Fake Out", "Growl", "Metal Burst", "U-Turn"],
+      ability: "Emergency Exit",
+      item: "Silver Powder",
+      moves: ["First Impress.", "Aerial Ace", "Rock Tomb", "Sucker Punch"],
     },
     Meowscarada: {
       nature: "Adamant",
@@ -998,7 +996,7 @@ const _box12 = getBox({
       moves: ["Brick Break", "Cut", "Play Rough", "Thunder Punch"],
     },
   },
-  team: ["Excadrill", "Golduck", "Perrserker", "Meowscarada"],
+  team: ["Excadrill", "Golisopod", "Meowscarada"],
 });
 
 export const pokemonTowerGrunt2Battle: Moment = {
@@ -1029,21 +1027,10 @@ export const pokemonTowerGrunt2Battle: Moment = {
             matchup: ["Braviary"],
             turns: [
               [
-                { player: "{p:Excadrill} switch to {p:Golduck}" },
-                { player: "{p:Golduck} Spikes to {=:144}" },
-                { opponent: "{o:Braviary} Close Combat {p:Golduck} to {+:48}" },
-              ],
-              [
-                { player: "{p:Golduck} Flip Turn {o:Braviary} to {-:129}" },
-                { player: "{p:Golduck} switch to {p:Perrserker}" },
-                { player: "{p:Perrserker} Spikes to {=:154}" },
-                { opponent: "{o:Braviary} Brave Bird {p:Perrserker} to {+:102}" },
-                { opponent: "{o:Braviary} recoil to {-:115}" },
-              ],
-              [
-                { opponent: "{o:Braviary} Close Combat {p:Perrserker} to {+:32}" },
-                { player: "{p:Perrserker} U-Turn {o:Braviary} to {-:82}" },
-                { player: "{p:Perrserker} switch to {p:Meowscarada}" },
+                { player: "{p:Excadrill} switch to {p:Golisopod}" },
+                { opponent: "{p:Golisopod} Spikes to {=:107}" },
+                { opponent: "{o:Braviary} Close Combat {p:Golisopod} to {+:29}" },
+                { player: "{p:Golisopod} Emergency Exit to {p:Meowscarada}" },
                 { player: "{p:Meowscarada} Spikes to {=:140}" },
               ],
               [
