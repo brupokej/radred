@@ -2,20 +2,6 @@
 
 This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
 
-## Dependencies
-
-The calculator page depends on the `@smogon/calc` engine located at `../calc/`. Initialize it with:
-
-```bash
-git submodule update --init
-```
-
-The submodule's TypeScript source is compiled for use by webpack at build time, but for type checking the site uses declaration files at `generated/calc/`. If the submodule is ever updated, regenerate them with:
-
-```bash
-./node_modules/.bin/tsc -p tsconfig.calc-gen.json
-```
-
 ## Installation
 
 ```bash
