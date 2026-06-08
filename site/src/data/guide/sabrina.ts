@@ -1098,23 +1098,17 @@ const _box14 = getBox({
     Meowscarada: {
       nature: "Adamant",
       ability: "Protean",
-      item: "Muscle Band",
-      moves: ["Flower Trick", "Knock Off", "Low Kick", "Play Rough"],
+      item: "Miracle Seed",
+      moves: ["Flower Trick", "Low Kick", "Play Rough", "Thunder Punch"],
     },
     Tentacruel: {
-      nature: "Hasty",
+      nature: "Timid",
       ability: "Clear Body",
-      item: "Mystic Water",
-      moves: ["Dazz. Gleam", "Flip Turn", "Icy Wind", "Sludge Wave"],
-    },
-    Lanturn: {
-      nature: "Quiet",
-      ability: "Volt Absorb",
-      item: "Shuca Berry",
-      moves: ["Flip Turn", "Hydro Pump", "Thunderbolt", "Volt Switch"],
+      item: "Sitrus Berry",
+      moves: ["Dazz. Gleam", "Hydro Pump", "Icy Wind", "Scald"],
     },
   },
-  team: ["Meowscarada", "Tentacruel", "Lanturn"],
+  team: ["Meowscarada", "Tentacruel"],
 });
 
 export const pokemonTowerGrunt3Battle: Moment = {
@@ -1138,118 +1132,51 @@ export const pokemonTowerGrunt3Battle: Moment = {
             ],
           },
           {
-            matchup: ["Magnezone"],
-            turns: [
-              [
-                { player: "{p:Tentacruel} Flip Turn {o:Magnezone} to {-:134}" },
-                { player: "{p:Tentacruel} switch to {p:Lanturn}" },
-                { opponent: "{o:Magnezone} Thunderbolt {p:Lanturn}" },
-              ],
-            ],
-            branches: [
-              {
-                branches: [
-                  "80% → Magnezone switch to Hydreigon",
-                  "20% → Magnezone HP Fire Lanturn",
-                ],
-              },
-            ],
-          },
-        ],
-        frags: { Tentacruel: 1 },
-      },
-      {
-        line: "80% → Magnezone switch to Hydreigon",
-        matchups: [
-          {
-            matchup: ["Magnezone"],
-            turns: [
-              [
-                { opponent: "{o:Magnezone} switch to {o:Hydreigon}" },
-                { player: "{p:Lanturn} Flip Turn {o:Hydreigon} to {-:173}" },
-                { player: "{p:Lanturn} switch to {p:Meowscarada}" },
-              ],
-            ],
-          },
-          {
-            matchup: ["Hydreigon"],
-            turns: [
-              [
-                { player: "{p:Meowscarada} Play Rough {o:Hydreigon} to {=:0}" },
-                { opponent: "{o:Hydreigon} fainted" },
-              ],
-            ],
-          },
-          {
-            matchup: ["Magnezone"],
-            turns: [
-              [
-                { player: "{p:Meowscarada} Low Kick {o:Magnezone} to {=:0}" },
-                { opponent: "{o:Magnezone} fainted" },
-              ],
-            ],
-            branches: [{ branches: ["Meowscarada Knock Off Golurk"] }],
-          },
-        ],
-        frags: { Meowscarada: 2 },
-      },
-      {
-        line: "20% → Magnezone HP Fire Lanturn",
-        matchups: [
-          {
-            matchup: ["Magnezone"],
-            turns: [
-              [
-                { opponent: "{o:Magnezone} HP Fire {p:Lanturn} to {+:189}" },
-                { player: "{p:Lanturn} Flip Turn {o:Magnezone} to {-:112}" },
-                { player: "{p:Lanturn} switch to {p:Meowscarada}" },
-              ],
-              [
-                { player: "{p:Meowscarada} Low Kick {o:Magnezone} to {=:0}" },
-                { opponent: "{o:Magnezone} fainted" },
-              ],
-            ],
-          },
-          {
-            matchup: ["Hydreigon"],
-            turns: [
-              [
-                { player: "{p:Meowscarada} Play Rough {o:Hydreigon} to {=:0}" },
-                { opponent: "{o:Hydreigon} fainted" },
-              ],
-            ],
-            branches: [{ branches: ["Meowscarada Knock Off Golurk"] }],
-          },
-        ],
-        frags: { Meowscarada: 2 },
-      },
-      {
-        line: "Meowscarada Knock Off Golurk",
-        matchups: [
-          {
-            matchup: ["Golurk"],
-            turns: [
-              [
-                { player: "{p:Meowscarada} Knock Off {o:Golurk} to {-:25}" },
-                { opponent: "{o:Golurk} Shadow Punch {p:Meowscarada} to {+:76}" },
-              ],
-              [
-                { player: "{p:Meowscarada} Knock Off {o:Golurk} to {=:0}" },
-                { opponent: "{o:Golurk} fainted" },
-              ],
-            ],
-          },
-          {
             matchup: ["Primarina"],
             turns: [
+              [
+                { player: "{p:Tentacruel} switch to {p:Meowscarada}" },
+                { opponent: "{o:Primarina} Calm Mind" },
+              ],
               [
                 { player: "{p:Meowscarada} Flower Trick {o:Primarina} to {=:0}" },
                 { opponent: "{o:Primarina} fainted" },
               ],
             ],
           },
+          {
+            matchup: ["Magnezone"],
+            turns: [
+              [
+                { player: "{p:Meowscarada} Low Kick {o:Magnezone} to {-:29}" },
+                { opponent: "{o:Magnezone} HP Fire {p:Meowscarada} to {+:93}" },
+              ],
+              [
+                { player: "{p:Meowscarada} Low Kick {o:Magnezone} to {=:0}" },
+                { opponent: "{o:Magnezone} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Hydreigon"],
+            turns: [
+              [
+                { player: "{p:Meowscarada} Play Rough {o:Hydreigon} to {=:0}" },
+                { opponent: "{o:Hydreigon} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Golurk"],
+            turns: [
+              [
+                { player: "{p:Meowscarada} Flower Trick {o:Golurk} to {=:0}" },
+                { opponent: "{o:Golurk} fainted" },
+              ],
+            ],
+          },
         ],
-        frags: { Meowscarada: 2 },
+        frags: { Tentacruel: 1, Meowscarada: 4 },
       },
     ],
   },
