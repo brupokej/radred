@@ -32,11 +32,11 @@ export const erikaBoxChange: Moment = {
 const _box3 = getBox({
   box: _box2,
   update: {
-    "Arcanine-H": {
+    Perrserker: {
       nature: "Adamant",
-      ability: "Rock Head",
+      ability: "Battle Armor",
       item: "Chesto Berry",
-      moves: ["Accelerock", "Flamethrower", "Flare Blitz", "Rock Tomb"],
+      moves: ["Fake Out", "Bullet Punch", "Dig", "Iron Head"],
     },
     Clodsire: {
       nature: "Careful",
@@ -63,7 +63,7 @@ const _box3 = getBox({
       moves: ["Aqua Jet", "Counter", "Razor Shell", "Rock Tomb"],
     },
   },
-  team: ["Arcanine-H", "Clodsire", "Houndoom", "Golduck", "Drednaw"],
+  team: ["Perrserker", "Clodsire", "Houndoom", "Golduck", "Drednaw"],
 });
 
 export const route9PicnickerAliciaBattle: Moment = {
@@ -80,11 +80,15 @@ export const route9PicnickerAliciaBattle: Moment = {
             matchup: ["Roserade"],
             turns: [
               [
-                { opponent: "{o:Roserade} Sleep Powder {p:Arcanine-H}" },
-                { player: "{p:Arcanine-H} Flare Blitz {o:Roserade} to {=:1}" },
+                { player: "{p:Perrserker} Fake Out {o:Roserade} to {-:92}" },
+                { opponent: "{o:Roserade} flinched" },
               ],
               [
-                { player: "{p:Arcanine-H} Accelerock {o:Roserade} to {=:0}" },
+                { opponent: "{o:Roserade} Sleep Powder {p:Perrserker}" },
+                { player: "{p:Perrserker} Iron Head {o:Roserade} to {-:23}" },
+              ],
+              [
+                { player: "{p:Perrserker} Bullet Punch {o:Roserade} to {=:0}" },
                 { opponent: "{o:Roserade} fainted" },
               ],
             ],
@@ -93,7 +97,7 @@ export const route9PicnickerAliciaBattle: Moment = {
             matchup: ["Bruxish"],
             turns: [
               [
-                { player: "{p:Arcanine-H} switch to {p:Clodsire}" },
+                { player: "{p:Perrserker} switch to {p:Clodsire}" },
                 { opponent: "{o:Bruxish} Aqua Fang {p:Clodsire}" },
               ],
               [
@@ -134,7 +138,7 @@ export const route9PicnickerAliciaBattle: Moment = {
             ],
           },
         ],
-        frags: { "Arcanine-H": 1, Houndoom: 1, Golduck: 1, Drednaw: 1 },
+        frags: { Perrserker: 1, Houndoom: 1, Golduck: 1, Drednaw: 1 },
       },
     ],
   },
@@ -417,10 +421,10 @@ const _box6 = getBox({
       moves: ["Aqua Fang", "Bulldoze", "Ice Fang", "Leer"],
     },
     Perrserker: {
-      nature: "Careful",
+      nature: "Adamant",
       ability: "Battle Armor",
-      item: "Shuca Berry",
-      moves: ["Fake Out", "Bullet Punch", "Iron Head", "Metal Burst"],
+      item: "Chesto Berry",
+      moves: ["Fake Out", "Bullet Punch", "Dig", "Iron Head"],
     },
     Tentacruel: {
       nature: "Timid",
@@ -476,7 +480,7 @@ export const route10PokeManiacHermanBattle: Moment = {
                 { player: "{p:Gyarados} switch to {p:Tentacruel}" },
                 {
                   opponent:
-                    "{o:Sylveon} Misty Explosi. {p:Perrserker} to {+:62} and {p:Tentacruel} (non-crit) to {+:86}",
+                    "{o:Sylveon} Misty Explosi. {p:Perrserker} to {=:53} and {p:Tentacruel} (non-crit) to {+:86}",
                 },
                 { opponent: "{o:Sylveon} fainted" },
               ],
