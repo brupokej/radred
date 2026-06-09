@@ -1201,45 +1201,29 @@ export const starterEgg2Encounter: Moment = {
 const _box16 = getBox({
   box: _box15,
   update: {
-    Azumarill: {
-      friend: true,
-    },
-  },
-});
-
-export const starterEgg2BoxChange: Moment = {
-  split: "Sabrina",
-  label: "Starter Egg 2 Change",
-  kind: "boxChange",
-  data: { playerBox: _box16 },
-};
-
-const _box17 = getBox({
-  box: _box16,
-  update: {
     Excadrill: {
       nature: "Jolly",
       ability: "Mold Breaker",
       item: "Chople Berry",
-      moves: ["Aerial Ace", "Bulldoze", "Iron Head", "Shadow Claw"],
+      moves: ["Aerial Ace", "Bulldoze", "Rock Slide", "Shadow Claw"],
     },
     Ceruledge: {
       nature: "Timid",
       ability: "Sharpness",
       item: "Leftovers",
-      moves: ["Bitter Blade", "Shadow Claw", "Shadow Sneak", "Will-O-Wisp"],
+      moves: ["Bitter Blade", "Flamethrower", "Shadow Claw", "Will-O-Wisp"],
     },
     Azumarill: {
-      nature: "Brave",
+      nature: "Impish",
       ability: "Huge Power",
       item: "Sitrus Berry",
-      moves: ["Aqua Tail", "Knock Off", "Play Rough", "Return"],
+      moves: ["Aqua Jet", "Aqua Tail", "Helping Hand", "Play Rough"],
     },
     Perrserker: {
-      nature: "Brave",
+      nature: "Adamant",
       ability: "Battle Armor",
       item: "Chople Berry",
-      moves: ["Fake Out", "Dig", "Shadow Claw", "U-Turn"],
+      moves: ["Fake Out", "Aerial Ace", "Shadow Claw", "U-Turn"],
     },
     Meowscarada: {
       nature: "Jolly",
@@ -1251,7 +1235,7 @@ const _box17 = getBox({
       nature: "Impish",
       ability: "Shell Armor",
       item: "Chople Berry",
-      moves: ["Bulldoze", "Dig", "Flip Turn", "Liquidation"],
+      moves: ["Bulldoze", "Crunch", "Flip Turn", "Liquidation"],
     },
   },
   team: ["Excadrill", "Ceruledge", "Azumarill", "Perrserker", "Meowscarada", "Drednaw"],
@@ -1262,7 +1246,7 @@ export const saffronDojoLeaderChuckBattle: Moment = {
   label: "Saffron Dojo Leader Chuck Battle",
   kind: "battle",
   data: {
-    playerBox: _box17,
+    playerBox: _box16,
     opponentBox: saffronDojoLeaderChuckBox,
     lines: [
       {
@@ -1307,16 +1291,16 @@ export const saffronDojoLeaderChuckBattle: Moment = {
                 { opponent: "{p:Ceruledge} Leftovers to {+:100}" },
               ],
               [
-                { player: "{p:Ceruledge} Bitter Blade {o:Zamazenta-C} to {-:94}" },
+                { player: "{p:Ceruledge} Bitter Blade {o:Zamazenta-C} to {-:44}" },
                 { opponent: "{p:Ceruledge} recover to {+:146}" },
                 { opponent: "{o:Zamazenta-C} Wild Charge {p:Ceruledge} to {+:53}" },
-                { opponent: "{o:Zamazenta-C} recoil to {-:86}" },
+                { opponent: "{o:Zamazenta-C} recoil to {-:31}" },
                 { opponent: "{p:Ceruledge} Leftovers to {+:63}" },
               ],
               [
                 { player: "{p:Ceruledge} Bitter Blade {o:Zamazenta-C} to {=:0}" },
-                { opponent: "{p:Ceruledge} recover to {+:85}" },
                 { opponent: "{o:Zamazenta-C} fainted" },
+                { opponent: "{p:Ceruledge} Leftovers to {+:69}" },
               ],
             ],
             branches: [{ branches: ["Ceruledge switch to Azumarill"] }],
@@ -1363,10 +1347,10 @@ export const saffronDojoLeaderChuckBattle: Moment = {
               ],
               [
                 { opponent: "{o:Zamazenta-C} Wild Charge {p:Ceruledge} to {+:53}" },
-                { opponent: "{o:Zamazenta-C} recoil to {-:27}" },
-                { player: "{p:Ceruledge} Bitter Blade {o:Zamazenta-C} to {=:0}" },
-                { opponent: "{p:Ceruledge} recover to {+:63}" },
+                { opponent: "{o:Zamazenta-C} recoil to {-:32}" },
+                { player: "{p:Ceruledge} Flamethrower {o:Zamazenta-C} to {=:0}" },
                 { opponent: "{o:Zamazenta-C} fainted" },
+                { opponent: "{p:Ceruledge} Leftovers to {+:63}" },
               ],
             ],
             branches: [{ branches: ["Ceruledge switch to Azumarill"] }],
@@ -1385,17 +1369,17 @@ export const saffronDojoLeaderChuckBattle: Moment = {
                 { opponent: "{o:Kommo-o} Clang. Scales (Z) {p:Azumarill}" },
               ],
               [
-                { opponent: "{o:Kommo-o} Poison Jab {p:Azumarill} to {+:75}" },
-                { player: "{p:Azumarill} Return {o:Kommo-o} to {-:122}" },
-              ],
-              [
                 { player: "{p:Azumarill} switch to {p:Perrserker}" },
                 { opponent: "{o:Kommo-o} Poison Jab {p:Perrserker}" },
               ],
               [
                 { opponent: "{o:Kommo-o} Flamethrower {p:Perrserker} to {+:50}" },
-                { player: "{p:Perrserker} U-Turn {o:Kommo-o} to {-:115}" },
+                { player: "{p:Perrserker} U-Turn {o:Kommo-o} to {-:160}" },
                 { player: "{p:Perrserker} switch to {p:Meowscarada}" },
+              ],
+              [
+                { player: "{p:Meowscarada} Shadow Claw {o:Kommo-o} to {-:115}" },
+                { opponent: "{o:Kommo-o} Close Combat {p:Meowscarada}" },
               ],
               [
                 { player: "{p:Meowscarada} Play Rough {o:Kommo-o} to {=:0}" },
@@ -1433,7 +1417,7 @@ export const saffronDojoLeaderChuckBattle: Moment = {
               [
                 { player: "{p:Meowscarada} switch to {p:Drednaw}" },
                 { opponent: "{o:Sneasler} Poison Jab {p:Drednaw} to {+:148}" },
-                { opponent: "{p:Drednaw} poison to {+:137}" },
+                { opponent: "{p:Drednaw} poison to {+:125}" },
               ],
               [
                 { opponent: "{o:Sneasler} Knock Off {p:Drednaw} to {+:78}" },
@@ -1559,8 +1543,8 @@ export const saffronDojoLeaderChuckBattle: Moment = {
   },
 };
 
-const _box18 = getBox({
-  box: _box17,
+const _box17 = getBox({
+  box: _box16,
   update: {
     Cloyster: {
       friend: true,
@@ -1572,11 +1556,11 @@ export const saffronDojoLeaderChuckBoxChange: Moment = {
   split: "Sabrina",
   label: "Saffron Dojo Leader Chuck Box Change",
   kind: "boxChange",
-  data: { playerBox: _box18 },
+  data: { playerBox: _box17 },
 };
 
-const _box19 = getBox({
-  box: _box18,
+const _box18 = getBox({
+  box: _box17,
   update: {
     Meowscarada: {
       nature: "Brave",
@@ -1623,7 +1607,7 @@ export const silphCoRivalBattle: Moment = {
   label: "Silph Co. Rival Battle",
   kind: "battle",
   data: {
-    playerBox: _box19,
+    playerBox: _box18,
     opponentBox: silphCoRivalBox,
     lines: [
       {
@@ -1725,8 +1709,8 @@ export const silphCoRivalBattle: Moment = {
   },
 };
 
-const _box20 = getBox({
-  box: _box19,
+const _box19 = getBox({
+  box: _box18,
   update: {
     Jellicent: {
       level: 56,
@@ -1738,11 +1722,11 @@ export const silphCoRivalBoxChange: Moment = {
   split: "Sabrina",
   label: "Silph Co. Rival Box Change",
   kind: "boxChange",
-  data: { playerBox: _box20 },
+  data: { playerBox: _box19 },
 };
 
-const _box21 = getBox({
-  box: _box20,
+const _box20 = getBox({
+  box: _box19,
   update: {
     Jellicent: {
       nature: "Modest",
@@ -1771,7 +1755,7 @@ export const silphCoArianaArcherBattle: Moment = {
   label: "Silph Co. Ariana & Archer Battle",
   kind: "battle",
   data: {
-    playerBox: _box21,
+    playerBox: _box20,
     opponentBox: silphCoArianaArcherBox,
     partnerBox: pokemonTrainerBrendanBox,
     lines: [
@@ -2441,8 +2425,8 @@ export const silphCoArianaArcherBattle: Moment = {
   },
 };
 
-const _box22 = getBox({
-  box: _box21,
+const _box21 = getBox({
+  box: _box20,
   cap: { level: 57, exclude: ["Golisopod"] },
 });
 
@@ -2450,11 +2434,11 @@ export const silphCoArianaArcherBoxChange: Moment = {
   split: "Sabrina",
   label: "Silph Co. Ariana & Archer Box Change",
   kind: "boxChange",
-  data: { playerBox: _box22 },
+  data: { playerBox: _box21 },
 };
 
-const _box23 = getBox({
-  box: _box22,
+const _box22 = getBox({
+  box: _box21,
   update: {
     Meowscarada: {
       nature: "Adamant",
@@ -2495,7 +2479,7 @@ export const silphCoGiovanniBattle: Moment = {
   label: "Silph Co. Giovanni Battle",
   kind: "battle",
   data: {
-    playerBox: _box23,
+    playerBox: _box22,
     opponentBox: silphCoGiovanniBox,
     lines: [
       {
@@ -2703,8 +2687,8 @@ export const silphCoGiovanniBattle: Moment = {
   },
 };
 
-const _box24 = getBox({
-  box: _box23,
+const _box23 = getBox({
+  box: _box22,
   cap: 59,
   update: [
     {
@@ -2728,11 +2712,11 @@ export const silphCoGiovanniBoxChange: Moment = {
   split: "Sabrina",
   label: "Silph Co. Giovanni Box Change",
   kind: "boxChange",
-  data: { playerBox: _box24 },
+  data: { playerBox: _box23 },
 };
 
-const _box25 = getBox({
-  box: _box24,
+const _box24 = getBox({
+  box: _box23,
   update: {
     Golisopod: {
       nature: "Adamant",
@@ -2781,7 +2765,7 @@ export const saffronCityDumassKidBattle: Moment = {
   label: "Saffron City Dumass Kid Battle",
   kind: "battle",
   data: {
-    playerBox: _box25,
+    playerBox: _box24,
     opponentBox: saffronCityDumassKidBox,
     lines: [
       {
@@ -2897,8 +2881,8 @@ export const saffronCityDumassKidBattle: Moment = {
   },
 };
 
-const _box26 = getBox({
-  box: _box25,
+const _box25 = getBox({
+  box: _box24,
   remove: ["Cloyster"],
   update: {
     Perrserker: {
@@ -2928,11 +2912,11 @@ export const saffronCityDumassKidBoxChange: Moment = {
   split: "Sabrina",
   label: "Saffron City Dumass Kid Box Change",
   kind: "boxChange",
-  data: { playerBox: _box26 },
+  data: { playerBox: _box25 },
 };
 
-const _box27 = getBox({
-  box: _box26,
+const _box26 = getBox({
+  box: _box25,
   update: {
     Lanturn: {
       nature: "Quiet",
@@ -2979,7 +2963,7 @@ export const saffronCityLeaderSabrinaBattle: Moment = {
   label: "Saffron City Leader Sabrina Battle",
   kind: "battle",
   data: {
-    playerBox: _box27,
+    playerBox: _box26,
     opponentBox: saffronCityLeaderSabrinaBox,
     lines: [
       {
@@ -3126,8 +3110,8 @@ export const saffronCityLeaderSabrinaBattle: Moment = {
   },
 };
 
-const _box28 = getBox({
-  box: _box27,
+const _box27 = getBox({
+  box: _box26,
   update: {
     Perrserker: {
       ivs: { spe: 31 },
@@ -3152,10 +3136,10 @@ export const saffronCityLeaderSabrinaBoxChange: Moment = {
   split: "Sabrina",
   label: "Saffron City Leader Sabrina Box Change",
   kind: "boxChange",
-  data: { playerBox: _box28 },
+  data: { playerBox: _box27 },
 };
 
-export const box = _box28;
+export const box = _box27;
 
 export const moments: Moment[] = [
   sabrinaBoxChange,
@@ -3171,7 +3155,6 @@ export const moments: Moment[] = [
   pokemonTowerGrunt2Battle,
   pokemonTowerGrunt3Battle,
   starterEgg2Encounter,
-  starterEgg2BoxChange,
   saffronDojoLeaderChuckBattle,
   saffronDojoLeaderChuckBoxChange,
   silphCoRivalBattle,
