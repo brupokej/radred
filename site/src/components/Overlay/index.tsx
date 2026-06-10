@@ -119,7 +119,6 @@ function OverlayCard({
   expanded,
   showIVs,
   showEVs,
-  showFriend,
   showName,
   size,
 }: {
@@ -127,7 +126,6 @@ function OverlayCard({
   expanded: boolean;
   showIVs: boolean;
   showEVs: boolean;
-  showFriend: boolean;
   showName: boolean;
   size: "small" | "large";
 }) {
@@ -210,14 +208,6 @@ function OverlayCard({
               <div className={styles.divider} />
             </>
           )}
-          {showFriend && (
-            <>
-              <div className={`${styles.detail} ${pokemon?.friend ? styles.fieldInfo : ""}`}>
-                {pokemon?.friend ? "Max friendship" : "-"}
-              </div>
-              <div className={styles.divider} />
-            </>
-          )}
           <div className={styles.detail}>{pokemon?.nature ?? "-"}</div>
           <div className={styles.detail}>{pokemon?.ability ?? "-"}</div>
           <div className={styles.detail}>{pokemon ? (pokemon.item ?? "None") : "-"}</div>
@@ -282,7 +272,6 @@ function OverlayPanel({
   const showName = !subtitleOnly && !slots.some((s) => s !== null && s.subtitle !== undefined);
   const showIVs = expanded && slots.some((s) => s?.pokemon.ivs !== undefined);
   const showEVs = expanded && slots.some((s) => s?.pokemon.evs !== undefined);
-  const showFriend = expanded && slots.some((s) => s?.pokemon.friend === true);
   const gridCls = size === "large" ? styles.gridLarge : styles.gridSmall;
   const panelCls = size === "large" ? `${styles.panel} ${styles.panelLarge}` : styles.panel;
 
@@ -301,7 +290,6 @@ function OverlayPanel({
               expanded={expanded}
               showIVs={showIVs}
               showEVs={showEVs}
-              showFriend={showFriend}
               showName={showName}
               size={size}
             />

@@ -20,7 +20,6 @@ export interface PokemonData {
   hp?: string;
   ivs?: Partial<Stats>;
   evs?: Partial<Stats>;
-  friend?: boolean;
   boxOrder?: number;
 }
 

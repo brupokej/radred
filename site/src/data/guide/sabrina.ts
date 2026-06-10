@@ -1546,22 +1546,6 @@ export const saffronDojoLeaderChuckBattle: Moment = {
 const _box17 = getBox({
   box: _box16,
   update: {
-    Cloyster: {
-      friend: true,
-    },
-  },
-});
-
-export const saffronDojoLeaderChuckBoxChange: Moment = {
-  split: "Sabrina",
-  label: "Saffron Dojo Leader Chuck Box Change",
-  kind: "boxChange",
-  data: { playerBox: _box17 },
-};
-
-const _box18 = getBox({
-  box: _box17,
-  update: {
     Meowscarada: {
       nature: "Brave",
       ability: "Protean",
@@ -1569,7 +1553,7 @@ const _box18 = getBox({
       moves: ["Flower Trick", "Knock Off", "Play Rough", "Shadow Claw"],
     },
     Jellicent: {
-      nature: "Bold",
+      nature: "Modest",
       ability: "Water Bubble",
       item: "Rindo Berry",
       moves: ["Brine", "Ominous Wind", "Ice Beam", "Water Spout"],
@@ -1578,7 +1562,7 @@ const _box18 = getBox({
       nature: "Impish",
       ability: "Skill Link",
       item: "Never-Melt Ice",
-      moves: ["Ice Shard", "Icicle Crash", "Icicle Spear", "Return"],
+      moves: ["Aurora Beam", "Ice Shard", "Icicle Spear", "Spike Cannon"],
     },
     Drednaw: {
       nature: "Impish",
@@ -1586,20 +1570,20 @@ const _box18 = getBox({
       item: "Shuca Berry",
       moves: ["Bulldoze", "Dig", "Flip Turn", "Jaw Lock"],
     },
+    Runerigus: {
+      nature: "Adamant",
+      ability: "Shadow Shield",
+      item: "Chesto Berry",
+      moves: ["Earthquake", "Scary Face", "Shadow Ball", "Shadow Sneak"],
+    },
     "Arcanine-H": {
       nature: "Adamant",
       ability: "Rock Head",
       item: "Hard Stone",
       moves: ["Accelerock", "Flamethrower", "Flare Blitz", "Rock Slide"],
     },
-    Runerigus: {
-      nature: "Adamant",
-      ability: "Shadow Shield",
-      item: "Rindo Berry",
-      moves: ["Earthquake", "Rock Tomb", "Shadow Ball", "Shadow Sneak"],
-    },
   },
-  team: ["Meowscarada", "Jellicent", "Cloyster", "Drednaw", "Arcanine-H", "Runerigus"],
+  team: ["Meowscarada", "Jellicent", "Cloyster", "Drednaw", "Runerigus", "Arcanine-H"],
 });
 
 export const silphCoRivalBattle: Moment = {
@@ -1607,7 +1591,7 @@ export const silphCoRivalBattle: Moment = {
   label: "Silph Co. Rival Battle",
   kind: "battle",
   data: {
-    playerBox: _box18,
+    playerBox: _box17,
     opponentBox: silphCoRivalBox,
     lines: [
       {
@@ -1663,12 +1647,27 @@ export const silphCoRivalBattle: Moment = {
               ],
               [
                 { opponent: "{o:Darmanitan} Earthquake {p:Drednaw} to {+:17}" },
-                { player: "{p:Drednaw} Flip Turn {o:Darmanitan} to {-:66}" },
-                { player: "{p:Drednaw} switch to {p:Arcanine-H}" },
+                { opponent: "{o:Darmanitan} Life Orb to {=:180}" },
+                { player: "{p:Drednaw} Bulldoze {o:Darmanitan} to {-:90}" },
               ],
               [
-                { player: "{p:Arcanine-H} Accelerock {o:Darmanitan} to {=:0}" },
+                { player: "{p:Drednaw} Flip Turn {o:Darmanitan} to {=:0}" },
                 { opponent: "{o:Darmanitan} fainted" },
+                { player: "{p:Drednaw} switch to {p:Runerigus}" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Celesteela"],
+            turns: [
+              [
+                { player: "{p:Runerigus} switch to {p:Arcanine-H}" },
+                { opponent: "{o:Celesteela} Autotomize" },
+              ],
+              [
+                { opponent: "{o:Celesteela} Giga Drain {p:Arcanine-H} to {+:111}" },
+                { player: "{p:Arcanine-H} Flare Blitz {o:Celesteela} to {=:0}" },
+                { opponent: "{o:Celesteela} fainted" },
               ],
             ],
           },
@@ -1680,37 +1679,21 @@ export const silphCoRivalBattle: Moment = {
                 { opponent: "{o:Electivire} Close Combat {p:Runerigus}" },
               ],
               [
-                { opponent: "{o:Electivire} Ice Punch {p:Runerigus} to {+:76}" },
-                { player: "{p:Runerigus} Rock Tomb {o:Electivire} to {-:131}" },
-              ],
-              [
-                { player: "{p:Runerigus} switch to {p:Arcanine-H}" },
-                { opponent: "{o:Electivire} Ice Punch {p:Arcanine-H} to {+:127}" },
-              ],
-              [
-                { player: "{p:Arcanine-H} Flare Blitz {o:Electivire} to {=:0}" },
+                { opponent: "{o:Electivire} Ice Punch {p:Runerigus} to {+:85}" },
+                { player: "{p:Runerigus} Earthquake {o:Electivire} to {=:0}" },
                 { opponent: "{o:Electivire} fainted" },
               ],
             ],
           },
-          {
-            matchup: ["Celesteela"],
-            turns: [
-              [
-                { player: "{p:Arcanine-H} Flare Blitz {o:Celesteela} to {=:0}" },
-                { opponent: "{o:Celesteela} fainted" },
-              ],
-            ],
-          },
         ],
-        frags: { Jellicent: 1, Meowscarada: 1, Cloyster: 1, "Arcanine-H": 3 },
+        frags: { Jellicent: 1, Meowscarada: 1, Cloyster: 1, Drednaw: 1, "Arcanine-H": 1, Runerigus: 1 },
       },
     ],
   },
 };
 
-const _box19 = getBox({
-  box: _box18,
+const _box18 = getBox({
+  box: _box17,
   update: {
     Jellicent: {
       level: 56,
@@ -1722,17 +1705,17 @@ export const silphCoRivalBoxChange: Moment = {
   split: "Sabrina",
   label: "Silph Co. Rival Box Change",
   kind: "boxChange",
-  data: { playerBox: _box19 },
+  data: { playerBox: _box18 },
 };
 
-const _box20 = getBox({
-  box: _box19,
+const _box19 = getBox({
+  box: _box18,
   update: {
     Jellicent: {
       nature: "Modest",
       ability: "Water Bubble",
       item: "Mystic Water",
-      moves: ["Brine", "Recover", "Scald", "Water Spout"],
+      moves: ["Brine", "Ice Beam", "Scald", "Water Spout"],
     },
     Meowscarada: {
       nature: "Jolly",
@@ -1744,7 +1727,7 @@ const _box20 = getBox({
       nature: "Sassy",
       ability: "Clear Body",
       item: "Black Sludge",
-      moves: ["Dazz. Gleam", "Flip Turn", "Icy Wind", "Sludge Wave"],
+      moves: ["Dazz. Gleam", "Flip Turn", "Icy Wind", "Scald"],
     },
   },
   team: ["Jellicent", "Meowscarada", "Tentacruel"],
@@ -1755,7 +1738,7 @@ export const silphCoArianaArcherBattle: Moment = {
   label: "Silph Co. Ariana & Archer Battle",
   kind: "battle",
   data: {
-    playerBox: _box20,
+    playerBox: _box19,
     opponentBox: silphCoArianaArcherBox,
     partnerBox: pokemonTrainerBrendanBox,
     lines: [
@@ -2425,8 +2408,8 @@ export const silphCoArianaArcherBattle: Moment = {
   },
 };
 
-const _box21 = getBox({
-  box: _box20,
+const _box20 = getBox({
+  box: _box19,
   cap: { level: 57, exclude: ["Golisopod"] },
 });
 
@@ -2434,11 +2417,11 @@ export const silphCoArianaArcherBoxChange: Moment = {
   split: "Sabrina",
   label: "Silph Co. Ariana & Archer Box Change",
   kind: "boxChange",
-  data: { playerBox: _box21 },
+  data: { playerBox: _box20 },
 };
 
-const _box22 = getBox({
-  box: _box21,
+const _box21 = getBox({
+  box: _box20,
   update: {
     Meowscarada: {
       nature: "Adamant",
@@ -2447,10 +2430,10 @@ const _box22 = getBox({
       moves: ["Flower Trick", "Play Rough", "Thunder Punch", "U-Turn"],
     },
     Golduck: {
-      nature: "Modest",
+      nature: "Rash",
       ability: "Cloud Nine",
       item: "Leftovers",
-      moves: ["Flash", "Flip Turn", "Psychic", "Scald"],
+      moves: ["Aqua Jet", "Flip Turn", "Psychic", "Scald"],
     },
     Golisopod: {
       nature: "Lonely",
@@ -2459,7 +2442,7 @@ const _box22 = getBox({
       moves: ["First Impress.", "Aerial Ace", "Rock Tomb", "Sucker Punch"],
     },
     Clodsire: {
-      nature: "Impish",
+      nature: "Careful",
       ability: "Water Absorb",
       item: "Sitrus Berry",
       moves: ["Bulldoze", "Rock Slide", "Rock Tomb", "Tail Whip"],
@@ -2467,7 +2450,7 @@ const _box22 = getBox({
     Gyarados: {
       nature: "Jolly",
       ability: "Intimidate",
-      item: "Charti Berry",
+      item: "Sitrus Berry",
       moves: ["Leer", "Reflect", "Rest", "Scary Face"],
     },
   },
@@ -2479,7 +2462,7 @@ export const silphCoGiovanniBattle: Moment = {
   label: "Silph Co. Giovanni Battle",
   kind: "battle",
   data: {
-    playerBox: _box22,
+    playerBox: _box21,
     opponentBox: silphCoGiovanniBox,
     lines: [
       {
@@ -2538,7 +2521,8 @@ export const silphCoGiovanniBattle: Moment = {
                 { opponent: "{o:Dracovish} Fishious Rend {p:Clodsire}" },
               ],
               [
-                { opponent: "{o:Dracovish} Psychic Fangs {p:Clodsire} to {+:118}" },
+                { opponent: "{o:Dracovish} Psychic Fangs {p:Clodsire} to {+:44}" },
+                { opponent: "{p:Clodsire} Sitrus Berry to {+:102}" },
                 { player: "{p:Clodsire} Bulldoze {o:Dracovish} to {-:157}" },
               ],
               [
@@ -2564,7 +2548,7 @@ export const silphCoGiovanniBattle: Moment = {
                 { opponent: "{p:Golduck} Leftovers to {+:64}" },
               ],
               [
-                { player: "{p:Golduck} Flip Turn {o:Excadrill} to {-:126}" },
+                { player: "{p:Golduck} Flip Turn {o:Excadrill} to {-:114}" },
                 { player: "{p:Golduck} switch to {p:Gyarados}" },
                 { opponent: "{o:Excadrill} Earthquake {p:Gyarados}" },
                 { opponent: "{p:Gyarados} sandstorm to {+:180}" },
@@ -2602,7 +2586,7 @@ export const silphCoGiovanniBattle: Moment = {
                 { opponent: "{p:Golduck} Leftovers to {+:64}" },
               ],
               [
-                { player: "{p:Golduck} Flip Turn {o:Excadrill} to {-:126}" },
+                { player: "{p:Golduck} Flip Turn {o:Excadrill} to {-:114}" },
                 { player: "{p:Golduck} switch to {p:Gyarados}" },
                 { opponent: "{o:Excadrill} Earthquake {p:Gyarados}" },
                 { opponent: "{p:Gyarados} sandstorm to {+:180}" },
@@ -2632,7 +2616,8 @@ export const silphCoGiovanniBattle: Moment = {
                 { opponent: "{o:Dracovish} Fishious Rend {p:Clodsire}" },
               ],
               [
-                { opponent: "{o:Dracovish} Psychic Fangs {p:Clodsire} to {+:118}" },
+                { opponent: "{o:Dracovish} Psychic Fangs {p:Clodsire} to {+:44}" },
+                { opponent: "{p:Clodsire} Sitrus Berry to {+:102}" },
                 { player: "{p:Clodsire} Bulldoze {o:Dracovish} to {-:157}" },
               ],
               [
@@ -2687,8 +2672,8 @@ export const silphCoGiovanniBattle: Moment = {
   },
 };
 
-const _box23 = getBox({
-  box: _box22,
+const _box22 = getBox({
+  box: _box21,
   cap: 59,
   update: [
     {
@@ -2698,9 +2683,6 @@ const _box23 = getBox({
       },
     },
     {
-      "Arcanine-H": {
-        hp: "Grass",
-      },
       Marshtomp: {
         name: "Swampert",
       },
@@ -2712,11 +2694,11 @@ export const silphCoGiovanniBoxChange: Moment = {
   split: "Sabrina",
   label: "Silph Co. Giovanni Box Change",
   kind: "boxChange",
-  data: { playerBox: _box23 },
+  data: { playerBox: _box22 },
 };
 
-const _box24 = getBox({
-  box: _box23,
+const _box23 = getBox({
+  box: _box22,
   update: {
     Golisopod: {
       nature: "Adamant",
@@ -2741,7 +2723,7 @@ const _box24 = getBox({
       nature: "Brave",
       ability: "Rock Head",
       item: "Cheri Berry",
-      moves: ["Accelerock", "Flare Blitz", "HP Grass", "Play Rough"],
+      moves: ["Accelerock", "Flare Blitz", "Head Smash", "Play Rough"],
     },
     Cloyster: {
       nature: "Impish",
@@ -2765,7 +2747,7 @@ export const saffronCityDumassKidBattle: Moment = {
   label: "Saffron City Dumass Kid Battle",
   kind: "battle",
   data: {
-    playerBox: _box24,
+    playerBox: _box23,
     opponentBox: saffronCityDumassKidBox,
     lines: [
       {
@@ -2881,8 +2863,8 @@ export const saffronCityDumassKidBattle: Moment = {
   },
 };
 
-const _box25 = getBox({
-  box: _box24,
+const _box24 = getBox({
+  box: _box23,
   remove: ["Cloyster"],
   update: {
     Perrserker: {
@@ -2890,16 +2872,14 @@ const _box25 = getBox({
     },
     Azumarill: {
       ivs: { spe: 0 },
-      friend: undefined,
     },
-    "Arcanine-H": {
-      hp: "Dark",
+    Lanturn: {
+      ivs: { spe: 0 },
     },
     Golisopod: {
       ivs: { spe: 0 },
     },
     Jellicent: {
-      hp: "Fire",
       ivs: { spe: 0 },
     },
     Swampert: {
@@ -2912,17 +2892,17 @@ export const saffronCityDumassKidBoxChange: Moment = {
   split: "Sabrina",
   label: "Saffron City Dumass Kid Box Change",
   kind: "boxChange",
-  data: { playerBox: _box25 },
+  data: { playerBox: _box24 },
 };
 
-const _box26 = getBox({
-  box: _box25,
+const _box25 = getBox({
+  box: _box24,
   update: {
     Lanturn: {
-      nature: "Quiet",
+      nature: "Calm",
       ability: "Water Absorb",
-      item: "Wise Glasses",
-      moves: ["Flip Turn", "Hydro Pump", "Thunderbolt", "Volt Switch"],
+      item: "Magnet",
+      moves: ["Flip Turn", "Icy Wind", "Shock Wave", "Volt Switch"],
     },
     Golisopod: {
       nature: "Brave",
@@ -2934,7 +2914,7 @@ const _box26 = getBox({
       nature: "Adamant",
       ability: "Damp",
       item: "Focus Sash",
-      moves: ["Earthquake", "Flip Turn", "Ice Punch", "Rock Slide"],
+      moves: ["Bulldoze", "Flip Turn", "Growl", "Rock Slide"],
     },
     Perrserker: {
       nature: "Relaxed",
@@ -2943,16 +2923,16 @@ const _box26 = getBox({
       moves: ["Fake Out", "Bullet Punch", "Shadow Claw", "U-Turn"],
     },
     Azumarill: {
-      nature: "Brave",
+      nature: "Impish",
       ability: "Huge Power",
-      item: "Iron Ball",
-      moves: ["Aqua Tail", "Helping Hand", "Play Rough", "Superpower"],
+      item: "Sitrus Berry",
+      moves: ["Aqua Jet", "Aqua Tail", "Helping Hand", "Play Rough"],
     },
     Jellicent: {
       nature: "Quiet",
       ability: "Water Bubble",
       item: "Iron Ball",
-      moves: ["Brine", "HP Fire", "Scald", "Water Spout"],
+      moves: ["Brine", "Ice Beam", "Scald", "Water Spout"],
     },
   },
   team: ["Lanturn", "Golisopod", "Swampert", "Perrserker", "Azumarill", "Jellicent"],
@@ -2963,7 +2943,7 @@ export const saffronCityLeaderSabrinaBattle: Moment = {
   label: "Saffron City Leader Sabrina Battle",
   kind: "battle",
   data: {
-    playerBox: _box26,
+    playerBox: _box25,
     opponentBox: saffronCityLeaderSabrinaBox,
     lines: [
       {
@@ -3027,7 +3007,7 @@ export const saffronCityLeaderSabrinaBattle: Moment = {
                 { player: "{p:Lanturn} switch to {p:Azumarill}" },
               ],
             ],
-            branches: [{ branches: ["Azumarill Helping Hand"] }],
+            branches: [{ branches: ["Azumarill Helping Hand Jellicent"] }],
           },
         ],
         frags: { Swampert: 1 },
@@ -3062,13 +3042,13 @@ export const saffronCityLeaderSabrinaBattle: Moment = {
                 { player: "{p:Lanturn} switch to {p:Azumarill}" },
               ],
             ],
-            branches: [{ branches: ["Azumarill Helping Hand"] }],
+            branches: [{ branches: ["Azumarill Helping Hand Jellicent"] }],
           },
         ],
         frags: { Golisopod: 1 },
       },
       {
-        line: "Azumarill Helping Hand",
+        line: "Azumarill Helping Hand Jellicent",
         matchups: [
           {
             matchup: ["Jellicent", "Magearna"],
@@ -3093,8 +3073,9 @@ export const saffronCityLeaderSabrinaBattle: Moment = {
                   player:
                     "{p:Jellicent} Water Spout {o:Glastrier} to {-:1} and {o:Magearna} to {=:0}",
                 },
-                { opponent: "{o:Glastrier} Iapapa Berry to {-:69}" },
                 { opponent: "{o:Iron Hands} fainted" },
+                { opponent: "{o:Glastrier} Iapapa Berry to {-:69}" },
+                { opponent: "{o:Glastrier} High Horsep. {p:Jellicent} to {+:73}" },
               ],
               [
                 { player: "{p:Azumarill} Helping Hand {p:Jellicent}" },
@@ -3110,8 +3091,8 @@ export const saffronCityLeaderSabrinaBattle: Moment = {
   },
 };
 
-const _box27 = getBox({
-  box: _box26,
+const _box26 = getBox({
+  box: _box25,
   update: {
     Perrserker: {
       ivs: { spe: 31 },
@@ -3119,11 +3100,13 @@ const _box27 = getBox({
     Azumarill: {
       ivs: { spe: 31 },
     },
+    Lanturn: {
+      ivs: { spe: 31 },
+    },
     Golisopod: {
       ivs: { spe: 31 },
     },
     Jellicent: {
-      hp: "Dark",
       ivs: { spe: 31 },
     },
     Swampert: {
@@ -3136,10 +3119,10 @@ export const saffronCityLeaderSabrinaBoxChange: Moment = {
   split: "Sabrina",
   label: "Saffron City Leader Sabrina Box Change",
   kind: "boxChange",
-  data: { playerBox: _box27 },
+  data: { playerBox: _box26 },
 };
 
-export const box = _box27;
+export const box = _box26;
 
 export const moments: Moment[] = [
   sabrinaBoxChange,
@@ -3156,7 +3139,6 @@ export const moments: Moment[] = [
   pokemonTowerGrunt3Battle,
   starterEgg2Encounter,
   saffronDojoLeaderChuckBattle,
-  saffronDojoLeaderChuckBoxChange,
   silphCoRivalBattle,
   silphCoRivalBoxChange,
   silphCoArianaArcherBattle,

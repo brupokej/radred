@@ -72,12 +72,12 @@ export function getHpChanges(box: Box): { name: string; hp: string }[] {
   return result;
 }
 
-export function getIVChanges(box: Box): { name: string; ivs?: Partial<Stats>; friend?: boolean }[] {
-  const result: { name: string; ivs?: Partial<Stats>; friend?: boolean }[] = [];
+export function getIVChanges(box: Box): { name: string; ivs?: Partial<Stats> }[] {
+  const result: { name: string; ivs?: Partial<Stats> }[] = [];
   for (const step of box.updates ?? []) {
     for (const partial of step.pokemon ?? []) {
-      if (partial.ivs || partial.friend) {
-        result.push({ name: partial.name, ivs: partial.ivs, friend: partial.friend });
+      if (partial.ivs) {
+        result.push({ name: partial.name, ivs: partial.ivs });
       }
     }
   }

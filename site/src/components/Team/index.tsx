@@ -120,7 +120,6 @@ function TeamGrid({
   const emptySlots = Array.from({ length: emptiesToShow }, () => null);
   const showIVs = [...team, ...extraTeam].some((p) => resolvePokemon(p).ivs !== undefined);
   const showEVs = [...team, ...extraTeam].some((p) => resolvePokemon(p).evs !== undefined);
-  const showFriend = [...team, ...extraTeam].some((p) => resolvePokemon(p).friend === true);
   const showNonMegaAbility = [...team, ...extraTeam].some(
     (p) => resolvePokemon(p).nonMegaAbility !== undefined
   );
@@ -144,7 +143,6 @@ function TeamGrid({
                 pokemon={pokemon}
                 showIVs={showIVs}
                 showEVs={showEVs}
-                showFriend={showFriend}
                 showNonMegaAbility={showNonMegaAbility}
               />
             ))}
@@ -154,7 +152,6 @@ function TeamGrid({
                 pokemon={pokemon}
                 showIVs={showIVs}
                 showEVs={showEVs}
-                showFriend={showFriend}
                 showNonMegaAbility={showNonMegaAbility}
               />
             ))}
@@ -164,7 +161,6 @@ function TeamGrid({
                 pokemon={null}
                 showIVs={showIVs}
                 showEVs={showEVs}
-                showFriend={showFriend}
                 showNonMegaAbility={showNonMegaAbility}
               />
             ))}
@@ -203,13 +199,11 @@ function PokemonCard({
   pokemon,
   showIVs,
   showEVs,
-  showFriend,
   showNonMegaAbility,
 }: {
   pokemon: Pokemon | null;
   showIVs: boolean;
   showEVs: boolean;
-  showFriend: boolean;
   showNonMegaAbility: boolean;
 }) {
   const isExpanded = useCardDetail();
@@ -302,14 +296,6 @@ function PokemonCard({
                 ) : (
                   <span>{current?.evs ? `${formatStats(current.evs)} EVs` : "-"}</span>
                 )}
-              </div>
-              <div className={styles.divider} />
-            </>
-          )}
-          {showFriend && (
-            <>
-              <div className={`${styles.detail} ${current?.friend ? styles.fieldInfo : ""}`}>
-                {current == null ? "-" : <span>{current?.friend ? "Max friendship" : "-"}</span>}
               </div>
               <div className={styles.divider} />
             </>

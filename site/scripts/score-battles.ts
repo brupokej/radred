@@ -171,7 +171,6 @@ const RESOURCE_FIELDS: (keyof PokemonData)[] = [
   "item",
   "ivs",
   "evs",
-  "friend",
 ];
 
 function countPokemonResources(pokemon: Pokemon): number {

@@ -1531,6 +1531,7 @@ const _box17 = getBox({
       ability: "Volt Absorb",
       item: "Persim Berry",
       moves: ["Icy Wind", "Hydro Pump", "Signal Beam", "Volt Switch"],
+      ivs: undefined,
     },
     Tentacruel: {
       nature: "Timid",
