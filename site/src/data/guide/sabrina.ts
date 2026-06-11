@@ -2994,7 +2994,7 @@ export const saffronCityLeaderSabrinaBattle: Moment = {
                 { opponent: "{o:Camerupt-Mega} fainted" },
                 { player: "{p:Lanturn} Volt Switch {o:Tapu Fini} to {-:101}" },
                 { player: "{p:Lanturn} switch to {p:Swampert}" },
-                { opponent: "{o:Tapu Fini} Misty Explosi." },
+                { opponent: "{o:Tapu Fini} Misty Explosi. {p:Swampert} and {p:Golisopod}" },
               ],
             ],
           },
@@ -3159,7 +3159,31 @@ export const saffronCityLeaderSabrinaBoxChange: Moment = {
   data: { playerBox: _box26 },
 };
 
-export const box = _box26;
+const _box27 = getBox({
+  box: _box26,
+  update: {
+    Perrserker: {
+      ivs: undefined,
+    },
+    Azumarill: {
+      ivs: undefined,
+    },
+    Lanturn: {
+      ivs: undefined,
+    },
+    Golisopod: {
+      ivs: undefined,
+    },
+    Jellicent: {
+      ivs: undefined,
+    },
+    Swampert: {
+      ivs: undefined,
+    },
+  },
+});
+
+export const box = _box27;
 
 export const moments: Moment[] = [
   sabrinaBoxChange,

@@ -303,45 +303,38 @@ export const route16CueBallLukeBattle: Moment = {
 const _box7 = getBox({
   box: _box6,
   update: {
-    "Arcanine-H": {
-      nature: "Adamant",
-      ability: "Rock Head",
-      item: "Hard Stone",
-      hp: undefined,
-      moves: ["Accelerock", "Flare Blitz", "Play Rough", "Rock Slide"],
-    },
-    Azumarill: {
-      nature: "Brave",
-      ability: "Huge Power",
-      item: "Iron Ball",
-      moves: ["Aqua Tail", "Helping Hand", "Play Rough", "Superpower"],
-    },
     Excadrill: {
       nature: "Adamant",
       ability: "Sand Rush",
-      item: "Expert Belt",
-      moves: ["Brick Break", "Earthquake", "Iron Head", "Shadow Claw"],
+      item: "Soft Sand",
+      moves: ["Aerial Ace", "Earthquake", "Rock Slide", "Shadow Claw"],
     },
-    Drednaw: {
+    Golisopod: {
       nature: "Impish",
-      ability: "Shell Armor",
-      item: "Shuca Berry",
-      moves: ["Bulldoze", "Dig", "Flip Turn", "Jaw Lock"],
+      ability: "Emergency Exit",
+      item: "Iron Ball",
+      moves: ["Drill Run", "Liquidation", "Poison Jab", "Rock Tomb"],
     },
-    Meowscarada: {
-      nature: "Brave",
-      ability: "Protean",
-      item: undefined,
-      moves: ["Acrobatics", "Flower Trick", "Knock Off", "Play Rough"],
+    Gyarados: {
+      nature: "Impish",
+      ability: "Unnerve",
+      item: "Sitrus Berry",
+      moves: ["Aqua Tail", "Reflect", "Rest", "Scary Face"],
     },
     Perrserker: {
       nature: "Relaxed",
-      ability: "Battle Armor",
+      ability: "Tough Claws",
       item: "Shuca Berry",
       moves: ["Fake Out", "Bullet Punch", "Shadow Claw", "U-Turn"],
     },
+    Dragapult: {
+      nature: "Adamant",
+      ability: "Clear Body",
+      item: undefined,
+      moves: ["Acrobatics", "Dragon Darts", "Lock-On", "Quick Attack"],
+    }
   },
-  team: ["Arcanine-H", "Azumarill", "Excadrill", "Drednaw", "Meowscarada", "Perrserker"],
+  team: ["Excadrill", "Golisopod", "Gyarados", "Perrserker", "Dragapult"],
 });
 
 export const route16BikerRubenBattle: Moment = {
@@ -358,7 +351,7 @@ export const route16BikerRubenBattle: Moment = {
             matchup: ["Accelgor"],
             turns: [
               [
-                { player: "{p:Arcanine-H} Accelerock {o:Accelgor} to {=:0}" },
+                { player: "{p:Excadrill} Rock Slide {o:Accelgor} to {=:0}" },
                 { opponent: "{o:Accelgor} fainted" },
               ],
             ],
@@ -367,42 +360,21 @@ export const route16BikerRubenBattle: Moment = {
             matchup: ["Lopunny-Mega"],
             turns: [
               [
-                { player: "{p:Arcanine-H} switch to {p:Azumarill}" },
+                { player: "{p:Excadrill} switch to {p:Golisopod}" },
                 { opponent: "{o:Lopunny-Mega} mega evolve" },
-                { opponent: "{o:Lopunny-Mega} Close Combat {p:Azumarill} to {+:118}" },
-                { opponent: "{p:Azumarill} sandstorm to {+:104}" },
+                { opponent: "{o:Lopunny-Mega} Close Combat {p:Golisopod} to {+:135}" },
+                { opponent: "{p:Golisopod} sandstorm to {+:123}" },
                 { opponent: "{o:Lopunny-Mega} sandstorm to {-:171}" },
               ],
               [
-                { player: "{p:Azumarill} switch to {p:Excadrill}" },
-                { opponent: "{o:Lopunny-Mega} Return {p:Excadrill} to {+:125}" },
-                { opponent: "{o:Lopunny-Mega} sandstorm to {-:160}" },
+                { opponent: "{o:Lopunny-Mega} Return {p:Golisopod} to {+:9}" },
+                { player: "{p:Golisopod} Drill Run {o:Lopunny-Mega} to {-:118}" },
+                { opponent: "{p:Golisopod} Emergency Exit to {p:Excadrill}" },
+                { opponent: "{o:Lopunny-Mega} sandstorm to {-:107}" },
               ],
               [
-                { player: "{p:Excadrill} Brick Break {o:Lopunny-Mega} to {=:0}" },
+                { player: "{p:Excadrill} Earthquake {o:Lopunny-Mega} to {=:0}" },
                 { opponent: "{o:Lopunny-Mega} fainted" },
-              ],
-            ],
-          },
-          {
-            matchup: ["Roserade"],
-            turns: [
-              [
-                { player: "{p:Excadrill} switch to {p:Drednaw}" },
-                { opponent: "{o:Roserade} HP Fire {p:Drednaw} to {+:191}" },
-                { opponent: "{o:Roserade} sandstorm to {-:165}" },
-              ],
-              [
-                { player: "{p:Drednaw} switch to {p:Meowscarada}" },
-                { opponent: "{o:Roserade} Giga Drain {p:Meowscarada} to {+:127}" },
-                { opponent: "{o:Roserade} recover to {-:175}" },
-                { opponent: "{p:Meowscarada} sandstorm to {+:115}" },
-                { opponent: "{o:Roserade} sandstorm to {-:165}" },
-              ],
-              [
-                { player: "{p:Meowscarada} Acrobatics {o:Roserade} to {=:0}" },
-                { opponent: "{o:Roserade} fainted" },
-                { opponent: "{p:Meowscarada} sandstorm to {+:103}" },
               ],
             ],
           },
@@ -410,12 +382,17 @@ export const route16BikerRubenBattle: Moment = {
             matchup: ["Excadrill"],
             turns: [
               [
-                { player: "{p:Meowscarada} switch to {p:Perrserker}" },
-                { opponent: "{o:Excadrill} Stone Edge {p:Perrserker} to {+:185}" },
+                { player: "{p:Excadrill} switch to {p:Gyarados}" },
+                { opponent: "{o:Excadrill} Earthquake {p:Gyarados}" },
+                { opponent: "{p:Gyarados} sandstorm to {=:214}" },
+              ],
+              [
+                { player: "{p:Gyarados} switch to {p:Perrserker}" },
+                { opponent: "{o:Excadrill} Stone Edge {p:Perrserker} to {+:162}" },
               ],
               [
                 { opponent: "{o:Excadrill} Swords Dance" },
-                { player: "{p:Perrserker} U-Turn {o:Excadrill} to {-:212}" },
+                { player: "{p:Perrserker} U-Turn {o:Excadrill} to {-:203}" },
                 { player: "{p:Perrserker} switch to {p:Excadrill}" },
               ],
               [
@@ -428,13 +405,29 @@ export const route16BikerRubenBattle: Moment = {
             matchup: ["Gigalith"],
             turns: [
               [
-                { player: "{p:Excadrill} Earthquake {o:Gigalith} to {=:0}" },
+                { player: "{p:Excadrill} switch to {p:Gyarados}" },
+                { opponent: "{o:Gigalith} Body Press {p:Gyarados} to {+:168}" },
+                { opponent: "{p:Gyarados} sandstorm to {+:154}" },
+              ],
+              [
+                { player: "{p:Gyarados} switch to {p:Dragapult}" },
+                { opponent: "{o:Gigalith} Explosion {p:Dragapult}" },
                 { opponent: "{o:Gigalith} fainted" },
+                { opponent: "{p:Dragapult} sandstorm to {=:205}" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Roserade"],
+            turns: [
+              [
+                { player: "{p:Dragapult} Acrobatics {o:Roserade} to {=:0}" },
+                { opponent: "{o:Roserade} fainted" },
               ],
             ],
           },
         ],
-        frags: { "Arcanine-H": 1, Excadrill: 3, Meowscarada: 1 },
+        frags: { Excadrill: 3, Dragapult: 2 },
       },
     ],
   },
