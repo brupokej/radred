@@ -2711,32 +2711,32 @@ const _box23 = getBox({
       nature: "Brave",
       ability: "Protean",
       item: "Expert Belt",
-      moves: ["Cut", "Flower Trick", "Knock Off", "Play Rough"],
+      moves: ["Cut", "Flower Trick", "Play Rough", "Thunder Punch"],
     },
     Swampert: {
-      nature: "Brave",
+      nature: "Adamant",
       ability: "Torrent",
       item: "Focus Sash",
-      moves: ["Earthquake", "Flip Turn", "Ice Punch", "Tackle"],
+      moves: ["Earthquake", "Flip Turn", "Growl", "Tackle"],
     },
     "Arcanine-H": {
       nature: "Brave",
       ability: "Rock Head",
       item: "Cheri Berry",
-      moves: ["Accelerock", "Flare Blitz", "Head Smash", "Play Rough"],
+      moves: ["Accelerock", "Flamethrower", "Flare Blitz", "Head Smash"],
     },
     Cloyster: {
       nature: "Impish",
       ability: "Shell Armor",
       item: "Never-Melt Ice",
-      moves: ["Ice Shard", "Icicle Crash", "Icicle Spear", "Liquidation"],
+      moves: ["Aurora Beam", "Ice Shard", "Icicle Spear", "Spike Cannon"],
       friend: undefined,
     },
     Gyarados: {
       nature: "Impish",
-      ability: "Intimidate",
-      item: "Leftovers",
-      moves: ["Aqua Tail", "Bulldoze", "Rest", "Scary Face"],
+      ability: "Unnerve",
+      item: "Sitrus Berry",
+      moves: ["Aqua Tail", "Reflect", "Rest", "Scary Face"],
     },
   },
   team: ["Golisopod", "Meowscarada", "Swampert", "Arcanine-H", "Cloyster", "Gyarados"],
@@ -2776,6 +2776,25 @@ export const saffronCityDumassKidBattle: Moment = {
                 { player: "{p:Meowscarada} switch to {p:Swampert}" },
                 { opponent: "{o:Zapdos} Thunder {p:Swampert}" },
               ],
+            ],
+            branches: [
+              {
+                branches: [
+                  "96% → Swampert Flip Turn Zapdos",
+                  "4% → Swampert Flip Turn Zapdos (to 0)",
+                ],
+              },
+            ],
+          },
+        ],
+        frags: { Meowscarada: 1 },
+      },
+      {
+        line: "96% → Swampert Flip Turn Zapdos",
+        matchups: [
+          {
+            matchup: ["Zapdos"],
+            turns: [            
               [
                 { opponent: "{o:Zapdos} Hurricane (Z) {p:Swampert} to {+:1}" },
                 { player: "{p:Swampert} Flip Turn {o:Zapdos} to {-:75}" },
@@ -2786,7 +2805,32 @@ export const saffronCityDumassKidBattle: Moment = {
                 { opponent: "{o:Zapdos} fainted" },
               ],
             ],
+            branches: [{ branches: ["Arcanine-H switch to Meowscarada"] }],
           },
+        ],
+        frags: { "Arcanine-H": 1 },
+      },
+      {
+        line: "4% → Swampert Flip Turn Zapdos (to 0)",
+        matchups: [
+          {
+            matchup: ["Zapdos"],
+            turns: [            
+              [
+                { opponent: "{o:Zapdos} Hurricane (Z) {p:Swampert} to {+:1}" },
+                { player: "{p:Swampert} Flip Turn {o:Zapdos} (crit) to {=:0}" },
+                { opponent: "{o:Zapdos} fainted" },
+                { player: "{p:Swampert} switch to {p:Arcanine-H}" },
+              ],
+            ],
+            branches: [{ branches: ["Arcanine-H switch to Meowscarada"] }],
+          },
+        ],
+        frags: { Swampert: 1 },
+      },
+      {
+        line: "Arcanine-H switch to Meowscarada",
+        matchups: [
           {
             matchup: ["Goodra"],
             turns: [
@@ -2824,17 +2868,10 @@ export const saffronCityDumassKidBattle: Moment = {
               [
                 { player: "{p:Cloyster} switch to {p:Gyarados}" },
                 { opponent: "{o:Swampert-Mega} Pow-Up Punch {p:Gyarados} to {+:172}" },
-                { opponent: "{p:Gyarados} Leftovers to {+:184}" },
               ],
               [
-                { opponent: "{o:Swampert-Mega} Pow-Up Punch {p:Gyarados} to {+:157}" },
-                { player: "{p:Gyarados} Bulldoze {o:Swampert-Mega} to {-:176}" },
-                { opponent: "{p:Gyarados} Leftovers to {+:169}" },
-              ],
-              [
-                { opponent: "{o:Swampert-Mega} Pow-Up Punch {p:Gyarados} to {+:130}" },
-                { player: "{p:Gyarados} Bulldoze {o:Swampert-Mega} to {-:147}" },
-                { opponent: "{p:Gyarados} Leftovers to {+:142}" },
+                { opponent: "{o:Swampert-Mega} Pow-Up Punch {p:Gyarados} to {+:133}" },
+                { player: "{p:Gyarados} Scary Face {o:Swampert-Mega}" },
               ],
               [
                 { player: "{p:Gyarados} switch to {p:Golisopod}" },
@@ -2857,7 +2894,7 @@ export const saffronCityDumassKidBattle: Moment = {
             ],
           },
         ],
-        frags: { Meowscarada: 4, "Arcanine-H": 2 },
+        frags: { Meowscarada: 3, "Arcanine-H": 1 },
       },
     ],
   },
@@ -2914,7 +2951,7 @@ const _box25 = getBox({
       nature: "Adamant",
       ability: "Damp",
       item: "Focus Sash",
-      moves: ["Bulldoze", "Flip Turn", "Growl", "Rock Slide"],
+      moves: ["Earthquake", "Flip Turn", "Growl", "Rock Slide"],
     },
     Perrserker: {
       nature: "Relaxed",

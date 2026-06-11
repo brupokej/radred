@@ -1,4 +1,5 @@
 import { useColorMode } from "@docusaurus/theme-common";
+import { useStreamMode } from "@site/src/utils/streamMode";
 import Heading from "@theme/Heading";
 import clsx from "clsx";
 import type { ReactNode } from "react";
@@ -45,12 +46,14 @@ const FeatureList: FeatureItem[] = [
 
 function Feature({ title, img, description }: FeatureItem) {
   const { colorMode } = useColorMode();
+  const streamActive = useStreamMode();
+  const mode = streamActive && colorMode === "dark" ? "stream" : colorMode;
   return (
     <div className={clsx("col col--4")}>
       <div className={styles.featureContent}>
         <div className={styles.featureImgWrapper}>
           <img
-            src={`/radred/img/${img}-${colorMode}.png`}
+            src={`/radred/img/${img}-${mode}.png`}
             alt={title}
             className={styles.featureImg}
           />

@@ -170,8 +170,16 @@ async function getFeatureSnapshot(
   await loc.evaluate((el) => el.scrollIntoView({ block: "start" }));
   const box = await loc.boundingBox();
 
-  for (const theme of ["dark", "light"] as const) {
-    await page.evaluate((t) => document.documentElement.setAttribute("data-theme", t), theme);
+  for (const theme of ["dark", "light", "stream"] as const) {
+    await page.evaluate((t) => {
+      if (t === "stream") {
+        document.documentElement.setAttribute("data-theme", "dark");
+        document.documentElement.setAttribute("data-stream-mode", "true");
+      } else {
+        document.documentElement.setAttribute("data-theme", t);
+        document.documentElement.removeAttribute("data-stream-mode");
+      }
+    }, theme);
     await page.waitForTimeout(100);
 
     const filename = slugify([...parts, featureIndex.value++]).replace(/battle|table/g, "feature");
