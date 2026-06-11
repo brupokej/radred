@@ -59,32 +59,26 @@ export const celadonCityBoxChange: Moment = {
 const _box4 = getBox({
   box: _box3,
   update: {
+    Excadrill: {
+      nature: "Adamant",
+      ability: "Sand Rush",
+      item: "Soft Sand",
+      moves: ["Aerial Ace", "Earthquake", "Rock Slide", "Shadow Claw"],
+    },
     Dragapult: {
       nature: "Adamant",
       ability: "Clear Body",
       item: "Dragon Fang",
       moves: ["Astonish", "Dragon Darts", "Lock-On", "Quick Attack"],
     },
-    Excadrill: {
-      nature: "Adamant",
-      ability: "Sand Rush",
-      item: "Soft Sand",
-      moves: ["Aerial Ace", "Earthquake", "Iron Head", "Shadow Claw"],
-    },
     Gyarados: {
       nature: "Impish",
-      ability: "Intimidate",
-      item: "Charti Berry",
-      moves: ["Aqua Tail", "Bulldoze", "Rest", "Scary Face"],
-    },
-    Runerigus: {
-      nature: "Adamant",
-      ability: "Shadow Shield",
-      item: "Rindo Berry",
-      moves: ["Earthquake", "Rock Tomb", "Shadow Ball", "Shadow Sneak"],
+      ability: "Unnerve",
+      item: "Sitrus Berry",
+      moves: ["Aqua Tail", "Reflect", "Rest", "Scary Face"],
     },
     Clodsire: {
-      nature: "Impish",
+      nature: "Careful",
       ability: "Water Absorb",
       item: "Sitrus Berry",
       moves: ["Bulldoze", "Rock Slide", "Rock Tomb", "Yawn"],
@@ -93,10 +87,10 @@ const _box4 = getBox({
       nature: "Brave",
       ability: "Protean",
       item: undefined,
-      moves: ["Acrobatics", "Flower Trick", "Knock Off", "Play Rough"],
+      moves: ["Acrobatics", "Flower Trick", "Play Rough", "Thunder Punch"],
     },
   },
-  team: ["Excadrill", "Dragapult", "Gyarados", "Runerigus", "Clodsire"],
+  team: ["Excadrill", "Dragapult", "Gyarados", "Clodsire"],
   extraTeam: ["Meowscarada"],
 });
 
@@ -134,10 +128,12 @@ export const route16BikerLaoBattle: Moment = {
                 { opponent: "{p:Gyarados} sandstorm to {+:214}" },
               ],
               [
-                { opponent: "{o:Dugtrio-A} Stone Edge {p:Gyarados} to {+:84}" },
-                { player: "{p:Gyarados} Aqua Tail {o:Dugtrio-A} to {=:0}" },
+                { player: "{p:Gyarados} switch to {p:Excadrill}" },
+                { opponent: "{o:Dugtrio-A} Stone Edge {p:Excadrill} to {+:192}" },
+              ],
+              [
+                { player: "{p:Excadrill} Earthquake {o:Dugtrio-A} to {=:0}" },
                 { opponent: "{o:Dugtrio-A} fainted" },
-                { opponent: "{p:Gyarados} sandstorm to {+:70}" },
               ],
             ],
           },
@@ -145,26 +141,22 @@ export const route16BikerLaoBattle: Moment = {
             matchup: ["Heliolisk"],
             turns: [
               [
-                { player: "{p:Gyarados} switch to {p:Runerigus}" },
-                { opponent: "{o:Heliolisk} Surf {p:Runerigus} to {+:99}" },
-              ],
-              [
-                { player: "{p:Runerigus} switch to {p:Clodsire}" },
+                { player: "{p:Excadrill} switch to {p:Clodsire}" },
                 { opponent: "{o:Heliolisk} Surf {p:Clodsire}" },
               ],
               [
-                { opponent: "{o:Heliolisk} Boomburst {p:Clodsire} to {+:89}" },
+                { opponent: "{o:Heliolisk} Boomburst {p:Clodsire} (non-crit) to {+:161}" },
                 { player: "{p:Clodsire} Yawn {o:Heliolisk}" },
               ],
               [
                 { player: "{p:Clodsire} switch to {p:Dragapult}" },
                 { opponent: "{o:Heliolisk} Boomburst {p:Dragapult}" },
-                { opponent: "{p:Dragapult} sandstorm to {+:179}" },
+                { opponent: "{p:Dragapult} sandstorm to {=:179}" },
               ],
               [
                 { player: "{p:Dragapult} Lock-On {o:Heliolisk}" },
                 { opponent: "{o:Heliolisk} sleep" },
-                { opponent: "{p:Dragapult} sandstorm to {+:166}" },
+                { opponent: "{p:Dragapult} sandstorm to {=:166}" },
               ],
               [
                 { player: "{p:Dragapult} Dragon Darts {o:Heliolisk} to {=:0}" },
@@ -173,7 +165,7 @@ export const route16BikerLaoBattle: Moment = {
             ],
           },
         ],
-        frags: { Dragapult: 2, Gyarados: 1 },
+        frags: { Dragapult: 2, Excadrill: 1 },
       },
     ],
   },
@@ -186,7 +178,7 @@ const _box5 = getBox({
       nature: "Adamant",
       ability: "Sand Rush",
       item: "Soft Sand",
-      moves: ["Aerial Ace", "Earthquake", "Iron Head", "Shadow Claw"],
+      moves: ["Aerial Ace", "Earthquake", "Rock Slide", "Shadow Claw"],
     },
   },
   team: ["Excadrill"],
@@ -235,16 +227,22 @@ const _box6 = getBox({
       nature: "Adamant",
       ability: "Sand Rush",
       item: "Soft Sand",
-      moves: ["Aerial Ace", "Earthquake", "Iron Head", "Shadow Claw"],
+      moves: ["Aerial Ace", "Earthquake", "Rock Slide", "Shadow Claw"],
+    },
+    Dragapult: {
+      nature: "Adamant",
+      ability: "Clear Body",
+      item: "Dragon Fang",
+      moves: ["Astonish", "Dragon Darts", "Lock-On", "Quick Attack"],
     },
     Meowscarada: {
       nature: "Brave",
       ability: "Protean",
       item: undefined,
-      moves: ["Acrobatics", "Flower Trick", "Knock Off", "Play Rough"],
+      moves: ["Acrobatics", "Flower Trick", "Play Rough", "Thunder Punch"],
     },
   },
-  team: ["Excadrill", "Meowscarada"],
+  team: ["Excadrill", "Dragapult", "Meowscarada"],
 });
 
 export const route16CueBallLukeBattle: Moment = {
@@ -270,14 +268,19 @@ export const route16CueBallLukeBattle: Moment = {
             matchup: ["Hariyama"],
             turns: [
               [
-                { player: "{p:Excadrill} switch to {p:Meowscarada}" },
-                { opponent: "{o:Hariyama} Fake Out {p:Meowscarada} to {+:148}" },
-                { opponent: "{p:Meowscarada} sandstorm to {+:136}" },
+                { player: "{p:Excadrill} switch to {p:Dragapult}" },
+                { opponent: "{o:Hariyama} Drain Punch {p:Dragapult}" },
+                { opponent: "{p:Dragapult} sandstorm to {=:153}" },
+              ],
+              [
+                { player: "{p:Dragapult} switch to {p:Meowscarada}" },
+                { opponent: "{o:Hariyama} Knock Off {p:Meowscarada} to {+:160}" },
+                { opponent: "{p:Meowscarada} sandstorm to {+:148}" },
               ],
               [
                 { player: "{p:Meowscarada} Acrobatics {o:Hariyama} to {=:0}" },
                 { opponent: "{o:Hariyama} fainted" },
-                { opponent: "{p:Meowscarada} sandstorm to {+:124}" },
+                { opponent: "{p:Meowscarada} sandstorm to {+:136}" },
               ],
             ],
           },
