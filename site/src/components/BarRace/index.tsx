@@ -3,7 +3,7 @@ import Card from "@site/src/components/Card";
 import { ScrollFade } from "@site/src/components/ScrollFade";
 import { getSwitchBattleCaseData } from "@site/src/components/SwitchBattle";
 import { SPRITE_COLORS } from "@site/src/data/spriteColors";
-import { getCanon, resolveBox } from "@site/src/utils/box";
+import { getCanon, isExtraEntry, resolveBox, teamEntryName } from "@site/src/utils/box";
 import { Moment } from "@site/src/utils/moments";
 import { resolvePokemon } from "@site/src/utils/pokemon";
 import { SpriteImg } from "@site/src/utils/SpriteImg";
@@ -149,8 +149,9 @@ export default function BarRace({
           running[key] = (running[key] ?? 0) + c;
         }
       } else {
-        for (const name of resolved.team ?? []) {
-          const key = canon(name);
+        for (const entry of resolved.team ?? []) {
+          if (isExtraEntry(entry)) continue;
+          const key = canon(teamEntryName(entry));
           running[key] = (running[key] ?? 0) + 1;
         }
       }

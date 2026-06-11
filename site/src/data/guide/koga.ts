@@ -90,8 +90,7 @@ const _box4 = getBox({
       moves: ["Acrobatics", "Flower Trick", "Play Rough", "Thunder Punch"],
     },
   },
-  team: ["Excadrill", "Dragapult", "Gyarados", "Clodsire"],
-  extraTeam: ["Meowscarada"],
+  team: ["Excadrill", "Dragapult", "Gyarados", "Clodsire", { name: "Meowscarada", extra: true }],
 });
 
 export const route16BikerLaoBattle: Moment = {
@@ -173,15 +172,7 @@ export const route16BikerLaoBattle: Moment = {
 
 const _box5 = getBox({
   box: _box4,
-  update: {
-    Excadrill: {
-      nature: "Adamant",
-      ability: "Sand Rush",
-      item: "Soft Sand",
-      moves: ["Aerial Ace", "Earthquake", "Rock Slide", "Shadow Claw"],
-    },
-  },
-  team: ["Excadrill"],
+  team: ["Excadrill", { name: "Dragapult", extra: true}, { name: "Gyarados", extra: true}, { name: "Clodsire", extra: true}, { name: "Meowscarada", extra: true }],
 });
 
 export const route16CueBallKojiBattle: Moment = {
@@ -222,27 +213,7 @@ export const route16CueBallKojiBattle: Moment = {
 
 const _box6 = getBox({
   box: _box5,
-  update: {
-    Excadrill: {
-      nature: "Adamant",
-      ability: "Sand Rush",
-      item: "Soft Sand",
-      moves: ["Aerial Ace", "Earthquake", "Rock Slide", "Shadow Claw"],
-    },
-    Dragapult: {
-      nature: "Adamant",
-      ability: "Clear Body",
-      item: "Dragon Fang",
-      moves: ["Astonish", "Dragon Darts", "Lock-On", "Quick Attack"],
-    },
-    Meowscarada: {
-      nature: "Brave",
-      ability: "Protean",
-      item: undefined,
-      moves: ["Acrobatics", "Flower Trick", "Play Rough", "Thunder Punch"],
-    },
-  },
-  team: ["Excadrill", "Dragapult", "Meowscarada"],
+  team: ["Excadrill", "Dragapult", { name: "Gyarados", extra: true}, { name: "Clodsire", extra: true}, "Meowscarada"],
 });
 
 export const route16CueBallLukeBattle: Moment = {
@@ -896,8 +867,7 @@ const _box12 = getBox({
       moves: ["Astonish", "Dragon Darts", "Flamethrower", "U-Turn"],
     },
   },
-  team: ["Excadrill", "Clodsire", "Meowscarada"],
-  extraTeam: ["Dragapult"],
+  team: ["Excadrill", "Clodsire", "Meowscarada", { name: "Dragapult", extra: true }],
 });
 
 export const route18BikerWilliamBattle: Moment = {

@@ -2,7 +2,7 @@ import { resolveActiveBox } from "@site/src/components/Battle";
 import Card from "@site/src/components/Card";
 import { PokemonEntry } from "@site/src/components/PokemonEntry";
 import { Row } from "@site/src/components/Row";
-import { resolveBox } from "@site/src/utils/box";
+import { isExtraEntry, resolveBox, teamEntryName } from "@site/src/utils/box";
 import { Moment } from "@site/src/utils/moments";
 import { resolvePokemon } from "@site/src/utils/pokemon";
 import { useStorageState } from "@site/src/utils/storage";
@@ -36,12 +36,11 @@ export default function BoxRoster({
     }
   }
 
-  const teamOrder = new Map<string, number>(
-    (resolvedActive?.team ?? []).map((name, i) => [name, i] as [string, number])
-  );
-  const extraTeamOrder = new Map<string, number>(
-    (resolvedActive?.extraTeam ?? []).map((name, i) => [name, i] as [string, number])
-  );
+  const teamOrder = new Map<string, number>();
+  const extraTeamOrder = new Map<string, number>();
+  (resolvedActive?.team ?? []).forEach((entry, i) => {
+    (isExtraEntry(entry) ? extraTeamOrder : teamOrder).set(teamEntryName(entry), i);
+  });
   const removedSet = new Set(resolvedActive?.removed ?? []);
 
   const toNum = (l: number | string | undefined) =>

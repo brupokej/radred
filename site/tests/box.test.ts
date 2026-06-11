@@ -147,11 +147,10 @@ describe("getBox", () => {
     };
     const box2 = getBox({
       box: box1,
-      team: ["Litten"],
-      extraTeam: ["Dreepy"],
+      team: ["Litten", { name: "Dreepy", extra: true }],
     });
-    expect(box2).toEqual({ base: { ...box1.base, team: ["Litten"], extraTeam: ["Dreepy"] } });
+    expect(box2).toEqual({ base: { ...box1.base, team: ["Litten", { name: "Dreepy", extra: true }] } });
     const resolvedBox2 = resolveBox(box2);
-    expect(resolvedBox2).toEqual({ ...box1.base, team: ["Litten"], extraTeam: ["Dreepy"] });
+    expect(resolvedBox2).toEqual({ ...box1.base, team: ["Litten", { name: "Dreepy", extra: true }] });
   });
 });

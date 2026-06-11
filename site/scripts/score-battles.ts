@@ -31,7 +31,7 @@
 
 import { BattleData, LineData, MoveData } from "../src/components/Battle";
 import { SwitchBattleData } from "../src/components/SwitchBattle";
-import { resolveBox } from "../src/utils/box";
+import { isExtraEntry, resolveBox, teamEntryName } from "../src/utils/box";
 import { Moment } from "../src/utils/moments";
 import { Pokemon, PokemonData, resolvePokemon } from "../src/utils/pokemon";
 
@@ -225,11 +225,12 @@ function scoreBattle(split: string, label: string, data: BattleData): BattleScor
   const playerBox = resolveBox(playerBoxRaw);
   const opponentBox = resolveBox(data.opponentBox);
 
-  const teamSize = playerBox.team?.length ?? 0;
-  const oppSize = opponentBox.team?.length ?? 0;
+  const playerTeam = (playerBox.team ?? []).filter((e) => !isExtraEntry(e));
+  const teamSize = playerTeam.length;
+  const oppSize = (opponentBox.team ?? []).filter((e) => !isExtraEntry(e)).length;
 
   // Count non-redundant resource changes for team members (mirrors Team component warning logic).
-  const teamSet = new Set(playerBox.team ?? []);
+  const teamSet = new Set(playerTeam.map(teamEntryName));
   let totalResources = 0;
   for (const pokemon of playerBox.pokemon) {
     if (teamSet.has(resolvePokemon(pokemon).name)) {

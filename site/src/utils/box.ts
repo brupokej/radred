@@ -2,10 +2,19 @@ import { Pokemon, PokemonData, resolvePokemon } from "@site/src/utils/pokemon";
 
 export type PartialPokemonData = { name: string } & Partial<Omit<PokemonData, "name">>;
 
+export type TeamEntry = string | { name: string; extra: true };
+
+export function teamEntryName(entry: TeamEntry): string {
+  return typeof entry === "string" ? entry : entry.name;
+}
+
+export function isExtraEntry(entry: TeamEntry): boolean {
+  return typeof entry !== "string";
+}
+
 export interface BoxData {
   pokemon: Pokemon[];
-  team?: string[];
-  extraTeam?: string[];
+  team?: TeamEntry[];
   renames?: Record<string, string>;
   removed?: string[];
 }
@@ -103,15 +112,13 @@ export function getBox({
   cap,
   update = [],
   team,
-  extraTeam,
 }: {
   box?: Box;
   remove?: string[];
   add?: PokemonData[];
   cap?: number | { level: number; exclude?: string[] };
   update?: Record<string, Partial<PokemonData>> | Record<string, Partial<PokemonData>>[];
-  team?: string[];
-  extraTeam?: string[];
+  team?: TeamEntry[];
 }): Box {
   const updateSteps = Array.isArray(update) ? update : [update];
   const rawResolved: BoxData = box ? resolveBox(box) : { pokemon: [] };
@@ -190,7 +197,6 @@ export function getBox({
     base: {
       ...resolvedBase,
       team: team ?? resolvedBase.team,
-      extraTeam: extraTeam,
     },
     updates: steps.length ? steps : undefined,
   };

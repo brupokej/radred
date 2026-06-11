@@ -3,7 +3,7 @@ import { ScrollArrows } from "@site/src/components/ScrollArrows";
 import { ScrollFade } from "@site/src/components/ScrollFade";
 import { resolveSpecies } from "@site/src/utils/abbreviations";
 import type { Box } from "@site/src/utils/box";
-import { resolveBox } from "@site/src/utils/box";
+import { resolveBox, teamEntryName } from "@site/src/utils/box";
 import { pokedex, type PokedexData } from "@site/src/utils/pokedex";
 import {
   formatStats,
@@ -64,16 +64,13 @@ export default function Team({
   const resolved = resolveBox(box);
   const pokemonMap = new Map(resolved.pokemon.map((p) => [resolvePokemon(p).name, p]));
   const team = (resolved.team ?? [])
-    .map((name) => pokemonMap.get(name))
-    .filter((p): p is Pokemon => p !== undefined);
-  const extraTeam = (resolved.extraTeam ?? [])
-    .map((name) => pokemonMap.get(name))
+    .map((e) => pokemonMap.get(teamEntryName(e)))
     .filter((p): p is Pokemon => p !== undefined);
   return (
     <Card title={title}>
       {header}
       <CardDetail defaultExpanded={defaultExpanded}>
-        <TeamGrid team={team} extraTeam={extraTeam} hasHeader={!!header} />
+        <TeamGrid team={team} hasHeader={!!header} />
       </CardDetail>
     </Card>
   );
@@ -81,11 +78,9 @@ export default function Team({
 
 function TeamGrid({
   team,
-  extraTeam = [],
   hasHeader = false,
 }: {
   team: Pokemon[];
-  extraTeam?: Pokemon[];
   hasHeader?: boolean;
 }) {
   const isExpanded = useCardDetail();
@@ -115,14 +110,11 @@ function TeamGrid({
     el.scrollTo({ left: Math.max(0, target), behavior: "smooth" });
   }, []);
 
-  const filled = team.length + extraTeam.length;
-  const emptiesToShow = Math.max(0, Math.min(cols, 6) - filled);
+  const emptiesToShow = Math.max(0, Math.min(cols, 6) - team.length);
   const emptySlots = Array.from({ length: emptiesToShow }, () => null);
-  const showIVs = [...team, ...extraTeam].some((p) => resolvePokemon(p).ivs !== undefined);
-  const showEVs = [...team, ...extraTeam].some((p) => resolvePokemon(p).evs !== undefined);
-  const showNonMegaAbility = [...team, ...extraTeam].some(
-    (p) => resolvePokemon(p).nonMegaAbility !== undefined
-  );
+  const showIVs = team.some((p) => resolvePokemon(p).ivs !== undefined);
+  const showEVs = team.some((p) => resolvePokemon(p).evs !== undefined);
+  const showNonMegaAbility = team.some((p) => resolvePokemon(p).nonMegaAbility !== undefined);
 
   return (
     <div
@@ -138,15 +130,6 @@ function TeamGrid({
         <ScrollFade ref={scrollRef} axis="x" className={styles.grid}>
           <div className={styles.gridInner}>
             {team.map((pokemon, i) => (
-              <PokemonCard
-                key={i}
-                pokemon={pokemon}
-                showIVs={showIVs}
-                showEVs={showEVs}
-                showNonMegaAbility={showNonMegaAbility}
-              />
-            ))}
-            {extraTeam.map((pokemon, i) => (
               <PokemonCard
                 key={i}
                 pokemon={pokemon}

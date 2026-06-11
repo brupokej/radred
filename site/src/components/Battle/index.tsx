@@ -4,7 +4,7 @@ import { ScrollFade } from "@site/src/components/ScrollFade";
 import Team from "@site/src/components/Team";
 import { secretMode } from "@site/src/data/secretMode";
 import { allMoments } from "@site/src/utils/allMoments";
-import { Box, findPokemon, resolveBox } from "@site/src/utils/box";
+import { Box, findPokemon, resolveBox, teamEntryName } from "@site/src/utils/box";
 import { useHpDisplay } from "@site/src/utils/hpDisplay";
 import { getHp } from "@site/src/utils/pokedex";
 import { PokemonData, resolvePokemon } from "@site/src/utils/pokemon";
@@ -503,15 +503,18 @@ export function Battle({
   const maxHp = useMemo(
     () =>
       Object.fromEntries([
-        ...(playerResolved.team ?? []).flatMap((name) => {
+        ...(playerResolved.team ?? []).flatMap((entry) => {
+          const name = teamEntryName(entry);
           const p = findPokemon(playerResolved, name);
           return p ? [[`p:${name}`, getHp(resolvePokemon(p))]] : [];
         }),
-        ...(opponentResolved.team ?? []).flatMap((name) => {
+        ...(opponentResolved.team ?? []).flatMap((entry) => {
+          const name = teamEntryName(entry);
           const p = findPokemon(opponentResolved, name);
           return p ? [[`o:${name}`, getHp(resolvePokemon(p))]] : [];
         }),
-        ...(partnerResolved?.team ?? []).flatMap((name) => {
+        ...(partnerResolved?.team ?? []).flatMap((entry) => {
+          const name = teamEntryName(entry);
           const p = partnerResolved ? findPokemon(partnerResolved, name) : undefined;
           return p ? [[`o:${name}`, getHp(resolvePokemon(p))]] : [];
         }),
@@ -521,17 +524,19 @@ export function Battle({
 
   const teamMap = useMemo(() => {
     const map: Record<string, PokemonData> = {};
-    for (const name of playerResolved.team ?? []) {
+    for (const entry of playerResolved.team ?? []) {
+      const name = teamEntryName(entry);
       const p = findPokemon(playerResolved, name);
       if (p) map[`p:${name}`] = resolvePokemon(p);
     }
     const opponentTeam = opponentResolved.team ?? [];
     for (let i = 0; i < opponentTeam.length; i++) {
-      const name = opponentTeam[i];
+      const name = teamEntryName(opponentTeam[i]);
       const p = findPokemon(opponentResolved, name);
       if (p) map[`o:${name}`] = resolvePokemon(p);
     }
-    for (const name of partnerResolved?.team ?? []) {
+    for (const entry of partnerResolved?.team ?? []) {
+      const name = teamEntryName(entry);
       const p = partnerResolved ? findPokemon(partnerResolved, name) : undefined;
       if (p) map[`o:${name}`] = resolvePokemon(p);
     }

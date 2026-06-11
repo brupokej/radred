@@ -1,5 +1,5 @@
 import { BattleData, resolveActiveBox } from "@site/src/components/Battle";
-import { getCanon, resolveBox } from "@site/src/utils/box";
+import { getCanon, isExtraEntry, resolveBox, teamEntryName } from "@site/src/utils/box";
 import { resolvePokemon } from "@site/src/utils/pokemon";
 import { slugify } from "@site/src/utils/slugify";
 import { getState } from "@site/src/utils/storage";
@@ -117,8 +117,9 @@ export function computePageStats(
 
   for (const { label, battles } of pages) {
     for (const battle of battles) {
-      for (const name of resolveBox(resolveActiveBox(battle)).team ?? []) {
-        const key = canon(name);
+      for (const entry of resolveBox(resolveActiveBox(battle)).team ?? []) {
+        if (isExtraEntry(entry)) continue;
+        const key = canon(teamEntryName(entry));
         if (!totals[key]) {
           totals[key] = { total: 0, byPage: {}, boxOrder: boxOrderMap[key] ?? Infinity };
         }
@@ -194,8 +195,9 @@ export function computeStats(battles: BattleData[]): Record<string, PokemonStats
   const totals: Record<string, PokemonStats> = {};
 
   for (const battle of battles) {
-    for (const name of resolveBox(resolveActiveBox(battle)).team ?? []) {
-      const key = canon(name);
+    for (const teamEntry of resolveBox(resolveActiveBox(battle)).team ?? []) {
+      if (isExtraEntry(teamEntry)) continue;
+      const key = canon(teamEntryName(teamEntry));
       const entry = totals[key] ?? {
         battles: 0,
         frags: 0,
