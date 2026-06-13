@@ -102,7 +102,9 @@ export function useOpponent(liveState: RelayState | null): {
     const info = displayed.info;
     if (!info) return Array(6).fill(null) as OverlayPanelSlot[];
     const resolved = resolveBox(info.box);
-    const team = (resolved.team ?? []).map((entry) => findPokemon(resolved, teamEntryName(entry)) ?? null);
+    const team = (resolved.team ?? []).map(
+      (entry) => findPokemon(resolved, teamEntryName(entry)) ?? null
+    );
     const entries: OverlayPanelSlot[] = team.map((p) =>
       p ? { pokemon: resolvePokemon(p) } : null
     );

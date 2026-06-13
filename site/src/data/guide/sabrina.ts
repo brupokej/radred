@@ -1089,7 +1089,7 @@ const _box13 = getBox({
     Golisopod: {
       level: 43,
     },
-  }
+  },
 });
 
 const _box14 = getBox({
@@ -1686,7 +1686,14 @@ export const silphCoRivalBattle: Moment = {
             ],
           },
         ],
-        frags: { Jellicent: 1, Meowscarada: 1, Cloyster: 1, Drednaw: 1, "Arcanine-H": 1, Runerigus: 1 },
+        frags: {
+          Jellicent: 1,
+          Meowscarada: 1,
+          Cloyster: 1,
+          Drednaw: 1,
+          "Arcanine-H": 1,
+          Runerigus: 1,
+        },
       },
     ],
   },
@@ -2794,7 +2801,7 @@ export const saffronCityDumassKidBattle: Moment = {
         matchups: [
           {
             matchup: ["Zapdos"],
-            turns: [            
+            turns: [
               [
                 { opponent: "{o:Zapdos} Hurricane (Z) {p:Swampert} to {+:1}" },
                 { player: "{p:Swampert} Flip Turn {o:Zapdos} to {-:75}" },
@@ -2815,7 +2822,7 @@ export const saffronCityDumassKidBattle: Moment = {
         matchups: [
           {
             matchup: ["Zapdos"],
-            turns: [            
+            turns: [
               [
                 { opponent: "{o:Zapdos} Hurricane (Z) {p:Swampert} to {+:1}" },
                 { player: "{p:Swampert} Flip Turn {o:Zapdos} (crit) to {=:0}" },

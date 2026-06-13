@@ -52,11 +52,7 @@ function Feature({ title, img, description }: FeatureItem) {
     <div className={clsx("col col--4")}>
       <div className={styles.featureContent}>
         <div className={styles.featureImgWrapper}>
-          <img
-            src={`/radred/img/${img}-${mode}.png`}
-            alt={title}
-            className={styles.featureImg}
-          />
+          <img src={`/radred/img/${img}-${mode}.png`} alt={title} className={styles.featureImg} />
         </div>
         <div className="text--center padding-horiz--md">
           <Heading as="h3">{title}</Heading>

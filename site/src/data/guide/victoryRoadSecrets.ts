@@ -373,7 +373,10 @@ export function getVictoryRoadSecrets(_box1: Box) {
             {
               matchup: ["Gigalith"],
               turns: [
-                [{ opponent: "{o:Gigalith} Explosion {p:Secret}" }, { opponent: "{o:Gigalith} fainted" }],
+                [
+                  { opponent: "{o:Gigalith} Explosion {p:Secret}" },
+                  { opponent: "{o:Gigalith} fainted" },
+                ],
               ],
             },
           ],

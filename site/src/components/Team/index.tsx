@@ -76,13 +76,7 @@ export default function Team({
   );
 }
 
-function TeamGrid({
-  team,
-  hasHeader = false,
-}: {
-  team: Pokemon[];
-  hasHeader?: boolean;
-}) {
+function TeamGrid({ team, hasHeader = false }: { team: Pokemon[]; hasHeader?: boolean }) {
   const isExpanded = useCardDetail();
   const contentRef = useRef<HTMLDivElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
