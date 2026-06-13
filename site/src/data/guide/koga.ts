@@ -1139,38 +1139,31 @@ const _box14 = getBox({
   box: _box13,
   update: {
     Meowscarada: {
-      nature: "Adamant",
+      nature: "Jolly",
       ability: "Protean",
       item: "Expert Belt",
-      moves: ["Cut", "Leaf Storm", "Play Rough", "Sucker Punch"],
+      moves: ["Cut", "Flower Trick", "Play Rough", "Sucker Punch"],
     },
     Lanturn: {
-      nature: "Quiet",
+      nature: "Calm",
       ability: "Volt Absorb",
-      item: "Persim Berry",
-      moves: ["Icy Wind", "Hydro Pump", "Signal Beam", "Volt Switch"],
-      ivs: undefined,
+      item: "Never-Melt Ice",
+      moves: ["Flip Turn", "Icy Wind", "Shock Wave", "Volt Switch"],
     },
     Tentacruel: {
-      nature: "Timid",
+      nature: "Calm",
       ability: "Clear Body",
-      item: "Poison Barb",
-      moves: ["Dazz. Gleam", "Flip Turn", "Hydro Pump", "Sludge Wave"],
+      item: "Black Sludge",
+      moves: ["Acid Spray", "Flip Turn", "Hydro Pump", "Sludge Wave"],
     },
-    "Swampert-Mega": {
-      nature: "Jolly",
-      ability: "Swift Swim",
-      item: "Swampertite",
-      moves: ["Earthquake", "Flip Turn", "Ice Punch", "Rock Slide"],
-    },
-    Gyarados: {
+    Golisopod: {
       nature: "Impish",
-      ability: "Intimidate",
-      item: "Charti Berry",
-      moves: ["Aqua Tail", "Bulldoze", "Rest", "Scary Face"],
+      ability: "Emergency Exit",
+      item: "Sitrus Berry",
+      moves: ["First Impress.", "Liquidation", "Poison Jab", "Sucker Punch"],
     },
   },
-  team: ["Meowscarada", "Lanturn", "Tentacruel", "Swampert-Mega", "Gyarados"],
+  team: ["Meowscarada", "Lanturn", "Tentacruel", "Golisopod"],
 });
 
 export const fuschiaCityBrendanBattle: Moment = {
@@ -1187,7 +1180,7 @@ export const fuschiaCityBrendanBattle: Moment = {
             matchup: ["Gengar"],
             turns: [
               [
-                { player: "{p:Meowscarada} Cut {o:Gengar} to {-:78}" },
+                { player: "{p:Meowscarada} Cut {o:Gengar} to {-:87}" },
                 { opponent: "{o:Gengar} Sludge Wave {p:Meowscarada}" },
               ],
               [
@@ -1205,60 +1198,19 @@ export const fuschiaCityBrendanBattle: Moment = {
               ],
               [
                 { opponent: "{o:Tapu Koko} Play Rough {p:Lanturn} to {+:61}" },
-                { player: "{p:Lanturn} Icy Wind {o:Tapu Koko} to {-:160}" },
-                { opponent: "{o:Tapu Koko} Leftovers to {-:172}" },
+                { player: "{p:Lanturn} Icy Wind {o:Tapu Koko} to {-:157}" },
+                { opponent: "{o:Tapu Koko} Leftovers to {-:169}" },
               ],
               [
                 { player: "{p:Lanturn} switch to {p:Tentacruel}" },
                 { opponent: "{o:Tapu Koko} Play Rough {p:Tentacruel} to {+:126}" },
-                { opponent: "{o:Tapu Koko} Leftovers to {-:184}" },
+                { opponent: "{o:Tapu Koko} Leftovers to {-:181}" },
+                { opponent: "{p:Tentacruel} Black Sludge to {+:138}" },
               ],
               [
                 { player: "{p:Tentacruel} Sludge Wave {o:Tapu Koko} to {=:0}" },
                 { opponent: "{o:Tapu Koko} fainted" },
-              ],
-            ],
-          },
-          {
-            matchup: ["Nihilego"],
-            turns: [
-              [
-                { player: "{p:Tentacruel} switch to {p:Swampert-Mega}" },
-                { opponent: "{o:Nihilego} Thunderbolt {p:Swampert-Mega}" },
-              ],
-              [
-                { player: "{p:Swampert-Mega} switch to {p:Meowscarada}" },
-                { opponent: "{o:Nihilego} Grass Knot {p:Meowscarada} to {+:159}" },
-              ],
-              [
-                { player: "{p:Meowscarada} Cut {o:Nihilego} to {=:0}" },
-                { opponent: "{o:Nihilego} fainted" },
-              ],
-            ],
-          },
-          {
-            matchup: ["Sceptile-Mega"],
-            turns: [
-              [
-                { player: "{p:Meowscarada} switch to {p:Gyarados}" },
-                { opponent: "{o:Sceptile-Mega} mega evolve" },
-                { opponent: "{o:Sceptile-Mega} Earthquake {p:Gyarados}" },
-              ],
-              [
-                { opponent: "{o:Sceptile-Mega} Dragon Dance" },
-                { player: "{p:Gyarados} Scary Face {o:Sceptile-Mega}" },
-              ],
-              [
-                { opponent: "{o:Sceptile-Mega} Dragon Dance" },
-                { player: "{p:Gyarados} Scary Face {o:Sceptile-Mega}" },
-              ],
-              [
-                { player: "{p:Gyarados} switch to {p:Meowscarada}" },
-                { opponent: "{o:Sceptile-Mega} Dragon Dance" },
-              ],
-              [
-                { player: "{p:Meowscarada} Play Rough {o:Sceptile-Mega} to {=:0}" },
-                { opponent: "{o:Sceptile-Mega} fainted" },
+                { opponent: "{p:Tentacruel} Black Sludge to {+:150}" },
               ],
             ],
           },
@@ -1266,8 +1218,22 @@ export const fuschiaCityBrendanBattle: Moment = {
             matchup: ["Urshifu-R"],
             turns: [
               [
-                { player: "{p:Meowscarada} Leaf Storm {o:Urshifu-R} to {=:0}" },
+                { opponent: "{o:Urshifu-R} Close Combat {p:Tentacruel} to {+:31}" },
+                { player: "{p:Tentacruel} Flip Turn {o:Urshifu-R} to {-:215}" },
+                { player: "{p:Tentacruel} switch to {p:Meowscarada}" },
+              ],
+              [
+                { player: "{p:Meowscarada} Flower Trick {o:Urshifu-R} to {=:0}" },
                 { opponent: "{o:Urshifu-R} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Nihilego"],
+            turns: [
+              [
+                { player: "{p:Meowscarada} Cut {o:Nihilego} to {=:0}" },
+                { opponent: "{o:Nihilego} fainted" },
               ],
             ],
           },
@@ -1280,8 +1246,23 @@ export const fuschiaCityBrendanBattle: Moment = {
               ],
             ],
           },
+          {
+            matchup: ["Sceptile-Mega"],
+            turns: [
+              [
+                { player: "{p:Meowscarada} switch to {p:Golisopod}" },
+                { opponent: "{o:Sceptile-Mega} mega evolve" },
+                { opponent: "{o:Sceptile-Mega} Dual Chop {p:Golisopod} to {+:57}" },
+                { opponent: "{p:Golisopod} Sitrus Berry to {+:107}" },
+              ],
+              [
+                { player: "{p:Golisopod} First Impress. {o:Sceptile-Mega} to {=:0}" },
+                { opponent: "{o:Sceptile-Mega} fainted" },
+              ],
+            ],
+          },
         ],
-        frags: { Meowscarada: 5, Tentacruel: 1 },
+        frags: { Meowscarada: 4, Tentacruel: 1, Golisopod: 1 },
       },
     ],
   },
@@ -1301,13 +1282,13 @@ export const box15 = getBox({
     Incineroar: {
       nature: "Impish",
       ability: "Blaze",
-      item: undefined,
-      moves: ["Fake Out", "Darkest Lariat", "Flamethrower", "U-Turn"],
+      item: "Black Glasses",
+      moves: ["Fake Out", "Drain Punch", "Flamethrower", "Leer"],
     },
     Excadrill: {
       nature: "Jolly",
       ability: "Mold Breaker",
-      item: "Expert Belt",
+      item: "Metal Coat",
       moves: ["Brick Break", "Drill Run", "Iron Head", "Shadow Claw"],
     },
   },
