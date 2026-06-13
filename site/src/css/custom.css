@@ -26,6 +26,8 @@
   --hl-danger-outline: 1px solid var(--ifm-color-danger);
   --hl-primary-bg: rgba(46, 133, 85, 0.12);
   --hl-primary-outline: 1px solid var(--ifm-color-primary);
+  --select-background-color: var(--ifm-color-emphasis-200);
+  --select-outline-color: var(--ifm-color-emphasis-400);
 }
 
 html[data-highlight-level="warning"] {
@@ -88,6 +90,8 @@ html[data-highlight-level="off"] {
   --hl-danger-bg: rgba(250, 56, 56, 0.15);
   --hl-primary-bg: rgba(37, 194, 160, 0.15);
   --ifm-color-success-contrast-background: rgba(0, 200, 80, 0.18);
+  --select-background-color: #6a6a6a;
+  --select-outline-color: #909090;
 }
 
 /* Search bar — move before the toggle group in the right navbar */
