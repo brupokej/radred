@@ -129,6 +129,7 @@ export const route16BikerLaoBattle: Moment = {
               [
                 { player: "{p:Gyarados} switch to {p:Excadrill}" },
                 { opponent: "{o:Dugtrio-A} Stone Edge {p:Excadrill} to {+:192}" },
+                { opponent: "{o:Dugtrio-A} Life Orb to {-:142}" },
               ],
               [
                 { player: "{p:Excadrill} Earthquake {o:Dugtrio-A} to {=:0}" },
@@ -407,22 +408,12 @@ export const route16BikerRubenBattle: Moment = {
 const _box8 = getBox({
   box: _box7,
   update: {
-    Perrserker: {
-      hp: "Fire",
-      ivs: undefined,
-    },
-    Azumarill: {
-      ivs: undefined,
+    Swampert: {
+      name: "Swampert-Mega",
+      ability: "Swift Swim",
     },
   },
 });
-
-export const route16BikerRubenBoxChange: Moment = {
-  split: "Koga",
-  label: "Route 16 Biker Ruben Box Change",
-  kind: "boxChange",
-  data: { playerBox: _box8 },
-};
 
 const _box9 = getBox({
   box: _box8,
@@ -431,19 +422,19 @@ const _box9 = getBox({
       nature: "Adamant",
       ability: "Protean",
       item: "Miracle Seed",
-      moves: ["Flower Trick", "Knock Off", "Play Rough", "Shadow Claw"],
+      moves: ["Acrobatics", "Flower Trick", "Play Rough", "Shadow Claw"],
     },
-    Perrserker: {
-      nature: "Relaxed",
-      ability: "Battle Armor",
-      item: "Sitrus Berry",
-      moves: ["HP Fire", "Play Rough", "Shadow Claw", "U-Turn"],
+    Golisopod: {
+      nature: "Impish",
+      ability: "Emergency Exit",
+      item: "Focus Sash",
+      moves: ["Drill Run", "Liquidation", "Poison Jab", "Rock Tomb"],
     },
-    Azumarill: {
+    "Swampert-Mega": {
       nature: "Adamant",
-      ability: "Huge Power",
-      item: "Pixie Plate",
-      moves: ["Aqua Jet", "Aqua Tail", "Knock Off", "Play Rough"],
+      ability: "Swift Swim",
+      item: "Swampertite",
+      moves: ["Earthquake", "Flip Turn", "Ice Punch", "Rock Slide"],
     },
     Drednaw: {
       nature: "Impish",
@@ -455,16 +446,16 @@ const _box9 = getBox({
       nature: "Adamant",
       ability: "Clear Body",
       item: "Expert Belt",
-      moves: ["Astonish", "Dragon Darts", "Flamethrower", "Quick Attack"],
+      moves: ["Acrobatics", "Dragon Darts", "Flamethrower", "Quick Attack"],
     },
     Incineroar: {
       nature: "Impish",
       ability: "Blaze",
-      item: undefined,
+      item: "Black Glasses",
       moves: ["Fake Out", "Darkest Lariat", "Outrage", "U-Turn"],
     },
   },
-  team: ["Meowscarada", "Perrserker", "Azumarill", "Drednaw", "Dragapult", "Incineroar"],
+  team: ["Meowscarada", "Golisopod", "Swampert-Mega", "Drednaw", "Dragapult", "Incineroar"],
 });
 
 export const route16CueBallCamronBattle: Moment = {
@@ -491,25 +482,16 @@ export const route16CueBallCamronBattle: Moment = {
             matchup: ["Aerodactyl"],
             turns: [
               [
-                { player: "{p:Meowscarada} switch to {p:Perrserker}" },
-                { opponent: "{o:Aerodactyl} Brave Bird {p:Perrserker} to {+:174}" },
-                { opponent: "{o:Aerodactyl} recoil to {-:189}" },
+                { player: "{p:Meowscarada} switch to {p:Golisopod}" },
+                { opponent: "{o:Aerodactyl} Brave Bird {p:Golisopod} to {+:1}" },
+                { player: "{p:Golisopod} Emergency Exit to {p:Swampert-Mega}" },
               ],
               [
-                { opponent: "{o:Aerodactyl} Earthquake {p:Perrserker} to {+:68}" },
-                { opponent: "{p:Perrserker} Sitrus Berry to {+:123}" },
-                { player: "{p:Perrserker} Shadow Claw {o:Aerodactyl} to {-:126}" },
-              ],
-              [
-                { opponent: "{o:Aerodactyl} Earthquake {p:Perrserker} to {+:17}" },
-                { player: "{p:Perrserker} U-Turn {o:Aerodactyl} to {-:98}" },
-                { player: "{p:Perrserker} switch to {p:Azumarill}" },
-                { opponent: "{p:Azumarill} sandstorm to {+:221}" },
-              ],
-              [
-                { player: "{p:Azumarill} Aqua Jet {o:Aerodactyl} to {=:0}" },
+                { player: "{p:Swampert-Mega} mega evolve" },
+                { opponent: "{o:Aerodactyl} Brave Bird {p:Swampert-Mega} to {+:91}" },
+                { player: "{p:Swampert-Mega} Flip Turn {o:Aerodactyl} to {=:0}" },
                 { opponent: "{o:Aerodactyl} fainted" },
-                { opponent: "{p:Azumarill} sandstorm to {+:207}" },
+                { player: "{p:Swampert-Mega} switch to {p:Drednaw}" },
               ],
             ],
           },
@@ -517,12 +499,8 @@ export const route16CueBallCamronBattle: Moment = {
             matchup: ["Scizor-Mega"],
             turns: [
               [
-                { player: "{p:Azumarill} switch to {p:Drednaw}" },
-                { opponent: "{o:Scizor-Mega} mega evolve" },
-                { opponent: "{o:Scizor-Mega} Knock Off {p:Drednaw} to {+:164}" },
-              ],
-              [
                 { player: "{p:Drednaw} switch to {p:Dragapult}" },
+                { opponent: "{o:Scizor-Mega} mega evolve" },
                 { opponent: "{o:Scizor-Mega} Rock Smash {p:Dragapult}" },
                 { opponent: "{p:Dragapult} sandstorm to {+:205}" },
               ],
@@ -537,12 +515,19 @@ export const route16CueBallCamronBattle: Moment = {
             matchup: ["Cacturne"],
             turns: [
               [
-                { player: "{p:Dragapult} switch to {p:Incineroar}" },
-                { opponent: "{o:Cacturne} Knock Off {p:Incineroar} to {+:166}" },
-                { opponent: "{p:Incineroar} sandstorm to {+:152}" },
+                { player: "{p:Dragapult} switch to {p:Drednaw}" },
+                { opponent: "{o:Cacturne} Knock Off {p:Drednaw} to {+:138}" },
+                { opponent: "{o:Cacturne} Life Orb to {-:188}" },
               ],
               [
-                { opponent: "{o:Cacturne} Needle Arm {p:Incineroar} to {+:62}" },
+                { player: "{p:Drednaw} switch to {p:Incineroar}" },
+                { opponent: "{o:Cacturne} Needle Arm {p:Incineroar} to {+:138}" },
+                { opponent: "{o:Cacturne} Life Orb to {-:170}" },
+                { opponent: "{p:Incineroar} sandstorm to {+:124}" },
+              ],
+              [
+                { opponent: "{o:Cacturne} Knock Off {p:Incineroar} to {+:33}" },
+                { opponent: "{o:Cacturne} Life Orb to {-:152}" },
                 { player: "{p:Incineroar} U-Turn {o:Cacturne} to {=:0}" },
                 { opponent: "{o:Cacturne} fainted" },
                 { player: "{p:Incineroar} switch to {p:Meowscarada}" },
@@ -570,7 +555,7 @@ export const route16CueBallCamronBattle: Moment = {
             ],
           },
         ],
-        frags: { Meowscarada: 2, Azumarill: 1, Dragapult: 1, Incineroar: 1 },
+        frags: { Meowscarada: 2, "Swampert-Mega": 1, Dragapult: 1, Incineroar: 1 },
       },
     ],
   },
@@ -578,23 +563,6 @@ export const route16CueBallCamronBattle: Moment = {
 
 const _box10 = getBox({
   box: _box9,
-  remove: ["Azumarill"],
-  update: {
-    Perrserker: {
-      hp: "Dark",
-    },
-  },
-});
-
-export const route16CueBallCamronBoxChange: Moment = {
-  split: "Koga",
-  label: "Route 16 Cue Ball Camron Box Change",
-  kind: "boxChange",
-  data: { playerBox: _box10 },
-};
-
-const _box11 = getBox({
-  box: _box10,
   update: {
     Meowscarada: {
       nature: "Jolly",
@@ -641,7 +609,7 @@ export const route16RiderHideoBattle: Moment = {
   label: "Route 16 Rider Hideo Battle",
   kind: "battle",
   data: {
-    playerBox: _box11,
+    playerBox: _box10,
     opponentBox: route16RiderHideoBox,
     lines: [
       {
@@ -839,8 +807,8 @@ export const route16RiderHideoBattle: Moment = {
   },
 };
 
-const _box12 = getBox({
-  box: _box11,
+const _box11 = getBox({
+  box: _box10,
   update: {
     Excadrill: {
       nature: "Adamant",
@@ -875,7 +843,7 @@ export const route18BikerWilliamBattle: Moment = {
   label: "Route 18 Biker William Battle",
   kind: "battle",
   data: {
-    playerBox: _box12,
+    playerBox: _box11,
     opponentBox: route18BikerWilliamBox,
     lines: [
       {
@@ -954,8 +922,8 @@ export const route18BikerWilliamBattle: Moment = {
   },
 };
 
-const _box13 = getBox({
-  box: _box12,
+const _box12 = getBox({
+  box: _box11,
   update: {
     Drednaw: {
       ivs: { hp: 0, spd: 0 },
@@ -970,21 +938,11 @@ export const route18BikerWilliamBoxChange: Moment = {
   split: "Koga",
   label: "Route 18 Biker William Box Change",
   kind: "boxChange",
-  data: { playerBox: _box13 },
+  data: { playerBox: _box12 },
 };
 
-const _box14 = getBox({
-  box: _box13,
-  update: {
-    Swampert: {
-      name: "Swampert-Mega",
-      ability: "Swift Swim",
-    },
-  },
-});
-
-const _box15 = getBox({
-  box: _box14,
+const _box13 = getBox({
+  box: _box12,
   update: {
     Lanturn: {
       nature: "Quiet",
@@ -1031,7 +989,7 @@ export const route18BirdKeeperJacobBattle: Moment = {
   label: "Route 18 Bird Keeper Jacob Battle",
   kind: "battle",
   data: {
-    playerBox: _box15,
+    playerBox: _box13,
     opponentBox: route18BirdKeeperJacobBox,
     lines: [
       {
@@ -1376,8 +1334,8 @@ export const route18BirdKeeperJacobBattle: Moment = {
   },
 };
 
-const _box16 = getBox({
-  box: _box15,
+const _box14 = getBox({
+  box: _box13,
   update: {
     Dragapult: {
       nature: "Jolly",
@@ -1406,7 +1364,7 @@ export const route18AceTrainerWiltonBattle: Moment = {
   label: "Route 18 Ace Trainer Wilton Battle",
   kind: "battle",
   data: {
-    playerBox: _box16,
+    playerBox: _box14,
     opponentBox: route18AceTrainerWiltonBox,
     lines: [
       {
@@ -1483,8 +1441,8 @@ export const route18AceTrainerWiltonBattle: Moment = {
   },
 };
 
-const _box17 = getBox({
-  box: _box16,
+const _box15 = getBox({
+  box: _box14,
   update: {
     Meowscarada: {
       nature: "Adamant",
@@ -1526,7 +1484,7 @@ export const fuschiaCityBrendanBattle: Moment = {
   label: "Fuschia City Brendan Battle",
   kind: "battle",
   data: {
-    playerBox: _box17,
+    playerBox: _box15,
     opponentBox: fuschiaCityBrendanBox,
     lines: [
       {
@@ -1642,8 +1600,8 @@ const _screamTail = {
   moves: ["Body Slam", "Hyper Voice", "Play Rough", "Rest"],
 };
 
-export const box18 = getBox({
-  box: _box17,
+export const box16 = getBox({
+  box: _box15,
   add: [_screamTail],
   update: {
     Incineroar: {
@@ -1666,7 +1624,7 @@ export const safariZoneEncounter: Moment = {
   split: "Koga",
   label: "Safari Zone Encounter",
   kind: "encounter",
-  data: { pokemon: _screamTail, playerBox: box18, showPlayerTeam: true },
+  data: { pokemon: _screamTail, playerBox: box16, showPlayerTeam: true },
 };
 
 export const {
@@ -1682,7 +1640,7 @@ export const {
   fuschiaCityLeaderKogaBattle,
   fuschiaCityLeaderKogaBoxChange,
   box,
-} = getKogaSecrets(box18);
+} = getKogaSecrets(box16);
 
 export const moments: Moment[] = [
   celadonCityEncounter,
@@ -1691,9 +1649,7 @@ export const moments: Moment[] = [
   route16CueBallKojiBattle,
   route16CueBallLukeBattle,
   route16BikerRubenBattle,
-  route16BikerRubenBoxChange,
   route16CueBallCamronBattle,
-  route16CueBallCamronBoxChange,
   route16RiderHideoBattle,
   route18BikerWilliamBattle,
   route18BikerWilliamBoxChange,

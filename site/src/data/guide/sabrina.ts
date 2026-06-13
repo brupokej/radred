@@ -3130,11 +3130,9 @@ export const saffronCityLeaderSabrinaBattle: Moment = {
 
 const _box26 = getBox({
   box: _box25,
+  remove: ["Azumarill"],
   update: {
     Perrserker: {
-      ivs: { spe: 31 },
-    },
-    Azumarill: {
       ivs: { spe: 31 },
     },
     Lanturn: {
