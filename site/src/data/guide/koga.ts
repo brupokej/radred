@@ -1288,7 +1288,7 @@ export const box15 = getBox({
     Excadrill: {
       nature: "Jolly",
       ability: "Mold Breaker",
-      item: "Metal Coat",
+      item: "Expert Belt",
       moves: ["Brick Break", "Drill Run", "Iron Head", "Shadow Claw"],
     },
   },

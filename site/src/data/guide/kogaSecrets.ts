@@ -44,7 +44,7 @@ export function getKogaSecrets(_box1: Box) {
   const _box2 = getBox({
     box: _box1,
     add: [_secret],
-    team: ["Secret", "Secret", "Secret", "Secret", "Secret"],
+    team: ["Secret", "Secret", "Secret", "Secret", "Secret", "Secret"],
   });
 
   const pewterCityLeaderBrockRematchBattle: Moment = {
@@ -62,9 +62,11 @@ export function getKogaSecrets(_box1: Box) {
               matchup: ["Iron Boulder"],
               turns: [
                 [
+                  { player: "{p:Secret} mega evolve" },
+                  { opponent: "{o:Iron Boulder} Stealth Rock" },
+                  { player: "{p:Secret} Flip Turn {o:Iron Boulder} to {-:220}" },
                   { player: "{p:Secret} switch to {p:Secret}" },
-                  { opponent: "{o:Iron Boulder} Close Combat {p:Secret} to {+:7}" },
-                  { opponent: "{p:Secret} sandstorm to {+:1}" },
+                  { opponent: "{p:Secret} Stealth Rock to {=:87}" },
                 ],
               ],
             },
@@ -107,13 +109,18 @@ export function getKogaSecrets(_box1: Box) {
     },
   };
 
+  const _box4 = getBox({
+    box: _box3,
+    team: ["Secret", "Secret", "Secret", "Secret", "Secret"],
+  });
+
   const vermillionCityLeaderLtSurgeRematchBattle: Moment = {
     split: "Koga",
     label: "Vermillion City Leader Lt. Surge Rematch Battle",
     kind: "battle",
     secret: true,
     data: {
-      playerBox: _box3,
+      playerBox: _box4,
       opponentBox: vermillionCityLeaderLtSurgeRematchBox,
       lines: [
         {
@@ -133,8 +140,8 @@ export function getKogaSecrets(_box1: Box) {
     },
   };
 
-  const _box4 = getBox({
-    box: _box3,
+  const _box5 = getBox({
+    box: _box4,
     team: ["Secret", "Secret", "Secret", "Secret"],
   });
 
@@ -144,7 +151,7 @@ export function getKogaSecrets(_box1: Box) {
     kind: "battle",
     secret: true,
     data: {
-      playerBox: _box4,
+      playerBox: _box5,
       opponentBox: fuschiaCityGymJugglerKaydenBox,
       lines: [
         {
@@ -176,7 +183,7 @@ export function getKogaSecrets(_box1: Box) {
     kind: "battle",
     secret: true,
     data: {
-      playerBox: _box4,
+      playerBox: _box5,
       opponentBox: fuschiaCityLeaderKogaBox,
       lines: [
         {

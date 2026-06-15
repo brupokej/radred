@@ -119,7 +119,7 @@ export function simulate(config: SimConfig): void {
       for (const sec of secBranches) {
         for (const atk of atkBranches) {
           const totalDmg = ongoing + sec.extraDmg + atk.dmg;
-          const newHP = hp - totalDmg;
+          const newHP = Math.max(0, hp - totalDmg);
           addProb(next, stateKey(newHP, sec.newTriggered), prob * sec.p * atk.p);
         }
       }
@@ -155,18 +155,18 @@ export function simulate(config: SimConfig): void {
     console.log(`${"=".repeat(44)}`);
 
     // HP distribution (normalized to "given prior turns succeeded")
-    // const sorted = [...hpDist.entries()].sort((a, b) => b[0] - a[0]);
-    // const colWidth = Math.max(...sorted.map(([hp]) => String(hp).length));
-    // console.log("HP distribution (conditional on prior turns succeeding):");
-    // for (const [hp, jointProb] of sorted) {
-    //   const condProb = prevTotal > 0 ? jointProb / prevTotal : 0;
-    //   const inRange = target ? hp >= target.minHP && hp <= target.maxHP : true;
-    //   const bar = "█".repeat(Math.round(condProb * 200));
-    //   const mark = inRange && target ? " ✓" : "  ";
-    //   console.log(
-    //     `  ${String(hp).padStart(colWidth)} HP: ${(condProb * 100).toFixed(2).padStart(6)}% ${bar}${mark}`
-    //   );
-    // }
+    const sorted = [...hpDist.entries()].sort((a, b) => b[0] - a[0]);
+    const colWidth = Math.max(...sorted.map(([hp]) => String(hp).length));
+    console.log("HP distribution (conditional on prior turns succeeding):");
+    for (const [hp, jointProb] of sorted) {
+      const condProb = prevTotal > 0 ? jointProb / prevTotal : 0;
+      const inRange = target ? hp >= target.minHP && hp <= target.maxHP : true;
+      const bar = "█".repeat(Math.round(condProb * 200));
+      const mark = inRange && target ? " ✓" : "  ";
+      console.log(
+        `  ${String(hp).padStart(colWidth)} HP: ${(condProb * 100).toFixed(2).padStart(6)}% ${bar}${mark}`
+      );
+    }
 
     if (target !== null) {
       const condProb = prevTotal > 0 ? inRangeProb / prevTotal : 0;
@@ -192,25 +192,23 @@ export function simulate(config: SimConfig): void {
 // Turn 2: same attack + 30% secondary (6 dmg/turn), target remaining HP [70, 85]
 
 const config: SimConfig = {
-  startingHP: 113,
+  startingHP: 207,
   turns: [
     {
-      regular: [7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 8],
-      critical: [10, 10, 10, 11, 11, 11, 11, 11, 11, 11, 11, 12, 12, 12, 12, 12],
+      regular: [24, 24, 24, 25, 25, 25, 25, 26, 26, 26, 27, 27, 27, 27, 28, 28],
+      critical: [36, 36, 36, 37, 37, 38, 38, 39, 39, 39, 40, 40, 41, 41, 42, 42],
     },
     {
-      regular: [7, 7, 7, 7, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 9],
-      critical: [11, 11, 11, 11, 12, 12, 12, 12, 12, 12, 12, 12, 13, 13, 13, 13],
-      // secondary: { chance: 0.30, damagePerTurn: 6 },
-    },
-    {
-      regular: [50, 50, 52, 52, 52, 54, 54, 54, 54, 56, 56, 56, 58, 58, 58, 60],
-      critical: [76, 76, 78, 78, 80, 80, 80, 82, 82, 84, 84, 86, 86, 88, 88, 90],
+      regular: [162, 164, 164, 168, 168, 170, 174, 174, 176, 180, 180, 182, 186, 186, 188, 192].map(
+        (x) => Math.floor((x * 2) / 3)
+      ),
+      critical: [
+        242, 246, 248, 252, 254, 258, 260, 264, 266, 270, 272, 276, 278, 282, 284, 288,
+      ].map((x) => Math.floor((x * 2) / 3)),
     },
   ],
   targets: [
-    { minHP: 0, maxHP: 113 },
-    { minHP: 0, maxHP: 113 },
+    { minHP: 0, maxHP: 207 },
     { minHP: 0, maxHP: 0 },
   ],
 };
