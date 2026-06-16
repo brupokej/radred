@@ -2712,7 +2712,6 @@ const _box23 = getBox({
       ability: "Emergency Exit",
       item: "Silver Powder",
       moves: ["First Impress.", "Pounce", "Rock Tomb", "Sucker Punch"],
-      ivs: undefined,
     },
     Meowscarada: {
       nature: "Brave",

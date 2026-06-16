@@ -2,6 +2,7 @@ import { resolveActiveBox } from "@site/src/components/Battle";
 import Card from "@site/src/components/Card";
 import { PokemonEntry } from "@site/src/components/PokemonEntry";
 import { Row } from "@site/src/components/Row";
+import { getSwitchBattleCaseData } from "@site/src/components/SwitchBattle";
 import { isExtraEntry, resolveBox, teamEntryName } from "@site/src/utils/box";
 import { Moment } from "@site/src/utils/moments";
 import { resolvePokemon } from "@site/src/utils/pokemon";
@@ -28,6 +29,10 @@ export default function BoxRoster({
     const m = sliced[i];
     if (m.kind === "battle") {
       resolvedActive = resolveBox(resolveActiveBox(m.data));
+      break;
+    }
+    if (m.kind === "switchBattle") {
+      resolvedActive = resolveBox(resolveActiveBox(getSwitchBattleCaseData(m.data)));
       break;
     }
     if (m.kind === "encounter") {
