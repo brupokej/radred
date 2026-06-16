@@ -12,7 +12,6 @@ export declare function getBlaineSecrets(_box1: Box): {
   cinnabarIslandMayBattle: Moment;
   cinnabarIslandMayBoxChange: Moment;
   pokemonMansionBurglarLewisBattle: Moment;
-  pokemonMansionBurglarLewisBoxChange: Moment;
   cinnabarGymAceTrainerDerekBattle: Moment;
   cinnabarGymAceTrainerLucyBattle: Moment;
   cinnabarGymAceTrainerZacBattle: Moment;

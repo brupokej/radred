@@ -244,15 +244,9 @@ export function getBlaineSecrets(_box1: Box) {
     cap: 76,
   });
 
-  const pokemonMansionBurglarLewisBoxChange: Moment = {
-    split: "Blaine",
-    label: "Pokémon Mansion Burglar Lewis Box Change",
-    kind: "boxChange",
-  };
-
   const _box9 = getBox({
     box: _box8,
-    team: ["Secret", "Secret", "Secret", "Secret", "Secret"],
+    team: ["Secret", "Secret", "Secret"],
   });
 
   const cinnabarGymAceTrainerDerekBattle: Moment = {
@@ -397,7 +391,6 @@ export function getBlaineSecrets(_box1: Box) {
     cinnabarIslandMayBattle,
     cinnabarIslandMayBoxChange,
     pokemonMansionBurglarLewisBattle,
-    pokemonMansionBurglarLewisBoxChange,
     cinnabarGymAceTrainerDerekBattle,
     cinnabarGymAceTrainerLucyBattle,
     cinnabarGymAceTrainerZacBattle,
