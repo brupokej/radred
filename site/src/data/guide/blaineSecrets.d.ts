@@ -8,9 +8,7 @@ export declare function getBlaineSecrets(_box1: Box): {
   powerPlantBoxChange: Moment;
   lavenderTownLeaderMortyBattle: Moment;
   seafoamIslandsLeaderPryceBattle: Moment;
-  seafoamIslandsLeaderPryceBoxChange: Moment;
   cinnabarLabLeaderJasmineBattle: Moment;
-  cinnabarLabLeaderJasmineBoxChange: Moment;
   cinnabarIslandMayBattle: Moment;
   cinnabarIslandMayBoxChange: Moment;
   pokemonMansionBurglarLewisBattle: Moment;

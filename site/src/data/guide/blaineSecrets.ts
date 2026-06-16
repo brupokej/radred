@@ -138,11 +138,10 @@ export function getBlaineSecrets(_box1: Box) {
     },
   };
 
-  const seafoamIslandsLeaderPryceBoxChange: Moment = {
-    split: "Blaine",
-    label: "Seafoam Islands Leader Pryce Box Change",
-    kind: "boxChange",
-  };
+  const _box5 = getBox({
+    box: _box4,
+    team: ["Secret", "Secret", "Secret", "Secret", "Secret"],
+  });
 
   const cinnabarLabLeaderJasmineBattle: Moment = {
     split: "Blaine",
@@ -150,7 +149,7 @@ export function getBlaineSecrets(_box1: Box) {
     kind: "battle",
     secret: true,
     data: {
-      playerBox: _box4,
+      playerBox: _box5,
       opponentBox: cinnabarLabLeaderJasmineBox,
       lines: [
         {
@@ -170,14 +169,8 @@ export function getBlaineSecrets(_box1: Box) {
     },
   };
 
-  const cinnabarLabLeaderJasmineBoxChange: Moment = {
-    split: "Blaine",
-    label: "Cinnabar Lab Leader Jasmine Box Change",
-    kind: "boxChange",
-  };
-
-  const _box5 = getBox({
-    box: _box4,
+  const _box6 = getBox({
+    box: _box5,
     team: ["Secret", "Secret", "Secret", "Secret"],
   });
 
@@ -187,7 +180,7 @@ export function getBlaineSecrets(_box1: Box) {
     kind: "battle",
     secret: true,
     data: {
-      playerBox: _box5,
+      playerBox: _box6,
       opponentBox: cinnabarIslandMayBox,
       lines: [
         {
@@ -213,8 +206,8 @@ export function getBlaineSecrets(_box1: Box) {
     kind: "boxChange",
   };
 
-  const _box6 = getBox({
-    box: _box5,
+  const _box7 = getBox({
+    box: _box6,
     team: ["Secret", "Secret", "Secret", "Secret", "Secret", "Secret"],
   });
 
@@ -224,7 +217,7 @@ export function getBlaineSecrets(_box1: Box) {
     kind: "battle",
     secret: true,
     data: {
-      playerBox: _box6,
+      playerBox: _box7,
       opponentBox: pokemonMansionBurglarLewisBox,
       lines: [
         {
@@ -246,8 +239,8 @@ export function getBlaineSecrets(_box1: Box) {
     },
   };
 
-  const _box7 = getBox({
-    box: _box6,
+  const _box8 = getBox({
+    box: _box7,
     cap: 76,
   });
 
@@ -257,8 +250,8 @@ export function getBlaineSecrets(_box1: Box) {
     kind: "boxChange",
   };
 
-  const _box8 = getBox({
-    box: _box7,
+  const _box9 = getBox({
+    box: _box8,
     team: ["Secret", "Secret", "Secret", "Secret", "Secret"],
   });
 
@@ -268,7 +261,7 @@ export function getBlaineSecrets(_box1: Box) {
     kind: "battle",
     secret: true,
     data: {
-      playerBox: _box8,
+      playerBox: _box9,
       opponentBox: cinnabarGymAceTrainerDerekBox,
       lines: [
         {
@@ -288,8 +281,8 @@ export function getBlaineSecrets(_box1: Box) {
     },
   };
 
-  const _box9 = getBox({
-    box: _box8,
+  const _box10 = getBox({
+    box: _box9,
     team: ["Secret", "Secret"],
   });
 
@@ -299,7 +292,7 @@ export function getBlaineSecrets(_box1: Box) {
     kind: "battle",
     secret: true,
     data: {
-      playerBox: _box9,
+      playerBox: _box10,
       opponentBox: cinnabarGymAceTrainerLucyBox,
       lines: [
         {
@@ -320,8 +313,8 @@ export function getBlaineSecrets(_box1: Box) {
     },
   };
 
-  const _box10 = getBox({
-    box: _box9,
+  const _box11 = getBox({
+    box: _box10,
     team: ["Secret", "Secret", "Secret", "Secret"],
   });
 
@@ -331,7 +324,7 @@ export function getBlaineSecrets(_box1: Box) {
     kind: "battle",
     secret: true,
     data: {
-      playerBox: _box10,
+      playerBox: _box11,
       opponentBox: cinnabarGymAceTrainerZacBox,
       lines: [
         {
@@ -355,8 +348,8 @@ export function getBlaineSecrets(_box1: Box) {
     },
   };
 
-  const _box11 = getBox({
-    box: _box10,
+  const _box12 = getBox({
+    box: _box11,
     team: ["Secret", "Secret", "Secret", "Secret", "Secret", "Secret"],
   });
 
@@ -366,7 +359,7 @@ export function getBlaineSecrets(_box1: Box) {
     kind: "battle",
     secret: true,
     data: {
-      playerBox: _box11,
+      playerBox: _box12,
       opponentBox: cinnabarGymLeaderBlaineBox,
       lines: [
         {
@@ -400,9 +393,7 @@ export function getBlaineSecrets(_box1: Box) {
     powerPlantBoxChange,
     lavenderTownLeaderMortyBattle,
     seafoamIslandsLeaderPryceBattle,
-    seafoamIslandsLeaderPryceBoxChange,
     cinnabarLabLeaderJasmineBattle,
-    cinnabarLabLeaderJasmineBoxChange,
     cinnabarIslandMayBattle,
     cinnabarIslandMayBoxChange,
     pokemonMansionBurglarLewisBattle,
@@ -412,6 +403,6 @@ export function getBlaineSecrets(_box1: Box) {
     cinnabarGymAceTrainerZacBattle,
     cinnabarGymLeaderBlaineBattle,
     cinnabarGymLeaderBlaineBoxChange,
-    box: _box11,
+    box: _box12,
   };
 }

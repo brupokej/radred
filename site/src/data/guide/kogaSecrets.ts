@@ -140,6 +140,12 @@ export function getKogaSecrets(_box1: Box) {
     },
   };
 
+  const vermillionCityLeaderLtSurgeRematchBoxChange: Moment = {
+    split: "Koga",
+    label: "Vermillion City Leader Lt. Surge Rematch Box Change",
+    kind: "boxChange",
+  };
+
   const _box5 = getBox({
     box: _box4,
     team: ["Secret", "Secret", "Secret", "Secret"],
@@ -217,6 +223,7 @@ export function getKogaSecrets(_box1: Box) {
     pewterCityLeaderBrockRematchBattle,
     ceruleanCityLeaderMistyRematchBattle,
     vermillionCityLeaderLtSurgeRematchBattle,
+    vermillionCityLeaderLtSurgeRematchBoxChange,
     fuschiaCityGymJugglerKaydenBattle,
     fuschiaCityGymJugglerKaydenBoxChange,
     fuschiaCityLeaderKogaBattle,
