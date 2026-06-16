@@ -12,6 +12,5 @@ export declare function getKogaSecrets(_box1: Box): {
   fuschiaCityGymJugglerKaydenBattle: Moment;
   fuschiaCityGymJugglerKaydenBoxChange: Moment;
   fuschiaCityLeaderKogaBattle: Moment;
-  fuschiaCityLeaderKogaBoxChange: Moment;
   box: Box;
 };

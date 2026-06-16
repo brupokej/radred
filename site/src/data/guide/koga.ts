@@ -1313,7 +1313,6 @@ export const {
   fuschiaCityGymJugglerKaydenBattle,
   fuschiaCityGymJugglerKaydenBoxChange,
   fuschiaCityLeaderKogaBattle,
-  fuschiaCityLeaderKogaBoxChange,
   box,
 } = getKogaSecrets(box15);
 
@@ -1341,5 +1340,4 @@ export const moments: Moment[] = [
   fuschiaCityGymJugglerKaydenBattle,
   fuschiaCityGymJugglerKaydenBoxChange,
   fuschiaCityLeaderKogaBattle,
-  fuschiaCityLeaderKogaBoxChange,
 ];

@@ -177,13 +177,18 @@ export function getKogaSecrets(_box1: Box) {
     kind: "boxChange",
   };
 
+  const _box6 = getBox({
+    box: _box5,
+    team: ["Secret", "Secret", "Secret", "Secret", "Secret"],
+  });
+
   const fuschiaCityLeaderKogaBattle: Moment = {
     split: "Koga",
     label: "Fuschia City Leader Koga Battle",
     kind: "battle",
     secret: true,
     data: {
-      playerBox: _box5,
+      playerBox: _box6,
       opponentBox: fuschiaCityLeaderKogaBox,
       lines: [
         {
@@ -204,12 +209,6 @@ export function getKogaSecrets(_box1: Box) {
     },
   };
 
-  const fuschiaCityLeaderKogaBoxChange: Moment = {
-    split: "Koga",
-    label: "Fuschia City Leader Koga Box Change",
-    kind: "boxChange",
-  };
-
   return {
     starterEgg3Encounter,
     starterEgg4Encounter,
@@ -221,7 +220,6 @@ export function getKogaSecrets(_box1: Box) {
     fuschiaCityGymJugglerKaydenBattle,
     fuschiaCityGymJugglerKaydenBoxChange,
     fuschiaCityLeaderKogaBattle,
-    fuschiaCityLeaderKogaBoxChange,
-    box: _box4,
+    box: _box6,
   };
 }
