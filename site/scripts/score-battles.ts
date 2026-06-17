@@ -167,7 +167,6 @@ const RESOURCE_FIELDS: (keyof PokemonData)[] = [
   "level",
   "nature",
   "ability",
-  "nonMegaAbility",
   "item",
   "ivs",
   "evs",

@@ -3,6 +3,7 @@ import { Row } from "@site/src/components/Row";
 import { secretMode } from "@site/src/data/secretMode";
 import { Box } from "@site/src/utils/box";
 import {
+  getAbilityChanges,
   getChanges,
   getHpChanges,
   getIVChanges,
@@ -53,7 +54,12 @@ export default function BoxChange({ data, secret }: { data?: BoxChangeData; secr
     hpRows.push(<Row key={key++} row={[`${name} → `, { warning: `Set to HP ${hp}` }]} />);
   }
 
-  const rows = [...removalRows, ...capRows, ...updateRows, ...hpRows, ...ivRows];
+  const abilityRows: React.ReactNode[] = [];
+  for (const { name, ability } of getAbilityChanges(box)) {
+    abilityRows.push(<Row key={key++} row={[`${name} →`, { warning: `Set to ${ability} ability` }]} />);
+  }
+
+  const rows = [...removalRows, ...capRows, ...updateRows, ...hpRows, ...ivRows, ...abilityRows];
   if (rows.length === 0) return null;
 
   const card = <Card title="Box Change">{rows}</Card>;

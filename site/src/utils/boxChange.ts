@@ -72,6 +72,16 @@ export function getHpChanges(box: Box): { name: string; hp: string }[] {
   return result;
 }
 
+export function getAbilityChanges(box: Box): { name: string; ability: string }[] {
+  const result: { name: string; ability: string }[] = [];
+  for (const step of box.updates ?? []) {
+    for (const partial of step.pokemon ?? []) {
+      if (partial.ability) result.push({ name: partial.name, ability: partial.ability });
+    }
+  }
+  return result;
+}
+
 export function getIVChanges(box: Box): { name: string; ivs?: Partial<Stats> }[] {
   const result: { name: string; ivs?: Partial<Stats> }[] = [];
   for (const step of box.updates ?? []) {

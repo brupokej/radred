@@ -108,7 +108,6 @@ function TeamGrid({ team, hasHeader = false }: { team: Pokemon[]; hasHeader?: bo
   const emptySlots = Array.from({ length: emptiesToShow }, () => null);
   const showIVs = team.some((p) => resolvePokemon(p).ivs !== undefined);
   const showEVs = team.some((p) => resolvePokemon(p).evs !== undefined);
-  const showNonMegaAbility = team.some((p) => resolvePokemon(p).nonMegaAbility !== undefined);
 
   return (
     <div
@@ -129,7 +128,6 @@ function TeamGrid({ team, hasHeader = false }: { team: Pokemon[]; hasHeader?: bo
                 pokemon={pokemon}
                 showIVs={showIVs}
                 showEVs={showEVs}
-                showNonMegaAbility={showNonMegaAbility}
               />
             ))}
             {emptySlots.map((_, i) => (
@@ -138,7 +136,6 @@ function TeamGrid({ team, hasHeader = false }: { team: Pokemon[]; hasHeader?: bo
                 pokemon={null}
                 showIVs={showIVs}
                 showEVs={showEVs}
-                showNonMegaAbility={showNonMegaAbility}
               />
             ))}
           </div>
@@ -176,12 +173,10 @@ function PokemonCard({
   pokemon,
   showIVs,
   showEVs,
-  showNonMegaAbility,
 }: {
   pokemon: Pokemon | null;
   showIVs: boolean;
   showEVs: boolean;
-  showNonMegaAbility: boolean;
 }) {
   const isExpanded = useCardDetail();
   const { update, base } = pokemon ?? {};
@@ -236,13 +231,6 @@ function PokemonCard({
           <div className={`${styles.detail} ${wc("ability")}`}>
             {current == null ? "-" : <span>{current?.ability ?? "-"}</span>}
           </div>
-          {showNonMegaAbility && (
-            <div
-              className={`${styles.detail} ${current?.nonMegaAbility ? styles.fieldWarning : ""}`}
-            >
-              {current == null ? "-" : <span>{current?.nonMegaAbility ?? "-"}</span>}
-            </div>
-          )}
           <div className={`${styles.detail} ${wc("item")}`}>
             {current == null ? "-" : <span>{current.item ?? "None"}</span>}
           </div>

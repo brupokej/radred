@@ -2908,7 +2908,7 @@ export const saffronCityDumassKidBattle: Moment = {
 
 const _box24 = getBox({
   box: _box23,
-  remove: ["Cloyster"],
+  remove: ["Gyarados", "Cloyster"],
   update: {
     Perrserker: {
       ivs: { spe: 0 },
