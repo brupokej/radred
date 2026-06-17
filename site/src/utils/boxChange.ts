@@ -75,8 +75,12 @@ export function getHpChanges(box: Box): { name: string; hp: string }[] {
 export function getAbilityChanges(box: Box): { name: string; ability: string }[] {
   const result: { name: string; ability: string }[] = [];
   for (const step of box.updates ?? []) {
+    const renamedTo = new Set(Object.values(step.renames ?? {}));
     for (const partial of step.pokemon ?? []) {
-      if (partial.ability) result.push({ name: partial.name, ability: partial.ability });
+      if (!partial.ability) continue;
+      if (renamedTo.has(partial.name)) continue;
+      if (!findPokemon(box.base, partial.name)) continue;
+      result.push({ name: partial.name, ability: partial.ability });
     }
   }
   return result;
