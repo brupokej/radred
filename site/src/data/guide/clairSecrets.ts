@@ -41,7 +41,6 @@ export function getClairSecrets(_box1: Box) {
               turns: [
                 [
                   { player: "{p:Secret} Tackle {o:Glimmora} to {-:237}" },
-                  { opponent: "{p:Secret} Life Orb to {=:102}" },
                   { opponent: "{o:Glimmora} Stealth Rock" },
                 ],
               ],

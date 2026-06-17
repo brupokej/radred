@@ -3169,9 +3169,6 @@ const _box27 = getBox({
     Perrserker: {
       ivs: undefined,
     },
-    Azumarill: {
-      ivs: undefined,
-    },
     Lanturn: {
       ivs: undefined,
     },
