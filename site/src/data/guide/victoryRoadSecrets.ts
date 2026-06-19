@@ -48,7 +48,10 @@ export function getVictoryRoadSecrets(_box1: Box) {
     kind: "boxChange",
   };
 
-  const _box3 = getBox({ box: _box2 });
+  const _box3 = getBox({
+    box: _box2,
+    team: ["Secret", "Secret", "Secret", "Secret"],
+  });
 
   const route22RivalRematchBattle: Moment = {
     split: "Victory Road",
@@ -66,7 +69,6 @@ export function getVictoryRoadSecrets(_box1: Box) {
               turns: [
                 [
                   { player: "{p:Secret} Tackle {o:Zapdos} to {=:0}" },
-                  { opponent: "{p:Secret} Life Orb to {=:106}" },
                   { opponent: "{o:Zapdos} fainted" },
                 ],
               ],
