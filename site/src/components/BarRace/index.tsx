@@ -37,7 +37,7 @@ type FrameEntry = { name: string; spriteKey?: string };
 type Frame = {
   label: string;
   values: Record<string, number>; // canonicalName → count
-  active: string[]; // canonical names in box, stable boxOrder sort
+  active: string[]; // canonical names in box, stable addOrder sort
   display: Record<string, FrameEntry>; // canonicalName → current display name + spriteKey
 };
 
@@ -83,7 +83,7 @@ export default function BarRace({
     return getCanon(null);
   }, [moments]);
 
-  const boxOrderMap = useMemo(() => {
+  const addOrderMap = useMemo(() => {
     const map: Record<string, number> = {};
     const last = battleMoments[battleMoments.length - 1];
     if (!last) return map;
@@ -92,7 +92,7 @@ export default function BarRace({
     ).pokemon) {
       const p = resolvePokemon(pokemon);
       const key = canon(p.name);
-      if (p.boxOrder !== undefined) map[key] = p.boxOrder;
+      if (p.addOrder !== undefined) map[key] = p.addOrder;
     }
     return map;
   }, [battleMoments, canon]);
@@ -115,7 +115,7 @@ export default function BarRace({
         display[key] = { name: p.name, spriteKey: p.spriteKey };
       }
       const active = Object.keys(display).sort(
-        (a, b) => (boxOrderMap[a] ?? Infinity) - (boxOrderMap[b] ?? Infinity)
+        (a, b) => (addOrderMap[a] ?? Infinity) - (addOrderMap[b] ?? Infinity)
       );
       return { active, display };
     };
@@ -166,7 +166,7 @@ export default function BarRace({
     }
 
     return result;
-  }, [battleMoments, metric, canon, boxOrderMap]);
+  }, [battleMoments, metric, canon, addOrderMap]);
 
   const colorMap = useMemo(() => {
     const allNames = new Set<string>();
@@ -216,9 +216,9 @@ export default function BarRace({
       }))
       .sort((a, b) => {
         if (b.value !== a.value) return b.value - a.value;
-        return (boxOrderMap[a.canonName] ?? Infinity) - (boxOrderMap[b.canonName] ?? Infinity);
+        return (addOrderMap[a.canonName] ?? Infinity) - (addOrderMap[b.canonName] ?? Infinity);
       });
-  }, [frames, frameIdx, boxOrderMap]);
+  }, [frames, frameIdx, addOrderMap]);
 
   const { scaleStart, scaleEnd } = useMemo(() => {
     const N = frames.length - 1;

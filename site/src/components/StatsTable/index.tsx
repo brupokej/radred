@@ -1,7 +1,9 @@
 import Card from "@site/src/components/Card";
 import { ScrollArrows } from "@site/src/components/ScrollArrows";
 import { ScrollFade } from "@site/src/components/ScrollFade";
+import { resolveActiveBox } from "@site/src/components/Battle";
 import { getSwitchBattleCaseData } from "@site/src/components/SwitchBattle";
+import { resolveBox } from "@site/src/utils/box";
 import { Moment } from "@site/src/utils/moments";
 import { SpriteImg } from "@site/src/utils/SpriteImg";
 import {
@@ -155,7 +157,7 @@ export function StatsTable<TRow extends object>({
               {Array.from({ length: emptyCount }, (_, i) => (
                 <tr key={`empty-${i}`} className={styles.emptyRow}>
                   {Array.from({ length: colCount }, (__, j) => (
-                    <td key={j}>{i < emptyCount - 1 ? (j === 0 ? "✕" : "-") : null}</td>
+                    <td key={j}>{j === 0 ? "✕" : "-"}</td>
                   ))}
                 </tr>
               ))}
@@ -165,6 +167,16 @@ export function StatsTable<TRow extends object>({
       </div>
     </Card>
   );
+}
+
+function resolveBoxAtMoment(moments: Moment[], upToIdx: number) {
+  for (let i = upToIdx; i >= 0; i--) {
+    const m = moments[i];
+    if (m.kind === "battle") return resolveBox(resolveActiveBox(m.data));
+    if (m.kind === "switchBattle") return resolveBox(resolveActiveBox(getSwitchBattleCaseData(m.data)));
+    if (m.kind === "encounter") return resolveBox(m.data.playerBox);
+  }
+  return null;
 }
 
 // ---- PageStatsTable --------------------------------------------------------
@@ -231,6 +243,13 @@ export function PageStatsTable({
         setStats({});
         return;
       }
+
+      const resolvedBox = resolveBoxAtMoment(allMomentsFlat, rawEnd);
+      if (!resolvedBox) {
+        setStats({});
+        return;
+      }
+
       const filtered = allBattleMoments.filter(
         (m) => (flatIdxMap.get(m.label) ?? Infinity) <= rawEnd
       );
@@ -242,7 +261,7 @@ export function PageStatsTable({
           .map((m) => (m.kind === "battle" ? m.data : getSwitchBattleCaseData(m.data))),
       }));
 
-      setStats(computeFn(pageGroups));
+      setStats(computeFn(pageGroups, resolvedBox));
     };
     update();
     window.addEventListener(STORAGE_EVENT, update);
@@ -253,7 +272,7 @@ export function PageStatsTable({
     () =>
       Object.entries(stats)
         .map(([pokemon, s]) => ({ pokemon, ...s }))
-        .sort((a, b) => a.boxOrder - b.boxOrder),
+        .sort((a, b) => a.addOrder - b.addOrder),
     [stats]
   );
 
@@ -515,6 +534,11 @@ export function PercentsTable({ moments }: { moments: Moment[] }) {
         setStats({});
         return;
       }
+      const resolvedBox = resolveBoxAtMoment(moments, rawEnd);
+      if (!resolvedBox) {
+        setStats({});
+        return;
+      }
       const filtered = moments
         .slice(0, rawEnd + 1)
         .filter(
@@ -522,7 +546,7 @@ export function PercentsTable({ moments }: { moments: Moment[] }) {
             m.kind === "battle" || m.kind === "switchBattle"
         )
         .map((m) => (m.kind === "battle" ? m.data : getSwitchBattleCaseData(m.data)));
-      setStats(computeStats(filtered));
+      setStats(computeStats(filtered, resolvedBox));
     };
     update();
     window.addEventListener(STORAGE_EVENT, update);
@@ -533,7 +557,7 @@ export function PercentsTable({ moments }: { moments: Moment[] }) {
     () =>
       Object.entries(stats)
         .map(([pokemon, s]) => ({ pokemon, ...s }))
-        .sort((a, b) => a.boxOrder - b.boxOrder),
+        .sort((a, b) => a.addOrder - b.addOrder),
     [stats]
   );
 

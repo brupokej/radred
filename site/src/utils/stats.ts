@@ -1,5 +1,5 @@
 import { BattleData, resolveActiveBox } from "@site/src/components/Battle";
-import { getCanon, isExtraEntry, resolveBox, teamEntryName } from "@site/src/utils/box";
+import { BoxData, getCanon, isExtraEntry, resolveBox, teamEntryName } from "@site/src/utils/box";
 import { resolvePokemon } from "@site/src/utils/pokemon";
 import { slugify } from "@site/src/utils/slugify";
 import { getState } from "@site/src/utils/storage";
@@ -70,30 +70,30 @@ export function computeBattleFrags(battle: BattleData): Record<string, number> {
 export type PageStats = {
   total: number;
   byPage: Record<string, number>;
-  boxOrder: number;
+  addOrder: number;
   spriteKey?: string;
 };
 
-function resolvePageMeta(pages: { label: string; battles: BattleData[] }[]): {
+function resolvePageMeta(resolvedBox: BoxData): {
   canon: (name: string) => string;
   spriteKeyMap: Record<string, string>;
-  boxOrderMap: Record<string, number>;
+  addOrderMap: Record<string, number>;
+  allBoxKeys: string[];
 } {
-  const allBattles = pages.flatMap((p) => p.battles);
-  const lastBattle = allBattles[allBattles.length - 1];
-  const resolvedLast = resolveBox(resolveActiveBox(lastBattle));
-  const canon = getCanon(resolvedLast);
+  const canon = getCanon(resolvedBox);
 
   const spriteKeyMap: Record<string, string> = {};
-  const boxOrderMap: Record<string, number> = {};
-  for (const pokemon of resolvedLast.pokemon) {
+  const addOrderMap: Record<string, number> = {};
+  const allBoxKeys: string[] = [];
+  for (const pokemon of resolvedBox.pokemon) {
     const p = resolvePokemon(pokemon);
     const key = canon(p.name);
+    allBoxKeys.push(key);
     if (p.spriteKey) spriteKeyMap[key] = p.spriteKey;
-    if (p.boxOrder !== undefined) boxOrderMap[key] = p.boxOrder;
+    if (p.addOrder !== undefined) addOrderMap[key] = p.addOrder;
   }
 
-  return { canon, spriteKeyMap, boxOrderMap };
+  return { canon, spriteKeyMap, addOrderMap, allBoxKeys };
 }
 
 function attachSprites(
@@ -107,22 +107,21 @@ function attachSprites(
 }
 
 export function computePageStats(
-  pages: { label: string; battles: BattleData[] }[]
+  pages: { label: string; battles: BattleData[] }[],
+  resolvedBox: BoxData
 ): Record<string, PageStats> {
-  const allBattles = pages.flatMap((p) => p.battles);
-  if (allBattles.length === 0) return {};
-
-  const { canon, spriteKeyMap, boxOrderMap } = resolvePageMeta(pages);
+  const { canon, spriteKeyMap, addOrderMap, allBoxKeys } = resolvePageMeta(resolvedBox);
   const totals: Record<string, PageStats> = {};
+
+  for (const key of allBoxKeys) {
+    totals[key] = { total: 0, byPage: {}, addOrder: addOrderMap[key] ?? Infinity };
+  }
 
   for (const { label, battles } of pages) {
     for (const battle of battles) {
       for (const entry of resolveBox(resolveActiveBox(battle)).team ?? []) {
         if (isExtraEntry(entry)) continue;
         const key = canon(teamEntryName(entry));
-        if (!totals[key]) {
-          totals[key] = { total: 0, byPage: {}, boxOrder: boxOrderMap[key] ?? Infinity };
-        }
         totals[key].total++;
         totals[key].byPage[label] = (totals[key].byPage[label] ?? 0) + 1;
       }
@@ -134,13 +133,15 @@ export function computePageStats(
 }
 
 export function computePageFragStats(
-  pages: { label: string; battles: BattleData[] }[]
+  pages: { label: string; battles: BattleData[] }[],
+  resolvedBox: BoxData
 ): Record<string, PageStats> {
-  const allBattles = pages.flatMap((p) => p.battles);
-  if (allBattles.length === 0) return {};
-
-  const { canon, spriteKeyMap, boxOrderMap } = resolvePageMeta(pages);
+  const { canon, spriteKeyMap, addOrderMap, allBoxKeys } = resolvePageMeta(resolvedBox);
   const totals: Record<string, PageStats> = {};
+
+  for (const key of allBoxKeys) {
+    totals[key] = { total: 0, byPage: {}, addOrder: addOrderMap[key] ?? Infinity };
+  }
 
   for (const { label, battles } of pages) {
     for (const battle of battles) {
@@ -148,7 +149,7 @@ export function computePageFragStats(
         for (const [pokemon, count] of Object.entries(line.frags ?? {}) as [string, number][]) {
           const key = canon(pokemon);
           if (!totals[key]) {
-            totals[key] = { total: 0, byPage: {}, boxOrder: boxOrderMap[key] ?? Infinity };
+            totals[key] = { total: 0, byPage: {}, addOrder: addOrderMap[key] ?? Infinity };
           }
           totals[key].total += count;
           totals[key].byPage[label] = (totals[key].byPage[label] ?? 0) + count;
@@ -166,22 +167,20 @@ export type PokemonStats = {
   frags: number;
   possibleBattles: number;
   possibleFrags: number;
-  boxOrder: number;
+  addOrder: number;
   spriteKey?: string;
 };
 
-export function computeStats(battles: BattleData[]): Record<string, PokemonStats> {
-  const lastBattle = battles[battles.length - 1];
-  const resolvedLast = lastBattle ? resolveBox(resolveActiveBox(lastBattle)) : { pokemon: [] };
-  const canon = getCanon(resolvedLast);
+export function computeStats(battles: BattleData[], resolvedBox: BoxData): Record<string, PokemonStats> {
+  const canon = getCanon(resolvedBox);
 
   const spriteKeyMap: Record<string, string> = {};
-  const boxOrderMap: Record<string, number> = {};
-  for (const pokemon of resolvedLast.pokemon) {
+  const addOrderMap: Record<string, number> = {};
+  for (const pokemon of resolvedBox.pokemon) {
     const p = resolvePokemon(pokemon);
     const key = canon(p.name);
     if (p.spriteKey) spriteKeyMap[key] = p.spriteKey;
-    if (p.boxOrder !== undefined) boxOrderMap[key] = p.boxOrder;
+    if (p.addOrder !== undefined) addOrderMap[key] = p.addOrder;
   }
 
   const firstAppearance: Record<string, number> = {};
@@ -194,6 +193,11 @@ export function computeStats(battles: BattleData[]): Record<string, PokemonStats
 
   const totals: Record<string, PokemonStats> = {};
 
+  for (const pokemon of resolvedBox.pokemon) {
+    const key = canon(resolvePokemon(pokemon).name);
+    totals[key] = { battles: 0, frags: 0, possibleBattles: 0, possibleFrags: 0, addOrder: addOrderMap[key] ?? Infinity };
+  }
+
   for (const battle of battles) {
     for (const teamEntry of resolveBox(resolveActiveBox(battle)).team ?? []) {
       if (isExtraEntry(teamEntry)) continue;
@@ -203,7 +207,7 @@ export function computeStats(battles: BattleData[]): Record<string, PokemonStats
         frags: 0,
         possibleBattles: 0,
         possibleFrags: 0,
-        boxOrder: Infinity,
+        addOrder: Infinity,
       };
       totals[key] = { ...entry, battles: entry.battles + 1 };
     }
@@ -218,7 +222,7 @@ export function computeStats(battles: BattleData[]): Record<string, PokemonStats
           frags: 0,
           possibleBattles: 0,
           possibleFrags: 0,
-          boxOrder: Infinity,
+          addOrder: Infinity,
         };
         totals[key] = { ...entry, frags: entry.frags + count };
       }
@@ -236,7 +240,7 @@ export function computeStats(battles: BattleData[]): Record<string, PokemonStats
         frags: 0,
         possibleBattles: 0,
         possibleFrags: 0,
-        boxOrder: Infinity,
+        addOrder: Infinity,
       };
       totals[key] = {
         ...entry,
@@ -248,11 +252,11 @@ export function computeStats(battles: BattleData[]): Record<string, PokemonStats
 
   for (const [key, stats] of Object.entries(totals)) {
     const sk = spriteKeyMap[key];
-    const bo = boxOrderMap[key];
+    const bo = addOrderMap[key];
     totals[key] = {
       ...stats,
       ...(sk !== undefined && { spriteKey: sk }),
-      boxOrder: bo ?? Infinity,
+      addOrder: bo ?? Infinity,
     };
   }
 

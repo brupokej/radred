@@ -19,7 +19,8 @@ export interface PokemonData {
   hp?: string;
   ivs?: Partial<Stats>;
   evs?: Partial<Stats>;
-  boxOrder?: number;
+  addOrder?: number;
+  removeOrder?: number;
 }
 
 export interface Pokemon {

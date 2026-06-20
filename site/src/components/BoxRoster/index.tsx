@@ -75,7 +75,8 @@ export default function BoxRoster({
 
           const levelDiff = toNum(b.level) - toNum(a.level);
           if (levelDiff !== 0) return levelDiff;
-          return (a.boxOrder ?? Infinity) - (b.boxOrder ?? Infinity);
+          if (filter === "box2") return (b.removeOrder ?? -Infinity) - (a.removeOrder ?? -Infinity);
+          return (a.addOrder ?? Infinity) - (b.addOrder ?? Infinity);
         })
     : [];
 

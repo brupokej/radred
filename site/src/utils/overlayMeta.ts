@@ -121,13 +121,13 @@ function statScore(s: PokemonStats, view: StatViewType): number {
 function statSubtitle(s: PokemonStats, view: StatViewType): string {
   switch (view) {
     case "battlesRaw":
-      return s.battles > 0 ? String(s.battles) : "-";
+      return String(s.battles);
     case "battlesPercent": {
       const pct = s.possibleBattles > 0 ? Math.round((s.battles / s.possibleBattles) * 100) : 0;
       return pct > 0 ? `${pct}%` : "-";
     }
     case "fragsRaw":
-      return s.frags > 0 ? String(s.frags) : "-";
+      return String(s.frags);
     case "fragsPercent": {
       const pct = s.possibleFrags > 0 ? Math.round((s.frags / s.possibleFrags) * 100) : 0;
       return pct > 0 ? `${pct}%` : "-";
@@ -153,30 +153,10 @@ export function deriveTopStats(
   const resolvedBox = playerBox ? resolveBox(playerBox) : { pokemon: [] };
   if (resolvedBox.pokemon.length === 0 && battleMoments.length === 0) return [];
 
-  const stats = battleMoments.length > 0 ? computeStats(battleMoments) : {};
+  const stats = computeStats(battleMoments, resolvedBox);
 
-  const allEntries: [string, PokemonStats][] = Object.entries(stats);
-  const seen = new Set(allEntries.map(([name]) => name));
-  for (const p of resolvedBox.pokemon) {
-    const pData = resolvePokemon(p);
-    if (!seen.has(pData.name)) {
-      allEntries.push([
-        pData.name,
-        {
-          battles: 0,
-          frags: 0,
-          possibleBattles: 0,
-          possibleFrags: 0,
-          boxOrder: pData.boxOrder ?? Infinity,
-          spriteKey: pData.spriteKey,
-        },
-      ]);
-      seen.add(pData.name);
-    }
-  }
-
-  return allEntries
-    .sort((a, b) => statScore(b[1], view) - statScore(a[1], view) || a[1].boxOrder - b[1].boxOrder)
+  return Object.entries(stats)
+    .sort((a, b) => statScore(b[1], view) - statScore(a[1], view) || a[1].addOrder - b[1].addOrder)
     .slice(0, 6)
     .map(([name, s]) => {
       const p = findPokemon(resolvedBox, name);

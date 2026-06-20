@@ -51,7 +51,12 @@ function applyStep(working: BoxData, step: PartialBoxData): BoxData {
   const removed = [...(working.removed ?? [])];
 
   if (step.removed?.length) {
+    const removalOrder = new Map(step.removed.map((name, i) => [name, removed.length + i]));
     removed.push(...step.removed);
+    pokemon = pokemon.map((p) => {
+      const order = removalOrder.get(resolvePokemon(p).name);
+      return order !== undefined ? { ...p, update: { ...p.update, removeOrder: order } } : p;
+    });
   }
 
   if (step.renames) {
@@ -150,7 +155,7 @@ export function getBox({
           console.error(`getBox: "${data.name}" already exists — skipping add.`);
           continue;
         }
-        entries.push({ ...data, boxOrder: size++ });
+        entries.push({ ...data, addOrder: size++ });
       }
       if (entries.length) step.pokemon = entries;
     }

@@ -137,10 +137,6 @@
   color: var(--ifm-color-emphasis-400);
 }
 
-.emptyRow:last-child td {
-  height: 27px;
-  padding-block: 0;
-}
 
 .chip {
   border-radius: 3px;
