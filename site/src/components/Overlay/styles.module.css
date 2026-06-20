@@ -73,57 +73,19 @@
 .banner {
   font-size: 33px;
   position: absolute;
-  left: 741px;
+  left: 751px;
   top: 942px;
   width: 1140px;
   height: 138px;
   display: flex;
   align-items: center;
-  background: #cad6d6;
+  justify-content: flex-end;
 }
 
 .bannerSection {
   display: flex;
   align-items: center;
-}
-
-.banner1 {
-  justify-content: flex-end;
-  width: 414px;
-}
-
-.banner2 {
-  justify-content: flex-start;
-}
-
-.bannerVariable {
-  flex: 1;
-  position: relative;
-  align-self: stretch;
-  overflow: hidden;
-}
-
-.bannerVariant {
-  position: absolute;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  display: flex;
-  align-items: center;
   white-space: nowrap;
-  transition: transform 0.8s ease-in-out;
-}
-
-.bannerVariantSlid {
-  transform: translateX(244px);
-}
-
-.bannerDeaths {
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  position: relative;
-  z-index: 1;
 }
 
 .accent {

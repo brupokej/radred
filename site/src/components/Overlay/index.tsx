@@ -7,7 +7,6 @@ import {
   deriveOverlayMeta,
   derivePlayerBox,
   deriveTopStats,
-  hasAttemptStarted,
   hasCyclingStarted,
   StatViewType,
   TopBattler,
@@ -375,12 +374,9 @@ export function OverlayBanner() {
   const liveMeta = liveState?.moment
     ? deriveOverlayMeta(liveState.moment)
     : { split: "Brock", cap: 16, badges: {} };
-  const liveAttempt = Math.min(liveState?.attempt ?? 1, 99);
-  const showAttempt = liveState?.moment ? hasAttemptStarted(liveState.moment) : false;
 
   const { displayed: split, visible: splitVisible } = useFadedValue(liveMeta.split);
   const { displayed: cap, visible: capVisible } = useFadedValue(liveMeta.cap);
-  const { displayed: attempt, visible: attemptVisible } = useFadedValue(liveAttempt);
   const displayedBadges = useFadedBadges(liveMeta.badges);
 
   return (
@@ -400,36 +396,19 @@ export function OverlayBanner() {
         </div>
       </OverlayFrame>
       <div className={styles.banner}>
-        <div className={styles.bannerVariable}>
-          <div
-            className={`${styles.bannerVariant} ${!showAttempt ? styles.bannerVariantSlid : ""}`}
-          >
-            <div className={`${styles.bannerSection} ${styles.banner1}`}>
-              <span className={`${styles.shadow} ${fv(splitVisible)}`}>Split:</span>&nbsp;
-              <span className={`${styles.accent} ${styles.shadow} ${fv(splitVisible)}`}>
-                {split}
-              </span>
-              &nbsp;&nbsp;
-            </div>
-            <div className={styles.bannerSection}>
-              <img width={8} src={barSrc} alt="" />
-              &nbsp;&nbsp;
-              <span className={styles.shadow}>Level Cap:</span>&nbsp;
-              <span className={`${styles.accent} ${styles.shadow} ${fv(capVisible)}`}>{cap}</span>
-              &nbsp;&nbsp;
-            </div>
-            <div className={styles.bannerSection}>
-              <img width={8} src={barSrc} alt="" />
-              &nbsp;&nbsp;
-              <span className={styles.shadow}>!attempt:</span>&nbsp;
-              <span className={`${styles.accent} ${styles.shadow} ${fv(attemptVisible)}`}>
-                {attempt}
-              </span>
-              &nbsp;&nbsp;
-            </div>
-          </div>
+        <div className={styles.bannerSection}>
+          <span className={`${styles.shadow} ${fv(splitVisible)}`}>Split:</span>&nbsp;
+          <span className={`${styles.accent} ${styles.shadow} ${fv(splitVisible)}`}>{split}</span>
+          &nbsp;&nbsp;
         </div>
-        <div className={styles.bannerDeaths}>
+        <div className={styles.bannerSection}>
+          <img width={8} src={barSrc} alt="" />
+          &nbsp;&nbsp;
+          <span className={styles.shadow}>Level Cap:</span>&nbsp;
+          <span className={`${styles.accent} ${styles.shadow} ${fv(capVisible)}`}>{cap}</span>
+          &nbsp;&nbsp;
+        </div>
+        <div className={styles.bannerSection}>
           <img width={8} src={barSrc} alt="" />
           &nbsp;&nbsp;
           <span className={styles.shadow}>Deaths:</span>&nbsp;

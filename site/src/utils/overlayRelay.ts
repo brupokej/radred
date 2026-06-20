@@ -2,7 +2,6 @@ import { Moment } from "@site/src/utils/moments";
 
 export type RelayState = {
   moment: Moment;
-  attempt?: number;
 };
 
 export const RELAY_HTTP = "http://localhost:3001";

@@ -28,8 +28,7 @@ const server = http.createServer((req, res) => {
     req.on("end", () => {
       try {
         const update = JSON.parse(body);
-        // Merge so attempt/deaths persist across "Go Live" clicks
-        currentState = { attempt: 0, deaths: 0, ...currentState, ...update };
+        currentState = { ...currentState, ...update };
         const msg = JSON.stringify(currentState);
         for (const client of wss.clients) {
           if (client.readyState === 1) client.send(msg);

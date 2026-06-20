@@ -56,7 +56,9 @@ export default function BoxChange({ data, secret }: { data?: BoxChangeData; secr
 
   const abilityRows: React.ReactNode[] = [];
   for (const { name, ability } of getAbilityChanges(box)) {
-    abilityRows.push(<Row key={key++} row={[`${name} →`, { warning: `Set to ${ability} ability` }]} />);
+    abilityRows.push(
+      <Row key={key++} row={[`${name} →`, { warning: `Set to ${ability} ability` }]} />
+    );
   }
 
   const rows = [...removalRows, ...capRows, ...updateRows, ...hpRows, ...ivRows, ...abilityRows];

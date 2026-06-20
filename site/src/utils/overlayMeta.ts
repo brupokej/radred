@@ -53,7 +53,7 @@ const MILESTONES: { label: string; split?: string; cap?: number; badge?: BadgeNa
   { label: "Cerulean Cave Giovanni Battle", cap: 81 },
   { label: "Viridian City Leader Clair Battle", split: "Victory Road", cap: 82, badge: "rising" },
   { label: "Route 23 Brendan Battle", cap: 85 },
-  { label: "Indigo Plateau Creator Soupercell Battle", split: "Elite 4" },
+  { label: "Indigo Plateau Creator Soupercell Battle", split: "Elite Four" },
 ];
 
 export type OpponentInfo = { box: Box; label: string };
@@ -63,16 +63,7 @@ export function findMomentByLabel(label: string | null): Moment {
   return allMoments.find((m) => m.label === target) ?? brockMoments[0];
 }
 
-const ATTEMPT_START_INDEX = allMoments.findIndex(
-  (m) => m.label === "Pewter City Leader Brock Battle"
-);
 const CYCLE_START_INDEX = allMoments.findIndex((m) => m.label === "Mt. Moon Encounter");
-
-export function hasAttemptStarted(moment: Moment): boolean {
-  if (moment.label === "Brock") return false;
-  const idx = allMoments.findIndex((m) => m.label === moment.label);
-  return ATTEMPT_START_INDEX !== -1 && idx >= ATTEMPT_START_INDEX;
-}
 
 export function hasCyclingStarted(moment: Moment): boolean {
   if (moment.label === "Brock") return false;

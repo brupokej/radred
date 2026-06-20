@@ -123,20 +123,10 @@ function TeamGrid({ team, hasHeader = false }: { team: Pokemon[]; hasHeader?: bo
         <ScrollFade ref={scrollRef} axis="x" className={styles.grid}>
           <div className={styles.gridInner}>
             {team.map((pokemon, i) => (
-              <PokemonCard
-                key={i}
-                pokemon={pokemon}
-                showIVs={showIVs}
-                showEVs={showEVs}
-              />
+              <PokemonCard key={i} pokemon={pokemon} showIVs={showIVs} showEVs={showEVs} />
             ))}
             {emptySlots.map((_, i) => (
-              <PokemonCard
-                key={`empty-${i}`}
-                pokemon={null}
-                showIVs={showIVs}
-                showEVs={showEVs}
-              />
+              <PokemonCard key={`empty-${i}`} pokemon={null} showIVs={showIVs} showEVs={showEVs} />
             ))}
           </div>
         </ScrollFade>

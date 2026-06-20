@@ -6,20 +6,11 @@ import { secretMode } from "@site/src/data/secretMode";
 import { Moment } from "@site/src/utils/moments";
 import { slugify } from "@site/src/utils/slugify";
 import { removeState, useStorageState } from "@site/src/utils/storage";
-import { LIVE_ATTEMPT_DEFAULT, LIVE_MOMENT_DEFAULT } from "@site/src/utils/storageDefaults";
+import { LIVE_MOMENT_DEFAULT } from "@site/src/utils/storageDefaults";
 import styles from "./styles.module.css";
 
-export default function GameState({
-  attempt: showAttempt,
-  moments,
-}: {
-  attempt?: boolean;
-  moments: Moment[];
-}) {
-  const { value: storedAttempt, set: setStoredAttempt } = useStorageState("live-attempt");
+export default function GameState({ moments }: { moments: Moment[] }) {
   const { value: storedMomentLabel, set: setStoredMomentLabel } = useStorageState("live-moment");
-
-  const attempt = storedAttempt !== null ? Number(storedAttempt) : LIVE_ATTEMPT_DEFAULT;
   const defaultMoment = moments.find((m) => m.label === LIVE_MOMENT_DEFAULT) ?? moments[0];
   const moment = moments.find((m) => m.label === storedMomentLabel) ?? defaultMoment;
   const guidePath = `/guide/${moment.split.toLowerCase()}#${slugify(moment.label)}`;
@@ -41,31 +32,10 @@ export default function GameState({
     else setStoredMomentLabel(v);
   }
 
-  function handleAttemptChange(v: string) {
-    const n = Number(v) || LIVE_ATTEMPT_DEFAULT;
-    if (n === LIVE_ATTEMPT_DEFAULT) removeState("live-attempt");
-    else setStoredAttempt(String(n));
-  }
-
   return (
     <>
-      <GoLiveButton moment={moment} attempt={showAttempt ? attempt : undefined} />
+      <GoLiveButton moment={moment} />
       <Card title="Game State">
-        {showAttempt && (
-          <Row
-            row={[
-              "Attempt:",
-              {
-                input: {
-                  value: String(attempt),
-                  validate: (v) =>
-                    v === "" || (/^\d+$/.test(v) && Number(v) >= 1 && Number(v) <= 99),
-                  onChange: handleAttemptChange,
-                },
-              },
-            ]}
-          />
-        )}
         <Row
           row={[
             "Moment:",

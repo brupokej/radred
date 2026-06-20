@@ -1,5 +1,4 @@
 export const LIVE_MOMENT_DEFAULT = "Saffron City Leader Sabrina Battle";
-export const LIVE_ATTEMPT_DEFAULT = 11;
 
 export const STORAGE_DEFAULTS: Record<string, string> = {
   "navbar-item-highlight-level": "info",

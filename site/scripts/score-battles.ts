@@ -163,14 +163,7 @@ function isActiveHitEvent(s: string): boolean {
 
 // --- Resource counting ------------------------------------------------------
 
-const RESOURCE_FIELDS: (keyof PokemonData)[] = [
-  "level",
-  "nature",
-  "ability",
-  "item",
-  "ivs",
-  "evs",
-];
+const RESOURCE_FIELDS: (keyof PokemonData)[] = ["level", "nature", "ability", "item", "ivs", "evs"];
 
 function countPokemonResources(pokemon: Pokemon): number {
   const { base, update } = pokemon;

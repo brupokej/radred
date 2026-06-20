@@ -3,19 +3,14 @@ import { findPokemon, resolveBox, teamEntryName } from "@site/src/utils/box";
 import { deriveOpponentInfo, findMomentByLabel } from "@site/src/utils/overlayMeta";
 import { RELAY_HTTP, RELAY_WS, RelayState, postRelayState } from "@site/src/utils/overlayRelay";
 import { resolvePokemon } from "@site/src/utils/pokemon";
-import { LIVE_ATTEMPT_DEFAULT, LIVE_MOMENT_DEFAULT } from "@site/src/utils/storageDefaults";
+import { LIVE_MOMENT_DEFAULT } from "@site/src/utils/storageDefaults";
 import { FADE_MS } from "@site/src/utils/useFadedValue";
 import { useEffect, useMemo, useRef, useState } from "react";
 
 function readLocalState(): RelayState {
   return {
     moment: findMomentByLabel(localStorage.getItem("live-moment") ?? LIVE_MOMENT_DEFAULT),
-    attempt: Number(localStorage.getItem("live-attempt")) || LIVE_ATTEMPT_DEFAULT,
   };
-}
-
-function withLocalAttempt(data: RelayState): RelayState {
-  return data.attempt ? data : { ...data, attempt: readLocalState().attempt };
 }
 
 export function useRelayState(): RelayState | null {
@@ -36,10 +31,10 @@ export function useRelayState(): RelayState | null {
         .then((data) => {
           if (stopped) return;
           if (data?.moment) {
-            setState(withLocalAttempt(data));
+            setState(data);
           } else {
             const local = readLocalState();
-            postRelayState({ moment: local.moment, attempt: local.attempt }).catch(() => {});
+            postRelayState({ moment: local.moment }).catch(() => {});
             setState(local);
           }
         })
@@ -50,7 +45,7 @@ export function useRelayState(): RelayState | null {
       const ws = new WebSocket(RELAY_WS);
       ws.onmessage = (e) => {
         try {
-          setState(withLocalAttempt(JSON.parse(e.data)));
+          setState(JSON.parse(e.data));
         } catch {}
       };
       ws.onerror = () => {};

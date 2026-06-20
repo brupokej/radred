@@ -8,21 +8,13 @@ import { useLayoutEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import styles from "./styles.module.css";
 
-export default function GoLiveButton({
-  moment,
-  attempt,
-  secret,
-}: {
-  moment: Moment;
-  attempt?: number;
-  secret?: boolean;
-}) {
+export default function GoLiveButton({ moment, secret }: { moment: Moment; secret?: boolean }) {
   if (process.env.NODE_ENV !== "development" || navigator.webdriver) return null;
   if (!!secret && !secretMode) return null;
-  return <GoLiveButtonInner moment={moment} attempt={attempt} />;
+  return <GoLiveButtonInner moment={moment} />;
 }
 
-function GoLiveButtonInner({ moment, attempt }: { moment: Moment; attempt?: number }) {
+function GoLiveButtonInner({ moment }: { moment: Moment }) {
   const relayState = useRelayState();
   const [pending, setPending] = useState(false);
   const { value: livePendingLabel } = useStorageState("live-pending");
@@ -30,10 +22,7 @@ function GoLiveButtonInner({ moment, attempt }: { moment: Moment; attempt?: numb
   const [portalTarget, setPortalTarget] = useState<HTMLSpanElement | null>(null);
   const sentinelRef = useRef<HTMLSpanElement>(null);
 
-  const resolvedAttempt = attempt ?? 1;
-  const isLive =
-    relayState?.moment?.label === moment.label &&
-    (attempt === undefined || (relayState.attempt ?? 1) === resolvedAttempt);
+  const isLive = relayState?.moment?.label === moment.label;
 
   useLayoutEffect(() => {
     if (!sentinelRef.current) return;
@@ -63,10 +52,7 @@ function GoLiveButtonInner({ moment, attempt }: { moment: Moment; attempt?: numb
     setPending(true);
     setState("live-pending", moment.label);
     await Promise.all([
-      postRelayState({
-        moment,
-        ...(attempt !== undefined ? { attempt: resolvedAttempt } : {}),
-      }).catch(() => {}),
+      postRelayState({ moment }).catch(() => {}),
       new Promise((r) => setTimeout(r, 1400)),
     ]);
     if (moment.label === LIVE_MOMENT_DEFAULT) removeState("live-moment");
