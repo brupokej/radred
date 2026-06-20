@@ -15,9 +15,9 @@ const config: Config = {
     [
       "@docusaurus/plugin-content-docs",
       {
-        id: "data",
-        path: "data",
-        routeBasePath: "data",
+        id: "team",
+        path: "team",
+        routeBasePath: "team",
         sidebarPath: "./sidebars.ts",
       },
     ],
@@ -109,10 +109,10 @@ const config: Config = {
         },
         {
           type: "docSidebar",
-          sidebarId: "dataSidebar",
-          docsPluginId: "data",
+          sidebarId: "teamSidebar",
+          docsPluginId: "team",
           position: "left",
-          label: "Data",
+          label: "Team",
         },
         {
           type: "docSidebar",
@@ -139,8 +139,8 @@ const config: Config = {
               to: "/guide/brock",
             },
             {
-              label: "Data",
-              to: "/data/box",
+              label: "Team",
+              to: "/team/box",
             },
           ],
         },
