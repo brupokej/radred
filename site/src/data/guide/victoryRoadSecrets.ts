@@ -161,7 +161,7 @@ export function getVictoryRoadSecrets(_box1: Box) {
 
   const _box7 = getBox({
     box: _box6,
-    team: ["Secret", "Secret", "Secret", "Secret", "Secret"],
+    team: ["Secret", "Secret", "Secret", "Secret"],
   });
 
   const victoryRoadAceTrainerRolandoBattle: Moment = {
@@ -224,7 +224,7 @@ export function getVictoryRoadSecrets(_box1: Box) {
 
   const _box9 = getBox({
     box: _box8,
-    team: ["Secret", "Secret", "Secret", "Secret", "Secret"],
+    team: ["Secret", "Secret", "Secret"],
   });
 
   const victoryRoadAceTrainerCarolineBattle: Moment = {
