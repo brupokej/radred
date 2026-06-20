@@ -48,11 +48,11 @@ const _box3 = getBox({
       item: "Chesto Berry",
       moves: ["Fake Out", "Bullet Punch", "Iron Head", "U-Turn"],
     },
-    Lanturn: {
-      nature: "Calm",
-      ability: "Volt Absorb",
-      item: "Sitrus Berry",
-      moves: ["Bubble Beam", "Icy Wind", "Shock Wave", "Volt Switch"],
+    Excadrill: {
+      nature: "Naughty",
+      ability: "Mold Breaker",
+      item: "Soft Sand",
+      moves: ["Drill Run", "Mud-Slap", "Rapid Spin", "Rock Tomb"],
     },
     Incineroar: {
       nature: "Naughty",
@@ -61,7 +61,7 @@ const _box3 = getBox({
       moves: ["Fake Out", "Darkest Lariat", "Flamethrower", "U-Turn"],
     },
   },
-  team: ["Drednaw", "Perrserker", "Lanturn", "Incineroar"],
+  team: ["Drednaw", "Perrserker", "Excadrill", "Incineroar"],
 });
 
 export const gameCornerGuardBattle: Moment = {
@@ -100,7 +100,7 @@ export const gameCornerGuardBattle: Moment = {
               [
                 { opponent: "{o:Inteleon} Snipe Shot {p:Drednaw} to {+:33}" },
                 { player: "{p:Drednaw} Flip Turn {o:Inteleon} to {-:107}" },
-                { player: "{p:Drednaw} switch to {p:Lanturn}" },
+                { player: "{p:Drednaw} switch to {p:Excadrill}" },
                 { player: "{p:Perrserker} U-Turn {o:Hypno} to {=:0}" },
                 { opponent: "{o:Hypno} fainted" },
                 { player: "{p:Perrserker} switch to {p:Incineroar}" },
@@ -115,9 +115,8 @@ export const gameCornerGuardBattle: Moment = {
                 { opponent: "{o:Inteleon} flinched" },
                 { opponent: "{o:Tinkaton} Giga. Hammer {p:Incineroar} to {+:58}" },
                 { opponent: "{p:Incineroar} Sitrus Berry to {+:98}" },
-                { player: "{p:Lanturn} Volt Switch {o:Inteleon} to {=:0}" },
+                { player: "{p:Excadrill} Drill Run {o:Inteleon} to {=:0}" },
                 { opponent: "{o:Inteleon} fainted" },
-                { player: "{p:Lanturn} switch to {p:Perrserker}" },
               ],
             ],
           },
@@ -125,20 +124,14 @@ export const gameCornerGuardBattle: Moment = {
             matchup: ["Tinkaton"],
             turns: [
               [
-                { player: "{p:Perrserker} Fake Out {o:Tinkaton} to {-:139}" },
-                { opponent: "{o:Tinkaton} flinched" },
-                { player: "{p:Incineroar} Flamethrower {o:Tinkaton} to {-:61}" },
-              ],
-              [
-                { player: "{p:Perrserker} switch to {p:Lanturn}" },
                 { opponent: "{o:Tinkaton} Play Rough {p:Incineroar} to {+:20}" },
-                { player: "{p:Incineroar} Flamethrower {o:Tinkaton} to {-:61}" },
+                { player: "{p:Excadrill} Drill Run {o:Tinkaton} to {=:0}" },
                 { opponent: "{o:Tinkaton} fainted" },
               ],
             ],
           },
         ],
-        frags: { Perrserker: 2, Lanturn: 1, Incineroar: 1 },
+        frags: { Perrserker: 2, Excadrill: 2 },
       },
     ],
   },

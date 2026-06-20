@@ -11,12 +11,6 @@ import {
 } from "@site/src/utils/opponents";
 
 export function getEliteFourSecrets(_box1: Box) {
-  const eliteFourBoxChange: Moment = {
-    split: "Elite Four",
-    label: "Elite Four Box Change",
-    kind: "boxChange",
-  };
-
   const _box2 = getBox({
     box: _box1,
     team: ["Secret", "Secret", "Secret", "Secret", "Secret", "Secret"],
@@ -27,6 +21,12 @@ export function getEliteFourSecrets(_box1: Box) {
     label: "Elite Four Checklist",
     kind: "checklist",
     data: { playerBox: _box2 },
+  };
+
+  const eliteFourBoxChange: Moment = {
+    split: "Elite Four",
+    label: "Elite Four Box Change",
+    kind: "boxChange",
   };
 
   const _box3 = getBox({
@@ -274,8 +274,8 @@ export function getEliteFourSecrets(_box1: Box) {
   };
 
   return {
-    eliteFourBoxChange,
     eliteFourChecklist,
+    eliteFourBoxChange,
     eliteFourLoreleiBattle,
     eliteFourLoreleiBoxChange,
     eliteFourBrunoBattle,

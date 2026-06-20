@@ -4,8 +4,8 @@ import { getEliteFourSecrets } from "./eliteFourSecrets";
 import { box as _box1 } from "@site/src/data/guide/victoryRoad";
 
 export const {
-  eliteFourBoxChange,
   eliteFourChecklist,
+  eliteFourBoxChange,
   eliteFourLoreleiBattle,
   eliteFourLoreleiBoxChange,
   eliteFourBrunoBattle,
@@ -18,8 +18,8 @@ export const {
 } = getEliteFourSecrets(_box1);
 
 export const moments: Moment[] = [
-  eliteFourBoxChange,
   eliteFourChecklist,
+  eliteFourBoxChange,
   eliteFourLoreleiBattle,
   eliteFourLoreleiBoxChange,
   eliteFourBrunoBattle,
