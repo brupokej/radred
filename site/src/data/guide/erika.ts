@@ -165,14 +165,14 @@ const _box4 = getBox({
       item: "Sitrus Berry",
       moves: ["Aqua Jet", "Aqua Tail", "Helping Hand", "Play Rough"],
     },
-    Houndoom: {
-      nature: "Timid",
-      ability: "Flash Fire",
-      item: "Black Glasses",
-      moves: ["Dark Pulse", "Flame Burst", "Leer", "Sucker Punch"],
+    Incineroar: {
+      nature: "Adamant",
+      ability: "Blaze",
+      item: "Sitrus Berry",
+      moves: ["Fake Out", "Darkest Lariat", "Fire Fang", "U-Turn"],
     },
   },
-  team: ["Golduck", "Runerigus", "Azumarill", "Houndoom"],
+  team: ["Golduck", "Runerigus", "Azumarill", "Incineroar"],
 });
 
 export const route9PicnickerCaitlinBattle: Moment = {
@@ -252,22 +252,22 @@ export const route9PicnickerCaitlinBattle: Moment = {
             matchup: ["Liepard"],
             turns: [
               [
-                { player: "{p:Azumarill} switch to {p:Houndoom}" },
-                { opponent: "{o:Liepard} Assist {p:Houndoom}" },
+                { player: "{p:Azumarill} switch to {p:Incineroar}" },
+                { opponent: "{o:Liepard} Assist {p:Incineroar}" },
               ],
               [
-                { opponent: "{o:Liepard} Assist {p:Houndoom}" },
-                { player: "{p:Houndoom} Incinerate {o:Liepard} to {-:60}" },
+                { opponent: "{o:Liepard} Assist {p:Incineroar}" },
+                { player: "{p:Incineroar} Incinerate {o:Liepard} to {-:54}" },
               ],
               [
-                { opponent: "{o:Liepard} Assist {p:Houndoom}" },
-                { player: "{p:Houndoom} Incinerate {o:Liepard} to {=:0}" },
+                { opponent: "{o:Liepard} Assist {p:Incineroar}" },
+                { player: "{p:Incineroar} Incinerate {o:Liepard} to {=:0}" },
                 { opponent: "{o:Liepard} fainted" },
               ],
             ],
           },
         ],
-        frags: { Golduck: 2, Azumarill: 1, Houndoom: 1 },
+        frags: { Golduck: 2, Azumarill: 1, Incineroar: 1 },
       },
     ],
   },
