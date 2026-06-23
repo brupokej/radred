@@ -69,7 +69,10 @@ const config: Config = {
           changefreq: "weekly",
           priority: 0.5,
         },
-        pages: process.env.NODE_ENV !== "development" ? { exclude: ["**/attribution.tsx"] } : {},
+        pages:
+          process.env.NODE_ENV !== "development"
+            ? { exclude: ["**/announcement.tsx", "**/attribution.tsx"] }
+            : {},
         theme: {
           customCss:
             process.env.NODE_ENV === "development"

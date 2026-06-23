@@ -1,7 +1,7 @@
+import { resolveActiveBox } from "@site/src/components/Battle";
 import Card from "@site/src/components/Card";
 import { ScrollArrows } from "@site/src/components/ScrollArrows";
 import { ScrollFade } from "@site/src/components/ScrollFade";
-import { resolveActiveBox } from "@site/src/components/Battle";
 import { getSwitchBattleCaseData } from "@site/src/components/SwitchBattle";
 import { resolveBox } from "@site/src/utils/box";
 import { Moment } from "@site/src/utils/moments";
@@ -173,7 +173,8 @@ function resolveBoxAtMoment(moments: Moment[], upToIdx: number) {
   for (let i = upToIdx; i >= 0; i--) {
     const m = moments[i];
     if (m.kind === "battle") return resolveBox(resolveActiveBox(m.data));
-    if (m.kind === "switchBattle") return resolveBox(resolveActiveBox(getSwitchBattleCaseData(m.data)));
+    if (m.kind === "switchBattle")
+      return resolveBox(resolveActiveBox(getSwitchBattleCaseData(m.data)));
     if (m.kind === "encounter") return resolveBox(m.data.playerBox);
   }
   return null;

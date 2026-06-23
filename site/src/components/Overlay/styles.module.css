@@ -180,6 +180,14 @@
   bottom: -8px;
   border-left: 4px solid #68ad9a;
   border-bottom: 4px solid #41848a;
+  clip-path: polygon(
+    4px 0,
+    4px calc(100% - 4px),
+    100% calc(100% - 4px),
+    calc(100% - 4px) 100%,
+    0 100%,
+    0 4px
+  );
   pointer-events: none;
 }
 
