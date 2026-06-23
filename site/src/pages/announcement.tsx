@@ -113,10 +113,11 @@ const css = `
   .poster-title-2 {
     font-family: "Hind", sans-serif;
     font-weight: normal;
-    font-size: 22px;
+    font-size: 18px;
     color: #41848a;
-    line-height: 1;
+    line-height: 1.5;
     margin-top: 8px;
+    text-align: center;
   }
 
   /* Left panel: left col, row 2 — grid sizes it to 486px × 128px */
@@ -213,17 +214,8 @@ export default function Announcement(): ReactNode {
           <div className="poster-titles">
             <div className="poster-title-1">RR 4.1 HC 1DR STREAM</div>
             <div className="poster-title-2">
-              brupokej.github.io/radred
-              <svg
-                viewBox="0 0 24 24"
-                width={16}
-                height={16}
-                fill="currentColor"
-                aria-hidden
-                style={{ marginLeft: "8px", verticalAlign: "top" }}
-              >
-                <path d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z" />
-              </svg>
+              radical red 4.1 · hardcore mode · all day<br />
+              dexnav on · one death equals reset run
             </div>
           </div>
 
