@@ -17,11 +17,6 @@ const _box2 = getBox({
   cap: 36,
   update: [
     {
-      Shellder: {
-        moves: ["Ice Shard", "Icicle Spear", "Leer", "Razor Shell"],
-      },
-    },
-    {
       "Yamask-G": {
         name: "Runerigus",
         spriteKey: undefined,
@@ -31,6 +26,11 @@ const _box2 = getBox({
         name: "Excadrill",
         moves: ["Earthquake", "Mud-Slap", "Rapid Spin", "Scratch"],
       },
+      Shellder: {
+        moves: ["Ice Shard", "Icicle Spear", "Leer", "Razor Shell"],
+      },
+    },
+    {
       Shellder: {
         name: "Cloyster",
       },
@@ -118,8 +118,8 @@ export const route6CamperJeffBattle: Moment = {
               ],
               [
                 { player: "{p:Houndoom} Sucker Punch {o:Ambipom} to {=:0}" },
-                { player: "{p:Perrserker} Bullet Punch {o:Mr. Mime-G} to {=:0}" },
                 { opponent: "{o:Ambipom} fainted" },
+                { player: "{p:Perrserker} Bullet Punch {o:Mr. Mime-G} to {=:0}" },
                 { opponent: "{o:Mr. Mime-G} fainted" },
                 { opponent: "{p:Perrserker} frostbite to {+:45}" },
               ],
@@ -458,6 +458,25 @@ export const ssAnneLassAnnGentlemanBrooksBattle: Moment = {
                 { player: "{p:Golisopod} Aerial Ace {o:Simisage} to {-:53}" },
                 { opponent: "{o:Samurott} flinched" },
               ],
+            ],
+            branches: [
+              {
+                branches: [
+                  "97% → Perrserker Bullet Punch Simisage",
+                  "3% → Perrserker Bullet Punch Simisage (to 0)",
+                ],
+              },
+            ],
+          },
+        ],
+        frags: { Golisopod: 1 },
+      },
+      {
+        line: "97% → Perrserker Bullet Punch Simisage",
+        matchups: [
+          {
+            matchup: ["Simisage", "Samurott"],
+            turns: [
               [
                 { player: "{p:Perrserker} Bullet Punch {o:Simisage} to {-:25}" },
                 { player: "{p:Golisopod} Sucker Punch {o:Simisage} to {=:0}" },
@@ -492,7 +511,59 @@ export const ssAnneLassAnnGentlemanBrooksBattle: Moment = {
                 { opponent: "{o:Samurott} fainted" },
               ],
             ],
+            branches: [{ branches: ["Golduck Aqua Jet Simisear"] }],
           },
+        ],
+        frags: { Golisopod: 1, Perrserker: 1, "Arcanine-H": 1 },
+      },
+      {
+        line: "3% → Perrserker Bullet Punch Simisage (to 0)",
+        matchups: [
+          {
+            matchup: ["Simisage", "Samurott"],
+            turns: [
+              [
+                { player: "{p:Perrserker} Bullet Punch {o:Simisage} to {=:0}" },
+                { opponent: "{o:Simisage} fainted" },
+                { player: "{p:Golisopod} Sucker Punch {o:Simisage} → {o:Samurott} to {-:71}" },
+                { opponent: "{o:Samurott} Water Pledge {p:Perrserker} to {+:64}" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Wigglytuff", "Samurott"],
+            turns: [
+              [
+                { player: "{p:Golisopod} Sucker Punch {o:Wigglytuff} to {-:136}" },
+                { opponent: "{o:Samurott} Water Pledge {p:Perrserker} to {+:7}" },
+                { opponent: "{p:Perrserker} Sitrus Berry to {+:37}" },
+                { player: "{p:Perrserker} Iron Head {o:Wigglytuff} to {=:0}" },
+                { opponent: "{o:Wigglytuff} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Samurott"],
+            turns: [
+              [
+                { player: "{p:Golisopod} switch to {p:Arcanine-H}" },
+                { player: "{p:Perrserker} switch to {p:Golduck}" },
+                { opponent: "{o:Samurott} Water Pledge {p:Golduck} to {+:79}" },
+              ],
+              [
+                { player: "{p:Golduck} Low Sweep {o:Samurott} to {-:37}" },
+                { player: "{p:Arcanine-H} Flare Blitz {o:Samurott} to {=:0}" },
+                { opponent: "{o:Samurott} fainted" },
+              ],
+            ],
+            branches: [{ branches: ["Golduck Aqua Jet Simisear"] }],
+          },
+        ],
+        frags: { Perrserker: 2, "Arcanine-H": 1 },
+      },
+      {
+        line: "Golduck Aqua Jet Simisear",
+        matchups: [
           {
             matchup: ["Simisear"],
             turns: [
@@ -504,7 +575,7 @@ export const ssAnneLassAnnGentlemanBrooksBattle: Moment = {
             ],
           },
         ],
-        frags: { Golisopod: 2, Perrserker: 1, "Arcanine-H": 2 },
+        frags: { "Arcanine-H": 1 },
       },
     ],
   },

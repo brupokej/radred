@@ -168,6 +168,18 @@ const _box10 = getBox({
         level: 16,
         moves: ["Mud Shot", "Slam", "Tackle", "Tail Whip"],
       },
+      "Meowth-G": {
+        level: 16,
+        moves: ["Fake Out", "Growl", "Metal Claw", "Scratch"],
+      },
+      Marill: {
+        level: 16,
+        moves: ["Aqua Jet", "Body Slam", "Covet", "Tail Whip"],
+      },
+      Houndour: {
+        level: 16,
+        moves: ["Incinerate", "Leer", "Snarl", "Sucker Punch"],
+      },
       Kricketot: {
         name: "Kricketune",
         level: 10,
@@ -178,18 +190,6 @@ const _box10 = getBox({
       Kricketune: {
         level: 16,
         moves: ["Bide", "Mega Drain", "Rock Tomb", "Struggle Bug"],
-      },
-      Houndour: {
-        level: 16,
-        moves: ["Incinerate", "Leer", "Snarl", "Sucker Punch"],
-      },
-      "Meowth-G": {
-        level: 16,
-        moves: ["Fake Out", "Growl", "Metal Claw", "Scratch"],
-      },
-      Marill: {
-        level: 16,
-        moves: ["Aqua Jet", "Body Slam", "Covet", "Tail Whip"],
       },
     },
   ],
@@ -786,7 +786,7 @@ const _box19 = getBox({
     "Yamask-G": {
       nature: "Sassy",
       ability: "Wandering Soul",
-      item: "Rindo",
+      item: "Rindo Berry",
       moves: ["Disable", "Haze", "Night Shade", "Shadow Sneak"],
     },
   },

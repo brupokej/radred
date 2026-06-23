@@ -21,13 +21,6 @@ const _box2 = getBox({
   box: _box1,
   update: [
     {
-      Kricketune: {
-        level: 23,
-        moves: ["Bug Bite", "Bulldoze", "Mega Drain", "Rock Tomb"],
-      },
-      Houndour: {
-        level: 23,
-      },
       Marill: {
         level: 20,
         moves: ["Aqua Jet", "Aqua Tail", "Covet", "Tail Whip"],
@@ -38,6 +31,13 @@ const _box2 = getBox({
         name: "Azumarill",
         level: 23,
         moves: ["Aqua Jet", "Aqua Tail", "Ice Punch", "Play Rough"],
+      },
+      Houndour: {
+        level: 23,
+      },
+      Kricketune: {
+        level: 23,
+        moves: ["Bug Bite", "Bulldoze", "Mega Drain", "Rock Tomb"],
       },
     },
   ],
@@ -111,10 +111,11 @@ export const route3LassSallyBattle: Moment = {
               [
                 { opponent: "{o:Whimsicott} Mega Drain {p:Houndour} to {+:40}" },
                 { player: "{p:Houndour} Incinerate {o:Whimsicott} to {-:17}" },
+                { opponent: "{o:Whimsicott} Leftovers to {-:21}" },
               ],
               [
                 { opponent: "{o:Whimsicott} Mega Drain {p:Houndour} to {+:20}" },
-                { opponent: "{o:Whimsicott} recover to {-:27}" },
+                { opponent: "{o:Whimsicott} recover to {-:31}" },
                 { player: "{p:Houndour} Incinerate {o:Whimsicott} to {=:0}" },
                 { opponent: "{o:Whimsicott} fainted" },
               ],
@@ -281,8 +282,8 @@ export const mtMoonSuperNerdMiguelBattle: Moment = {
               [
                 { opponent: "{o:Swoobat} Calm Mind" },
                 { player: "{p:Kricketune} Bug Bite {o:Thwackey} to {=:0}" },
-                { player: "{p:Yamask-G} Haze" },
                 { opponent: "{o:Thwackey} fainted" },
+                { player: "{p:Yamask-G} Haze" },
               ],
             ],
           },
@@ -318,8 +319,8 @@ export const mtMoonSuperNerdMiguelBattle: Moment = {
             turns: [
               [
                 { player: "{p:Houndour} Sucker Punch {o:Swoobat} to {=:0}" },
-                { player: "{p:Azumarill} Play Rough {o:Sableye} to {=:0}" },
                 { opponent: "{o:Swoobat} fainted" },
+                { player: "{p:Azumarill} Play Rough {o:Sableye} to {=:0}" },
                 { opponent: "{o:Sableye} fainted" },
                 { opponent: "{p:Houndour} grassy terrain to {+:35}" },
               ],
@@ -379,9 +380,9 @@ export const mtMoonSuperNerdMiguelBattle: Moment = {
             turns: [
               [
                 { player: "{p:Houndour} Sucker Punch {o:Swoobat} to {=:0}" },
+                { opponent: "{o:Swoobat} fainted" },
                 { opponent: "{o:Sableye} Protect" },
                 { player: "{p:Azumarill} Play Rough {o:Sableye}" },
-                { opponent: "{o:Swoobat} fainted" },
                 { opponent: "{p:Houndour} grassy terrain to {+:35}" },
               ],
             ],
@@ -412,10 +413,10 @@ export const mtMoonSuperNerdMiguelBattle: Moment = {
                   player: "{p:Houndour} Incinerate {o:Sableye} to {-:41} and {o:Skiddo} to {-:19}",
                 },
                 { player: "{p:Azumarill} Play Rough {o:Skiddo} to {=:0}" },
+                { opponent: "{o:Skiddo} fainted" },
                 { opponent: "{o:Sableye} Foul Play {p:Houndour} to {+:4}" },
                 { opponent: "{p:Houndour} grassy terrain to {+:7}" },
                 { opponent: "{o:Sableye} grassy terrain to {-:44}" },
-                { opponent: "{o:Skiddo} fainted" },
               ],
             ],
           },
@@ -443,8 +444,8 @@ export const mtMoonSuperNerdMiguelBattle: Moment = {
                   player:
                     "{p:Houndour} Incinerate {o:Sableye} to {-:41} and {o:Skiddo} (crit) to {=:0}",
                 },
-                { player: "{p:Azumarill} Play Rough {o:Skiddo} → {o:Sableye} to {=:0}" },
                 { opponent: "{o:Skiddo} fainted" },
+                { player: "{p:Azumarill} Play Rough {o:Skiddo} → {o:Sableye} to {=:0}" },
                 { opponent: "{o:Sableye} fainted" },
               ],
             ],
@@ -660,6 +661,9 @@ const _box11 = getBox({
   box: _box10,
   cap: 28,
   update: {
+    Tentacool: {
+      name: "Tentacruel",
+    },
     "Meowth-G": {
       name: "Perrserker",
       spriteKey: undefined,
@@ -668,9 +672,6 @@ const _box11 = getBox({
     Chewtle: {
       name: "Drednaw",
       moves: ["Aqua Jet", "Bite", "Rock Tomb"],
-    },
-    Tentacool: {
-      name: "Tentacruel",
     },
   },
 });
@@ -1242,9 +1243,9 @@ export const nuggetBridgeBugCatcherCaleBattle: Moment = {
             turns: [
               [
                 { player: "{p:Houndoom} Flame Burst {o:Vivillon} to {=:0}" },
+                { opponent: "{o:Vivillon} fainted" },
                 { opponent: "{o:Butterfree} Flame Burst to {=:71}" },
                 { player: "{p:Drednaw} Rock Tomb {o:Butterfree} to {=:0}" },
-                { opponent: "{o:Vivillon} fainted" },
                 { opponent: "{o:Butterfree} fainted" },
               ],
             ],
@@ -1301,8 +1302,8 @@ export const nuggetBridgeLassAliBattle: Moment = {
             turns: [
               [
                 { player: "{p:Azumarill} Aqua Tail {o:Amaura} to {=:0}" },
-                { player: "{p:Perrserker} Iron Head {o:Jigglypuff} to {=:0}" },
                 { opponent: "{o:Amaura} fainted" },
+                { player: "{p:Perrserker} Iron Head {o:Jigglypuff} to {=:0}" },
                 { opponent: "{o:Jigglypuff} fainted" },
               ],
             ],
@@ -1369,8 +1370,8 @@ export const nuggetBridgeYoungsterTimmyBattle: Moment = {
             turns: [
               [
                 { player: "{p:Houndoom} Sucker Punch {o:Plusle} to {=:0}" },
-                { player: "{p:Perrserker} Iron Head {o:Snover} to {=:0}" },
                 { opponent: "{o:Plusle} fainted" },
+                { player: "{p:Perrserker} Iron Head {o:Snover} to {=:0}" },
                 { opponent: "{o:Snover} fainted" },
               ],
             ],
@@ -1421,14 +1422,14 @@ const _box18 = getBox({
       item: "Pixie Plate",
       moves: ["Aqua Jet", "Aqua Tail", "Ice Punch", "Play Rough"],
     },
-    Houndoom: {
-      nature: "Modest",
-      ability: "Flash Fire",
-      item: "Black Glasses",
-      moves: ["Dark Pulse", "Flame Burst", "Leer", "Sucker Punch"],
+    Tentacruel: {
+      nature: "Calm",
+      ability: "Clear Body",
+      item: "Persim Berry",
+      moves: ["Acid Spray", "Bubble Beam", "Rapid Spin", "Sludge"],
     },
   },
-  team: ["Perrserker", "Gyarados", "Azumarill", "Houndoom"],
+  team: ["Perrserker", "Gyarados", "Azumarill", "Tentacruel"],
 });
 
 export const nuggetBridgeLassReliBattle: Moment = {
@@ -1492,17 +1493,21 @@ export const nuggetBridgeLassReliBattle: Moment = {
                 { opponent: "{o:Clamperl} Icy Wind {p:Gyarados} to {+:29}" },
               ],
               [
-                { player: "{p:Gyarados} switch to {p:Houndoom}" },
-                { opponent: "{o:Clamperl} Icy Wind {p:Houndoom} to {+:68}" },
+                { player: "{p:Gyarados} switch to {p:Tentacruel}" },
+                { opponent: "{o:Clamperl} Icy Wind {p:Tentacruel} to {+:78}" },
               ],
               [
-                { player: "{p:Houndoom} Dark Pulse {o:Clamperl} to {=:0}" },
+                { player: "{p:Tentacruel} Sludge {o:Clamperl} to {-:28}" },
+                { opponent: "{o:Clamperl} Water Pulse {p:Tentacruel} to {+:56}" },
+              ],
+              [
+                { player: "{p:Tentacruel} Sludge {o:Clamperl} to {=:0}" },
                 { opponent: "{o:Clamperl} fainted" },
               ],
             ],
           },
         ],
-        frags: { Azumarill: 1, Perrserker: 1, Houndoom: 1 },
+        frags: { Azumarill: 1, Perrserker: 1, Tentacruel: 1 },
       },
     ],
   },
@@ -1804,7 +1809,7 @@ const _box23 = getBox({
     Kricketune: {
       nature: "Impish",
       ability: "Technician",
-      item: "Chilan",
+      item: "Chilan Berry",
       moves: ["Bug Bite", "Bulldoze", "Bullet Seed", "Pounce"],
     },
   },
@@ -1938,12 +1943,12 @@ const _box26 = getBox({
   box: _box25,
   cap: 28,
   update: {
-    Chinchou: {
-      name: "Lanturn",
-    },
     Psyduck: {
       name: "Golduck",
       moves: ["Scald", "Scratch", "Water Sport"],
+    },
+    Chinchou: {
+      name: "Lanturn",
     },
   },
 });
@@ -2049,14 +2054,16 @@ export const ceruleanCityLeaderMistyBattle: Moment = {
             turns: [
               [
                 { player: "{p:Perrserker} switch to {p:Gyarados}" },
-                { opponent: "{o:Ludicolo} Scald {p:Gyarados} to {+:53}" },
+                { opponent: "{o:Ludicolo} Scald {p:Gyarados} to {+:59}" },
+                { opponent: "{p:Gyarados} burn to {+:53}" },
               ],
               [
                 { player: "{p:Gyarados} switch to {p:Lanturn}" },
                 { opponent: "{o:Ludicolo} Thunder Punch {p:Lanturn} to {+:112}" },
               ],
               [
-                { opponent: "{o:Ludicolo} Giga Drain {p:Lanturn} to {+:31}" },
+                { opponent: "{o:Ludicolo} Giga Drain {p:Lanturn} to {+:2}" },
+                { opponent: "{p:Lanturn} Sitrus Berry to {+:31}" },
                 { player: "{p:Lanturn} Thunder Wave {o:Ludicolo}" },
               ],
               [

@@ -171,7 +171,10 @@ export type PokemonStats = {
   spriteKey?: string;
 };
 
-export function computeStats(battles: BattleData[], resolvedBox: BoxData): Record<string, PokemonStats> {
+export function computeStats(
+  battles: BattleData[],
+  resolvedBox: BoxData
+): Record<string, PokemonStats> {
   const canon = getCanon(resolvedBox);
 
   const spriteKeyMap: Record<string, string> = {};
@@ -195,7 +198,13 @@ export function computeStats(battles: BattleData[], resolvedBox: BoxData): Recor
 
   for (const pokemon of resolvedBox.pokemon) {
     const key = canon(resolvePokemon(pokemon).name);
-    totals[key] = { battles: 0, frags: 0, possibleBattles: 0, possibleFrags: 0, addOrder: addOrderMap[key] ?? Infinity };
+    totals[key] = {
+      battles: 0,
+      frags: 0,
+      possibleBattles: 0,
+      possibleFrags: 0,
+      addOrder: addOrderMap[key] ?? Infinity,
+    };
   }
 
   for (const battle of battles) {
