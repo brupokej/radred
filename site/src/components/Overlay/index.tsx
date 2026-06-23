@@ -257,6 +257,8 @@ function OverlayPanel({
   titleVisible = true,
   contentVisible = true,
   size = "small",
+  statusCheck,
+  statusSpinner,
 }: {
   title: string;
   slots: OverlayPanelSlot[];
@@ -265,6 +267,8 @@ function OverlayPanel({
   titleVisible?: boolean;
   contentVisible?: boolean;
   size?: "small" | "large";
+  statusCheck?: boolean;
+  statusSpinner?: boolean;
 }) {
   const fadeTitleCls = `${styles.dynamic} ${titleVisible ? "" : styles.dynamicHidden}`;
   const fadeContentCls = `${styles.dynamic} ${contentVisible ? "" : styles.dynamicHidden}`;
@@ -273,11 +277,33 @@ function OverlayPanel({
   const showEVs = expanded && slots.some((s) => s?.pokemon.evs !== undefined);
   const gridCls = size === "large" ? styles.gridLarge : styles.gridSmall;
   const panelCls = size === "large" ? `${styles.panel} ${styles.panelLarge}` : styles.panel;
+  const spinnerSrc = useBaseUrl("/img/spinner.png");
+  const checkSrc = useBaseUrl("/img/check.png");
+  const hasStatus = statusCheck !== undefined;
 
   return (
     <div className={panelCls} data-theme="dark">
       <div className={styles.panelTitle}>
-        <span className={fadeTitleCls}>{title}</span>
+        <span className={`${fadeTitleCls} ${hasStatus ? styles.panelTitleText : ""}`}>
+          {title}
+        </span>
+        {hasStatus && (
+          <div className={styles.statusGroup}>
+            <span>!box:</span>
+            <div className={styles.statusIconWrap}>
+              <img
+                className={`${styles.statusIcon} ${styles.statusSpinner} ${statusSpinner ? styles.statusIconVisible : ""}`}
+                src={spinnerSrc}
+                alt=""
+              />
+              <img
+                className={`${styles.statusIcon} ${statusCheck ? styles.statusIconVisible : ""}`}
+                src={checkSrc}
+                alt=""
+              />
+            </div>
+          </div>
+        )}
       </div>
       <div className={styles.panelTitleLine} />
       <div className={fadeContentCls}>
@@ -368,11 +394,12 @@ export function OverlayBackground() {
 
 export function OverlayBanner() {
   const liveState = useRelayState();
+  const { gatedState } = useSpinnerSync(liveState);
   const barSrc = useBaseUrl("/img/bar.png");
   const imgBase = useBaseUrl("/img/");
 
-  const liveMeta = liveState?.moment
-    ? deriveOverlayMeta(liveState.moment)
+  const liveMeta = gatedState?.moment
+    ? deriveOverlayMeta(gatedState.moment)
     : { split: "Brock", cap: 16, badges: {} };
 
   const { displayed: split, visible: splitVisible } = useFadedValue(liveMeta.split);
@@ -451,6 +478,62 @@ export function OverlayCamera() {
   );
 }
 
+// ---- useSpinnerSync ----
+
+function useSpinnerSync(liveState: RelayState | null): {
+  checkVisible: boolean;
+  spinnerVisible: boolean;
+  gatedState: RelayState | null;
+} {
+  const [checkVisible, setCheckVisible] = useState(false);
+  const [spinnerVisible, setSpinnerVisible] = useState(false);
+  const [gatedState, setGatedState] = useState<RelayState | null>(null);
+
+  const liveRef = useRef(liveState);
+  liveRef.current = liveState;
+
+  const animatingRef = useRef(false);
+  const hasConnectedRef = useRef(false);
+
+  useEffect(() => {
+    if (liveState === null) {
+      hasConnectedRef.current = false;
+      animatingRef.current = false;
+      setCheckVisible(false);
+      setSpinnerVisible(false);
+      setGatedState(null);
+      return;
+    }
+
+    if (!hasConnectedRef.current) {
+      hasConnectedRef.current = true;
+      setGatedState(liveState);
+      setCheckVisible(true);
+      return;
+    }
+
+    if (animatingRef.current) return;
+    animatingRef.current = true;
+
+    setCheckVisible(false);
+    setTimeout(() => {
+      setSpinnerVisible(true);
+      setTimeout(() => {
+        setGatedState(liveRef.current);
+        setTimeout(() => {
+          setSpinnerVisible(false);
+          setTimeout(() => {
+            setCheckVisible(true);
+            animatingRef.current = false;
+          }, FADE_MS);
+        }, 2 * FADE_MS);
+      }, FADE_MS);
+    }, FADE_MS);
+  }, [liveState]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  return { checkVisible, spinnerVisible, gatedState };
+}
+
 // ---- OverlayStatsSmall ----
 
 const STAT_VIEWS: StatViewType[] = ["battlesRaw", "battlesPercent", "fragsRaw", "fragsPercent"];
@@ -467,10 +550,11 @@ function topBattlersToSlots(battlers: TopBattler[]): OverlayPanelSlot[] {
 
 export function OverlayStatsSmall() {
   const liveState = useRelayState();
+  const { checkVisible, spinnerVisible, gatedState } = useSpinnerSync(liveState);
   const [cycleView, setCycleView] = useState(0);
 
-  const livePlayerBox = liveState?.moment ? derivePlayerBox(liveState.moment) : null;
-  const shouldCycle = liveState?.moment ? hasCyclingStarted(liveState.moment) : false;
+  const livePlayerBox = gatedState?.moment ? derivePlayerBox(gatedState.moment) : null;
+  const shouldCycle = gatedState?.moment ? hasCyclingStarted(gatedState.moment) : false;
 
   useEffect(() => {
     if (!shouldCycle) return;
@@ -479,8 +563,8 @@ export function OverlayStatsSmall() {
     return () => clearInterval(id);
   }, [shouldCycle]);
   const view = shouldCycle ? cycleView : 0;
-  const liveTopStats = liveState?.moment
-    ? deriveTopStats(liveState.moment, livePlayerBox, STAT_VIEWS[view])
+  const liveTopStats = gatedState?.moment
+    ? deriveTopStats(gatedState.moment, livePlayerBox, STAT_VIEWS[view])
     : [];
   const liveStatsTitle = liveTopStats.length > 0 ? STAT_TITLES[view] : "-";
   const statsContentKey = `${view}:${liveTopStats.map((b) => `${b.pokemon.name}:${b.subtitle}`).join(",")}`;
@@ -501,6 +585,8 @@ export function OverlayStatsSmall() {
           subtitleOnly
           titleVisible={statsTitleVisible}
           contentVisible={statsContentVisible}
+          statusCheck={checkVisible}
+          statusSpinner={spinnerVisible}
         />
       </OverlayFrame>
     </OverlayCanvas>
@@ -511,7 +597,8 @@ export function OverlayStatsSmall() {
 
 export function OverlayOpponentMedium() {
   const liveState = useRelayState();
-  const { title, slots, visible } = useOpponent(liveState);
+  const { gatedState } = useSpinnerSync(liveState);
+  const { title, slots, visible } = useOpponent(gatedState);
   return (
     <OverlayCanvas>
       <OverlayFrame frame={FRAMES.medium}>
@@ -531,7 +618,8 @@ export function OverlayOpponentMedium() {
 
 export function OverlayOpponentLarge() {
   const liveState = useRelayState();
-  const { title, slots, visible } = useOpponent(liveState);
+  const { gatedState } = useSpinnerSync(liveState);
+  const { title, slots, visible } = useOpponent(gatedState);
   return (
     <OverlayCanvas>
       <OverlayFrame frame={FRAMES.large}>
@@ -552,11 +640,19 @@ export function OverlayOpponentLarge() {
 
 export function OverlayOpponentSmall() {
   const liveState = useRelayState();
-  const { title, slots, visible } = useOpponent(liveState);
+  const { checkVisible, spinnerVisible, gatedState } = useSpinnerSync(liveState);
+  const { title, slots, visible } = useOpponent(gatedState);
   return (
     <OverlayCanvas>
       <OverlayFrame frame={FRAMES.small}>
-        <OverlayPanel title={title} slots={slots} titleVisible={visible} contentVisible={visible} />
+        <OverlayPanel
+          title={title}
+          slots={slots}
+          titleVisible={visible}
+          contentVisible={visible}
+          statusCheck={checkVisible}
+          statusSpinner={spinnerVisible}
+        />
       </OverlayFrame>
     </OverlayCanvas>
   );

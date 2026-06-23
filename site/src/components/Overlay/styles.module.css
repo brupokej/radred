@@ -134,6 +134,58 @@
   align-items: center;
   justify-content: center;
   text-transform: uppercase;
+  position: relative;
+}
+
+.statusGroup {
+  position: absolute;
+  right: 4px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  text-transform: none;
+}
+
+.panelTitleText {
+  position: absolute;
+  left: 90px;
+  width: calc(100% - 180px);
+  top: 0;
+  bottom: 0;
+  line-height: 28px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.statusIconWrap {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  transform: translateY(-2px);
+}
+
+.statusIcon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+}
+
+.statusIconVisible {
+  opacity: 1;
+}
+
+.statusSpinner {
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 .panelTitleLine {

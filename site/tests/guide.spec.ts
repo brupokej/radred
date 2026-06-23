@@ -287,7 +287,7 @@ for (const [pathIndex, path] of PATHS.entries()) {
         content:
           "nav.navbar { visibility: hidden !important; } [class*='skipToContent'] { display: none !important; } *:focus, *:focus-visible { outline: none !important; box-shadow: none !important; }",
       });
-      await page.waitForTimeout(1000);
+      await page.waitForTimeout(path[0] === "overlay" ? 5000 : 1000);
     });
 
     test("snapshots", async ({ page }) => {
