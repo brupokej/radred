@@ -152,8 +152,8 @@ function OverlayCard({
       ? nameLen <= 10
         ? undefined
         : nameLen <= 13
-          ? 27
-          : 24
+          ? 24
+          : 21
       : nameLen <= 10
         ? undefined
         : nameLen <= 13
@@ -161,7 +161,7 @@ function OverlayCard({
           : 8;
   const subtitleOnlyStyle = !showName
     ? size === "large"
-      ? { fontSize: "39px", lineHeight: "72px", marginTop: "15px" }
+      ? { fontSize: "36px", lineHeight: "72px", marginTop: "15px" }
       : { fontSize: "13px", lineHeight: "24px", marginTop: "5px" }
     : undefined;
 
@@ -284,9 +284,7 @@ function OverlayPanel({
   return (
     <div className={panelCls} data-theme="dark">
       <div className={styles.panelTitle}>
-        <span className={`${fadeTitleCls} ${hasStatus ? styles.panelTitleText : ""}`}>
-          {title}
-        </span>
+        <span className={`${fadeTitleCls} ${hasStatus ? styles.panelTitleText : ""}`}>{title}</span>
         {hasStatus && (
           <div className={styles.statusGroup}>
             <span>!box:</span>

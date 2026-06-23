@@ -184,8 +184,12 @@
 }
 
 @keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .panelTitleLine {
@@ -351,6 +355,7 @@
 .statRow {
   align-items: center;
   display: flex;
+  font-weight: normal;
   margin-top: 0;
 }
 
@@ -460,9 +465,9 @@
 
 .gridLarge .sprite,
 .gridLarge .emptySprite {
-  height: 204px;
-  margin-top: 11px;
-  width: 204px;
+  height: 174px;
+  margin-top: 5px;
+  width: 174px;
 }
 
 .gridLarge .emptySprite {
@@ -470,34 +475,52 @@
 }
 
 .gridLarge .name {
-  font-size: 30px;
+  font-size: 27px;
   line-height: 36px;
-  margin-top: 11px;
+  margin-top: 5px;
   padding: 0 6px;
 }
 
 .gridLarge .level {
-  font-size: 30px;
+  font-size: 27px;
   line-height: 36px;
   margin-top: 0;
   padding: 0 6px;
 }
 
+.gridLarge .divider {
+  align-self: stretch;
+  display: block;
+  height: 1px;
+  margin: 12px 0;
+  position: relative;
+}
+
+.gridLarge .divider::before {
+  background: rgba(255, 255, 255, 0.25);
+  bottom: 0;
+  content: "";
+  left: 20%;
+  position: absolute;
+  right: 20%;
+  top: 0;
+}
+
 .gridLarge .level + .divider + .detail {
-  margin-top: 11px;
+  margin-top: 0;
 }
 
 .gridLarge .divider + .move {
-  margin-top: 11px;
+  margin-top: 0;
 }
 
 .gridLarge .divider + .stats {
-  margin-top: 11px;
+  margin-top: 0;
 }
 
 .gridLarge .detail,
 .gridLarge .move {
-  font-size: 27px;
+  font-size: 24px;
   font-weight: normal;
   line-height: 36px;
   margin-top: 0;
@@ -505,7 +528,7 @@
 }
 
 .gridLarge .statRow {
-  font-size: 27px;
+  font-size: 24px;
   gap: 6px;
   line-height: 36px;
   padding: 0 6px;
