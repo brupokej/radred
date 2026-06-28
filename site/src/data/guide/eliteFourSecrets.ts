@@ -23,22 +23,6 @@ export function getEliteFourSecrets(_box1: Box) {
     data: { playerBox: _box2 },
   };
 
-  const eliteFourBoxChange: Moment = {
-    split: "Elite Four",
-    label: "Elite Four Box Change",
-    kind: "boxChange",
-  };
-
-  const _box3 = getBox({
-    box: _box2,
-    team: ["Secret", "Secret", "Secret", "Secret"],
-  });
-
-  const _box4 = getBox({
-    box: _box3,
-    team: ["Secret", "Secret", "Secret", "Secret", "Secret", "Secret"],
-  });
-
   const eliteFourLoreleiBattle: Moment = {
     split: "Elite Four",
     label: "Elite Four Lorelei Battle",
@@ -49,7 +33,7 @@ export function getEliteFourSecrets(_box1: Box) {
         {
           label: "50% → Rain matchup",
           data: {
-            playerBox: _box3,
+            playerBox: _box2,
             opponentBox: eliteFourLoreleiRainBox,
             lines: [
               {
@@ -73,13 +57,13 @@ export function getEliteFourSecrets(_box1: Box) {
         {
           label: "50% → Snow matchup",
           data: {
-            playerBox: _box4,
+            playerBox: _box2,
             opponentBox: eliteFourLoreleiSnowBox,
             lines: [
               {
                 matchups: [
                   {
-                    matchup: ["Glaceon"],
+                    matchup: ["Landorus-T", "Glaceon"],
                     turns: [
                       [
                         { player: "{p:Secret} Fake Out {o:Glaceon} to {-:256}" },
@@ -98,17 +82,6 @@ export function getEliteFourSecrets(_box1: Box) {
     },
   };
 
-  const eliteFourLoreleiBoxChange: Moment = {
-    split: "Elite Four",
-    label: "Elite Four Lorelei Box Change",
-    kind: "boxChange",
-  };
-
-  const _box5 = getBox({
-    box: _box4,
-    team: ["Secret", "Secret", "Secret", "Secret", "Secret"],
-  });
-
   const eliteFourBrunoBattle: Moment = {
     split: "Elite Four",
     label: "Elite Four Bruno Battle",
@@ -119,7 +92,7 @@ export function getEliteFourSecrets(_box1: Box) {
         {
           label: "50% → Infernape matchup",
           data: {
-            playerBox: _box5,
+            playerBox: _box2,
             opponentBox: eliteFourBrunoInfernapeBox,
             lines: [
               {
@@ -142,7 +115,7 @@ export function getEliteFourSecrets(_box1: Box) {
         {
           label: "50% → Urshifu-S matchup",
           data: {
-            playerBox: _box5,
+            playerBox: _box2,
             opponentBox: eliteFourBrunoUrshifuSBox,
             lines: [
               {
@@ -167,24 +140,13 @@ export function getEliteFourSecrets(_box1: Box) {
     },
   };
 
-  const eliteFourBrunoBoxChange: Moment = {
-    split: "Elite Four",
-    label: "Elite Four Bruno Box Change",
-    kind: "boxChange",
-  };
-
-  const _box6 = getBox({
-    box: _box5,
-    team: ["Secret", "Secret", "Secret", "Secret", "Secret", "Secret"],
-  });
-
   const eliteFourAgathaBattle: Moment = {
     split: "Elite Four",
     label: "Elite Four Agatha Battle",
     kind: "battle",
     secret: true,
     data: {
-      playerBox: _box6,
+      playerBox: _box2,
       opponentBox: eliteFourAgathaBox,
       lines: [
         {
@@ -204,24 +166,13 @@ export function getEliteFourSecrets(_box1: Box) {
     },
   };
 
-  const eliteFourAgathaBoxChange: Moment = {
-    split: "Elite Four",
-    label: "Elite Four Agatha Box Change",
-    kind: "boxChange",
-  };
-
-  const _box7 = getBox({
-    box: _box6,
-    team: ["Secret", "Secret", "Secret", "Secret", "Secret"],
-  });
-
   const eliteFourLanceBattle: Moment = {
     split: "Elite Four",
     label: "Elite Four Lance Battle",
     kind: "battle",
     secret: true,
     data: {
-      playerBox: _box7,
+      playerBox: _box2,
       opponentBox: eliteFourLanceBox,
       lines: [
         {
@@ -242,10 +193,11 @@ export function getEliteFourSecrets(_box1: Box) {
     },
   };
 
-  const _box8 = getBox({
-    box: _box7,
-    team: ["Secret", "Secret", "Secret", "Secret", "Secret", "Secret"],
-  });
+  const eliteFourLanceBoxChange: Moment = {
+    split: "Elite Four",
+    label: "Elite Four Lance Box Change",
+    kind: "boxChange",
+  };
 
   const championRivalBattle: Moment = {
     split: "Elite Four",
@@ -253,7 +205,7 @@ export function getEliteFourSecrets(_box1: Box) {
     kind: "battle",
     secret: true,
     data: {
-      playerBox: _box8,
+      playerBox: _box2,
       opponentBox: championRivalBox,
       lines: [
         {
@@ -275,15 +227,12 @@ export function getEliteFourSecrets(_box1: Box) {
 
   return {
     eliteFourChecklist,
-    eliteFourBoxChange,
     eliteFourLoreleiBattle,
-    eliteFourLoreleiBoxChange,
     eliteFourBrunoBattle,
-    eliteFourBrunoBoxChange,
     eliteFourAgathaBattle,
-    eliteFourAgathaBoxChange,
     eliteFourLanceBattle,
+    eliteFourLanceBoxChange,
     championRivalBattle,
-    box: _box8,
+    box: _box2,
   };
 }

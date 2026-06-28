@@ -6,10 +6,10 @@
 
 .button {
   align-items: center;
-  background: color-mix(in srgb, var(--ifm-color-primary) 10%, transparent);
+  background: var(--hl-primary-bg);
   border: none;
   border-radius: 3px;
-  color: var(--ifm-color-primary);
+  color: var(--ifm-font-color-base);
   cursor: pointer;
   display: inline-flex;
   font-family: var(--ifm-font-family-base);

@@ -20,6 +20,7 @@ export const {
   victoryRoadAceTrainerAlexaBattle,
   victoryRoadCoolCoupleRayAndTyraBattle,
   indigoPlateauCreatorSoupercellBattle,
+  indigoPlateauCreatorSoupercellBoxChange,
   box,
 } = getVictoryRoadSecrets(_box1);
 
@@ -40,4 +41,5 @@ export const moments: Moment[] = [
   victoryRoadAceTrainerAlexaBattle,
   victoryRoadCoolCoupleRayAndTyraBattle,
   indigoPlateauCreatorSoupercellBattle,
+  indigoPlateauCreatorSoupercellBoxChange,
 ];

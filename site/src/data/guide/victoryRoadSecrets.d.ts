@@ -18,5 +18,6 @@ export declare function getVictoryRoadSecrets(_box1: Box): {
   victoryRoadAceTrainerAlexaBattle: Moment;
   victoryRoadCoolCoupleRayAndTyraBattle: Moment;
   indigoPlateauCreatorSoupercellBattle: Moment;
+  indigoPlateauCreatorSoupercellBoxChange: Moment;
   box: Box;
 };

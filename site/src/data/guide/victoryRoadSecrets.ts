@@ -212,6 +212,7 @@ export function getVictoryRoadSecrets(_box1: Box) {
               turns: [
                 [
                   { player: "{p:Secret} Fake Out {o:Metagross} to {-:256}" },
+                  { opponent: "{p:Secret} Life Orb to {=:109}" },
                   { opponent: "{o:Metagross} flinched" },
                 ],
               ],
@@ -256,7 +257,7 @@ export function getVictoryRoadSecrets(_box1: Box) {
 
   const _box10 = getBox({
     box: _box9,
-    team: ["Secret", "Secret", "Secret"],
+    team: ["Secret", "Secret"],
   });
 
   const victoryRoadAceTrainerColbyBattle: Moment = {
@@ -387,6 +388,12 @@ export function getVictoryRoadSecrets(_box1: Box) {
     },
   };
 
+  const indigoPlateauCreatorSoupercellBoxChange: Moment = {
+    split: "Victory Road",
+    label: "Indigo Plateau Creator Soupercell Box Change",
+    kind: "boxChange",
+  };
+
   return {
     route13Encounter,
     route18Encounter,
@@ -404,6 +411,7 @@ export function getVictoryRoadSecrets(_box1: Box) {
     victoryRoadAceTrainerAlexaBattle,
     victoryRoadCoolCoupleRayAndTyraBattle,
     indigoPlateauCreatorSoupercellBattle,
+    indigoPlateauCreatorSoupercellBoxChange,
     box: _box13,
   };
 }

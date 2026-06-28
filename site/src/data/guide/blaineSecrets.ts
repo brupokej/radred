@@ -362,9 +362,8 @@ export function getBlaineSecrets(_box1: Box) {
               matchup: ["Sandy Shocks"],
               turns: [
                 [
-                  { opponent: "{o:Sandy Shocks} Earth Power {p:Secret} to {+:1}" },
-                  { player: "{p:Secret} U-Turn {o:Sandy Shocks} to {-:237}" },
-                  { player: "{p:Secret} switch to {p:Secret}" },
+                  { player: "{p:Secret} Tackle {o:Sandy Shocks} to {=:0}" },
+                  { opponent: "{o:Sandy Shocks} fainted" },
                 ],
               ],
             },

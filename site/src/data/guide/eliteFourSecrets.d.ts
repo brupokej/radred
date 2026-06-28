@@ -3,14 +3,11 @@ import type { Moment } from "@site/src/utils/moments";
 
 export declare function getEliteFourSecrets(_box1: Box): {
   eliteFourChecklist: Moment;
-  eliteFourBoxChange: Moment;
   eliteFourLoreleiBattle: Moment;
-  eliteFourLoreleiBoxChange: Moment;
   eliteFourBrunoBattle: Moment;
-  eliteFourBrunoBoxChange: Moment;
   eliteFourAgathaBattle: Moment;
-  eliteFourAgathaBoxChange: Moment;
   eliteFourLanceBattle: Moment;
+  eliteFourLanceBoxChange: Moment;
   championRivalBattle: Moment;
   box: Box;
 };

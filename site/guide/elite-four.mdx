@@ -10,14 +10,11 @@ import GoLiveButton from "@site/src/components/GoLiveButton";
 
 import {
   eliteFourChecklist,
-  eliteFourBoxChange,
   eliteFourLoreleiBattle,
-  eliteFourLoreleiBoxChange,
   eliteFourBrunoBattle,
-  eliteFourBrunoBoxChange,
   eliteFourAgathaBattle,
-  eliteFourAgathaBoxChange,
   eliteFourLanceBattle,
+  eliteFourLanceBoxChange,
   championRivalBattle,
 } from "@site/src/data/guide/eliteFour";
 
@@ -25,15 +22,11 @@ import {
 
 <Checklist data={eliteFourChecklist.data} secret />
 
-<BoxChange data={eliteFourBoxChange.data} secret />
-
 ## Elite Four Lorelei Battle
 
 <GoLiveButton moment={eliteFourLoreleiBattle} secret />
 
 <SwitchBattle data={eliteFourLoreleiBattle.data} secret />
-
-<BoxChange data={eliteFourLoreleiBoxChange.data} secret />
 
 ## Elite Four Bruno Battle
 
@@ -41,21 +34,19 @@ import {
 
 <SwitchBattle data={eliteFourBrunoBattle.data} secret />
 
-<BoxChange data={eliteFourBrunoBoxChange.data} secret />
-
 ## Elite Four Agatha Battle
 
 <GoLiveButton moment={eliteFourAgathaBattle} secret />
 
 <Battle data={eliteFourAgathaBattle.data} secret />
 
-<BoxChange data={eliteFourAgathaBoxChange.data} secret />
-
 ## Elite Four Lance Battle
 
 <GoLiveButton moment={eliteFourLanceBattle} secret />
 
 <Battle data={eliteFourLanceBattle.data} secret />
+
+<BoxChange data={eliteFourLanceBoxChange.data} secret />
 
 ## Champion Rival Battle
 

@@ -5,10 +5,10 @@ import { Box } from "@site/src/utils/box";
 import {
   getAbilityChanges,
   getChanges,
-  getHpChanges,
   getIVChanges,
   getLevelCap,
   getRemovals,
+  getRemoveItemsChanges,
 } from "@site/src/utils/boxChange";
 import { formatStats } from "@site/src/utils/pokemon";
 
@@ -49,11 +49,6 @@ export default function BoxChange({ data, secret }: { data?: BoxChangeData; secr
     ivRows.push(<Row key={key++} row={[`${name} → `, { warning: label }]} />);
   }
 
-  const hpRows: React.ReactNode[] = [];
-  for (const { name, hp } of getHpChanges(box)) {
-    hpRows.push(<Row key={key++} row={[`${name} → `, { warning: `Set to HP ${hp}` }]} />);
-  }
-
   const abilityRows: React.ReactNode[] = [];
   for (const { name, ability } of getAbilityChanges(box)) {
     abilityRows.push(
@@ -61,7 +56,14 @@ export default function BoxChange({ data, secret }: { data?: BoxChangeData; secr
     );
   }
 
-  const rows = [...removalRows, ...capRows, ...updateRows, ...hpRows, ...ivRows, ...abilityRows];
+  const removeItemsRows: React.ReactNode[] = [];
+  if (getRemoveItemsChanges(box)) {
+    removeItemsRows.push(
+      <Row key={key++} row={[`All Pokémon →`, { warning: `Held Items → Bag` }]} />
+    );
+  }
+
+  const rows = [...removalRows, ...capRows, ...updateRows, ...ivRows, ...abilityRows, ...removeItemsRows];
   if (rows.length === 0) return null;
 
   const card = <Card title="Box Change">{rows}</Card>;

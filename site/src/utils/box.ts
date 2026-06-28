@@ -22,6 +22,7 @@ export interface BoxData {
 export interface PartialBoxData {
   pokemon?: PartialPokemonData[];
   cap?: { level: number; exclude?: string[] };
+  removeItems?: true;
   renames?: Record<string, string>;
   removed?: string[];
 }
@@ -98,6 +99,12 @@ function applyStep(working: BoxData, step: PartialBoxData): BoxData {
     });
   }
 
+  if (step.removeItems) {
+    pokemon = pokemon.map((p) => {
+      return { ...p, update: { ...p.update, item: undefined } };
+    });
+  }
+
   return {
     ...working,
     pokemon,
@@ -115,6 +122,7 @@ export function getBox({
   remove = [],
   add = [],
   cap,
+  removeItems,
   update = [],
   team,
 }: {
@@ -122,6 +130,7 @@ export function getBox({
   remove?: string[];
   add?: PokemonData[];
   cap?: number | { level: number; exclude?: string[] };
+  removeItems?: true;
   update?: Record<string, Partial<PokemonData>> | Record<string, Partial<PokemonData>>[];
   team?: TeamEntry[];
 }): Box {
@@ -164,6 +173,10 @@ export function getBox({
       const level = typeof cap === "number" ? cap : cap.level;
       const exclude = typeof cap === "number" ? undefined : cap.exclude;
       step.cap = exclude ? { level, exclude } : { level };
+    }
+
+    if (removeItems) {
+      step.removeItems = true;
     }
 
     if (Object.keys(step).length) steps.push(step);
