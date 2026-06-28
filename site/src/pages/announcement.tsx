@@ -214,7 +214,8 @@ export default function Announcement(): ReactNode {
           <div className="poster-titles">
             <div className="poster-title-1">RR 4.1 HC 1DR STREAM</div>
             <div className="poster-title-2">
-              radical red 4.1 · hardcore mode · all day<br />
+              radical red 4.1 · hardcore mode · full day
+              <br />
               dexnav on · one death equals reset run
             </div>
           </div>
@@ -251,7 +252,7 @@ export default function Announcement(): ReactNode {
           <div className="poster-banner-section">
             <img width={8} src={barSrc} alt="" />
             &nbsp;&nbsp;
-            <span className="poster-shadow">Sunday, July 5th at 12:00 GMT</span>
+            <span className="poster-shadow">Sunday, July 12 at 12:00 GMT</span>
           </div>
         </div>
       </div>
