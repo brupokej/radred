@@ -116,15 +116,11 @@ function statColor(v: number): string {
 function OverlayCard({
   slot,
   expanded,
-  showIVs,
-  showEVs,
   showName,
   size,
 }: {
   slot: OverlayPanelSlot;
   expanded: boolean;
-  showIVs: boolean;
-  showEVs: boolean;
   showName: boolean;
   size: "small" | "large";
 }) {
@@ -191,22 +187,6 @@ function OverlayCard({
       {expanded && (
         <>
           <div className={styles.divider} />
-          {showIVs && (
-            <>
-              <div className={`${styles.detail} ${pokemon?.ivs ? styles.fieldInfo : ""}`}>
-                {pokemon?.ivs ? `${formatStats(pokemon.ivs)} IVs` : "-"}
-              </div>
-              <div className={styles.divider} />
-            </>
-          )}
-          {showEVs && (
-            <>
-              <div className={`${styles.detail} ${pokemon?.evs ? styles.fieldInfo : ""}`}>
-                {pokemon?.evs ? `${formatStats(pokemon.evs)} EVs` : "-"}
-              </div>
-              <div className={styles.divider} />
-            </>
-          )}
           <div className={styles.detail}>{pokemon?.nature ?? "-"}</div>
           <div className={styles.detail}>{pokemon?.ability ?? "-"}</div>
           <div className={styles.detail}>{pokemon ? (pokemon.item ?? "None") : "-"}</div>
@@ -273,8 +253,6 @@ function OverlayPanel({
   const fadeTitleCls = `${styles.dynamic} ${titleVisible ? "" : styles.dynamicHidden}`;
   const fadeContentCls = `${styles.dynamic} ${contentVisible ? "" : styles.dynamicHidden}`;
   const showName = !subtitleOnly && !slots.some((s) => s !== null && s.subtitle !== undefined);
-  const showIVs = expanded && slots.some((s) => s?.pokemon.ivs !== undefined);
-  const showEVs = expanded && slots.some((s) => s?.pokemon.evs !== undefined);
   const gridCls = size === "large" ? styles.gridLarge : styles.gridSmall;
   const panelCls = size === "large" ? `${styles.panel} ${styles.panelLarge}` : styles.panel;
   const spinnerSrc = useBaseUrl("/img/spinner.png");
@@ -311,8 +289,6 @@ function OverlayPanel({
               key={slot?.pokemon.name ?? i}
               slot={slot}
               expanded={expanded}
-              showIVs={showIVs}
-              showEVs={showEVs}
               showName={showName}
               size={size}
             />

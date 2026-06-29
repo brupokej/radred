@@ -106,8 +106,6 @@ function TeamGrid({ team, hasHeader = false }: { team: Pokemon[]; hasHeader?: bo
 
   const emptiesToShow = Math.max(0, Math.min(cols, 6) - team.length);
   const emptySlots = Array.from({ length: emptiesToShow }, () => null);
-  const showIVs = team.some((p) => resolvePokemon(p).ivs !== undefined);
-  const showEVs = team.some((p) => resolvePokemon(p).evs !== undefined);
 
   return (
     <div
@@ -122,12 +120,8 @@ function TeamGrid({ team, hasHeader = false }: { team: Pokemon[]; hasHeader?: bo
         />
         <ScrollFade ref={scrollRef} axis="x" className={styles.grid}>
           <div className={styles.gridInner}>
-            {team.map((pokemon, i) => (
-              <PokemonCard key={i} pokemon={pokemon} showIVs={showIVs} showEVs={showEVs} />
-            ))}
-            {emptySlots.map((_, i) => (
-              <PokemonCard key={`empty-${i}`} pokemon={null} showIVs={showIVs} showEVs={showEVs} />
-            ))}
+            {team.map((pokemon, i) => <PokemonCard key={i} pokemon={pokemon} />)}
+            {emptySlots.map((_, i) => <PokemonCard key={`empty-${i}`} pokemon={null} />)}
           </div>
         </ScrollFade>
       </div>
@@ -159,15 +153,7 @@ function nameStyle(name: string): React.CSSProperties {
   return {};
 }
 
-function PokemonCard({
-  pokemon,
-  showIVs,
-  showEVs,
-}: {
-  pokemon: Pokemon | null;
-  showIVs: boolean;
-  showEVs: boolean;
-}) {
+function PokemonCard({ pokemon }: { pokemon: Pokemon | null }) {
   const isExpanded = useCardDetail();
   const { update, base } = pokemon ?? {};
   const current = pokemon ? resolvePokemon(pokemon) : null;
@@ -231,30 +217,6 @@ function PokemonCard({
             </div>
           ))}
           <div className={styles.divider} />
-          {showIVs && (
-            <>
-              <div className={`${styles.detail} ${current?.ivs ? styles.fieldInfo : ""}`}>
-                {current == null ? (
-                  "-"
-                ) : (
-                  <span>{current?.ivs ? `${formatStats(current.ivs)} IVs` : "-"}</span>
-                )}
-              </div>
-              <div className={styles.divider} />
-            </>
-          )}
-          {showEVs && (
-            <>
-              <div className={`${styles.detail} ${current?.evs ? styles.fieldInfo : ""}`}>
-                {current == null ? (
-                  "-"
-                ) : (
-                  <span>{current?.evs ? `${formatStats(current.evs)} EVs` : "-"}</span>
-                )}
-              </div>
-              <div className={styles.divider} />
-            </>
-          )}
           <div className={styles.stats}>
             {STAT_KEYS.map(({ label, key }) => {
               const v = stats ? stats[key] : null;

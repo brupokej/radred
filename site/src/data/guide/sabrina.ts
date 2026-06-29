@@ -36,23 +36,17 @@ export const sabrinaBoxChange: Moment = {
 const _box3 = getBox({
   box: _box2,
   update: {
-    Drednaw: {
-      nature: "Adamant",
-      ability: "Shell Armor",
-      item: "Chesto Berry",
-      moves: ["Aqua Jet", "Bulldoze", "Flip Turn", "Rock Tomb"],
-    },
     Perrserker: {
       nature: "Adamant",
       ability: "Battle Armor",
       item: "Chesto Berry",
       moves: ["Fake Out", "Bullet Punch", "Iron Head", "U-Turn"],
     },
-    Excadrill: {
-      nature: "Naughty",
-      ability: "Mold Breaker",
-      item: "Soft Sand",
-      moves: ["Drill Run", "Mud-Slap", "Rapid Spin", "Rock Tomb"],
+    Drednaw: {
+      nature: "Adamant",
+      ability: "Shell Armor",
+      item: "Chesto Berry",
+      moves: ["Aqua Jet", "Bulldoze", "Flip Turn", "Rock Tomb"],
     },
     Incineroar: {
       nature: "Naughty",
@@ -60,8 +54,14 @@ const _box3 = getBox({
       item: "Sitrus Berry",
       moves: ["Fake Out", "Darkest Lariat", "Flamethrower", "U-Turn"],
     },
+    Excadrill: {
+      nature: "Naughty",
+      ability: "Mold Breaker",
+      item: "Soft Sand",
+      moves: ["Drill Run", "Mud-Slap", "Rapid Spin", "Rock Tomb"],
+    },
   },
-  team: ["Drednaw", "Perrserker", "Excadrill", "Incineroar"],
+  team: ["Perrserker", "Drednaw", "Incineroar", "Excadrill"],
 });
 
 export const gameCornerGuardBattle: Moment = {
@@ -260,7 +260,7 @@ const _box5 = getBox({
       nature: "Jolly",
       ability: "Intimidate",
       item: "Sitrus Berry",
-      moves: ["Aqua Fang", "Crunch", "Ice Fang", "Leer"],
+      moves: ["Aqua Tail", "Crunch", "Ice Fang", "Leer"],
     },
     Excadrill: {
       nature: "Jolly",
@@ -366,7 +366,7 @@ const _box6 = getBox({
       nature: "Jolly",
       ability: "Intimidate",
       item: "Sitrus Berry",
-      moves: ["Aqua Fang", "Flamethrower", "Ice Fang", "Leer"],
+      moves: ["Aqua Tail", "Flamethrower", "Ice Fang", "Leer"],
     },
   },
   team: ["Golduck", "Drednaw", "Cloyster", "Lanturn", "Arcanine-H", "Gyarados"],

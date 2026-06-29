@@ -109,12 +109,12 @@ export const route16BikerLaoBattle: Moment = {
               [
                 { player: "{p:Excadrill} switch to {p:Dragapult}" },
                 { opponent: "{o:Mienshao} Close Combat {p:Dragapult}" },
-                { opponent: "{p:Dragapult} sandstorm to {+:205}" },
+                { opponent: "{p:Dragapult} sandstorm to {=:205}" },
               ],
               [
                 { player: "{p:Dragapult} Dragon Darts {o:Mienshao} to {=:0}" },
                 { opponent: "{o:Mienshao} fainted" },
-                { opponent: "{p:Dragapult} sandstorm to {+:192}" },
+                { opponent: "{p:Dragapult} sandstorm to {=:192}" },
               ],
             ],
           },
@@ -124,12 +124,13 @@ export const route16BikerLaoBattle: Moment = {
               [
                 { player: "{p:Dragapult} switch to {p:Golisopod}" },
                 { opponent: "{o:Dugtrio-A} Earthquake {p:Golisopod} to {+:115}" },
+                { opponent: "{o:Dugtrio-A} Life Orb to {=:128}" },
                 { opponent: "{p:Golisopod} sandstorm to {+:103}" },
               ],
               [
                 { player: "{p:Golisopod} switch to {p:Excadrill}" },
                 { opponent: "{o:Dugtrio-A} Stone Edge {p:Excadrill} to {+:192}" },
-                { opponent: "{o:Dugtrio-A} Life Orb to {-:142}" },
+                { opponent: "{o:Dugtrio-A} Life Orb to {-:128}" },
               ],
               [
                 { player: "{p:Excadrill} Earthquake {o:Dugtrio-A} to {=:0}" },
@@ -561,20 +562,20 @@ const _box10 = getBox({
     Meowscarada: {
       nature: "Jolly",
       ability: "Protean",
-      item: "Miracle Seed",
-      moves: ["Acrobatics", "Flower Trick", "Play Rough", "U-Turn"],
+      item: "Expert Belt",
+      moves: ["Acrobatics", "Flower Trick", "Play Rough", "Shadow Claw"],
     },
     Clodsire: {
       nature: "Careful",
       ability: "Water Absorb",
       item: "Sitrus Berry",
-      moves: ["Earthquake", "Rock Slide", "Rock Tomb", "Yawn"],
+      moves: ["Bulldoze", "Earthquake", "Rock Slide", "Rock Tomb"],
     },
-    Drednaw: {
-      nature: "Impish",
-      ability: "Shell Armor",
-      item: "Rindo Berry",
-      moves: ["Bulldoze", "Dig", "Flip Turn", "Ice Fang"],
+    Incineroar: {
+      nature: "Careful",
+      ability: "Blaze",
+      item: "Sitrus Berry",
+      moves: ["Fake Out", "Darkest Lariat", "Outrage", "U-Turn"],
     },
     "Swampert-Mega": {
       nature: "Adamant",
@@ -591,11 +592,11 @@ const _box10 = getBox({
     Excadrill: {
       nature: "Adamant",
       ability: "Sand Rush",
-      item: "Sitrus Berry",
+      item: "Aspear Berry",
       moves: ["Earthquake", "Iron Head", "Rock Slide", "Shadow Claw"],
     },
   },
-  team: ["Meowscarada", "Clodsire", "Drednaw", "Swampert-Mega", "Dragapult", "Excadrill"],
+  team: ["Meowscarada", "Clodsire", "Incineroar", "Swampert-Mega", "Dragapult", "Excadrill"],
 });
 
 export const route16RiderHideoBattle: Moment = {
@@ -633,7 +634,7 @@ export const route16RiderHideoBattle: Moment = {
               ],
               [
                 { opponent: "{o:Dracovish} Psychic Fangs {p:Clodsire} (non-crit) to {+:143}" },
-                { player: "{p:Clodsire} Rock Tomb {o:Dracovish} to {-:190}" },
+                { player: "{p:Clodsire} Bulldoze {o:Dracovish} to {-:178}" },
               ],
               [
                 { player: "{p:Clodsire} switch to {p:Meowscarada}" },
@@ -642,14 +643,9 @@ export const route16RiderHideoBattle: Moment = {
                 { opponent: "{p:Meowscarada} sandstorm to {=:141}" },
               ],
               [
-                { player: "{p:Meowscarada} Play Rough {o:Dracovish} to {-:38}" },
-                { opponent: "{o:Dracovish} Dragon Claw {p:Meowscarada}" },
-                { opponent: "{p:Meowscarada} sandstorm to {=:129}" },
-              ],
-              [
                 { player: "{p:Meowscarada} Play Rough {o:Dracovish} to {=:0}" },
                 { opponent: "{o:Dracovish} fainted" },
-                { opponent: "{p:Meowscarada} sandstorm to {+:117}" },
+                { opponent: "{p:Meowscarada} sandstorm to {=:129}" },
               ],
             ],
             branches: [{ branches: ["50% → Rotom-Heat matchup", "50% → Aron matchup"] }],
@@ -664,17 +660,24 @@ export const route16RiderHideoBattle: Moment = {
             matchup: ["Rotom-Heat"],
             turns: [
               [
-                { player: "{p:Meowscarada} U-Turn {o:Rotom-Heat} to {-:135}" },
-                { player: "{p:Meowscarada} switch to {p:Drednaw}" },
-                { opponent: "{p:Drednaw} Stealth Rock to {=:194}" },
-                { opponent: "{o:Rotom-Heat} Overheat (Z) {p:Drednaw} to {+:155}" },
-                { opponent: "{o:Rotom-Heat} sandstorm to {-:125}" },
+                { player: "{p:Meowscarada} switch to {p:Incineroar}" },
+                { opponent: "{p:Incineroar} Stealth Rock to {=:171}" },
+                { opponent: "{o:Rotom-Heat} Overheat (Z) {p:Incineroar} to {+:43}" },
+                { opponent: "{p:Incineroar} Sitrus Berry {+:100}" },
+                { opponent: "{p:Incineroar} sandstorm {+:86}" },
+                { opponent: "{o:Rotom-Heat} sandstorm to {=:152}" },
               ],
               [
-                { player: "{p:Drednaw} switch to {p:Swampert-Mega}" },
+                { player: "{p:Incineroar} Fake Out {o:Rotom-Heat} to {-:130}" },
+                { opponent: "{o:Rotom-Heat} flinched" },
+                { opponent: "{p:Incineroar} sandstorm {+:72}" },
+                { opponent: "{o:Rotom-Heat} sandstorm to {-:120}" },
+              ],
+              [
+                { player: "{p:Incineroar} switch to {p:Swampert-Mega}" },
                 { opponent: "{p:Swampert-Mega} Stealth Rock to {+:221}" },
                 { opponent: "{o:Rotom-Heat} Thunder Wave {p:Swampert-Mega}" },
-                { opponent: "{o:Rotom-Heat} sandstorm to {-:115}" },
+                { opponent: "{o:Rotom-Heat} sandstorm to {-:110}" },
               ],
               [
                 { player: "{p:Swampert-Mega} mega evolve" },
@@ -682,8 +685,8 @@ export const route16RiderHideoBattle: Moment = {
                 { player: "{p:Swampert-Mega} Flip Turn {o:Rotom-Heat} to {=:0}" },
                 { opponent: "{o:Rotom-Heat} fainted" },
                 { player: "{p:Swampert-Mega} switch to {p:Meowscarada}" },
-                { opponent: "{p:Meowscarada} Stealth Rock to {+:92}" },
-                { opponent: "{p:Meowscarada} sandstorm to {+:80}" },
+                { opponent: "{p:Meowscarada} Stealth Rock to {+:104}" },
+                { opponent: "{p:Meowscarada} sandstorm to {+:92}" },
               ],
             ],
           },
@@ -714,18 +717,22 @@ export const route16RiderHideoBattle: Moment = {
             matchup: ["Aron"],
             turns: [
               [
-                { player: "{p:Meowscarada} U-Turn {o:Aron} to {=:1}" },
                 { player: "{p:Meowscarada} switch to {p:Dragapult}" },
                 { opponent: "{p:Dragapult} Stealth Rock to {=:191}" },
                 { opponent: "{o:Aron} Endeavor {p:Dragapult}" },
                 { opponent: "{p:Dragapult} sandstorm to {=:178}" },
               ],
               [
+                { player: "{p:Dragapult} Astonish {o:Aron} to {=:1}" },
+                { opponent: "{o:Aron} Endeavor {p:Dragapult}" },
+                { opponent: "{p:Dragapult} sandstorm to {=:165}" },
+              ],
+              [
                 { player: "{p:Dragapult} U-Turn {o:Aron} to {=:0}" },
                 { opponent: "{o:Aron} fainted" },
                 { player: "{p:Dragapult} switch to {p:Meowscarada}" },
-                { opponent: "{p:Meowscarada} Stealth Rock to {+:92}" },
-                { opponent: "{p:Meowscarada} sandstorm to {+:80}" },
+                { opponent: "{p:Meowscarada} Stealth Rock to {+:104}" },
+                { opponent: "{p:Meowscarada} sandstorm to {+:92}" },
               ],
             ],
           },
@@ -733,17 +740,24 @@ export const route16RiderHideoBattle: Moment = {
             matchup: ["Rotom-Heat"],
             turns: [
               [
-                { player: "{p:Meowscarada} U-Turn {o:Rotom-Heat} to {-:135}" },
-                { player: "{p:Meowscarada} switch to {p:Drednaw}" },
-                { opponent: "{p:Drednaw} Stealth Rock to {=:194}" },
-                { opponent: "{o:Rotom-Heat} Overheat (Z) {p:Drednaw} to {+:155}" },
-                { opponent: "{o:Rotom-Heat} sandstorm to {-:125}" },
+                { player: "{p:Meowscarada} switch to {p:Incineroar}" },
+                { opponent: "{p:Incineroar} Stealth Rock to {=:171}" },
+                { opponent: "{o:Rotom-Heat} Overheat (Z) {p:Incineroar} to {+:43}" },
+                { opponent: "{p:Incineroar} Sitrus Berry {+:100}" },
+                { opponent: "{p:Incineroar} sandstorm {+:86}" },
+                { opponent: "{o:Rotom-Heat} sandstorm to {=:152}" },
               ],
               [
-                { player: "{p:Drednaw} switch to {p:Swampert-Mega}" },
+                { player: "{p:Incineroar} Fake Out {o:Rotom-Heat} to {-:130}" },
+                { opponent: "{o:Rotom-Heat} flinched" },
+                { opponent: "{p:Incineroar} sandstorm {+:72}" },
+                { opponent: "{o:Rotom-Heat} sandstorm to {-:120}" },
+              ],
+              [
+                { player: "{p:Incineroar} switch to {p:Swampert-Mega}" },
                 { opponent: "{p:Swampert-Mega} Stealth Rock to {+:221}" },
                 { opponent: "{o:Rotom-Heat} Thunder Wave {p:Swampert-Mega}" },
-                { opponent: "{o:Rotom-Heat} sandstorm to {-:115}" },
+                { opponent: "{o:Rotom-Heat} sandstorm to {-:110}" },
               ],
               [
                 { player: "{p:Swampert-Mega} mega evolve" },
@@ -751,8 +765,8 @@ export const route16RiderHideoBattle: Moment = {
                 { player: "{p:Swampert-Mega} Flip Turn {o:Rotom-Heat} to {=:0}" },
                 { opponent: "{o:Rotom-Heat} fainted" },
                 { player: "{p:Swampert-Mega} switch to {p:Dragapult}" },
-                { opponent: "{p:Dragapult} Stealth Rock to {=:163}" },
-                { opponent: "{p:Dragapult} sandstorm to {=:140}" },
+                { opponent: "{p:Dragapult} Stealth Rock to {=:138}" },
+                { opponent: "{p:Dragapult} sandstorm to {=:125}" },
               ],
             ],
             branches: [{ branches: ["Dragapult switch to Excadrill"] }],
@@ -771,13 +785,10 @@ export const route16RiderHideoBattle: Moment = {
                 { opponent: "{p:Excadrill} Stealth Rock to {=:241}" },
                 { opponent: "{o:Greninja} Ice Beam {p:Excadrill} to {+:29}" },
                 { opponent: "{o:Greninja} Life Orb to {=:172}" },
-                { opponent: "{p:Excadrill} Sitrus Berry to {+:91}" },
-                { opponent: "{p:Excadrill} frostbite to {+:76}" },
               ],
               [
                 { player: "{p:Excadrill} Iron Head {o:Greninja} to {=:0}" },
                 { opponent: "{o:Greninja} fainted" },
-                { opponent: "{p:Excadrill} frostbite to {+:61}" },
               ],
             ],
           },
@@ -786,8 +797,7 @@ export const route16RiderHideoBattle: Moment = {
             turns: [
               [
                 { opponent: "{o:Beedrill-Mega} mega evolve" },
-                { player: "{p:Excadrill} Rock Slide {o:Beedrill-Mega} to {=:0}" },
-                { opponent: "{o:Beedrill-Mega} fainted" },
+                { player: "{p:Excadrill} Earthquake {o:Beedrill-Mega} to {=:0}" },
               ],
             ],
           },
@@ -807,20 +817,14 @@ const _box11 = getBox({
       item: "Spell Tag",
       moves: ["Brick Break", "Earthquake", "Rock Slide", "Shadow Claw"],
     },
-    Clodsire: {
-      nature: "Careful",
-      ability: "Water Absorb",
-      item: "Sitrus Berry",
-      moves: ["Earthquake", "Rock Slide", "Rock Tomb", "Yawn"],
-    },
     Meowscarada: {
       nature: "Adamant",
       ability: "Protean",
-      item: "Pixie Plate",
-      moves: ["Brick Break", "Flower Trick", "Play Rough", "U-Turn"],
+      item: "Expert Belt",
+      moves: ["Brick Break", "Flower Trick", "Play Rough", "Sucker Punch"],
     },
   },
-  team: ["Excadrill", "Clodsire", "Meowscarada"],
+  team: ["Excadrill", "Meowscarada"],
 });
 
 export const route18BikerWilliamBattle: Moment = {
@@ -846,39 +850,12 @@ export const route18BikerWilliamBattle: Moment = {
             matchup: ["Salamence"],
             turns: [
               [
-                { player: "{p:Excadrill} switch to {p:Clodsire}" },
-                { opponent: "{o:Salamence} Hydro Pump {p:Clodsire}" },
-              ],
-              [
-                { player: "{p:Clodsire} switch to {p:Meowscarada}" },
-                { opponent: "{o:Salamence} Earthquake {p:Meowscarada} to {+:131}" },
+                { player: "{p:Excadrill} switch to {p:Meowscarada}" },
+                { opponent: "{o:Salamence} Hydro Pump {p:Meowscarada} to {+:103}" },
               ],
               [
                 { player: "{p:Meowscarada} Play Rough {o:Salamence} to {=:0}" },
                 { opponent: "{o:Salamence} fainted" },
-              ],
-            ],
-          },
-          {
-            matchup: ["Starmie"],
-            turns: [
-              [
-                { player: "{p:Meowscarada} switch to {p:Clodsire}" },
-                { opponent: "{o:Starmie} Hydro Pump {p:Clodsire}" },
-              ],
-              [
-                { opponent: "{o:Starmie} Psychic {p:Clodsire} to {+:7}" },
-                { opponent: "{o:Starmie} Life Orb to {=:158}" },
-                { opponent: "{p:Clodsire} Sitrus Berry to {+:75}" },
-                { player: "{p:Clodsire} Rock Tomb {o:Starmie} to {-:130}" },
-              ],
-              [
-                { player: "{p:Clodsire} switch to {p:Meowscarada}" },
-                { opponent: "{o:Starmie} Psychic {p:Meowscarada}" },
-              ],
-              [
-                { player: "{p:Meowscarada} Flower Trick {o:Starmie} to {=:0}" },
-                { opponent: "{o:Starmie} fainted" },
               ],
             ],
           },
@@ -900,6 +877,15 @@ export const route18BikerWilliamBattle: Moment = {
               ],
             ],
           },
+          {
+            matchup: ["Starmie"],
+            turns: [
+              [
+                { player: "{p:Meowscarada} Sucker Punch {o:Starmie} to {=:0}" },
+                { opponent: "{o:Starmie} fainted" },
+              ],
+            ],
+          },
         ],
         frags: { Excadrill: 1, Meowscarada: 4 },
       },
@@ -917,9 +903,9 @@ const _box12 = getBox({
       moves: ["Brick Break", "Flower Trick", "Thunder Punch", "U-Turn"],
     },
     Incineroar: {
-      nature: "Impish",
+      nature: "Careful",
       ability: "Blaze",
-      item: "Black Glasses",
+      item: "Sitrus Berry",
       moves: ["Fake Out", "Drain Punch", "Earthquake", "Leer"],
     },
     Golisopod: {
@@ -1282,20 +1268,20 @@ export const box15 = getBox({
   box: _box14,
   add: [_screamTail],
   update: {
-    Incineroar: {
-      nature: "Impish",
-      ability: "Blaze",
-      item: "Black Glasses",
-      moves: ["Fake Out", "Drain Punch", "Flamethrower", "Leer"],
-    },
     Excadrill: {
       nature: "Jolly",
       ability: "Mold Breaker",
-      item: "Expert Belt",
+      item: "Metal Coat",
       moves: ["Brick Break", "Drill Run", "Iron Head", "Shadow Claw"],
     },
+    Incineroar: {
+      nature: "Careful",
+      ability: "Blaze",
+      item: "Sitrus Berry",
+      moves: ["Fake Out", "Drain Punch", "Flamethrower", "Leer"],
+    },
   },
-  team: ["Incineroar", "Excadrill"],
+  team: ["Excadrill", "Incineroar"],
 });
 
 export const safariZoneEncounter: Moment = {
