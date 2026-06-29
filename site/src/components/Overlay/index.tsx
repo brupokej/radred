@@ -12,7 +12,7 @@ import {
   TopBattler,
 } from "@site/src/utils/overlayMeta";
 import { pokedex, type PokedexData } from "@site/src/utils/pokedex";
-import { formatStats, PokemonData } from "@site/src/utils/pokemon";
+import { PokemonData } from "@site/src/utils/pokemon";
 import { SpriteImg } from "@site/src/utils/SpriteImg";
 import { FADE_MS, useFadedKey, useFadedValue } from "@site/src/utils/useFadedValue";
 import { ReactNode, useEffect, useMemo, useRef, useState } from "react";

@@ -5,12 +5,7 @@ import { resolveSpecies } from "@site/src/utils/abbreviations";
 import type { Box } from "@site/src/utils/box";
 import { resolveBox, teamEntryName } from "@site/src/utils/box";
 import { pokedex, type PokedexData } from "@site/src/utils/pokedex";
-import {
-  formatStats,
-  resolvePokemon,
-  type Pokemon,
-  type PokemonData,
-} from "@site/src/utils/pokemon";
+import { resolvePokemon, type Pokemon, type PokemonData } from "@site/src/utils/pokemon";
 import { SpriteImg } from "@site/src/utils/SpriteImg";
 import {
   ReactNode,
@@ -120,8 +115,12 @@ function TeamGrid({ team, hasHeader = false }: { team: Pokemon[]; hasHeader?: bo
         />
         <ScrollFade ref={scrollRef} axis="x" className={styles.grid}>
           <div className={styles.gridInner}>
-            {team.map((pokemon, i) => <PokemonCard key={i} pokemon={pokemon} />)}
-            {emptySlots.map((_, i) => <PokemonCard key={`empty-${i}`} pokemon={null} />)}
+            {team.map((pokemon, i) => (
+              <PokemonCard key={i} pokemon={pokemon} />
+            ))}
+            {emptySlots.map((_, i) => (
+              <PokemonCard key={`empty-${i}`} pokemon={null} />
+            ))}
           </div>
         </ScrollFade>
       </div>

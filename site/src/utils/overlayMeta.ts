@@ -1,5 +1,5 @@
 import { resolveActiveBox } from "@site/src/components/Battle";
-import { getSwitchBattleCaseData } from "@site/src/components/SwitchBattle";
+import { getSwitchBattleCaseData, resolveActiveCase } from "@site/src/components/SwitchBattle";
 import { allMoments } from "@site/src/utils/allMoments";
 import { Box, findPokemon, resolveBox } from "@site/src/utils/box";
 import { Moment } from "@site/src/utils/moments";
@@ -84,19 +84,28 @@ export function derivePlayerBox(moment: Moment): Box | null {
   return null;
 }
 
-export function deriveOpponentInfo(moment: Moment): OpponentInfo | null {
+export function deriveOpponentInfo(
+  moment: Moment,
+  switchBattleState: string | null
+): OpponentInfo | null {
   if (moment.label === "Brock") return null;
   const currentIndex = allMoments.findIndex((m) => m.label === moment.label);
   if (currentIndex === -1) return null;
   const current = allMoments[currentIndex];
   if (current.kind === "battle") return { box: current.data.opponentBox, label: current.label };
   if (current.kind === "switchBattle")
-    return { box: getSwitchBattleCaseData(current.data).opponentBox, label: current.label };
+    return {
+      box: resolveActiveCase(current.data.cases, switchBattleState).data.opponentBox,
+      label: current.label,
+    };
   for (let i = currentIndex + 1; i < allMoments.length; i++) {
     const m = allMoments[i];
     if (m.kind === "battle") return { box: m.data.opponentBox, label: m.label };
     if (m.kind === "switchBattle")
-      return { box: getSwitchBattleCaseData(m.data).opponentBox, label: m.label };
+      return {
+        box: resolveActiveCase(m.data.cases, switchBattleState).data.opponentBox,
+        label: m.label,
+      };
   }
   return null;
 }

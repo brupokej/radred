@@ -1,4 +1,5 @@
 import { OverlayPanelSlot } from "@site/src/components/Overlay";
+import { getSwitchBattleState } from "@site/src/components/SwitchBattle";
 import { findPokemon, resolveBox, teamEntryName } from "@site/src/utils/box";
 import { deriveOpponentInfo, findMomentByLabel } from "@site/src/utils/overlayMeta";
 import { RELAY_HTTP, RELAY_WS, RelayState, postRelayState } from "@site/src/utils/overlayRelay";
@@ -34,8 +35,10 @@ export function useRelayState(): RelayState | null {
             setState(data);
           } else {
             const local = readLocalState();
-            postRelayState({ moment: local.moment }).catch(() => {});
-            setState(local);
+            const moment = local.moment;
+            const switchBattleState = getSwitchBattleState(moment);
+            postRelayState({ moment, switchBattleState }).catch(() => {});
+            setState({ ...local, switchBattleState });
           }
         })
         .catch(() => {
@@ -68,7 +71,9 @@ export function useOpponent(liveState: RelayState | null): {
   slots: OverlayPanelSlot[];
   visible: boolean;
 } {
-  const liveInfo = liveState?.moment ? deriveOpponentInfo(liveState.moment) : null;
+  const liveInfo = liveState?.moment
+    ? deriveOpponentInfo(liveState.moment, liveState.switchBattleState)
+    : null;
   const liveTitle = liveInfo ? liveInfo.label.replace(/ Battle$/, "") : null;
 
   const [displayed, setDisplayed] = useState({ info: liveInfo, title: liveTitle });
@@ -91,7 +96,7 @@ export function useOpponent(liveState: RelayState | null): {
       setVisible(true);
       pendingRef.current = null;
     }, FADE_MS);
-  }, [liveTitle]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [liveTitle, liveState?.switchBattleState]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const slots = useMemo(() => {
     const info = displayed.info;

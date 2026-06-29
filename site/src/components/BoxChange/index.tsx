@@ -63,7 +63,14 @@ export default function BoxChange({ data, secret }: { data?: BoxChangeData; secr
     );
   }
 
-  const rows = [...removalRows, ...capRows, ...updateRows, ...ivRows, ...abilityRows, ...removeItemsRows];
+  const rows = [
+    ...removalRows,
+    ...capRows,
+    ...updateRows,
+    ...ivRows,
+    ...abilityRows,
+    ...removeItemsRows,
+  ];
   if (rows.length === 0) return null;
 
   const card = <Card title="Box Change">{rows}</Card>;

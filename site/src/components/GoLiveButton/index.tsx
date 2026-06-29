@@ -1,3 +1,4 @@
+import { storageKeyFor } from "@site/src/components/SwitchBattle";
 import { secretMode } from "@site/src/data/secretMode";
 import { Moment } from "@site/src/utils/moments";
 import { useRelayState } from "@site/src/utils/overlayHooks";
@@ -22,7 +23,11 @@ function GoLiveButtonInner({ moment }: { moment: Moment }) {
   const [portalTarget, setPortalTarget] = useState<HTMLSpanElement | null>(null);
   const sentinelRef = useRef<HTMLSpanElement>(null);
 
-  const isLive = relayState?.moment?.label === moment.label;
+  const storageKey = moment.kind === "switchBattle" ? storageKeyFor(moment.data.cases) : null;
+  const { value: switchBattleState } = useStorageState(storageKey);
+  const isLive =
+    relayState?.moment?.label === moment.label &&
+    (storageKey === null || relayState?.switchBattleState === switchBattleState);
 
   useLayoutEffect(() => {
     if (!sentinelRef.current) return;
@@ -52,7 +57,7 @@ function GoLiveButtonInner({ moment }: { moment: Moment }) {
     setPending(true);
     setState("live-pending", moment.label);
     await Promise.all([
-      postRelayState({ moment }).catch(() => {}),
+      postRelayState({ moment, switchBattleState }).catch(() => {}),
       new Promise((r) => setTimeout(r, 1400)),
     ]);
     if (moment.label === LIVE_MOMENT_DEFAULT) removeState("live-moment");

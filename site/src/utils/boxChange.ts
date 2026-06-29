@@ -89,5 +89,5 @@ export function getIVChanges(box: Box): { name: string; ivs?: Partial<Stats> }[]
 }
 
 export function getRemoveItemsChanges(box: Box): boolean {
-  return box.updates?.some(step => step.removeItems);
+  return box.updates?.some((step) => step.removeItems);
 }
