@@ -9,9 +9,9 @@ import { FADE_MS } from "@site/src/utils/useFadedValue";
 import { useEffect, useMemo, useRef, useState } from "react";
 
 function readLocalState(): RelayState {
-  return {
-    moment: findMomentByLabel(localStorage.getItem("live-moment") ?? LIVE_MOMENT_DEFAULT),
-  };
+  const moment = findMomentByLabel(localStorage.getItem("live-moment") ?? LIVE_MOMENT_DEFAULT);
+  const switchBattleState = getSwitchBattleState(moment);
+  return { moment, switchBattleState };
 }
 
 export function useRelayState(): RelayState | null {
@@ -35,10 +35,8 @@ export function useRelayState(): RelayState | null {
             setState(data);
           } else {
             const local = readLocalState();
-            const moment = local.moment;
-            const switchBattleState = getSwitchBattleState(moment);
-            postRelayState({ moment, switchBattleState }).catch(() => {});
-            setState({ ...local, switchBattleState });
+            postRelayState(local).catch(() => {});
+            setState(local);
           }
         })
         .catch(() => {

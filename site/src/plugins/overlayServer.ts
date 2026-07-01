@@ -31,8 +31,7 @@ export default function overlayServerPlugin(): Plugin {
           req.on("data", (chunk) => (body += chunk));
           req.on("end", () => {
             try {
-              const update = JSON.parse(body);
-              currentState = { ...currentState, ...update };
+              currentState = JSON.parse(body);
               const msg = JSON.stringify(currentState);
               for (const client of wss.clients) {
                 if (client.readyState === 1) client.send(msg);

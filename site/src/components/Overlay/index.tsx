@@ -286,7 +286,7 @@ function OverlayPanel({
         <div className={`${styles.grid} ${gridCls}`}>
           {slots.map((slot, i) => (
             <OverlayCard
-              key={slot?.pokemon.name ?? i}
+              key={`${i}-${slot?.pokemon.name ?? ""}`}
               slot={slot}
               expanded={expanded}
               showName={showName}

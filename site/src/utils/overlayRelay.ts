@@ -8,7 +8,7 @@ export type RelayState = {
 export const RELAY_HTTP = "http://localhost:3001";
 export const RELAY_WS = "ws://localhost:3001";
 
-export async function postRelayState(update: Partial<RelayState>): Promise<void> {
+export async function postRelayState(update: RelayState): Promise<void> {
   await fetch(`${RELAY_HTTP}/state`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
