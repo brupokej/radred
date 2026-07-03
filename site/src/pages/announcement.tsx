@@ -252,7 +252,7 @@ export default function Announcement(): ReactNode {
           <div className="poster-banner-section">
             <img width={8} src={barSrc} alt="" />
             &nbsp;&nbsp;
-            <span className="poster-shadow">Sunday, July 12 at 12:00 GMT</span>
+            <span className="poster-shadow">Saturday, July 11 at 12:00 GMT</span>
           </div>
         </div>
       </div>
