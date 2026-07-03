@@ -1,22 +1,14 @@
 import { useColorMode } from "@docusaurus/theme-common";
-import { secretMode } from "@site/src/data/secretMode";
 import { setStreamMode, useStreamMode } from "@site/src/utils/streamMode";
 import { useEffect } from "react";
 
 export type ExtendedMode = "light" | "dark" | "stream" | "system";
 
-const MODES_BASE = ["light", "dark", "system"] as const satisfies readonly ExtendedMode[];
-const MODES_SECRET = [
-  "light",
-  "dark",
-  "stream",
-  "system",
-] as const satisfies readonly ExtendedMode[];
+const MODES = ["light", "dark", "stream", "system"] as const satisfies readonly ExtendedMode[];
 
 export function nextMode(mode: ExtendedMode): ExtendedMode {
-  const modes = secretMode ? MODES_SECRET : MODES_BASE;
-  const idx = (modes as readonly ExtendedMode[]).indexOf(mode);
-  return modes[(idx === -1 ? 0 : idx + 1) % modes.length];
+  const idx = (MODES as readonly ExtendedMode[]).indexOf(mode);
+  return MODES[(idx === -1 ? 0 : idx + 1) % MODES.length];
 }
 
 export function useMode(): [ExtendedMode, (mode: ExtendedMode) => void] {
