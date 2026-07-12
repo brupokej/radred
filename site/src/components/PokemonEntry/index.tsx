@@ -19,7 +19,6 @@ export function PokemonEntry({
     setLoadError(false);
     setTrackedKey(spriteKey);
   }
-  const imgError = spriteKey === "secret" || loadError;
   const imgRef = useRef<HTMLImageElement>(null);
   useEffect(() => {
     const img = imgRef.current;
@@ -29,7 +28,7 @@ export function PokemonEntry({
   return (
     <div className={`${styles.entry} ${className ?? ""}`}>
       <div className={styles.spritePanel}>
-        {!imgError ? (
+        {!loadError ? (
           <SpriteImg
             ref={imgRef}
             pokemon={pokemon}

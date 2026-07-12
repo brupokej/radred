@@ -28,7 +28,6 @@ export const route13Encounter: Moment = {
   split: "Victory Road",
   label: "Route 13 Encounter",
   kind: "encounter",
-  secret: true,
   data: { pokemon: _buizel, playerBox: _box2 },
 };
 
@@ -45,7 +44,6 @@ export const route18Encounter: Moment = {
   split: "Victory Road",
   label: "Route 18 Encounter",
   kind: "encounter",
-  secret: true,
   data: { pokemon: _chienPao, playerBox: _box3 },
 };
 
@@ -63,7 +61,6 @@ export const route20Encounter: Moment = {
   split: "Victory Road",
   label: "Route 20 Encounter",
   kind: "encounter",
-  secret: true,
   data: { pokemon: _thundurusI, playerBox: _box4 },
 };
 
@@ -120,7 +117,6 @@ export const route22RivalRematchBattle: Moment = {
   split: "Victory Road",
   label: "Route 22 Rival Rematch Battle",
   kind: "battle",
-  secret: true,
   data: {
     playerBox: _box6,
     opponentBox: route22RivalRematchBox,
@@ -273,7 +269,6 @@ export const route23BrendanBattle: Moment = {
   split: "Victory Road",
   label: "Route 23 Brendan Battle",
   kind: "battle",
-  secret: true,
   data: {
     playerBox: _box8,
     opponentBox: route23BrendanBox,
@@ -644,7 +639,6 @@ export const victoryRoadAceTrainerNaomiBattle: Moment = {
   split: "Victory Road",
   label: "Victory Road Ace Trainer Naomi Battle",
   kind: "battle",
-  secret: true,
   data: {
     playerBox: _box10,
     opponentBox: victoryRoadAceTrainerNaomiBox,
@@ -766,7 +760,6 @@ export const victoryRoadAceTrainerRolandoBattle: Moment = {
   split: "Victory Road",
   label: "Victory Road Ace Trainer Rolando Battle",
   kind: "battle",
-  secret: true,
   data: {
     playerBox: _box11,
     opponentBox: victoryRoadAceTrainerRolandoBox,
@@ -898,7 +891,6 @@ export const victoryRoadAceTrainerGeorgeBattle: Moment = {
   split: "Victory Road",
   label: "Victory Road Ace Trainer George Battle",
   kind: "battle",
-  secret: true,
   data: {
     playerBox: _box12,
     opponentBox: victoryRoadAceTrainerGeorgeBox,
@@ -1023,7 +1015,6 @@ export const victoryRoadAceTrainerCarolineBattle: Moment = {
   split: "Victory Road",
   label: "Victory Road Ace Trainer Caroline Battle",
   kind: "battle",
-  secret: true,
   data: {
     playerBox: _box13,
     opponentBox: victoryRoadAceTrainerCarolineBox,
@@ -1142,7 +1133,6 @@ export const victoryRoadAceTrainerColbyBattle: Moment = {
   split: "Victory Road",
   label: "Victory Road Ace Trainer Colby Battle",
   kind: "battle",
-  secret: true,
   data: {
     playerBox: _box14,
     opponentBox: victoryRoadAceTrainerColbyBox,
@@ -1265,7 +1255,6 @@ export const victoryRoadAceTrainerAlexaBattle: Moment = {
   split: "Victory Road",
   label: "Victory Road Ace Trainer Alexa Battle",
   kind: "battle",
-  secret: true,
   data: {
     playerBox: _box15,
     opponentBox: victoryRoadAceTrainerAlexaBox,
@@ -1394,7 +1383,6 @@ export const victoryRoadCoolCoupleRayAndTyraBattle: Moment = {
   split: "Victory Road",
   label: "Victory Road Cool Couple Ray & Tyra Battle",
   kind: "battle",
-  secret: true,
   data: {
     playerBox: _box16,
     opponentBox: victoryRoadCoolCoupleRayAndTyraBox,
@@ -1847,7 +1835,6 @@ export const indigoPlateauCreatorSoupercellBattle: Moment = {
   split: "Victory Road",
   label: "Indigo Plateau Creator Soupercell Battle",
   kind: "battle",
-  secret: true,
   data: {
     playerBox: _box17,
     opponentBox: indigoPlateauCreatorSoupercellBox,

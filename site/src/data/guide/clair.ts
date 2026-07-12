@@ -65,7 +65,6 @@ export const ceruleanCaveGrunt1Battle: Moment = {
   split: "Clair",
   label: "Cerulean Cave Grunt 1 Battle",
   kind: "battle",
-  secret: true,
   data: {
     playerBox: _box3,
     opponentBox: ceruleanCaveGrunt1Box,
@@ -224,7 +223,6 @@ export const ceruleanCaveGrunt2Battle: Moment = {
   split: "Clair",
   label: "Cerulean Cave Grunt 2 Battle",
   kind: "battle",
-  secret: true,
   data: {
     playerBox: _box5,
     opponentBox: ceruleanCaveGrunt2Box,
@@ -372,7 +370,6 @@ export const ceruleanCaveArcherBattle: Moment = {
   split: "Clair",
   label: "Cerulean Cave Archer Battle",
   kind: "battle",
-  secret: true,
   data: {
     playerBox: _box6,
     opponentBox: ceruleanCaveArcherBox,
@@ -455,7 +452,6 @@ export const ceruleanCaveArianaBattle: Moment = {
   split: "Clair",
   label: "Cerulean Cave Ariana Battle",
   kind: "battle",
-  secret: true,
   data: {
     playerBox: _box7,
     opponentBox: ceruleanCaveArianaBox,
@@ -593,7 +589,6 @@ export const ceruleanCaveGiovanniBattle: Moment = {
   split: "Clair",
   label: "Cerulean Cave Giovanni Battle",
   kind: "battle",
-  secret: true,
   data: {
     playerBox: _box10,
     opponentBox: ceruleanCaveGiovanniBox,
@@ -1598,7 +1593,6 @@ export const viridianCityLeaderClairBattle: Moment = {
   split: "Clair",
   label: "Viridian City Leader Clair Battle",
   kind: "battle",
-  secret: true,
   data: {
     playerBox: _box12,
     opponentBox: viridianCityLeaderClairBox,

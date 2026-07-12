@@ -27,14 +27,8 @@ const SIDE_PAD = 16; // var(--ifm-spacing-horizontal) at 16px base
 const CardDetailCtx = createContext(false);
 const useCardDetail = () => useContext(CardDetailCtx);
 
-function CardDetail({
-  children,
-  defaultExpanded = false,
-}: {
-  children: React.ReactNode;
-  defaultExpanded?: boolean;
-}) {
-  const [isOpen, setIsOpen] = useState(defaultExpanded);
+function CardDetail({ children }: { children: React.ReactNode }) {
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <CardDetailCtx.Provider value={isOpen}>
       {children}
@@ -49,12 +43,10 @@ export default function Team({
   box,
   title = "Team",
   header,
-  defaultExpanded = false,
 }: {
   box: Box;
   title?: string;
   header?: ReactNode;
-  defaultExpanded?: boolean;
 }) {
   const resolved = resolveBox(box);
   const pokemonMap = new Map(resolved.pokemon.map((p) => [resolvePokemon(p).name, p]));
@@ -64,7 +56,7 @@ export default function Team({
   return (
     <Card title={title}>
       {header}
-      <CardDetail defaultExpanded={defaultExpanded}>
+      <CardDetail>
         <TeamGrid team={team} hasHeader={!!header} />
       </CardDetail>
     </Card>
@@ -163,7 +155,6 @@ function PokemonCard({ pokemon }: { pokemon: Pokemon | null }) {
     setLoadError(false);
     setTrackedKey(spriteKey);
   }
-  const imgError = spriteKey === "secret" || loadError;
   const imgRef = useRef<HTMLImageElement>(null);
   useEffect(() => {
     const img = imgRef.current;
@@ -181,7 +172,7 @@ function PokemonCard({ pokemon }: { pokemon: Pokemon | null }) {
 
   return (
     <div className={`${styles.card} ${!pokemon ? styles.cardEmpty : ""}`}>
-      {current && !imgError ? (
+      {current && !loadError ? (
         <SpriteImg
           ref={imgRef}
           pokemon={current}

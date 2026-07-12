@@ -17,7 +17,6 @@ import {
   route18BirdKeeperJacobBox,
   vermillionCityLeaderLtSurgeRematchBox,
 } from "@site/src/utils/opponents";
-import { getKogaSecrets } from "./kogaSecrets";
 
 import { box as _box1 } from "@site/src/data/guide/sabrina";
 

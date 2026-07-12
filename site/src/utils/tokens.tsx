@@ -11,13 +11,12 @@ function TokenSprite({ pokemon, monotone }: { pokemon: PokemonData; monotone: bo
     setLoadError(false);
     setTrackedKey(key);
   }
-  const imgError = key === "secret" || loadError;
   const imgRef = useRef<HTMLImageElement>(null);
   useEffect(() => {
     const img = imgRef.current;
     if (img?.complete && img.naturalWidth === 0) setLoadError(true);
   }, [key]);
-  return imgError ? (
+  return loadError ? (
     <span className={styles.emptySprite}>?</span>
   ) : (
     <SpriteImg

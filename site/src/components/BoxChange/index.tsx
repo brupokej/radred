@@ -1,6 +1,5 @@
 import Card from "@site/src/components/Card";
 import { Row } from "@site/src/components/Row";
-import { secretMode } from "@site/src/data/secretMode";
 import { Box } from "@site/src/utils/box";
 import {
   getAbilityChanges,
@@ -16,7 +15,7 @@ export interface BoxChangeData {
   playerBox: Box;
 }
 
-export default function BoxChange({ data, secret }: { data?: BoxChangeData; secret?: boolean }) {
+export default function BoxChange({ data }: { data?: BoxChangeData }) {
   if (!data) return null;
   const box = data.playerBox;
   const removalRows: React.ReactNode[] = [];
@@ -73,8 +72,5 @@ export default function BoxChange({ data, secret }: { data?: BoxChangeData; secr
   ];
   if (rows.length === 0) return null;
 
-  const card = <Card title="Box Change">{rows}</Card>;
-
-  if (secret && secretMode) return <div data-secret="true">{card}</div>;
-  return card;
+  return <Card title="Box Change">{rows}</Card>;
 }

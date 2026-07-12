@@ -35,46 +35,7 @@ import { isExtraEntry, resolveBox, teamEntryName } from "../src/utils/box";
 import { Moment } from "../src/utils/moments";
 import { Pokemon, PokemonData, resolvePokemon } from "../src/utils/pokemon";
 
-import { moments as brockMoments } from "../src/data/guide/brock";
-import { moments as erikaMoments } from "../src/data/guide/erika";
-import { box18, moments as kogaMoments } from "../src/data/guide/koga";
-import { moments as mistyMoments } from "../src/data/guide/misty";
-import { moments as sabrinaMoments } from "../src/data/guide/sabrina";
-import { moments as surgeMoments } from "../src/data/guide/surge";
-
-// Enabled secrets files contain the real battle data; the default stub files contain placeholders.
-// We chain them starting from box18 (koga's pre-secrets box state) for correct team compositions.
-import { getBlaineSecrets } from "../src/data/guide/blaineSecrets.enabled";
-import { getClairSecrets } from "../src/data/guide/clairSecrets.enabled";
-import { getEliteFourSecrets } from "../src/data/guide/eliteFourSecrets.enabled";
-import { getKogaSecrets } from "../src/data/guide/kogaSecrets.enabled";
-import { getVictoryRoadSecrets } from "../src/data/guide/victoryRoadSecrets.enabled";
-
-function secretsToMoments(obj: Record<string, unknown>): Moment[] {
-  return Object.entries(obj)
-    .filter(([k]) => k !== "box")
-    .map(([, v]) => v as Moment);
-}
-
-const kogaEnabled = getKogaSecrets(box18);
-const blaineEnabled = getBlaineSecrets(kogaEnabled.box);
-const clairEnabled = getClairSecrets(blaineEnabled.box);
-const vrEnabled = getVictoryRoadSecrets(clairEnabled.box);
-const e4Enabled = getEliteFourSecrets(vrEnabled.box);
-
-const ALL_MOMENTS: Moment[] = [
-  ...brockMoments,
-  ...mistyMoments,
-  ...surgeMoments,
-  ...erikaMoments,
-  ...sabrinaMoments,
-  ...kogaMoments.filter((m) => !m.secret),
-  ...secretsToMoments(kogaEnabled),
-  ...secretsToMoments(blaineEnabled),
-  ...secretsToMoments(clairEnabled),
-  ...secretsToMoments(vrEnabled),
-  ...secretsToMoments(e4Enabled),
-];
+import { allMoments } from "@site/src/utils/allMoments";
 
 // --- Frags (mirrors getVisibleLines / computeBattleFrags in stats.ts) -------
 // getState always returns null in Node.js, so we always follow the default branch.
@@ -360,7 +321,7 @@ function expandMoment(m: Moment): { split: string; label: string; data: BattleDa
   return [];
 }
 
-const results: BattleScore[] = ALL_MOMENTS.filter(
+const results: BattleScore[] = allMoments.filter(
   (m) => !splitFilter || m.split.toLowerCase().includes(splitFilter)
 )
   .flatMap(expandMoment)
@@ -424,7 +385,7 @@ console.log(`\n${results.length} battles scored.`);
 
 // --- Opponent attention table -----------------------------------------------
 
-const filteredBattles = ALL_MOMENTS.filter(
+const filteredBattles = allMoments.filter(
   (m) => !splitFilter || m.split.toLowerCase().includes(splitFilter)
 ).flatMap(expandMoment);
 

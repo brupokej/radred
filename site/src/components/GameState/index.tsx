@@ -2,7 +2,6 @@ import Link from "@docusaurus/Link";
 import Card from "@site/src/components/Card";
 import GoLiveButton from "@site/src/components/GoLiveButton";
 import { Row } from "@site/src/components/Row";
-import { secretMode } from "@site/src/data/secretMode";
 import { Moment } from "@site/src/utils/moments";
 import { slugify } from "@site/src/utils/slugify";
 import { removeState, useStorageState } from "@site/src/utils/storage";
@@ -17,7 +16,6 @@ export default function GameState({ moments }: { moments: Moment[] }) {
 
   const dropdownOptions = moments
     .filter((m) => {
-      if ("secret" in m && m.secret && !secretMode) return false;
       return (
         m.kind === "encounter" ||
         m.kind === "battle" ||

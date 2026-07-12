@@ -85,29 +85,6 @@ async function main() {
     collectMoments(moments, keys);
   }
 
-  if (existsSync("src/data/guide/kogaSecrets.enabled.ts")) {
-    const { box: kogaBox } = await import("../src/data/guide/koga");
-    const { getKogaSecrets } = await import("../src/data/guide/kogaSecrets.enabled");
-    const { getBlaineSecrets } = await import("../src/data/guide/blaineSecrets.enabled");
-    const { getClairSecrets } = await import("../src/data/guide/clairSecrets.enabled");
-    const { getVictoryRoadSecrets } = await import("../src/data/guide/victoryRoadSecrets.enabled");
-    const { getEliteFourSecrets } = await import("../src/data/guide/eliteFourSecrets.enabled");
-
-    let box: Box = kogaBox;
-    for (const fn of [
-      getKogaSecrets,
-      getBlaineSecrets,
-      getClairSecrets,
-      getVictoryRoadSecrets,
-      getEliteFourSecrets,
-    ]) {
-      const result = fn(box) as Record<string, unknown>;
-      collectSecretReturn(result, keys);
-      box = result.box as Box;
-    }
-    console.log("Included secret sprites");
-  }
-
   console.log(`Collected ${keys.size} unique sprite keys`);
 
   for (const palette of PALETTES) {
@@ -117,7 +94,6 @@ async function main() {
   type Task = { key: string; palette: string; url: string; dest: string };
   const tasks: Task[] = [];
   for (const key of [...keys].sort()) {
-    if (key === "secret") continue;
     for (const palette of PALETTES) {
       const dest = join(STATIC_DIR, palette, `${key}.png`);
       if (!existsSync(dest)) {

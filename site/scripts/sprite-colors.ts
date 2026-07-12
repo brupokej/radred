@@ -1,7 +1,6 @@
 import { existsSync, writeFileSync } from "fs";
 import { Jimp } from "jimp";
-import { box as kogaBox } from "../src/data/guide/koga";
-import { box } from "../src/data/guide/victoryRoad";
+import { box } from "../src/data/guide/eliteFour";
 import { type Box, getCanon, resolveBox } from "../src/utils/box";
 import { resolvePokemon } from "../src/utils/pokemon";
 
@@ -133,35 +132,4 @@ function writeOutput(
   const baseEntries = buildEntries(resolveBox(box));
   const colors = await fetchColors(baseEntries);
   writeOutput("src/data/spriteColors.ts", baseEntries, colors);
-
-  const secretMode =
-    process.env.SECRET_MODE === "true" && existsSync("src/data/guide/eliteFourSecrets.enabled.ts");
-
-  if (secretMode) {
-    console.log("\nGenerating secret sprite colors...");
-
-    // Chain each enabled secrets function starting from the stub koga box.
-    // Each function adds the real secret Pokémon (including evolutions) on top.
-    const { getKogaSecrets } = await import("../src/data/guide/kogaSecrets.enabled");
-    const { getBlaineSecrets } = await import("../src/data/guide/blaineSecrets.enabled");
-    const { getClairSecrets } = await import("../src/data/guide/clairSecrets.enabled");
-    const { getVictoryRoadSecrets } = await import("../src/data/guide/victoryRoadSecrets.enabled");
-    const { getEliteFourSecrets } = await import("../src/data/guide/eliteFourSecrets.enabled");
-
-    const chain = [
-      getKogaSecrets,
-      getBlaineSecrets,
-      getClairSecrets,
-      getVictoryRoadSecrets,
-      getEliteFourSecrets,
-    ];
-    let secretBox: Box = kogaBox;
-    for (const fn of chain) {
-      ({ box: secretBox } = fn(secretBox));
-    }
-
-    const secretEntries = buildEntries(resolveBox(secretBox));
-    const secretColors = await fetchColors(secretEntries, colors);
-    writeOutput("src/data/spriteColors.enabled.ts", secretEntries, secretColors);
-  }
 })();

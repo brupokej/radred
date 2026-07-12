@@ -32,7 +32,7 @@ export function getSwitchBattleCaseData(data: SwitchBattleData): BattleData {
   return resolveActiveCase(data.cases, getState(storageKeyFor(data.cases))).data;
 }
 
-export function SwitchBattle({ data, secret }: { data: SwitchBattleData; secret?: boolean }) {
+export function SwitchBattle({ data }: { data: SwitchBattleData }) {
   const storageKey = storageKeyFor(data.cases);
   const { value: stored } = useStorageState(storageKey);
   const activeCase = resolveActiveCase(data.cases, stored);
@@ -65,7 +65,7 @@ export function SwitchBattle({ data, secret }: { data: SwitchBattleData; secret?
           data-switch-case={c === activeCase ? "active" : undefined}
           style={c === activeCase ? undefined : { display: "none" }}
         >
-          <Battle data={c.data} secret={secret} opponentTeamHeader={branchRow} />
+          <Battle data={c.data} opponentTeamHeader={branchRow} />
         </div>
       ))}
     </div>

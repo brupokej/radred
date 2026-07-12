@@ -5,7 +5,6 @@
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
-    "start:secret": "SECRET_MODE=true docusaurus start",
     "build": "docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
@@ -24,7 +23,6 @@
     "vitest": "vitest run",
     "overlay-server": "node overlay-server.js",
     "sprite-colors": "tsx scripts/sprite-colors.ts",
-    "sprite-colors:secret": "SECRET_MODE=true tsx scripts/sprite-colors.ts",
     "sprites": "tsx scripts/download-sprites.ts"
   },
   "dependencies": {

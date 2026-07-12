@@ -1,5 +1,4 @@
 import { storageKeyFor } from "@site/src/components/SwitchBattle";
-import { secretMode } from "@site/src/data/secretMode";
 import { Moment } from "@site/src/utils/moments";
 import { useRelayState } from "@site/src/utils/overlayHooks";
 import { postRelayState } from "@site/src/utils/overlayRelay";
@@ -9,10 +8,9 @@ import { useLayoutEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import styles from "./styles.module.css";
 
-export default function GoLiveButton({ moment, secret }: { moment: Moment; secret?: boolean }) {
+export default function GoLiveButton({ moment }: { moment: Moment }) {
   if (process.env.NODE_ENV !== "development" || navigator.webdriver) return null;
-  if (!!secret && !secretMode) return null;
-  return <GoLiveButtonInner moment={moment} />;
+  return <GoLiveButtonInner moment={moment} />
 }
 
 function GoLiveButtonInner({ moment }: { moment: Moment }) {

@@ -2,7 +2,6 @@ import type * as Preset from "@docusaurus/preset-classic";
 import type { Config } from "@docusaurus/types";
 import { themes as prismThemes } from "prism-react-renderer";
 import overlayServerPlugin from "./src/plugins/overlayServer";
-import secretsPlugin from "./src/plugins/secrets";
 import storageDefaultsPlugin from "./src/plugins/storageDefaults";
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
@@ -11,7 +10,6 @@ const config: Config = {
   plugins: [
     overlayServerPlugin,
     storageDefaultsPlugin,
-    secretsPlugin,
     [
       "@docusaurus/plugin-content-docs",
       {

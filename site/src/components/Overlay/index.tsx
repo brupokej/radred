@@ -132,7 +132,6 @@ function OverlayCard({
     setLoadError(false);
     setTrackedKey(spriteKey);
   }
-  const imgError = spriteKey === "secret" || loadError;
   const imgRef = useRef<HTMLImageElement>(null);
   useEffect(() => {
     const img = imgRef.current;
@@ -163,7 +162,7 @@ function OverlayCard({
 
   return (
     <div className={`${styles.card} ${!slot ? styles.cardEmpty : ""}`}>
-      {pokemon && !imgError ? (
+      {pokemon && !loadError ? (
         <SpriteImg
           ref={imgRef}
           pokemon={pokemon}

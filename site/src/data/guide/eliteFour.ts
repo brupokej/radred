@@ -175,7 +175,6 @@ export const eliteFourLoreleiBattle: Moment = {
   split: "Elite Four",
   label: "Elite Four Lorelei Battle",
   kind: "switchBattle",
-  secret: true,
   data: {
     cases: [
       {
@@ -652,7 +651,6 @@ export const eliteFourBrunoBattle: Moment = {
   split: "Elite Four",
   label: "Elite Four Bruno Battle",
   kind: "switchBattle",
-  secret: true,
   data: {
     cases: [
       {
@@ -981,7 +979,6 @@ export const eliteFourAgathaBattle: Moment = {
   split: "Elite Four",
   label: "Elite Four Agatha Battle",
   kind: "battle",
-  secret: true,
   data: {
     playerBox: _box8,
     opponentBox: eliteFourAgathaBox,
@@ -1382,7 +1379,6 @@ export const eliteFourLanceBattle: Moment = {
   split: "Elite Four",
   label: "Elite Four Lance Battle",
   kind: "battle",
-  secret: true,
   data: {
     playerBox: _box9,
     opponentBox: eliteFourLanceBox,
@@ -1929,7 +1925,6 @@ export const championRivalBattle: Moment = {
   split: "Elite Four",
   label: "Champion Rival Battle",
   kind: "battle",
-  secret: true,
   data: {
     playerBox: _box11,
     opponentBox: championRivalBox,
@@ -2118,6 +2113,8 @@ export const championRivalBattle: Moment = {
     ],
   },
 };
+
+export const box = _box11;
 
 export const moments: Moment[] = [
   eliteFourChecklist,

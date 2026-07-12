@@ -2,7 +2,6 @@ import Card from "@site/src/components/Card";
 import { Row, RowCell } from "@site/src/components/Row";
 import { ScrollFade } from "@site/src/components/ScrollFade";
 import Team from "@site/src/components/Team";
-import { secretMode } from "@site/src/data/secretMode";
 import { allMoments } from "@site/src/utils/allMoments";
 import { Box, findPokemon, resolveBox, teamEntryName } from "@site/src/utils/box";
 import { useHpDisplay } from "@site/src/utils/hpDisplay";
@@ -396,11 +395,9 @@ function lineEndsWithBranchOrLoop(data: BattleData, visibleOrder: string[]): boo
 
 export function Battle({
   data,
-  secret,
   opponentTeamHeader,
 }: {
   data: BattleData;
-  secret?: boolean;
   opponentTeamHeader?: React.ReactNode;
 }) {
   const { opponentBox, partnerBox } = data;
@@ -409,8 +406,6 @@ export function Battle({
   const playerResolved = resolveBox(resolvedPlayerBox);
   const opponentResolved = resolveBox(opponentBox);
   const partnerResolved = partnerBox ? resolveBox(partnerBox) : null;
-
-  const blur = !!secret && !secretMode;
 
   const resolvedChildren = battleDataToChildren(data);
   const lineElements = React.Children.toArray(resolvedChildren).filter(
@@ -548,7 +543,6 @@ export function Battle({
     playerResolved,
     opponentResolved,
     partnerResolved,
-    blur,
   ]);
 
   const ctx = useMemo(
@@ -562,7 +556,6 @@ export function Battle({
   );
 
   const nextMoment = useMemo(() => {
-    if (!secretMode) return undefined;
     const idx = allMoments.findIndex((m) => m.kind === "battle" && m.data === data);
     return idx >= 0 ? allMoments[idx + 1] : undefined;
   }, [data]);
@@ -589,40 +582,23 @@ export function Battle({
 
   const revealableContent = (
     <>
-      {blur ? (
-        <div className={styles.blurContent}>
-          <Team title="Player Team" box={resolvedPlayerBox} defaultExpanded={secretMode} />
-        </div>
-      ) : (
-        <Team title="Player Team" box={resolvedPlayerBox} defaultExpanded={secretMode} />
-      )}
+      <Team title="Player Team" box={resolvedPlayerBox} />
       <BattleGraphCtx.Provider value={ctx}>
-        <Card title="Battle Plan" className={blur ? styles.blurBattlePlan : undefined}>
-          {blur ? (
-            <>
-              {state.visibleOrder.map((slug) => (
+        <Card title="Battle Plan">
+          <div data-battle-lines="">
+            {state.visibleOrder.map((slug, slugIndex) => {
+              const enriched = enrichedLines.get(slug);
+              let finalEnriched =
+                enriched !== undefined
+                  ? injectLoopZoneProps(enriched, slug, loopZoneInfo)
+                  : enriched;
+              return (
                 <BattleLineCtx.Provider key={slug} value={slug}>
-                  {enrichedLines.get(slug)}
+                  {finalEnriched}
                 </BattleLineCtx.Provider>
-              ))}
-              <button className={styles.expandButton}>···</button>
-            </>
-          ) : (
-            <div data-battle-lines="">
-              {state.visibleOrder.map((slug, slugIndex) => {
-                const enriched = enrichedLines.get(slug);
-                let finalEnriched =
-                  enriched !== undefined
-                    ? injectLoopZoneProps(enriched, slug, loopZoneInfo)
-                    : enriched;
-                return (
-                  <BattleLineCtx.Provider key={slug} value={slug}>
-                    {finalEnriched}
-                  </BattleLineCtx.Provider>
-                );
-              })}
-            </div>
-          )}
+              );
+            })}
+          </div>
         </Card>
       </BattleGraphCtx.Provider>
     </>
@@ -632,7 +608,7 @@ export function Battle({
     <>
       <Team title="Opponent Team" box={opponentBox} header={opponentTeamHeader} />
       {partnerBox && <Team title="Partner Team" box={partnerBox} />}
-      {secret && secretMode ? <div data-secret="true">{revealableContent}</div> : revealableContent}
+      {revealableContent}
     </>
   );
 }
@@ -659,13 +635,12 @@ function MatchupSprite({ pokemon }: { pokemon: PokemonData }) {
     setLoadError(false);
     setTrackedKey(key);
   }
-  const imgError = key === "secret" || loadError;
   const imgRef = useRef<HTMLImageElement>(null);
   useEffect(() => {
     const img = imgRef.current;
     if (img?.complete && img.naturalWidth === 0) setLoadError(true);
   }, [key]);
-  return imgError ? (
+  return loadError ? (
     <div className={styles.emptySprite}>?</div>
   ) : (
     <SpriteImg
