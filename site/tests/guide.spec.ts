@@ -9,7 +9,6 @@ test.describe.configure({ mode: "serial" });
 const SNAPSHOT_DIR = path.join(__dirname, "snapshots/guide.spec.ts-snapshots");
 const SNAPSHOT_SUFFIX = `desktop-${process.platform}`;
 const secretMode = process.env.SECRET_MODE === "true";
-const detailsSelector = secretMode ? "[data-secret] [data-card]" : "[data-card]";
 const seenSnapshots = new Set<string>();
 
 async function expectSnapshot(
@@ -73,6 +72,7 @@ async function getCardSnapshot(
   loc: Locator,
   parts: (string | number)[],
   locIndex: { value: number },
+  detailsSelector: string,
   visited = new Set<string>()
 ): Promise<void> {
   const page = loc.page();
@@ -98,7 +98,7 @@ async function getCardSnapshot(
         .locator(detailsSelector)
         .filter({ has: page.locator("[data-card-title]", { hasText: summary }) });
       await expandAll(reLoc);
-      await getCardSnapshot(reLoc, parts, locIndex, visited);
+      await getCardSnapshot(reLoc, parts, locIndex, detailsSelector, visited);
     }
 
     await select.selectOption(defaultValue);
@@ -121,7 +121,7 @@ async function getCardSnapshot(
       if (defaultValue === value) continue;
       await select.selectOption(value);
       await waitForRender(loc);
-      await getCardSnapshot(loc, parts, locIndex, visited);
+      await getCardSnapshot(loc, parts, locIndex, detailsSelector, visited);
       break;
     }
 
@@ -140,7 +140,7 @@ async function getCardSnapshot(
     for (const value of values) {
       await select.selectOption(value);
       await waitForRender(loc);
-      await getCardSnapshot(loc, parts, locIndex, visited);
+      await getCardSnapshot(loc, parts, locIndex, detailsSelector, visited);
     }
 
     await select.selectOption(defaultValue);
@@ -204,6 +204,8 @@ const FEATURES: { heading: string; summary: string; name: string }[] = [
 ];
 
 async function getSnapshots(page: Page, pathIndex: number, path: string) {
+  const restrictedSecretSplit = secretMode && !PROMOTED_SECRET_SPLITS.has(path);
+  const detailsSelector = restrictedSecretSplit ? "[data-secret] [data-card]" : "[data-card]";
   let headingIndex = 1;
   let heading = "";
   let featureIndex = { value: 1 };
@@ -224,7 +226,7 @@ async function getSnapshots(page: Page, pathIndex: number, path: string) {
 
     await expandAll(loc);
     const parts = [pathIndex, path, headingIndex, heading];
-    if (secretMode) parts.splice(0, 0, "secrets-");
+    if (restrictedSecretSplit) parts.splice(0, 0, "secrets-");
 
     for (const feature of FEATURES.filter((f) => heading.includes(f.heading))) {
       const summary = await loc.locator("[data-card-title]").first().textContent();
@@ -233,9 +235,36 @@ async function getSnapshots(page: Page, pathIndex: number, path: string) {
       }
     }
 
-    await getCardSnapshot(loc, parts, locIndex);
+    await getCardSnapshot(loc, parts, locIndex, detailsSelector);
   }
 }
+
+const PROMOTED_SECRET_SPLITS = new Set(["koga", "blaine", "clair"]);
+
+const GUIDE_PATHS = [
+  ["guide", "brock"],
+  ["guide", "misty"],
+  ["guide", "surge"],
+  ["guide", "erika"],
+  ["guide", "sabrina"],
+  ["guide", "koga"],
+  ["guide", "blaine"],
+  ["guide", "clair"],
+  ["guide", "victory-road"],
+  ["guide", "elite-four"],
+  ["team", "box"],
+  ["team", "stats"],
+  ["team", "timeline"],
+  ["overlay", "background"],
+  ["overlay", "banner"],
+  ["overlay", "camera"],
+  ["overlay", "opponent-small"],
+  ["overlay", "opponent-medium"],
+  ["overlay", "opponent-large"],
+  ["overlay", "stats"],
+  ["overlay", "title"],
+  ["overlay", "controls"],
+];
 
 const PATHS = secretMode
   ? [
@@ -245,30 +274,7 @@ const PATHS = secretMode
       ["guide", "victory-road"],
       ["guide", "elite-four"],
     ]
-  : [
-      ["guide", "brock"],
-      ["guide", "misty"],
-      ["guide", "surge"],
-      ["guide", "erika"],
-      ["guide", "sabrina"],
-      ["guide", "koga"],
-      ["guide", "blaine"],
-      ["guide", "clair"],
-      ["guide", "victory-road"],
-      ["guide", "elite-four"],
-      ["team", "box"],
-      ["team", "stats"],
-      ["team", "timeline"],
-      ["overlay", "background"],
-      ["overlay", "banner"],
-      ["overlay", "camera"],
-      ["overlay", "opponent-small"],
-      ["overlay", "opponent-medium"],
-      ["overlay", "opponent-large"],
-      ["overlay", "stats"],
-      ["overlay", "title"],
-      ["overlay", "controls"],
-    ];
+  : GUIDE_PATHS;
 
 test.beforeAll(async () => {
   await fetch("http://localhost:3001/state", {
@@ -278,7 +284,12 @@ test.beforeAll(async () => {
   }).catch(() => {});
 });
 
-for (const [pathIndex, path] of PATHS.entries()) {
+for (const [i, path] of PATHS.entries()) {
+  const pathIndex =
+    secretMode && PROMOTED_SECRET_SPLITS.has(path[1])
+      ? GUIDE_PATHS.findIndex(([, slug]) => slug === path[1])
+      : i;
+
   test.describe(`${path[0]}/${path[1]}`, () => {
     test.beforeEach(async ({ page }) => {
       await page.goto(`/radred/${path[0]}/${path[1]}`);
