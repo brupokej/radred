@@ -20,7 +20,6 @@
     "postinstall": "npx playwright install chromium",
     "playwright": "tsx scripts/playwright.mts",
     "playwright:ui": "playwright test --ui",
-    "playwright:ui:secret": "SECRET_MODE=true playwright test --ui",
     "playwright:update": "tsx scripts/playwright.mts --update-snapshots",
     "vitest": "vitest run",
     "overlay-server": "node overlay-server.js",

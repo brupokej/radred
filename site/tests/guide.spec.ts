@@ -8,7 +8,6 @@ test.describe.configure({ mode: "serial" });
 
 const SNAPSHOT_DIR = path.join(__dirname, "snapshots/guide.spec.ts-snapshots");
 const SNAPSHOT_SUFFIX = `desktop-${process.platform}`;
-const secretMode = process.env.SECRET_MODE === "true";
 const seenSnapshots = new Set<string>();
 
 async function expectSnapshot(
@@ -72,7 +71,6 @@ async function getCardSnapshot(
   loc: Locator,
   parts: (string | number)[],
   locIndex: { value: number },
-  detailsSelector: string,
   visited = new Set<string>()
 ): Promise<void> {
   const page = loc.page();
@@ -95,10 +93,10 @@ async function getCardSnapshot(
 
       const reLoc = switchBattle
         .locator("[data-switch-case='active']")
-        .locator(detailsSelector)
+        .locator("[data-card]")
         .filter({ has: page.locator("[data-card-title]", { hasText: summary }) });
       await expandAll(reLoc);
-      await getCardSnapshot(reLoc, parts, locIndex, detailsSelector, visited);
+      await getCardSnapshot(reLoc, parts, locIndex, visited);
     }
 
     await select.selectOption(defaultValue);
@@ -121,7 +119,7 @@ async function getCardSnapshot(
       if (defaultValue === value) continue;
       await select.selectOption(value);
       await waitForRender(loc);
-      await getCardSnapshot(loc, parts, locIndex, detailsSelector, visited);
+      await getCardSnapshot(loc, parts, locIndex, visited);
       break;
     }
 
@@ -140,7 +138,7 @@ async function getCardSnapshot(
     for (const value of values) {
       await select.selectOption(value);
       await waitForRender(loc);
-      await getCardSnapshot(loc, parts, locIndex, detailsSelector, visited);
+      await getCardSnapshot(loc, parts, locIndex, visited);
     }
 
     await select.selectOption(defaultValue);
@@ -204,8 +202,6 @@ const FEATURES: { heading: string; summary: string; name: string }[] = [
 ];
 
 async function getSnapshots(page: Page, pathIndex: number, path: string) {
-  const restrictedSecretSplit = secretMode && !PROMOTED_SECRET_SPLITS.has(path);
-  const detailsSelector = restrictedSecretSplit ? "[data-secret] [data-card]" : "[data-card]";
   let headingIndex = 1;
   let heading = "";
   let featureIndex = { value: 1 };
@@ -213,7 +209,7 @@ async function getSnapshots(page: Page, pathIndex: number, path: string) {
 
   for (const loc of await page
     .locator("article")
-    .locator(`h1, h2, ${detailsSelector}, a[href*='/overlay']`)
+    .locator(`h1, h2, [data-card], a[href*='/overlay']`)
     .all()) {
     const [tag, text] = await loc.evaluate((e) => [e.tagName, e.textContent]);
     if (tag === "H1" || tag === "H2") {
@@ -226,7 +222,6 @@ async function getSnapshots(page: Page, pathIndex: number, path: string) {
 
     await expandAll(loc);
     const parts = [pathIndex, path, headingIndex, heading];
-    if (restrictedSecretSplit) parts.splice(0, 0, "secrets-");
 
     for (const feature of FEATURES.filter((f) => heading.includes(f.heading))) {
       const summary = await loc.locator("[data-card-title]").first().textContent();
@@ -235,13 +230,13 @@ async function getSnapshots(page: Page, pathIndex: number, path: string) {
       }
     }
 
-    await getCardSnapshot(loc, parts, locIndex, detailsSelector);
+    await getCardSnapshot(loc, parts, locIndex);
   }
 }
 
-const PROMOTED_SECRET_SPLITS = new Set([]);
+const PROMOTED_SECRET_SPLITS = new Set(["victory-road", "elite-four"]);
 
-const GUIDE_PATHS = [
+const PATHS = [
   ["guide", "brock"],
   ["guide", "misty"],
   ["guide", "surge"],
@@ -266,13 +261,6 @@ const GUIDE_PATHS = [
   ["overlay", "controls"],
 ];
 
-const PATHS = secretMode
-  ? [
-      ["guide", "victory-road"],
-      ["guide", "elite-four"],
-    ]
-  : GUIDE_PATHS;
-
 test.beforeAll(async () => {
   await fetch("http://localhost:3001/state", {
     method: "POST",
@@ -281,12 +269,7 @@ test.beforeAll(async () => {
   }).catch(() => {});
 });
 
-for (const [i, path] of PATHS.entries()) {
-  const pathIndex =
-    secretMode && PROMOTED_SECRET_SPLITS.has(path[1])
-      ? GUIDE_PATHS.findIndex(([, slug]) => slug === path[1])
-      : i;
-
+for (const [pathIndex, path] of PATHS.entries()) {
   test.describe(`${path[0]}/${path[1]}`, () => {
     test.beforeEach(async ({ page }) => {
       await page.goto(`/radred/${path[0]}/${path[1]}`);
@@ -309,9 +292,5 @@ test.afterAll(() => {
   if (!fs.existsSync(SNAPSHOT_DIR)) return;
   fs.readdirSync(SNAPSHOT_DIR)
     .filter((f) => f.endsWith(".png") && !seenSnapshots.has(f))
-    .filter(
-      (f) =>
-        (secretMode && f.startsWith("secrets--")) || (!secretMode && !f.startsWith("secrets--"))
-    )
     .forEach((f) => fs.unlinkSync(path.join(SNAPSHOT_DIR, f)));
 });
