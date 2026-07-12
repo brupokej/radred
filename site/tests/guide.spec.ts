@@ -234,8 +234,6 @@ async function getSnapshots(page: Page, pathIndex: number, path: string) {
   }
 }
 
-const PROMOTED_SECRET_SPLITS = new Set(["victory-road", "elite-four"]);
-
 const PATHS = [
   ["guide", "brock"],
   ["guide", "misty"],

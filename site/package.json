@@ -20,7 +20,7 @@
     "postinstall": "npx playwright install chromium",
     "playwright": "tsx scripts/playwright.mts",
     "playwright:ui": "playwright test --ui",
-    "playwright:update": "tsx scripts/playwright.mts --update-snapshots",
+    "playwright:update": "playwright test --update-snapshots",
     "vitest": "vitest run",
     "overlay-server": "node overlay-server.js",
     "sprite-colors": "tsx scripts/sprite-colors.ts",
