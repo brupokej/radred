@@ -11,7 +11,7 @@ import {
 } from "@site/src/utils/opponents";
 
 export function getClairSecrets(_box1: Box) {
-  const _secret = { name: "Secret", spriteKey: "secret" };
+  const _secret = { name: "Secret", spriteKey: "secret", level: 79 };
   const _box2 = getBox({ box: _box1, cap: 79 });
 
   const clairBoxChange: Moment = {
@@ -22,6 +22,7 @@ export function getClairSecrets(_box1: Box) {
 
   const _box3 = getBox({
     box: _box2,
+    add: [_secret],
     team: ["Secret", "Secret", "Secret", "Secret", "Secret"],
   });
 
