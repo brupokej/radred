@@ -14,7 +14,7 @@ import {
 } from "@site/src/utils/opponents";
 
 export function getVictoryRoadSecrets(_box1: Box) {
-  const _secret = { name: "Secret", spriteKey: "secret" };
+  const _secret = { name: "Secret", spriteKey: "secret", level: 82 };
 
   const route13Encounter: Moment = {
     split: "Victory Road",
@@ -50,6 +50,7 @@ export function getVictoryRoadSecrets(_box1: Box) {
 
   const _box3 = getBox({
     box: _box2,
+    add: [_secret],
     team: ["Secret", "Secret", "Secret", "Secret"],
   });
 

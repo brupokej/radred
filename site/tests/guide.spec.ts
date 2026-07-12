@@ -239,7 +239,7 @@ async function getSnapshots(page: Page, pathIndex: number, path: string) {
   }
 }
 
-const PROMOTED_SECRET_SPLITS = new Set(["clair"]);
+const PROMOTED_SECRET_SPLITS = new Set([]);
 
 const GUIDE_PATHS = [
   ["guide", "brock"],
@@ -268,7 +268,6 @@ const GUIDE_PATHS = [
 
 const PATHS = secretMode
   ? [
-      ["guide", "clair"],
       ["guide", "victory-road"],
       ["guide", "elite-four"],
     ]

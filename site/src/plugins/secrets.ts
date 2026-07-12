@@ -8,10 +8,6 @@ export default function secretsPlugin(context: { siteDir: string }) {
         return {
           resolve: {
             alias: {
-              [path.join(context.siteDir, "src/data/guide/clairSecrets") + "$"]: path.join(
-                context.siteDir,
-                "src/data/guide/clairSecrets.enabled"
-              ),
               [path.join(context.siteDir, "src/data/guide/victoryRoadSecrets") + "$"]: path.join(
                 context.siteDir,
                 "src/data/guide/victoryRoadSecrets.enabled"
