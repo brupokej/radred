@@ -14,7 +14,8 @@ import {
 } from "@site/src/utils/opponents";
 
 export function getBlaineSecrets(_box1: Box) {
-  const _secret = { name: "Secret", spriteKey: "secret" };
+  const _secret = { name: "Secret", spriteKey: "secret", level: 73 };
+
   const _box2 = getBox({ box: _box1, cap: 73 });
 
   const blaineBoxChange: Moment = {
@@ -47,6 +48,7 @@ export function getBlaineSecrets(_box1: Box) {
 
   const _box3 = getBox({
     box: _box2,
+    add: [_secret],
     team: ["Secret", "Secret", "Secret"],
   });
 

@@ -1,7 +1,11 @@
 import { getBox } from "@site/src/utils/box";
 import { Moment } from "@site/src/utils/moments";
 import {
+  ceruleanCityLeaderMistyRematchBox,
   fuschiaCityBrendanBox,
+  fuschiaCityGymJugglerKaydenBox,
+  fuschiaCityLeaderKogaBox,
+  pewterCityLeaderBrockRematchBox,
   route16BikerLaoBox,
   route16BikerRubenBox,
   route16CueBallCamronBox,
@@ -11,6 +15,7 @@ import {
   route18AceTrainerWiltonBox,
   route18BikerWilliamBox,
   route18BirdKeeperJacobBox,
+  vermillionCityLeaderLtSurgeRematchBox,
 } from "@site/src/utils/opponents";
 import { getKogaSecrets } from "./kogaSecrets";
 
@@ -1264,7 +1269,7 @@ const _screamTail = {
   moves: ["Body Slam", "Hyper Voice", "Play Rough", "Rest"],
 };
 
-export const box15 = getBox({
+export const _box15 = getBox({
   box: _box14,
   add: [_screamTail],
   update: {
@@ -1288,23 +1293,956 @@ export const safariZoneEncounter: Moment = {
   split: "Koga",
   label: "Safari Zone Encounter",
   kind: "encounter",
-  data: { pokemon: _screamTail, playerBox: box15, showPlayerTeam: true },
+  data: { pokemon: _screamTail, playerBox: _box15, showPlayerTeam: true },
 };
 
-export const {
-  starterEgg3Encounter,
-  starterEgg4Encounter,
-  starterEgg5Encounter,
-  starterEgg5BoxChange,
-  pewterCityLeaderBrockRematchBattle,
-  ceruleanCityLeaderMistyRematchBattle,
-  vermillionCityLeaderLtSurgeRematchBattle,
-  vermillionCityLeaderLtSurgeRematchBoxChange,
-  fuschiaCityGymJugglerKaydenBattle,
-  fuschiaCityGymJugglerKaydenBoxChange,
-  fuschiaCityLeaderKogaBattle,
-  box,
-} = getKogaSecrets(box15);
+const _froakie = {
+  name: "Froakie",
+  level: 1,
+  ability: "Torrent",
+  moves: ["Growl", "Pound"],
+};
+
+const _box16 = getBox({ box: _box15, add: [_froakie] });
+
+export const starterEgg3Encounter: Moment = {
+  split: "Koga",
+  label: "Starter Egg 3 Encounter",
+  kind: "encounter",
+  data: { pokemon: _froakie, playerBox: _box16 },
+};
+
+const _chimchar = {
+  name: "Chimchar",
+  level: 1,
+  ability: "Blaze",
+  moves: ["Leer", "Scratch"],
+};
+
+const _box17 = getBox({ box: _box16, add: [_chimchar] });
+
+export const starterEgg4Encounter: Moment = {
+  split: "Koga",
+  label: "Starter Egg 4 Encounter",
+  kind: "encounter",
+  data: { pokemon: _chimchar, playerBox: _box17 },
+};
+
+const _treecko = {
+  name: "Treecko",
+  level: 1,
+  ability: "Overgrow",
+  moves: ["Leer", "Pound"],
+};
+
+const _box18 = getBox({ box: _box17, add: [_treecko] });
+
+export const starterEgg5Encounter: Moment = {
+  split: "Koga",
+  label: "Starter Egg 5 Encounter",
+  kind: "encounter",
+  data: { pokemon: _treecko, playerBox: _box18 },
+};
+
+const _box19 = getBox({
+  box: _box18,
+  cap: 68,
+  update: [
+    {
+      Froakie: {
+        name: "Frogadier",
+      }
+    },
+    {
+      Frogadier: {
+        name: "Greninja",
+        moves: ["Growl", "Pound", "Water Shurik."],
+      },
+      Chimchar: {
+        name: "Monferno",
+        moves: ["Leer", "Mach Punch", "Scratch"],
+      }
+    },
+    {
+      Monferno: {
+        name: "Infernape",
+        moves: ["Close Combat", "Leer", "Mach Punch", "Scratch"],
+      },
+      Treecko: {
+        name: "Grovyle",
+        moves: ["Fury Cutter", "Leer", "Pound"],
+      }
+    },
+    {
+      Grovyle: {
+        name: "Sceptile",
+        moves: ["Dual Chop", "Fury Cutter", "Leer", "Pound"],
+      }
+    }
+  ],
+});
+
+export const starterEgg5BoxChange: Moment = {
+  split: "Koga",
+  label: "Starter Egg 5 Box Change",
+  kind: "boxChange",
+  data: { playerBox: _box19 },
+};
+
+const _box20 = getBox({
+  box: _box19,
+  update: {
+    Greninja: {
+      name: "Greninja-Ash",
+    }
+  },
+});
+
+const _box21 = getBox({
+  box: _box20,
+  update: {
+    "Swampert-Mega": {
+      nature: "Naughty",
+      ability: "Swift Swim",
+      item: "Swampertite",
+      moves: ["Earthquake", "Flip Turn", "Muddy Water", "Rock Slide"],
+    },
+    Drednaw: {
+      nature: "Adamant",
+      ability: "Shell Armor",
+      item: undefined,
+      moves: ["Bulldoze", "Flip Turn", "Ice Fang", "Liquidation"],
+    },
+    Clodsire: {
+      nature: "Careful",
+      ability: "Water Absorb",
+      item: "Shuca Berry",
+      moves: ["Acid Spray", "Earthquake", "Rock Slide", "Rock Tomb"],
+    },
+    "Greninja-Ash": {
+      nature: "Rash",
+      ability: "Battle Bond",
+      item: "Expert Belt",
+      moves: ["Hydro Pump", "Ice Beam", "Surf", "Water Shurik."],
+    },
+    Perrserker: {
+      nature: "Adamant",
+      ability: "Battle Armor",
+      item: "Shuca Berry",
+      moves: ["Fake Out", "Bullet Punch", "Shadow Claw", "U-Turn"],
+    },
+    Jellicent: {
+      nature: "Modest",
+      ability: "Water Bubble",
+      item: "Mystic Water",
+      moves: ["Brine", "Ice Beam", "Scald", "Water Spout"],
+    }
+  },
+  team: ["Swampert-Mega", "Drednaw", "Clodsire", "Greninja-Ash", "Perrserker", "Jellicent"],
+});
+
+export const pewterCityLeaderBrockRematchBattle: Moment = {
+  split: "Koga",
+  label: "Pewter City Leader Brock Rematch Battle",
+  kind: "battle",
+  data: {
+    playerBox: _box21,
+    opponentBox: pewterCityLeaderBrockRematchBox,
+    lines: [
+      {
+        matchups: [
+          {
+            matchup: ["Iron Boulder"],
+            turns: [
+              [
+                { player: "{p:Swampert-Mega} mega evolve" },
+                { opponent: "{o:Iron Boulder} Stealth Rock" },
+                { player: "{p:Swampert-Mega} Flip Turn {o:Iron Boulder} to {-:109}" },
+                { player: "{p:Swampert-Mega} switch to {p:Drednaw}" },
+                { opponent: "{p:Drednaw} Stealth Rock to {=:194}" },
+              ],
+              [
+                { opponent: "{o:Iron Boulder} Close Combat {p:Drednaw} to {+:14}" },
+                { player: "{p:Drednaw} Flip Turn {o:Iron Boulder} to {=:0}" },
+                { opponent: "{o:Iron Boulder} fainted" },
+                { player: "{p:Drednaw} switch to {p:Swampert-Mega}" },
+                { opponent: "{p:Swampert-Mega} Stealth Rock to {=:221}" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Zygarde-C"],
+            turns: [
+              [
+                { player: "{p:Swampert-Mega} switch to {p:Clodsire}" },
+                { opponent: "{p:Clodsire} Stealth Rock to {=:258}" },
+                { opponent: "{o:Zygarde-C} Coil" },
+              ],
+              [
+                { opponent: "{o:Zygarde-C} Coil" },
+                { player: "{p:Clodsire} Acid Spray {o:Zygarde-C} to {-:238}" },
+                { opponent: "{o:Zygarde-C} Leftovers to {=:245}" },
+              ],
+              [
+                { player: "{p:Clodsire} switch to {p:Greninja-Ash}" },
+                { opponent: "{p:Greninja-Ash} Stealth Rock to {=:173}" },
+                { opponent: "{o:Zygarde-C} Coil" },
+                { opponent: "{p:Greninja-Ash} sandstorm to {=:161}" },
+              ],
+              [
+                { player: "{p:Greninja-Ash} Ice Beam {o:Zygarde-C} to {=:0}" },
+                { opponent: "{o:Zygarde-C} fainted" },
+                { opponent: "{p:Greninja-Ash} transform" },
+                { opponent: "{p:Greninja-Ash} sandstorm to {=:149}" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Aerodactyl-Mega"],
+            turns: [
+              [
+                { player: "{p:Greninja-Ash} switch to {p:Perrserker}" },
+                { opponent: "{p:Perrserker} Stealth Rock to {=:208}" },
+                { opponent: "{o:Aerodactyl-Mega} mega evolve" },
+                { opponent: "{o:Aerodactyl-Mega} Dual Wingbeat {p:Perrserker} to {=:148}" },
+              ],
+              [
+                { opponent: "{o:Aerodactyl-Mega} Dragon Dance" },
+                { player: "{p:Perrserker} U-Turn {o:Aerodactyl-Mega} to {-:183}" },
+                { player: "{p:Perrserker} switch to {p:Swampert-Mega}" },
+                { opponent: "{p:Swampert-Mega} Stealth Rock to {=:207}" },
+              ],
+            ],
+            branches: [
+              {
+                branches: [
+                  "98% → Swampert-Mega Flip Turn Aerodactyl-Mega",
+                  "2% → Swampert-Mega Flip Turn Aerodactyl-Mega (to 0)",
+                ],
+              },
+            ],
+          }
+        ],
+        frags: { Drednaw: 1, "Greninja-Ash": 1 },
+      },
+      {
+        line: "98% → Swampert-Mega Flip Turn Aerodactyl-Mega",
+        matchups: [
+          {
+            matchup: ["Aerodactyl-Mega"],
+            turns: [
+              [
+                { opponent: "{o:Aerodactyl-Mega} Dragon Dance" },
+                { player: "{p:Swampert-Mega} Flip Turn {o:Aerodactyl-Mega} to {-:75}" },
+                { player: "{p:Swampert-Mega} switch to {p:Greninja-Ash}" },
+                { opponent: "{p:Greninja-Ash} Stealth Rock to {=:125}" },
+                { opponent: "{p:Greninja-Ash} sandstorm to {=:113}" },
+              ],
+              [
+                { player: "{p:Greninja-Ash} Water Shurik. {o:Aerodactyl-Mega} to {=:0}" },
+                { opponent: "{o:Aerodactyl-Mega} fainted" },
+                { opponent: "{p:Greninja-Ash} sandstorm to {=:101}" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Landorus-I"],
+            turns: [
+              [
+                { player: "{p:Greninja-Ash} Ice Beam {o:Landorus-I} to {=:0}" },
+                { opponent: "{o:Landorus-I} fainted" },
+                { opponent: "{p:Greninja-Ash} sandstorm to {=:89}" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Iron Treads"],
+            turns: [
+              [
+                { player: "{p:Greninja-Ash} Surf {o:Iron Treads} to {=:0}" },
+                { opponent: "{o:Iron Treads} fainted" },
+                { opponent: "{p:Greninja-Ash} sandstorm to {=:77}" },
+              ],
+            ],
+            branches: [{ branches: ["Greninja-Ash switch to Jellicent"] }],
+          },
+        ],
+        frags: { "Greninja-Ash": 3 },
+      },
+      {
+        line: "2% → Swampert-Mega Flip Turn Aerodactyl-Mega (to 0)",
+        matchups: [
+          {
+            matchup: ["Aerodactyl-Mega"],
+            turns: [
+              [
+                { opponent: "{o:Aerodactyl-Mega} Dragon Dance" },
+                { player: "{p:Swampert-Mega} Flip Turn {o:Aerodactyl-Mega} (crit) to {=:0}" },
+                { player: "{p:Swampert-Mega} switch to {p:Greninja-Ash}" },
+                { opponent: "{p:Greninja-Ash} Stealth Rock to {=:125}" },
+                { opponent: "{p:Greninja-Ash} sandstorm to {=:113}" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Landorus-I"],
+            turns: [
+              [
+                { player: "{p:Greninja-Ash} Ice Beam {o:Landorus-I} to {=:0}" },
+                { opponent: "{o:Landorus-I} fainted" },
+                { opponent: "{p:Greninja-Ash} sandstorm to {=:101}" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Iron Treads"],
+            turns: [
+              [
+                { player: "{p:Greninja-Ash} Surf {o:Iron Treads} to {=:0}" },
+                { opponent: "{o:Iron Treads} fainted" },
+                { opponent: "{p:Greninja-Ash} sandstorm to {=:89}" },
+              ],
+            ],
+            branches: [{ branches: ["Greninja-Ash switch to Jellicent"] }],
+          },
+        ],
+        frags: { "Swampert-Mega": 1, "Greninja-Ash": 2 },
+      },
+      {
+        line: "Greninja-Ash switch to Jellicent",
+        matchups: [
+          {
+            matchup: ["Ursaluna-BM"],
+            turns: [
+              [
+                { player: "{p:Greninja-Ash} switch to {p:Jellicent}" },
+                { opponent: "{p:Jellicent} Stealth Rock to {=:206}" },
+                { opponent: "{o:Ursaluna-BM} Vacuum Wave {p:Jellicent} to {+:155}" },
+                { opponent: "{p:Jellicent} sandstorm to {+:141}" },
+              ],
+              [
+                { player: "{p:Jellicent} Water Spout {o:Ursaluna-BM} to {=:0}" },
+                { opponent: "{o:Ursaluna-BM} fainted" },
+              ],
+            ],
+          },
+        ],
+        frags: { Jellicent: 1 },
+      },
+    ],
+  },
+};
+
+const _box22 = getBox({
+  box: _box21,
+  update: {
+    "Swampert-Mega": {
+      nature: "Naughty",
+      ability: "Swift Swim",
+      item: "Swampertite",
+      moves: ["Earthquake", "Flip Turn", "Muddy Water", "Rock Slide"],
+    },
+    Infernape: {
+      nature: "Mild",
+      ability: "Blaze",
+      item: "Aspear Berry",
+      moves: ["Fake Out", "Close Combat", "Thunder Punch", "Vacuum Wave"],
+    },
+    Lanturn: {
+      nature: "Bold",
+      ability: "Water Absorb",
+      item: "Sitrus Berry",
+      moves: ["Dazz. Gleam", "Soak", "Surf", "Volt Switch"],
+    },
+    Meowscarada: {
+      nature: "Adamant",
+      ability: "Protean",
+      item: "Expert Belt",
+      moves: ["Cut", "Flower Trick", "Low Sweep", "Sucker Punch"],
+    },
+    Golisopod: {
+      nature: "Impish",
+      ability: "Emergency Exit",
+      item: "Focus Sash",
+      moves: ["First Impress.", "Liquidation", "Poison Jab", "Sucker Punch"],
+    },
+    Golduck: {
+      nature: "Rash",
+      ability: "Cloud Nine",
+      item: "Expert Belt",
+      moves: ["Flash", "Flip Turn", "Me First", "Vacuum Wave"],
+    },
+  },
+  team: ["Swampert-Mega", "Infernape", "Lanturn", "Meowscarada", "Golisopod", "Golduck"],
+});
+
+export const ceruleanCityLeaderMistyRematchBattle: Moment = {
+  split: "Koga",
+  label: "Cerulean City Leader Misty Rematch Battle",
+  kind: "battle",
+  data: {
+    playerBox: _box22,
+    opponentBox: ceruleanCityLeaderMistyRematchBox,
+    lines: [
+      {
+        matchups: [
+          {
+            matchup: ["Iron Bundle"],
+            turns: [
+              [
+                { player: "{p:Swampert-Mega} mega evolve" },
+                { player: "{p:Swampert-Mega} Flip Turn {o:Iron Bundle} to {-:128}" },
+                { player: "{p:Swampert-Mega} switch to {p:Infernape}" },
+                { opponent: "{o:Iron Bundle} Freeze-Dry {p:Infernape} to {+:128}" },
+              ],
+              [
+                { player: "{p:Infernape} Fake Out {o:Iron Bundle} to {-:108}" },
+                { opponent: "{o:Iron Bundle} flinched" },
+              ],
+              [
+                { player: "{p:Infernape} Vacuum Wave {o:Iron Bundle} to {=:0}" },
+                { opponent: "{o:Iron Bundle} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Thundurus-T"],
+            turns: [
+              [
+                { player: "{p:Infernape} switch to {p:Lanturn}" },
+                { opponent: "{o:Thundurus-T} Weather Ball {p:Lanturn}" },
+              ],
+              [
+                { opponent: "{o:Thundurus-T} Nasty Plot" },
+                { player: "{p:Lanturn} Surf {o:Thundurus-T} to {-:107}" },
+              ],
+              [
+                { player: "{p:Lanturn} switch to {p:Swampert-Mega}" },
+                { opponent: "{o:Thundurus-T} Thunder {p:Swampert-Mega}" },
+              ],
+              [
+                { player: "{p:Swampert-Mega} Flip Turn {o:Thundurus-T} to {=:0}" },
+                { opponent: "{o:Thundurus-T} fainted" },
+                { player: "{p:Swampert-Mega} switch to {p:Lanturn}" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Archaludon"],
+            turns: [
+              [
+                { opponent: "{o:Archaludon} Dragon Pulse {p:Lanturn} to {+:98}" },
+                { opponent: "{p:Lanturn} Sitrus Berry to {+:165}" },
+                { player: "{p:Lanturn} Soak {o:Archaludon}" },
+              ],
+              [
+                { opponent: "{o:Archaludon} Body Press {p:Lanturn} to {+:39}" },
+                { player: "{p:Lanturn} Volt Switch {o:Archaludon} to {-:174}" },
+                { player: "{p:Lanturn} switch to {p:Meowscarada}" },
+              ],
+              [
+                { player: "{p:Meowscarada} Flower Trick {o:Archaludon} to {=:0}" },
+                { opponent: "{o:Archaludon} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Kingdra"],
+            turns: [
+              [
+                { player: "{p:Meowscarada} switch to {p:Golisopod}" },
+                { opponent: "{o:Kingdra} Hurricane {p:Golisopod} to {+:37}" },
+                { opponent: "{o:Kingdra} Life Orb to {=:181}" },
+                { player: "{p:Golisopod} Emergency Exit to {p:Golduck}" },
+              ],
+              [
+                { player: "{p:Golduck} Me First (Draco Barrage) {o:Kingdra} to {=:0}" },
+                { opponent: "{p:Golduck} recoil to {=:147}" },
+                { opponent: "{o:Kingdra} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Palafin-Hero"],
+            turns: [
+              [
+                { opponent: "{o:Palafin-Hero} Bulk Up" },
+                { player: "{p:Golduck} Flip Turn {o:Palafin-Hero} to {-:222}" },
+                { player: "{p:Golduck} switch to {p:Meowscarada}" },
+              ],
+              [
+                { player: "{p:Meowscarada} Flower Trick {o:Palafin-Hero} to {=:0}" },
+                { opponent: "{o:Palafin-Hero} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Gyarados-Mega"],
+            turns: [
+              [
+                { opponent: "{o:Gyarados-Mega} mega evolve" },
+                { player: "{p:Meowscarada} Low Sweep {o:Gyarados-Mega} to {-:149}" },
+                { opponent: "{o:Gyarados-Mega} Crunch {p:Meowscarada} to {+:99}" },
+              ],
+              [
+                { player: "{p:Meowscarada} Flower Trick {o:Gyarados-Mega} to {=:0}" },
+                { opponent: "{o:Gyarados-Mega} fainted" },
+              ],
+            ],
+          },
+        ],
+        frags: { Infernape: 1, "Swampert-Mega": 1, Meowscarada: 3, Golduck: 1 },
+      },
+    ],
+  },
+};
+
+const _box23 = getBox({
+  box: _box22,
+  update: {
+    Meowscarada: {
+      nature: "Naughty",
+      ability: "Protean",
+      item: "Expert Belt",
+      moves: ["Dig", "Low Kick", "Play Rough", "Shadow Claw"],
+    },
+    "Swampert-Mega": {
+      nature: "Naughty",
+      ability: "Swift Swim",
+      item: "Swampertite",
+      moves: ["Brine", "Flip Turn", "Muddy Water", "Rock Tomb"],
+    },
+    Ceruledge: {
+      nature: "Timid",
+      ability: "Sharpness",
+      item: "Sitrus Berry",
+      moves: ["Bitter Blade", "Flamethrower", "Shadow Claw", "Will-O-Wisp"],
+    },
+    "Greninja-Ash": {
+      nature: "Timid",
+      ability: "Battle Bond",
+      item: "Mystic Water",
+      moves: ["Hydro Pump", "Ice Beam", "Surf", "Water Shurik."],
+    },
+    Clodsire: {
+      nature: "Careful",
+      ability: "Water Absorb",
+      item: "Shuca Berry",
+      moves: ["Acid Spray", "Earthquake", "Rock Slide", "Rock Tomb"],
+    },
+  },
+  team: ["Meowscarada", "Swampert-Mega", "Ceruledge", "Greninja-Ash", "Clodsire"],
+});
+
+export const vermillionCityLeaderLtSurgeRematchBattle: Moment = {
+  split: "Koga",
+  label: "Vermillion City Leader Lt. Surge Rematch Battle",
+  kind: "battle",
+  data: {
+    playerBox: _box23,
+    opponentBox: vermillionCityLeaderLtSurgeRematchBox,
+    lines: [
+      {
+        matchups: [
+          {
+            matchup: ["Pawmot"],
+            turns: [
+              [
+                { player: "{p:Meowscarada} Shadow Claw {o:Pawmot} to {-:100}" },
+                { opponent: "{o:Pawmot} Drain Punch {p:Meowscarada}" },
+              ],
+              [
+                { player: "{p:Meowscarada} Play Rough {o:Pawmot} to {=:0}" },
+                { opponent: "{o:Pawmot} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Miraidon"],
+            turns: [
+              [
+                { player: "{p:Meowscarada} switch to {p:Swampert-Mega}" },
+                { opponent: "{o:Miraidon} Parab. Charge {p:Swampert-Mega}" },
+              ],
+              [
+                { player: "{p:Swampert-Mega} mega evolve" },
+                { opponent: "{o:Miraidon} Calm Mind" },
+                { player: "{p:Swampert-Mega} Rock Tomb {o:Miraidon} to {-:188}" },
+                { opponent: "{o:Miraidon} Leftovers to {-:202}" },
+              ],
+              [
+                { opponent: "{o:Miraidon} Calm Mind" },
+                { player: "{p:Swampert-Mega} Flip Turn {o:Miraidon} to {-:167}" },
+                { opponent: "{o:Miraidon} Leftovers to {-:181}" },
+              ],
+              [
+                { player: "{p:Meowscarada} Play Rough {o:Miraidon} to {=:0}" },
+                { opponent: "{o:Miraidon} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Iron Hands"],
+            turns: [
+              [
+                { player: "{p:Meowscarada} switch to {p:Swampert-Mega}" },
+                { opponent: "{o:Iron Hands} Fake Out {p:Swampert-Mega} to {+:177}" },
+              ],
+              [
+                { player: "{p:Swampert-Mega} Flip Turn {o:Iron Hands} to {-:241}" },
+                { player: "{p:Swampert-Mega} switch to {p:Ceruledge}" },
+                { opponent: "{o:Iron Hands} Drain Punch {p:Ceruledge}" },
+              ],
+              [
+                { player: "{p:Ceruledge} Will-O-Wisp {o:Iron Hands}" },
+                { opponent: "{o:Iron Hands} Plasma Fists {p:Ceruledge} to {+:21}" },
+                { opponent: "{p:Ceruledge} Sitrus Berry to {+:71}" },
+                { opponent: "{o:Iron Hands} burn to {-:222}" },
+              ],
+              [
+                { player: "{p:Ceruledge} switch to {p:Meowscarada}" },
+                { opponent: "{o:Iron Hands} Plasma Fists {p:Meowscarada} to {+:103}" },
+                { opponent: "{o:Iron Hands} burn to {-:203}" },
+              ],
+              [
+                { player: "{p:Meowscarada} Shadow Claw {o:Iron Hands} to {-:136}" },
+                { opponent: "{o:Iron Hands} Drain Punch {p:Meowscarada}" },
+                { opponent: "{o:Iron Hands} burn to {-:117}" },
+              ],
+              [
+                { player: "{p:Meowscarada} Play Rough {o:Iron Hands} to {=:0}" },
+                { opponent: "{o:Iron Hands} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Iron Thorns"],
+            turns: [
+              [
+                { player: "{p:Meowscarada} switch to {p:Swampert-Mega}" },
+                { opponent: "{o:Iron Thorns} Fusion Bolt {p:Swampert-Mega}" },
+              ],
+              [
+                { opponent: "{o:Iron Thorns} Dragon Dance" },
+                { player: "{p:Swampert-Mega} Flip Turn {o:Iron Hands} to {-:103}" },
+                { player: "{p:Swampert-Mega} switch to {p:Greninja-Ash}" },
+              ],
+              [
+                { player: "{p:Greninja-Ash} Surf {o:Iron Thorns} to {=:0}" },
+                { opponent: "{o:Iron Thorns} fainted" },
+                { opponent: "{p:Greninja-Ash} transform" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Iron Moth"],
+            turns: [
+              [
+                { player: "{p:Greninja-Ash} Surf {o:Iron Moth} to {=:0}" },
+                { opponent: "{o:Iron Moth} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Manectric-Mega"],
+            turns: [
+              [
+                { opponent: "{o:Manectric-Mega} mega evolve" },
+                { player: "{p:Greninja-Ash} switch to {p:Clodsire}" },
+                { opponent: "{o:Manectric-Mega} Rising Voltage {p:Clodsire}" },
+              ],
+              [
+                { opponent: "{o:Manectric-Mega} Flamethrower {p:Clodsire} to {+:181}" },
+                { player: "{p:Clodsire} Acid Spray {o:Manectric-Mega} to {-:176}" },
+                { opponent: "{p:Clodsire} burn to {+:164}" },
+              ],
+              [
+                { player: "{p:Clodsire} switch to {p:Greninja-Ash}" },
+                { opponent: "{o:Manectric-Mega} Flamethrower {p:Greninja-Ash} to {+:129}" },
+                { opponent: "{p:Greninja-Ash} burn to {+:117}" },
+              ],
+              [
+                { player: "{p:Greninja-Ash} Water Shurik. {o:Manectric-Mega} to {=:0}" },
+                { opponent: "{o:Manectric-Mega} fainted" },
+              ],
+            ],
+          },
+        ],
+        frags: { Meowscarada: 3, "Greninja-Ash": 3 }
+      },
+    ],
+  },
+};
+
+const _box24 = getBox({
+  box: _box23,
+  remove: ["Clodsire", "Swampert-Mega"],
+});
+
+export const vermillionCityLeaderLtSurgeRematchBoxChange: Moment = {
+  split: "Koga",
+  label: "Vermillion City Leader Lt. Surge Rematch Box Change",
+  kind: "boxChange",
+  data: { playerBox: _box24 },
+};
+
+const _box25 = getBox({
+  box: _box24,
+  update: {
+    Infernape: {
+      nature: "Adamant",
+      ability: "Blaze",
+      item: "Aspear Berry",
+      moves: ["Fake Out", "Close Combat", "Shadow Claw", "Vacuum Wave"],
+    },
+    Excadrill: {
+      nature: "Adamant",
+      ability: "Mold Breaker",
+      item: "Soft Sand",
+      moves: ["Brick Break", "Earthquake", "Iron Head", "Shadow Claw"],
+    },
+    Runerigus: {
+      nature: "Brave",
+      ability: "Wandering Soul",
+      item: "Chesto Berry",
+      moves: ["Earthquake", "Scary Face", "Shadow Ball", "Shadow Sneak"],
+    },
+    Golisopod: {
+      nature: "Impish",
+      ability: "Emergency Exit",
+      item: "Focus Sash",
+      moves: ["First Impress.", "Liquidation", "Poison Jab", "Sucker Punch"],
+    }
+  },
+  team: ["Infernape", "Excadrill", "Runerigus", "Golisopod"],
+});
+
+export const fuschiaCityGymJugglerKaydenBattle: Moment = {
+  split: "Koga",
+  label: "Fuschia City Gym Juggler Kayden Battle",
+  kind: "battle",
+  data: {
+    playerBox: _box25,
+    opponentBox: fuschiaCityGymJugglerKaydenBox,
+    lines: [
+      {
+        matchups: [
+          {
+            matchup: ["Mr. Mime"],
+            turns: [
+              [
+                { player: "{p:Infernape} Fake Out {o:Mr. Mime} to {-:133}" },
+                { opponent: "{o:Mr. Mime} flinched" },
+              ],
+              [
+                { player: "{p:Infernape} Shadow Claw {o:Mr. Mime} to {=:0}" },
+                { opponent: "{o:Mr. Mime} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Electrode"],
+            turns: [
+              [
+                { player: "{p:Infernape} switch to {p:Excadrill}" },
+                { opponent: "{o:Electrode} Explosion {p:Excadrill}" },
+                { opponent: "{o:Electrode} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Silvally"],
+            turns: [
+              [
+                { player: "{p:Excadrill} switch to {p:Runerigus}" },
+                { opponent: "{o:Silvally} Explosion {p:Runerigus}" },
+                { opponent: "{o:Silvally} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Hatterene"],
+            turns: [
+              [
+                { player: "{p:Runerigus} switch to {p:Golisopod}" },
+                { opponent: "{o:Hatterene} Misty Explosi. {p:Golisopod} to {=:1}" },
+                { opponent: "{o:Hatterene} fainted" },
+                { player: "{p:Golisopod} Emergency Exit to {p:Excadrill}" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Turtonator"],
+            turns: [
+              [
+                { player: "{p:Excadrill} Earthquake {o:Turtonator} to {=:0}" },
+                { opponent: "{o:Turtonator} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Volcanion"],
+            turns: [
+              [
+                { player: "{p:Excadrill} Earthquake {o:Volcanion} to {=:0}" },
+                { opponent: "{o:Volcanion} fainted" },
+              ],
+            ],
+          },
+        ],
+        frags: { Infernape: 1, Excadrill: 3, Runerigus: 1, Golisopod: 1 }
+      },
+    ],
+  },
+};
+
+const _box26 = getBox({
+  box: _box25,
+  remove: ["Excadrill"],
+});
+
+export const fuschiaCityGymJugglerKaydenBoxChange: Moment = {
+  split: "Koga",
+  label: "Fuschia City Gym Juggler Kayden Box Change",
+  kind: "boxChange",
+  data: { playerBox: _box26 },
+};
+
+const _box27 = getBox({
+  box: _box26,
+  update: {
+    Golisopod: {
+      nature: "Adamant",
+      ability: "Emergency Exit",
+      item: "Silver Powder",
+      moves: ["First Impress.", "Liquidation", "Poison Jab", "Pounce"],
+    },
+    "Greninja-Ash": {
+      nature: "Hasty",
+      ability: "Battle Bond",
+      item: "Expert Belt",
+      moves: ["Cut", "Extrasensory", "U-Turn", "Water Shurik."],
+    },
+    Tentacruel: {
+      nature: "Careful",
+      ability: "Clear Body",
+      item: "Poison Barb",
+      moves: ["Acid Spray", "Flip Turn", "Hydro Pump", "Poison Jab"],
+    },
+    Incineroar: {
+      nature: "Naughty",
+      ability: "Blaze",
+      item: "Expert Belt",
+      moves: ["Fake Out", "Drain Punch", "Scorch. Sands", "U-Turn"],
+    },
+    Sceptile: {
+      nature: "Rash",
+      ability: "Unburden",
+      item: "Focus Sash",
+      moves: ["Dual Chop", "Earthquake", "Leaf Storm", "X-Scissor"],
+    },
+  },
+  team: ["Golisopod", "Greninja-Ash", "Tentacruel", "Incineroar", "Sceptile"],
+});
+
+export const fuschiaCityLeaderKogaBattle: Moment = {
+  split: "Koga",
+  label: "Fuschia City Leader Koga Battle",
+  kind: "battle",
+  data: {
+    playerBox: _box27,
+    opponentBox: fuschiaCityLeaderKogaBox,
+    lines: [
+      {
+        matchups: [
+          {
+            matchup: ["Tapu Lele"],
+            turns: [
+              [
+                { opponent: "{o:Tapu Lele} Moonblast {p:Golisopod} to {+:12}" },
+                { player: "{p:Golisopod} Pounce {o:Tapu Lele} to {-:103}" },
+                { player: "{p:Golisopod} Emergency Exit to {p:Greninja-Ash}" },
+              ],
+              [
+                { player: "{p:Greninja-Ash} Cut {o:Tapu Lele} to {=:0}" },
+                { opponent: "{o:Tapu Lele} fainted" },
+                { opponent: "{p:Greninja-Ash} transform" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Chi-Yu"],
+            turns: [
+              [
+                { player: "{p:Greninja-Ash} switch to {p:Tentacruel}" },
+                { opponent: "{o:Chi-Yu} HP Grass {p:Tentacruel} to {+:128}" },
+              ],
+              [
+                { player: "{p:Tentacruel} switch to {p:Incineroar}" },
+                { opponent: "{o:Chi-Yu} Psychic {p:Incineroar}" },
+              ],
+              [
+                { opponent: "{o:Chi-Yu} Flamethrower {p:Incineroar} to {+:93}" },
+                { player: "{p:Incineroar} Drain Punch {o:Chi-Yu} to {-:39}" },
+                { opponent: "{p:Incineroar} recover to {+:160}" },
+              ],
+              [
+                { opponent: "{o:Chi-Yu} Flamethrower {p:Incineroar} to {+:25}" },
+                { player: "{p:Incineroar} U-Turn {o:Chi-Yu} to {=:0}" },
+                { opponent: "{o:Chi-Yu} fainted" },
+                { player: "{p:Incineroar} switch to {p:Sceptile}" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Nidoking"],
+            turns: [
+              [
+                { opponent: "{o:Nidoking} Ice Beam {p:Sceptile} to {=:1}" },
+                { player: "{p:Sceptile} Earthquake {o:Nidoking} to {-:81}" },
+              ],
+              [
+                { player: "{p:Sceptile} Earthquake {o:Nidoking} to {=:0}" },
+                { opponent: "{o:Nidoking} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Hoopa-U"],
+            turns: [
+              [
+                { player: "{p:Sceptile} X-Scissor {o:Hoopa-U} to {=:0}" },
+                { opponent: "{o:Hoopa-U} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Krookodile"],
+            turns: [
+              [
+                { player: "{p:Sceptile} Leaf Storm {o:Krookodile} to {=:0}" },
+                { opponent: "{o:Krookodile} fainted" },
+              ],
+            ],
+          },
+          {
+            matchup: ["Toxtricity-Mega"],
+            turns: [
+              [
+                { opponent: "{o:Toxtricity-Mega} mega evolve" },
+                { player: "{p:Sceptile} Earthquake {o:Toxtricity-Mega} to {=:0}" },
+                { opponent: "{o:Toxtricity-Mega} fainted" },
+              ],
+            ],
+          },
+        ],
+        frags: { "Greninja-Ash": 1, Incineroar: 1, Sceptile: 4 }
+      },
+    ],
+  },
+};
+
+export const box = _box27;
 
 export const moments: Moment[] = [
   celadonCityEncounter,
