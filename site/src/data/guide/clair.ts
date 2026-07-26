@@ -1,4 +1,4 @@
-import { getBox, type Box } from "@site/src/utils/box";
+import { getBox } from "@site/src/utils/box";
 import type { Moment } from "@site/src/utils/moments";
 import {
   ceruleanCaveArcherBox,
@@ -56,7 +56,7 @@ const _box3 = getBox({
       ability: "Emergency Exit",
       item: "Assault Vest",
       moves: ["First Impress.", "Liquidation", "Poison Jab", "Rock Slide"],
-    }
+    },
   },
   team: ["Golduck", "Tentacruel", "Darmanitan-GZ", "Zapdos", "Golisopod"],
 });
@@ -533,13 +533,13 @@ const _box8 = getBox({
     {
       Houndoom: {
         ability: "Early Bird",
-      }
+      },
     },
     {
       Houndoom: {
         ability: "Unnerve",
-      }
-    }
+      },
+    },
   ],
 });
 
@@ -1145,8 +1145,7 @@ export const ceruleanCaveGiovanniBattle: Moment = {
               [
                 "Risk →",
                 {
-                  danger:
-                    "Mewtwo-MegaY Expand. Force Dialga ×3 (to 0) → {c:0.02%}",
+                  danger: "Mewtwo-MegaY Expand. Force Dialga ×3 (to 0) → {c:0.02%}",
                 },
               ],
             ],
@@ -1190,8 +1189,7 @@ export const ceruleanCaveGiovanniBattle: Moment = {
               [
                 "Risk →",
                 {
-                  danger:
-                    "Mewtwo-MegaY Expand. Force Dialga ×3 (to 0) → {c:0.02%}",
+                  danger: "Mewtwo-MegaY Expand. Force Dialga ×3 (to 0) → {c:0.02%}",
                 },
               ],
             ],
@@ -1200,9 +1198,15 @@ export const ceruleanCaveGiovanniBattle: Moment = {
             matchup: ["Mewtwo-MegaY", "Moltres-G"],
             turns: [
               [
-                { opponent: "{o:Mewtwo-MegaY} Expand. Force {p:Houndoom-Mega} and {o:Dialga} to {=:0}" },
+                {
+                  opponent:
+                    "{o:Mewtwo-MegaY} Expand. Force {p:Houndoom-Mega} and {o:Dialga} to {=:0}",
+                },
                 { opponent: "{o:Dialga} fainted" },
-                { player: "{p:Houndoom-Mega} Fiery Wrath {o:Mewtwo-MegaY} to {=:0} and {o:Moltres-G} to {-:207}" },
+                {
+                  player:
+                    "{p:Houndoom-Mega} Fiery Wrath {o:Mewtwo-MegaY} to {=:0} and {o:Moltres-G} to {-:207}",
+                },
                 { opponent: "{o:Mewtwo-MegaY} fainted" },
                 { opponent: "{o:Moltres-G} Nasty Plot" },
               ],
@@ -1273,8 +1277,7 @@ export const ceruleanCaveGiovanniBattle: Moment = {
               [
                 "Risk →",
                 {
-                  danger:
-                    "Mewtwo-MegaY Expand. Force Dialga ×3 (to 0) → {c:0.02%}",
+                  danger: "Mewtwo-MegaY Expand. Force Dialga ×3 (to 0) → {c:0.02%}",
                 },
               ],
             ],
@@ -1319,8 +1322,7 @@ export const ceruleanCaveGiovanniBattle: Moment = {
               [
                 "Risk →",
                 {
-                  danger:
-                    "Mewtwo-MegaY Expand. Force Dialga ×3 (to 0) → {c:0.02%}",
+                  danger: "Mewtwo-MegaY Expand. Force Dialga ×3 (to 0) → {c:0.02%}",
                 },
               ],
             ],
@@ -1329,9 +1331,15 @@ export const ceruleanCaveGiovanniBattle: Moment = {
             matchup: ["Mewtwo-MegaY", "Moltres-G"],
             turns: [
               [
-                { opponent: "{o:Mewtwo-MegaY} Expand. Force {p:Houndoom-Mega} and {o:Dialga} to {=:0}" },
+                {
+                  opponent:
+                    "{o:Mewtwo-MegaY} Expand. Force {p:Houndoom-Mega} and {o:Dialga} to {=:0}",
+                },
                 { opponent: "{o:Dialga} fainted" },
-                { player: "{p:Houndoom-Mega} Fiery Wrath {o:Mewtwo-MegaY} to {=:0} and {o:Moltres-G} to {-:207}" },
+                {
+                  player:
+                    "{p:Houndoom-Mega} Fiery Wrath {o:Mewtwo-MegaY} to {=:0} and {o:Moltres-G} to {-:207}",
+                },
                 { opponent: "{o:Mewtwo-MegaY} fainted" },
                 { opponent: "{o:Moltres-G} Nasty Plot" },
               ],
@@ -1693,7 +1701,19 @@ export const viridianCityLeaderClairBattle: Moment = {
   },
 };
 
-export const box = _box12;
+const _box13 = getBox({
+  box: _box12,
+  remove: ["Golduck"],
+});
+
+export const viridianCityLeaderClairBoxChange: Moment = {
+  split: "Clair",
+  label: "Viridian City Leader Clair Box Change",
+  kind: "boxChange",
+  data: { playerBox: _box13 },
+};
+
+export const box = _box13;
 
 export const moments: Moment[] = [
   clairBoxChange,
@@ -1706,4 +1726,5 @@ export const moments: Moment[] = [
   ceruleanCaveGiovanniBattle,
   ceruleanCaveGiovanniBoxChange,
   viridianCityLeaderClairBattle,
+  viridianCityLeaderClairBoxChange,
 ];

@@ -1350,7 +1350,7 @@ const _box19 = getBox({
     {
       Froakie: {
         name: "Frogadier",
-      }
+      },
     },
     {
       Frogadier: {
@@ -1360,7 +1360,7 @@ const _box19 = getBox({
       Chimchar: {
         name: "Monferno",
         moves: ["Leer", "Mach Punch", "Scratch"],
-      }
+      },
     },
     {
       Monferno: {
@@ -1370,14 +1370,14 @@ const _box19 = getBox({
       Treecko: {
         name: "Grovyle",
         moves: ["Fury Cutter", "Leer", "Pound"],
-      }
+      },
     },
     {
       Grovyle: {
         name: "Sceptile",
         moves: ["Dual Chop", "Fury Cutter", "Leer", "Pound"],
-      }
-    }
+      },
+    },
   ],
 });
 
@@ -1393,7 +1393,7 @@ const _box20 = getBox({
   update: {
     Greninja: {
       name: "Greninja-Ash",
-    }
+    },
   },
 });
 
@@ -1435,7 +1435,7 @@ const _box21 = getBox({
       ability: "Water Bubble",
       item: "Mystic Water",
       moves: ["Brine", "Ice Beam", "Scald", "Water Spout"],
-    }
+    },
   },
   team: ["Swampert-Mega", "Drednaw", "Clodsire", "Greninja-Ash", "Perrserker", "Jellicent"],
 });
@@ -1520,7 +1520,7 @@ export const pewterCityLeaderBrockRematchBattle: Moment = {
                 ],
               },
             ],
-          }
+          },
         ],
         frags: { Drednaw: 1, "Greninja-Ash": 1 },
       },
@@ -1967,7 +1967,7 @@ export const vermillionCityLeaderLtSurgeRematchBattle: Moment = {
             ],
           },
         ],
-        frags: { Meowscarada: 3, "Greninja-Ash": 3 }
+        frags: { Meowscarada: 3, "Greninja-Ash": 3 },
       },
     ],
   },
@@ -2011,7 +2011,7 @@ const _box25 = getBox({
       ability: "Emergency Exit",
       item: "Focus Sash",
       moves: ["First Impress.", "Liquidation", "Poison Jab", "Sucker Punch"],
-    }
+    },
   },
   team: ["Infernape", "Excadrill", "Runerigus", "Golisopod"],
 });
@@ -2089,7 +2089,7 @@ export const fuschiaCityGymJugglerKaydenBattle: Moment = {
             ],
           },
         ],
-        frags: { Infernape: 1, Excadrill: 3, Runerigus: 1, Golisopod: 1 }
+        frags: { Infernape: 1, Excadrill: 3, Runerigus: 1, Golisopod: 1 },
       },
     ],
   },
@@ -2235,7 +2235,7 @@ export const fuschiaCityLeaderKogaBattle: Moment = {
             ],
           },
         ],
-        frags: { "Greninja-Ash": 1, Incineroar: 1, Sceptile: 4 }
+        frags: { "Greninja-Ash": 1, Incineroar: 1, Sceptile: 4 },
       },
     ],
   },

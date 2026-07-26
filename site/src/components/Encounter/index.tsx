@@ -152,12 +152,9 @@ export default function Encounter({
 
   return (
     <>
-      {data.showPlayerTeam &&
-        resolvedPlayerBox &&
-        (
-          <Team title="Player Team" box={resolvedPlayerBox} />
-        )
-      }
+      {data.showPlayerTeam && resolvedPlayerBox && (
+        <Team title="Player Team" box={resolvedPlayerBox} />
+      )}
       <Card title="Encounter Plan">
         {isSequence && <Sequence target={resolvedEncounter.name} />}
         <PokemonEntry

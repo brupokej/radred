@@ -1,7 +1,7 @@
-import { existsSync, writeFileSync } from "fs";
+import { writeFileSync } from "fs";
 import { Jimp } from "jimp";
 import { box } from "../src/data/guide/eliteFour";
-import { type Box, getCanon, resolveBox } from "../src/utils/box";
+import { getCanon, resolveBox } from "../src/utils/box";
 import { resolvePokemon } from "../src/utils/pokemon";
 
 const SPRITE_BASE = "https://raw.githubusercontent.com/Autumnchi/coloured-home-sprites/main/";

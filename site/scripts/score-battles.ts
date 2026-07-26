@@ -321,9 +321,8 @@ function expandMoment(m: Moment): { split: string; label: string; data: BattleDa
   return [];
 }
 
-const results: BattleScore[] = allMoments.filter(
-  (m) => !splitFilter || m.split.toLowerCase().includes(splitFilter)
-)
+const results: BattleScore[] = allMoments
+  .filter((m) => !splitFilter || m.split.toLowerCase().includes(splitFilter))
   .flatMap(expandMoment)
   .map(({ split, label, data }) => scoreBattle(split, label, data))
   .sort((a, b) => b.total - a.total);
@@ -385,9 +384,9 @@ console.log(`\n${results.length} battles scored.`);
 
 // --- Opponent attention table -----------------------------------------------
 
-const filteredBattles = allMoments.filter(
-  (m) => !splitFilter || m.split.toLowerCase().includes(splitFilter)
-).flatMap(expandMoment);
+const filteredBattles = allMoments
+  .filter((m) => !splitFilter || m.split.toLowerCase().includes(splitFilter))
+  .flatMap(expandMoment);
 
 const TOP_N = 15;
 const hardest = filteredBattles

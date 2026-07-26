@@ -1,4 +1,4 @@
-import { getBox, type Box } from "@site/src/utils/box";
+import { getBox } from "@site/src/utils/box";
 import type { Moment } from "@site/src/utils/moments";
 import {
   indigoPlateauCreatorSoupercellBox,
@@ -71,8 +71,8 @@ const _box5 = getBox({
     Buizel: {
       name: "Floatzel",
       moves: ["Fake Out", "Hydro Pump", "Razor Wind", "Whirlpool"],
-    }
-  }
+    },
+  },
 });
 
 export const route20BoxChange: Moment = {
@@ -89,7 +89,7 @@ const _box6 = getBox({
       nature: "Jolly",
       ability: "Sword of Ruin",
       item: undefined,
-      moves: ["Icicle Crash", "Recover", "Sacred Sword", "Sucker Punch"]
+      moves: ["Icicle Crash", "Recover", "Sacred Sword", "Sucker Punch"],
     },
     Meowscarada: {
       nature: "Impish",
@@ -107,8 +107,8 @@ const _box6 = getBox({
       nature: "Adamant",
       ability: "Pressure",
       item: "Choice Scarf",
-      moves: ["Bolt Beak", "Hurricane", "Thunderbolt", "U-Turn"]
-    }
+      moves: ["Bolt Beak", "Hurricane", "Thunderbolt", "U-Turn"],
+    },
   },
   team: ["Chien-Pao", "Meowscarada", "Ceruledge", "Zapdos"],
 });
@@ -204,7 +204,7 @@ export const route22RivalRematchBattle: Moment = {
             ],
           },
         ],
-        frags: { "Chien-Pao": 2, Meowscarada: 1, Ceruledge: 1, Zapdos: 2 }
+        frags: { "Chien-Pao": 2, Meowscarada: 1, Ceruledge: 1, Zapdos: 2 },
       },
     ],
   },
@@ -235,19 +235,19 @@ const _box8 = getBox({
       nature: "Jolly",
       ability: "Sword of Ruin",
       item: "Life Orb",
-      moves: ["Ice Shard", "Icicle Crash", "Sacred Sword", "Sucker Punch"]
+      moves: ["Ice Shard", "Icicle Crash", "Sacred Sword", "Sucker Punch"],
     },
     Lanturn: {
       nature: "Quiet",
       ability: "Water Absorb",
       item: "Mystic Water",
-      moves: ["Hydro Pump", "Ice Beam", "Thunder Wave", "Volt Switch"]
+      moves: ["Hydro Pump", "Ice Beam", "Thunder Wave", "Volt Switch"],
     },
     Drednaw: {
       nature: "Careful",
       ability: "Shell Armor",
       item: "Assault Vest",
-      moves: ["Earthquake", "Flip Turn", "Ice Fang", "Stone Edge"]
+      moves: ["Earthquake", "Flip Turn", "Ice Fang", "Stone Edge"],
     },
     Zapdos: {
       nature: "Adamant",
@@ -259,8 +259,8 @@ const _box8 = getBox({
       nature: "Naughty",
       ability: "Emergency Exit",
       item: "Focus Sash",
-      moves: ["Close Combat", "Liquidation", "Poison Jab", "Rock Slide"]
-    }
+      moves: ["Close Combat", "Liquidation", "Poison Jab", "Rock Slide"],
+    },
   },
   team: ["Perrserker", "Chien-Pao", "Lanturn", "Drednaw", "Zapdos", "Golisopod"],
 });
@@ -291,15 +291,12 @@ export const route23BrendanBattle: Moment = {
             ],
             branches: [
               {
-                branches: [
-                  "50% → Empoleon matchup",
-                  "50% → Ursaluna-BM matchup",
-                ],
+                branches: ["50% → Empoleon matchup", "50% → Ursaluna-BM matchup"],
               },
             ],
           },
         ],
-        frags: { "Chien-Pao": 1 }
+        frags: { "Chien-Pao": 1 },
       },
       {
         line: "50% → Empoleon matchup",
@@ -355,7 +352,7 @@ export const route23BrendanBattle: Moment = {
             ],
           },
         ],
-        frags: { "Chien-Pao": 1 }
+        frags: { "Chien-Pao": 1 },
       },
       {
         line: "95% → Golisopod Liquidation Ursaluna-BM",
@@ -377,7 +374,7 @@ export const route23BrendanBattle: Moment = {
             branches: [{ branches: ["Chien-Pao Sucker Punch Marowak-A"] }],
           },
         ],
-        frags: { "Chien-Pao": 1 }
+        frags: { "Chien-Pao": 1 },
       },
       {
         line: "5% → Golisopod Liquidation Ursaluna-BM (to 0)",
@@ -394,7 +391,7 @@ export const route23BrendanBattle: Moment = {
             branches: [{ branches: ["Chien-Pao Sucker Punch Marowak-A 2"] }],
           },
         ],
-        frags: { Golisopod: 1 }
+        frags: { Golisopod: 1 },
       },
       {
         line: "50% → Ursaluna-BM matchup",
@@ -471,7 +468,7 @@ export const route23BrendanBattle: Moment = {
             branches: [{ branches: ["Chien-Pao Sucker Punch Marowak-A"] }],
           },
         ],
-        frags: { "Chien-Pao": 2 }
+        frags: { "Chien-Pao": 2 },
       },
       {
         line: "5% → Golisopod Liquidation Ursaluna-BM (to 0) 2",
@@ -512,7 +509,7 @@ export const route23BrendanBattle: Moment = {
             branches: [{ branches: ["Chien-Pao Sucker Punch Marowak-A 2"] }],
           },
         ],
-        frags: { Golisopod: 1, "Chien-Pao": 1 }
+        frags: { Golisopod: 1, "Chien-Pao": 1 },
       },
       {
         line: "Chien-Pao Sucker Punch Marowak-A",
@@ -549,7 +546,7 @@ export const route23BrendanBattle: Moment = {
             ],
           },
         ],
-        frags: { "Chien-Pao": 3 }
+        frags: { "Chien-Pao": 3 },
       },
       {
         line: "Chien-Pao Sucker Punch Marowak-A 2",
@@ -586,7 +583,7 @@ export const route23BrendanBattle: Moment = {
             ],
           },
         ],
-        frags: { "Chien-Pao": 3 }
+        frags: { "Chien-Pao": 3 },
       },
     ],
   },
@@ -611,7 +608,7 @@ const _box10 = getBox({
       nature: "Adamant",
       ability: "Sword of Ruin",
       item: "Expert Belt",
-      moves: ["Ice Shard", "Icicle Crash", "Sacred Sword", "Sucker Punch"]
+      moves: ["Ice Shard", "Icicle Crash", "Sacred Sword", "Sucker Punch"],
     },
     "Houndoom-Mega": {
       nature: "Timid",
@@ -629,8 +626,8 @@ const _box10 = getBox({
       nature: "Jolly",
       ability: "Protean",
       item: "Miracle Seed",
-      moves: ["Flower Trick", "Low Kick", "Shadow Claw", "Sucker Punch"]
-    }
+      moves: ["Flower Trick", "Low Kick", "Shadow Claw", "Sucker Punch"],
+    },
   },
   team: ["Chien-Pao", "Houndoom-Mega", "Perrserker", "Meowscarada"],
 });
@@ -719,7 +716,7 @@ export const victoryRoadAceTrainerNaomiBattle: Moment = {
             ],
           },
         ],
-        frags: { "Chien-Pao": 2, "Houndoom-Mega": 1, Meowscarada: 3 }
+        frags: { "Chien-Pao": 2, "Houndoom-Mega": 1, Meowscarada: 3 },
       },
     ],
   },
@@ -738,20 +735,20 @@ const _box11 = getBox({
       nature: "Quiet",
       ability: "Water Absorb",
       item: "Mystic Water",
-      moves: ["Hydro Pump", "Ice Beam", "Thunder Wave", "Volt Switch"]
+      moves: ["Hydro Pump", "Ice Beam", "Thunder Wave", "Volt Switch"],
     },
     Zapdos: {
       nature: "Rash",
       ability: "Pressure",
       item: "Choice Scarf",
-      moves: ["Bolt Beak", "Hurricane", "Thunderbolt", "Volt Switch"]
+      moves: ["Bolt Beak", "Hurricane", "Thunderbolt", "Volt Switch"],
     },
     Perrserker: {
       nature: "Adamant",
       ability: "Battle Armor",
       item: "Chople Berry",
-      moves: ["Close Combat", "Dig", "Thrash", "U-Turn"]
-    }
+      moves: ["Close Combat", "Dig", "Thrash", "U-Turn"],
+    },
   },
   team: ["Dragapult", "Lanturn", "Zapdos", "Perrserker"],
 });
@@ -860,9 +857,9 @@ export const victoryRoadAceTrainerRolandoBattle: Moment = {
                 { opponent: "{o:Hatterene} fainted" },
               ],
             ],
-          }
+          },
         ],
-        frags: { Dragapult: 2, Zapdos: 4 }
+        frags: { Dragapult: 2, Zapdos: 4 },
       },
     ],
   },
@@ -875,14 +872,14 @@ const _box12 = getBox({
       nature: "Hasty",
       ability: "Iron Fist",
       item: "Life Orb",
-      moves: ["Fake Out", "Close Combat", "Flamethrower", "Vacuum Wave"]
+      moves: ["Fake Out", "Close Combat", "Flamethrower", "Vacuum Wave"],
     },
     "Chien-Pao": {
       nature: "Adamant",
       ability: "Sword of Ruin",
       item: "Life Orb",
-      moves: ["Ice Shard", "Icicle Crash", "Sacred Sword", "Sucker Punch"]
-    }
+      moves: ["Ice Shard", "Icicle Crash", "Sacred Sword", "Sucker Punch"],
+    },
   },
   team: ["Infernape", "Chien-Pao"],
 });
@@ -968,7 +965,7 @@ export const victoryRoadAceTrainerGeorgeBattle: Moment = {
             ],
           },
         ],
-        frags: { Infernape: 1, "Chien-Pao": 5 }
+        frags: { Infernape: 1, "Chien-Pao": 5 },
       },
     ],
   },
@@ -987,9 +984,9 @@ const _box13 = getBox({
       nature: "Adamant",
       ability: "Battle Armor",
       item: "Chople Berry",
-      moves: ["Fake Out", "Dig", "Thrash", "U-Turn"]
+      moves: ["Fake Out", "Dig", "Thrash", "U-Turn"],
     },
-    "Drednaw": {
+    Drednaw: {
       nature: "Careful",
       ability: "Shell Armor",
       item: "Chople Berry",
@@ -999,14 +996,14 @@ const _box13 = getBox({
       nature: "Rash",
       ability: "Pressure",
       item: "Choice Scarf",
-      moves: ["Bolt Beak", "Hurricane", "Thunderbolt", "Volt Switch"]
+      moves: ["Bolt Beak", "Hurricane", "Thunderbolt", "Volt Switch"],
     },
     Golisopod: {
       nature: "Careful",
       ability: "Emergency Exit",
       item: "Focus Sash",
       moves: ["First Impress.", "Brick Break", "Knock Off", "Poison Jab"],
-    }
+    },
   },
   team: ["Darmanitan-GZ", "Perrserker", "Drednaw", "Zapdos", "Golisopod"],
 });
@@ -1104,7 +1101,7 @@ export const victoryRoadAceTrainerCarolineBattle: Moment = {
             ],
           },
         ],
-        frags: { Zapdos: 1, "Darmanitan-GZ": 5 }
+        frags: { Zapdos: 1, "Darmanitan-GZ": 5 },
       },
     ],
   },
@@ -1117,14 +1114,14 @@ const _box14 = getBox({
       nature: "Rash",
       ability: "Pressure",
       item: "Choice Scarf",
-      moves: ["Bolt Beak", "Hurricane", "Thunderbolt", "Volt Switch"]
+      moves: ["Bolt Beak", "Hurricane", "Thunderbolt", "Volt Switch"],
     },
     "Darmanitan-GZ": {
       nature: "Adamant",
       ability: "Zen Mode",
       item: "Life Orb",
-      moves: ["Earthquake", "Icicle Crash", "Iron Head", "Zen Headbutt"]
-    }
+      moves: ["Earthquake", "Icicle Crash", "Iron Head", "Zen Headbutt"],
+    },
   },
   team: ["Zapdos", "Darmanitan-GZ"],
 });
@@ -1208,7 +1205,7 @@ export const victoryRoadAceTrainerColbyBattle: Moment = {
             ],
           },
         ],
-        frags: { "Darmanitan-GZ": 5, Zapdos: 1 }
+        frags: { "Darmanitan-GZ": 5, Zapdos: 1 },
       },
     ],
   },
@@ -1221,13 +1218,13 @@ const _box15 = getBox({
       nature: "Rash",
       ability: "Pressure",
       item: "Choice Specs",
-      moves: ["Bolt Beak", "Hurricane", "Thunderbolt", "Volt Switch"]
+      moves: ["Bolt Beak", "Hurricane", "Thunderbolt", "Volt Switch"],
     },
     Meowscarada: {
       nature: "Brave",
       ability: "Protean",
       item: "Life Orb",
-      moves: ["Dig", "Flower Trick", "Knock Off", "U-Turn"]
+      moves: ["Dig", "Flower Trick", "Knock Off", "U-Turn"],
     },
     "Greninja-Ash": {
       nature: "Rash",
@@ -1239,14 +1236,14 @@ const _box15 = getBox({
       nature: "Careful",
       ability: "Intimidate",
       item: "Sitrus Berry",
-      moves: ["Bite", "Darkest Lariat", "Scorch. Sands", "U-Turn"]
+      moves: ["Bite", "Darkest Lariat", "Scorch. Sands", "U-Turn"],
     },
     Golisopod: {
       nature: "Careful",
       ability: "Emergency Exit",
       item: "Focus Sash",
-      moves: ["First Impress.", "Brick Break", "Knock Off", "Poison Jab"]
-    }
+      moves: ["First Impress.", "Brick Break", "Knock Off", "Poison Jab"],
+    },
   },
   team: ["Zapdos", "Meowscarada", "Greninja-Ash", "Incineroar", "Golisopod"],
 });
@@ -1351,7 +1348,7 @@ export const victoryRoadAceTrainerAlexaBattle: Moment = {
             ],
           },
         ],
-        frags: { Meowscarada: 1, "Greninja-Ash": 4, Zapdos: 1 }
+        frags: { Meowscarada: 1, "Greninja-Ash": 4, Zapdos: 1 },
       },
     ],
   },
@@ -1367,14 +1364,14 @@ const _box16 = getBox({
       nature: "Adamant",
       ability: "Clear Body",
       item: "Life Orb",
-      moves: ["Dragon Darts", "Phantom Force", "Thunder", "U-Turn"]
+      moves: ["Dragon Darts", "Phantom Force", "Thunder", "U-Turn"],
     },
     Jellicent: {
       nature: "Modest",
       ability: "Water Bubble",
       item: "Choice Specs",
-      moves: ["Hydro Pump", "Ice Beam", "Scald", "Water Spout"]
-    }
+      moves: ["Hydro Pump", "Ice Beam", "Scald", "Water Spout"],
+    },
   },
   team: ["Dragapult", "Jellicent"],
 });
@@ -1408,15 +1405,12 @@ export const victoryRoadCoolCoupleRayAndTyraBattle: Moment = {
             ],
             branches: [
               {
-                branches: [
-                  "50% → Copperajah-Mega matchup",
-                  "50% → Dragalge matchup",
-                ],
+                branches: ["50% → Copperajah-Mega matchup", "50% → Dragalge matchup"],
               },
             ],
           },
         ],
-        frags: { Jellicent: 2 }
+        frags: { Jellicent: 2 },
       },
       {
         line: "50% → Copperajah-Mega matchup",
@@ -1426,13 +1420,10 @@ export const victoryRoadCoolCoupleRayAndTyraBattle: Moment = {
             turns: [],
             branches: [
               {
-                branches: [
-                  "50% → Runerigus matchup",
-                  "50% → Vikavolt matchup",
-                ],
+                branches: ["50% → Runerigus matchup", "50% → Vikavolt matchup"],
               },
             ],
-          }
+          },
         ],
       },
       {
@@ -1468,9 +1459,9 @@ export const victoryRoadCoolCoupleRayAndTyraBattle: Moment = {
                 ],
               },
             ],
-          }
+          },
         ],
-        frags: { Jellicent: 2 }
+        frags: { Jellicent: 2 },
       },
       {
         line: "94% → Dragapult Dragon Darts Dragalge",
@@ -1494,7 +1485,7 @@ export const victoryRoadCoolCoupleRayAndTyraBattle: Moment = {
             ],
           },
         ],
-        frags: { Jellicent: 2 }
+        frags: { Jellicent: 2 },
       },
       {
         line: "6% → Dragapult Dragon Darts Dragalge (to 0)",
@@ -1510,15 +1501,14 @@ export const victoryRoadCoolCoupleRayAndTyraBattle: Moment = {
                 { opponent: "{p:Dragapult} Life Orb to {=:189}" },
                 { opponent: "{o:Dragalge} fainted" },
                 {
-                  player:
-                    "{p:Jellicent} Water Spout {o:Vikavolt} to {=:0}",
+                  player: "{p:Jellicent} Water Spout {o:Vikavolt} to {=:0}",
                 },
                 { opponent: "{o:Vikavolt} fainted" },
               ],
             ],
           },
         ],
-        frags: { Dragapult: 1, Jellicent: 1 }
+        frags: { Dragapult: 1, Jellicent: 1 },
       },
       {
         line: "50% → Vikavolt matchup",
@@ -1553,7 +1543,7 @@ export const victoryRoadCoolCoupleRayAndTyraBattle: Moment = {
                 ],
               },
             ],
-          }
+          },
         ],
         frags: { Jellicent: 2 },
       },
@@ -1580,7 +1570,7 @@ export const victoryRoadCoolCoupleRayAndTyraBattle: Moment = {
             ],
           },
         ],
-        frags: { Jellicent: 2 }
+        frags: { Jellicent: 2 },
       },
       {
         line: "6% → Dragapult Dragon Darts Dragalge (to 0) 2",
@@ -1597,15 +1587,14 @@ export const victoryRoadCoolCoupleRayAndTyraBattle: Moment = {
                 { opponent: "{p:Dragapult} Life Orb to {=:189}" },
                 { opponent: "{o:Dragalge} fainted" },
                 {
-                  player:
-                    "{p:Jellicent} Water Spout {o:Runerigus} to {=:0}",
+                  player: "{p:Jellicent} Water Spout {o:Runerigus} to {=:0}",
                 },
                 { opponent: "{o:Runerigus} fainted" },
               ],
             ],
           },
         ],
-        frags: { Dragapult: 1, Jellicent: 1 }
+        frags: { Dragapult: 1, Jellicent: 1 },
       },
       {
         line: "50% → Dragalge matchup",
@@ -1615,13 +1604,10 @@ export const victoryRoadCoolCoupleRayAndTyraBattle: Moment = {
             turns: [],
             branches: [
               {
-                branches: [
-                  "50% → Runerigus matchup 2",
-                  "50% → Vikavolt matchup 2",
-                ],
+                branches: ["50% → Runerigus matchup 2", "50% → Vikavolt matchup 2"],
               },
             ],
-          }
+          },
         ],
       },
       {
@@ -1639,7 +1625,7 @@ export const victoryRoadCoolCoupleRayAndTyraBattle: Moment = {
                 ],
               },
             ],
-          }
+          },
         ],
       },
       {
@@ -1666,7 +1652,7 @@ export const victoryRoadCoolCoupleRayAndTyraBattle: Moment = {
             branches: [{ branches: ["Dragapult Dragon Darts Copperajah-Mega and Vikavolt"] }],
           },
         ],
-        frags: { Jellicent: 2 }
+        frags: { Jellicent: 2 },
       },
       {
         line: "6% → Dragapult Dragon Darts Dragalge (to 0) 3",
@@ -1683,8 +1669,7 @@ export const victoryRoadCoolCoupleRayAndTyraBattle: Moment = {
                 { opponent: "{p:Dragapult} Life Orb to {=:216}" },
                 { opponent: "{o:Dragalge} fainted" },
                 {
-                  player:
-                    "{p:Jellicent} Water Spout {o:Runerigus} to {=:0}",
+                  player: "{p:Jellicent} Water Spout {o:Runerigus} to {=:0}",
                 },
                 { opponent: "{o:Runerigus} fainted" },
               ],
@@ -1692,7 +1677,7 @@ export const victoryRoadCoolCoupleRayAndTyraBattle: Moment = {
             branches: [{ branches: ["Dragapult Dragon Darts Copperajah-Mega and Vikavolt"] }],
           },
         ],
-        frags: { Dragapult: 1, Jellicent: 1 }
+        frags: { Dragapult: 1, Jellicent: 1 },
       },
       {
         line: "Dragapult Dragon Darts Copperajah-Mega and Vikavolt",
@@ -1734,7 +1719,7 @@ export const victoryRoadCoolCoupleRayAndTyraBattle: Moment = {
                 ],
               },
             ],
-          }
+          },
         ],
       },
       {
@@ -1761,7 +1746,7 @@ export const victoryRoadCoolCoupleRayAndTyraBattle: Moment = {
             branches: [{ branches: ["Dragapult Dragon Darts Copperajah-Mega and Runerigus"] }],
           },
         ],
-        frags: { Jellicent: 2 }
+        frags: { Jellicent: 2 },
       },
       {
         line: "6% → Dragapult Dragon Darts Dragalge (to 0) 4",
@@ -1778,8 +1763,7 @@ export const victoryRoadCoolCoupleRayAndTyraBattle: Moment = {
                 { opponent: "{p:Dragapult} Life Orb to {=:216}" },
                 { opponent: "{o:Dragalge} fainted" },
                 {
-                  player:
-                    "{p:Jellicent} Water Spout {o:Vikavolt} to {=:0}",
+                  player: "{p:Jellicent} Water Spout {o:Vikavolt} to {=:0}",
                 },
                 { opponent: "{o:Vikavolt} fainted" },
               ],
@@ -1787,7 +1771,7 @@ export const victoryRoadCoolCoupleRayAndTyraBattle: Moment = {
             branches: [{ branches: ["Dragapult Dragon Darts Copperajah-Mega and Runerigus"] }],
           },
         ],
-        frags: { Dragapult: 1, Jellicent: 1 }
+        frags: { Dragapult: 1, Jellicent: 1 },
       },
       {
         line: "Dragapult Dragon Darts Copperajah-Mega and Runerigus",
@@ -1799,7 +1783,7 @@ export const victoryRoadCoolCoupleRayAndTyraBattle: Moment = {
                 { opponent: "{o:Copperajah-Mega} mega evolve" },
                 {
                   player:
-                    "{p:Dragapult} Dragon Darts {o:Copperajah-Mega} to {-:288} and {o:Runerigus} to {-:180}"
+                    "{p:Dragapult} Dragon Darts {o:Copperajah-Mega} to {-:288} and {o:Runerigus} to {-:180}",
                 },
                 { opponent: "{p:Dragapult} Life Orb to {=:189}" },
                 {
@@ -1825,8 +1809,8 @@ const _box17 = getBox({
       nature: "Jolly",
       ability: "Wandering Soul",
       item: "Chesto Berry",
-      moves: ["Rock Slide", "Scary Face", "Shadow Ball", "Shadow Sneak"]
-    }
+      moves: ["Rock Slide", "Scary Face", "Shadow Ball", "Shadow Sneak"],
+    },
   },
   team: ["Runerigus"],
 });
@@ -1910,7 +1894,7 @@ export const indigoPlateauCreatorSoupercellBattle: Moment = {
             ],
           },
         ],
-        frags: { "Runerigus": 6 }
+        frags: { Runerigus: 6 },
       },
     ],
   },

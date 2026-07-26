@@ -10,7 +10,7 @@ import styles from "./styles.module.css";
 
 export default function GoLiveButton({ moment }: { moment: Moment }) {
   if (process.env.NODE_ENV !== "development" || navigator.webdriver) return null;
-  return <GoLiveButtonInner moment={moment} />
+  return <GoLiveButtonInner moment={moment} />;
 }
 
 function GoLiveButtonInner({ moment }: { moment: Moment }) {

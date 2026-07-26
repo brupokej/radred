@@ -1,4 +1,4 @@
-import { getBox, type Box } from "@site/src/utils/box";
+import { getBox } from "@site/src/utils/box";
 import type { Moment } from "@site/src/utils/moments";
 import {
   cinnabarGymAceTrainerDerekBox,
@@ -19,11 +19,11 @@ const _box2 = getBox({
   box: _box1,
   update: {
     Perrserker: {
-      level: 73
+      level: 73,
     },
     Infernape: {
-      level: 73
-    }
+      level: 73,
+    },
   },
 });
 
@@ -117,7 +117,7 @@ const _box6 = getBox({
       ability: "Shell Armor",
       item: "Chople Berry",
       moves: ["Bulldoze", "Flip Turn", "Ice Fang", "Liquidation"],
-    }
+    },
   },
   team: ["Perrserker", "Meowscarada", "Drednaw"],
 });
@@ -170,7 +170,7 @@ export const lavenderTownLeaderMortyBattle: Moment = {
                 default: "86% → Perrserker U-Turn Weavile (to 0)",
               },
             ],
-          }
+          },
         ],
         frags: { Meowscarada: 1 },
       },
@@ -302,7 +302,7 @@ const _box7 = getBox({
       nature: "Naughty",
       ability: "Protean",
       item: "Life Orb",
-      moves: ["Aura Sphere", "Cut", "Knock Off", "Low Kick"]
+      moves: ["Aura Sphere", "Cut", "Knock Off", "Low Kick"],
     },
     Drednaw: {
       nature: "Adamant",
@@ -315,7 +315,7 @@ const _box7 = getBox({
       ability: "Clear Body",
       item: "Cheri Berry",
       moves: ["Acid Spray", "Flip Turn", "Hydro Pump", "Sludge Wave"],
-    }
+    },
   },
   team: ["Infernape", "Perrserker", "Incineroar", "Meowscarada", "Drednaw", "Tentacruel"],
 });
@@ -454,7 +454,7 @@ export const seafoamIslandsLeaderPryceBattle: Moment = {
                   ],
                 },
               ],
-              frags: { Infernape: 1, Perrserker: 1, Meowscarada: 3, Tentacruel: 1 }
+              frags: { Infernape: 1, Perrserker: 1, Meowscarada: 3, Tentacruel: 1 },
             },
           ],
         },
@@ -587,9 +587,9 @@ export const seafoamIslandsLeaderPryceBattle: Moment = {
                   ],
                 },
               ],
-              frags: { Infernape: 1, Perrserker: 1, Meowscarada: 3, Tentacruel: 1 }
+              frags: { Infernape: 1, Perrserker: 1, Meowscarada: 3, Tentacruel: 1 },
             },
-          ]
+          ],
         },
       },
     ],
@@ -602,7 +602,7 @@ const _box8 = getBox({
     "Darmanitan-G": {
       name: "Darmanitan-GZ",
       spriteKey: "darmanitan-galar-zen",
-    }
+    },
   },
 });
 
@@ -616,13 +616,13 @@ const _box9 = getBox({
       nature: "Adamant",
       ability: "Zen Mode",
       item: "Expert Belt",
-      moves: ["Earthquake", "Flare Blitz", "Icicle Crash", "Superpower"]
+      moves: ["Earthquake", "Flare Blitz", "Icicle Crash", "Superpower"],
     },
     Lanturn: {
       nature: "Quiet",
       ability: "Volt Absorb",
       item: "Mystic Water",
-      moves: ["Hydro Pump", "Ice Beam", "Surf", "Volt Switch"]
+      moves: ["Hydro Pump", "Ice Beam", "Surf", "Volt Switch"],
     },
     Golisopod: {
       nature: "Adamant",
@@ -641,7 +641,7 @@ const _box9 = getBox({
       ability: "Protean",
       item: "Focus Sash",
       moves: ["Aura Sphere", "Foul Play", "Knock Off", "Shadow Claw"],
-    }
+    },
   },
   team: ["Darmanitan-GZ", "Lanturn", "Golisopod", "Zapdos", "Meowscarada"],
 });
@@ -666,10 +666,7 @@ export const cinnabarLabLeaderJasmineBattle: Moment = {
             ],
             branches: [
               {
-                branches: [
-                  "50% → Magnezone matchup",
-                  "50% → Aggron-Mega matchup",
-                ],
+                branches: ["50% → Magnezone matchup", "50% → Aggron-Mega matchup"],
               },
             ],
           },
@@ -722,7 +719,7 @@ export const cinnabarLabLeaderJasmineBattle: Moment = {
             branches: [{ branches: ["Darmanitan-GZ Icicle Crash Tapu Bulu"] }],
           },
         ],
-        frags: { "Darmanitan-GZ": 1, Zapdos: 1 }
+        frags: { "Darmanitan-GZ": 1, Zapdos: 1 },
       },
       {
         line: "50% → Aggron-Mega matchup",
@@ -770,7 +767,7 @@ export const cinnabarLabLeaderJasmineBattle: Moment = {
             branches: [{ branches: ["Darmanitan-GZ Icicle Crash Tapu Bulu"] }],
           },
         ],
-        frags: { Zapdos: 1, "Darmanitan-GZ": 1 }
+        frags: { Zapdos: 1, "Darmanitan-GZ": 1 },
       },
       {
         line: "Darmanitan-GZ Icicle Crash Tapu Bulu",
@@ -782,7 +779,7 @@ export const cinnabarLabLeaderJasmineBattle: Moment = {
                 { player: "{p:Darmanitan-GZ} Icicle Crash {o:Tapu Bulu} to {=:0}" },
                 { opponent: "{o:Tapu Bulu} fainted" },
               ],
-            ]
+            ],
           },
           {
             matchup: ["Necrozma-DM"],
@@ -800,7 +797,7 @@ export const cinnabarLabLeaderJasmineBattle: Moment = {
                 { opponent: "{o:Necrozma-DM} Dragon Dance" },
                 { player: "{p:Meowscarada} Foul Play {o:Necrozma-DM} to {=:0}" },
               ],
-            ]
+            ],
           },
           {
             matchup: ["Genesect"],
@@ -817,10 +814,10 @@ export const cinnabarLabLeaderJasmineBattle: Moment = {
                 { opponent: "{o:Genesect} fainted" },
               ],
             ],
-          }
+          },
         ],
-        frags: { "Darmanitan-GZ": 1, Meowscarada: 2 }
-      }
+        frags: { "Darmanitan-GZ": 1, Meowscarada: 2 },
+      },
     ],
   },
 };
@@ -854,7 +851,7 @@ const _box10 = getBox({
       ability: "Battle Bond",
       item: "Life Orb",
       moves: ["Dark Pulse", "Low Kick", "Ice Beam", "Surf"],
-    }
+    },
   },
   team: ["Infernape", "Runerigus", "Golisopod", "Greninja-Ash"],
 });
@@ -949,9 +946,9 @@ export const cinnabarIslandMayBattle: Moment = {
                 { opponent: "{o:Snorlax} fainted" },
               ],
             ],
-          }
+          },
         ],
-        frags: { Infernape: 1, Runerigus: 1, "Greninja-Ash": 4 }
+        frags: { Infernape: 1, Runerigus: 1, "Greninja-Ash": 4 },
       },
     ],
   },
@@ -1007,7 +1004,7 @@ const _box12 = getBox({
       ability: "Battle Armor",
       item: "Chople Berry",
       moves: ["Fake Out", "Metal Burst", "Thunder", "U-Turn"],
-    }
+    },
   },
   team: ["Jellicent", "Golisopod", "Darmanitan-GZ", "Dragapult", "Greninja-Ash", "Perrserker"],
 });
@@ -1055,7 +1052,10 @@ export const pokemonMansionBurglarLewisBattle: Moment = {
               ],
               [
                 { player: "{p:Greninja-Ash} Ice Beam {o:Spectrier} to {-:163}" },
-                { player: "{p:Jellicent} Water Spout {o:Spectrier} to {=:0} and {o:Arcanine} to {=:0}" },
+                {
+                  player:
+                    "{p:Jellicent} Water Spout {o:Spectrier} to {=:0} and {o:Arcanine} to {=:0}",
+                },
                 { opponent: "{o:Spectrier} fainted" },
                 { opponent: "{o:Arcanine} fainted" },
                 { opponent: "{o:Greninja-Ash} grassy terrain to {=:219}" },
@@ -1071,7 +1071,10 @@ export const pokemonMansionBurglarLewisBattle: Moment = {
                 { opponent: "{o:Lopunny-Mega} mega evolve" },
                 { opponent: "{o:Lopunny-Mega} Close Combat {p:Perrserker} to {+:93}" },
                 { opponent: "{o:Articuno-G} Calm Mind" },
-                { player: "{p:Jellicent} Water Spout {o:Lopunny-Mega} to {=:0} and {o:Articuno-G} to {-:132}" },
+                {
+                  player:
+                    "{p:Jellicent} Water Spout {o:Lopunny-Mega} to {=:0} and {o:Articuno-G} to {-:132}",
+                },
                 { opponent: "{o:Lopunny-Mega} fainted" },
                 { opponent: "{p:Perrserker} grassy terrain to {+:108}" },
               ],
@@ -1083,14 +1086,17 @@ export const pokemonMansionBurglarLewisBattle: Moment = {
               [
                 { player: "{p:Perrserker} Fake Out {o:Articuno-G} to {-:104}" },
                 { opponent: "{o:Articuno-G} flinched" },
-                { player: "{p:Jellicent} Water Spout {o:Drapion} to {=:0} and {o:Articuno-G} to {=:0}" },
+                {
+                  player:
+                    "{p:Jellicent} Water Spout {o:Drapion} to {=:0} and {o:Articuno-G} to {=:0}",
+                },
                 { opponent: "{o:Drapion} fainted" },
                 { opponent: "{o:Articuno-G} fainted" },
               ],
             ],
           },
         ],
-        frags: { "Darmanitan-GZ": 1, Jellicent: 5 }
+        frags: { "Darmanitan-GZ": 1, Jellicent: 5 },
       },
     ],
   },
@@ -1116,7 +1122,7 @@ const _box13 = getBox({
       ability: "Rock Head",
       item: "Life Orb",
       moves: ["Accelerock", "Flamethrower", "Flare Blitz", "Head Smash"],
-    }
+    },
   },
   team: ["Darmanitan-GZ", "Meowscarada", "Arcanine-H"],
 });
@@ -1188,7 +1194,7 @@ export const cinnabarGymAceTrainerDerekBattle: Moment = {
             ],
           },
         ],
-        frags: { "Darmanitan-GZ": 1, Meowscarada: 3, "Arcanine-H": 1 }
+        frags: { "Darmanitan-GZ": 1, Meowscarada: 3, "Arcanine-H": 1 },
       },
     ],
   },
@@ -1211,7 +1217,7 @@ const _box14 = getBox({
       ability: "Zen Mode",
       item: "Expert Belt",
       moves: ["Earthquake", "Icicle Crash", "Rock Slide", "U-Turn"],
-    }
+    },
   },
   team: ["Perrserker", "Darmanitan-GZ"],
 });
@@ -1295,26 +1301,26 @@ const _box15 = getBox({
       nature: "Timid",
       ability: "Battle Bond",
       item: "Expert Belt",
-      moves: ["Dark Pulse", "Rock Tomb", "Ice Beam", "Surf"]
+      moves: ["Dark Pulse", "Rock Tomb", "Ice Beam", "Surf"],
     },
     Incineroar: {
       nature: "Careful",
       ability: "Intimidate",
       item: "Sitrus Berry",
-      moves: ["Fake Out", "Darkest Lariat", "Flamethrower", "U-Turn"]
+      moves: ["Fake Out", "Darkest Lariat", "Flamethrower", "U-Turn"],
     },
     Dragapult: {
       nature: "Rash",
       ability: "Clear Body",
       item: "Life Orb",
-      moves: ["Astonish", "Dragon Darts", "Flamethrower", "U-Turn"]
+      moves: ["Astonish", "Dragon Darts", "Flamethrower", "U-Turn"],
     },
     "Darmanitan-GZ": {
       nature: "Adamant",
       ability: "Zen Mode",
       item: "Expert Belt",
       moves: ["Earthquake", "Icicle Crash", "Rock Slide", "U-Turn"],
-    }
+    },
   },
   team: ["Greninja-Ash", "Incineroar", "Dragapult", "Darmanitan-GZ"],
 });
@@ -1376,7 +1382,7 @@ export const cinnabarGymAceTrainerZacBattle: Moment = {
             ],
           },
         ],
-        frags: { "Greninja-Ash": 1, Dragapult: 2, "Darmanitan-GZ": 2 }
+        frags: { "Greninja-Ash": 1, Dragapult: 2, "Darmanitan-GZ": 2 },
       },
     ],
   },
@@ -1389,7 +1395,7 @@ const _box16 = getBox({
       nature: "Lonely",
       ability: "Protean",
       item: "Expert Belt",
-      moves: ["Flower Trick", "Knock Off", "Low Kick", "Power Gem"]
+      moves: ["Flower Trick", "Knock Off", "Low Kick", "Power Gem"],
     },
     Ceruledge: {
       nature: "Bold",
@@ -1419,8 +1425,8 @@ const _box16 = getBox({
       nature: "Rash",
       ability: "Clear Body",
       item: "Life Orb",
-      moves: ["Astonish", "Dragon Darts", "Solar Beam", "U-Turn"]
-    }
+      moves: ["Astonish", "Dragon Darts", "Solar Beam", "U-Turn"],
+    },
   },
   team: ["Meowscarada", "Ceruledge", "Perrserker", "Arcanine-H", "Golisopod", "Dragapult"],
 });
@@ -1522,7 +1528,7 @@ export const cinnabarGymLeaderBlaineBattle: Moment = {
             ],
           },
         ],
-        frags: { Meowscarada: 1, Ceruledge: 1, "Arcanine-H": 1, Dragapult: 3 }
+        frags: { Meowscarada: 1, Ceruledge: 1, "Arcanine-H": 1, Dragapult: 3 },
       },
     ],
   },
@@ -1533,7 +1539,7 @@ const _box17 = getBox({
   update: {
     Golisopod: {
       level: 74,
-    }
+    },
   },
 });
 

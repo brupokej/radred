@@ -1,4 +1,4 @@
-import { getBox, type Box } from "@site/src/utils/box";
+import { getBox } from "@site/src/utils/box";
 import type { Moment } from "@site/src/utils/moments";
 import {
   championRivalBox,
@@ -18,8 +18,8 @@ const _box2 = getBox({
     Sceptile: {
       name: "Sceptile-Mega",
       ability: "Technician",
-    }
-  }
+    },
+  },
 });
 
 const _box3 = getBox({
@@ -29,31 +29,31 @@ const _box3 = getBox({
       nature: "Relaxed",
       ability: "Intimidate",
       item: undefined,
-      moves: ["Fake Out", "Darkest Lariat", "Parting Shot", "U-Turn"]
+      moves: ["Fake Out", "Darkest Lariat", "Parting Shot", "U-Turn"],
     },
     "Scream Tail": {
       nature: "Timid",
       ability: "Tangling Hair",
       item: undefined,
-      moves: ["Encore", "Moonblast", "Play Rough", "Teleport"]
+      moves: ["Encore", "Moonblast", "Play Rough", "Teleport"],
     },
     "Sceptile-Mega": {
       nature: "Jolly",
       ability: "Technician",
       item: "Sceptilite",
-      moves: ["Detect", "Dual Chop", "Leaf Blade", "Leaf Storm"]
+      moves: ["Detect", "Dual Chop", "Leaf Blade", "Leaf Storm"],
     },
     "Darmanitan-GZ": {
       nature: "Adamant",
       ability: "Zen Mode",
       item: undefined,
-      moves: ["Fire Punch", "Flare Blitz", "Focus Punch", "Icicle Crash"]
+      moves: ["Fire Punch", "Flare Blitz", "Focus Punch", "Icicle Crash"],
     },
     Floatzel: {
       nature: "Jolly",
       ability: "Technician",
       item: undefined,
-      moves: ["Fake Out", "Flip Turn", "Focus Punch", "Surging Strikes"]
+      moves: ["Fake Out", "Flip Turn", "Focus Punch", "Surging Strikes"],
     },
     "Thundurus-I": {
       nature: "Lax",
@@ -73,8 +73,8 @@ export const eliteFourChecklist: Moment = {
     playerBox: _box3,
     rows: [
       ["Cinnabar Lab → ", { warning: "Reveal Glass → Bag" }],
-      ["Victory Road → ", { warning: "HeavyD. Boots → Bag" }]
-    ]
+      ["Victory Road → ", { warning: "HeavyD. Boots → Bag" }],
+    ],
   },
 };
 
@@ -85,7 +85,7 @@ const _box4 = getBox({
       nature: "Relaxed",
       ability: "Intimidate",
       item: "Focus Sash",
-      moves: ["Darkest Lariat", "Parting Shot", "Scary Face", "U-Turn"]
+      moves: ["Darkest Lariat", "Parting Shot", "Scary Face", "U-Turn"],
     },
     "Thundurus-I": {
       nature: "Lax",
@@ -103,19 +103,19 @@ const _box4 = getBox({
       nature: "Jolly",
       ability: "Technician",
       item: "Wacan Berry",
-      moves: ["Fake Out", "Flip Turn", "Focus Punch", "Surging Strikes"]
+      moves: ["Fake Out", "Flip Turn", "Focus Punch", "Surging Strikes"],
     },
     "Scream Tail": {
       nature: "Timid",
       ability: "Tangling Hair",
       item: undefined,
-      moves: ["Encore", "Moonblast", "Play Rough", "Teleport"]
+      moves: ["Encore", "Moonblast", "Play Rough", "Teleport"],
     },
     "Darmanitan-GZ": {
       nature: "Adamant",
       ability: "Zen Mode",
       item: undefined,
-      moves: ["Fire Punch", "Flare Blitz", "Focus Punch", "Icicle Crash"]
+      moves: ["Fire Punch", "Flare Blitz", "Focus Punch", "Icicle Crash"],
     },
   },
   team: [
@@ -124,7 +124,7 @@ const _box4 = getBox({
     "Sceptile-Mega",
     "Floatzel",
     { name: "Scream Tail", extra: true },
-    { name: "Darmanitan-GZ", extra: true }
+    { name: "Darmanitan-GZ", extra: true },
   ],
 });
 
@@ -135,13 +135,13 @@ const _box5 = getBox({
       nature: "Relaxed",
       ability: "Intimidate",
       item: undefined,
-      moves: ["Fake Out", "Overheat", "Parting Shot", "U-Turn"]
+      moves: ["Fake Out", "Overheat", "Parting Shot", "U-Turn"],
     },
     Floatzel: {
       nature: "Jolly",
       ability: "Technician",
       item: "Yache Berry",
-      moves: ["Aqua Jet", "Flip Turn", "Focus Punch", "Surging Strikes"]
+      moves: ["Aqua Jet", "Flip Turn", "Focus Punch", "Surging Strikes"],
     },
     "Thundurus-I": {
       nature: "Lax",
@@ -153,13 +153,13 @@ const _box5 = getBox({
       nature: "Timid",
       ability: "Tangling Hair",
       item: "Life Orb",
-      moves: ["Encore", "Moonblast", "Play Rough", "Teleport"]
+      moves: ["Encore", "Moonblast", "Play Rough", "Teleport"],
     },
     "Darmanitan-GZ": {
       nature: "Adamant",
       ability: "Zen Mode",
       item: "Choice Scarf",
-      moves: ["Fire Punch", "Flare Blitz", "Focus Punch", "Icicle Crash"]
+      moves: ["Fire Punch", "Flare Blitz", "Focus Punch", "Icicle Crash"],
     },
     "Sceptile-Mega": {
       nature: "Jolly",
@@ -229,7 +229,10 @@ export const eliteFourLoreleiBattle: Moment = {
                       { player: "{p:Floatzel} switch to {p:Thundurus-I}" },
                       { opponent: "{o:Swampert-Mega} mega evolve" },
                       { player: "{p:Sceptile-Mega} Detect" },
-                      { opponent: "{o:Swampert-Mega} Earthquake {p:Thundurus-I} and {p:Sceptile-Mega} and {o:Dragonite}" },
+                      {
+                        opponent:
+                          "{o:Swampert-Mega} Earthquake {p:Thundurus-I} and {p:Sceptile-Mega} and {o:Dragonite}",
+                      },
                       { opponent: "{o:Dragonite} Hurricane {p:Sceptile-Mega}" },
                     ],
                     [
@@ -250,9 +253,9 @@ export const eliteFourLoreleiBattle: Moment = {
                       { opponent: "{o:Dragonite} fainted" },
                     ],
                   ],
-                }
+                },
               ],
-              frags: { "Thundurus-I": 1, "Sceptile-Mega": 4, Floatzel: 1 }
+              frags: { "Thundurus-I": 1, "Sceptile-Mega": 4, Floatzel: 1 },
             },
           ],
         },
@@ -280,7 +283,10 @@ export const eliteFourLoreleiBattle: Moment = {
                   matchup: ["Tapu Fini", "Glaceon"],
                   turns: [
                     [
-                      { opponent: "{o:Glaceon} Blizzard {p:Floatzel} to {+:26} and {p:Incineroar} to {+:131}" },
+                      {
+                        opponent:
+                          "{o:Glaceon} Blizzard {p:Floatzel} to {+:26} and {p:Incineroar} to {+:131}",
+                      },
                       { player: "{p:Floatzel} Flip Turn {o:Glaceon} to {-:210}" },
                       { player: "{p:Floatzel} switch to {p:Thundurus-I}" },
                       { opponent: "{o:Tapu Fini} Calm Mind" },
@@ -309,15 +315,12 @@ export const eliteFourLoreleiBattle: Moment = {
                   ],
                   branches: [
                     {
-                      branches: [
-                        "50% → Kyurem-W matchup",
-                        "50% → Abomasnow-Mega matchup",
-                      ],
+                      branches: ["50% → Kyurem-W matchup", "50% → Abomasnow-Mega matchup"],
                     },
                   ],
                 },
               ],
-              frags: { Floatzel: 1, Incineroar: 1, "Darmanitan-GZ": 1 }
+              frags: { Floatzel: 1, Incineroar: 1, "Darmanitan-GZ": 1 },
             },
             {
               line: "50% → Kyurem-W matchup",
@@ -341,7 +344,7 @@ export const eliteFourLoreleiBattle: Moment = {
               matchups: [
                 {
                   matchup: ["Tapu Fini", "Kyurem-W"],
-                  turns: [                      
+                  turns: [
                     [
                       { opponent: "{o:Tapu Fini} switch to {o:Abomasnow-Mega}" },
                       { player: "{p:Darmanitan-GZ} Flare Blitz {o:Kyurem-W} to {-:198}" },
@@ -354,7 +357,7 @@ export const eliteFourLoreleiBattle: Moment = {
                 },
                 {
                   matchup: ["Abomasnow-Mega", "Tapu Fini"],
-                  turns: [                      
+                  turns: [
                     [
                       { opponent: "{o:Abomasnow-Mega} mega evolve" },
                       { player: "{p:Darmanitan-GZ} Flare Blitz {o:Abomasnow-Mega} to {=:0}" },
@@ -367,14 +370,14 @@ export const eliteFourLoreleiBattle: Moment = {
                   branches: [{ branches: ["Darmanitan-GZ switch to Sceptile-Mega"] }],
                 },
               ],
-              frags: { "Scream Tail": 1, "Darmanitan-GZ": 1 }
+              frags: { "Scream Tail": 1, "Darmanitan-GZ": 1 },
             },
             {
               line: "20% → Tapu Fini Calm Mind",
               matchups: [
                 {
                   matchup: ["Tapu Fini", "Kyurem-W"],
-                  turns: [                      
+                  turns: [
                     [
                       { player: "{p:Darmanitan-GZ} Flare Blitz {o:Kyurem-W} to {-:198}" },
                       { opponent: "{p:Darmanitan-GZ} recoil to {+:174}" },
@@ -387,7 +390,7 @@ export const eliteFourLoreleiBattle: Moment = {
                 },
                 {
                   matchup: ["Tapu Fini", "Abomasnow-Mega"],
-                  turns: [                      
+                  turns: [
                     [
                       { opponent: "{o:Abomasnow-Mega} mega evolve" },
                       { player: "{p:Darmanitan-GZ} Flare Blitz {o:Abomasnow-Mega} to {=:0}" },
@@ -423,7 +426,7 @@ export const eliteFourLoreleiBattle: Moment = {
               matchups: [
                 {
                   matchup: ["Tapu Fini", "Abomasnow-Mega"],
-                  turns: [                      
+                  turns: [
                     [
                       { opponent: "{o:Tapu Fini} switch to {o:Kyurem-W}" },
                       { opponent: "{o:Abomasnow-Mega} mega evolve" },
@@ -436,7 +439,7 @@ export const eliteFourLoreleiBattle: Moment = {
                 },
                 {
                   matchup: ["Kyurem-W", "Tapu Fini"],
-                  turns: [                      
+                  turns: [
                     [
                       { player: "{p:Darmanitan-GZ} Flare Blitz {o:Kyurem-W} to {-:198}" },
                       { opponent: "{p:Darmanitan-GZ} recoil to {+:83}" },
@@ -449,7 +452,7 @@ export const eliteFourLoreleiBattle: Moment = {
                   branches: [{ branches: ["Darmanitan-GZ switch to Sceptile-Mega"] }],
                 },
               ],
-              frags: { "Scream Tail": 1, "Darmanitan-GZ": 1 }
+              frags: { "Scream Tail": 1, "Darmanitan-GZ": 1 },
             },
             {
               line: "20% → Tapu Fini Calm Mind 2",
@@ -457,7 +460,7 @@ export const eliteFourLoreleiBattle: Moment = {
               matchups: [
                 {
                   matchup: ["Tapu Fini", "Abomasnow-Mega"],
-                  turns: [                      
+                  turns: [
                     [
                       { opponent: "{o:Abomasnow-Mega} mega evolve" },
                       { player: "{p:Darmanitan-GZ} Flare Blitz {o:Abomasnow-Mega} to {=:0}" },
@@ -470,7 +473,7 @@ export const eliteFourLoreleiBattle: Moment = {
                 },
                 {
                   matchup: ["Tapu Fini", "Kyurem-W"],
-                  turns: [                      
+                  turns: [
                     [
                       { player: "{p:Darmanitan-GZ} Flare Blitz {o:Kyurem-W} to {-:198}" },
                       { opponent: "{p:Darmanitan-GZ} recoil to {+:83}" },
@@ -489,7 +492,7 @@ export const eliteFourLoreleiBattle: Moment = {
               matchups: [
                 {
                   matchup: ["Tapu Fini"],
-                  turns: [                      
+                  turns: [
                     [
                       { player: "{p:Darmanitan-GZ} switch to {p:Sceptile-Mega}" },
                       { player: "{p:Scream Tail} Encore {o:Tapu Fini}" },
@@ -522,7 +525,7 @@ export const eliteFourLoreleiBattle: Moment = {
                   ],
                 },
               ],
-              frags: { "Scream Tail": 1 }
+              frags: { "Scream Tail": 1 },
             },
             {
               line: "6% → Sceptile-Mega Leaf Blade Tapu Fini (to 0)",
@@ -538,10 +541,10 @@ export const eliteFourLoreleiBattle: Moment = {
                   ],
                 },
               ],
-              frags: { "Sceptile-Mega": 1 }
-            }
-          ]
-        }
+              frags: { "Sceptile-Mega": 1 },
+            },
+          ],
+        },
       },
     ],
   },
@@ -554,31 +557,31 @@ const _box6 = getBox({
       nature: "Jolly",
       ability: "Technician",
       item: "Life Orb",
-      moves: ["Fake Out", "Flip Turn", "Focus Punch", "Surging Strikes"]
+      moves: ["Fake Out", "Flip Turn", "Focus Punch", "Surging Strikes"],
     },
     Incineroar: {
       nature: "Relaxed",
       ability: "Intimidate",
       item: "Focus Sash",
-      moves: ["Acrobatics", "Bulldoze", "Darkest Lariat", "Parting Shot"]
+      moves: ["Acrobatics", "Bulldoze", "Darkest Lariat", "Parting Shot"],
     },
     "Darmanitan-GZ": {
       nature: "Adamant",
       ability: "Zen Mode",
       item: "Life Orb",
-      moves: ["Fire Punch", "Flare Blitz", "Focus Punch", "Icicle Crash"]
+      moves: ["Fire Punch", "Flare Blitz", "Focus Punch", "Icicle Crash"],
     },
     "Scream Tail": {
       nature: "Timid",
       ability: "Tangling Hair",
       item: undefined,
-      moves: ["Encore", "Rock Tomb", "Teleport", "Wish"]
+      moves: ["Encore", "Rock Tomb", "Teleport", "Wish"],
     },
     "Thundurus-I": {
       nature: "Lax",
       ability: "Clear Body",
       item: "Magnet",
-      moves: ["Dark Pulse", "Psychic", "Thunder", "Volt Switch"]
+      moves: ["Dark Pulse", "Psychic", "Thunder", "Volt Switch"],
     },
     "Sceptile-Mega": {
       nature: "Jolly",
@@ -593,8 +596,8 @@ const _box6 = getBox({
     "Darmanitan-GZ",
     "Scream Tail",
     "Thundurus-I",
-    { name: "Sceptile-Mega", extra: true }
-  ]
+    { name: "Sceptile-Mega", extra: true },
+  ],
 });
 
 const _box7 = getBox({
@@ -604,31 +607,31 @@ const _box7 = getBox({
       nature: "Jolly",
       ability: "Technician",
       item: "Life Orb",
-      moves: ["Fake Out", "Flip Turn", "Focus Punch", "Surging Strikes"]
+      moves: ["Fake Out", "Flip Turn", "Focus Punch", "Surging Strikes"],
     },
     Incineroar: {
       nature: "Relaxed",
       ability: "Intimidate",
       item: "Focus Sash",
-      moves: ["Acrobatics", "Bulldoze", "Darkest Lariat", "Parting Shot"]
+      moves: ["Acrobatics", "Bulldoze", "Darkest Lariat", "Parting Shot"],
     },
     "Darmanitan-GZ": {
       nature: "Adamant",
       ability: "Zen Mode",
       item: "Life Orb",
-      moves: ["Fire Punch", "Flare Blitz", "Focus Punch", "Icicle Crash"]
+      moves: ["Fire Punch", "Flare Blitz", "Focus Punch", "Icicle Crash"],
     },
     "Scream Tail": {
       nature: "Timid",
       ability: "Tangling Hair",
       item: undefined,
-      moves: ["Encore", "Rock Tomb", "Teleport", "Wish"]
+      moves: ["Encore", "Rock Tomb", "Teleport", "Wish"],
     },
     "Thundurus-I": {
       nature: "Lax",
       ability: "Clear Body",
       item: "Magnet",
-      moves: ["Dark Pulse", "Psychic", "Thunder", "Volt Switch"]
+      moves: ["Dark Pulse", "Psychic", "Thunder", "Volt Switch"],
     },
     "Sceptile-Mega": {
       nature: "Jolly",
@@ -643,8 +646,8 @@ const _box7 = getBox({
     "Darmanitan-GZ",
     "Scream Tail",
     "Thundurus-I",
-    { name: "Sceptile-Mega", extra: true }
-  ]
+    { name: "Sceptile-Mega", extra: true },
+  ],
 });
 
 export const eliteFourBrunoBattle: Moment = {
@@ -708,19 +711,13 @@ export const eliteFourBrunoBattle: Moment = {
                       { player: "{p:Darmanitan-GZ} switch to {p:Scream Tail}" },
                       { opponent: "{o:Zeraora} Knock Off {p:Scream Tail} to {+:237}" },
                     ],
-                    [
-                      { player: "{p:Scream Tail} Wish" },
-                      { opponent: "{o:Zeraora} Bulk Up" },
-                    ],
+                    [{ player: "{p:Scream Tail} Wish" }, { opponent: "{o:Zeraora} Bulk Up" }],
                     [
                       { player: "{p:Scream Tail} Rock Tomb {o:Zeraora} to {-:250}" },
                       { opponent: "{o:Zeraora} Bulk Up" },
                       { opponent: "{p:Scream Tail} recover to {=:316}" },
                     ],
-                    [
-                      { player: "{p:Scream Tail} Wish" },
-                      { opponent: "{o:Zeraora} Bulk Up" },
-                    ],
+                    [{ player: "{p:Scream Tail} Wish" }, { opponent: "{o:Zeraora} Bulk Up" }],
                     [
                       { player: "{p:Scream Tail} switch to {p:Floatzel}" },
                       { opponent: "{o:Zeraora} Bulk Up" },
@@ -736,7 +733,7 @@ export const eliteFourBrunoBattle: Moment = {
                       { opponent: "{p:Floatzel} Life Orb to {=:213}" },
                       { opponent: "{o:Zeraora} fainted" },
                     ],
-                  ]
+                  ],
                 },
                 {
                   matchup: ["Iron Valiant"],
@@ -770,7 +767,7 @@ export const eliteFourBrunoBattle: Moment = {
                       { opponent: "{p:Darmanitan-GZ} Life Orb to {+:39}" },
                       { opponent: "{o:Necrozma-DM} fainted" },
                     ],
-                  ]
+                  ],
                 },
                 {
                   matchup: ["Lucario-Mega"],
@@ -793,8 +790,8 @@ export const eliteFourBrunoBattle: Moment = {
                   ],
                 },
               ],
-              frags: { Floatzel: 3, "Darmanitan-GZ": 3 }
-            }
+              frags: { Floatzel: 3, "Darmanitan-GZ": 3 },
+            },
           ],
         },
       },
@@ -866,7 +863,7 @@ export const eliteFourBrunoBattle: Moment = {
                       { opponent: "{p:Floatzel} Life Orb to {=:213}" },
                       { opponent: "{o:Hawlucha} fainted" },
                     ],
-                  ]
+                  ],
                 },
                 {
                   matchup: ["Iron Valiant"],
@@ -889,7 +886,7 @@ export const eliteFourBrunoBattle: Moment = {
                       { opponent: "{p:Darmanitan-GZ} Life Orb to {+:163}" },
                       { opponent: "{o:Iron Valiant} fainted" },
                     ],
-                  ]
+                  ],
                 },
                 {
                   matchup: ["Necrozma-DM"],
@@ -925,7 +922,7 @@ export const eliteFourBrunoBattle: Moment = {
               ],
             },
           ],
-          frags: { "Thundurus-I": 1, "Darmanitan-GZ": 3, Floatzel: 2 }
+          frags: { "Thundurus-I": 1, "Darmanitan-GZ": 3, Floatzel: 2 },
         },
       },
     ],
@@ -939,38 +936,38 @@ const _box8 = getBox({
       nature: "Jolly",
       ability: "Technician",
       item: "Choice Band",
-      moves: ["Fake Out", "Flip Turn", "Focus Punch", "Surging Strikes"]
+      moves: ["Fake Out", "Flip Turn", "Focus Punch", "Surging Strikes"],
     },
     Incineroar: {
       nature: "Relaxed",
       ability: "Intimidate",
       item: "Focus Sash",
-      moves: ["Darkest Lariat", "Parting Shot", "Scary Face", "U-Turn"]
+      moves: ["Darkest Lariat", "Parting Shot", "Scary Face", "U-Turn"],
     },
     "Thundurus-I": {
       nature: "Lax",
       ability: "Clear Body",
       item: "Charti Berry",
-      moves: ["Dark Pulse", "Thunder Wave", "Volt Switch", "Wild. Storm"]
+      moves: ["Dark Pulse", "Thunder Wave", "Volt Switch", "Wild. Storm"],
     },
     "Scream Tail": {
       nature: "Timid",
       ability: "Tangling Hair",
       item: "Expert Belt",
-      moves: ["Crunch", "Encore", "Rock Tomb", "Teleport"]
+      moves: ["Crunch", "Encore", "Rock Tomb", "Teleport"],
     },
     "Sceptile-Mega": {
       nature: "Jolly",
       ability: "Technician",
       item: "Sceptilite",
-      moves: ["Cut", "Dual Chop", "Leaf Blade", "Leaf Storm"]
+      moves: ["Cut", "Dual Chop", "Leaf Blade", "Leaf Storm"],
     },
     "Darmanitan-GZ": {
       nature: "Adamant",
       ability: "Zen Mode",
       item: "Life Orb",
-      moves: ["Earthquake", "Flare Blitz", "Focus Punch", "Icicle Crash"]
-    }
+      moves: ["Earthquake", "Flare Blitz", "Focus Punch", "Icicle Crash"],
+    },
   },
   team: ["Floatzel", "Incineroar", "Thundurus-I", "Scream Tail", "Sceptile-Mega", "Darmanitan-GZ"],
 });
@@ -1014,15 +1011,12 @@ export const eliteFourAgathaBattle: Moment = {
             ],
             branches: [
               {
-                branches: [
-                  "75% → Mewtwo-MegaX Bulk Up",
-                  "25% → Mewtwo-MegaX fully paralyze",
-                ],
+                branches: ["75% → Mewtwo-MegaX Bulk Up", "25% → Mewtwo-MegaX fully paralyze"],
               },
             ],
           },
         ],
-        frags: { Floatzel: 1 }
+        frags: { Floatzel: 1 },
       },
       {
         line: "75% → Mewtwo-MegaX Bulk Up",
@@ -1067,13 +1061,10 @@ export const eliteFourAgathaBattle: Moment = {
             ],
             branches: [
               {
-                branches: [
-                  "75% → Mewtwo-MegaX Bulk Up 2",
-                  "25% → Mewtwo-MegaX fully paralyze 2",
-                ],
+                branches: ["75% → Mewtwo-MegaX Bulk Up 2", "25% → Mewtwo-MegaX fully paralyze 2"],
               },
             ],
-          }
+          },
         ],
       },
       {
@@ -1118,7 +1109,7 @@ export const eliteFourAgathaBattle: Moment = {
               ["Risk →", { danger: "Scream Tail Rock Tomb Mewtwo-MegaX (to 0) → {c:0.0001%↓}" }],
               { loop: "Scream Tail Rock Tomb Mewtwo-MegaX" },
             ],
-          }
+          },
         ],
       },
       {
@@ -1142,7 +1133,7 @@ export const eliteFourAgathaBattle: Moment = {
                 ],
               },
             ],
-          }
+          },
         ],
       },
       {
@@ -1167,7 +1158,7 @@ export const eliteFourAgathaBattle: Moment = {
                 ],
               },
             ],
-          }
+          },
         ],
       },
       {
@@ -1183,7 +1174,7 @@ export const eliteFourAgathaBattle: Moment = {
               ["Risk →", { danger: "Scream Tail Rock Tomb Mewtwo-MegaX (to 0) → {c:0.0001%↓}" }],
               { loop: "Scream Tail Encore Mewtwo-MegaX" },
             ],
-          }
+          },
         ],
       },
       {
@@ -1200,7 +1191,7 @@ export const eliteFourAgathaBattle: Moment = {
               ["Risk →", { danger: "Scream Tail Rock Tomb Mewtwo-MegaX (to 0) → {c:0.0001%↓}" }],
               { loop: "Scream Tail Encore Mewtwo-MegaX" },
             ],
-          }
+          },
         ],
       },
       {
@@ -1213,10 +1204,16 @@ export const eliteFourAgathaBattle: Moment = {
                 { player: "{p:Scream Tail} Rock Tomb {o:Mewtwo-MegaX} to {-:207}" },
                 { opponent: "{o:Mewtwo-MegaX} fully paralyze" },
               ],
-              ["Risk →", { danger: "Mewtwo-MegaX Bulk Up ×6 → Mewtwo-MegaX fully paralyze → Mewtwo-MegaX Stone Edge Scream Tail → {c:0.03%}" }],
+              [
+                "Risk →",
+                {
+                  danger:
+                    "Mewtwo-MegaX Bulk Up ×6 → Mewtwo-MegaX fully paralyze → Mewtwo-MegaX Stone Edge Scream Tail → {c:0.03%}",
+                },
+              ],
               { loop: "Scream Tail Rock Tomb Mewtwo-MegaX" },
             ],
-          }
+          },
         ],
       },
       {
@@ -1230,10 +1227,16 @@ export const eliteFourAgathaBattle: Moment = {
                 { player: "{p:Scream Tail} Rock Tomb {o:Mewtwo-MegaX} to {-:204}" },
                 { opponent: "{o:Mewtwo-MegaX} fully paralyze" },
               ],
-              ["Risk →", { danger: "Mewtwo-MegaX Bulk Up ×6 → Mewtwo-MegaX fully paralyze → Mewtwo-MegaX Stone Edge Scream Tail → {c:0.03%}" }],
+              [
+                "Risk →",
+                {
+                  danger:
+                    "Mewtwo-MegaX Bulk Up ×6 → Mewtwo-MegaX fully paralyze → Mewtwo-MegaX Stone Edge Scream Tail → {c:0.03%}",
+                },
+              ],
               { loop: "Scream Tail Rock Tomb Mewtwo-MegaX" },
             ],
-          }
+          },
         ],
       },
       {
@@ -1246,7 +1249,7 @@ export const eliteFourAgathaBattle: Moment = {
                 { opponent: "{o:Mewtwo-MegaX} switch to {o:Flutter Mane}" },
                 { player: "{p:Scream Tail} Rock Tomb {o:Flutter Mane} to {-:176}" },
               ],
-            ]
+            ],
           },
           {
             matchup: ["Flutter Mane"],
@@ -1261,7 +1264,7 @@ export const eliteFourAgathaBattle: Moment = {
                 { player: "{p:Sceptile-Mega} Cut {o:Flutter Mane} to {=:0}" },
                 { opponent: "{o:Flutter Mane} fainted" },
               ],
-            ]
+            ],
           },
           {
             matchup: ["Calyrex-S"],
@@ -1317,9 +1320,9 @@ export const eliteFourAgathaBattle: Moment = {
                 { opponent: "{o:Victini} fainted" },
               ],
             ],
-          }
+          },
         ],
-        frags: { "Sceptile-Mega": 1, "Darmanitan-GZ": 4 }
+        frags: { "Sceptile-Mega": 1, "Darmanitan-GZ": 4 },
       },
     ],
   },
@@ -1356,23 +1359,16 @@ const _box9 = getBox({
       nature: "Timid",
       ability: "Tangling Hair",
       item: "HeavyD. Boots",
-      moves: ["Dazz. Gleam", "Disable", "Encore", "Teleport"]
+      moves: ["Dazz. Gleam", "Disable", "Encore", "Teleport"],
     },
     "Thundurus-I": {
       nature: "Lax",
       ability: "Clear Body",
       item: "Black Belt",
-      moves: ["Hammer Arm", "Thunder Wave", "Volt Switch", "Wild. Storm"]
+      moves: ["Hammer Arm", "Thunder Wave", "Volt Switch", "Wild. Storm"],
     },
   },
-  team: [
-    "Floatzel",
-    "Darmanitan-GZ",
-    "Incineroar",
-    "Sceptile-Mega",
-    "Scream Tail",
-    "Thundurus-I",
-  ],
+  team: ["Floatzel", "Darmanitan-GZ", "Incineroar", "Sceptile-Mega", "Scream Tail", "Thundurus-I"],
 });
 
 export const eliteFourLanceBattle: Moment = {
@@ -1426,7 +1422,7 @@ export const eliteFourLanceBattle: Moment = {
                 { opponent: "{o:Melmetal} fainted" },
                 { opponent: "{p:Darmanitan-GZ} badly poison to {=:17}" },
               ],
-            ]
+            ],
           },
           {
             matchup: ["Dragonite"],
@@ -1447,7 +1443,7 @@ export const eliteFourLanceBattle: Moment = {
                 { opponent: "{o:Dragonite} fainted" },
                 { opponent: "{p:Sceptile-Mega} badly poison to {=:195}" },
               ],
-            ]
+            ],
           },
           {
             matchup: ["Dialga-P"],
@@ -1469,9 +1465,9 @@ export const eliteFourLanceBattle: Moment = {
                 ],
               },
             ],
-          }
+          },
         ],
-        frags: { Floatzel: 1, "Darmanitan-GZ": 2, "Sceptile-Mega": 1 }
+        frags: { Floatzel: 1, "Darmanitan-GZ": 2, "Sceptile-Mega": 1 },
       },
       {
         line: "94% → Scream Tail Dazz. Gleam Dialga-P",
@@ -1548,11 +1544,8 @@ export const eliteFourLanceBattle: Moment = {
             ],
             branches: [
               {
-                branches: [
-                  "48% → Dialga-P recoil",
-                  "52% → Dialga-P recoil (to 0)",
-                ],
-                default: "52% → Dialga-P recoil (to 0)"
+                branches: ["48% → Dialga-P recoil", "52% → Dialga-P recoil (to 0)"],
+                default: "52% → Dialga-P recoil (to 0)",
               },
             ],
           },
@@ -1578,7 +1571,7 @@ export const eliteFourLanceBattle: Moment = {
             branches: [{ branches: ["Thundurus-I Volt Switch Rayquaza-Mega"] }],
           },
         ],
-        frags: { "Thundurus-I": 1 }
+        frags: { "Thundurus-I": 1 },
       },
       {
         line: "52% → Dialga-P recoil (to 0)",
@@ -1597,7 +1590,7 @@ export const eliteFourLanceBattle: Moment = {
             branches: [{ branches: ["Thundurus-I Volt Switch Rayquaza-Mega"] }],
           },
         ],
-        frags: { "Scream Tail": 1 }
+        frags: { "Scream Tail": 1 },
       },
       {
         line: "6% → Scream Tail Dazz. Gleam Dialga-P (crit)",
@@ -1647,7 +1640,7 @@ export const eliteFourLanceBattle: Moment = {
               ],
             ],
             branches: [{ branches: ["Scream Tail Encore Dialga-P (fail)"] }],
-          }
+          },
         ],
       },
       {
@@ -1663,7 +1656,7 @@ export const eliteFourLanceBattle: Moment = {
               ],
             ],
             branches: [{ branches: ["Scream Tail Encore Dialga-P (fail)"] }],
-          }
+          },
         ],
       },
       {
@@ -1688,27 +1681,18 @@ export const eliteFourLanceBattle: Moment = {
             branches: [
               {
                 if: ["6% → Scream Tail Dazz. Gleam Dialga-P (crit)"],
-                branches: [
-                  "94% → Dialga-P recoil",
-                  "6% → Dialga-P recoil (to 0)",
-                ],
+                branches: ["94% → Dialga-P recoil", "6% → Dialga-P recoil (to 0)"],
               },
               {
                 if: ["6% → Scream Tail Dazz. Gleam Dialga-P (crit) 2"],
-                branches: [
-                  "97% → Dialga-P recoil",
-                  "3% → Dialga-P recoil (to 0)",
-                ],
+                branches: ["97% → Dialga-P recoil", "3% → Dialga-P recoil (to 0)"],
               },
               {
                 if: ["6% → Scream Tail Dazz. Gleam Dialga-P (crit) 3"],
-                branches: [
-                  "99% → Dialga-P recoil",
-                  "1% → Dialga-P recoil (to 0)",
-                ],
+                branches: ["99% → Dialga-P recoil", "1% → Dialga-P recoil (to 0)"],
               },
             ],
-          }
+          },
         ],
       },
       {
@@ -1731,7 +1715,7 @@ export const eliteFourLanceBattle: Moment = {
             branches: [{ branches: ["Thundurus-I Volt Switch Rayquaza-Mega"] }],
           },
         ],
-        frags: { "Thundurus-I": 1 }
+        frags: { "Thundurus-I": 1 },
       },
       {
         line: "6% → Dialga-P recoil (to 0)",
@@ -1750,7 +1734,7 @@ export const eliteFourLanceBattle: Moment = {
             branches: [{ branches: ["Thundurus-I Volt Switch Rayquaza-Mega"] }],
           },
         ],
-        frags: { "Scream Tail": 1 }
+        frags: { "Scream Tail": 1 },
       },
       {
         line: "97% → Dialga-P recoil",
@@ -1772,7 +1756,7 @@ export const eliteFourLanceBattle: Moment = {
             branches: [{ branches: ["Thundurus-I Volt Switch Rayquaza-Mega"] }],
           },
         ],
-        frags: { "Thundurus-I": 1 }
+        frags: { "Thundurus-I": 1 },
       },
       {
         line: "3% → Dialga-P recoil (to 0)",
@@ -1791,7 +1775,7 @@ export const eliteFourLanceBattle: Moment = {
             branches: [{ branches: ["Thundurus-I Volt Switch Rayquaza-Mega"] }],
           },
         ],
-        frags: { "Scream Tail": 1 }
+        frags: { "Scream Tail": 1 },
       },
       {
         line: "99% → Dialga-P recoil",
@@ -1813,7 +1797,7 @@ export const eliteFourLanceBattle: Moment = {
             branches: [{ branches: ["Thundurus-I Volt Switch Rayquaza-Mega"] }],
           },
         ],
-        frags: { "Thundurus-I": 1 }
+        frags: { "Thundurus-I": 1 },
       },
       {
         line: "1% → Dialga-P recoil (to 0)",
@@ -1832,7 +1816,7 @@ export const eliteFourLanceBattle: Moment = {
             branches: [{ branches: ["Thundurus-I Volt Switch Rayquaza-Mega"] }],
           },
         ],
-        frags: { "Scream Tail": 1 }
+        frags: { "Scream Tail": 1 },
       },
       {
         line: "Thundurus-I Volt Switch Rayquaza-Mega",
@@ -1854,8 +1838,8 @@ export const eliteFourLanceBattle: Moment = {
             ],
           },
         ],
-        frags: { "Sceptile-Mega": 1 }
-      }
+        frags: { "Sceptile-Mega": 1 },
+      },
     ],
   },
 };
@@ -1866,16 +1850,16 @@ const _box10 = getBox({
     "Thundurus-I": {
       name: "Thundurus-T",
       spriteKey: "thundurus-therian",
-      ability: "Volt Absorb"
-    }
-  }
+      ability: "Volt Absorb",
+    },
+  },
 });
 
 export const eliteFourLanceBoxChange: Moment = {
   split: "Elite Four",
   label: "Elite Four Lance Box Change",
   kind: "boxChange",
-  data: { playerBox: _box10 }
+  data: { playerBox: _box10 },
 };
 
 const _box11 = getBox({
@@ -1888,10 +1872,10 @@ const _box11 = getBox({
       moves: ["Fake Out", "Flip Turn", "Focus Punch", "Surging Strikes"],
     },
     "Thundurus-T": {
-      nature: "Lax", 
+      nature: "Lax",
       ability: "Volt Absorb",
       item: "Choice Specs",
-      moves: ["Dark Pulse", "Focus Blast", "Psychic", "Volt Switch"]
+      moves: ["Dark Pulse", "Focus Blast", "Psychic", "Volt Switch"],
     },
     "Darmanitan-GZ": {
       nature: "Adamant",
@@ -1903,20 +1887,20 @@ const _box11 = getBox({
       nature: "Jolly",
       ability: "Technician",
       item: "Sceptilite",
-      moves: ["Cut", "Dual Chop", "Leaf Blade", "Low Kick"]
+      moves: ["Cut", "Dual Chop", "Leaf Blade", "Low Kick"],
     },
     "Scream Tail": {
       nature: "Timid",
       ability: "Tangling Hair",
       item: "Chilan Berry",
-      moves: ["Dazz. Gleam", "Disable", "Encore", "Teleport"]
+      moves: ["Dazz. Gleam", "Disable", "Encore", "Teleport"],
     },
     Incineroar: {
       nature: "Relaxed",
       ability: "Intimidate",
       item: "Sitrus Berry",
-      moves: ["Drain Punch", "Parting Shot", "Scary Face", "Will-O-Wisp"]
-    }
+      moves: ["Drain Punch", "Parting Shot", "Scary Face", "Will-O-Wisp"],
+    },
   },
   team: ["Floatzel", "Thundurus-T", "Darmanitan-GZ", "Sceptile-Mega", "Scream Tail", "Incineroar"],
 });
@@ -1967,15 +1951,12 @@ export const championRivalBattle: Moment = {
             ],
             branches: [
               {
-                branches: [
-                  "50% → Necrozma-Ultra matchup",
-                  "50% → Arceus matchup",
-                ],
+                branches: ["50% → Necrozma-Ultra matchup", "50% → Arceus matchup"],
               },
             ],
-          }
+          },
         ],
-        frags: { "Thundurus-T": 1, "Sceptile-Mega": 1 }
+        frags: { "Thundurus-T": 1, "Sceptile-Mega": 1 },
       },
       {
         line: "50% → Necrozma-Ultra matchup",
@@ -1988,7 +1969,7 @@ export const championRivalBattle: Moment = {
                 { player: "{p:Sceptile-Mega} Dual Chop {o:Necrozma-Ultra} to {=:0}" },
                 { opponent: "{o:Necrozma-Ultra} fainted" },
               ],
-            ]
+            ],
           },
           {
             matchup: ["Arceus"],
@@ -2027,9 +2008,9 @@ export const championRivalBattle: Moment = {
               ],
             ],
             branches: [{ branches: ["Sceptile-Mega Leaf Blade Swampert-Mega"] }],
-          }
+          },
         ],
-        frags: { "Sceptile-Mega": 2 }
+        frags: { "Sceptile-Mega": 2 },
       },
       {
         line: "50% → Arceus matchup",
@@ -2069,7 +2050,7 @@ export const championRivalBattle: Moment = {
                 { opponent: "{o:Arceus} burn to {=:0}" },
                 { opponent: "{o:Arceus} fainted" },
               ],
-            ]
+            ],
           },
           {
             matchup: ["Necrozma-Ultra"],
@@ -2083,7 +2064,7 @@ export const championRivalBattle: Moment = {
             branches: [{ branches: ["Sceptile-Mega Leaf Blade Swampert-Mega"] }],
           },
         ],
-        frags: { "Sceptile-Mega": 2 }
+        frags: { "Sceptile-Mega": 2 },
       },
       {
         line: "Sceptile-Mega Leaf Blade Swampert-Mega",
@@ -2106,10 +2087,10 @@ export const championRivalBattle: Moment = {
                 { opponent: "{o:Walking Wake} fainted" },
               ],
             ],
-          }
+          },
         ],
         frags: { "Sceptile-Mega": 2 },
-      }
+      },
     ],
   },
 };
